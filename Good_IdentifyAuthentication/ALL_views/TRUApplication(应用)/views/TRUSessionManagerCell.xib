@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCellID" rowHeight="64" id="KGk-i7-Jjw" customClass="TRUSessionManagerCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录IP：211.211.211.211" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiT-e2-MsA" userLabel="LoginIPLabel">
+                        <rect key="frame" x="11" y="10" width="169" height="19.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="169" id="L9P-FX-eA3"/>
+                            <constraint firstAttribute="height" constant="19.5" id="g5m-m3-ZHD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国/武汉/IE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nx-gg-dkt" userLabel="RegionLabel">
+                        <rect key="frame" x="11" y="36" width="84" height="19.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="2Ue-jz-laR"/>
+                            <constraint firstAttribute="height" constant="19.5" id="tNT-S4-AmD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否注销登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KrG-6R-qOG" userLabel="LogoutTipLabel">
+                        <rect key="frame" x="232" y="40.5" width="80" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Flk-0z-wxQ"/>
+                            <constraint firstAttribute="width" constant="80" id="c0o-XR-kyh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kob-rU-aSP" userLabel="LogoutBtn">
+                        <rect key="frame" x="256" y="8.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="4OU-lB-U8H"/>
+                            <constraint firstAttribute="height" constant="32" id="zkG-os-2eF"/>
+                        </constraints>
+                        <state key="normal" image="ssobtn"/>
+                        <state key="selected" image="sliderbtnOn"/>
+                        <connections>
+                            <action selector="logoutBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sy3-Ty-FvE"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1Nx-gg-dkt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="3RA-rn-Ge4"/>
+                    <constraint firstItem="BiT-e2-MsA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="4yE-qB-wl2"/>
+                    <constraint firstItem="BiT-e2-MsA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="JQr-xT-Zcr"/>
+                    <constraint firstItem="kob-rU-aSP" firstAttribute="centerX" secondItem="KrG-6R-qOG" secondAttribute="centerX" id="N0t-oX-QMC"/>
+                    <constraint firstAttribute="bottom" secondItem="KrG-6R-qOG" secondAttribute="bottom" constant="6" id="S4i-fB-zih"/>
+                    <constraint firstAttribute="trailing" secondItem="KrG-6R-qOG" secondAttribute="trailing" constant="8" id="afF-xm-iMQ"/>
+                    <constraint firstItem="1Nx-gg-dkt" firstAttribute="top" secondItem="BiT-e2-MsA" secondAttribute="bottom" constant="6.5" id="j42-DU-BNr"/>
+                    <constraint firstItem="KrG-6R-qOG" firstAttribute="top" secondItem="kob-rU-aSP" secondAttribute="bottom" id="zjd-lB-WUV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="loginIPLabel" destination="BiT-e2-MsA" id="ATX-Od-qPr"/>
+                <outlet property="regionLabel" destination="1Nx-gg-dkt" id="t6k-gN-N5t"/>
+            </connections>
+            <point key="canvasLocation" x="-312" y="69"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sliderbtnOn" width="70" height="23"/>
+        <image name="ssobtn" width="46" height="51"/>
+    </resources>
+</document>

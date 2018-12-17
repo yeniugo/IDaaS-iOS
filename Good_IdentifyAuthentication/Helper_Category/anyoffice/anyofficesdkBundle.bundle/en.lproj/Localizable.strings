@@ -1,0 +1,1162 @@
+/* Localized versions of Info.plist keys */
+
+/*通用*/
+"COMMON_LANGUAGE" = "EN";
+"COMMON_ACCOUNT" = "Account";
+"COMMON_SHOW" = "Display";
+"COMMON_GET_NEW_DATA" = "New Data";
+"COMMON_GENERAL" = "General";
+"COMMON_MAIL_CALENDARS" = "Mail and Calendar";
+"COMMON_DISAGREE" = "Disagree";
+"COMMON_AGREE" = "Agree";
+"COMMON_THIRDAPP" = "Third-party";
+"COMMON_OTHERS" = "Other";
+"COMMON_OPEN" = "Open";
+"COMMON_BACK" = "Back";
+"COMMON_CANCEL" = "Cancel";
+"COMMON_SAVE" = "Save";
+"COMMON_DISCARD" = "Discard";
+"COMMON_DELETE" = "Delete";
+"COMMON_EDIT" = "Edit";
+"COMMON_OK" = "OK";
+"COMMON_CONFIRM" = "OK";
+"COMMON_HOME" = "Home";
+"COMMON_HINT" = "Info";
+"COMMON_OPERATION" = "Operation";
+"COMMON_RENAME" = "Rename";
+"COMMON_REQUIRED" = "Required";
+"COMMON_UNREQUIRED" = "Optional";
+"COMMON_COMPLETE" = "Complete";
+"COMMON_QUIT" = "Quit";
+"COMMON_SETTING" = "Settings";
+"COMMON_RETRY" = "Retry";
+"COMMON_LOGOUT" = "Log Out";
+"COMMON_REQUIRED" = "Required";
+"COMMON_LOGOUTING" = "Logging Out...";
+"COMMON_NEW_VERSION_UPDATE_SOON_G" = "(Currently you are using mobile data. To save on data charges, please turn on Wi-Fi.)";
+"COMMON_NEW_VERSION_UPDATE_SOON" = "Found a new version ";
+"COMMON_NOT_HINT" = "Later";
+"COMMON_IGNORE" = "Ignore";
+"COMMON_UPDATE_SOON" = "Upgrade";
+"COMMON_IS_INSTALLING" = "Downloading...";
+"COMMON_COMMA" = ",";
+"COMMON_UNKNOWN_EXCEPTION" = "Unknown Exception";
+"COMMON_FETCHDATA" = "Obtaining data...";
+"COMMON_WAITING" = "Please wait...";
+"COMMON_LOAD_MORE" = "See More";
+"COMMON_UPDATING" = "Loading...";
+"COMMON_DOWNLOAD" = "Download";
+"COMMON_INSTALL" = "Install";
+"COMMON_DOWNLOAD_AND_INSTALL" = "Install";
+"COMMON_REINSTALL" = "Reinstall";
+"COMMON_PREPARATION" = "Preparing...";
+"COMMON_UNINSTALL" = "Uninstall";
+"COMMON_NEXT" = "Next";
+"COMMON_CONTINUE" = "Continue";
+"COMMON_STOP" = "Stop";
+"COMMON_WARNING" = "Warning";
+"COMMON_YAS" = "Yes";
+"COMMON_NO" = "No";
+"COMMON_ERROR" = "Error";
+"COMMON_REFRESH" = "Refresh";
+"COMMON_UNKNOWN" = "Unknown";
+"COMMON_EMPTY" = "Clear";
+
+//"COMMON_MONTHNAMES:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+//"COMMON_MONTHNAMES_SHORT:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+//"COMMON_WEEKS_SHORT:["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+//"COMMON_WEEKSNAMES:["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+
+"COMMON_CONFIGURATION_CHANGES" = "Configuration changed. Sign out and log in again.";
+
+"COMMON_QUESTION_MARCK" = "?";
+"COMMON_CURRENT_VERSION" = "Version:";
+"COMMON_NEW_VEWSION" = "Up to date";
+"COMMON_HAS_NEW_VEWSION" = "New version available,";
+"COMMON_CONTACT_US" = "Contact Us";
+
+"COMMON_SERVICE_TELEPHONE" = "Tel.:";
+"COMMON_SERVICE_MAIL" = "Email:";
+"CAN_NOT_ACCESS_INTERNET" = "Failed to connect to the network";
+"ERROR_OCCURRED_ON_THE_SERVER" = "Server error.";
+"FAIL_CANCEL_AUTOLOGIN" = "Failed to cancel auto login";
+"FAIL_DATA_ERROR" = "Failed to obtain data";
+"CREATE_THREAD_FAILED" = "Failed to get system resources. Please restart AnyOffice.";
+
+"ACCOUNT_KICKED_OFF" = "Failed to connect to the network. Please log out and log in again.";
+"CONFIG_FILE_NOTEXIST" = "The MDM profile does not exist. Please keep the network connected and log in again.";
+"OVERSTEP_LOGINWRONGTIMES" = "No attempts remaining. You can manually clear the configuration.";
+
+/*安全工作台*/
+"ANYOFFICE" = "Secure Workbench";
+"BROWSER" = "Secure Browser";
+"TODAYTODO" = "Today&prime;s To-Do List";
+"ADD_APP" = "Add App";
+"ANYOFFICE_FILEMANGERMENT" = "File Manager";
+"ANYOFFICE_APPSTORE" = "App Store";
+"ANYOFFICE_SELFSERVICE" = "Self-Service";
+"AFFICE_OPEN_FILE" = "Opening the file manager...";
+"ANYOFFICE_QUIT" = "Are you sure you want to exit?";
+"ANYOFFICE_QUITING" = "Exiting...";
+"ANYOFFICE_LOGIN_MAIL" = "Logging in to secure email ... Please wait";
+"ANYOFFICE_LOGIN_FOLDER_FAIL" = "Failed to get folders";
+"ANYOFFICE_UPDATE_MIALLIST" = "Update Mail List";
+"ANYOFFICE_UPDATE_SCHEDULELIST" = "Update Schedule List";
+"ANYOFFICE_OPENHELP_FAIL" = "Self-service unavailable.";
+"ANYOFFICE_OPENBROWSER" = "Opening the secure browser...";
+"ANYOFFICE_OFFLINE" = "(Disconnected)";
+"ANYOFFICE_CONNECTING" = "(Connecting)";
+
+"MENU_NOTICECENTER" = "Message Center";
+"MENU_APPCENTER" = "App Center";
+"MENU_DOCUMENTCENTER" = "Doc Manager";
+
+"MENU_NOTICES" = "Messages";
+"MENU_APP" = "Apps";
+"MENU_DOCUMENT" = "Docs";
+
+"MENU_MAIN" = "Home";
+"MENU_APPSTORE" = "App Store";
+"MENU_MAIL" = "Mail";
+"MENU_CALENDAR" = "Calendar";
+"MENU_CONTACT" = "Contact";
+"MENU_MORE" = "More";
+"MENU_BROWSER" = "Browser";
+"MENU_SELFSERVICE" = "Service";
+"MENU_ABOUT" = "About";
+"MENU_EXIT" = "Exit";
+"MENU_NOTICE" = "Alert";
+"MENU_IILEGALLOG" = "Violation";
+"MENU_TERMINAL" = "Terminal";
+"MENU_SETTING" = "Settings";
+
+"BUTTON_MORE_MAILS" = "More...";
+
+"AUTHENTICATION_FAILED" = "Authentication failed. Please log in again.";
+
+
+
+/*======================文件夹模块=======================*/
+/*文件夹目录*/
+"NEWFOLDER" = "Create Folder";
+"NEWFOLDERNAME" = "Name for folder";
+"FOLDER" = "Folder";
+"CONTACT" = "Contacts";
+"NOTICE" = "Note";
+"MAIL" = "Mail";
+"INBOX" = "Inbox";
+"DRAFT" = "Drafts";
+"SENT" = "Sent";
+"OUTBOX" = "Outbox";
+"TRASH" = "Deleted";
+"UNREADBOX" = "Unread";
+"FAVBOX" = "Flag";
+"FOLDERNEW" = "New";
+"FOLDEREDIT" = "Edit";
+"FOLDER_LOCK_SAVE" = "Saving data...";
+
+"HOME_SEARCH_PLACEHOLDER" = "Search for a contact";
+"FOLDER_EDIT" = "Edit";
+"FOLDER_EXIT_APP_COMFIRM_MSG" = "Are you sure you want to exit the secure email?";
+
+// 文件夹目录 lock message
+"FOLDER_GETFOLDERLIST_LOCK_MSG" = "Obtaining the folder list...";
+"FOLDER_GETREMOTEFOLDERLIST_LOCK_MSG" = "Obtaining the remote folder list...";
+"FOLDER_REFRESHFOLDERLIST_LOCK_MSG" = "Refreshing the folder list...";
+"FOLDER_REFRESHFOLDERLIST_ERROR" = "Failed to refresh the folder list";
+
+/*文件夹整理*/
+"FOLDER_FOLDER_MANAGER" = "Folder Manager";
+"FOLDER_NAME" = "Folder Name";
+"FOLDER_ADD" = "Add";
+"FOLDER_ADD_SUBFOLDER" = "Add Subfolder";
+"FOLDER_RENAME" = "Rename";
+"FOLDER_DELETE" = "Delete";
+"FOLDER_FOLDER_SELECT" = "Select Folder";
+"FOLDER_MANAGER" = "Manager";
+"FOLDER_UNREAD_MAIL" = "Unread Mails";
+
+// 文件夹整理 lock message
+"FOLDER_ADD_LOCK_MSG" = "Adding the folder...";
+"FOLDER_ADD_SUCCESS" = "Folder added.";
+"FOLDER_ADD_NUMBEROVERFLOW" = "Exceeded the maximum limit (64 folders).";
+
+"FOLDER_REANAME_LOCK_MSG" = "Renaming the folder...";
+"FOLDER_RENAME_ERROR" = "Failed to rename the folder";
+"FOLDER_RENAME_SUCCESS" = "Folder renamed.";
+
+"FOLDER_DELETE_LOCK_MSG" = "Deleting the folder...";
+"FOLDER_DELETE_SUCCESS" = "Folder deleted.";
+
+// 文件夹整理 Ext.Msg
+"FOLDER_EMPTY_NAME_ALERT_MSG" = "The folder name must be specified";
+"FOLDER_SPECIAL_CODE_SLASH_ALERT_MSG" = "The folder name cannot contain slashes (/)";
+"FOLDER_SPECIAL_CODE_BACKSLASH_ALERT_MSG" = "The folder name cannot contain backslashes (\\)";
+"FOLDER_SPECIAL_CODE_AND_ALERT_MSG" = "The folder name cannot contain ampersands (&)";
+"FOLDER_SAME_NAME_AS_SYSTEM_FOLDER_ALERT_MSG" = "This is a system folder name. Try another one.";
+"FOLDER_SAME_NAME_AS_CURRENT_FOLDER_ALERT_MSG" = "The folder name already exists.";
+"FOLDER_SAME_FOLDER_DIRECTORY" = "A folder with the same name already exists in this directory";
+
+"FOLDER_ADD_TITLE_PROMOTE_MSG" = "New Folder";
+"FOLDER_ADD_CONTENT_PROMOTE_MSG" = "Enter a folder name";
+"FOLDER_ADD_SUBFOLDER_CONTENT_PROMOTE_MSG" = "Enter a subfolder name";
+"FOLDER_ADD_PATH_TOO_LONG_ALERT_MSG" = "The directory name is too long. New subfolder cannot be created";
+
+"FOLDER_RENAAME_SELECT_ALERT_MSG" = "Select a folder to be renamed";
+"FOLDER_RENAME_SYSTEM_FOLDER_ALERT_MSG" = "You can rename only user-defined folders but not system folders.";
+"FOLDER_RENAME_TITLE_PROMOTE_MSG" = "Rename";
+"FOLDER_RENAME_CONTENT_PROMOTE_MSG" = "Enter a new name for this folder";
+
+"FOLDER_DELETE_SELETE_ALERT_MSG" = "Select a folder to be deleted";
+"FOLDER_DELETE_SYSTEM_FOLDER_ALERT_MSG" = "You can delete only user-defined folders but not system folders.";
+"FOLDER_DELETE_TITLE_ALERT_MSG" = "Delete";
+"FOLDER_DELETE_CONTENT_ALERT_MSG" = "The mails in this folder will be deleted permanently. Continue?";
+"FOLDER_DELETE_HAS_SUBFOLDER_ALERT_MSG" = "Cannot delete this folder because it contains subfolders.";
+"FOLDER_DELETE_CONTENT_ALERT_MSG_PHONE" = "Deleting this folder will also delete the mails in it. Continue?";
+
+/*文件夹订阅*/
+"FOLDER_RSS_TITLE" = "Subscribe";
+"FOLDER_RSS_STATUS_ON" = "ON";
+"FOLDER_RSS_STATUS_OFF" = "OFF";
+"FOLDER_SUBSCRIBE" = "Subscribe";
+"FOLDER_UNSUNSCRIBE" = "Unsubscribe";
+
+// 文件夹订阅 lock message
+"FOLDER_SUBSCRIBE_LOCK_MSG" = "Subscribing to the folder...";
+"FOLDER_SUBSCRIBE_SUCCESS" = "Folder subscribed.";
+
+"FOLDER_UNSUBSCRIBE_LOCK_MSG" = "Unsubscribing from folder...";
+"FOLDER_UNSUBSCRIBE_SUCCESS" = "Folder nnsubscribed.";
+"FOLDER_UNSUBSCRIBE_ERROR" = "Failed to unsubscribe from this folder.";
+
+"FOLDER_PUSH_LOCK_MSG" = "Enabling push function...";
+"FOLDER_UNPUSH_LOCK_MSG" = "Disabling push function...";
+
+// 文件夹订阅  Ext.Msg
+"FOLDER_SUBSCRIBE_SELECT_ALERT_MSG" = "Select a folder to subscribe to";
+"FOLDER_UNSUBSCRIBE_SELECT_ALERT_MSG" = "Select a folder to subscribe from";
+"FOLDER_UNSUBSCRIBE_SYSTEM_FOLDER_ALERT_MSG" = "Cannot subscribe from a system folder.";
+
+// 文件夹 Push
+"FOLDER_PUSH" = "Push";
+"FOLDER_PUSH_CLOSE" = "Cancel Push";
+"FOLDER_PUSH_ON" = "Push Enabled";
+"FOLDER_PUSH_OFF" = "Push Disabled";
+
+
+
+
+/*=====================登录界面=======================*/
+
+/*登录界面按钮和常量*/
+"LOGIN_EMPTY_MAILBOX" = "Clearing the account information...";
+"LOGIN_LOCK_ENTER_PASSWORD" = "The app is locked. Please enter the password.";
+"LOGIN_PASSWORD_WRONG_REENTER" = "Incorrect password. Please try again.";
+"LOGIN_LOGIN" = "Log In";
+"LOGIN_SECUREMAIL" = "Secure Email";
+"LOGIN_USERNAME" = "User Name";
+"LOGIN_MAILADDRESS" = "Email address";
+"LOGIN_PASSWORD" = "Password";
+"LOGIN_REMEMBER" = "Remember me";
+"LOGIN_AUTOLOGIN" = "Auto login";
+"LOGIN_OFFLINE" = "Offline";
+"LOGIN_INSTRUCTIONS" = "If you encounter any problem during login, click <a style=\"font-weight:bold;color:#272727;\">i</a> for help";
+"LOGIN_EMAIL_EAS_PORT" = "Server Port";
+"LOGIN_EMAIL_DIAGNOSE" = "Diagnosis";
+"LOGIN_EMAIL_DIAGNOSE_SUBMIT_LOG" = "Send Diagnosis Log";
+"LOGIN_EMAIL_DIAGNOSE_SUBMIT_LOG_LOCK" = "Collecting logs...";
+"LOGIN_DIAGNOSE_LOG_ERROR" = "Failed to send diagnosis logs.";
+"LOGIN_DIAGNOSE_LOG_COMPRESS_ERROR" = "Failed to compress diagnosis logs.";
+"LOGIN_DIAGNOSE_LOG_SEND_ERROR" = "Failed to send diagnostic log";
+"LOGIN_DIAGNOSE_NOTICE" = "App is in diagnosis mode now. You can turn it off in Settings.";
+"LOGIN_EMAIL_AUTO_REPAIR_WIFI" = "Auto Repair Network Settings";
+"LOGIN_EMAIL_LOG_LEVEL" = "Enable Diagnosis Log";
+"LOGIN_EMAIL_LOGIN" = "Email Login";
+"LOGIN_EMAIL_MAIL" = "Email";
+"LOGIN_EMAIL_ACCOUNT" = "Account";
+"LOGIN_EMAIL_USERNAME" = "User Name";
+"LOGIN_EMAIL_PASSWORD" = "Password";
+"LOGIN_EMAIL_SETTING_AUTO" = "Auto";
+"LOGIN_EMAIL_SETTING_MANUAL" = "Manual";
+"LOGIN_DOMAIN_NOTINPUT" = "Optional";
+"LOGIN_FAIL_EMAIL_NOT_MAPPING" = "Email logging error. Please check the email address";
+"LOGIN_FAIL_EMAIL_BIND_LIMIT" = "Email logging error. The number of bound mobile devices has reached the upper limit of the mail server";
+"ANYOFFICE_CHECKMDMADMIN_CONFIRM" = "Activate this device administrator?";
+/*登录时的提示*/
+"LOGIN_LOG_ANYOFFICE" = "Logging in...";
+"LOGIN_MDM_CHECKING"  = "MDM Checking...";
+"LOGIN_LOG_SECUREMAIL" = "Logging in to the secure mailbox...";
+"LOGIN_FAILLOG_ANYOFFICE_OTHER_ERROR" = "Sorry, an error occurred in the login process. If the login still fails after your restart the software, feed the problem back to us, and we will handle it as soon as possible.";
+"LOGIN_FAILLOG_ANYOFFICE_USERIP_FORBIDDEN" = "Login failed: Your IP address is blocked.";
+"LOGIN_FAILLOG_ANYOFFICE_SYSTEM_BUSY" = "The system is busy. Please log in later";
+"LOGIN_FAILLOG_ANYOFFICE_NOGATEWAY" = "Server connection failed. Please check the network connection.";
+"LOGIN_FAILLOG_ANYOFFICE_ERRORPASSWORD" = "Login failed, possibly because of incorrect user name or password, password expiration, or account locked.";
+"LOGIN_FAILLOG_ANYOFFICE_CERTIFICATE" = "User certificate error";
+"LOGIN_FAILLOG_ANYOFFICE_USERNAME_PASSWORD_EMPTY" = "The user name and password cannot be empty";
+"LOGIN_FAILLOG_ANYOFFICE_CONCURRENT_USER_LIMIT" = "The use of your account on multiple devices has reached the upper limit.";
+"LOGIN_FAILLOG_ANYOFFICE_CERT_NUMBER_BEGIN" = "Incorrect password attempts exceed the limit. The account is locked";
+"LOGIN_FAILLOG_ANYOFFICE_NOT_ALLOW_PERIOD" = "Login is not allowed during this period";
+"LOGIN_FAILLOG_ANYOFFICE_CERT_NUMBER_END" = "times. The account is locked";         //场景中已经没有了
+"LOGIN_FAILLOG_ANYOFFICE_PORT_EMPTY" = "Port is empty";
+"LOGIN_FAILLOG_ANYOFFICE_ADDRESS_EMPTY" = "Gateway address is empty";
+"LOGIN_FAILLOG_ANYOFFICE_EMAIL_ADDRESS_ERROR" = "Failed to connect to the mail server";
+"LOGIN_FAILLOG_ANYOFFICE_EMAIL_PASSWORD_ERROR" = "Incorrect user name or password";
+"LOGIN_FAILLOG_ANYOFFICE_SYSTEM_POLICY_ERROR" = "Failed to obtain the policy. Please contact the administrator";
+"LOGIN_FAILLOG_ANYOFFICE_UNKNOW_ERROR" = "Failed to log in. Please contact the administrator";
+"LOGIN_FAILLOG_ANYOFFICE_USERNAME_MAXLENGTH" = "The user name length exceeds the upper limit (63 characters)";
+"LOGIN_FAILLOG_ANYOFFICE_PASSWORD_MAXLENGTH" = "The password length exceeds the upper limit (64 characters)";
+"LOGIN_FAILLOG_ANYOFFICE_LICENSE_MAX_NUMBER" = "The number of users exceeds the licensed capacity. Please contact the administrator";
+"LOGIN_FAILLOG_ERRORPROOF" = "The user name and password cannot be empty.";
+"LOGIN_FAIL_SECUREMAIL_ERRORREG" = "Failed to log in to the mail server. Please check the configurations";
+"LOGIN_FAIL_SECUREMAIL_ERRORSTRATEGY" = "Failed to obtain the policy. Please contact the administrator";
+"LOGIN_FAIL_SECUREMAIL_ERRORPASSWORD" = "Incorrect user name or password. Failed to log in to the mail server";
+"LOGIN_FAIL_SECUREMAIL_EXCEPTION" = "Failed to log in to the mail server. Please contact the administrator";
+"LOGIN_FAIL_VALIDATE" = "Verification failed.";
+"LOGIN_FAIL_UNDEFINED" = "System exception. Please log out and restart the app.";
+"LOGIN_FAIL_MISTAKE" = "Email login error. Please check the email configuration.";
+"AUTODISCOVERY_FAIL_MISTAKE" = "Please check the email configuration";
+"LOGIN_FAIL_NETWORK_UNCONNECTION" = "Failed to connect to the network";
+"LOGIN_FAIL_LOGININ_CHANGE_MAILADDRESS" = "Login failed: Incorrect email address or network unavailable.";
+"LOGIN_SUPPORT_SINGLE_ACCOUNT_IOS" = "AnyOffice uses single account login. To change the current account, you need to clear the account configuration files first. Continue?";
+"LOGIN_SUPPORT_SINGLE_ACCOUNT_ANDROID" = "AnyOffice uses single account login. To change the current account, you need to clear the account configuration files first. After clearing, the app will restart. Continue?";
+"LOGIN_FAIL_DEVICE_BUSY" = "The system is busy. Try later";
+"MAIL_ENCRYPT_CHANGE" = "Encryption policy changed. Please log out and log in again.";
+"MAIL_DATABASE_ERROR" = "Data read failure. Please log out and log in again.";
+"LOGIN_MAIL_PASSWORD_ERROR_RELOGIN" = "Password changed. Please log in again.";
+"LOGIN_COMMON_REQUIRE_APPAUTHEN" = "Failed to verify the app. Please download it from a formal way.";
+"ANYOFFICE_ERROR_NOFUNCTION_HWIT" = "You have no email permission. Please apply for the AnyOffice email right in W3.";
+"ANYOFFICE_ERROR_NOFUNCTION" = "The user does not have the permission temporarily. Please try again later.";
+
+"SSO_SAVEFILE_ERROR" = "Failed to save the user name and password.";
+"LOGIN_FAILLOG_ANYOFFICE_ACCOUNT_SPECIFICATION_ERROR" = "Account attributes invalid";
+"LOGIN_FAILLOG_ANYOFFICE_AUTHENTICATION_FAILED" = "Authentication failed. Please check your account or password, or contact the administrator.";
+"LOGIN_FAIL_CERTIFICATE_REVOKED" = "The certificate has been revoked. Please log in again.";
+
+/*提醒*/
+"SETTING_REMIND" = "Alert";
+"SETTING_NEWMAIL" = "New mail";
+"SETTING_SENDMAIL" = "Mail sending";
+"SETTING_SCHEDULE" = "Schedule";
+"SETTING_DO_NOT_DISTURB_SETTING" = "Do Not Disturb";
+"SETTING_DO_NOT_DISTURB_ALL_DAY" = "All Day";
+"SETTING_DO_NOT_DISTURB_NIGHT" = "Night";
+"SETTING_DO_NOT_DISTURB_OFF" = "Disable";
+"SETTING_DO_NOT_DISTURB_HINT" = "When Do Not Disturb is On, notifications for new mails and calendars will come without sound or vibration. The do-not-disturb period at night is 22:00-08:00.";
+
+/*同步*/
+"SETTING_SYNC" = "Sync";
+"SETTING_CALENDARS" = "Calendar";
+"SETTING_SYNCMAILHEAD" = "Header";
+"SETTING_SYNCMAILCONTENT" = "Content";
+"SETTING_SYNCATTACHMENTS" = "Attachment";
+"SETTING_SYNCALL" = "Sync all in Wi-Fi";
+"SETTING_SYNCSCHEDULE" = "Schedules";
+"SETTING_SYNCREMIND" = "Alert";
+"SETTING_SYNCCONTENT" = "Mail";
+"SETTING_MAILBOXSET" = "Mailbox Settings";
+"SETTING_QUIT" = "Save the edits?";
+"SETTING_EMAILADDR" = "Email";
+"SETTING_SYSTEMSET" = "Settings";
+"SETTING_MAILBOX" = "Mailbox";
+"SETTING_EMAILADDR_UNEMPTY" = "The email address is required.";
+"SETTING_INTERNETADDR_UNEMPTY" = "The Internet gateway address is required.";
+"SETTING_INTRANETADDR_UNEMPTY" = "The intranet gateway address is required.";
+"SETTING_INTERNETADDR_ERROR" = "Incorrect format of Internet gateway address. Please try again.";
+"SETTING_INTRANETADDR_ERROR" = "Incorrect format of intranet gateway address. Please try again.";
+"SETTING_INTERNETADDR_PORT_ERROR" = "Incorrect format of Internet gateway port. Please try again.";
+"SETTING_INTRANETADDR_PORT_ERROR" = "Incorrect format of intranet gateway port. Please try again.";
+"SETTING_MAIL_SYN" = "Mail Days to Sync";
+
+/*隐私*/
+"SETTING_PRIVACY" = "Privacy";
+"SETTING_PRIVACY_LOCATION" = "Report Location";
+"PRIVACY_MESSAGE_ALLOW_REPORTING_LOCATION" = "Allow AnyOffice to report your location?";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION" = "Device not in the specified area. You will be logged out.";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_WIFI" = "Device not in the specified area. Enterprise Wi-Fi access is disabled and you will be logged out.";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN" = "Failed to obtain location information. You will be logged out";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_WIFI" = "Failed to obtain location information. Enterprise Wi-Fi access is disabled and you will be logged out.";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_DELETE_DATA" = "Device not in the specified area. Enterprise apps installed will be removed and you will be logged out.";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_DELETE_DATA" = "Failed to obtain location information. Enterprise apps installed will be removed and you will be logged out.";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_HINT" = "Device not in the specified area.";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_HINT" = "Failed to obtain location information";
+
+/*系统设置*/
+"SETTING_ADDR" = "Address";
+"SETTING_INTERNETADDR" = "Internet";
+"SETTING_INTRANETADDR" = "Intranet";
+"SETTING_DOMAIN" = "Domain";
+"SETTING_PASSWORDLOCK" = "Password Lock";
+"SETTING_AUTOLOCK" = "Auto Lock";
+"SETTING_LOGINMODE" = "Login Mode";
+"SETTING_ENCRYPTMOdE" = "Encryption Mode";
+"SETTING_GATEWAY_SETTING_SAVE" = "Saving system settings...";
+"SETITNG_GATEWAY_SETTING_SAVE_SUCCESS" = "System settings saved.";
+"SETITNG_GATEWAY_SETTING_SAVE_FAILURE" = "Failed to save the system settings";
+"SETTING_SAVE_FAILURE" = "Saving failed";
+"SETTING_SYSTEM" = "System";
+"SETTING_LOCK" = "Lock";
+"SETTING_SYSTEM_SET" = "Settings";
+"SETTING_SYS_MAILSERVER_MANUAL" = "Mail";
+"SETTING_SYS_SENDSERVER" = "Outgoing Server";
+"SETTING_SYS_SENDADDR" = "Host Address";
+"SETTING_SYS_SENDCERTPATH" = "Certificate Path";
+"SETTING_SYS_SENDPORT" = "Server Port";
+"SETTING_SYS_SECURETYPE" = "Security Type";
+"SETTING_SYS_SECURETYPE_SSL" = "Use SSL";
+"SETTING_SYS_RECVSERVER" = "Incoming Server";
+"SETTING_SYS_RECVADDR" = "Host Address";
+"SETTING_SYS_RECVCERTPATH" = "Certificate Path";
+"SETTING_SYS_RECVPORT" = "Server Port";
+"SETTING_SYS_RECVTYPE" = "Mail Protocol";
+"SETTING_SYS_VERSION" = " Version";
+"SETTING_SYS_MAILGROUP_INFO_ERROR" = "Incorrect format of mail server information. Please try again";
+"SETTING_EMAILADDRESS_ERROR" = "Incorrect mail server information. Please try again.";
+"SETTING_FILL_EMAILADDR" = "Configure login information in System Settings.";
+"SETTING_SYS_EMPTY_ERROR" = "Internet and Intranet addresses cannot both be empty.";
+"SETTING_SYS_DEFAULT" = "Default";
+"SETTING_SYS_SELF_DEFINE" = "Server";
+"SETTING_SYS_MAILSERVER_TYPE" = "System";
+"SETTING_SYS_SERVER_ADDR" = "Host Address";
+"SETTING_SYS_SERVER_SETTING" = "Server Setting";
+"SETTING_SYS_SERVER_CATALOG" = "Working Directory";
+"SETTING_SYS_SERVER_ADDR_INFO_ERROR" = "Host Address is required.";
+"SETTING_MAIL_SERVER_OR_SEND_MAIL_SERVER" = "Mailbox server configuration incomplete";
+"SETTING_INTERNETADDR_HOLDER" = "mdm.company.com:443";
+"SETTING_INTRANETADDR_HOLDER" = "mdm.company.com:443";
+"LOGIN_EMAIL_ACCOUNT_HOLDER" = "email@company.com";
+"SETTING_SYS_SERVER_CATALOG_HOLDER" = "Mail Working Directory";
+
+/*登陆后设置*/
+"SETTING_SETTING_SAVE_SUCCESS" = "Settings saved.";
+"SETTING_SETTING_SAVE_FAILURE" = "Failed to save the settings";
+"SETTING_SETTINGSAVE" = "Saving settings...";
+"SETTING_GIVE_UP_SAVE_SETTINGS" = "Discard your changes?";
+"SETTING_HEAD" = "Profile Pic";
+
+/*下拉菜单*/
+"SETTING_NONE" = "None";
+"SETTING_DOMAINACCOUNT" = "Domain Account";
+"SETTING_50RECENT_MAIL" = "50";
+"SETTING_100RECENT_MAIL" = "100";
+"SETTING_200RECENT_MAIL" = "200";
+"SETTING_500RECENT_MAIL" = "500";
+"SETTING_1000RECENT_MAIL" = "1000";
+"SETTING_SMALL" = "Small";
+"SETTING_MEDIUM" = "Medium";
+"SETTING_LARGE" = "Large";
+"SETTING_EXTRALARGE" = "Extra Large";
+"SETTING_GIANT" = "Giant";
+"SETTING_ONEDAY" = "1 day";
+"SETTING_THREEDATS" = "3 days";
+"SETTING_ONEWEEK" = "1 week";
+"SETTING_ONEMONTH" = "1 month";
+"SETTING_THREEMONTHS" = "3 months";
+"SETTING_UNLIMITED" = "No limit";
+"SETTING_TWOWEEKS" = "2 weeks";
+"SETTING_SIXMONTHS" = "6 months";
+"SETTING_ALL" = "All";
+"SETTING_DOWNLOAD_NUBBER" = "Pre-downloaded Mails";
+
+"SETTING_LAST_ONEWEEK" = "Last 1 week";
+"SETTING_LAST_TWOWEEKS" = "Last 2 weeks";
+"SETTING_LAST_ONEMONTH" = "Last 1 month";
+"SETTING_LAST_THREEMONTHS" = "Last 3 months";
+"SETTING_LAST_SIXMONTHS" = "Last 6 months";
+
+"SETTING_NONE" = "None";
+"SETTING_NOTIFICATION_BAR" = "Notification Bar";
+"SETTING_RINGER" = "Sound";
+"SETTING_VIBRATE" = "Vibration";
+"SETTING_RINGER_AND_VIBRATE" = "Sound+Vibration";
+"SETTING_10MIN" = "Every 10 min";
+"SETTING_30MIN" = "Every 30 min";
+"SETTING_HOURLY" = "Every hour";
+
+"SETTING_VERSION_UPGRADE" = "Version upgrade requires to clear account configuration files";
+"SETTING_VERSION_UPGRADE_NEED_EMPTY_ACCOUNT_CONFIGURATION" = "Version upgrade requires to clear account configuration files. AnyOffice will restart automatically after clearing.";
+
+/*同步*/
+"SETTING_SAVE_FLOW" = "Data Saving Mode";
+"SETTING_INTELLIGENT" = "Intelligent Mode";
+"SETTING_NORMAL" = "Normal Mode";
+"SETTING_COMPLETE" = "Full Mode";
+"SETTING_ATTACHMENTS_NOT_DOWNLOAD_AUTO" = "On a mobile data network, download content: max 16 KB; attachment: never. On a Wi-Fi network, download content: all; attachment: never.";
+"SETTING_ALL_ATTACHMENTS_DOWNLOAD_AUTO" = "Download all contents and attachments on any network";
+"SETTING_INTELLIGENT_ATTACHMENTS_DOWNLOAD" = "On a mobile data network, download content: all; attachment: max 128 KB. On a Wi-Fi network, download content: all; attachment: max 1 MB.";
+"SETTING_NORMAL_ATTACHMENTS_DOWNLOAD" = "On a mobile data network, download content: all; attachment: never. On a Wi-Fi network, download content: all; attachment: all.";
+
+/* 工作台使能配置 */
+"SETTING_WORKSHOP" = "Workbench";
+"SETTING_WELCOMEPAGE" = "Home";
+"SETTING_MAIL_TAB_EN" = "Secure Mail";
+"SETTING_BROWSER_TAB_EN" = "Secure Browser";
+"SETTING_CALENDAR_TAB_EN" = "Today&prime;s To-Do List";
+
+/*密码管理*/
+"SETTING_PASSCODE_MANAGERMENT" = "Security";
+"SETTING_APPLICATION_LOCK_SCENE" = "Screen Lock";
+"SETTING_SIMPLE_PASSCODE" = "Simple Passcode";
+"SETTING_PASSCODE_FAILED" = "Failed to set the passcode.";
+"SETTING_CHANGE_PASSCODE" = "Change Passcode";
+"SETTING_CLOSE_PASSCODE" = "Disable Simple Passcode";
+"SETTING_OPEN_PASSCODE" = "Enable Simple Passcode";
+
+/*自动配置Wi-Fi*/
+"SETTING_WIFI_CONFIG" = "Config Wi-Fi";
+"SETTING_REPAIR_WIFI" = "Repair Wi-Fi";
+"SETTING_REPAIR_WIFI_LOADING" = "Repairing...";
+"SETTING_REPAIR_WIFI_HINT" = "The repair may take a minute. Keep the network connected and stay on this app.";
+"SETTING_REPAIR_WIFI_HINT_HUAWEI" = "It will take about one minute. Connect to Huawei-Init Wi-Fi or some other available network and stay on this app.";
+"SETTING_REPAIR_WIFI_SUCCESS" = "Repair finished.";
+"SETTING_REPAIR_WIFI_FAILED" = "Failed to repair Wi-Fi configuration";
+"SETTING_REPAIR_WIFI_BUSY" = "Repairing";
+"SETTING_REPAIR_WIFI_GETCONFIG" = "Getting Wi-Fi configuration...";
+"SETTING_REPAIR_WIFI_GETCONFIGFAILED" = "Failed to get Wi-Fi configuration.";
+"SETTING_REPAIR_WIFI_GENKEY" = "Generating key...";
+"SETTING_REPAIR_WIFI_APPLYCERT" = "Applying for certificate...";
+"SETTING_REPAIR_WIFI_APPLYCERTFAILED" = "Failed to apply for the certificate.";
+"SETTING_REPAIR_WIFI_APPLYCONFIG" = "Applying for Wi-Fi configuration...";
+"SETTING_REPAIR_WIFI_APPLYCONFIGFAILED" = "Failed to apply for configuration.";
+"SETTING_REPAIR_WIFI_GATEWAYFAILED" = "Failed to connect to gateway. Please check your network.";
+"SETTING_REPAIR_WIFI_OUTOFTIME" = "Connection timed out. Try on a good network.";
+"SETTING_REPAIR_WIFI_INSTALLING" = "About to configure Wi-Fi...";
+
+
+/*=====================MDM准入检查相关=======================*/
+"MDM_CHECK" = "Security Check";
+"MDM_EXPERIENCE" = "Loading...";
+"MDM_DOINGCHECK" = "Performing security check...";
+"MDM_ONECHECK" = "1 Item";
+"MDM_SIXCHECK" = "6 Items";
+"MDM_FOURCHECK" = "4 Items";
+"MDM_TWOCHECK" = "3 Items";
+"MDM_THREECHECK" = "4 Items";
+"MDM_CHECKBINDING" = "Device registration check";
+"MDM_GUIDESTRATEGY" = "Security policy import";
+"MDM_PRISONBREAK" = "Jailbreak check";
+"MDM_PRIVILEGES" = "Account privileges check";
+"MDM_ROOTCHECK" = "Root privileges check";
+"MDM_CHECKVERSION" = "System version check";
+"MDM_CHECKPASSWORD" = "Password security check";
+"MDM_DANGEROUS" = "Blacklisted app check";
+"MDM_SECURITY" = "Required app check";
+"MDM_COMPLETED" = "Completed";
+"MDM_FIRST" = "Item 1...";
+"MDM_SECOND" = "Item 2...";
+"MDM_THIRD" = "Item 3...";
+"MDM_FOURTH" = "Item 4...";
+"MDM_FIFTH" = "Item 5...";
+"MDM_SIXTH" = "Item 6...";
+"MDM_SEVENTH" = "Item 7...";
+"MDM_FAIL_CHECK" = "Access check failed";
+"MDM_FAIL_DOWNLOAD" = "Download failed";
+"MDM_FAIL_INSTALL" = "Installation failed";
+"MDM_FAIL_GETDOWNLOADINFORMATION" = "Failed to obtain the download information";
+"MDM_FAIL_UNINSTALL" = "Uninstallation failed";
+
+/*绑定检查提示*/
+"MDM_CHECK_EQUIPMENT" = "Checking the device authorization...";
+"MDM_FAILURE_ASSET_NOT_REGISTER" = "The device is a public asset. The asset owner must log in first";
+"MDM_LOGIN_ERROR_CONFIGURATION" = "Login mode configuration error";
+"MDM_FAIL_CHECKBIND" = "Failed to check the device registration. Please contact the administrator";
+"MDM_FAIL_CHECKBIND_NET_BROKEN" = "Network exception. Failed to check the device registration";
+"MDM_FAIL_CHECKBIND_USER_OFFLINE" = "You are logged out. Failed to check the device registration";
+"MDM_FAILBIND_EXAMINATION" = "Your device is under review.";
+"MDM_FAILBIND_EXAMINATION_LOGOUT" = "Your device is under review. You will be logged out.";
+"MDM_FAILBIND_MORETHANALLOW" = "The number of registered devices for your account exceeds the upper limit.";
+"MDM_FAILBIND_MORETHANALLOW_LOGOUT" = "The number of registered devices for your account exceeds the upper limit. You will be logged out.";
+"MDM_FAILBIND_NOFUNCTION" = "No function is enabled. Please contact the administrator.";
+"MDM_FAILBIND_OTHERUSERS" = "Your device has been bound to account (";
+"MDM_FAILBIND_OTHERUSERS2" = "). If you want to bind this account, log in to the bound account to deregister the asset first and try to bind this account again.";
+"MDM_FAILBIND_BEENREGISTRATION" = "The device is registered by another user(";
+"MDM_FAILBIND_BEENREGISTRATION2" = ")and is being approved";
+"MDM_FAILBIND_ASSETE" = "Failed to check the device registration";
+"MDM_FAILBIND_ASSETE_LOGOUT" = "Failed to check the device registration. You will be logged out";
+"MDM_NOBING" = "Your device is not registered. Click Next to register it.";
+"MDM_FAILBIND_REJECT" = "Your device registration is rejected. Reason: “$1”. Click Next to register it again.";
+"MDM_NOBING_QUIT" = "Your device is not registered. You will be logged out";
+"MDM_BIND_OTHERS_LOGOUT" = "The device has been registered by another account (";
+"MDM_BIND_OTHERS_LOGOUT2" = "). Do you want to deregister the account?";
+"MDM_BIND_OTHERS_ERROR_LOGOUT" = "Your device has been registered by another account. You will be logged out.";
+"MDM_LOGOUT_FAILED" = "Deregistration failed.";
+"MDM_FAIL_REGISTER_NET_BROKEN" = "Failed to register the device because of a network exception";
+"MDM_FAIL_REGISTER_USER_OFFLINE" = "Failed to register the device because the account is offline. Please log in again.";
+"MDM_BEING_SYN_DATA" = "Assets have been registered in other gateways, and their data is being synchronized. Try again after 10 minutes.";
+/*下载配置文件*/
+"MDM_INSTALLCONFIGURATION" = "Click \"Download\" to install configuration files. \n(Please ensure that the Safari browser is not disabled. To enable it, go to \"Settings -> General -> Access Restrictions\".)";
+"MDM_TESTCONFIGURATION" = "Check whether the configuration files have been installed.";
+"MDM_TESTINGCONFIGURATION" = "Checking whether the configuration files have been installed...";
+"MDM_CONFIGURATION_SUCCESS" = "Configuration files installed.";
+"MDM_FAILEDTO_GET_POLICYFILE" = "Failed to obtain the policy files";
+"MDM_FAILED_TO_DOWNLOAD_CONFIGURATION_FILE" = "Failed to download configuration files. You will be logged out";
+"MDM_FAILED_TO_GET_GATEWAY_STRATEGY" = "Failed to obtain gateway policies.";
+
+/*安全策略导入检查*/
+"MDM_CHECK_CONFIGURATIONFILE_ISINSTALLED" = "Check Config Files";
+"MDM_FAILENABLE" = "Failed to enable the MDM ";
+"MDM_SUCCESSENABLE" = "MDM enabled.";
+"MDM_FAILACCESS" = "Failed to obtain the policy";
+"MDM_FAILPRESERVATION" = "Failed to save the policy";
+"MDM_FAILANALYTIC" = "Failed to resolve the policy";
+"MDM_FAIL_CONTACT" = "Failed to import the policy. You will be logged out";
+"MDM_GETPOLICY_ERR" = "Failed to import the security policy. You will be logged out";
+
+/*越狱检查*/
+"MDM_ALREADYPRISONBREAK_HINT" = "Your device is jailbroken and may carry risks";
+"MDM_ROOTCHECK_HINT" = "Your device has obtained root privileges and may carry risks";
+"MDM_ALREADYPRISONBREAK_NOTUSEANYOFFICE" = "Your device is jailbroken. You will be logged out";
+"MDM_ROOTCHECK_NOTUSEANYOFFICE" = "Your device has obtained root permissions. You will be logged out.";
+"MDM_ALREADYPRISONBREAK_UNKNOW_EXP" = "Jialbreak check failed. You will be logged out.";
+"MDM_ROOTCHECK_UNKNOW_EXP" = "Root permission check failed. You will be logged out.";
+
+"MDM_ALREADYPRISONBREAK_CLEAR_DATA" = "Your device is jailbroken. Enterprise apps installed will be removed and you will be logged out.";
+"MDM_ROOTCHECK_CLEAR_DATA" = "Your device has obtained root permissions. Enterprise apps installed will be removed and you will be logged out.";
+"MDM_ALREADYPRISONBREAK_WILL_RESET" = "Your device is jailbroken. It will be reset to factory defaults.";
+"MDM_ROOTCHECK_WILL_RESET" = "Your device has obtained root permissions. It will be reset to factory defaults.";
+"MDM_ALREADYPRISONBREAK_WILL_RESET_DELETE_SD_CARD" = "Your device is jailbroken. It will be reset to factory defaults, and the SD card data will be deleted.";
+"MDM_ROOTCHECK_WILL_RESET_DELETE_SD_CARD" = "Your device has obtained root permissions. It will be reset to factory defaults, and the SD card data will be deleted.";
+"MDM_ALREADYPRISONBREAK_NOT_USE_WIFI" = "Your device is jailbroken. Enterprise Wi-Fi access is disabled and you will be logged out.";
+"MDM_ROOTCHECK_NOT_USE_WIFI" = "Your device has obtained root permissions. Enterprise Wi-Fi access is disabled and you will be logged out.";
+
+/*系统版本合法性检查*/
+"MDM_FAILED_SYSTEM_VERSION_LEGITIMACY" = "Failed to check system version legitimacy. You will be logged out";
+"MDM_SYSTEM_VERSION_NOT_BELOW1" = "System version cannot be below ";
+"MDM_SYSTEM_VERSION_NOT_BELOW2" = ". You will be logged out";
+/*密码安全*/
+"MDM_PASSWORD_NOTCONFORMSTANDARD" = "Your screen lock password does not meet the requirements.";
+"MDM_NOPASSWORD" = "You do not have a screen lock password. For system security, please set one before logging in to the system. Click Next to access the Set Password page.";
+"MDM_PASSWORD_NOSAFE" = "Your screen lock password does not meet the requirements. You will be logged out.";
+"MDM_PASSWORD_CHECK_ERR" = "Failed to check the screen lock password. You will be logged out.";
+
+/*安全应用*/
+"MDM_APPLIST" = "Required App List";
+"MDM_APPLIST_NON_COMPLAINT" = "App Blacklist";
+"MDM_APPLIST_CONTINUE_CHECK" = "Checking...";
+"MDM_APPLIST_INSTALLING_PLEASE_WAIT" = "Please wait until the installation is complete";
+"MDM_FAILED_CHECK_IRREGULARITE_APPLICATION" = "Failed to check blacklisted apps. You will be logged out.";
+"MDM_FAILED_CHECK_SAFETY_APPLICATION" = "Failed to check required apps. You will be logged out.";
+"MDM_FAIL_EXECUTIVESTRATEGY" = "Failed to execute the policy. You will be logged out.";
+"MDM_FAIL_NOTICEGATEWAY" = "Failed to notify the gateway.";
+"MDM_NOTINSTALL" = "You have not installed the specified required apps.";
+"MDM_NOTINSTALL_MUST" = "Install the specified required apps.";
+"MDM_NOTUNINSTALL" = "You have installed blacklisted apps.";
+"MDM_NOTUNINSTALL_MUST" = "Uninstall the blacklisted apps.";
+"MDM_ALLUNINSTALL" = "The following apps may carry risks. Please uninstall them.";
+"MDM_ALLINSTALL" = "Install the following apps.";
+"MDM_UNINSTALL_NONCOMPLIANCE_APPLICATIONS" = "Please uninstall blacklisted apps.";
+"MDM_INSTALL_NONCOMPLIANCE_APPLICATIONS" = "Please install required apps.";
+"MDM_UNINSTALL_LATER" = "Uninstall Later";
+"MDM_UNINSTALL_NOW" = "Uninstall Now";
+"MDM_INSTALL_LATER" = "Install Later";
+"MDM_INSTALL_NOW" = "Install Now";
+"MDM_SIM_CHANGEED" = "The SIM card is changed. You will be logged out.";
+"MDM_EASY_TO_UES_ANYOFFICE" = "Uninstall the blacklisted apps.";
+"MDM_THE_THIRD_APP_SELF" = "Third-party app. Please install it manually.";
+"MDM_NONCOMPLIANCE_APPLICATIONS_CLEAR_DATA" = "You have installed the blacklisted apps. Enterprise apps installed will be removed and you will be logged out.";
+"MDM_NONCOMPLIANCE_APPLICATIONS_WILL_RESET" = "You have installed the blacklisted apps. Your device will be reset.";
+"MDM_NONCOMPLIANCE_APPLICATIONS_WILL_RESET_DELETE_SD_CARD" = "You have installed the blacklisted apps. The device will be reset to factory defaults, and the SD card data will be deleted.";
+"MDM_NONCOMPLIANCE_APPLICATIONS_NOT_USE_WIFI" = "You have installed the blacklisted apps. Enterprise Wi-Fi access is disabled and you will be logged out.";
+"MDM_SAFETY_APPLICATIONS_CLEAR_DATA" = "You have not installed the required apps. Enterprise apps installed will be removed and you will be logged out.";
+"MDM_SAFETY_APPLICATIONS_WILL_RESET" = "You have not installed the required apps. The device will be reset to factory defaults.";
+"MDM_SAFETY_APPLICATIONS_WILL_RESET_DELETE_SD_CARD" = "You have not installed the required apps. The device will be reset to factory defaults, and the SD card data will be deleted.";
+"MDM_SAFETY_APPLICATIONS_NOT_USE_WIFI" = "You have not installed the required apps. Enterprise Wi-Fi access is disabled and you will be logged out.";
+
+/*sim*/
+"MDM_SIM_CLEAR_DATA" = "The SIM card is changed. Enterprise apps installed will be removed and you will be logged out.";
+"MDM_SIM_WILL_RESET" = "The SIM card is changed. The device will be reset to factory defaults.";
+"MDM_SIM_WILL_RESET_DELETE_SD_CARD" = "The SIM card is changed. The device will be reset to factory defaults, and the SD card data will be deleted.";
+"MDM_SIM_NOT_USE_WIFI" = "The SIM card is changed. Enterprise Wi-Fi access is disabled and you will be logged out.";
+
+/*存在待更新的安全应用*/
+"MDM_NEWVERSION_ANYOFFICE" = "New version available,";
+"MDM_UPDATE_ANYOFFICE" = "Upgrade";
+"MDM_UPDATE_ANYOFFICE_DOING" = "Upgrading...";
+"MDM_UPDATE_ORNOT_ANYOFFICE" = "Upgrade this app?";
+
+/*资产注册*/
+"MDM_AGREEORNOT_INFO" = "Discard this registration and exit?";
+"MDM_PERSONAL" = "Personal";
+"MDM_COMPANY" = "Company";
+"MDM_ASSETSREGISTERED" = "Registration";
+"MDM_ASSETSREGISTERING" = "Registering asset...";
+"MDM_WAIT_FOR_ADMIN_APPROVAL" = "Waiting for administrator's approval...";
+"MDM_AGREEMENT" = "Asset Registration Agreements";
+"MDM_FILLMATERIAL" = "Fill Registration Form";
+"MDM_NOTAGREE_EXIT" = "Disagree and exit";
+"MDM_AGREE" = "Agree";
+"MDM_DISAGREE" = "Disagree";
+"MDM_CANCEL" = "Cancel";
+"MDM_REGISTRATION_AGREEMENT" = "\tRead the license agreement carefully. If you agree with the agreement, click Agree. If not, click Disagree to exit. In this case, you cannot download or use this software.\n\tThis software license agreement is a legal agreement between employees and the enterprise on downloading, installing, using, and copying the software delivered with the agreement.\n\t1. Regulations\n\tThe AnyOffice software, files, and any fonts accompanying this license, no matter stored on hard disks, ROMs, or any other media, are accessible to employees, but not sold to them. Employees can use the software based on the terms in this agreement. The enterprise reserves all rights not expressly granted to employees. Employees have the permission to save the media that stores the AnyOffice, but the enterprise owns the AnyOffice software. The terms of this certificate agreement allow users to use and upgrade the AnyOffice software to any available version, unless the target version has an independent license.\n\t2. Use and Restrictions\n\tA. The license allows an employee to install and use a copy of AnyOffice software only for work.\n\tB. Employees can collect and use the information about the device equipped with the AnyOffice software. Employees shall comply with all applicable criminal, civil and written laws and regulations, including all applicable privacy and data collection provisions of the laws and regulations related to device information collection. Employees must agree to protect the enterprise from harms in terms of device information provision, collection, and usage.\n\tC. Employees shall not provide the AnyOffice software for non employees on the network. Employees can only copy the AnyOffice software in machine-readable form for backup purposes. However, the backup copy must include all copyright or other proprietary notices contained on the original. Unless allowed by the license or applicable laws expressly or applicable laws deny such provisions, employees must not copy, disassemble, reverse engineer, dismount or attempt to derive the basic AnyOffice software source code. Employees shall not modify AnyOffice software or any part thereof or create derivative works.\n\t3.  Agreement on Data Use\n\tEmployees agree that the enterprise and AnyOffice software can collect and use information, including, but not limited to collecting the technical information about the calculator, system and application software, devices and peripherals in order to provide employees with AnyOffice software updates, product support, and other services. \n\t4. Termination\n\tThis license is effective until terminated. If the employee fails to comply with this agreement, the rights granted to employees in the license and agreement will terminate automatically, without the need of enterprise notice. After the termination of the license, the staff should stop using the AnyOffice software and destroy the copy of part or all the AnyOffice software.\n\t5. Governing Law and Severability\n\tThis License is explained by the laws of the People's Republic of China. If for any reason a court of competent jurisdiction rules that any term or part of the license shall not be enforceable, the remaining terms or parts of this license shall continue to be effective.";
+
+"MDM_FILL_NUMBERS" = "1. To ensure normal access to the enterprise Wi-Fi, select your asset type correctly.";
+"MDM_FILL_ASSETTAG" = "2. Fill in the correct asset identifier (owner and device name).";                        //此处是资产标识asset identification,下面几行出现的是设备标识Device identification,建议统一成一种说法，避免用户迷惑
+"MDM_CONTACT" = "3. Fill in the asset number of the enterprise asset. The asset number is on the device asset label. If the label is damaged, please contact the asset administrator.";
+"MDM_SELECT_ASSET_GROUP" = "4. Select the correct department and asset group for approval.";
+"MDM_ASSETNUMB" = "Asset No.";
+"MDM_ASSET_GROUP" = "Asset Group";
+"MDM_ORG_GROUP" = "Department";
+"MDM_PLEASE_CHOOSE_ITEM" = "Please select";
+"MDM_ASSET_CODE" = "Registration Code";
+"MDM_JOBNUMB" = "Asset ID";
+"MDM_DEVICETYPE" = "Type";
+"MDM_EMAIL_ADDRESS" = "Email";
+"MDM_NOTE" = "Remarks";
+"MDM_REGISTERED" = "Register";
+"MDM_INPUT_ASSETNUMB" = "Please enter the asset number.";
+"MDM_INPUT_ASSET_CODE" = "Please enter the registration code from email.";
+"MDM_INPUT_ASSET_CODE_LENGTH" = "Please enter the registration code consisting of 5 digits and letters";
+"MDM_INPUT_NUMBER" = "Please enter the asset identifier.";
+"MDM_INPUT_DEPARTMENT_AND_ASSETGROUP" = "Please select the department and asset group.";
+"MDM_INPUT_TYPES" = "Please enter the asset type.";
+"MDM_INPUT_EMAIL" = "Incorrect email address format.";
+"MDM_INPUT_EMAIL_ERROR" = "Email address format is incorrect";
+"MDM_ASSETS_IN_REGISTERED" = "Registering the asset...";
+"MDM_FILL_RIGHT" = "Please enter the correct registration information";
+"MDM_SUCCESS_REGISTERED" = "Registration succeeded";
+"MDM_WAITING_EXAMINATION" = "Waiting for approval...";
+"MDM_GATEWAY_FULL" = "The number of registered users exceeds the upper limit. Please contact the administrator";
+"MDM_FAILURE_GET_ORGGROUP" = "Department query failed.";
+"MDM_FAILURE_GET_ASSETGROUP" = "Asset group query failed.";
+"MDM_FAILURE_ASSETSREGISTERED" = "Failed to register the asset. Please contact the administrator";
+"MDM_FAILURE_ASSET_NUMBER_ERROR" = "Incorrect asset number.";
+"MDM_FAILURE_COMPANY_ASSET_NOT_IMPORT" = "Company asset is not imported. Please contact the administrator";
+"MDM_FAILURE_ASSET_TYPE_CONFLICT" = "Asset type conflict. Please contact the administrator";
+"MDM_FAILURE_ASSET_VALID_UESR_GROUPS" = "Login failed because you are not in a valid user group";
+"MDM_FAILURE_ASSET_CODE_ERROR" = "Registration code error";
+"MDM_FAILURE_ASSET_CODE_EXPIRE" = "The registration code has expired";
+"MDM_FAILURE_ASSET_CODE_LIMIT" = "The number of assets in asset group reaches the upper limit";
+"MDM_FAILURE_ASSET_MAX_NUM" = "The number of system assets reaches the upper limit";
+"MDM_FAILURE_UNKNOWN_EXCEPTION" = "Unknown exception";
+"MDM_INSTALLED_COMFIGURATION" = "The configuration file is not installed";
+"MDM_TEXTING_COMFIGURATION" = "Check whether the configuration file is successfully installed";
+"MDM_TEXTING_COMFIGURATION_ISINSTALL" = "Checking whether the configuration file is successfully installed...";
+
+"MDM_SIMCARD_CHANGED" = "The SIM card is changed. Do you want to continue?";
+
+/*GSP强制开启*/
+"MDM_GPS_FAILED_CHECK" = "GPS check failed";
+"MDM_GPS_HAS_OPEN" = "Ensure that GPS is enabled";
+"MDM_GPS_SETTING" = "GPS is disabled. Please enable it";
+"MDM_GPS_IS_OPEN" = "Check whehter GPS is enabled";
+
+/*=====================应用商店=======================*/
+"APPSTORE_RECOMMEND" = "Recommend";
+"APPSTORE_UNINSTALL" = "Uninstall";
+"APPSTORE_INSTALL" = "Install";
+"APPSTORE_UPDATE" = "Update";
+"APPSTORE_DOWNLOAD" = "Download";
+"APPSTORE_STORE" = "Enterprise Store";
+"APPSTORE_ALL" = "All";
+"APPSTORE_INSTALLED" = "Installed";
+"APPSTORE_DOWNLOADED" = "Downloaded";
+"APPSTORE_UPDATING" = "Updating...";
+"APPSTORE_LINK" = "Link";
+"APPSTORE_SURE_UNINSTALL_SW" = "Are you sure you want to uninstall the selected software?";
+"APPSTORE_DELETING" = "Deleting...";
+"APPSTORE_LOGOUT" = "Are you sure you want to log out?";
+"APPSTORE_DETAILS" = "Details";
+"APPSTORE_VERSION" = "Version";
+"APPSTORE_SIZE" = "Size";
+"APPSTORE_NAME" = "App Name";
+"APPSTORE_SYS_VERSION" = "OS Version";
+"APPSTORE_UPDATE_TIME" = "Updated";
+"APPSTORE_DESCRIPTION" = "Description";
+"APPSTORE_DOWNLOADING" = "Downloading";
+"APPSTORE_INSTALLING" = "Installing";
+"APPSTORE_FINISH" = "Finish";
+"APPSTORE_FAIL_INSTALL_LINK" = "Upgrade failed.";
+"APPSTORE_FAIL_DOWNLOAD" = "Download failed";
+"APPSTORE_FAIL_GET_APP" = "Failed to obtain the app list.";
+"APPSTORE_FAIL_GET_INSTALLED" = "Failed to obtain the installed app list.";
+"APPSTORE_FAIL_GET_DETAIL" = "Failed to obtain the app details.";
+"APPSTORE_FAIL_INSTALL_SW" = "Failed to install the software.";
+"APPSTORE_FAIL_DOWNLOAD_SW" = "Failed to download the software.";
+"APPSTORE_FAIL_UNINSTALL_SW" = "Failed to uninstall the software.";
+"APPSTORE_FAIL_UPDATE_SW" = "Failed to update the software.";
+"APPSTORE_SEARCH_PLACEHOLDER" = "Search app names";
+"APPSTORE_SEARCH_NOT_FOUND_HINT" = "No app found";
+"APPSTORE_GETAPPTYPELIST" = "Obtaining app types...";
+"APPSTORE_GETAPPLIST" = "Obtaining app list...";
+"APPSTORE_FAIL_GET_APPTYPE" = "Failed to obtain app types.";
+"APPSTORE_NOT_INSTALL_WORKSHOP" = "The app cannot be added to the secure workbench.";
+"APPSTORE_CATEGORIES" = "Categories";
+"APPSTORE_SEARCH" = "Search";
+"APPSTORE_NO_UPDATEAPP_FOUND" = "No app to update.";
+"APPSTORE_NO_INSTALLED_FOUND" = "No app installed.";
+"APPSTORE_NO_APPLICATION_FOUND" = "No app in this category.";
+"APPSTORE_NETWORK_EXCEPTION" = ". Please check the network connection.";
+"APPSTORE_USER_OFFLINE" = ". You are offline.";
+"APPSTORE_APP_FROM_APPSTORE" = "From App Store";
+"APPSTORE_PREPARE_INSTALL" = "Preparing to install... Please wait.";
+"APPSTORE_PREPARE_UNINSTALL" = "Preparing to uninstall... Please wait";
+"APPSTORE_FAIL_UPDATE_APPLIST" = "Failed to update the app list.";
+"APPSTORE_FAIL_UPDATE_INSTALLED" = "Failed to update the installed app list.";
+"APPSTORE_APP_ALREADY_INSTALLED" = "The app does not support overwrite installation. Uninstall it first.";
+"APPSTORE_NOT_SUPPORTED" = "The app is not supported.";         //add
+"APPSTORE_CLOUD_NOT_VERIFYAPPID" = "The installation link is invalid.";
+"APPSTORE_DISABLED" = "Cannot install this app: App Store access is disabled.";
+"APPSTORE_APP_ALREADY_QUEUED" = "The app is being installed.";
+"APPSTORE_APP_EXCEED_MAX_NUMBER" = "The number of downloaded apps exceeds the upper limit (5).";
+"APPSTORE_DOWNLOAD_STOP" = "Download Stopped";
+"APPSTORE_DOWNLOAD_COMPLETE" = "Downloaded";
+"WIFI_REPAIR" = "Repair Wi-Fi";
+"ABOUT_ANYOFFICE" = "About";
+"ABOUT_OPINIONFEEDBACK" = "Feedback";
+"ABOUT_OPINION_SENDING" = "Sending feedback ...";
+"ABOUT_SUCCESS_OPINIONFEEDBACK" = "Feedback sent.";
+"ABOUT_FAILED_OPINIONFEEDBACK_OFFLINE" = "Failed to send the feedback. Please check your network connection.";
+"ABOUT_FAILED_OPINIONFEEDBACK_CONFIGURATION" = "Failed to send the feedback. Please contact the administrator.";
+"ABOUT_ENTER_OPINION" = "Please enter your comments or suggestions.";
+"OPINION_ENTER" = "Please enter your comments or suggestions on this app.";
+"OPINION_SENT_TO" = "This information will be sent to ";
+"ABOUT_CONTENT" = "AnyOffice is a unified secure platform for enterprise employees to access the enterprise network at anytime";
+
+"APPSTORE_HIDE" = "Collapse";
+"APPSTORE_UNFOLD" = "Expand";
+/*===离线登录===*/
+"OFFLINE_LOGIN_STATE" = "You are offline and cannot log in to the App Store";
+"ERROR_LOGIN_LONG_TIME_OFFLINE" = "You haven't logged in for a long time. Please enter your password to log in.";
+/*=====================流量监控=======================*/
+"FLUX_HISTOYR_TITLE" = "Mobile data history";
+"FLUX_HISTOYR_WIFITITLE" = "Wi-Fi data history";
+"FLUX_HISTOYR_MTITLE" = "Month";
+"FLUX_HISTOYR_LOCK" = "Loading...";
+"FLUX_HISTOYR_LOCKFALI" = "Failed to obtain the data history.";
+
+"CALENDAR_LIST_PHONE" = "List View";
+"CALENDAR_DAY_PHONE" = "Day View";
+"CALENDAR_WEEK_PHONE" = "Week View";
+"CALENDAR_MONTH_PHONE" = "Month View";
+"MESSAGE_ERASE_DATA" = "This device has been deregistered. You will be logged out.";
+"MESSAGE_WIFI_ADD_CONFIG" = "New Wi-Fi configuration available. Install the certificate first and do not change the certificate name.";
+"MESSAGE_SYSTEM_APP_NOT_UNINSTALL" = "System app. Cannot be uninstalled.";
+"MESSAGE_NETWORK_UNKNOW_PLEASE_LOGOUT" = "Failed to connect to the network. Please log out and log in again.";
+"SYSTEM_SETTING_SAVE_FAILED" = "Failed to save the login mode.";
+"MESSAGE_USB_DEBUGGING_WANTTO_CLOSE" = "The USB debugging brings security risks. Please disable it";
+"MESSAGE_CHECK_USB_CLOASED" = "Check whether the USB debugging is disabled";
+"MESSAGE_ANYOFFICE_INACTIVE" = "App not activated may bring security risks. Please activate it.";
+"MESSAGE_ANYOFFICE_INACTIVE_LOGOUT" = "App not activated may bring security risks.";
+
+"MESSAGE_ANYOFFICE_WHETHER_ACTIVE" = "Check whether the app is activated.";
+"MESSAGE_ANYOFFICE_WHETHER_ACTIVE_NOT_USE_WIFI" = "App not activated. Enterprise Wi-Fi is disabled and you will be logged out.";
+"MESSAGE_ANYOFFICE_FAILED_TO_CHECK_ACTIVE" = "Failed to check whether the device administrator is activated.";
+"MESSAGE_FAILED_TO_CHECK_USB_CLOSE" = "Failed to check whether the USB debugging is disabled";
+"MESSAGE_ANYOFFICE_DATE_NOT_ENCRYPT" = "Data encryption not enabled may bring security risks.";
+"MESSAGE_ANYOFFICE_DATA_NOT_ENCRYPT_PLEASE_OPEN" = "Data encryption not enabled may bring security risks. Please enable it.";
+"MESSAGE_ANYOFFICE_DATA_NOT_ENCRYPT_NOT_USE_WIFI" = "Data encryption not enabled. Enterprise Wi-Fi access is disabled and you will be logged out.";
+"MESSAGE_ANYOFFICE_WHETHER_OPEN_DATA_ENCRYPT" = "Check whether the data encryption is enabled";
+"MESSAGE_FAILED_TO_CHECK_DATA_ENCRYPT_OPEN" = "Failed to check whether the data encryption is enabled";
+"ANYOFFICE_LOGIN_TIMEOUT" = "You have not logged in to the application for a long time. Please contact the administrator";
+"ANYOFFICE_SSID_NOT_MEET_REQUIREMENTS" = "The network does not meet the requirements. You will be logged out";
+"ANYOFFICE_FAILED_CHECK_SSID" = "Failed to check whether the network meets requirements. You will be logged out";
+"MESSAGE_MUST_CHECK_BIND" = "Exception in asset registration: Network changed.";
+"MESSAGE_SIGN_OUT" = "Login timed out. You will be logged out.";
+"MESSAGE_NEED_RE_REGISTER" = "MDM enabled. You will be logged out and need to register your asset again.";
+
+/*终端管理----基本信息*/
+"DEVICE_MANAGER" = "Terminal";
+"DEVICE_LOCATION" = "Location";
+"DEVICE_BASIC_INFORMATION" = "Basic Info";
+"DEVICE_MANAGER_ASSET_MARK" = "Asset ID";
+"DEVICE_MANAGER_OPERATING_SYSTEM" = "OS";
+"DEVICE_MANAGER_ASSET_NUMBER" = "Asset No.";
+"DEVICE_MANAGER_ASSET_USER" = "Asset User";
+"DEVICE_MANAGER_ASSET_TIME" = "Registration Time";
+"DEVICE_MANAGER_DEPARTMENT" = "Department";
+"DEVICE_MANAGER_LAST_LOGIN_TIME" = "Last Login";
+"DEVICE_GET_BASIC_INFORMATION_FAILED" = "Failed to get basic information";
+"DEVICE_LOGOUTING" = "Logging out...";
+"DEVICE_FAILED_LOGOUT" = "Logout failed";
+"DEVICE_FAILED_LOGOUT_OF_NETWORK" = "Logout failed. Please check the network";
+"DEVICE_HINT_LOGOUT_OR_NOT" = "Are you sure you want to log out? (The logout will clear the current account data and asset registration information)";
+
+/*违规日志显示*/
+"VIOLATION_LOG_NO" = "No Security Risk";
+"VIOLATION_LOG" = "Risk Warning";
+"VIOLATION_LOG_REPAIR" = "Repair";
+"VIOLATION_LOG_GETINGDATA" = "Getting list data ... Please wait";
+"VIOLATION_LOG_BLACKLIST_UNINSTALLED" = "Blacklisted apps are uninstalled.";
+"VIOLATION_LOG_FAILED_OBTAIN_DATA" = "Failed to obtain data";
+"VIOLATION_LOG_WHITELIST_INSTALLED" = "Required apps are repaired.";
+"VIOLATION_LOG_JAILBREAK" = "Jailbreak violation";
+"VIOLATION_LOG_ROOT" = "Root permission violation";
+"VIOLATION_LOG_BLACKLIST" = "Blacklisted apps are not uninstalled.";
+"VIOLATION_LOG_WHITELIST" = "Required apps are not installed.";
+"VIOLATION_LOG_SIM_CARD" = "SIM card change violation";
+"VIOLATION_LOG_SYSTEM_VERSION" = "System version violation";
+"VIOLATION_LOG_WIFI" = "Wi-Fi access violation ";
+"VIOLATION_LOG_DEVICE" = "Device administrator not activated.";
+"VIOLATION_LOG_USB" = "USB violation";
+"VIOLATION_LOG_PASSWORD" = "Password violation";
+"VIOLATION_LOG_DATA_ENCRYPTION" = "Data encryption violation";
+"VIOLATION_LOG_PROFILE" = "Profile violation";
+"VIOLATION_LOG_LOCATION" = "Location violation";
+"VIOLATION_LOG_JAILBREAK_VIOLATION" = "The current device is jailbroken. Restore it from the jailbreak.";
+"VIOLATION_LOG_ROOT_VIOLATION" = "The current device has the root permission. Unroot it.";
+"VIOLATION_LOG_BLACKLIST_VIOLATION" = "Blacklisted apps exist on the current device. Please uninstall them.";
+"VIOLATION_LOG_WHITELIST_VIOLATION" = "Certain required apps are not installed. Please install them.";
+"VIOLATION_LOG_SIM_CARD_VIOLATION" = "The SIM card is changed. Please replace it with the registered SIM card.";
+"VIOLATION_LOG_SIM_CARD_IMSI_PHONE" = "IMSI/Phone number for SIM card registration";
+"VIOLATION_LOG_SIM_CARD_IMSI_PHONE_CURRENT" = "IMSI/Phone number of the current SIM card";
+"VIOLATION_LOG_SIM_CARD_PHONE" = "Phone number for SIM card registration" ;
+"VIOLATION_LOG_SIM_CARD_PHONE_CURRENT" = "Phone number for the current SIM card";
+"VIOLATION_LOG_SYSTEM_VERSION_UPDATE" = "The current system version is too low. Please upgrade it.";
+"VIOLATION_LOG_SYSTEM_VERSION_CURRENT" = "Current system version";
+"VIOLATION_LOG_SYSTEM_VERSION_LOWEST" = "The minimum requirements of the system version";
+"VIOLATION_LOG_SELECT_WIFI" = "The currently connected Wi-Fi network does not meet the requirements. Please select a valid Wi-Fi network.";
+"VIOLATION_LOG_WIFI_LIST" = "Legitimate Wi-Fi network";
+"VIOLATION_LOG_DEVICE_VIOLATION" = "Device administrator not activated. Please choose \"System Settings -> Security\" to activate it.";
+"VIOLATION_LOG_USB_VIOLATION" = "The USB debugging function is still enabled. Please choose \"System Settings -> Developer Options\" to disable it.";
+"VIOLATION_LOG_PASSWORD_VIOLATION" = "The screen lock password does not meet requirements. Please choose \"System Settings -> Security\" to set another password.";
+"VIOLATION_LOG_DATA_ENCRYPTION_VIOLATION" = "The phone encryption function is disabled or does not exist. Please choose \"System Settings -> Security\" to check and enable it.";
+"VIOLATION_LOG_PROFILE_VIOLATION" = "Current device description file is not installed. Please log in again to download and install the profile.";
+"VIOLATION_LOG_LOCATION_VIOLATION" = "Current device location information violations, possible causes are as follows:<br />1.Unable to get current device location information. Check whether the network is normal and positioning function is enabled.<br />'+'2.This device is not within the secure geographical scope. Please contact the administrator and return to a secure area.";
+
+/*GPS定位*/
+"MDM_LOCATION" = "Location";
+"MDM_LOCATION_GETTINGDATA" = "Getting location information...";
+"MDM_LOCATION_GET_DATA_FAILED" = "Failed to get location information. Please try again later";
+"MDM_LOCATION_GPS_DISABLED" = "GPS location service is disabled. Please enable it and try again later";
+"MDM_LOCATION_NETWORK_DISABLED" = "The network connection is disabled. Please try again later";
+
+//设置
+"MENU_SETTING"="Settings";
+"SETTING_HEAD"="Profile Pic";
+"SETTING_HEAD_CHOOSE"="Please select";
+"SETTING_PHOTO"="Select from Album";
+"SETTING_CAMEAR"="Take a Photo";
+"LOGIN_USERNAME"= "User Name";
+"LOGIN_MAILADDRESS"="Email";
+"LOGIN_AUTOLOGIN"="Auto Login";
+"SETTING_CLEANMAILBOX"="Clear Account Info";
+"COMMON_ACCOUNT"="Account";
+"SETTING_PASSCODE_MANAGERMENT"="Security";
+"SETTING_WELCOMEPAGE"="Home Page";
+"LOGIN_EMAIL_DIAGNOSE"="Diagnosis";
+"MENU_ABOUT"="About";
+"log title" = "Diagnosis Log";
+"log body" = "Please describe when the problem occurred and its symptoms. We will handle your problem in time.";
+"MAIL_SEND"="Send";
+
+//wifi配置
+"WIFI_DEPLOY_FIRST_TITLE"="Configure Wi-Fi Network";
+"WIFI_DEPLOY_FIRST_TITLE_HUAWEI"="Configure Huawei Wi-Fi Network";
+"WIFI_DEPLOY_NOTE_INIT"="Only one minute, and you will enjoy free Wi-Fi.";
+"WIFI_DEPLOY_NOTE"="Please keep the network connected and stay on this app.";
+"WIFI_DEPLOY_NOTE_HUAWEI"="Please connect to a carrier network or Huawei-Init Wi-Fi for certificate installation.";
+"WIFI_DEPLOY_MDM_CHECK"="Checking health status...";
+"WIFI_DEPLOY_APPLY_CERTIFICATE"="Applying for certificate...";
+"WIFI_DEPLOY_INSTALL_CERTIFICATE"="Installing certificate and Wi-Fi configuration...";
+"WIFI_DEPLOY_START_REPAIR"="Repair";
+"WIFI_DEPLOY_START"="Configure";
+"WIFI_DEPLOY_LATER"="Later";
+"WIFI_DEPLOY_OK"="OK";
+"WIFI_DEPLOY_FAILED"="Configuration failed.";
+"WIFI_DEPLOY_FAILED_HINT"="Please ensure that your network connection is good, and click Repair to try again.";
+"WIFI_DEPLOY_SUCCESS"="Configuration successful.";
+"WIFI_DEPLOY_SUCCESS_HINT"="Please turn on Wi-Fi and connect to";
+
+"NOTICE_ENTERPISE_WIFI_REPAIRING"="Repairing...";
+"NOTICE_ENTERPISE_WIFI_REPAIR_SUCCESS"="Enterprise Wi-Fi repaired.";
+"NOTICE_ENTERPISE_WIFI_REPAIR_FAIL"="Failed to configure enterprise Wi-Fi.";
+"NOTICE_ENTERPISE_WIFI_CONFIG_SUCCESS"="Enterprise Wi-Fi configured.";
+"NOTICE_ENTERPISE_WIFI_CONFIG_FAIL"="Failed to configure enterprise Wi-Fi.";
+"NOTICE_ENTERPISE_WIFI_AUTOCONFIG_CONFIRM"="Install a certificate for Wi-Fi configuration?";
+"NOTICE_ENTEPRISE_WIFI_AUTOCONFIG_SETSYSPASSWD"="Set a screen lock password or pattern.";
+"NOTICE_ENTERPISE_WIFI_AUTO_YOURWIFI"="Your Enterprise Wi-Fi";
+"NOTICE_ENTERPISE_WIFI_AUTO_REPAIR"="Configuration disabled. Repair it?";
+"NOTICE_ENTERPISE_WIFI_AUTO_UPDATE"="New configuration available. Update it?";
+"NOTICE_ENTERPISE_WIFI_AUTO_REPAIRING"="Repairing your enterprise Wi-Fi...";
+"NOTICE_ENTERPISE_WIFI_AUTO_UPDATING"="Updating your enterprise Wi-Fi...";
+"NOTICE_WIFI_CONFIG"="You've got the permission to access \"%1\" Wi-Fi. Switch to this Wi-Fi?";
+"NOTICE_WIFI_CONFIG_SUGGEST"="You've got the permission to access \"%1\" Wi-Fi.";
+"SETTING_REPAIR_WIFI_FAILED_HINT"="AnyOffice will restart after clearing the account information. Continue?";
+"SETTING_REPAIR_WIFI_FAILED_HINT_HUAWEI"="You are offline. Please try again after connecting to Huawei-Init Wi-Fi or some other available network.";
+
+//设置：帐号
+"SETTING_CONFIRM_CLEANMAILBOX"="Are you sure you want to clear account information?";
+
+//simplepasscode
+"Set Passcode" = "Set Passcode";
+"Enter Passcode" = "Enter Passcode";
+"Change Passcode" = "Change Passcode";
+"Enter your old passcode" = "Enter your old passcode";
+"Enter your new passcode" = "Enter your new passcode";
+"Re-enter your new passcode" = "Re-enter your new passcode";
+"Enter a different passcode" = "Enter a different passcode";
+"Enter your login passcode" = "Enter your login passcode";
+"Enter a passcode" = "Enter a passcode";
+"Re-enter your passcode" = "Re-enter your passcode";
+"Passcodes did not match.Try again." = "The two passcodes do not match. Try again.";
+"Forget PassCode" = "  Forgot Passcode";
+"Passcode Cancle" = "Cancel";
+"Passcode Delete" = "Delete";
+"Passcode relogin" = "You have no attempts remaining. Please log in again.";
+"Wrong passcode0" = "Passcode error. No attempts remaining.";
+"Wrong passcode1" = "Passcode error. One attempt remaining.";
+"Wrong passcode3" = "Passcode error. Three attempts remaining.";
+"Wrong passcode2" = "Passcode error. Two attempts remaining.";
+"Wrong passcode4" = "Passcode error. Four attempts remaining.";
+"AlertMessage Reset wrong Account!" = "Reset account information and exit?";
+"Reset Account" = "  Reset Account";
+"Lock Title" = "Lock";
+"Lock Login Title" = "Log In";
+"Lock Password Text" = "Password:";
+"Lock Suggestive Lable Text" = "The AnyOffice is locked. Please enter the password.";
+"content YES" = "Yes";
+"content NO" = "No";
+//消息中心
+"More" = "More";
+"Delete" = "Delete";
+"Mark as Unread" = "Mark as Unread";
+"Mark as Read" = "Mark as Read";
+"Sticky to Top" = "Pin to Top";
+"Remove Sticky" = "Unpin from Top";
+"Cancel" = "Cancel";
+"MAM_THE_THIRD_APP_SELF"="Third-party app. Please install it manually.";
+//AlertTitle View
+"AlertTitle Notice" = "Notice";
+"AlertTitle New Message" = "New Message";
+"AlertTitle New Calendar" = "Schedule Alert";
+"AlertTitle Sorry" = "Sorry";
+"AlertTitle Create New Folder" = "Create Folder";
+"AlertTitle Warning" = "Warning";
+"AlertTitle Information" = "Information";
+"AlertTitle Err" = "Error";
+"AlertMessage Input wrong password!" = "Incorrect password.";
+"AlertButton OK" = "OK";
+"AlertMessage GigaTrust is not installed" = "GigaTrust is not installed.";
+"AlertMessage RMS document is too large" = "Since the mobile terminal capacity constrains, open rms-encrypted attachments larger than 5MB may be fail.";
+"AlertMessage can not open file of this type" = "Does not support opening this type of file.";
+"AlertMessage can not open rar/zip in rar/zip file" = "Does not support opening RAR/ZIP in RAR/ZIP file.";
+"AlertMessage this file is too large to open" = "The size of this file is more than 20MB. It is too large to open.";
+"AlertMessage can not open file. File name too long." = "Can not open file. File name is too long.";
+"AlertMessage can not open file. Maybe the file does not exist." = "Can not open file. Maybe the file does not exist.";
+//SecWebView
+"Authentication Requied" = "Authentication";
+"Username"               = "User Name";
+"Password"               = "Password";
+"AlertHttpAuth don't save"="Don't Save";
+"AlertHttpAuth save"     = "Save";
+"AlertButton Cancel"     = "Cancel";
+"SecBrower Post Authority" = "Browser Unauthorized";
+"Close"                  = "Close";
+"AlertMessage The file is forbidded to open!" = "Cannot open this file.";
+"ActionSheet open"      = "Open";
+"ActionSheet copy"      = "Copy";
+"Actionsheet Cancel"    = "Cancel";
+"OPEN_IN_SAFARI" = "Open in Safari";
+"ADJUST_FONT_SIZE" = "Adjust Font";
+"WEBAPP_LOADING" = "Loading...";
+"REFRESH_WEBAPP" = "Refresh";
+//"WECHAT_FRIENDS" = "Share with Friends";
+//"WECHAT_MOMENTS" = "Moments";
+//"WECHAT_SHARE_BUTTON" = "Share";
+//"AlertMessage WeChat is not installed" = "WeChat is not installed.";
+//"AlertMessage WeChat is not support open api" = "This version of WeChat is not support open api.";
+//"AlertMessage WeChat you have a new message" = "You have got a new security message.";
+//Certificate Verity
+"Cannot verify server identity tittle" = "Cannot Verify Server Identity";
+"Cannot verify server identity warning" = "The identity of this server cannot be verified. Review the certificate details to continue.";
+"Identity continue button" = "Continue";
+"Identity show details button" = "Details";
+"Certificate details tittle" = "Certificate";
+"Subject name" = "Subject Name: ";
+"Issuer name" = "Issuer Name: ";
+"Common name" = "Common Name: ";
+"Organization" = "Organization: ";
+"Organization unit" = "Organization Unit: ";
+"Validity" = "Validity: ";
+"Not valid before" = "Not Valid Before: ";
+"Not valid after" = "Not Valid After: ";
+"Trust button" = "Trust";
+
+"DEVICE_NETWORK" = "Device Network: ";
+"TUNNEL_STATUS" = "Tunnel Status: ";
+
+"NETWORK_WIFI" = "Wi-Fi";
+"NETWORK_3G_OR_4G" = "3G/4G";
+"NO_NETWORK" = "No Network";
+"UNKNOW_NETWORK" = "Unknow Network";
+
+"TUNNEL_OFFLINE" = "Offline";
+"TUNNEL_ONLINE" = "Online";
+"TUNNEL_CONNECTING" = "Connecting";
+"TUNNEL_UNKNOW" = "Unknow";
+
+"SORROR_ABOUT_CANNOT_OPEN_PAGE" = "Sorry, cannot open this page. You can try: ";
+
+"CHECK_NETWORK" = "Diagnosis";
+"REFRESH_WEBPAGE" = "Refresh";
+
+"RECREATE_TUNNEL" = "Recreating Tunnel...";
+"LOAD_WEBPAGE" = "Loading Web Page...";
+"TUNNEL_CREATED" = "Tunnel Online.";
+"TUNNEL_CREATED_FAILED" = "Tunnel Offline.";
+
+//Gesture Lock
+"Gesture_Lock_Draw" = "Draw an unlock pattern.";
+"Gesture_Lock_Reset" = "Reset";
+"Set_Gesture_Password" = "Choose Your Pattern";
+"Gesture_Lock_Unlock" = "Unlock";
+"Gesture_Lock_Code_Error_Time_Exceed_Limit" = "You have no attempts remaining.";
+"Gesture_Lock_Code_Error_Time_Exceed_Limit_Extra_Info" = "Click forgot gesture pattern button to modify.";
+"Gesture_Lock_Forgot" = "Forgot Gesture Pattern?";
+"Gesture_Lock_Attempts_Remaining" = "Invalid gesture pattern. %d attempts remaining.";
+"Gesture_Lock_Login_Attempts_Remaining" = "Login passcode error. %d attempts remaining.";
+"Gesture_Lock_Login_Code_Error" = "Login password error.";
+
+"Gesture_Lock_Login_Password_Required" = "Login Password Required";
+"Gesture_Lock_Login_Code_Error_Time_Exceed_Limit" = "No attempts remaining. You will be logout.";
+"Gesture_Lock_Draw_Unlock" = "Draw an unlock pattern";
+"Gesture_Lock_Draw_Unlock_Again" = "Confirm pattern";
+"Gesture_Lock_Connection_Min" = "Connect at least %d circles";
+"Gesture_Lock_No_Match" = "The two gesture pattern inconsistent. Please re-enter.";
+"Gesture_Lock_Setting_Success" = "Success.";
+"Gesture_Lock_Can_Not_Auth_No_NetWork" = "No network. Try again later.";
+"Gesture_Lock_Can_Not_Auth_Other_Problem" = "Can not Verify your password now. Try again later.";
+"Gesture_Lock_Verifying" = "Verifying...";
+
+"Gesture_Lock_TouchID_Use" = "Please use fingerprint verification.";
+"Gesture_Lock_TouchID_TimeLimit" = "The number of attempts exceeds the specified value. Please use the gesture password for unlocking.";
+"Gesture_Lock_TouchID_Lock" = "TouchID locked. Please use the gesture password for unlocking.";
+
+//MdmCheck
+"MDM_ROOT_LOG_INFO" = "Your device is jailbroken and may carry risks.";
+"MDM_BLACKLIST_LOG_INFO" = "You have installed the blacklisted apps.";
+"MDM_WHITELIST_LOG_INFO" = "You do not install the necessary apps, please download in the app store.";
+"MDM_SIM_CHANGED_LOG_INFO" = "The SIM card is changed.";
+"MDM_OSVER_LOG_INFO" = "The OS version is lower than required";
+"MDM_SSID_LOG_INFO" = "The currently connected Wi-Fi network does not meet the requirements.";
+"MDM_VIOLATION_MDM_CFG" = "Current device description file is not installed.";
+"MDM_LOCK_PASSWORD" = "Password violation";
+
+
+
+
+"MDM_VIOLATION_LOCATION" = "";
+"MDM_VIOLATION_LOCATION_WRONG_AREA" = "Device is not in designated areas";
+"MDM_VIOLATION_LOCATION_FAILED" = "Failed to get the location information";
+
+"MDM_DEVICE_IS_JEALBREAK" = "Security check is not passed. The jailbreak device is prohibited to log on.";
+
+//ICBC POC
+"LOGOUT_SUCCESS" = "logout success.";
+"LOGOUT_FAILED" = "logout failed.";
+"PASSWORD_EXPEIRED" = " Your password is expired, and should be changed.";
+"PASSWORD_WILL_EXPEIRED" = "Your password will be expired, and should be changed.";
+"LOGIN_FAILED_NOT_INSTALL_ANYOFFICE" = "Login failed, you have not installed %@.";
+"LOGIN_FAIL_ACCOUNT_FROZEN" = "Cannot log in on this device. Please contact the administrator.";
+
+//sec keyboard
+"Sec_Keyboard_Done_Button_Name" = "Log In";
+"Sec_Keyboard_Done_Button_Name_Default" = "Done";
+
+//zip rar
+"ZIP_RAR_Password_Required" = "Enter Password";
+"ZIP_RAR_Password_Error" = "Enter the Correct Password";
+
+//bind check
+"LOGIN_FAILLOG_ANYOFFICE_BINDED_BY_OTHERS" = "This device is registered by the account (%@). Contact the original account user and deregister the device in \"Terminal Manager\" using %@.";
+"LOGIN_FAILLOG_ANYOFFICE_NOBINDED" = "Failed to log in. Your device is not registered.";
+"LOGIN_FAILLOG_ANYOFFICE_OTHER_ERROR" = "Failed to log in. Device registration check failed.";

@@ -1,0 +1,1169 @@
+/* Localized versions of Info.plist keys */
+
+
+/*通用*/
+"COMMON_LANGUAGE" = "CH";
+"COMMON_ACCOUNT" = "帳號";
+"COMMON_SHOW" = "顯示";
+"COMMON_GET_NEW_DATA" = "獲取新資料";
+"COMMON_GENERAL" = "通用";
+"COMMON_MAIL_CALENDARS" = "郵件、日曆";
+"COMMON_DISAGREE" = "不同意";
+"COMMON_AGREE" = "同意";
+"COMMON_THIRDAPP" = "協力廠商";
+"COMMON_OTHERS" = "其他";
+"COMMON_OPEN" = "打開";
+"COMMON_BACK" = "返回";
+"COMMON_CANCEL" = "取消";
+"COMMON_SAVE" = "保存";
+"COMMON_DISCARD" = "丟棄";
+"COMMON_DELETE" = "刪除";
+"COMMON_EDIT" = "編輯";
+"COMMON_OK" = "完成";
+"COMMON_CONFIRM" = "確定";
+"COMMON_HOME" = "目錄";
+"COMMON_HINT" = "提示";
+"COMMON_OPERATION" = "操作";
+"COMMON_RENAME" = "重命名";
+"COMMON_REQUIRED" = "必填";
+"COMMON_UNREQUIRED" = "可不填";
+"COMMON_COMPLETE" = "完成";
+"COMMON_QUIT" = "退出";
+"COMMON_SETTING" = "設置";
+"COMMON_RETRY" = "重試";
+"COMMON_LOGOUT" = "註銷";
+"COMMON_REQUIRED" = "必選";
+"COMMON_LOGOUTING" = "帳號註銷中...";
+"COMMON_NEW_VERSION_UPDATE_SOON_G" = "（您當前使用的是3G網路，建議在Wi-Fi環境下升級）";
+"COMMON_NEW_VERSION_UPDATE_SOON" = "發現新版本 ";
+"COMMON_NOT_HINT" = "下次提醒";
+"COMMON_IGNORE" = "忽略";
+"COMMON_UPDATE_SOON" = "立即升級";
+"COMMON_IS_INSTALLING" = "正在下載...";
+"COMMON_CONFIGURATION_CHANGES" = "配置更改，請退出並重新登錄";
+
+"COMMON_COMMA" = "，";
+"COMMON_UNKNOWN_EXCEPTION" = "未知異常";
+"COMMON_FETCHDATA" = "獲取資料...";
+"COMMON_WAITING" = "請稍等...";
+"COMMON_LOAD_MORE" = "載入更多";
+"COMMON_UPDATING" = "載入中...";
+"COMMON_DOWNLOAD" = "下載";
+"COMMON_INSTALL" = "安裝";
+"COMMON_DOWNLOAD_AND_INSTALL" = "安裝";
+"COMMON_REINSTALL" = "重新安裝";
+"COMMON_PREPARATION" = "準備安裝中...";
+"COMMON_UNINSTALL" = "卸載";
+"COMMON_NEXT" = "繼續";
+"COMMON_CONTINUE" = "繼續";
+"COMMON_STOP" = "暫停";
+"COMMON_WARNING" = "警告";
+"COMMON_YAS" = "是";
+"COMMON_NO" = "否";
+"COMMON_ERROR" = "錯誤";
+"COMMON_REFRESH" = "刷新";
+"COMMON_UNKNOWN" = "未知";
+"COMMON_EMPTY" = "清空";
+//
+//	"COMMON_MONTHNAMES:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+//	"COMMON_MONTHNAMES_SHORT:["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+//	"COMMON_WEEKS_SHORT:["周日", "週一", "週二", "週三", "週四", "週五", "週六"],
+//	"COMMON_WEEKSNAMES:["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+//
+"COMMON_QUESTION_MARCK" = "？";
+"COMMON_CURRENT_VERSION" = "版本：";
+"COMMON_NEW_VEWSION" = "已是最新版本";
+"COMMON_HAS_NEW_VEWSION" = "有新版本，";
+"COMMON_CONTACT_US" = "聯繫我們：";
+
+"COMMON_SERVICE_TELEPHONE" = "客戶服務電話：";
+"COMMON_SERVICE_MAIL" = "客戶服務郵箱：";
+"CAN_NOT_ACCESS_INTERNET" = "無法連接網路";
+"ERROR_OCCURRED_ON_THE_SERVER" = "伺服器異常";
+"FAIL_CANCEL_AUTOLOGIN" = "取消自動登錄失敗";
+"FAIL_DATA_ERROR" = "系統獲取資料異常";
+"CREATE_THREAD_FAILED" = "獲取系統資源失敗，請重啟應用";
+
+"ACCOUNT_KICKED_OFF" = "網路連接失敗，請退出重新登錄";
+"CONFIG_FILE_NOTEXIST" = "MDM設定檔不存在，請保持網路暢通後重新登錄";
+"OVERSTEP_LOGINWRONGTIMES" = "登錄密碼輸錯次數達到上限，您可以手動清空配置";
+
+/*安全工作臺*/
+"ANYOFFICE" = "安全工作臺";
+"BROWSER" = "安全流覽器";
+"TODAYTODO" = "今日待辦";
+"ADD_APP" = "添加應用";
+"ANYOFFICE_FILEMANGERMENT" = "文件管理";
+"ANYOFFICE_APPSTORE" = "應用商店";
+"ANYOFFICE_SELFSERVICE" = "自助服務";
+"AFFICE_OPEN_FILE" = "打開檔案管理員...";
+"ANYOFFICE_QUIT" = "確定退出？";
+"ANYOFFICE_QUITING" = "正在退出...";
+"ANYOFFICE_LOGIN_MAIL" = "正在登錄安全郵箱，請稍等";
+"ANYOFFICE_LOGIN_FOLDER_FAIL" = "獲取資料夾失敗。";
+"ANYOFFICE_UPDATE_MIALLIST" = "更新郵寄清單";
+"ANYOFFICE_UPDATE_SCHEDULELIST" = "更新約會列表";
+"ANYOFFICE_OPENHELP_FAIL" = "自助服務不可用";
+"ANYOFFICE_OPENBROWSER" = "打開安全流覽器...";
+"ANYOFFICE_OFFLINE" = "(未連接)";
+"ANYOFFICE_CONNECTING" = "(連接中)";
+
+"MENU_NOTICECENTER" = "消息中心";
+"MENU_APPCENTER" = "應用中心";
+"MENU_DOCUMENTCENTER" = "文檔管理";
+
+"MENU_NOTICES" = "消息";
+"MENU_APP" = "應用";
+"MENU_DOCUMENT" = "文檔";
+
+"MENU_MAIN" = "首頁";
+"MENU_APPSTORE" = "應用商店";
+"MENU_MAIL" = "郵件";
+"MENU_CALENDAR" = "日曆";
+"MENU_CONTACT" = "連絡人";
+"MENU_MORE" = "更多";
+"MENU_BROWSER" = "流覽器";
+"MENU_SELFSERVICE" = "自助服務";
+"MENU_ABOUT" = "關於";
+"MENU_EXIT" = "退出";
+"MENU_NOTICE" = "通知提醒";
+"MENU_IILEGALLOG" = "違規信息";
+"MENU_TERMINAL" = "終端管理";
+"MENU_SETTING" = "設置";
+
+"BUTTON_MORE_MAILS" = "更多...";
+
+"AUTHENTICATION_FAILED" = "認證失敗，請重新登錄";
+
+
+
+/*======================資料夾模組=======================*/
+/*資料夾目錄*/
+"NEWFOLDER" = "新建資料夾";
+"NEWFOLDERNAME" = "請輸入新資料夾的名稱";
+"FOLDER" = "資料夾";
+"CONTACT" = "通訊錄";
+"NOTICE" = "通知中心";
+"MAIL" = "郵件";
+"INBOX" = "收件箱";
+"DRAFT" = "草稿";
+"SENT" = "已發送郵件";
+"OUTBOX" = "寄件匣";
+"TRASH" = "已刪除郵件";
+"UNREADBOX" = "未讀";
+"FAVBOX" = "旗標";
+"FOLDERNEW" = "新建";
+"FOLDEREDIT" = "編輯";
+"FOLDER_LOCK_SAVE" = "正在保存資料...";
+
+"HOME_SEARCH_PLACEHOLDER" = "搜索連絡人";
+"FOLDER_EDIT" = "管理";
+"FOLDER_EXIT_APP_COMFIRM_MSG" = "您確定退出安全郵箱？";
+
+// 資料夾目錄 lock message
+"FOLDER_GETFOLDERLIST_LOCK_MSG" = "獲取資料夾清單...";
+"FOLDER_GETREMOTEFOLDERLIST_LOCK_MSG" = "獲取遠程資料夾清單...";
+"FOLDER_REFRESHFOLDERLIST_LOCK_MSG" = "同步資料夾清單...";
+"FOLDER_REFRESHFOLDERLIST_ERROR" = "同步資料夾清單失敗";
+
+/*資料夾整理*/
+"FOLDER_FOLDER_MANAGER" = "資料夾管理";
+"FOLDER_NAME" = "資料夾名稱";
+"FOLDER_ADD" = "添加資料夾";
+"FOLDER_ADD_SUBFOLDER" = "新建子資料夾";
+"FOLDER_RENAME" = "修改資料夾名稱";
+"FOLDER_DELETE" = "刪除資料夾";
+"FOLDER_FOLDER_SELECT" = "選擇資料夾";
+"FOLDER_MANAGER" = "管理";
+"FOLDER_UNREAD_MAIL" = "未讀郵件";
+
+// 資料夾整理 lock message
+"FOLDER_ADD_LOCK_MSG" = "資料夾添加中...";
+"FOLDER_ADD_SUCCESS" = "資料夾添加成功";
+"FOLDER_ADD_NUMBEROVERFLOW" = "資料夾個數超過上限：64";
+
+"FOLDER_REANAME_LOCK_MSG" = "資料夾重命名中...";
+"FOLDER_RENAME_ERROR" = "重命名失敗";
+"FOLDER_RENAME_SUCCESS" = "重命名成功";
+
+"FOLDER_DELETE_LOCK_MSG" = "資料夾刪除中...";
+"FOLDER_DELETE_SUCCESS" = "資料夾刪除成功";
+
+// 資料夾整理 Ext.Msg
+"FOLDER_EMPTY_NAME_ALERT_MSG" = "資料夾名稱不能為空";
+"FOLDER_SPECIAL_CODE_SLASH_ALERT_MSG" = "不能含有特殊字元\"/\"";
+"FOLDER_SPECIAL_CODE_BACKSLASH_ALERT_MSG" = "不能含有特殊字元\"\\\"";
+"FOLDER_SPECIAL_CODE_AND_ALERT_MSG" = "不能含有特殊字元\"&\"";
+"FOLDER_SAME_NAME_AS_SYSTEM_FOLDER_ALERT_MSG" = "不能和系統資料夾重名";
+"FOLDER_SAME_NAME_AS_CURRENT_FOLDER_ALERT_MSG" = "本地或伺服器已有相同名稱的資料夾，不能重複";
+"FOLDER_SAME_FOLDER_DIRECTORY" = "本目錄下已有相同名稱的資料夾";
+
+"FOLDER_ADD_TITLE_PROMOTE_MSG" = "新建資料夾";
+"FOLDER_ADD_CONTENT_PROMOTE_MSG" = "請輸入新資料夾名稱";
+"FOLDER_ADD_SUBFOLDER_CONTENT_PROMOTE_MSG" = "請輸入子資料夾名稱";
+"FOLDER_ADD_PATH_TOO_LONG_ALERT_MSG" = "上面層級資料夾名稱過長，已不允許再創建子資料夾";
+
+"FOLDER_RENAAME_SELECT_ALERT_MSG" = "請選擇需重命名的資料夾";
+"FOLDER_RENAME_SYSTEM_FOLDER_ALERT_MSG" = "為系統資料夾，不能重命名，只能重命名自訂資料夾";
+"FOLDER_RENAME_TITLE_PROMOTE_MSG" = "重命名資料夾";
+"FOLDER_RENAME_CONTENT_PROMOTE_MSG" = "請輸入資料夾新名稱";
+
+"FOLDER_DELETE_SELETE_ALERT_MSG" = "請選擇要刪除的資料夾";
+"FOLDER_DELETE_SYSTEM_FOLDER_ALERT_MSG" = "為系統資料夾，不能刪除，只能刪除自訂資料夾";
+"FOLDER_DELETE_TITLE_ALERT_MSG" = "刪除資料夾：";
+"FOLDER_DELETE_CONTENT_ALERT_MSG" = "此資料夾下的郵件將永久刪除，確定刪除？";
+"FOLDER_DELETE_HAS_SUBFOLDER_ALERT_MSG" = "本地或伺服器上，此資料夾含有子資料夾，不能被刪除";
+"FOLDER_DELETE_CONTENT_ALERT_MSG_PHONE" = "刪除資料夾將同時刪除資料夾中的郵件，要繼續嗎？";
+
+/*資料夾訂閱*/
+"FOLDER_RSS_TITLE" = "資料夾訂閱";
+"FOLDER_RSS_STATUS_ON" = "開";
+"FOLDER_RSS_STATUS_OFF" = "關";
+"FOLDER_SUBSCRIBE" = "訂閱";
+"FOLDER_UNSUNSCRIBE" = "取消訂閱";
+
+// 資料夾訂閱 lock message
+"FOLDER_SUBSCRIBE_LOCK_MSG" = "資料夾訂閱中...";
+"FOLDER_SUBSCRIBE_SUCCESS" = "資料夾已訂閱";
+
+"FOLDER_UNSUBSCRIBE_LOCK_MSG" = "資料夾取消訂閱中...";
+"FOLDER_UNSUBSCRIBE_SUCCESS" = "資料夾已取消訂閱";
+"FOLDER_UNSUBSCRIBE_ERROR" = "資料夾取消訂閱失敗";
+
+"FOLDER_PUSH_LOCK_MSG" = "開通Push功能...";
+"FOLDER_UNPUSH_LOCK_MSG" = "關閉Push功能...";
+
+// 資料夾訂閱  Ext.Msg
+"FOLDER_SUBSCRIBE_SELECT_ALERT_MSG" = "請選擇要訂閱的資料夾";
+"FOLDER_UNSUBSCRIBE_SELECT_ALERT_MSG" = "請選擇要取消訂閱的資料夾";
+"FOLDER_UNSUBSCRIBE_SYSTEM_FOLDER_ALERT_MSG" = "為系統資料夾，不能取消訂閱";
+
+// 資料夾 Push
+"FOLDER_PUSH" = "推送";
+"FOLDER_PUSH_CLOSE" = "取消推送";
+"FOLDER_PUSH_ON" = "已開啟推送";
+"FOLDER_PUSH_OFF" = "已取消推送";
+
+
+
+/*=====================登錄介面=======================*/
+
+/*登錄介面按鈕和常量*/
+"LOGIN_EMPTY_MAILBOX" = "正在清空帳號資訊...";
+"LOGIN_LOCK_ENTER_PASSWORD" = "應用已鎖定，請輸入密碼";
+"LOGIN_PASSWORD_WRONG_REENTER" = "密碼錯誤，請重新輸入";
+"LOGIN_LOGIN" = "登錄";
+"LOGIN_SECUREMAIL" = "安全郵件";
+"LOGIN_USERNAME" = "用戶名";
+"LOGIN_MAILADDRESS" = "郵箱地址";
+"LOGIN_PASSWORD" = "密碼";
+"LOGIN_REMEMBER" = "記住密碼";
+"LOGIN_AUTOLOGIN" = "自動登錄";
+"LOGIN_OFFLINE" = "離線登錄";
+"LOGIN_INSTRUCTIONS" = "如果您登錄遇到問題，請按一下 <a style=\"font-weight:bold;color:#272727;\">i</a> 圖示以查看説明";
+"LOGIN_EMAIL_EAS_PORT" = "伺服器埠";
+"LOGIN_EMAIL_DIAGNOSE" = "診斷";
+"LOGIN_EMAIL_DIAGNOSE_SUBMIT_LOG" = "發送診斷日誌";
+"LOGIN_EMAIL_DIAGNOSE_SUBMIT_LOG_LOCK" = "正在收集日誌...";
+"LOGIN_DIAGNOSE_LOG_ERROR" = "發送診斷日誌失敗";
+"LOGIN_DIAGNOSE_LOG_COMPRESS_ERROR" = "診斷日誌壓縮失敗";
+"LOGIN_DIAGNOSE_LOG_SEND_ERROR" = "發送診斷日誌失敗";
+"LOGIN_DIAGNOSE_NOTICE" = "當前處於診斷模式，可以在設置中關閉";
+"LOGIN_EMAIL_AUTO_REPAIR_WIFI" = "自動修復接入配置";
+"LOGIN_EMAIL_LOG_LEVEL" = "開啟診斷日誌";
+"LOGIN_EMAIL_LOGIN" = "登錄郵箱";
+"LOGIN_EMAIL_MAIL" = "郵箱地址";
+"LOGIN_EMAIL_ACCOUNT" = "帳號";
+"LOGIN_EMAIL_USERNAME" = "用戶名";
+"LOGIN_EMAIL_PASSWORD" = "密碼";
+"LOGIN_EMAIL_SETTING_AUTO" = "自動";
+"LOGIN_EMAIL_SETTING_MANUAL" = "手動";
+"LOGIN_DOMAIN_NOTINPUT" = "可不填";
+"LOGIN_FAIL_EMAIL_NOT_MAPPING" = "郵箱登錄失敗，請檢查郵箱地址";
+"LOGIN_FAIL_EMAIL_BIND_LIMIT" = "郵箱登錄失敗，移動設備綁定數已達郵件伺服器設置上限";
+"ANYOFFICE_CHECKMDMADMIN_CONFIRM" = "是否繼續啟動裝置管理員？";
+/*登錄時的提示*/
+"LOGIN_LOG_ANYOFFICE" = "登錄中...";
+"LOGIN_MDM_CHECKING"  = "MDM檢查中...";
+"LOGIN_LOG_SECUREMAIL" = "登錄安全郵箱...";
+"LOGIN_FAILLOG_ANYOFFICE_OTHER_ERROR" = "登錄失敗，即將退出";
+"LOGIN_FAILLOG_ANYOFFICE_USERIP_FORBIDDEN" = "IP地址受限，登錄失敗";
+"LOGIN_FAILLOG_ANYOFFICE_SYSTEM_BUSY" = "系統繁忙，請稍候再試";
+"LOGIN_FAILLOG_ANYOFFICE_NOGATEWAY" = "伺服器連接失敗，請檢查網路連接";
+"LOGIN_FAILLOG_ANYOFFICE_ERRORPASSWORD" = "登錄失敗，可能原因是用戶名或密碼錯誤、密碼過期或者帳號鎖定";
+"LOGIN_FAILLOG_ANYOFFICE_CERTIFICATE" = "證書驗證失敗";
+"LOGIN_FAILLOG_ANYOFFICE_USERNAME_PASSWORD_EMPTY" = "用戶名和密碼不能為空";
+"LOGIN_FAILLOG_ANYOFFICE_CONCURRENT_USER_LIMIT" = "您的帳號已在多台終端使用，達到上限";
+"LOGIN_FAILLOG_ANYOFFICE_CERT_NUMBER_BEGIN" = "輸入錯誤次數超過限制，使用者帳號被鎖定 ";
+"LOGIN_FAILLOG_ANYOFFICE_NOT_ALLOW_PERIOD" = "不在系統允許登錄時間範圍內";
+"LOGIN_FAILLOG_ANYOFFICE_CERT_NUMBER_END" = " 次，用戶帳號被鎖定";
+"LOGIN_FAILLOG_ANYOFFICE_PORT_EMPTY" = "埠號為空";
+"LOGIN_FAILLOG_ANYOFFICE_ADDRESS_EMPTY" = "閘道地址為空";
+"LOGIN_FAILLOG_ANYOFFICE_EMAIL_ADDRESS_ERROR" = "郵箱伺服器連接失敗";
+"LOGIN_FAILLOG_ANYOFFICE_EMAIL_PASSWORD_ERROR" = "用戶名或密碼錯誤";
+"LOGIN_FAILLOG_ANYOFFICE_SYSTEM_POLICY_ERROR" = "獲取策略異常，請聯繫管理員";
+"LOGIN_FAILLOG_ANYOFFICE_UNKNOW_ERROR" = "登錄失敗，請聯繫管理員";
+"LOGIN_FAILLOG_ANYOFFICE_USERNAME_MAXLENGTH" = "用戶名長度超過上限：63";
+"LOGIN_FAILLOG_ANYOFFICE_PASSWORD_MAXLENGTH" = "密碼長度超過上限：64";
+"LOGIN_FAILLOG_ANYOFFICE_LICENSE_MAX_NUMBER" = "license用戶數量超過上限，請聯繫管理員";
+"LOGIN_FAILLOG_ERRORPROOF" = "用戶名和密碼不能為空";
+"LOGIN_FAIL_SECUREMAIL_ERRORREG" = "登錄郵箱伺服器失敗，請檢查配置";
+"LOGIN_FAIL_SECUREMAIL_ERRORSTRATEGY" = "獲取策略異常，請聯繫管理員";
+"LOGIN_FAIL_SECUREMAIL_ERRORPASSWORD" = "登錄郵箱伺服器失敗，用戶名或密碼錯誤";
+"LOGIN_FAIL_SECUREMAIL_EXCEPTION" = "登錄郵箱伺服器失敗，請聯繫管理員";
+"LOGIN_FAIL_VALIDATE" = "驗證失敗";
+"LOGIN_FAIL_UNDEFINED" = "系統發生異常，請退出並重新開機應用程式";
+"LOGIN_FAIL_MISTAKE" = "郵箱登錄失敗，請檢查郵箱配置";
+"AUTODISCOVERY_FAIL_MISTAKE" = "請檢查郵箱配置";
+"LOGIN_FAIL_NETWORK_UNCONNECTION" = "網路連接失敗";
+"LOGIN_FAIL_LOGININ_CHANGE_MAILADDRESS" = "郵箱位址錯誤或當前網路不可用，無法登錄";
+"LOGIN_SUPPORT_SINGLE_ACCOUNT_IOS" = "當前只支持單帳號登錄，更改帳號，需清空帳號設定檔，是否清空？";
+"LOGIN_SUPPORT_SINGLE_ACCOUNT_ANDROID" = "當前只支持單帳號登錄，更改帳號，需清空帳號設定檔，清空後將自動重啟應用，是否清空？";
+"LOGIN_FAIL_DEVICE_BUSY" = "系統繁忙，請稍後再試";
+"MAIL_ENCRYPT_CHANGE" = "加解密策略變更，請退出並重新登錄";
+"MAIL_DATABASE_ERROR" = "數據讀取失敗，請退出並重新登錄";
+"LOGIN_MAIL_PASSWORD_ERROR_RELOGIN" = "密碼已修改，請重新登錄";
+"LOGIN_COMMON_REQUIRE_APPAUTHEN" = "應用校驗失敗，請從正規途徑重新下載應用";
+"ANYOFFICE_ERROR_NOFUNCTION_HWIT" = "您沒有郵件許可權，請到w3搜索anyoffice許可權申請";
+"ANYOFFICE_ERROR_NOFUNCTION" = "用戶暫無許可權，請稍後重試";
+
+"SSO_SAVEFILE_ERROR" = "用戶名密碼保存失敗";
+"LOGIN_FAILLOG_ANYOFFICE_ACCOUNT_SPECIFICATION_ERROR" = "帳號規格校驗有誤";
+"LOGIN_FAILLOG_ANYOFFICE_AUTHENTICATION_FAILED" = "認證失敗，請確認用戶名密碼是否正確，或聯系管理員";
+"LOGIN_FAIL_CERTIFICATE_REVOKED" = "證書已被吊銷，請重新登錄。";
+
+
+/*提醒*/
+"SETTING_REMIND" = "提醒";
+"SETTING_NEWMAIL" = "新郵件";
+"SETTING_SENDMAIL" = "郵件發送";
+"SETTING_SCHEDULE" = "日曆";
+"SETTING_DO_NOT_DISTURB_SETTING" = "免打擾設置";
+"SETTING_DO_NOT_DISTURB_ALL_DAY" = "全天開啟";
+"SETTING_DO_NOT_DISTURB_NIGHT" = "夜間開啟";
+"SETTING_DO_NOT_DISTURB_OFF" = "關閉";
+"SETTING_DO_NOT_DISTURB_HINT" = "開啟免打擾後，郵件和日曆將收不到鈴聲和震動提醒，夜間開啟免打擾時間段為22:00-08:00";
+
+/*同步*/
+"SETTING_SYNC" = "同步";
+"SETTING_CALENDARS" = "日曆";
+"SETTING_SYNCMAILHEAD" = "郵件頭";
+"SETTING_SYNCMAILCONTENT" = "正文";
+"SETTING_SYNCATTACHMENTS" = "附件";
+"SETTING_SYNCALL" = "Wi-Fi下同步所有";
+"SETTING_SYNCSCHEDULE" = "約會";
+"SETTING_SYNCREMIND" = "提醒";
+"SETTING_SYNCCONTENT" = "郵件";
+"SETTING_MAILBOXSET" = "郵箱設置";
+"SETTING_QUIT" = "是否保存配置修改？";
+"SETTING_EMAILADDR" = "郵箱地址";
+"SETTING_SYSTEMSET" = "設置";
+"SETTING_MAILBOX" = "郵箱";
+"SETTING_EMAILADDR_UNEMPTY" = "郵箱位址不能為空";
+"SETTING_INTERNETADDR_UNEMPTY" = "外網接入位址不能為空";
+"SETTING_INTRANETADDR_UNEMPTY" = "內網接入位址不能為空";
+"SETTING_INTERNETADDR_ERROR" = "外網接入位址格式有誤，請重新輸入";
+"SETTING_INTRANETADDR_ERROR" = "內網接入位址格式有誤，請重新輸入";
+"SETTING_INTERNETADDR_PORT_ERROR" = "外網接入埠有誤，請重新輸入";
+"SETTING_INTRANETADDR_PORT_ERROR" = "內網接入埠有誤，請重新輸入";
+"SETTING_MAIL_SYN" = "要同步的郵件天數";
+
+/*隱私*/
+"SETTING_PRIVACY" = "隱私";
+"SETTING_PRIVACY_LOCATION" = "上報位置資訊";
+"PRIVACY_MESSAGE_ALLOW_REPORTING_LOCATION" = "是否允許上報位置資訊？";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION" = "設備位置不在規定的區域，即將退出";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_WIFI" = "設備位置不在規定的區域，已禁止接入企業Wi-Fi,即將退出";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN" = "獲取位置資訊失敗，即將退出";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_WIFI" = "獲取位置資訊失敗，已禁止接入企業Wi-Fi,即將退出";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_DELETE_DATA" = "設備位置不在規定的區域,已安裝的企業應用將被刪除，即將退出";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_DELETE_DATA" = "獲取位置資訊失敗,已安裝的企業應用將被刪除，即將退出";
+"PRIVACY_MESSAGE_BEYOND_RANG_OF_POSITION_HINT" = "設備位置不在規定的區域";
+"PRIVACY_MESSAGE_FAILED_TO_OBTAIN_HINT" = "獲取位置資訊失敗";
+
+
+/*系統設置*/
+"SETTING_ADDR" = "接入地址";
+"SETTING_INTERNETADDR" = "外網";
+"SETTING_INTRANETADDR" = "內網";
+"SETTING_DOMAIN" = "域";
+"SETTING_PASSWORDLOCK" = "密碼鎖定";
+"SETTING_AUTOLOCK" = "自動鎖定";
+"SETTING_LOGINMODE" = "登錄方式";
+"SETTING_ENCRYPTMOdE" = "加密方式";
+"SETTING_GATEWAY_SETTING_SAVE" = "保存系統設置...";
+"SETITNG_GATEWAY_SETTING_SAVE_SUCCESS" = "保存系統設置成功";
+"SETITNG_GATEWAY_SETTING_SAVE_FAILURE" = "保存系統設置失敗";
+"SETTING_SAVE_FAILURE" = "保存失敗";
+"SETTING_SYSTEM" = "系統";
+"SETTING_LOCK" = "鎖定";
+"SETTING_SYSTEM_SET" = "設置";
+"SETTING_SYS_MAILSERVER_MANUAL" = "郵件";
+"SETTING_SYS_SENDSERVER" = "發送伺服器";
+"SETTING_SYS_SENDADDR" = "伺服器地址";
+"SETTING_SYS_SENDCERTPATH" = "用戶端憑證路徑";
+"SETTING_SYS_SENDPORT" = "伺服器埠";
+"SETTING_SYS_SECURETYPE" = "傳輸方式";
+"SETTING_SYS_SECURETYPE_SSL" = "使用SSL";
+"SETTING_SYS_RECVSERVER" = "接收伺服器";
+"SETTING_SYS_RECVADDR" = "伺服器地址";
+"SETTING_SYS_RECVCERTPATH" = "用戶端憑證路徑";
+"SETTING_SYS_RECVPORT" = "伺服器埠";
+"SETTING_SYS_RECVTYPE" = "協議類型";
+"SETTING_SYS_VERSION" = " 版";
+"SETTING_SYS_MAILGROUP_INFO_ERROR" = "郵件伺服器資訊有誤，請重新輸入";
+"SETTING_EMAILADDRESS_ERROR" = "帳號格式有誤，請重新輸入";
+"SETTING_FILL_EMAILADDR" = "請在系統設置中配置登錄資訊";
+"SETTING_SYS_EMPTY_ERROR" = "外網接入位址、內網接入位址不能同時為空";
+"SETTING_SYS_DEFAULT" = "默認";
+"SETTING_SYS_SELF_DEFINE" = "伺服器";
+"SETTING_SYS_MAILSERVER_TYPE" = "郵件系統";
+"SETTING_SYS_SERVER_ADDR" = "伺服器地址";
+"SETTING_SYS_SERVER_SETTING" = "伺服器配置";
+"SETTING_SYS_SERVER_CATALOG" = "工作目錄";
+"SETTING_SYS_SERVER_ADDR_INFO_ERROR" = "伺服器位址不能為空";
+"SETTING_MAIL_SERVER_OR_SEND_MAIL_SERVER" = "郵箱伺服器配置填寫不完整";
+"SETTING_INTERNETADDR_HOLDER" = "mdm.company.com:443";
+"SETTING_INTRANETADDR_HOLDER" = "mdm.company.com:443";
+"LOGIN_EMAIL_ACCOUNT_HOLDER" = "email@company.com";
+"SETTING_SYS_SERVER_CATALOG_HOLDER" = "郵件工作目錄(Notes)";
+
+/*登陸後設置*/
+"SETTING_SETTING_SAVE_SUCCESS" = "設置保存成功";
+"SETTING_SETTING_SAVE_FAILURE" = "設置保存失敗";
+"SETTING_SETTINGSAVE" = "保存設置...";
+"SETTING_GIVE_UP_SAVE_SETTINGS" = "確定放棄保存設置？";
+"SETTING_HEAD" = "頭像";
+
+
+/*下拉式功能表*/
+"SETTING_NONE" = "無";
+"SETTING_DOMAINACCOUNT" = "域帳號";
+"SETTING_50RECENT_MAIL" = "50封";
+"SETTING_100RECENT_MAIL" = "100封";
+"SETTING_200RECENT_MAIL" = "200封";
+"SETTING_500RECENT_MAIL" = "500封";
+"SETTING_1000RECENT_MAIL" = "1000封";
+"SETTING_SMALL" = "小";
+"SETTING_MEDIUM" = "中";
+"SETTING_LARGE" = "大";
+"SETTING_EXTRALARGE" = "加大";
+"SETTING_GIANT" = "最大";
+"SETTING_ONEDAY" = "1天";
+"SETTING_THREEDATS" = "3天";
+"SETTING_ONEWEEK" = "1周";
+"SETTING_ONEMONTH" = "1個月";
+"SETTING_THREEMONTHS" = "3個月";
+"SETTING_UNLIMITED" = "無限制";
+"SETTING_TWOWEEKS" = "2周";
+"SETTING_SIXMONTHS" = "6個月";
+"SETTING_ALL" = "所有";
+"SETTING_DOWNLOAD_NUBBER" = "預下載郵件數";
+
+"SETTING_LAST_ONEWEEK" = "最近1周";
+"SETTING_LAST_TWOWEEKS" = "最近2周";
+"SETTING_LAST_ONEMONTH" = "最近1個月";
+"SETTING_LAST_THREEMONTHS" = "最近3個月";
+"SETTING_LAST_SIXMONTHS" = "最近6個月";
+
+"SETTING_NONE" = "無";
+"SETTING_NOTIFICATION_BAR" = "通知欄";
+"SETTING_RINGER" = "鈴聲";
+"SETTING_VIBRATE" = "振動";
+"SETTING_RINGER_AND_VIBRATE" = "鈴聲+振動";
+"SETTING_10MIN" = "每10分鐘";
+"SETTING_30MIN" = "每30分鐘";
+"SETTING_HOURLY" = "每小時";
+
+"SETTING_VERSION_UPGRADE" = "版本升級，需清空帳號設定檔";
+"SETTING_VERSION_UPGRADE_NEED_EMPTY_ACCOUNT_CONFIGURATION" = "版本升級，需清空帳號設定檔，清空後將自動重啟應用";
+
+/*同步*/
+"SETTING_SAVE_FLOW" = "省流量模式";
+"SETTING_INTELLIGENT" = "智慧模式";
+"SETTING_NORMAL" = "普通模式";
+"SETTING_COMPLETE" = "完全模式";
+"SETTING_ATTACHMENTS_NOT_DOWNLOAD_AUTO" = "非Wi-Fi環境下正文自動下載最大16K，附件不自動下載；Wi-Fi環境下正文全部自動下載，附件不自動下載";
+"SETTING_ALL_ATTACHMENTS_DOWNLOAD_AUTO" = "非Wi-Fi環境與Wi-Fi環境下正文與附件全部自動下載";
+"SETTING_INTELLIGENT_ATTACHMENTS_DOWNLOAD" = "非Wi-Fi環境下正文全部自動下載，128K及以下附件自動下載；Wi-Fi環境下正文全部自動下載，1M及以下附件自動下載";
+"SETTING_NORMAL_ATTACHMENTS_DOWNLOAD" = "非Wi-Fi環境下正文全部自動下載，附件不自動下載；Wi-Fi環境下正文全部自動下載，附件自動下載";
+
+/* 工作臺使能配置 */
+"SETTING_WORKSHOP" = "工作臺";
+"SETTING_WELCOMEPAGE" = "首頁";
+"SETTING_MAIL_TAB_EN" = "安全郵箱";
+"SETTING_BROWSER_TAB_EN" = "安全流覽器";
+"SETTING_CALENDAR_TAB_EN" = "今日待辦";
+
+/*密碼管理*/
+"SETTING_PASSCODE_MANAGERMENT" = "安全";
+"SETTING_APPLICATION_LOCK_SCENE" = "應用鎖屏";
+"SETTING_SIMPLE_PASSCODE" = "簡單密碼";
+"SETTING_PASSCODE_FAILED" = "設置密碼啟動失敗";
+"SETTING_CHANGE_PASSCODE" = "修改簡單密碼";
+"SETTING_CLOSE_PASSCODE" = "關閉簡單密碼";
+"SETTING_OPEN_PASSCODE" = "打開簡單密碼";
+
+/*自動配置Wi-Fi*/
+"SETTING_WIFI_CONFIG" = "配置無線網路";
+"SETTING_REPAIR_WIFI" = "修復無線網路";
+"SETTING_REPAIR_WIFI_LOADING" = "正在努力修復中...";
+"SETTING_REPAIR_WIFI_HINT" = "本次修復持續約1分鐘，請保證網路暢通，同時請勿切換到其他應用";
+"SETTING_REPAIR_WIFI_HINT_HUAWEI" = "本次修復持續約1分鐘，請手動連接到Huawei-init網路或使用運營商網路，同時請勿切換到其他應用";
+"SETTING_REPAIR_WIFI_SUCCESS" = "修復完成";
+"SETTING_REPAIR_WIFI_FAILED" = "修復失敗";
+"SETTING_REPAIR_WIFI_BUSY" = "已在修復";
+"SETTING_REPAIR_WIFI_GETCONFIG" = "獲取設定檔...";
+"SETTING_REPAIR_WIFI_GETCONFIGFAILED" = "設定檔獲取失敗";
+"SETTING_REPAIR_WIFI_GENKEY" = "正在生成金鑰...";
+"SETTING_REPAIR_WIFI_APPLYCERT" = "正在申請證書...";
+"SETTING_REPAIR_WIFI_APPLYCERTFAILED" = "證書申請失敗";
+"SETTING_REPAIR_WIFI_APPLYCONFIG" = "正在申請配置...";
+"SETTING_REPAIR_WIFI_APPLYCONFIGFAILED" = "配置申請失敗";
+"SETTING_REPAIR_WIFI_GATEWAYFAILED" = "連接閘道失敗，請檢查網路";
+"SETTING_REPAIR_WIFI_OUTOFTIME" = "連接閘道超時，請在良好的網路環境下修復";
+"SETTING_REPAIR_WIFI_INSTALLING" = "即將開始安裝WI-Fi配置...";
+"SETTING_REPAIR_WIFI_FAILED_HINT"="您處於離線狀態，請保持網路暢通再次嘗試";
+"SETTING_REPAIR_WIFI_FAILED_HINT_HUAWEI"="您處於離線狀態, 請手動連接到Huawei-init網路或運營商網路後再嘗試";
+
+
+/*=====================MDM准入檢查相關=======================*/
+"MDM_CHECK" = "安全檢查";
+"MDM_EXPERIENCE" = "載入中...";
+"MDM_DOINGCHECK" = "正在進行安全檢查";
+"MDM_ONECHECK" = "共一項檢查";
+"MDM_SIXCHECK" = "共六項檢查";
+"MDM_FOURCHECK" = "共四項檢查";
+"MDM_TWOCHECK" = "共三項檢查";
+"MDM_THREECHECK" = "共四項檢查";
+"MDM_CHECKBINDING" = "設備註冊檢查";
+"MDM_GUIDESTRATEGY" = "安全性原則導入";
+"MDM_PRISONBREAK" = "越獄檢查";
+"MDM_PRIVILEGES" = "用戶許可權檢查";
+"MDM_ROOTCHECK" = "Root許可權檢查";
+"MDM_CHECKVERSION" = "系統版本合法性檢查";
+"MDM_CHECKPASSWORD" = "密碼安全性檢查";
+"MDM_DANGEROUS" = "檢查不合規應用";
+"MDM_SECURITY" = "檢查安全應用";
+"MDM_COMPLETED" = "已完成";
+"MDM_FIRST" = "正在檢查第1項";
+"MDM_SECOND" = "正在檢查第2項";
+"MDM_THIRD" = "正在檢查第3項";
+"MDM_FOURTH" = "正在檢查第4項";
+"MDM_FIFTH" = "正在檢查第5項";
+"MDM_SIXTH" = "正在檢查第6項";
+"MDM_SEVENTH" = "正在檢查第7項";
+"MDM_FAIL_CHECK" = "准入檢查失敗";
+"MDM_FAIL_DOWNLOAD" = "下載失敗";
+"MDM_FAIL_INSTALL" = "安裝失敗";
+"MDM_FAIL_GETDOWNLOADINFORMATION" = "獲取下載資訊失敗";
+"MDM_FAIL_UNINSTALL" = "卸載失敗";
+
+/*綁定檢查提示*/
+"MDM_CHECK_EQUIPMENT" = "檢查設備授權...";
+"MDM_FAILURE_ASSET_NOT_REGISTER" = "該設備為公用資產，請資產責任人首先登錄";
+"MDM_LOGIN_ERROR_CONFIGURATION" = "登錄模式配置錯誤";
+"MDM_FAIL_CHECKBIND" = "設備註冊檢查失敗，請聯繫管理員";
+"MDM_FAIL_CHECKBIND_NET_BROKEN" = "網路異常，設備註冊檢查失敗";
+"MDM_FAIL_CHECKBIND_USER_OFFLINE" = "用戶已被下線，設備註冊檢查失敗";
+"MDM_FAILBIND_EXAMINATION" = "您的設備正在審批中…";
+"MDM_FAILBIND_EXAMINATION_LOGOUT" = "您的設備正在審批中,即將退出";
+"MDM_FAILBIND_MORETHANALLOW" = "您的帳號註冊的設備數量超過上限";
+"MDM_FAILBIND_MORETHANALLOW_LOGOUT" = "您的帳號註冊的設備數量超過上限,即將退出";
+"MDM_FAILBIND_NOFUNCTION" = "用戶暫無許可權，請稍後重試";
+"MDM_FAILBIND_OTHERUSERS" = "您的設備已經與帳號(";
+"MDM_FAILBIND_OTHERUSERS2" = ")綁定，如需繼續註冊，請先通過原先帳號進行資產註銷，解除綁定";
+"MDM_FAILBIND_BEENREGISTRATION" = "您的設備已被其他使用者(";
+"MDM_FAILBIND_BEENREGISTRATION2" = ")註冊，正在審批中";
+"MDM_FAILBIND_ASSETE" = "設備註冊檢查失敗";
+"MDM_FAILBIND_ASSETE_LOGOUT" = "設備註冊檢查失敗，即將退出";
+"MDM_NOBING" = "您的設備未註冊，請點擊“繼續”進行註冊";
+"MDM_FAILBIND_REJECT" = "您的設備審批被拒絕，原因:“$1”，請點擊“繼續”進行註冊";
+"MDM_NOBING_QUIT" = "您的設備未註冊，即將退出";
+"MDM_BIND_OTHERS_LOGOUT" = "您的設備已被其他使用者(";
+"MDM_BIND_OTHERS_LOGOUT2" = ")註冊，是否註銷該用戶？";
+"MDM_BIND_OTHERS_ERROR_LOGOUT" = "您的設備已被其他使用者註冊，即將退出";
+"MDM_LOGOUT_FAILED" = "註銷失敗";
+"MDM_FAIL_REGISTER_NET_BROKEN" = "資產註冊失敗,網路異常";
+"MDM_FAIL_REGISTER_USER_OFFLINE" = "資產註冊失敗,用戶已被下線,請退出並重新登錄";
+"MDM_BEING_SYN_DATA" = "資產已在其他閘道註冊，正在同步資料，請在10分鐘後再嘗試登錄";
+/*下載設定檔*/
+"MDM_INSTALLCONFIGURATION" = "點擊“下載”安裝設定檔\n(請確保Safari流覽器未被禁用，如需啟用請在“設置->通用->訪問限制”頁面啟動Safari)";
+"MDM_TESTCONFIGURATION" = "檢測設定檔安裝是否成功";
+"MDM_TESTINGCONFIGURATION" = "正在檢測設定檔是否安裝成功";
+"MDM_CONFIGURATION_SUCCESS" = "設定檔已經安裝成功";
+"MDM_FAILEDTO_GET_POLICYFILE" = "獲取策略檔失敗";
+"MDM_FAILED_TO_DOWNLOAD_CONFIGURATION_FILE" = "下載設定檔失敗，即將退出";
+"MDM_FAILED_TO_GET_GATEWAY_STRATEGY" = "獲取系統原則失敗";
+
+/*安全性原則導入檢查*/
+"MDM_CHECK_CONFIGURATIONFILE_ISINSTALLED" = "檢查設定檔是否安裝";
+"MDM_FAILENABLE" = "MDM啟用失敗，";
+"MDM_SUCCESSENABLE" = "MDM啟用成功";
+"MDM_FAILACCESS" = "獲取策略失敗";
+"MDM_FAILPRESERVATION" = "保存策略失敗";
+"MDM_FAILANALYTIC" = "解析策略失敗";
+"MDM_FAIL_CONTACT" = "導入策略失敗，即將退出";
+"MDM_GETPOLICY_ERR" = "安全性原則導入失敗，即將退出";
+
+/*越獄檢查*/
+"MDM_ALREADYPRISONBREAK_HINT" = "您的設備已越獄，存在安全風險";
+"MDM_ROOTCHECK_HINT" = "您的設備已獲得Root許可權，存在安全風險";
+"MDM_ALREADYPRISONBREAK_NOTUSEANYOFFICE" = "您的設備已越獄，即將退出";
+"MDM_ROOTCHECK_NOTUSEANYOFFICE" = "您的設備已獲得Root許可權，即將退出";
+"MDM_ALREADYPRISONBREAK_UNKNOW_EXP" = "越獄檢查失敗，即將退出";
+"MDM_ROOTCHECK_UNKNOW_EXP" = "Root許可權檢查失敗，即將退出";
+
+"MDM_ALREADYPRISONBREAK_CLEAR_DATA" = "您的設備已越獄，已安裝的企業應用將被刪除，即將退出";
+"MDM_ROOTCHECK_CLEAR_DATA" = "您的設備已獲得Root許可權，已安裝的企業應用將被刪除，即將退出";
+"MDM_ALREADYPRISONBREAK_WILL_RESET" = "您的設備已越獄，設備將被恢復出廠設置";
+"MDM_ROOTCHECK_WILL_RESET" = "您的設備已獲得Root許可權，設備將被恢復出廠設置";
+"MDM_ALREADYPRISONBREAK_WILL_RESET_DELETE_SD_CARD" = "您的設備已越獄，設備將被恢復出廠設置並刪除SD卡資料";
+"MDM_ROOTCHECK_WILL_RESET_DELETE_SD_CARD" = "您的設備已獲得Root許可權，設備將被恢復出廠設置並刪除SD卡資料";
+"MDM_ALREADYPRISONBREAK_NOT_USE_WIFI" = "您的設備已越獄，已禁止接入企業Wi-Fi，即將退出";
+"MDM_ROOTCHECK_NOT_USE_WIFI" = "您的設備已獲得Root許可權，已禁止接入企業Wi-Fi，即將退出";
+
+
+/*系統版本合法性檢查*/
+"MDM_FAILED_SYSTEM_VERSION_LEGITIMACY" = "系統版本合法性檢查失敗，即將退出";
+"MDM_SYSTEM_VERSION_NOT_BELOW1" = "系統版本不允許低於";
+"MDM_SYSTEM_VERSION_NOT_BELOW2" = ",即將退出";
+
+/*密碼安全*/
+"MDM_PASSWORD_NOTCONFORMSTANDARD" = "您的設備鎖屏密碼不符合要求";
+"MDM_NOPASSWORD" = "您還沒有設定鎖屏密碼，為確保系統安全性，設定密碼後才能登錄系統，點擊“繼續”進行密碼設定";
+"MDM_PASSWORD_NOSAFE" = "您的設備鎖屏密碼不符合要求，即將退出，請重新設置";
+"MDM_PASSWORD_CHECK_ERR" = "鎖屏密碼檢查失敗，即將退出";
+
+/*安全應用*/
+"MDM_APPLIST" = "安全應用列表";
+"MDM_APPLIST_NON_COMPLAINT" = "不合規應用列表";
+"MDM_APPLIST_CONTINUE_CHECK" = "繼續檢查中...";
+"MDM_APPLIST_INSTALLING_PLEASE_WAIT" = "正在安裝，請稍後";
+"MDM_FAILED_CHECK_IRREGULARITE_APPLICATION" = "檢查不合規應用失敗，即將退出";
+"MDM_FAILED_CHECK_SAFETY_APPLICATION" = "檢查安全應用失敗，即將退出";
+"MDM_FAIL_EXECUTIVESTRATEGY" = "執行策略失敗，即將退出";
+"MDM_FAIL_NOTICEGATEWAY" = "通知閘道失敗";
+"MDM_NOTINSTALL" = "建議安裝指定的安全應用";
+"MDM_NOTINSTALL_MUST" = "請安裝指定的安全應用";
+"MDM_NOTUNINSTALL" = "您的設備中存在不合規的應用，建議卸載";
+"MDM_NOTUNINSTALL_MUST" = "您的設備中存在不合規的應用，請卸載";
+"MDM_ALLUNINSTALL" = "以下應用存在安全風險，請全部卸載";
+"MDM_ALLINSTALL" = "請安裝列表中的所有應用";
+"MDM_UNINSTALL_NONCOMPLIANCE_APPLICATIONS" = "請卸載不合規應用";
+"MDM_INSTALL_NONCOMPLIANCE_APPLICATIONS" = "請安裝必要的安全應用";
+"MDM_UNINSTALL_LATER" = "稍後卸載";
+"MDM_UNINSTALL_NOW" = "現在卸載";
+"MDM_INSTALL_LATER" = "稍後安裝";
+"MDM_INSTALL_NOW" = "現在安裝";
+"MDM_SIM_CHANGEED" = "SIM卡電話號碼已更改，即將退出";
+"MDM_EASY_TO_UES_ANYOFFICE" = "請卸載不合規應用";
+"MDM_THE_THIRD_APP_SELF" = "此應用為協力廠商應用，請自行安裝";
+"MDM_NONCOMPLIANCE_APPLICATIONS_CLEAR_DATA" = "您的設備存在不合規的應用，已安裝的企業應用將被刪除，即將退出";
+"MDM_NONCOMPLIANCE_APPLICATIONS_WILL_RESET" = "您的設備存在不合規的應用，設備將被恢復出廠設置";
+"MDM_NONCOMPLIANCE_APPLICATIONS_WILL_RESET_DELETE_SD_CARD" = "您的設備存在不合規的應用，設備將被恢復出廠設置並刪除SD卡資料";
+"MDM_NONCOMPLIANCE_APPLICATIONS_NOT_USE_WIFI" = "您的設備存在不合規的應用，已禁止接入企業Wi-Fi，即將退出";
+"MDM_SAFETY_APPLICATIONS_CLEAR_DATA" = "您的設備未安裝安全應用，已安裝的企業應用將被刪除，即將退出";
+"MDM_SAFETY_APPLICATIONS_WILL_RESET" = "您的設備未安裝安全應用，設備將被恢復出廠設置";
+"MDM_SAFETY_APPLICATIONS_WILL_RESET_DELETE_SD_CARD" = "您的設備未安裝安全應用，設備將被恢復出廠設置並刪除SD卡資料";
+"MDM_SAFETY_APPLICATIONS_NOT_USE_WIFI" = "您的設備未安裝安全應用，已禁止接入企業Wi-Fi，即將退出";
+
+/*sim*/
+"MDM_SIM_CLEAR_DATA" = "您的設備SIM卡電話號碼有更改，已安裝的企業應用將被刪除，即將退出";
+"MDM_SIM_WILL_RESET" = "您的設備SIM卡電話號碼有更改，設備將被恢復出廠設置";
+"MDM_SIM_WILL_RESET_DELETE_SD_CARD" = "您的設備SIM卡電話號碼有更改，設備將被恢復出廠設置並刪除SD卡資料";
+"MDM_SIM_NOT_USE_WIFI" = "您的設備SIM卡電話號碼有更改，已禁止接入企業Wi-Fi,即將退出";
+
+/*存在待更新的安全應用*/
+"MDM_NEWVERSION_ANYOFFICE" = "當前有新版本可用，請";
+"MDM_UPDATE_ANYOFFICE" = " 推薦升級 ";
+"MDM_UPDATE_ANYOFFICE_DOING" = "升級中...";
+"MDM_UPDATE_ORNOT_ANYOFFICE" = "確定升級應用？";
+
+/*資產註冊*/
+"MDM_AGREEORNOT_INFO" = "放棄資產註冊並退出？";
+"MDM_PERSONAL" = "個人資產";
+"MDM_COMPANY" = "公司資產";
+"MDM_ASSETSREGISTERED" = "資產註冊";
+"MDM_ASSETSREGISTERING" = "資產註冊中...";
+"MDM_WAIT_FOR_ADMIN_APPROVAL" = "等待管理員審批中...";
+"MDM_AGREEMENT" = "資產註冊協議";
+"MDM_FILLMATERIAL" = "註冊資料填寫";
+"MDM_NOTAGREE_EXIT" = "不同意並退出";
+"MDM_AGREE" = "同意";
+"MDM_DISAGREE" = "拒絕";
+"MDM_CANCEL" = "取消";
+"MDM_REGISTRATION_AGREEMENT" = "\t在選擇\"同意\" 之前，務請仔細閱讀本軟體許可使用協定（\"許可證\"）。一旦選擇\"同意\"，即表示同意本許可證的條款約束。如您不同意本許可證的條款，請選擇\"不同意\"，您將不能下載或使用本軟體。\n\t本《軟體授權合約》是員工與所屬企業之間關於用戶下載、安裝、使用、複製隨附本《協定》的軟體的法律協定。\n\t1. 一般規定\n\t本許可證所附的AnyOffice軟體、檔及任何字體，不論是儲存於磁片、唯讀記憶體、任何其它載體或屬任何其它形式，是由企業許可員工使用而非售予員工，而且員工只可根據本許可證的條款加以使用，企業保留一切並未明確授予員工的權利。員工擁有保存有AnyOffice軟體的載體，但企業保留對AnyOffice軟體本身的所有權。根據本許可證條款授予的權利包括取使用、升級AnyOffice軟體產品的任何軟體升級版本，除非該等升級版本另外載有獨立許可證。\n\t2. 允許的許可使用方式和限制 \n\tA. 本許可證允許員工依照本協議規定安裝和使用一份AnyOffice軟體。在受本許可證條款和條件約束的前提下，員工只可將AnyOffice軟體用於與本企業相關的辦公用途。\n\tB. 作為使用AnyOffice軟體的條件，員工保證企業擁有必要權利，員工可通過AnyOffice軟體協定收集和使用安裝有AnyOffice軟體的裝置的相關資訊。員工同意遵守所有適用的刑事、民事和成文的法律法規，包括符合所有適用的與收集裝置資訊相關的隱私權和資料收集法律法規的規定。對所有裝置資訊的供應、彙集或者用途員工同意對企業保障並保護企業免受傷害。\n\tC. 員工不得在網路上提供AnyOffice軟體，以致AnyOffice軟體可供非本企業員工所使用。員工只可為備份目的而以機器可讀形式複製一份AnyOffice軟體；但該備份副本必須帶有原件上所載的一切著作權或其它專有權的提示。除本許可證或適用法律明示允許或適用法律禁止此類規定之外，員工不得複製、反彙編、倒序製造、拆裝或以其他方式試圖推導AnyOffice軟體的基本源代碼。員工不得修改AnyOffice軟體或其任何部分或製造其衍生作品。\n\t3.  同意使用資料 \n\t員工同意企業以及AnyOffice軟體可以收集和使用相關資訊， 包括但不限於搜集安裝AnyOffice的計算器、系統和應用軟體、裝置以及週邊設備的技術資訊，以便向員工提供與AnyOffice軟體有關的軟體更新、產品支援和其它服務 。 \n\t4. 終止 \n\t本許可證在其終止之前有效。如員工未能遵守本許可證中的任何條款，本許可證下授予員工的權利也將自動終止，而無需企業另行通知。在本許可證終止時，員工應停止對AnyOffice軟體的任何使用行為, 並銷毀AnyOffice軟體的任何全部或部分的複製本。\n\t5. 管轄法律和可分割性\n\t本許可證受中華人民共和國法律解釋。如果基於任何原因, 具有合法管轄權的法院裁定本許可證的任何條款或其任何部分不可被強制執行，本許可證的其餘規定應繼續充分有效。";
+
+"MDM_FILL_NUMBERS" = "1.為確保本設備正常訪問移動辦公環境，請如實選擇資產類型";
+"MDM_FILL_ASSETTAG" = "2.請務必正確填寫由使用人和設備名組成的資產標識";
+"MDM_CONTACT" = "3.對於公司資產，請填寫資產編號，資產編號請諮詢管理員";
+"MDM_SELECT_ASSET_GROUP" = "4.請正確選擇部門和資產組，否則將不能正常審批通過";
+"MDM_ASSETNUMB" = "資產編號";
+"MDM_ASSET_GROUP" = "資產組";
+"MDM_ORG_GROUP" = "部門";
+"MDM_PLEASE_CHOOSE_ITEM" = "請選擇";
+"MDM_ASSET_CODE" = "註冊碼";
+"MDM_JOBNUMB" = "設備標識";
+"MDM_DEVICETYPE" = "設備類型";
+"MDM_EMAIL_ADDRESS" = "郵箱地址";
+"MDM_NOTE" = "備註";
+"MDM_REGISTERED" = "註冊";
+"MDM_INPUT_ASSETNUMB" = "請輸入資產編號";
+"MDM_INPUT_ASSET_CODE" = "請輸入通過郵件獲取的註冊碼";
+"MDM_INPUT_ASSET_CODE_LENGTH" = "請輸入英文或數位組成的5位元註冊碼";
+"MDM_INPUT_NUMBER" = "請輸入裝置標識";
+"MDM_INPUT_DEPARTMENT_AND_ASSETGROUP" = "請選擇部門和資產組";
+"MDM_INPUT_EMAIL" = "請輸入郵箱位址";
+"MDM_INPUT_EMAIL_ERROR" = "郵箱地址格式有誤";
+"MDM_INPUT_TYPES" = "請輸入資產類型";
+"MDM_ASSETS_IN_REGISTERED" = "資產註冊中...";
+"MDM_FILL_RIGHT" = "請正確填寫註冊資訊";
+"MDM_SUCCESS_REGISTERED" = "註冊成功";
+"MDM_WAITING_EXAMINATION" = "等待審批中";
+"MDM_GATEWAY_FULL" = "註冊用戶數已達上限，請聯繫管理員";
+"MDM_FAILURE_GET_ORGGROUP" = "查詢部門失敗";
+"MDM_FAILURE_GET_ASSETGROUP" = "查詢資產組失敗";
+"MDM_FAILURE_ASSETSREGISTERED" = "資產註冊失敗，請聯繫管理員";
+"MDM_FAILURE_ASSET_NUMBER_ERROR" = "資產編號錯誤";
+"MDM_FAILURE_COMPANY_ASSET_NOT_IMPORT" = "公司資產沒有導入,請聯繫管理員";
+"MDM_FAILURE_ASSET_TYPE_CONFLICT" = "資產類型衝突,請聯繫管理員";
+"MDM_FAILURE_ASSET_MAX_NUM" = "系統總資產數達到上限";
+"MDM_FAILURE_ASSET_CODE_ERROR" = "註冊碼錯誤";
+"MDM_FAILURE_ASSET_CODE_EXPIRE" = "註冊碼過期";
+"MDM_FAILURE_ASSET_CODE_LIMIT" = "註冊數達到資產組內單用戶綁定資產總數上限";
+"MDM_FAILURE_ASSET_VALID_UESR_GROUPS" = "登錄失敗，未找到您所在的用戶組";
+"MDM_FAILURE_UNKNOWN_EXCEPTION" = "未知異常";
+"MDM_INSTALLED_COMFIGURATION" = "未安裝設定檔";
+"MDM_TEXTING_COMFIGURATION" = "檢測設定檔安裝是否成功";
+"MDM_TEXTING_COMFIGURATION_ISINSTALL" = "正在檢測設定檔是否安裝成功...";
+
+"MDM_SIMCARD_CHANGED" = "SIM卡電話號碼有更改，請確定是否要繼續操作";
+
+/*GSP強制開啟*/
+"MDM_GPS_FAILED_CHECK" = "檢查GPS開啟失敗";
+"MDM_GPS_HAS_OPEN" = "請確認已開啟GPS定位服務";
+"MDM_GPS_SETTING" = "設備未開啟GPS功能，請開啟";
+"MDM_GPS_IS_OPEN" = "檢查GPS是否開啟";
+
+/*=====================應用商店=======================*/
+"APPSTORE_RECOMMEND" = "推薦";
+"APPSTORE_UNINSTALL" = "卸載";
+"APPSTORE_INSTALL" = "安裝";
+"APPSTORE_UPDATE" = "更新";
+"APPSTORE_DOWNLOAD" = "下載";
+"APPSTORE_STORE" = "企業商店";
+"APPSTORE_ALL" = "全部應用";
+"APPSTORE_INSTALLED" = "已安裝";
+"APPSTORE_DOWNLOADED" = "已下載";
+"APPSTORE_UPDATING" = "更新中";
+"APPSTORE_LINK" = "連結";
+"APPSTORE_SURE_UNINSTALL_SW" = "確定卸載所選應用？";
+"APPSTORE_DELETING" = "刪除中...";
+"APPSTORE_LOGOUT" = "確定註銷？";
+"APPSTORE_DETAILS" = "詳情";
+"APPSTORE_VERSION" = "版本：";
+"APPSTORE_SIZE" = "大小：";
+"APPSTORE_NAME" = "應用名稱：";
+"APPSTORE_SYS_VERSION" = "作業系統版本：";
+"APPSTORE_UPDATE_TIME" = "更新日期：";
+"APPSTORE_DESCRIPTION" = "描述：";
+"APPSTORE_DOWNLOADING" = "下載中";
+"APPSTORE_INSTALLING" = "安裝中";
+"APPSTORE_FINISH" = "完成";
+"APPSTORE_FAIL_INSTALL_LINK" = "升級失敗";
+"APPSTORE_FAIL_DOWNLOAD" = "下載失敗";
+"APPSTORE_FAIL_GET_APP" = "獲取應用列表失敗";
+"APPSTORE_FAIL_GET_INSTALLED" = "獲取已安裝列表失敗";
+"APPSTORE_FAIL_GET_DETAIL" = "獲取應用詳情失敗";
+"APPSTORE_FAIL_INSTALL_SW" = "安裝失敗";
+"APPSTORE_FAIL_DOWNLOAD_SW" = "軟體下載失敗";
+"APPSTORE_FAIL_UNINSTALL_SW" = "卸載失敗";
+"APPSTORE_FAIL_UPDATE_SW" = "軟體更新失敗";
+"APPSTORE_SEARCH_PLACEHOLDER" = "搜索：應用名";
+"APPSTORE_SEARCH_NOT_FOUND_HINT" = "沒有搜索到相關應用";
+"APPSTORE_GETAPPTYPELIST" = "獲取應用類型...";
+"APPSTORE_GETAPPLIST" = "獲取應用列表...";
+"APPSTORE_FAIL_GET_APPTYPE" = "獲取應用類型失敗";
+"APPSTORE_NOT_INSTALL_WORKSHOP" = "該應用不支援添加到工作臺";
+"APPSTORE_CATEGORIES" = "類別";
+"APPSTORE_SEARCH" = "搜索";
+"APPSTORE_NO_UPDATEAPP_FOUND" = "沒有可更新的應用";
+"APPSTORE_NO_INSTALLED_FOUND" = "當前沒有已安裝的應用";
+"APPSTORE_NO_APPLICATION_FOUND" = "當前分類沒有應用";
+"APPSTORE_NETWORK_EXCEPTION" = "，請檢查網路連接";
+"APPSTORE_USER_OFFLINE" = "，您已下線";
+"APPSTORE_APP_FROM_APPSTORE" = "來自App Store的應用";
+"APPSTORE_PREPARE_INSTALL" = "正在準備安裝，請稍候...";
+"APPSTORE_PREPARE_UNINSTALL" = "正在準備卸載，請稍候...";
+"APPSTORE_FAIL_UPDATE_APPLIST" = "更新應用列表失敗";
+"APPSTORE_FAIL_UPDATE_INSTALLED" = "更新已安裝列表失敗";
+"APPSTORE_APP_ALREADY_INSTALLED" = "該應用不支援覆蓋安裝，請先卸載";
+"APPSTORE_NOT_SUPPORTED" = "不支援當前應用的安裝";
+"APPSTORE_CLOUD_NOT_VERIFYAPPID" = "當前應用的安裝連結無效";
+"APPSTORE_DISABLED" = "AppStore已被限制訪問，無法安裝";
+"APPSTORE_APP_ALREADY_QUEUED" = "當前應用正在安裝中";
+"APPSTORE_APP_EXCEED_MAX_NUMBER" = "下載應用數量超過最大限制（5個）";
+"APPSTORE_DOWNLOAD_STOP" = "已暫停下載";
+"APPSTORE_DOWNLOAD_COMPLETE" = "下載已完成";
+"WIFI_REPAIR" = "修復網路";
+"ABOUT_ANYOFFICE" = "關於";
+"ABOUT_OPINIONFEEDBACK" = "意見回饋";
+"ABOUT_OPINION_SENDING" = "正在發送回饋資訊...";
+"ABOUT_SUCCESS_OPINIONFEEDBACK" = "回饋意見發送成功";
+"ABOUT_FAILED_OPINIONFEEDBACK_OFFLINE" = "回饋意見發送失敗，請檢查網路";
+"ABOUT_FAILED_OPINIONFEEDBACK_CONFIGURATION" = "回饋意見發送失敗，請聯繫管理員";
+"ABOUT_ENTER_OPINION" = "請輸入您的回饋意見";
+"OPINION_ENTER" = "請輸入您對本應用的意見或建議";
+"OPINION_SENT_TO" = "此資訊將發送到";
+"ABOUT_CONTENT" = "AnyOffice是企業員工在移動終端設備上接入企業網路進行移動辦公的統一安全工作平臺，為您隨時隨地、安全高效地訪問企業內網資源提供保障。";
+
+"APPSTORE_HIDE" = "隱藏";
+"APPSTORE_UNFOLD" = "展開";
+/*===離線登錄===*/
+"OFFLINE_LOGIN_STATE" = "離線登錄狀態無法使用應用商店";
+"ERROR_LOGIN_LONG_TIME_OFFLINE" = "您離線過久，請重新登錄";
+/*=====================流量監控=======================*/
+"FLUX_HISTOYR_TITLE" = "2G/3G歷史流量詳情";
+"FLUX_HISTOYR_WIFITITLE" = "Wi-Fi歷史流量詳情";
+"FLUX_HISTOYR_MTITLE" = "月份";
+"FLUX_HISTOYR_LOCK" = "正在載入資料...";
+"FLUX_HISTOYR_LOCKFALI" = "獲取歷史流量失敗";
+
+"CALENDAR_LIST_PHONE" = "列表視圖";
+"CALENDAR_DAY_PHONE" = "日視圖";
+"CALENDAR_WEEK_PHONE" = "周視圖";
+"CALENDAR_MONTH_PHONE" = "月視圖";
+"MESSAGE_ERASE_DATA" = "該設備已被登出，即將退出";
+"MESSAGE_WIFI_ADD_CONFIG" = "有新的Wi-Fi配置，請先安裝證書，切勿修改證書名稱";
+"MESSAGE_SYSTEM_APP_NOT_UNINSTALL" = "該應用為系統應用，無法卸載";
+"MESSAGE_NETWORK_UNKNOW_PLEASE_LOGOUT" = "網路連接失敗，請退出重新登錄";
+"SYSTEM_SETTING_SAVE_FAILED" = "保存登錄方式失敗";
+"MESSAGE_USB_DEBUGGING_WANTTO_CLOSE" = "USB調試開啟存在安全風險，請關閉";
+"MESSAGE_CHECK_USB_CLOASED" = "檢查USB調試功能是否關閉";
+"MESSAGE_ANYOFFICE_INACTIVE" = "應用處於未啟動狀態，存在安全風險，請啟動";
+"MESSAGE_ANYOFFICE_INACTIVE_LOGOUT" = "應用處於未啟動狀態，存在安全風險";
+"MESSAGE_ANYOFFICE_WHETHER_ACTIVE" = "檢查應用是否處於啟動狀態";
+"MESSAGE_ANYOFFICE_WHETHER_ACTIVE_NOT_USE_WIFI" = "應用處於未啟動狀態，禁止接入企業Wi-Fi，即將退出";
+"MESSAGE_ANYOFFICE_FAILED_TO_CHECK_ACTIVE" = "檢查設備是否啟動調試失敗";
+"MESSAGE_FAILED_TO_CHECK_USB_CLOSE" = "檢查USB調試功能是否關閉失敗";
+"MESSAGE_ANYOFFICE_DATE_NOT_ENCRYPT" = "資料加密功能未開啟，存在安全風險";
+"MESSAGE_ANYOFFICE_DATA_NOT_ENCRYPT_PLEASE_OPEN" = "資料加密功能未開啟，存在安全風險,請開啟";
+"MESSAGE_ANYOFFICE_DATA_NOT_ENCRYPT_NOT_USE_WIFI" = "資料加密功能未開啟，禁止接入企業Wi-Fi，即將退出";
+"MESSAGE_ANYOFFICE_WHETHER_OPEN_DATA_ENCRYPT" = "檢查資料加密功能是否已開啟";
+"MESSAGE_FAILED_TO_CHECK_DATA_ENCRYPT_OPEN" = "檢查資料加密功能是否開啟失敗";
+"ANYOFFICE_LOGIN_TIMEOUT" = "您已經長時間沒有登錄，請聯繫管理員";
+"ANYOFFICE_SSID_NOT_MEET_REQUIREMENTS" = "你所連接的網路不符合要求，即將退出";
+"ANYOFFICE_FAILED_CHECK_SSID" = "檢查所連接網路是否符合要求失敗,即將退出";
+"MESSAGE_MUST_CHECK_BIND" = "網路切換，資產註冊異常";
+"MESSAGE_SIGN_OUT" = "超時登錄，即將退出";
+"MESSAGE_NEED_RE_REGISTER" = "新開啟MDM功能，需要重新註冊資產,即將退出";
+
+/*終端管理----基本資訊*/
+"DEVICE_MANAGER" = "終端管理";
+"DEVICE_LOCATION" = "定位";
+"DEVICE_BASIC_INFORMATION" = "基本資訊";
+"DEVICE_MANAGER_ASSET_MARK" = "資產標識";
+"DEVICE_MANAGER_OPERATING_SYSTEM" = "作業系統";
+"DEVICE_MANAGER_ASSET_NUMBER" = "資產編號";
+"DEVICE_MANAGER_ASSET_USER" = "註冊人";
+"DEVICE_MANAGER_ASSET_TIME" = "註冊時間";
+"DEVICE_MANAGER_DEPARTMENT" = "部門";
+"DEVICE_MANAGER_LAST_LOGIN_TIME" = "上次登錄";
+"DEVICE_GET_BASIC_INFORMATION_FAILED" = "獲取基本資訊失敗";
+"DEVICE_LOGOUTING" = "正在註銷...";
+"DEVICE_FAILED_LOGOUT" = "註銷失敗";
+"DEVICE_FAILED_LOGOUT_OF_NETWORK" = "登出失敗，請檢查網路";
+"DEVICE_HINT_LOGOUT_OR_NOT" = "確定要註銷嗎？（登出後將清空當前帳號資料和資產註冊資訊）";
+
+/*終端管理----違規日誌顯示*/
+"VIOLATION_LOG_NO" = "暫時沒有安全風險";
+"VIOLATION_LOG" = "風險提示";
+"VIOLATION_LOG_REPAIR" = "修復";
+"VIOLATION_LOG_GETINGDATA" = "正在獲取清單資料，請稍等";
+"VIOLATION_LOG_BLACKLIST_UNINSTALLED" = "黑名單已全部卸載完成";
+"VIOLATION_LOG_FAILED_OBTAIN_DATA" = "獲取資料失敗";
+"VIOLATION_LOG_WHITELIST_INSTALLED" = "白名單已全部修復完成";
+"VIOLATION_LOG_JAILBREAK" = "越獄違規";
+"VIOLATION_LOG_ROOT" = "Root許可權違規";
+"VIOLATION_LOG_BLACKLIST" = "不合規應用未卸載";
+"VIOLATION_LOG_WHITELIST" = "安全應用未安裝";
+"VIOLATION_LOG_SIM_CARD" = "SIM卡變更違規 ";
+"VIOLATION_LOG_SYSTEM_VERSION" = "系統版本違規";
+"VIOLATION_LOG_WIFI" = "Wi-Fi接入違規 ";
+"VIOLATION_LOG_DEVICE" = "裝置管理員未啟動 ";
+"VIOLATION_LOG_USB" = "USB設置違規";
+"VIOLATION_LOG_PASSWORD" = "鎖屏密碼違規";
+"VIOLATION_LOG_DATA_ENCRYPTION" = "資料加密違規";
+"VIOLATION_LOG_PROFILE" = "描述檔違規";
+"VIOLATION_LOG_LOCATION" = "位置資訊違規";
+"VIOLATION_LOG_JAILBREAK_VIOLATION" = "當前設置已越獄，請還原到未越獄狀態。";
+"VIOLATION_LOG_ROOT_VIOLATION" = "當前設備已獲得Root許可權，請還原到未Root狀態。";
+"VIOLATION_LOG_BLACKLIST_VIOLATION" = "當前設備存在未卸載的不合規應用，請點擊“修復”卸載不合規的應用。";
+"VIOLATION_LOG_WHITELIST_VIOLATION" = "當前設備存在未安裝的安全應用，請點擊“修復”安裝安全應用。";
+"VIOLATION_LOG_SIM_CARD_VIOLATION" = "當前設備SIM卡已被更換，請換成註冊時的SIM卡。";
+"VIOLATION_LOG_SIM_CARD_IMSI_PHONE" = "註冊SIM卡的IMSI/電話號碼為：";
+"VIOLATION_LOG_SIM_CARD_IMSI_PHONE_CURRENT" = "當前SIM卡的IMSI/電話號碼為：";
+"VIOLATION_LOG_SIM_CARD_PHONE" = "註冊SIM卡的電話號碼為：";
+"VIOLATION_LOG_SIM_CARD_PHONE_CURRENT" = "當前SIM卡的電話號碼為：";
+"VIOLATION_LOG_SYSTEM_VERSION_UPDATE" = "當前系統版本過低，請升級。";
+"VIOLATION_LOG_SYSTEM_VERSION_CURRENT" = "當前系統版本為：";
+"VIOLATION_LOG_SYSTEM_VERSION_LOWEST" = "最低要求的系統版本號為：";
+"VIOLATION_LOG_SELECT_WIFI" = "當前連接的Wi-Fi不符合要求，請選取下面合法的Wi-Fi接入。";
+"VIOLATION_LOG_WIFI_LIST" = "合法的Wi-Fi：";
+"VIOLATION_LOG_DEVICE_VIOLATION" = "當前設備的應用未啟動裝置管理員，請在“系統設置-->安全”頁面對此應用進行啟動。";
+"VIOLATION_LOG_USB_VIOLATION" = "當前設備未關閉USB調試功能，請在“系統設置-->開發人員選項”頁面關閉USB調試功能。";
+"VIOLATION_LOG_PASSWORD_VIOLATION" = "當前設備鎖屏密碼不符合要求，請在“系統設置-->安全”頁面根據引導設置一個符合要求的密碼。";
+"VIOLATION_LOG_DATA_ENCRYPTION_VIOLATION" = "當前設備未開啟或不具備手機加密功能，請在“系統設置-->安全”頁面檢查並啟用該功能。";
+"VIOLATION_LOG_PROFILE_VIOLATION" = "當前設備未安裝描述檔，請重新登錄，下載並安裝描述檔。";
+"VIOLATION_LOG_LOCATION_VIOLATION" = "當前設備的位置資訊違規，可能的原因如下：\n1.當前設備無法獲取位置資訊，請檢查網路連接是否正常，定位功能是否已開啟。\n''2.當前設備未在安全地域範圍內，請聯繫管理員獲取安全地域範圍，然後回到安全地域。";
+
+/*GPS定位*/
+"MDM_LOCATION" = "定位";
+"MDM_LOCATION_GETTINGDATA" = "正在獲取位置資訊...";
+"MDM_LOCATION_GET_DATA_FAILED" = "獲取位置資訊失敗，請稍後重試";
+"MDM_LOCATION_GPS_DISABLED" = "當前未開啟GPS，請開啟後重試";
+"MDM_LOCATION_NETWORK_DISABLED" = "網路連接不可用，請稍後重試";
+
+
+//設置
+"MENU_SETTING"="設置";
+"SETTING_HEAD"="頭像";
+"SETTING_HEAD_CHOOSE"="請選擇";
+"SETTING_PHOTO"="從相冊選擇";
+"SETTING_CAMEAR"="拍照";
+"LOGIN_USERNAME"= "用戶名";
+"LOGIN_MAILADDRESS"="郵箱地址";
+"LOGIN_AUTOLOGIN"="自動登錄";
+"SETTING_CLEANMAILBOX"="清空帳號信息";
+"COMMON_ACCOUNT"="帳號";
+"SETTING_PASSCODE_MANAGERMENT"="安全";
+"SETTING_WELCOMEPAGE"="首頁";
+"LOGIN_EMAIL_DIAGNOSE"="診斷";
+"MENU_ABOUT"="關於";
+"log title" = "診斷資訊";
+"log body" = "請在此處說明在使用中何時出現何問題，以便我們更快的定位和解決您提出的問題,謝謝！";
+"MAIL_SEND"="發送";
+
+//wifi配置
+"WIFI_DEPLOY_FIRST_TITLE"="Wi-Fi無線網路配置";
+"WIFI_DEPLOY_FIRST_TITLE_HUAWEI"="華為Wi-Fi無線網路配置";
+"WIFI_DEPLOY_NOTE_INIT"="一分鐘完成配置，享受園區免費Wi-Fi網路";
+"WIFI_DEPLOY_NOTE"="配置網路需要安裝證書，請保持網路連接，並且不要切換到其他應用";
+"WIFI_DEPLOY_NOTE_HUAWEI"="配置網路需要安裝證書，請確認已接入運營商網路或Huawei-init";
+"WIFI_DEPLOY_MDM_CHECK"="健康檢查";
+"WIFI_DEPLOY_APPLY_CERTIFICATE"="申請證書";
+"WIFI_DEPLOY_INSTALL_CERTIFICATE"="安裝證書和Wi-Fi配置";
+"WIFI_DEPLOY_START_REPAIR"="一鍵修復";
+"WIFI_DEPLOY_START"="一鍵配置";
+"WIFI_DEPLOY_LATER"="以後再說";
+"WIFI_DEPLOY_OK"="確 定";
+"WIFI_DEPLOY_FAILED"="抱歉，配置不成功";
+"WIFI_DEPLOY_FAILED_HINT"="請確認您的手機能正常連接移動網路，並點擊工作臺\"修復網路\"圖示重試";
+"WIFI_DEPLOY_SUCCESS"="恭喜您，配置成功";
+"WIFI_DEPLOY_SUCCESS_HINT"="請打開Wi-Fi開關，手動接入";
+
+"NOTICE_ENTERPISE_WIFI_REPAIRING"="修復中...";
+"NOTICE_ENTERPISE_WIFI_REPAIR_SUCCESS"="企業Wi-Fi修復成功";
+"NOTICE_ENTERPISE_WIFI_REPAIR_FAIL"="企業Wi-Fi修復失敗";
+"NOTICE_ENTERPISE_WIFI_CONFIG_SUCCESS"="企業Wi-Fi配置成功";
+"NOTICE_ENTERPISE_WIFI_CONFIG_FAIL"="企業Wi-Fi配置失敗";
+"NOTICE_ENTERPISE_WIFI_AUTOCONFIG_CONFIRM"="是否安裝證書配置無線網路？";
+"NOTICE_ENTEPRISE_WIFI_AUTOCONFIG_SETSYSPASSWD"="請設置鎖屏密碼或圖案";
+"NOTICE_ENTERPISE_WIFI_AUTO_YOURWIFI"="您的企業Wi-Fi";
+"NOTICE_ENTERPISE_WIFI_AUTO_REPAIR"="配置已失效，是否修復";
+"NOTICE_ENTERPISE_WIFI_AUTO_UPDATE"="配置有更新，是否升級";
+"NOTICE_ENTERPISE_WIFI_AUTO_REPAIRING"="正在修復您的企業Wi-Fi...";
+"NOTICE_ENTERPISE_WIFI_AUTO_UPDATING"="正在更新您的企業Wi-Fi...";
+"NOTICE_WIFI_CONFIG"="您獲得了\"%1\"Wi-Fi的存取權限，是否切換到該Wi-Fi？";
+"NOTICE_WIFI_CONFIG_SUGGEST"="您獲得了\"%1\"Wi-Fi的存取權限";
+
+//設置：帳號
+"SETTING_CONFIRM_CLEANMAILBOX"="確定清空該帳號資訊？(清空後應用會重啟)";
+
+//simplepasscode
+"Set Passcode" = "設置密碼";
+"Enter Passcode" = "輸入密碼";
+"Change Passcode" = "更改密碼";
+"Enter your old passcode" = "請輸入舊密碼";
+"Enter your new passcode" = "請輸入新秘密";
+"Re-enter your new passcode" = "請再次輸入新密碼";
+"Enter a different passcode" = "輸入其他密碼。不能再次使用相同的密碼。";
+"Enter your login passcode" = "請輸入登錄密碼";
+"Enter a passcode" = "請輸入密碼";
+"Re-enter your passcode" = "請再次輸入密碼";
+"Passcodes did not match.Try again." = "密碼不匹配。請再試一次。";
+"Forget PassCode" = "忘記密碼";
+"Passcode Cancle" = "取消";
+"Passcode Delete" = "刪除";
+"Passcode relogin" = "輸入密碼錯誤次數達到上限，需要重新登錄";
+"Wrong passcode0" = "密碼輸入錯誤，剩餘嘗試次數0";
+"Wrong passcode1" = "密碼輸入錯誤，剩餘嘗試次數1";
+"Wrong passcode3" = "密碼輸入錯誤，剩餘嘗試次數3";
+"Wrong passcode2" = "密碼輸入錯誤，剩餘嘗試次數2";
+"Wrong passcode4" = "密碼輸入錯誤，剩餘嘗試次數4";
+"AlertMessage Reset wrong Account!" = "重置帳號信息並退出？";
+"Reset Account" = "重置帳號";
+"Lock Title" = "鎖定";
+"Lock Login Title" = "登錄";
+"Lock Password Text" = "密碼：";
+"Lock Suggestive Lable Text" = "AnyOffice已鎖定，請輸入密碼";
+"content YES" = "是";
+"content NO" = "否";
+
+//消息中心
+"More" = "更多";
+"Delete" = "刪除";
+"Mark as Unread" = "標為未讀";
+"Mark as Read" = "標為已讀";
+"Sticky to Top" = "置頂閱讀";
+"Remove Sticky" = "取消置頂";
+"Cancel" = "取消";
+"MAM_THE_THIRD_APP_SELF"="此應用為協力廠商應用，請自行安裝";
+//AlertTitle View
+"AlertTitle Notice" = "新通知";
+"AlertTitle New Message" = "新郵件";
+"AlertTitle New Calendar" = "約會提醒";
+"AlertTitle Sorry" = "對不起";
+"AlertTitle Create New Folder" = "創建資料夾";
+"AlertTitle Warning" = "警告";
+"AlertTitle Information" = "提示";
+"AlertTitle Err" = "錯誤";
+"AlertMessage Input wrong password!" = "密碼錯誤!";
+"AlertButton OK" = "確定";
+"AlertMessage GigaTrust is not installed" = "未安裝GigaTrust!";
+"AlertMessage RMS document is too large" = "由於移動端能力限制，RMS只能打開5M內附件，超過5M有可能失敗。";
+"AlertMessage can not open file of this type" = "暫不支援打開此類型的檔。";
+"AlertMessage can not open rar/zip in rar/zip file" = "暫不支持打開RAR/ZIP中的RAR/ZIP檔。";
+"AlertMessage this file is too large to open" = "該文件的文件大小超過上限20M，無法打開。";
+"AlertMessage can not open file. File name too long." = "文件無法打開，檔案名過長。";
+"AlertMessage can not open file. Maybe the file does not exist." = "檔無法打開，可能的原因是檔不存在。";
+
+//SecWebView
+"Authentication Requied" = "鑒定";
+"Username"               = "用戶名";
+"Password"               = "密碼";
+"AlertHttpAuth don't save" = "不保存";
+"AlertHttpAuth save"="保存";
+"AlertButton Cancel" = "取消";
+"SecBrower Post Authority"="流覽器未授權";
+"Close"="關閉";
+"AlertMessage The file is forbidded to open!"="檔打開被禁止。";
+"ActionSheet open"="打開";
+"ActionSheet copy"="拷貝";
+"Actionsheet Cancel"="取消";
+"OPEN_IN_SAFARI" = "在Safari中打開";
+"ADJUST_FONT_SIZE" = "調整字體";
+"WEBAPP_LOADING" = "努力載入中...";
+"REFRESH_WEBAPP" = "刷新";
+//"WECHAT_FRIENDS" = "分享到微信";
+//"WECHAT_MOMENTS" = "朋友圈";
+//"WECHAT_SHARE_BUTTON" = "分享";
+//"AlertMessage WeChat is not installed" = "未安裝微信，無法分享。";
+//"AlertMessage WeChat is not support open api" = "您安裝的微信版本不支援分享。";
+//"AlertMessage WeChat you have a new message" = "您有一條新的安全消息。";
+
+"DEVICE_NETWORK" = "設備網路：";
+"TUNNEL_STATUS" = "隧道狀態：";
+
+"NETWORK_WIFI" = "已連接Wi-Fi";
+"NETWORK_3G_OR_4G" = "已連接3G/4G";
+"NO_NETWORK" = "無網路";
+"UNKNOW_NETWORK" = "未知網路";
+
+"TUNNEL_OFFLINE" = "離線";
+"TUNNEL_ONLINE" = "線上";
+"TUNNEL_CONNECTING" = "連接中";
+"TUNNEL_UNKNOW" = "未知";
+
+"SORROR_ABOUT_CANNOT_OPEN_PAGE" = "很抱歉，打不開該網頁。您可以：";
+
+"CHECK_NETWORK" = "檢查網路";
+"REFRESH_WEBPAGE" = "刷新頁面";
+
+"RECREATE_TUNNEL" = "正在為您重建隧道...";
+"LOAD_WEBPAGE" = "正在努力載入網頁內容...";
+"TUNNEL_CREATED" = "隧道已連接";
+"TUNNEL_CREATED_FAILED" = "隧道已離線";
+
+//證書驗證
+"Cannot verify server identity tittle" = "無法驗證伺服器身份";
+"Cannot verify server identity warning" = "無法驗證伺服器身份。請檢查證書的詳細資訊。";
+"Identity continue button" = "繼續";
+"Identity show details button" = "詳細資訊";
+"Certificate details tittle" = "證書資訊";
+"Subject name" = "頒發給：";
+"Issuer name" = "頒發者：";
+"Common name" = "通用名稱：";
+"Organization" = "組織：";
+"Organization unit" = "組織單位：";
+"Validity" = "有效期：";
+"Not valid before" = "頒發時間：";
+"Not valid after" = "有效期至：";
+"Trust button" = "信任";
+
+
+//Gesture Lock
+"Gesture_Lock_Draw" = "繪製解鎖圖案";
+"Gesture_Lock_Reset" = "重設";
+"Set_Gesture_Password" = "設置手勢密碼";
+"Gesture_Lock_Unlock" = "等待解鎖";
+"Gesture_Lock_Code_Error_Time_Exceed_Limit" = "輸入錯誤次數已超過5次";
+"Gesture_Lock_Code_Error_Time_Exceed_Limit_Extra_Info" = "點擊忘記手勢密碼修改密碼";
+"Gesture_Lock_Forgot" = "忘記手勢密碼？";
+
+"Gesture_Lock_Attempts_Remaining" = "手勢密碼錯誤，還可以再輸入%d次";
+"Gesture_Lock_Login_Attempts_Remaining" = "登錄密碼錯誤，還可以再輸入%d次";
+"Gesture_Lock_Login_Code_Error" = "登錄密碼錯誤";
+
+"Gesture_Lock_Login_Password_Required" = "請輸入登錄密碼";
+"Gesture_Lock_Login_Code_Error_Time_Exceed_Limit" = "錯誤次數已超上限，應用即將退出。";
+"Gesture_Lock_Draw_Unlock" = "確認解鎖圖案";
+"Gesture_Lock_Draw_Unlock_Again" = "再次繪製解鎖圖案";
+"Gesture_Lock_Connection_Min" = "至少連接%d個點，請重新輸入";
+"Gesture_Lock_No_Match" = "與上次繪製不一致，請重新繪製。";
+"Gesture_Lock_Setting_Success" = "設置成功";
+"Gesture_Lock_Can_Not_Auth_No_NetWork" = "網路連接失敗，請稍後再試。";
+"Gesture_Lock_Can_Not_Auth_Other_Problem" = "無法完成密碼驗證，請稍後再試。";
+"Gesture_Lock_Verifying" = "校驗中...";
+
+"Gesture_Lock_TouchID_Use" = "請使用指紋驗證";
+"Gesture_Lock_TouchID_TimeLimit" = "嘗試次數過多，請使用手勢密碼解鎖";
+"Gesture_Lock_TouchID_Lock" = "TouchID已被系統鎖定，請使用手勢密碼解鎖";
+
+//MdmCheck
+"MDM_ROOT_LOG_INFO" = "您的設備已越獄，存在安全風險";
+"MDM_BLACKLIST_LOG_INFO" = "您的設備存在不合規的應用";
+"MDM_WHITELIST_LOG_INFO" = "您沒有安裝必備應用，請到應用商店下載";
+"MDM_SIM_CHANGED_LOG_INFO" = "您的設備SIM卡電話號碼有更改";
+"MDM_OSVER_LOG_INFO" = "該設備的系統版本號過低";
+"MDM_SSID_LOG_INFO" = "當前連接的Wi-Fi不符合要求";
+"MDM_VIOLATION_MDM_CFG" = "當前設備未安裝描述檔";
+"MDM_LOCK_PASSWORD" = "鎖屏密碼違規";
+
+"MDM_VIOLATION_LOCATION" = "";
+"MDM_VIOLATION_LOCATION_WRONG_AREA" = "設備位置不在規定的區域";
+"MDM_VIOLATION_LOCATION_FAILED" = "獲取位置信息失敗";
+"MDM_DEVICE_IS_JEALBREAK" = "不符合安全性原則，越獄設備禁止登錄。";
+
+//ICBC POC
+"LOGOUT_SUCCESS" = "註銷成功。";
+"LOGOUT_FAILED" = "註銷失敗。";
+"PASSWORD_EXPEIRED" = "您的密碼已經超過最長使用期限，需修改密碼。";
+"PASSWORD_WILL_EXPEIRED" = "您的密碼將要到期，請修改密碼。";
+"LOGIN_FAILED_NOT_INSTALL_ANYOFFICE" = "登錄失敗，您尚未安裝%@。";
+"LOGIN_FAIL_ACCOUNT_FROZEN" = "終端已停用，請聯系管理員";
+
+//sec keyboard
+"Sec_Keyboard_Done_Button_Name" = "登錄";
+"Sec_Keyboard_Done_Button_Name_Default" = "完成";
+
+//zip rar
+"ZIP_RAR_Password_Required" = "請輸入解壓密碼";
+"ZIP_RAR_Password_Error" = "請輸入正確的解壓密碼";
+
+//bind check
+"LOGIN_FAILLOG_ANYOFFICE_BINDED_BY_OTHERS" = "該設備已被帳號（%@）註冊，請聯系原帳號使用人通過%@的“終端管理”註銷本設備。";
+"LOGIN_FAILLOG_ANYOFFICE_NOBINDED" = "登錄失敗，您的設備未註冊。";
+"LOGIN_FAILLOG_ANYOFFICE_OTHER_ERROR" = "登錄失敗，設備註冊檢查未通過。";
+
