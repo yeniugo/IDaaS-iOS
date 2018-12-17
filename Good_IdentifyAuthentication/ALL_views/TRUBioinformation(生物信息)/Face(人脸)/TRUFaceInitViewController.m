@@ -74,13 +74,13 @@
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
         }else if (9025 == errorno){
-            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
                 [weakSelf dismissVC];
             } cancelBlock:^{
                 
             }];
         }else{//其他
-            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"初始化人脸失败，是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"初始化人脸失败，是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                 [weakSelf restartDetection];
             } cancelBlock:^{
                 [weakSelf dismissVC];

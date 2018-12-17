@@ -21,6 +21,20 @@
     [self commonInit];
 }
 
+-(void)setIsDeleteBtn:(BOOL)isDeleteBtn{
+    _isDeleteBtn = isDeleteBtn;
+    if (isDeleteBtn) {
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        self.imageView.hidden = YES;
+        
+    }else{
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.imageView.hidden = NO;
+    }
+}
+
 -(void)commonInit{
     self.backgroundColor = [UIColor whiteColor];
     [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -31,6 +45,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.titleLabel.x = 20.0;
+    self.titleLabel.width = self.bounds.size.width;
     self.imageView.x = self.width - self.imageView.width - 20.0;
     self.imageView.size = CGSizeMake(16.0, 16.0);
     self.imageView.y = (self.height - self.imageView.size.height) * 0.5;

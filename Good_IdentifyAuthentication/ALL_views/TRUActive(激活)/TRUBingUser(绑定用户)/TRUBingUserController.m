@@ -17,6 +17,8 @@
 #import "TRUCompanyAPI.h"
 #import "TRULicenseAgreementViewController.h"
 #import "TRUhttpManager.h"
+#import "AppDelegate.h"
+#import "TRUTokenUtil.h"
 @interface TRUBingUserController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *numView;
@@ -102,6 +104,7 @@
     }
     
 }
+
 
 -(void)valueChanged:(UITextField *)field{
     NSString *str = field.text;
@@ -285,6 +288,8 @@
                             TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
                             model.userId = userId;
                             [TRUUserAPI saveUser:model];
+                            AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+                            appdelegate.isNeedPush = YES;
                             if ([self checkPersonInfoVC:model]) {//yes 表示需要完善信息
                                 TRUAddPersonalInfoViewController *infoVC = [[TRUAddPersonalInfoViewController alloc] init];
                                 if ([type isEqualToString:@"phone"]) {

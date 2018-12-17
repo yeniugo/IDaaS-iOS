@@ -25,14 +25,15 @@ NS_ENUM(DetectType) {
     };
 
 @interface TRUFaceBaseViewController ()<AmCameraDelegate, AuthenAnti_SpoofingDelegate>{
-
+#if TARGET_IPHONE_SIMULATOR
+#else
     BOOL    faceVerifysucceed;
     BOOL    cancelled;          //是否取消过界面
     BOOL    canStopDetection;   //可以取消检测,该属性针对如下情况设置:活体的动作检测只进行了1秒,而录像至少需要3秒
     BOOL    userCancelledVerify;//用户点击了导航栏的返回键, 取消了人脸确认
     BOOL    newAction;          //启动新动作的标志, 要启动新动作检测时设为TRUE, 新动作检测开启后设置为FALSE
     NSInteger actionCount;
-
+    
     NSMutableArray *faceImageArray; //储存活体过程中的输出人脸图像
     AVAudioPlayer  *_audioPlayer; //音频控制
     NSCameraOption *cameraOption;   //摄像头相关操作
@@ -42,6 +43,9 @@ NS_ENUM(DetectType) {
     UIButton *_voiceButton;//声音按钮开关
     AuthenAnti_Spoofing *Anti_Spoof_Object; //图像处理对象
     CGFloat voiceValue;//音量
+    int testCount;//检测数组数量
+#endif
+    
 }
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *cameraView;     //摄像头操作主界面
@@ -51,7 +55,8 @@ NS_ENUM(DetectType) {
 @end
 
 @implementation TRUFaceBaseViewController
-
+#if TARGET_IPHONE_SIMULATOR
+#else
 - (instancetype)init
 {
     self = [super init];
@@ -74,7 +79,8 @@ NS_ENUM(DetectType) {
         //Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
         if ([self getActionSequence].count > 0) {
             Anti_Spoof_Object.actionSequence = [self getActionSequence];
-            YCLog(@"ActionSequence = %@",[self getActionSequence]);
+//            YCLog(@"ActionSequence = %@",[self getActionSequence]);
+            testCount = Anti_Spoof_Object.actionSequence.count-1;
         }
         Anti_Spoof_Object.maxActionRepeatCount = 2;
         Anti_Spoof_Object.maxActionSkipCount = 2;
@@ -254,15 +260,15 @@ NS_ENUM(DetectType) {
     
     //printf("[faceImageArray count]==%d\n\n", (int)[faceImageArray count]);
     
-//    if (dResult.initFailed || dResult.faceNotFound) {// || [faceImageArray count]==0) {
-//        faceVerifysucceed = false;
-//        printf("initFailed or faceNotFound\n\n");
-//        [self.gifView stopAnimating];
-//        self.gifView.type = TRUFaceGifTypeFail;
-//        [self newSongWithSongName:@"failed"];
-//        [self performSelector:@selector(restartDetection) withObject:nil afterDelay:2];//延迟说完失败语音
-//        return;
-//    }
+    if (dResult.initFailed || dResult.faceNotFound) {// || [faceImageArray count]==0) {
+        faceVerifysucceed = false;
+        printf("initFailed or faceNotFound\n\n");
+        [self.gifView stopAnimating];
+        self.gifView.type = TRUFaceGifTypeFail;
+        [self newSongWithSongName:@"failed"];
+        [self performSelector:@selector(restartDetection) withObject:nil afterDelay:2];//延迟说完失败语音
+        return;
+    }
     
 //    if (dResult.isSucceed) {
 //        self.gifView.type = TRUFaceGifTypeSuccess;
@@ -281,19 +287,19 @@ NS_ENUM(DetectType) {
      */
     //仰头、点头、左摇头、右摇头、张嘴、眨眼
 //    NSArray *actions = @[@"仰头", @"点头", @"左摇头", @"右摇头", @"张嘴", @"眨眼"];
-//    for (int actIndex=0; actIndex<6; actIndex++)
-//    {
-//        if (dResult.action[actIndex] == DStateFailed)
-//        {
-//            faceVerifysucceed = false;
+    for (int actIndex=0; actIndex<testCount; actIndex++)
+    {
+        if (dResult.action[actIndex] == DStateFailed)
+        {
+            faceVerifysucceed = false;
 //            printf("%s 检测失败\n\n", [[actions objectAtIndex:actIndex] UTF8String]);
-//            [self.gifView stopAnimating];
-//            self.gifView.type = TRUFaceGifTypeBlendFail;
-//            [self newSongWithSongName:@"failed_actionblend"];
-//            [self performSelector:@selector(restartDetection) withObject:nil afterDelay:3];//延迟说完失败语音
-//            return;
-//        }
-//    }
+            [self.gifView stopAnimating];
+            self.gifView.type = TRUFaceGifTypeBlendFail;
+            [self newSongWithSongName:@"failed_actionblend"];
+            [self performSelector:@selector(restartDetection) withObject:nil afterDelay:3];//延迟说完失败语音
+            return;
+        }
+    }
     [self.gifView stopAnimating];
     switch (currentAction) {
         case DTypeNodUp:
@@ -618,7 +624,18 @@ void methodNotImplemented (id self, SEL _cmd)
     //    Anti_Spoof_Object.delegate = self;
     //    Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
     if ([self getActionSequence].count > 0) {
-        Anti_Spoof_Object.actionSequence = [self getActionSequence];
+        if (Anti_Spoof_Object.actionSequence.count>1) {
+            Anti_Spoof_Object.actionSequence = [self getActionSequence];
+            testCount = Anti_Spoof_Object.actionSequence.count-1;
+        }
+//        else{
+//            Anti_Spoof_Object.actionSequence = [self getActionSequence];
+//            testCount = Anti_Spoof_Object.actionSequence.count-1;
+//            Anti_Spoof_Object.maxActionRepeatCount = 2;
+//            Anti_Spoof_Object.maxActionSkipCount = 2;
+//            Anti_Spoof_Object.difficultyLevel = 3;
+//            Anti_Spoof_Object.maxActionTime = 5.0;
+//        }
     }
     Anti_Spoof_Object.maxActionRepeatCount = 2;
     Anti_Spoof_Object.maxActionSkipCount = 2;
@@ -651,6 +668,7 @@ void methodNotImplemented (id self, SEL _cmd)
     //Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
     if ([self getActionSequence].count > 0) {
         Anti_Spoof_Object.actionSequence = [self getActionSequence];
+        testCount = Anti_Spoof_Object.actionSequence.count-1;
     }
     Anti_Spoof_Object.maxActionRepeatCount = 2;
     Anti_Spoof_Object.maxActionSkipCount = 2;
@@ -767,5 +785,5 @@ void methodNotImplemented (id self, SEL _cmd)
     userCancelledVerify = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+#endif
 @end

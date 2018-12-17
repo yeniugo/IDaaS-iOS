@@ -25,7 +25,7 @@
 @property(nonatomic, strong) TRUHomeButton *refreshBtn;
 @property (nonatomic, strong)UILabel *numLabel;
 @property (nonatomic, weak) NSTimer *timer;
-
+@property (nonatomic, strong)UILabel *syncLabel;//时间同步按钮下面文字
 @end
 
 @implementation TRUDynamicPasswordViewController
@@ -94,14 +94,11 @@ static NSString *userId;
         }else if (9008 == error){
             [self deal9008Error];
         }else{
-
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
             [self showHudWithText:err];
             [self hideHudDelay:2.0];
         }
-
     }];
-
 }
 
 -(void)viewBackGround{
@@ -233,8 +230,8 @@ static NSString *userId;
 -(void)customUI{
     
     //获取当前UIWindow 并添加一个视图
-    UIApplication *ap = [UIApplication sharedApplication];
-    [ap.keyWindow addSubview:self.scanBtn];
+//    UIApplication *ap = [UIApplication sharedApplication];
+//    [ap.keyWindow addSubview:self.scanBtn];
     
     
     _aniationView = [LOTAnimationView animationNamed:@"pwddata.json"];
@@ -253,30 +250,36 @@ static NSString *userId;
     imgview.frame = CGRectMake(0, 100 + SCREENW/2.f, SCREENW, 120);
     
     _timeView = [[TRUTimeView alloc] initWithFrame:CGRectMake((SCREENW - 170)/2.f, 230 + SCREENW/2.f, 170, 25) withTimelength:30];
-    
+//    _timeView.hidden = YES;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 260 + SCREENW/2.f, SCREENW, 20)];
     label.text = @"如果多次输入动态密码验证失败请及时同步时间";
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = RGBCOLOR(107, 108, 109);
     label.font = [UIFont systemFontOfSize:13];
     
-    _refreshBtn = [[TRUHomeButton alloc] initWithFrame:CGRectMake((SCREENW -80)/2.f, 300 + SCREENW/2.f, 80, 80) withButtonClickEvent:^(TRUHomeButton *sender) {
+    _refreshBtn = [[TRUHomeButton alloc] initWithFrame:CGRectMake((SCREENW -80*PointHeightRatio6)/2.f, 300 + SCREENW/2.f, 80*PointHeightRatio6, 80*PointHeightRatio6) withButtonClickEvent:^(TRUHomeButton *sender) {
         sender.enabled = NO;
         [self requestData];
     }];
-    [_refreshBtn setBackgroundImage:[UIImage imageNamed:@"passwordRefresh"] forState:UIControlStateNormal];
+    [_refreshBtn setBackgroundImage:[UIImage imageNamed:@"synctime"] forState:UIControlStateNormal];
+    
+    _syncLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 300 + SCREENW/2.f + 80*PointHeightRatio6+8, SCREENW, 20)];
+    _syncLabel.text = @"同步时间";
+    _syncLabel.textAlignment = NSTextAlignmentCenter;
+    _syncLabel.textColor = RGBCOLOR(107, 108, 109);
+    _syncLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_aniationView];
     [self.view addSubview:label];
     [self.view addSubview:_refreshBtn];
     [self.view addSubview:_timeView];
     [self.view addSubview:imgview];
-    
+    [self.view addSubview:_syncLabel];
     
     self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENW - 50)/2.f, 260, 50, 20)];
     self.numLabel.textAlignment = NSTextAlignmentCenter;
     [self.numLabel setTextColor:RGBCOLOR(75, 159, 47)];
     [self.view addSubview:self.numLabel];
-    
+    self.numLabel.hidden = YES;
     if (SCREENW == 320) {
         _aniationView.frame = CGRectMake(SCREENW/4.f - 15, 80, SCREENW/2.f+30, SCREENW/3.f+60);
         self.numberView.frame = CGRectMake(SCREENW/12.f, SCREENW/4.f -(35.0 * PointHeightRatio6)/2.f + 10, SCREENW/3.f + 30, 35.0 * PointHeightRatio6);
@@ -285,8 +288,6 @@ static NSString *userId;
         _timeView.frame = CGRectMake((SCREENW - 170)/2.f, 230 + SCREENW/3.f, 170, 25);
         label.frame = CGRectMake(0, 260 + SCREENW/3.f, SCREENW, 20);
         _refreshBtn.frame = CGRectMake((SCREENW -60)/2.f, 290 + SCREENW/3.f, 60, 60);
-        
-        
     }else if (kDevice_Is_iPhoneX){
         _aniationView.frame = CGRectMake(SCREENW/6.f, 130, SCREENW/3.f *2, SCREENW/2.f+30);
         imgview.frame = CGRectMake(0, 155 + SCREENW/2.f, SCREENW, 120);

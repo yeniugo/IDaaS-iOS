@@ -64,7 +64,6 @@
         if (errorno == 0) {
             [weakSelf showHudWithText:@"验证码已发送"];
             [weakSelf hideHudDelay:2.0];
-            self.codeBtn.enabled = NO;
             [weakSelf.codeTF becomeFirstResponder];
         }else if (-5004 == errorno){
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
@@ -76,6 +75,7 @@
             [weakSelf showHudWithText:err];
             [weakSelf hideHudDelay:2.0];
         }
+        weakSelf.codeBtn.enabled = NO;
     }];
 
     

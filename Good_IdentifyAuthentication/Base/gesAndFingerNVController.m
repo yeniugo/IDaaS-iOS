@@ -13,7 +13,7 @@
 #import "TRUEnterAPPAuthView.h"
 
 @interface gesAndFingerNVController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>
-
+@property (nonatomic,strong) UIColor *backgroundColor;
 @end
 
 @implementation gesAndFingerNVController
@@ -66,13 +66,31 @@
     
 }
 
+- (void)setNavBarColor:(UIColor *)color{
+    [self.navigationBar tru_setBackgroudColor:color];
+    [self.navigationBar setShadowImage:[UIImage new]];
+    self.backgroundColor = color;
+}
+
+- (void)setTitle:(NSString *)title{
+    [super setTitle:title];
+    if(@available(iOS 12.0,*)){
+        if (self.backgroundColor==nil) {
+            [self setNavBarColor:DefaultGreenColor];
+        }else{
+            [self setNavBarColor:self.backgroundColor];
+        }
+    }
+    //    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (UIBarButtonItem *)setLeftBarbuttonItem{
-    UIImage *img = [[UIImage imageNamed:@"backbtn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *img = [[UIImage imageNamed:@"LeftBack"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setBackgroundImage:img forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(navPop) forControlEvents:UIControlEventTouchUpInside];
@@ -93,7 +111,6 @@
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
         viewController.navigationItem.leftBarButtonItem = [self setLeftBarbuttonItem];
-        //        viewController.navigationItem.backBarButtonItem = [self setLeftBarbuttonItem];
     }
     if ( [self respondsToSelector:@selector(interactivePopGestureRecognizer)])
     {

@@ -48,7 +48,7 @@
 
 - (void)setupViews {
     __weak typeof(self) weakSelf = self;
-    
+    self.title = @"开启手势验证";
     self.linelabel.hidden = YES;
     
     //iconImgview lotview

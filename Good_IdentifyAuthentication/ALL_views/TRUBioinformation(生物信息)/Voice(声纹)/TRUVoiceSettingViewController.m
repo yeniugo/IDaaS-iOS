@@ -41,10 +41,11 @@
     
     
     CGFloat fonsize = 16.f * PointHeightRatio6;
-    UIImage *img = [UIImage imageNamed:@"identify_jiantou"];
+    UIImage *img = [UIImage imageNamed:@"RightAccessoryDisclosureLight"];
     TRUFaceVoiceSettingButton *resetBtn = [TRUFaceVoiceSettingButton buttonWithType:UIButtonTypeCustom];
     resetBtn.titleLabel.font = [UIFont systemFontOfSize:fonsize];
-    [resetBtn setImage:img forState:UIControlStateNormal];
+    resetBtn.isDeleteBtn = YES;
+//    [resetBtn setImage:img forState:UIControlStateNormal];
     [resetBtn setTitle:@"删除声纹信息" forState:UIControlStateNormal];
     [resetBtn addTarget:self action:@selector(resetVoice) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resetBtn];
@@ -69,18 +70,18 @@
     }];
     [resetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.equalTo(authBtn);
-        make.top.equalTo(authBtn.mas_bottom).offset(1.0);
+        make.top.equalTo(authBtn.mas_bottom).offset(10.0);
     }];
     
 }
 - (void)resetVoice{
     __weak typeof(self) weakSelf = self;
     if ([TRUNetworkStatus currentNetworkStatus] == NotReachable) {
-        [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+        [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
         return;
     }
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您确认删除声纹信息吗？" confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您确认删除声纹信息吗？" confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         [weakSelf showHudWithText:@"正在删除声纹信息..."];
         
         //NSString *voiceid = [TRUUserAPI getUser].voiceid;
@@ -128,7 +129,7 @@
 }
 - (void)verifyVoice{
     if ([TRUNetworkStatus currentNetworkStatus] == NotReachable) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
         return;
     }
     TRUVoiceVerifyViewController *verifyVC = [[TRUVoiceVerifyViewController alloc] init];

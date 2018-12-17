@@ -17,6 +17,7 @@
 @property (nonatomic, strong)UIButton *scanBtn;
 
 - (void)showConfrimCancelDialogViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void(^)())confrimBlock cancelBlock:(void(^)())cancelBlock;
+- (void)showConfrimCancelDialogAlertViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void (^)())confrimBlock cancelBlock:(void (^)())cancelBlock;
 - (void)back2UnActiveRootVC;
 - (void)deal9008Error;
 - (void)deal9019Error;

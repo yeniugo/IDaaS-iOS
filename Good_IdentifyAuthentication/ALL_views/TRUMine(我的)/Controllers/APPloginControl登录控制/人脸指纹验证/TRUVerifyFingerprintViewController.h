@@ -15,4 +15,6 @@
 
 @property (copy, nonatomic) void(^backBlocked)(BOOL ison);
 
+@property (nonatomic, copy) void (^completionBlock)();
+
 @end

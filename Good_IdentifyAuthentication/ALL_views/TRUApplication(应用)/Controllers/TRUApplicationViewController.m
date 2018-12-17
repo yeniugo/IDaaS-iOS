@@ -17,6 +17,7 @@
 #import "TRUFingerGesUtil.h"
 #import "TRUAuthorizedWebViewController.h"
 #import "TRUPushViewController.h"
+#import "TRUPushingViewController.h"
 #import "TRUAPPLogIdentifyController.h"
 #import "MJRefresh.h"
 #import "TRUActiveAppViewController.h"
@@ -112,7 +113,7 @@ static CGFloat KcollectionViewY = 315;
 -(void)pushThirdVerify{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"WAKEUPTOKENKEY"];
     NSString *userNo = [TRUUserAPI getUser].userId;
-    TRUPushViewController *vc = [[TRUPushViewController alloc] init];
+    TRUPushingViewController *vc = [[TRUPushingViewController alloc] init];
     vc.userNo = userNo;
     vc.token = token;
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc];
@@ -692,7 +693,7 @@ static NSInteger pushCount = NSIntegerMax;
     TRUPushAuthModel *model = [self fristPushModel];
     __weak typeof(self) weakSelf = self;
     if (model) {
-        TRUPushViewController *authVC = [[TRUPushViewController alloc] init];
+        TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
         authVC.userNo = [TRUUserAPI getUser].userId;
         authVC.pushModel = model;
         [authVC setDismissBlock:^(BOOL confirm) {

@@ -320,8 +320,7 @@
                 [weakSelf.phoneField becomeFirstResponder];
                 [weakSelf.authOldBindNewBtn setTitle:@"确认绑定" forState:UIControlStateNormal];
                 weakSelf.isAuthNewPhone = YES;
-                
-                weakSelf.getAuthButton.enabled = YES;
+                [weakSelf.getAuthButton setTitle:@"获取验证码" forState:UIControlStateNormal];
                 [weakSelf stopTimer];
             }else if (-5004 == errorno){
                 [weakSelf showHudWithText:@"网络错误，请稍后重试"];
@@ -334,6 +333,8 @@
                 [weakSelf showHudWithText:err];
                 [weakSelf hideHudDelay:2.0];
             }
+            weakSelf.getAuthButton.enabled = YES;
+            weakSelf.authOldBindNewBtn.enabled = YES;
         }];
 
         return;
@@ -375,8 +376,8 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
-                [weakSelf.navigationController popViewControllerAnimated:YES];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
+//                [weakSelf.navigationController popViewControllerAnimated:YES];
             }else if (-5004 == errorno){
                 [weakSelf showHudWithText:@"网络错误，请稍后重试"];
                 [weakSelf hideHudDelay:2.0];
@@ -390,6 +391,8 @@
                 [weakSelf showHudWithText:err];
                 [weakSelf hideHudDelay:2.0];
             }
+            weakSelf.getAuthButton.enabled = YES;
+            weakSelf.authOldBindNewBtn.enabled = YES;
         }];
 
     }

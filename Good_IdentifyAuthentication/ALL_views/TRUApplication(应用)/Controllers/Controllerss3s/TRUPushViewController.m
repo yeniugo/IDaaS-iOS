@@ -503,7 +503,7 @@ static NSInteger pushCount = 0;
 
 - (void)show9010Error{
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"该应用还未激活，无法完成认证操作，请返回原APP或完成应用激活" confrimTitle:@"激活应用" cancelTitle:@"返回" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"该应用还未激活，无法完成认证操作，请返回原APP或完成应用激活" confrimTitle:@"激活应用" cancelTitle:@"返回" confirmRight:YES confrimBolck:^{
         TRUAuthModel *model = [[TRUAuthModel alloc] init];
         model.appid = self.pushModel.appid;
         TRUActiveAppViewController *activeVC = [[TRUActiveAppViewController alloc] init];
@@ -517,7 +517,7 @@ static NSInteger pushCount = 0;
 }
 - (void)showTimeoutTip{
     __weak typeof(self) weakSelf = self;
-    [self showConfrimCancelDialogViewWithTitle:@"请求超时" msg:@"由于您的认证请求已超时，善认无法确认您的身份，请重新发起认证请求" confrimTitle:@"OK" cancelTitle:nil confirmRight:NO confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"请求超时" msg:@"由于您的认证请求已超时，善认无法确认您的身份，请重新发起认证请求" confrimTitle:@"OK" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [weakSelf authTimeOut];
         [weakSelf post3DataNoti];
         [weakSelf dismissVC:nil];

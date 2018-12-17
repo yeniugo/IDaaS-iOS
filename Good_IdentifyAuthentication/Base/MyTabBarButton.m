@@ -21,7 +21,7 @@
     CGFloat titleY = contentRect.size.height*IWTabBarButtonImageRatio;
     CGFloat titleW = contentRect.size.width;
     CGFloat titleH = contentRect.size.height-titleY;
-    return CGRectMake(0, titleY +2, titleW, titleH);
+    return CGRectMake(0, titleY , titleW, titleH);
 }
 //设置item
 -(void)setItem:(UITabBarItem *)item{
@@ -37,11 +37,24 @@
         
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont systemFontOfSize:10];
-        [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor colorWithRed:0/255.0 green:80/255.0 blue:182/255.0 alpha:1] forState:UIControlStateSelected];
-
+        [self setTitleColor:RGBCOLOR(102, 102, 102) forState:UIControlStateNormal];
+        [self setTitleColor:DefaultGreenColor forState:UIControlStateSelected];
+        
     }//选中状态
     return self;
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    CGFloat imageX;
+    CGFloat imageY;
+    CGFloat imageW;
+    CGFloat imageH;
+    imageW = self.imageView.image.size.width;
+    imageH = self.imageView.image.size.height;
+    imageX = (self.bounds.size.width - imageW)/2;
+    imageY = 6;
+    self.imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
 }
 
 @end

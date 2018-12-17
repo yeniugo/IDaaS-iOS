@@ -29,9 +29,6 @@
 @property (nonatomic, strong)UIScrollView *myScrollView;
 @property (nonatomic, strong)NSArray *imgsArr;
 @property (nonatomic, strong)NSArray *titlesArr;
-
-
-
 @end
 
 @implementation TRUMineViewController
@@ -193,7 +190,7 @@
         {
             NSString *userid = [TRUUserAPI getUser].userId;
             __weak typeof(self) weakSelf = self;
-            [self showConfrimCancelDialogViewWithTitle:@"" msg:@"此操作将会删除您手机内的账户信息，确定要解除绑定？" confrimTitle:@"解除绑定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+            [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"此操作将会删除您手机内的账户信息，确定要解除绑定？" confrimTitle:@"解除绑定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                 [weakSelf showHudWithText:@"正在解除绑定..."];
                 NSString *uuid = [xindunsdk getCIMSUUID:userid];
                 

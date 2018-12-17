@@ -8,6 +8,12 @@
 
 #import "TRULogIdentifyCell.h"
 
+@interface TRULogIdentifyCell()
+
+
+
+@end
+
 @implementation TRULogIdentifyCell
 
 - (void)awakeFromNib {
@@ -15,6 +21,11 @@
     // Initialization code
 }
 
+- (IBAction)switchValueChange:(UISwitch *)sender {
+    if (_isOnSwitchBlock) {
+        _isOnSwitchBlock(sender);
+    }
+}
 
 - (IBAction)isOnButtonClick:(UIButton *)sender {
     if (_isOnBlock) {

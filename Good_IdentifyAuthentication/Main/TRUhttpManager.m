@@ -41,6 +41,9 @@
                     response_body = [response_body isKindOfClass:[NSNull class]] ? nil : response_body;
                 }
                 onResult(result, response_body);
+                if (result!=0) {
+                    YCLog(@"url = %@ afn result = %d",url,result);
+                }
             }
         }
         

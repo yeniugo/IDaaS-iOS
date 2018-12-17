@@ -8,9 +8,9 @@
 
 #import "TRUBaseNavigationController.h"
 #import "UINavigationBar+BackgroundColor.h"
-
+#import "UIImage+Color.h"
 @interface TRUBaseNavigationController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>
-
+@property (nonatomic,strong) UIColor *backgroundColor;
 @end
 
 @implementation TRUBaseNavigationController
@@ -23,11 +23,31 @@
     bar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
 #endif
     
-    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGBCOLOR(94, 95, 96), NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
-    [bar tru_setBackgroudColor:ViewDefaultBgColor];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
+    [bar tru_setBackgroudColor:DefaultGreenColor];
     [bar setShadowImage:[UIImage new]];
     
 }
+
+- (void)setTitle:(NSString *)title{
+    [super setTitle:title];
+    if(@available(iOS 12.0,*)){
+        if (self.backgroundColor==nil) {
+            [self setNavBarColor:DefaultGreenColor];
+        }else{
+            [self setNavBarColor:self.backgroundColor];
+        }
+    }
+    //    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
+}
+
+- (void)setNavBarColor:(UIColor *)color{
+    [self.navigationBar tru_setBackgroudColor:color];
+    [self.navigationBar setShadowImage:[UIImage new]];
+    self.backgroundColor = color;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +59,14 @@
         self.interactivePopGestureRecognizer.delegate = weakSelf;
         self.delegate = weakSelf;
     }
+    if(@available(iOS 12.0,*)){
+//        if (self.backgroundColor==nil) {
+//            [self setNavBarColor:DefaultGreenColor];
+//        }else{
+//            [self setNavBarColor:self.backgroundColor];
+//        }
+    }
+//    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,29 +74,41 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIBarButtonItem *)setLeftBarbuttonItem{
+- (UIButton *)setLeftBarbutton{
     UIImage *img = [[UIImage imageNamed:@"backbtn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setTitleColor:ViewDefaultBgColor forState:UIControlStateNormal];
+    [backBtn setTitle:@"" forState:UIControlStateNormal];
+//    [backBtn setBackgroundImage:img forState:UIControlStateNormal];
     [backBtn setBackgroundImage:img forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:img forState:UIControlStateHighlighted];
     [backBtn addTarget:self action:@selector(navPop) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0, 0, 30, 30);
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    return left;
+    backBtn.frame = CGRectMake(0, 0, 40, 50);
+//    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    if(@available(iOS 12.0,*)){
+//        if (self.backgroundColor==nil) {
+//            [self setNavBarColor:DefaultGreenColor];
+//        }else{
+//            [self setNavBarColor:self.backgroundColor];
+//        }
+    }
+    return backBtn;
     
 }
+
+
 - (void)navPop{
+//    YCLog(@"navPop");
     if (self.backBlock) {
         self.backBlock();
     }else{
         [self popViewControllerAnimated:YES];
     }
-    
 }
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
-        viewController.navigationItem.leftBarButtonItem = [self setLeftBarbuttonItem];
-        //        viewController.navigationItem.backBarButtonItem = [self setLeftBarbuttonItem];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[self setLeftBarbutton]];
     }
     if ( [self respondsToSelector:@selector(interactivePopGestureRecognizer)])
     {

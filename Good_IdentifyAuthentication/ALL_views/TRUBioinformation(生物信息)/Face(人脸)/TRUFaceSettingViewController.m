@@ -39,10 +39,10 @@
     
     CGFloat fonsize = 16.f * PointHeightRatio6;
     
-    UIImage *img = [UIImage imageNamed:@"identify_jiantou"];
+    UIImage *img = [UIImage imageNamed:@"RightAccessoryDisclosureLight"];
     TRUFaceVoiceSettingButton *resetBtn = [TRUFaceVoiceSettingButton buttonWithType:UIButtonTypeCustom];
-    
-    [resetBtn setImage:img forState:UIControlStateNormal];
+//    [resetBtn setImage:img forState:UIControlStateNormal];
+    resetBtn.isDeleteBtn = YES;
     [resetBtn setTitle:@"删除人脸信息" forState:UIControlStateNormal];
     resetBtn.titleLabel.font = [UIFont systemFontOfSize:fonsize];
     [resetBtn addTarget:self action:@selector(resetFace) forControlEvents:UIControlEventTouchUpInside];
@@ -68,11 +68,11 @@
     }];
     [resetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.height.equalTo(authBtn);
-        make.top.equalTo(authBtn.mas_bottom).offset(1.0);
+        make.top.equalTo(authBtn.mas_bottom).offset(10.0);
     }];
 }
 - (void)resetFace{
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您确认删除人脸信息吗？" confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您确认删除人脸信息吗？" confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         [self showHudWithText:@"正在删除人脸信息..."];
         NSString *userid = [TRUUserAPI getUser].userId;
         __weak typeof(self) weakSelf = self;

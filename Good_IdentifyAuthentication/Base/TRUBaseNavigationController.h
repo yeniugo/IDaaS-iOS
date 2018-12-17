@@ -11,5 +11,5 @@
 @interface TRUBaseNavigationController : UINavigationController
 
 @property (nonatomic, copy) void (^backBlock)();
-
+- (void)setNavBarColor:(UIColor *)color;
 @end

@@ -62,7 +62,7 @@
                         if (companyModel.telephone.length ==0 && companyModel.software_name.length ==0 && companyModel.website.length ==0) {
                             _titleArr = @[@"软件名称",@"软件版本",@"联系电话",@"官网地址"];
                             _imgsArr = @[@"aboutTrusapp",@"aboutTrusversion",@"aboutTrusphone",@"aboutTrusnet"];
-                            _txtArr = @[@"善认·一站式移动身份管理(IDaaS)",vstr,@"010-58818526   4008180110",@"http://www.trusfort.com/"];
+                            _txtArr = @[@"善认·一站式移动身份管理",vstr,@"010-58818526/4008180110",@"http://www.trusfort.com/"];
                         }else{
                             if (companyModel.telephone.length>0) {
                                 _titleArr = @[@"软件名称",@"软件版本",@"联系电话",@"官网地址"];
@@ -82,7 +82,7 @@
         }else{//默认
             _titleArr = @[@"软件名称",@"软件版本",@"联系电话",@"官网地址"];
             _imgsArr = @[@"aboutTrusapp",@"aboutTrusversion",@"aboutTrusphone",@"aboutTrusnet"];
-            _txtArr = @[@"善认·一站式移动身份管理(IDaaS)",vstr,@"010-58818526   4008180110",@"http://www.trusfort.com/"];
+            _txtArr = @[@"善认·一站式移动身份管理",vstr,@"010-58818526/4008180110",@"http://www.trusfort.com/"];
             [_myTableView reloadData];
         }
 }

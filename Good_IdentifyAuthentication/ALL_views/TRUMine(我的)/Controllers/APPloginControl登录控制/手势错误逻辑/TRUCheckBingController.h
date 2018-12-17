@@ -9,5 +9,5 @@
 #import "TRUBaseViewController.h"
 
 @interface TRUCheckBingController : TRUBaseViewController
-
+//@property (nonatomic,assign) BOOL shoudGetNetPush;
 @end

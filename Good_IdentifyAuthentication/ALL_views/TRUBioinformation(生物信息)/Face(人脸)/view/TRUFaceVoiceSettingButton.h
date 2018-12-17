@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TRUFaceVoiceSettingButton : UIButton
-
+@property (nonatomic,assign) BOOL isDeleteBtn;
 @end

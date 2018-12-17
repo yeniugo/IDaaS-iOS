@@ -110,7 +110,7 @@
         }else{//其他
             YCLog(@"---->%d",errorno);
             
-            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"0" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                 [weakSelf restartGroupDetection];
             } cancelBlock:^{
                 [weakSelf dismissVC];

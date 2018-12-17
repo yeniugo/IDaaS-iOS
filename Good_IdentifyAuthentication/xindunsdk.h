@@ -351,6 +351,9 @@ static XDDeviceFilter none_filter = XDDeviceFilterNone;
  *  spcode  公司spid
  */
 + (NSString *)encryptByUkey:(NSString *)spcode;
+
+// 1.6.2更新sdk api
++ (NSString *)encryptByUserHamcandUkey:(NSString *)userid ctx:(NSArray *)ctx signdata:(NSString *)sign isDeviceType:(BOOL)isDeviceType;
 #pragma mark - SSE
 //解密激活后返回
 + (NSDictionary *)decodeServerResponse:(NSString *)resp;

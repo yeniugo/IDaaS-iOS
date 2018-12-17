@@ -13,6 +13,7 @@
 #import "TRUUserAPI.h"
 #import "TRUFingerGesUtil.h"
 #import "TRUhttpManager.h"
+#import "TRUTokenUtil.h"
 @interface TRUDevicesManagerController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *deviceList;
@@ -98,7 +99,7 @@
         title = @"是否关闭";
         msg = @"是否确认关闭APP一键推送功能？";
     }
-    [self showConfrimCancelDialogViewWithTitle:title msg:msg confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:title msg:msg confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         [weakSelf closeOrOpen:opens andcloseDevices:close];
         
     } cancelBlock:^{
@@ -202,7 +203,7 @@
     __weak typeof(self) weakSelf = self;
     NSString *msg = [NSString stringWithFormat:@"此操作将会删除您%@设备内全部账户信息，确定要删除？", model.devname];
     if ([model.ifself isEqualToString:@"1"]) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
             [weakSelf showHudWithText:@"正在解除绑定..."];
             [self deleteDeviceUserid:userid andUuid:model.uuid isben:YES];
             
@@ -211,7 +212,7 @@
             [tableView setEditing:NO animated:YES];
         }];
     }else{
-        [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+        [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
             [weakSelf showHudWithText:@"正在解除绑定..."];
             //删除设备
             [self deleteDeviceUserid:userid andUuid:model.uuid isben:NO];
@@ -247,6 +248,7 @@
                 //清除APP解锁方式
                 [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
                 [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+                [TRUTokenUtil cleanLocalToken];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                 id delegate = [UIApplication sharedApplication].delegate;

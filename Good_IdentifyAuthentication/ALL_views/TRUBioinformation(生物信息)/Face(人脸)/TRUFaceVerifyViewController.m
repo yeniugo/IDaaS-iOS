@@ -77,15 +77,19 @@
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
         }else if (9025 == errorno){
-            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
                 [weakSelf dismissVC];
             } cancelBlock:^{
 
             }];
         }else{//其他
             YCLog(@"---->%d",errorno);
-            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//
+//            });
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                 [weakSelf restartGroupDetection];
+                YCLog(@"ok");
             } cancelBlock:^{
                 [weakSelf dismissVC];
             }];

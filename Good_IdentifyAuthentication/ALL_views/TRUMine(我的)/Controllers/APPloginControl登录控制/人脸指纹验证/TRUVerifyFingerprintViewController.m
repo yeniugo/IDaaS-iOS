@@ -41,6 +41,8 @@
 }
 
 - (void)setupViews {
+    
+    self.title = @"指纹验证";
 
     self.linelabel.hidden = YES;
     
@@ -125,6 +127,7 @@
 
 -(void)tapClick{
     [self startVerifyFingerprint:nil];
+//    _fingerLotView.userInteractionEnabled = NO;
 }
 
 - (void)startVerifyFingerprint:(UITapGestureRecognizer *)sender{
@@ -190,6 +193,9 @@
                         NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
                         [def setObject:printNum forKey:@"VerifyFingerNumber"];
                         [def setObject:printNum forKey:@"VerifyFingerNumber2"];
+                        if (weskSelf.completionBlock) {
+                            weskSelf.completionBlock();
+                        }
                         [weskSelf.fingerLotView playWithCompletion:^(BOOL animationFinished) {
                             if (animationFinished) {
                                 _identifylotView.hidden = NO;
@@ -219,7 +225,8 @@
                     } else if ([@"指纹验证失败" isEqualToString:info]){
                         weskSelf.topLabel.text = @"指纹登录失败";
                         if (weskSelf.isDoingAuth) {
-                            [weskSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                            [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                                _fingerLotView.userInteractionEnabled = YES;
                                 NSString *userid = [TRUUserAPI getUser].userId;
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
@@ -233,7 +240,7 @@
                                 }
 #pragma clang diagnostic pop
                             } cancelBlock:^{
-                                
+                                _fingerLotView.userInteractionEnabled = YES;
                             }];
                             
                         }
@@ -292,6 +299,9 @@
                         NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
                         [def setObject:printNum forKey:@"VerifyFingerNumber"];
                         [def setObject:printNum forKey:@"VerifyFingerNumber2"];
+                        if (weskSelf.completionBlock) {
+                            weskSelf.completionBlock();
+                        }
                         [weskSelf.fingerLotView playWithCompletion:^(BOOL animationFinished) {
                             if (animationFinished) {
                                 _identifylotView.hidden = NO;
@@ -321,7 +331,8 @@
                     } else if ([@"指纹验证失败" isEqualToString:info]){
                         weskSelf.topLabel.text = @"指纹登录失败";
                         if (weskSelf.isDoingAuth) {
-                            [weskSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                            [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                                _fingerLotView.userInteractionEnabled = YES;
                                 NSString *userid = [TRUUserAPI getUser].userId;
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
@@ -335,7 +346,7 @@
                                 }
 #pragma clang diagnostic pop
                             } cancelBlock:^{
-                                
+                                _fingerLotView.userInteractionEnabled = YES;
                             }];
                             
                         }
@@ -347,7 +358,7 @@
 
     } else {
         weskSelf.topLabel.text = @"该设备暂时不支持TouchID验证，请去设置开启";
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:@"该设备暂时不支持TouchID验证，请去设置开启" confrimTitle:@"确认" cancelTitle:@"" confirmRight:YES confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"该设备暂时不支持TouchID验证，请去设置开启" confrimTitle:@"确认" cancelTitle:@"" confirmRight:YES confrimBolck:^{
             
         } cancelBlock:nil];
     }
@@ -368,12 +379,15 @@
 }
 #pragma mark - 其他方式登录
 -(void)otherModeBtnClick{
+    __weak typeof(self) weakSelf = self;
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"手势登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         YCLog(@"手势登录");
         TRUGestureVerify2ViewController *verifyVC =  [[TRUGestureVerify2ViewController alloc] init];
         verifyVC.isDoingAuth = YES;
+        verifyVC.completionBlock = weakSelf.completionBlock;
         [self.navigationController pushViewController:verifyVC animated:YES];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

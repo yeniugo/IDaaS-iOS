@@ -8,11 +8,19 @@
 
 #import "TRUAboutUSCell.h"
 
+@interface TRUAboutUSCell()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *txtspacingConstraint;
+
+@end
+
 @implementation TRUAboutUSCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    if (SCREENW==320.0) {
+        _txtspacingConstraint.constant = 5;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

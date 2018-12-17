@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ButtonTop1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "WechatIMG334.png",
+      "filename" : "ButtonTop1@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ButtonTop1@3x.png",
       "scale" : "3x"
     }
   ],

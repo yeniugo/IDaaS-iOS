@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,14 +45,14 @@
                     <rect key="frame" x="15" y="188" width="345" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addappuser" translatesAutoresizingMaskIntoConstraints="NO" id="kmV-ZC-XLW">
-                            <rect key="frame" x="10" y="15" width="20" height="25"/>
+                            <rect key="frame" x="10" y="15" width="25" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="5ph-Ql-f4v"/>
-                                <constraint firstAttribute="height" constant="25" id="RNK-tW-Sm9"/>
+                                <constraint firstAttribute="width" constant="25" id="5ph-Ql-f4v"/>
+                                <constraint firstAttribute="height" constant="30" id="RNK-tW-Sm9"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名：" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-hn-xip">
-                            <rect key="frame" x="38" y="15" width="278" height="30"/>
+                            <rect key="frame" x="43" y="15" width="273" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="PWw-YN-uvb"/>
                             </constraints>
@@ -75,14 +75,14 @@
                     <rect key="frame" x="15" y="268" width="345" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addapplock" translatesAutoresizingMaskIntoConstraints="NO" id="0Jx-G8-mbD">
-                            <rect key="frame" x="10" y="15" width="20" height="25"/>
+                            <rect key="frame" x="10" y="15" width="25" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="BCJ-GQ-srF"/>
-                                <constraint firstAttribute="height" constant="25" id="UTH-5w-qva"/>
+                                <constraint firstAttribute="width" constant="25" id="BCJ-GQ-srF"/>
+                                <constraint firstAttribute="height" constant="30" id="UTH-5w-qva"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码：" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hxs-Op-6Xl">
-                            <rect key="frame" x="38" y="15" width="256" height="30"/>
+                            <rect key="frame" x="43" y="15" width="251" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Jpr-I8-ReN"/>
                             </constraints>

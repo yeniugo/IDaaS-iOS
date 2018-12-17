@@ -18,7 +18,7 @@
 #import "TRULicenseAgreementViewController.h"
 #import "TRUGestureModify2ViewController.h"
 #import "TRUhttpManager.h"
-
+#import "gesAndFingerNVController.h"
 
 @interface TRUCheckBingController ()
 
@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"登录验证";
+    TRUBaseNavigationController *nav = self.navigationController;
+    [nav setNavBarColor:DefaultGreenColor];
     isEmail = isPhone = isEmployee = NO;
     
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
@@ -183,6 +185,14 @@
     if (!pushID || pushID.length == 0) {//说明pushid获取失败
 #if TARGET_IPHONE_SIMULATOR
         pushID = @"";
+        if ([type isEqualToString:@"employeenum"]) {
+            [self active4User:self.inputpasswordTF.text.trim pushID:@"1234567890" type:type];
+        }else{
+            [self active4User:activeNumber pushID:@"1234567890" type:type];
+        }
+        NSUserDefaults *stdDefaults = [NSUserDefaults standardUserDefaults];
+        [stdDefaults setObject:@"1234567890" forKey:@"TRUPUSHID"];
+        [stdDefaults synchronize];
 #else
         //没有获取到也可以激活成功
         if ([type isEqualToString:@"employeenum"]) {

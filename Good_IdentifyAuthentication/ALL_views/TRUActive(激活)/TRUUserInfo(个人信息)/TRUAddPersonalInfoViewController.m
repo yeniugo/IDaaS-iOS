@@ -359,7 +359,7 @@
 - (void)showDialog{
     __weak typeof(self) weakSelf = self;
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"如果您现在返回，需重新进行设备绑定流程" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"如果您现在返回，需重新进行设备绑定流程" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         if (weakSelf.isStart) {
             if ([TRUUserAPI getUser].userId) {
                 [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];

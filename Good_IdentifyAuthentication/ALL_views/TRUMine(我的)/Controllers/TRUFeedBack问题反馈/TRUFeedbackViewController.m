@@ -63,7 +63,7 @@
         if (textView.text.length <200) {
             _numLabel.text = [NSString stringWithFormat:@"%lu/200",(unsigned long)textView.text.length];
         }else{
-            [self showConfrimCancelDialogViewWithTitle:@"提示" msg:@"您最多输入200字，请简要概述你的问题！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+            [self showConfrimCancelDialogAlertViewWithTitle:@"提示" msg:@"您最多输入200字，请简要概述你的问题！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
         }
     }else{
         _numLabel.text = [NSString stringWithFormat:@"%lu/200",(unsigned long)textView.text.length];

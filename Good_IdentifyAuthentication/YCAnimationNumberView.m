@@ -106,7 +106,7 @@
     for (int index = 0; index <self.text.length; index++) {
         //背景
         //card_text_bg.png
-        UIImageView *imgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+        UIImageView *imgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"card_text_bg.png"]];
         imgview.frame = CGRectMake(_spacing + (_spacing +width)*index, 0, width, height);
         [self addSubview:imgview];
         

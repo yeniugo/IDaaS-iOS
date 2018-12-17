@@ -16,5 +16,6 @@
 #import "TRUConst.h"
 #import "UIColor+HEX.h"
 #import "TRUMacros.h"
+#import "HAMLogOutputWindow.h"
 
 #endif

@@ -32,6 +32,12 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
     NSString *seed = [self ret33bitString];
     NSArray *ctxx = @[@"randa",seed];
     NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:seed isDeviceType:NO];
+// 添加了一个防崩溃
+    while (para.length==0) {
+        seed = [self ret33bitString];
+        ctxx = @[@"randa",seed];
+        para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:seed isDeviceType:NO];
+    }
     NSDictionary *paramsDic = @{@"params" : para};
     __block long seconds_cli = (long)time((time_t *)NULL);
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/totp/sync"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
@@ -46,6 +52,8 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
             if( [xindunsdk checkCIMSHmac:userId randa:seed shmac:shmac]){
                 seconds_cli = seconds_cli - time ;
                 [[NSUserDefaults standardUserDefaults] setObject:@(seconds_cli) forKey:@"GS_DETAL_KEY"];
+// 添加了一个数据保存
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 if (syncFinshBlock) {
                     syncFinshBlock(0);
                 }

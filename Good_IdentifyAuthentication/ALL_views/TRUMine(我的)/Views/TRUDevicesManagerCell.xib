@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMw-E2-bl3">
-                        <rect key="frame" x="84" y="17" width="154" height="21"/>
+                        <rect key="frame" x="84" y="17" width="155.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="DhF-pF-K1t"/>
                         </constraints>
@@ -56,10 +56,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-iN-Kay">
-                        <rect key="frame" x="246" y="15.5" width="50" height="25"/>
+                        <rect key="frame" x="247.5" y="8.5" width="47" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="59j-of-Q8C"/>
-                            <constraint firstAttribute="height" constant="25" id="F8x-X2-0u1"/>
+                            <constraint firstAttribute="width" constant="47" id="59j-of-Q8C"/>
+                            <constraint firstAttribute="height" constant="32" id="F8x-X2-0u1"/>
                         </constraints>
                         <state key="normal" image="sliderbtnOff">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,7 +94,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="sliderbtnOff" width="70" height="23"/>
-        <image name="sliderbtnOn" width="70" height="23"/>
+        <image name="sliderbtnOff" width="47" height="31"/>
+        <image name="sliderbtnOn" width="47" height="31"/>
     </resources>
 </document>

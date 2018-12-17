@@ -26,7 +26,7 @@
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
 #import <AudioToolbox/AudioToolbox.h>
-
+#import "gesAndFingerNVController.h"
 
 @interface TRUGestureVerifyViewController ()
 @property (nonatomic, strong) LOTAnimationView *identifylotView;
@@ -45,6 +45,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    TRUBaseNavigationController *nav = self.navigationController;
+    [nav setNavBarColor:DefaultGreenColor];
+    self.title = @"手势验证";
+//    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGBCOLOR(94, 95, 96), NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSNumber *printNum = [def objectForKey:@"VerifyFingerNumber"];
@@ -75,7 +79,7 @@
     
     
     if (iunmber >= 5) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:msgstr confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:msgstr confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
             //不删除本地文件，只是跳转绑定页面，初始化成功后，重新画手势
             TRUCheckBingController *vc = [[TRUCheckBingController alloc] init];
 
@@ -224,6 +228,9 @@
         NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
         [def setObject:printNum forKey:@"VerifyFingerNumber"];
         _identifylotView.hidden = NO;
+        if (self.completionBlock) {
+            self.completionBlock();
+        }
         [_identifylotView playWithCompletion:^(BOOL animationFinished) {
             if (animationFinished) {
                 if (self.closeGesAuth) {
@@ -260,7 +267,7 @@
         NSNumber *printNum = [[NSNumber alloc] initWithInt:iunmber];
         [def setObject:printNum forKey:@"VerifyFingerNumber"];
         if (iunmber == 5) {
-            [self showConfrimCancelDialogViewWithTitle:@"" msg:msgstr confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:msgstr confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
                 //不删除本地文件，只是跳转绑定页面，初始化成功后，重新画手势
                 TRUCheckBingController *vc = [[TRUCheckBingController alloc] init];
                 
@@ -342,7 +349,7 @@
         ssss = @"我们将通过短信/邮箱/用户名密码登录之后，重新绘制手势。";
     }
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:ssss confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:ssss confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         TRUCheckBingController *vc = [[TRUCheckBingController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     } cancelBlock:^{

@@ -34,16 +34,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self setupViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self setupViews];
 }
 
 #pragma mark - Private methods
 
 - (void)setupViews {
+    for (UIView *view in self.view.subviews) {
+        [view removeFromSuperview];
+    }
     
     __weak typeof(self) weakSelf = self;
     
-    
+    self.title = @"重置手势";
     
     self.linelabel.hidden = YES;
     

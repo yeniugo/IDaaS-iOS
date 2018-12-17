@@ -21,7 +21,7 @@
 @property (weak, nonatomic) UITableView *mainTable;
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *stateArray;
-
+//@property (strong, nonatomic) UIView *blankView;
 @end
 
 @implementation TRUSessionManagerViewController
@@ -30,16 +30,16 @@
     self.title = @"登录控制";
     
     
-    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(15, 70, 30, 30)];
-    imgview.image = [UIImage imageNamed:@"ssoimg"];
-    [self.view addSubview:imgview];
+//    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(15, 70, 30, 30)];
+//    imgview.image = [UIImage imageNamed:@"ssoimg"];
+//    [self.view addSubview:imgview];
+//
+//    UILabel *txtlabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 75, 100, 20)];
+//    txtlabel.text = @"SSO";
+//    txtlabel.font = [UIFont systemFontOfSize:18];
+//    [self.view addSubview:txtlabel];
     
-    UILabel *txtlabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 75, 100, 20)];
-    txtlabel.text = @"SSO";
-    txtlabel.font = [UIFont systemFontOfSize:18];
-    [self.view addSubview:txtlabel];
-    
-    UITableView *mainTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, SCREENW, SCREENH - 105) style:UITableViewStylePlain];
+    UITableView *mainTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH - kNavBarAndStatusBarHeight) style:UITableViewStylePlain];
     mainTable.tableFooterView = [UIView new];
     mainTable.tableHeaderView = [UIView new];
     mainTable.dataSource = self;
@@ -49,9 +49,9 @@
     [self initDataSource];
     
     if (kDevice_Is_iPhoneX) {
-        mainTable.frame = CGRectMake(0, 130, SCREENW, SCREENH - 130);
-        imgview.frame = CGRectMake(15, 95, 30, 30);
-        txtlabel.frame = CGRectMake(50, 100, 100, 20);
+//        mainTable.frame = CGRectMake(0, 130, SCREENW, SCREENH - 130);
+//        imgview.frame = CGRectMake(15, 95, 30, 30);
+//        txtlabel.frame = CGRectMake(50, 100, 100, 20);
     }
     
     
@@ -129,14 +129,20 @@
     NSString *user = [TRUUserAPI getUser].userId;
     __weak typeof(self) weakSelf = self;
     
-    YCAlertView *alertview = [[YCAlertView alloc] initWithFrame:CGRectMake(0, 0, 250, 160) withTitle:nil alertMessage:msg confrimBolck:^{
+//    YCAlertView *alertview = [[YCAlertView alloc] initWithFrame:CGRectMake(0, 0, 250, 160) withTitle:nil alertMessage:msg confrimBolck:^{
+//        [weakSelf showActivityWithText:@""];
+//        [self requsetCIMSSessionLogout:user appid:appid sid:model.sessionid model:model];
+//
+//    } cancelBlock:^{
+//
+//    }];
+//    [alertview show];
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:msg confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
         [weakSelf showActivityWithText:@""];
         [self requsetCIMSSessionLogout:user appid:appid sid:model.sessionid model:model];
-
     } cancelBlock:^{
         
     }];
-    [alertview show];
 
 }
 
@@ -202,6 +208,12 @@
                     [weakSelf.mainTable reloadData];
                     [weakSelf hideHudDelay:0];
                 }
+            }else{
+                TRUSessionManagerModel *model = [[TRUSessionManagerModel alloc] init];
+                model.sessionid = @"SSOID";
+                [weakSelf.dataSource addObject:model];
+                [weakSelf.mainTable reloadData];
+                [weakSelf hideHudDelay:0];
             }
         }else if (errorno == 5004){
             [weakSelf showHudWithText:@""];

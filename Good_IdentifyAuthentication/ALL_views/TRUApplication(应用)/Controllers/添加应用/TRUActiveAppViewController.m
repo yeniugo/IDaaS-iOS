@@ -12,6 +12,7 @@
 #import "TRUUserAPI.h"
 #import <YYWebImage.h>
 #import "TRUPushViewController.h"
+#import "TRUPushingViewController.h"
 #import "TRUBaseNavigationController.h"
 #import "TRUhttpManager.h"
 
@@ -65,7 +66,7 @@
         if (errorno == 0) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kRefresh3DataNotification object:nil];
             UIViewController *rootVC = (UIViewController *)self.navigationController.childViewControllers.firstObject;
-            if ([rootVC isKindOfClass:[TRUPushViewController class]] && self.isFromAuthView) {
+            if ([rootVC isKindOfClass:[TRUPushingViewController class]] && self.isFromAuthView) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                 if ([rootVC respondsToSelector:@selector(configUserName:)]) {

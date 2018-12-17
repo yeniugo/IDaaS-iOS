@@ -12,6 +12,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUPushViewController.h"
+#import "TRUPushingViewController.h"
 #import "TRUBaseNavigationController.h"
 #import "TRUPushAuthModel.h"
 #import "TRUhttpManager.h"
@@ -215,7 +216,7 @@
     self.canSacn = NO;
     
     __weak typeof(self) weakSelf = self;
-    TRUPushViewController *authVC = [[TRUPushViewController alloc] init];
+    TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
     authVC.pushModel = pushModel;
     authVC.userNo = userNo;
     [authVC setDismissBlock:^(BOOL confirm) {

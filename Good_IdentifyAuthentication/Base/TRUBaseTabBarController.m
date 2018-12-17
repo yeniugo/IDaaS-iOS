@@ -15,20 +15,26 @@
 #import "TRUBaseNavigationController.h"
 #import "TRUAuthSacnViewController.h"
 #import "TRUPushViewController.h"
+#import "TRUPushingViewController.h"
 #import "TRUFingerGesUtil.h"
 #import "TRUEnterAPPAuthView.h"
 #import "TRUUserAPI.h"
 #import "MyTabBar.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "TRUAuthenticateViewController.h"
 
 #import "TRUGestureVerifyViewController.h"
 #import "TRUVerifyFingerprintViewController.h"
+#import "TRUPersonalViewController.h"
 
-
+#import "AppDelegate.h"
+#import "xindunsdk.h"
+#import "TRUhttpManager.h"
+#import "TRUTokenUtil.h"
 @interface TRUBaseTabBarController ()<MyTabBarDetagate>
 @property(nonatomic,weak)MyTabBar *customTabBar;
 @property (nonatomic, strong) TRUBaseNavigationController *gesFingerNavVC;
+@property (nonatomic, assign) BOOL isShowLocalAuth;//是否显示本地验证
 
 @end
 
@@ -49,8 +55,33 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    YCLog(@"TRUBaseNavigationController viewDidLoad");
+    __weak typeof(self) weakSelf = self;
+//    YCLog(@"TRUBaseTabBarController viewdidload");
     if (!self.isAddUserInfo) {
-        [self showFinger];
+//        if (self.isShowLocalAuth) {
+////            [TRUEnterAPPAuthView dismissAuthView];
+//        }else{
+//            [self showFinger];
+//        }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+            if (delegate.thirdAwakeTokenStatus) {
+                if (delegate.thirdAwakeTokenStatus==2 && ([TRUFingerGesUtil getLoginAuthFingerType]!=TRULoginAuthFingerTypeNone||[TRUFingerGesUtil getLoginAuthGesType]!=TRULoginAuthGesTypeNone)) {
+//                    [TRUEnterAPPAuthView showAuthViewWithCompletionBlock:^{
+//                        [weakSelf getNetToken];
+//                    }];
+                }else{
+                    [TRUEnterAPPAuthView showAuthView];
+                }
+            }else{
+                if (([TRUFingerGesUtil getLoginAuthFingerType]!=TRULoginAuthFingerTypeNone||[TRUFingerGesUtil getLoginAuthGesType]!=TRULoginAuthGesTypeNone)) {
+                    [TRUEnterAPPAuthView showAuthView];
+                }
+            }
+        });
+        
     }
     
     [self setUpTabbar];
@@ -58,8 +89,13 @@
     
 }
 
+- (void)hideLocalAuth{
+    self.isShowLocalAuth = YES;
+    [TRUEnterAPPAuthView dismissAuthView];
+}
+
 - (void)showFinger{
-    
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if ([TRUFingerGesUtil getLoginAuthType] != TRULoginAuthTypeNone) {
         if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeFinger) {
             [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
@@ -69,22 +105,31 @@
             [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
         }
         [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
-        [TRUEnterAPPAuthView showAuthView];
+        if (delegate.thirdAwakeTokenStatus==2) {
+            [TRUEnterAPPAuthView showLoading];
+        }else{
+            [TRUEnterAPPAuthView showAuthView];
+        }
     }else{
         if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
-            [TRUEnterAPPAuthView showAuthView];
+            if (delegate.thirdAwakeTokenStatus==2) {
+                [TRUEnterAPPAuthView showLoading];
+            }else{
+                [TRUEnterAPPAuthView showAuthView];
+            }
         }
     }
 }
 ///移除自带的tabBar
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    YCLog(@"TRUBaseNavigationController viewWillAppear");
     for(UIView *child in self.tabBar.subviews){
         if([child isKindOfClass:[UIControl class]]){
             [child removeFromSuperview];
         }
     }
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLocalAuth) name:@"hideLocalAuth" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,15 +160,15 @@
 //监听按的改变
 -(void)tabBar:(MyTabBar *)tabBar didselectedButtonFrom:(int)from to:(int)to{
     self.selectedIndex=to;
-    
+
 }
 - (void)setUPChildrenVC{
     
-    [self set1ChildVCWithVC:[TRUApplicationViewController class] title:@"应用" image:@"authedicon"];
-    [self set1ChildVCWithVC:[TRUDynamicPasswordViewController class] title:@"动态口令" image:@"dymaicicon"];
+    [self set1ChildVCWithVC:[TRUAuthenticateViewController class] title:@"认证" image:@"tabbarAuth"];
+    [self set1ChildVCWithVC:[TRUDynamicPasswordViewController class] title:@"动态口令" image:@"tabbarDynamic"];
     
-    [self set1ChildVCWithVC:[TRUBioinformationViewController class] title:@"生物信息" image:@"biologicalicon"];
-    [self set1ChildVCWithVC:[TRUMineViewController class] title:@"我的" image:@"mineicon"];
+//    [self set1ChildVCWithVC:[TRUBioinformationViewController class] title:@"生物信息" image:@"biologicalicon"];
+    [self set1ChildVCWithVC:[TRUPersonalViewController class] title:@"我的" image:@"tabbarMine"];
     
     
 }
@@ -135,7 +180,7 @@
     
     VC.tabBarItem.selectedImage = [self orignImage:[NSString stringWithFormat:@"%@_selected",image]];
     VC.tabBarItem.image = [self orignImage:[NSString stringWithFormat:@"%@_normal",image]];
-    
+    self.tabBar.tintColor = DefaultGreenColor;
     [self addChildViewController:nav];
     [self.customTabBar addTabBarButtonWithItem:VC.tabBarItem];
 }
@@ -208,7 +253,7 @@
 }
 - (void)showAuthVCWithToken:(NSString *)stoken{
     NSString *userNo = [TRUUserAPI getUser].userId;
-    TRUPushViewController *vc = [[TRUPushViewController alloc] init];
+    TRUPushingViewController *vc = [[TRUPushingViewController alloc] init];
     vc.userNo = userNo;
     vc.token = stoken;
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc];
@@ -222,6 +267,57 @@
     }else{
         [self presentViewController:nav animated:YES completion:nil];
     }
+}
+
+- (void)getNetToken{
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *phone = [TRUUserAPI getUser].phone;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getoauth"] withParts:dictt onResult:^(int errorno, id responseBody){
+        NSDictionary *dicc = nil;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"getNetToken";
+        if(userid.length && [xindunsdk userInitializedInfo:userid] && phone.length){
+            dic[@"phone"] = [TRUUserAPI getUser].phone;
+        }
+        if (errorno == 0 && responseBody) {
+            dicc = [xindunsdk decodeServerResponse:responseBody];
+            if ([dicc[@"code"] intValue] == 0) {
+                dicc = dicc[@"resp"];
+                //同步信息成功，信息完整，跳转页面
+                NSString *tokenStr = dicc[@"access_token"];
+                [TRUTokenUtil saveLocalToken:tokenStr];
+                dic[@"status"] = @(errorno);
+                dic[@"token"] = tokenStr;
+                //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+            }
+        }else if(9008 == errorno){
+            //秘钥失效
+            [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+            [TRUUserAPI deleteUser];
+            [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }else if (9019 == errorno){
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }else{
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        if (delegate.tokenCompletionBlock) {
+            // 延迟的时间
+            delegate.tokenCompletionBlock(dic);
+            //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //                weakSelf.completionBlock(dic);
+            //            });
+        }
+    }];
 }
 
 

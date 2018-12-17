@@ -150,7 +150,7 @@
                         [self.navigationController pushViewController:vc animated:YES];
                     }
                 }else{
-                    [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
                         [self dismissViewControllerAnimated:YES completion:nil];
                     } cancelBlock:nil];
                 }
@@ -158,7 +158,7 @@
             
         }];
     }else if (authStatus == AVAuthorizationStatusDenied || authStatus == AVAuthorizationStatusRestricted){
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
             [self dismissViewControllerAnimated:YES completion:nil];
         } cancelBlock:nil];
     }
@@ -166,7 +166,7 @@
 
 - (void)startVoice{
     if ([TRUNetworkStatus currentNetworkStatus] == NotReachable) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kBadErrorTip confrimTitle:@"确认" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
         return;
     }
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -187,7 +187,7 @@
                         [self.navigationController pushViewController:voiceVC animated:YES];
                     }
                 }else{
-                    [self showConfrimCancelDialogViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
                         [self.navigationController popViewControllerAnimated:YES];
                     } cancelBlock:^{
                         
@@ -198,7 +198,7 @@
             
         }];
     }else if(audioSession.recordPermission == AVAudioSessionRecordPermissionDenied){
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
             [self.navigationController popViewControllerAnimated:YES];
         } cancelBlock:^{
             

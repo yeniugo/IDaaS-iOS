@@ -18,7 +18,9 @@
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
 #import "TRUEnterAPPAuthView.h"
-
+#import "AppDelegate.h"
+#import "TRUhttpManager.h"
+#import "TRUTokenUtil.h"
 
 @interface TRUGestureModify2ViewController ()
 
@@ -40,7 +42,7 @@
 #pragma mark - Private methods
 -  (void)setupViews {
     __weak typeof(self) weakSelf = self;
-    
+    self.title = @"重置手势";
     self.linelabel.hidden = YES;
     
     //iconImgview lotview
@@ -180,6 +182,7 @@
 
 - (void)registerGesture:(NSString *)gesture {
     _identifylotView.hidden = NO;
+    __weak typeof(self) weakSelf = self;
     [_identifylotView playWithCompletion:^(BOOL animationFinished) {
         NSString *encryptedGesture = [self encryptGesture:gesture];
         if (_ISrebinding) {
@@ -190,6 +193,10 @@
             NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
             [def setObject:printNum forKey:@"VerifyFingerNumber"];
             [def setObject:printNum forKey:@"VerifyFingerNumber2"];
+            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+            if(delegate.thirdAwakeTokenStatus==2){
+                [weakSelf getNetToken];
+            }
         }else{
             if (self.oldEncryptedGesture.length == 0 || encryptedGesture.length == 0) {
                 return;
@@ -245,6 +252,52 @@
     return [xindunsdk encryptData:newges ForUser:userId];
 }
 
+- (void)getNetToken{
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *phone = [TRUUserAPI getUser].phone;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getoauth"] withParts:dictt onResult:^(int errorno, id responseBody){
+        NSDictionary *dicc = nil;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"type"] = @"getNetToken";
+        if(userid.length && [xindunsdk userInitializedInfo:userid] && phone.length){
+            dic[@"phone"] = [TRUUserAPI getUser].phone;
+        }
+        if (errorno == 0 && responseBody) {
+            dicc = [xindunsdk decodeServerResponse:responseBody];
+            if ([dicc[@"code"] intValue] == 0) {
+                dicc = dicc[@"resp"];
+                //同步信息成功，信息完整，跳转页面
+                NSString *tokenStr = dicc[@"access_token"];
+                [TRUTokenUtil saveLocalToken:tokenStr];
+                dic[@"status"] = @(errorno);
+                dic[@"token"] = tokenStr;
+                //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+            }
+        }else if(9008 == errorno){
+            //秘钥失效
+            [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+            [TRUUserAPI deleteUser];
+            [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }else if (9019 == errorno){
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }else{
+            dic[@"status"] = @(errorno);
+            //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
+        }
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        if (delegate.tokenCompletionBlock) {
+            delegate.tokenCompletionBlock(dic);
+        }
+    }];
+}
 
 #pragma mark - 用户协议 UserAgreement
 -(void)lookUserAgreement{

@@ -16,7 +16,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *isOnButton;
 
+@property (weak, nonatomic) IBOutlet UISwitch *isOnSwitch;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+
 @property (nonatomic, copy) void (^isOnBlock)(UIButton* btn);
+
+@property (nonatomic, copy) void (^isOnSwitchBlock)(UISwitch* switchBtn);
+
 
 
 @end

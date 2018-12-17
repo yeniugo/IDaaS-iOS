@@ -14,4 +14,6 @@
 
 //
 @property (nonatomic, assign) BOOL isDoingAuth;
+
+@property (nonatomic, copy) void (^completionBlock)();
 @end

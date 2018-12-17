@@ -61,6 +61,7 @@
 - (void)fetchData {
     NSString *currentUserId = [TRUUserAPI getUser].userId;
     NSString *isss = [xindunsdk getDeviceId];
+    NSString *uuid = [xindunsdk getCIMSUUID:currentUserId];
 //    YCLog(@"%s, currentUserId : %@", __func__, currentUserId);
     __weak typeof(self) weakSelf = self;
     //|| [xindunsdk isUserInitialized:currentUserId] == false

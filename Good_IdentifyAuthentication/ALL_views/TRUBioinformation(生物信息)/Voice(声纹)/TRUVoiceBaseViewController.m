@@ -150,7 +150,7 @@
     
     
     UILabel *bottomLabel = [[UILabel alloc] init];
-    bottomLabel.text = @"点击开始说话";
+    bottomLabel.text = @"长按开始说话";
     bottomLabel.textColor = [UIColor blackColor];
     bottomLabel.font = [UIFont systemFontOfSize:CommonTipFont * PointHeightRatio6];
     bottomLabel.textAlignment = NSTextAlignmentCenter;

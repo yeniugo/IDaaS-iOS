@@ -17,16 +17,20 @@
 #import "FireflyAlertView.h"
 
 
-@interface TRUBaseViewController ()
+@interface TRUBaseViewController ()<UIAlertViewDelegate>
 @property (nonatomic, assign) __block BOOL showed9019Error;
 /** hud */
 @property (nonatomic, weak) MBProgressHUD *hud;
+
+@property (copy, nonatomic) NSString *cancelTitleStr;
+
+@property (copy, nonatomic) NSString *comfirmTitleStr;
 
 @property (strong, nonatomic) void(^alertComfirm)(void);
 
 @property (strong, nonatomic) void(^alertCancel)(void);
 
-
+@property (assign, nonatomic) BOOL isRight;//alert方向,YES时，右边是确定，左边是取消，NO时，左边确定，右边取消
 //@property (nonatomic, strong) 
 
 @end
@@ -36,7 +40,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleDefault;
+    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
 }
 
 
@@ -56,18 +60,18 @@
     _linelabel.backgroundColor = RGBCOLOR(180, 180, 180);
     [self.view addSubview:_linelabel];
     
-    self.scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (kDevice_Is_iPhoneX) {
-        self.scanBtn.size = CGSizeMake(SCREENW/5.f - 10, 30);
-        self.scanBtn.centerX = self.view.centerX;
-        self.scanBtn.y = SCREENH - 50 - 30 - 35;
-    }else{
-        self.scanBtn.size = CGSizeMake(SCREENW/5.f - 10, 30);
-        self.scanBtn.centerX = self.view.centerX;
-        self.scanBtn.y = SCREENH - 50 - 30;
-    }
-    self.scanBtn.backgroundColor = [UIColor clearColor];
-    [self.scanBtn addTarget:self action:@selector(scanQRButtonClick) forControlEvents:UIControlEventTouchUpInside];
+//    self.scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    if (kDevice_Is_iPhoneX) {
+//        self.scanBtn.size = CGSizeMake(SCREENW/5.f - 10, 30);
+//        self.scanBtn.centerX = self.view.centerX;
+//        self.scanBtn.y = SCREENH - 50 - 30 - 35;
+//    }else{
+//        self.scanBtn.size = CGSizeMake(SCREENW/5.f - 10, 30);
+//        self.scanBtn.centerX = self.view.centerX;
+//        self.scanBtn.y = SCREENH - 50 - 30;
+//    }
+//    self.scanBtn.backgroundColor = [UIColor clearColor];
+//    [self.scanBtn addTarget:self action:@selector(scanQRButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     
 //    NSInteger *ii = [UIApplication sharedApplication].applicationIconBadgeNumber;
@@ -159,13 +163,80 @@
     }
 }
 
+
+
 - (void)showConfrimCancelDialogAlertViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void (^)())confrimBlock cancelBlock:(void (^)())cancelBlock{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
+//    self.alertCancel = nil;
+//    self.alertComfirm = nil;
+    self.alertComfirm = confrimBlock;
+    self.alertCancel = cancelBlock;
+    self.isRight = confirmRight;
+    self.cancelTitleStr = cancelTitle;
+    self.comfirmTitleStr = confrimTitle;
+    UIAlertView *alert;
+    if (confirmRight) {
+        alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
+    }else{
+//        alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+        if (cancelTitle && cancelTitle.length>0) {
+            alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+        }else{
+            alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:nil];
+        }
+    }
+    
+    [alert show];
+}
+
+-(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView{
+    return YES;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
+    if (self.isRight) {
+        if (self.cancelTitleStr.length==0) {
+            self.alertComfirm();
+        }else{
+            switch (buttonIndex) {
+                case 0:
+                {
+                    if (self.alertCancel) {
+                        self.alertCancel();
+                    }
+                }
+                    break;
+                case 1:
+                {
+                    if (self.alertComfirm) {
+                        self.alertComfirm();
+                    }
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }else{
+        switch (buttonIndex) {
+            case 0:
+            {
+                if (self.alertComfirm) {
+                    self.alertComfirm();
+                }
+            }
+                break;
+            case 1:
+            {
+                if (self.alertCancel) {
+                    self.alertCancel();
+                }
+            }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 - (void)back2UnActiveRootVC{
@@ -179,7 +250,7 @@
 #pragma clang diagnostic pop
 }
 - (void)deal9008Error{
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
@@ -196,7 +267,7 @@
 - (void)dele9019ErrorWithBlock:(void (^)())block{
     if (!self.showed9019Error) {
         __weak typeof(self) weakSelf = self;
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:@"当前账号已锁定，请与管理员联系" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"当前账号已锁定，请与管理员联系" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
             weakSelf.showed9019Error = NO;
             if (block) {
                 block();
@@ -214,7 +285,7 @@
 //待审批
 - (void)deal9021ErrorWithBlock:(void(^)())block{
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您的账号申请已提交，请联系管理员审批。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的账号申请已提交，请联系管理员审批。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
         if (block) block();
     } cancelBlock:nil];
 
@@ -222,7 +293,7 @@
 //已提交
 - (void)deal9022ErrorWithBlock:(void(^)())block{
     
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您的账号申请已提交，管理员尚未审批通过，请勿重复提交。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的账号申请已提交，管理员尚未审批通过，请勿重复提交。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
         
         if (block) block();
         
@@ -230,13 +301,13 @@
 }
 //拒绝
 - (void)deal9023ErrorWithBlock:(void(^)())block{
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您的账号申请被拒绝，请联系管理员。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的账号申请被拒绝，请联系管理员。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
         if (block) block();
     } cancelBlock:nil];
 }
 //拒绝
 - (void)deal9026ErrorWithBlock:(void(^)())block{
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您绑定的设备数量已达上限，想要绑定该设备，请先删除一个已激活设备。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您绑定的设备数量已达上限，想要绑定该设备，请先删除一个已激活设备。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
         if (block) block();
     } cancelBlock:nil];
 }
