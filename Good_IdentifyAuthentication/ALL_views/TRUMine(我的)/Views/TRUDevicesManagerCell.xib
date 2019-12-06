@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TRUDevicesManagerCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZuF-yN-47S">
+                        <rect key="frame" x="24" y="18" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="liE-dU-JdB"/>
+                            <constraint firstAttribute="height" constant="50" id="s7h-Do-Qn6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMw-E2-bl3">
+                        <rect key="frame" x="84" y="17" width="155.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="DhF-pF-K1t"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ios 10.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sen-la-W4Y">
+                        <rect key="frame" x="84" y="44" width="52.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="40c-AF-zLw"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="dgq-w8-nBh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否接受推送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-FK-gbO">
+                        <rect key="frame" x="229" y="44.5" width="83" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="rHS-Ae-As6"/>
+                            <constraint firstAttribute="height" constant="21" id="tAH-uL-N4z"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-iN-Kay">
+                        <rect key="frame" x="247.5" y="14.5" width="47" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="47" id="59j-of-Q8C"/>
+                            <constraint firstAttribute="height" constant="32" id="F8x-X2-0u1"/>
+                        </constraints>
+                        <state key="normal" image="sliderbtnOff">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" image="sliderbtnOn"/>
+                        <connections>
+                            <action selector="sliderBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hd2-bp-Qas"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Sen-la-W4Y" firstAttribute="leading" secondItem="ZuF-yN-47S" secondAttribute="trailing" constant="10" id="L27-ad-pz2"/>
+                    <constraint firstItem="6lg-FK-gbO" firstAttribute="top" secondItem="78h-iN-Kay" secondAttribute="bottom" constant="-2" id="LO4-ZA-slI"/>
+                    <constraint firstAttribute="bottom" secondItem="6lg-FK-gbO" secondAttribute="bottom" constant="14" id="OZA-yD-p7p"/>
+                    <constraint firstItem="ZuF-yN-47S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="Vsz-up-0Cq"/>
+                    <constraint firstItem="Sen-la-W4Y" firstAttribute="top" secondItem="cMw-E2-bl3" secondAttribute="bottom" constant="6" id="Ytq-uD-0GX"/>
+                    <constraint firstItem="cMw-E2-bl3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="gX3-HX-CPi"/>
+                    <constraint firstItem="ZuF-yN-47S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="iv7-HM-O1w"/>
+                    <constraint firstItem="78h-iN-Kay" firstAttribute="leading" secondItem="cMw-E2-bl3" secondAttribute="trailing" constant="8" id="km4-oq-mid"/>
+                    <constraint firstAttribute="trailing" secondItem="6lg-FK-gbO" secondAttribute="trailing" constant="8" id="rZf-xr-ITr"/>
+                    <constraint firstItem="78h-iN-Kay" firstAttribute="centerX" secondItem="6lg-FK-gbO" secondAttribute="centerX" id="uLh-kE-p3S"/>
+                    <constraint firstItem="cMw-E2-bl3" firstAttribute="leading" secondItem="ZuF-yN-47S" secondAttribute="trailing" constant="10" id="xoz-xM-QeU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deviceDetailLabel" destination="Sen-la-W4Y" id="5xb-uT-AGg"/>
+                <outlet property="imgview" destination="ZuF-yN-47S" id="11T-oq-uxy"/>
+                <outlet property="nameLabel" destination="cMw-E2-bl3" id="WcT-1w-zag"/>
+                <outlet property="sliderBtn" destination="78h-iN-Kay" id="kqw-3K-cuP"/>
+            </connections>
+            <point key="canvasLocation" x="-107" y="117"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sliderbtnOff" width="47" height="31"/>
+        <image name="sliderbtnOn" width="47" height="31"/>
+    </resources>
+</document>
