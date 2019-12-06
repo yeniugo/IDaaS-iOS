@@ -9,6 +9,7 @@
 #import "TRUPersonalBigCell.h"
 #import  <YYWebImage/YYWebImage.h>
 #import "TRUUserAPI.h"
+#import "TRUCompanyAPI.h"
 @interface TRUPersonalBigCell()
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLB;
@@ -27,10 +28,26 @@
 
 - (void)setCustomUI{
     self.userNameLB.text = [TRUUserAPI getUser].realname;
-    self.userDepartmentLB.text = [TRUUserAPI getUser].department;
+//    self.userDepartmentLB.text = [TRUUserAPI getUser].department;
+    NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
+    if (activeStr.length>0) {
+        NSArray *arr = [activeStr componentsSeparatedByString:@","];
+        if (arr.count>0) {
+            NSString *modeStr = arr[0];
+            if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
+                self.userDepartmentLB.text = [TRUUserAPI getUser].email;
+            }else if ([modeStr isEqualToString:@"2"]){
+                self.userDepartmentLB.text = [TRUUserAPI getUser].phone;
+            }else if ([modeStr isEqualToString:@"3"]){
+                self.userDepartmentLB.text = [TRUUserAPI getUser].employeenum;
+            }
+        }
+        
+    }
     self.lineView = [[UIView alloc] init];
     self.lineView.backgroundColor = RGBCOLOR(234, 234, 234);
     [self addSubview:self.lineView];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 -(void)layoutSubviews{

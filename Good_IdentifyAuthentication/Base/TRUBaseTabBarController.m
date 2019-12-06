@@ -31,6 +31,13 @@
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"
 #import "TRUTokenUtil.h"
+
+#import "AppDelegate.h"
+
+#import "TRUSchemeTokenViewController.h"
+#import "TRUEnterAPPAuthView.h"
+#import "TRUPortalViewController.h"
+
 @interface TRUBaseTabBarController ()<MyTabBarDetagate>
 @property(nonatomic,weak)MyTabBar *customTabBar;
 @property (nonatomic, strong) TRUBaseNavigationController *gesFingerNavVC;
@@ -57,6 +64,7 @@
     [super viewDidLoad];
     YCLog(@"TRUBaseNavigationController viewDidLoad");
     __weak typeof(self) weakSelf = self;
+//    [HAMLogOutputWindow printLog:@"TRUBaseTabBarController viewDidLoad1"];
 //    YCLog(@"TRUBaseTabBarController viewdidload");
     if (!self.isAddUserInfo) {
 //        if (self.isShowLocalAuth) {
@@ -64,29 +72,108 @@
 //        }else{
 //            [self showFinger];
 //        }
+        [self showFinger];
+        [self pushtoken];
+//        [HAMLogOutputWindow printLog:@"TRUBaseTabBarController viewDidLoad2"];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            if (delegate.thirdAwakeTokenStatus) {
-                if (delegate.thirdAwakeTokenStatus==2 && ([TRUFingerGesUtil getLoginAuthFingerType]!=TRULoginAuthFingerTypeNone||[TRUFingerGesUtil getLoginAuthGesType]!=TRULoginAuthGesTypeNone)) {
-//                    [TRUEnterAPPAuthView showAuthViewWithCompletionBlock:^{
-//                        [weakSelf getNetToken];
-//                    }];
-                }else{
-                    [TRUEnterAPPAuthView showAuthView];
-                }
-            }else{
-                if (([TRUFingerGesUtil getLoginAuthFingerType]!=TRULoginAuthFingerTypeNone||[TRUFingerGesUtil getLoginAuthGesType]!=TRULoginAuthGesTypeNone)) {
-                    [TRUEnterAPPAuthView showAuthView];
-                }
-            }
-        });
         
     }
     
     [self setUpTabbar];
     [self setUPChildrenVC];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPushToken1) name:@"TRUEnterAPPAuthViewSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showPushToken) name:@"TRUEnterAPPAuthViewSuccess" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+}
+
+- (void)showPushToken1{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate.window.rootViewController isKindOfClass:[UITabBarController class]]) {
+//        [HAMLogOutputWindow printLog:@"showscheme2"];
+        UINavigationController *rootnav = [[TRUBaseNavigationController alloc] initWithRootViewController:delegate.appPushVC];
+        [delegate.window.rootViewController presentViewController:rootnav animated:YES completion:nil];
+        delegate.appPushVC = nil;
+    }
+}
+
+
+- (void)showPushToken{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if (delegate.thirdAwakeTokenStatus == 8) {
+        if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *rootnav = delegate.window.rootViewController;
+            [rootnav popToRootViewControllerAnimated:NO];
+//            [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+            TRUSchemeTokenViewController *pushvc = [[TRUSchemeTokenViewController alloc] init];
+            [rootnav pushViewController:pushvc animated:YES];
+        }
+    }
+}
+
+
+- (void)pushtoken{
+//    [HAMLogOutputWindow printLog:@"showapppush1"];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//    [HAMLogOutputWindow printLog:@"TRUBaseTabBarController pushtoken0"];
+    if (delegate.tokenPushVC!=nil) {
+//        [HAMLogOutputWindow printLog:@"TRUBaseTabBarController pushtoken3"];
+        if (delegate.thirdAwakeTokenStatus==8) {
+            return;
+        }
+//        [HAMLogOutputWindow printLog:@"TRUBaseTabBarController pushtoken1"];
+        if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *nav = delegate.window.rootViewController;
+            [nav popToRootViewControllerAnimated:NO];
+//            [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+            //        [TRUEnterAPPAuthView showAuthViewWithCompletionBlock:^{
+            //
+            //        }];
+//            [HAMLogOutputWindow printLog:@"TRUBaseTabBarController pushtoken2"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [HAMLogOutputWindow printLog:@"showapppush2"];
+                if (delegate.tokenPushVC) {
+//                    [HAMLogOutputWindow printLog:@"showapppush3"];
+                }else{
+//                    [HAMLogOutputWindow printLog:@"showapppush4"];
+                }
+                [nav pushViewController:delegate.tokenPushVC animated:YES];
+                delegate.tokenPushVC = nil;
+            });
+            
+        }
+    }else{
+        if (delegate.appPushVC!=nil) {
+            if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                UINavigationController *nav = delegate.window.rootViewController;
+                
+                if (nav.childViewControllers.count>1) {
+                    [nav popToRootViewControllerAnimated:NO];
+//                    [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                }
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [HAMLogOutputWindow printLog:@"showapppush22"];
+                    //TODO: delegate.window.rootViewController
+
+                    [(UINavigationController *)(delegate.window.rootViewController) pushViewController:delegate.appPushVC animated:NO];
+                    delegate.appPushVC = nil;
+                });
+                
+            }
+        }
+    }
     
+}
+
+- (void)showAppAuth{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+//        [HAMLogOutputWindow printLog:@"showscheme2"];
+        UINavigationController *rootnav = delegate.window.rootViewController;
+        [rootnav pushViewController:delegate.appPushVC animated:YES];
+        delegate.appPushVC = nil;
+    }
 }
 
 - (void)hideLocalAuth{
@@ -105,18 +192,20 @@
             [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
         }
         [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
-        if (delegate.thirdAwakeTokenStatus==2) {
-            [TRUEnterAPPAuthView showLoading];
+        if (delegate.thirdAwakeTokenStatus==2 || delegate.thirdAwakeTokenStatus==8) {
+//            [TRUEnterAPPAuthView showLoading];
         }else{
-            [TRUEnterAPPAuthView showAuthView];
+//            [TRUEnterAPPAuthView showAuthView];
         }
+        [TRUEnterAPPAuthView showAuthView];
     }else{
         if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
-            if (delegate.thirdAwakeTokenStatus==2) {
-                [TRUEnterAPPAuthView showLoading];
+            if (delegate.thirdAwakeTokenStatus==2 || delegate.thirdAwakeTokenStatus==8) {
+//                [TRUEnterAPPAuthView showLoading];
             }else{
-                [TRUEnterAPPAuthView showAuthView];
+//                [TRUEnterAPPAuthView showAuthView];
             }
+            [TRUEnterAPPAuthView showAuthView];
         }
     }
 }
@@ -130,6 +219,12 @@
         }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLocalAuth) name:@"hideLocalAuth" object:nil];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if (delegate.tokenPushVC!=nil) {
+        UINavigationController *nav = delegate.window.rootViewController;
+        [nav pushViewController:delegate.tokenPushVC animated:YES];
+        delegate.tokenPushVC = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,6 +259,9 @@
 }
 - (void)setUPChildrenVC{
     
+    if (isShowPortal) {
+        [self set1ChildVCWithVC:[TRUPortalViewController class] title:@"微门户" image:@"tabbarportal"];
+    }
     [self set1ChildVCWithVC:[TRUAuthenticateViewController class] title:@"认证" image:@"tabbarAuth"];
     [self set1ChildVCWithVC:[TRUDynamicPasswordViewController class] title:@"动态口令" image:@"tabbarDynamic"];
     
@@ -203,7 +301,6 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
                 TRUAuthSacnViewController *vc = [[TRUAuthSacnViewController alloc] init];
-                
                 [self presentViewController:vc animated:YES completion:nil];
             }else{
                 [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
@@ -260,13 +357,14 @@
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
         self.modalPresentationStyle = UIModalPresentationCurrentContext;
     }
-    if (self.presentedViewController) {
-        [self.presentedViewController dismissViewControllerAnimated:NO completion:^{
-            [self presentViewController:nav animated:YES completion:nil];
-        }];
-    }else{
-        [self presentViewController:nav animated:YES completion:nil];
-    }
+//    if (self.presentedViewController) {
+//        [self.presentedViewController dismissViewControllerAnimated:NO completion:^{
+//            [self presentViewController:nav animated:YES completion:nil];
+//        }];
+//    }else{
+//        [self presentViewController:nav animated:YES completion:nil];
+//    }
+    [self.navigationController pushViewController:nav animated:YES];
 }
 
 - (void)getNetToken{
@@ -310,14 +408,295 @@
             //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
         }
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-        if (delegate.tokenCompletionBlock) {
+        if (delegate.appCompletionBlock) {
             // 延迟的时间
-            delegate.tokenCompletionBlock(dic);
+            delegate.appCompletionBlock(dic);
             //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //                weakSelf.completionBlock(dic);
             //            });
         }
     }];
+}
+
+- (void)loginComplete{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if (1) {
+        delegate.isNeedPush = NO;
+        switch (delegate.thirdAwakeTokenStatus) {
+            case 1:
+            {
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 1;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    if([tokenDic[@"status"] intValue]==0){
+                        if ([tokenDic[@"phone"] length]) {
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                        }else{
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                        }
+                        
+                    }else{
+                        if ([tokenDic[@"phone"] length]) {
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                        }else{
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                        }
+                        
+                    }
+                    //                    [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        [rootnav popToRootViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                    }
+                    weakDelegate.soureSchme = nil;
+                    weakDelegate.thirdAwakeTokenStatus = 0;
+                    //weakSelf.fromThirdAwake = NO;
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                            
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                };
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                    //                    [weakDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        [rootnav pushViewController:tokenVC animated:YES];
+                    }
+                });
+            }
+                break;
+            case 2:
+            {
+                delegate.isNeedPush = YES;
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 2;
+//                tokenVC.isShowAuth = self.isShowAuth;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                //                NSString *sourceScheme = delegate.soureSchme;
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    if([tokenDic[@"status"] intValue]==0){
+                        if ([tokenDic[@"phone"] length]) {
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                        }else{
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                        }
+                        
+                    }else{
+                        if ([tokenDic[@"phone"] length]) {
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                        }else{
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                        }
+                    }
+                    //                    [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                    //                        weakDelegate.soureSchme = nil;
+                    //                        weakDelegate.thirdAwakeTokenStatus = 0;
+                    //                        YCLog(@"soureSchme清空");
+                    //                        //weakDelegate.fromThirdAwake = NO;
+                    //                        if (@available(iOS 10.0,*)) {
+                    //                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                    //
+                    //                            }];
+                    //                        }else{
+                    //                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    //                        }
+                    //                    }];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        //                        [rootnav popViewControllerAnimated:YES];
+                        [rootnav popToRootViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            weakDelegate.soureSchme = nil;
+                            weakDelegate.thirdAwakeTokenStatus = 0;
+                            YCLog(@"soureSchme清空");
+                            //weakDelegate.fromThirdAwake = NO;
+                            if (@available(iOS 10.0,*)) {
+                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                                    
+                                }];
+                            }else{
+                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                            }
+                        });
+                    }
+                };
+                TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                //                [delegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                    UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                    [rootnav pushViewController:tokenVC animated:YES];
+                }
+            }
+                break;
+            case 3:
+            {
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 3;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    if([tokenDic[@"phone"] length]){
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                    }else{
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                    }
+                    //                    [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        //                        [rootnav popViewControllerAnimated:YES];
+                        [rootnav popToRootViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                    }
+                    weakDelegate.soureSchme = nil;
+                    weakDelegate.thirdAwakeTokenStatus = 0;
+                    //weakSelf.fromThirdAwake = NO;
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                            
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                };
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //                    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                    //                    [weakDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        [rootnav pushViewController:tokenVC animated:YES];
+                    }
+                });
+            }
+                break;
+            case 4:
+            {
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 4;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    if ([tokenDic[@"phone"] length]) {
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                    }else{
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                    }
+                    
+                    weakDelegate.soureSchme = nil;
+                    weakDelegate.thirdAwakeTokenStatus = 0;
+                    //weakSelf.fromThirdAwake = NO;
+                    //                    [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        [rootnav popToRootViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                    }
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                            
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                    
+                };
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //                    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                    //                    [weakDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                    if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                        UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                        [rootnav pushViewController:tokenVC animated:YES];
+                    }
+                });
+            }
+                break;
+            case 8:
+            {
+                delegate.isNeedPush = YES;
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 8;
+                tokenVC.isShowAuth = YES;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                //                NSString *sourceScheme = delegate.soureSchme;
+                NSString *cimsURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    urlStr = [NSString stringWithFormat:@"%@://auth?scheme=trusfortcims&type=auth&cimsurl=%@&code=%@@&status=%d",weakDelegate.soureSchme,cimsURL,tokenDic[@"code"],[tokenDic[@"status"] intValue]];
+                    //                    weakDelegate.soureSchme = nil;
+                    //                    weakDelegate.thirdAwakeTokenStatus = 0;
+                    //                    if (weakDelegate.window.rootViewController.presentedViewController) {
+                    //                        [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                    //                            YCLog(@"dismissViewController success");
+                    //                            if (@available(iOS 10.0,*)) {
+                    //                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:nil];
+                    //                            }else{
+                    //                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    //                            }
+                    //                        }];
+                    //                    }else{
+                    //                        if (@available(iOS 10.0,*)) {
+                    //                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:nil];
+                    //                        }else{
+                    //                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    //                        }
+                    //                    }
+                    //                    [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                    //
+                    //                    }];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                            UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                            //                        [rootnav popViewControllerAnimated:YES];
+                            [rootnav popToRootViewControllerAnimated:YES];
+//                            [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
+                            weakDelegate.soureSchme = nil;
+                            weakDelegate.thirdAwakeTokenStatus = 0;
+                            //                            weakDelegate.isNeedPush = NO;
+                        }
+                    });
+                    
+                    
+                    YCLog(@"soureSchme清空");
+                    //weakDelegate.fromThirdAwake = NO;
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                            
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                    
+                };
+                //                TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                //                [delegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                    UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                    [rootnav pushViewController:tokenVC animated:YES];
+                }
+            }
+                break;
+            default:
+                break;
+        }
+        
+        
+        //YCLog(@"self.navigationController = %@",self.navigationController);
+        
+        
+    }
 }
 
 

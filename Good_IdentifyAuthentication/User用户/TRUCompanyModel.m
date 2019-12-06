@@ -8,11 +8,11 @@
 
 #import "TRUCompanyModel.h"
 #import <objc/runtime.h>
-
+#import <YYModel.h>
 @implementation TRUCompanyModel
 + (instancetype)modelWithDic:(NSDictionary *)dic{
     id model = [[self alloc] init];
-    [model setValuesForKeysWithDictionary:dic];
+    [model yy_modelSetWithDictionary:dic];
     return model;
 }
 //兼容

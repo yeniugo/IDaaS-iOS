@@ -31,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *eyebtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 
 @end
 
@@ -76,7 +77,8 @@
         [_phoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     }
     codeType = @"";
-    
+    self.codeBtn.backgroundColor = DefaultGreenColor;
+    self.verifyBtn.backgroundColor = DefaultGreenColor;
 }
 -(void)valueChanged:(UITextField *)field{
     NSString *str = field.text;

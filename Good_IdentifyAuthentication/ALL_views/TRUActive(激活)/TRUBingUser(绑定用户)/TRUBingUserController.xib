@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TRUBingUserController">
             <connections>
+                <outlet property="AccountbottomView" destination="Pjj-6K-g41" id="aaS-Oy-mzv"/>
                 <outlet property="inputoneTF" destination="BOD-yy-WuL" id="uO6-r8-Ize"/>
                 <outlet property="inputpasswordTF" destination="6kM-hO-aPI" id="8AB-gq-6Wy"/>
                 <outlet property="inputphonemailTF" destination="beg-Al-C55" id="SBl-P1-fsZ"/>
                 <outlet property="iphoneEmialView" destination="VTP-P6-BRo" id="M5Z-MB-hsG"/>
                 <outlet property="numView" destination="7DJ-3S-hvt" id="Rl6-E4-6fg"/>
                 <outlet property="sendBtn" destination="Ylf-Fg-6RM" id="G0K-dq-Ccq"/>
+                <outlet property="verifyBtn" destination="l6j-37-qoq" id="RxK-sp-3gz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -105,7 +107,7 @@
                         <constraint firstAttribute="height" constant="55" id="Cth-4F-KGd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="验证" backgroundImage="alertSuerbtn">
+                    <state key="normal" title="验证">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -181,7 +183,6 @@
         <image name="addappeye" width="53" height="31"/>
         <image name="addappeyeclose" width="53" height="36"/>
         <image name="addappuser" width="41" height="45"/>
-        <image name="alertSuerbtn" width="242" height="84"/>
         <image name="bing_yaoshi" width="59" height="46"/>
     </resources>
 </document>

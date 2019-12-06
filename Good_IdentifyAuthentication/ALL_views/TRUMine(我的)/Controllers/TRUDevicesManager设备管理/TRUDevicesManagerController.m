@@ -153,11 +153,12 @@
     [_myTableView registerNib:[UINib nibWithNibName:@"TRUDevicesManagerCell" bundle:nil] forCellReuseIdentifier:@"TRUDevicesManagerCell"];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
+    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _myTableView.tableFooterView = [UIView new];
     if (kDevice_Is_iPhoneX) {
-        _myTableView.frame =CGRectMake(0, 90, SCREENW, SCREENH - 90);
+        _myTableView.frame =CGRectMake(0, kNavBarAndStatusBarHeight+10, SCREENW, SCREENH - kNavBarAndStatusBarHeight -10);
     }else{
-        _myTableView.frame =CGRectMake(0, 65, SCREENW, SCREENH - 65);
+        _myTableView.frame =CGRectMake(0, kNavBarAndStatusBarHeight+10, SCREENW, SCREENH - kNavBarAndStatusBarHeight -10);
     }
 }
 #pragma mark -UITableViewDelegate,UITableViewDataSource

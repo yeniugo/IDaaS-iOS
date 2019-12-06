@@ -51,7 +51,7 @@
     [self showHudWithText:@"正在提交..."];
     [self hideHudDelay:2.0];
     [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
-    
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
 }
 
 

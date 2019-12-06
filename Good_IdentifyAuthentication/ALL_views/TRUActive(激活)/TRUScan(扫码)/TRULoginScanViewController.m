@@ -39,7 +39,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
+    self.navigationBar.hidden = YES;
     if ([self checckVideoAuthorization]){
         [self.scanView beginScanning];
         [self.scanView resumeAnimation];
@@ -82,6 +83,17 @@
     [self.scanView setScanResultBlock:^(NSString *result) {
         YCLog(@"--11111-->%@",result);
         //判断扫描的二维码是激活，还是获取多租户信息
+        if ([result hasPrefix:@"http://"]||[result hasPrefix:@"https://"]) {
+            if ([result containsString:@"download"]) {
+                
+            }else{
+                [weakSelf restartScan];
+                return;
+            }
+        }else{
+            [weakSelf restartScan];
+            return;
+        }
         NSArray *arr = [result componentsSeparatedByString:@"download"];
         
         NSString *currentCims;
@@ -162,17 +174,19 @@
             NSString *spcode = dic[@"spcode"];
             if (spcode.length>0){//
 //                [xindunsdk initEnv:@"com.example.demo" url:currentCims];
-                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+                [[NSUserDefaults standardUserDefaults] setObject:spcode forKey:@"spcode"];
+                [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:currentCims devfpUrl:currentCims];
+//                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
                 NSString *para = [xindunsdk encryptByUkey:spcode];
                 NSDictionary *dic = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-                [TRUhttpManager sendCIMSRequestWithUrl:[currentCims stringByAppendingString:@"mapi/01/verify/getspinfo"] withParts:dic onResult:^(int errorno, id responseBody) {
+                [TRUhttpManager getCIMSRequestWithUrl:[currentCims stringByAppendingString:@"api/ios/cims.html"] withParts:dic onResult:^(int errorno, id responseBody) {
                     [weakSelf hideHudDelay:0.0];
                     YCLog(@"--%d-->%@",errorno,responseBody);
                     if (errorno == 0 && responseBody) {
-                        NSDictionary *dict = [xindunsdk decodeServerResponse:responseBody];
+                        NSDictionary *dict = responseBody;
                         YCLog(@"--->%@",dict);
-                        if ([dict[@"code"] intValue] == 0) {
-                            NSDictionary *dicc = dict[@"resp"];
+                        if (1) {
+                            NSDictionary *dicc = responseBody;
                             TRUCompanyModel *companyModel = [TRUCompanyModel modelWithDic:dicc];
                             companyModel.desc = dic[@"description"];
                             [TRUCompanyAPI saveCompany:companyModel];
@@ -186,7 +200,8 @@
                                     [weakSelf changeIconWithName:companyModel.icon_url];
                                     //切换服务地址 http://192.168.1.115:8000/cims
 //                                    bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
-                                    [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+                                    bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
+//                                    [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
 //                                    YCLog(@"initXdSDK %d",res);
                                     [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -205,7 +220,8 @@
                                 [weakSelf changeIconWithName:companyModel.icon_url];
                                 //切换服务地址 http://192.168.1.115:8000/cims
 //                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
-                                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+                                bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
+//                                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
 //                                YCLog(@"initXdSDK %d",res);
                                 [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -444,7 +460,7 @@
                             TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
                             model.userId = userId;
                             [TRUUserAPI saveUser:model];
-                            if ([self checkPersonInfoVC:model]) {//yes 表示需要完善信息
+                            if (0) {//yes 表示需要完善信息
                                 TRUAddPersonalInfoViewController *infoVC = [[TRUAddPersonalInfoViewController alloc] init];
                                 infoVC.userNo = userno;
                                 infoVC.email = model.email;

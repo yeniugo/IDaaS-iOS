@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TRUPersonalSmailModel.h"
 @interface TRUPersonalSmaillCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *message;
-@property (weak, nonatomic) IBOutlet UIImageView *icon;
+
 
 /**
  是否显示分割线
  */
 @property (nonatomic, assign) BOOL isShort;//是否为长短线
+@property (nonatomic, strong) TRUPersonalSmailModel *cellModel;
 @end

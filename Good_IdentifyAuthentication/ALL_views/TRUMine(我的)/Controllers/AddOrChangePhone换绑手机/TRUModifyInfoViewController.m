@@ -50,6 +50,7 @@
         nav.backBlock = ^(){
             if (weakSelf.timer) [weakSelf stopTimer];
             [weakSelf.navigationController popViewControllerAnimated:YES];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
             weakNav.backBlock = nil;
         };
     }
@@ -370,11 +371,13 @@
                         [TRUUserAPI saveUser:model];
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
                         [weakSelf.navigationController popViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         return;
                     }
                 }else{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
                     [weakSelf.navigationController popViewControllerAnimated:YES];
+//                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                 }
 //                [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
 //                [weakSelf.navigationController popViewControllerAnimated:YES];

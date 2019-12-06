@@ -117,7 +117,7 @@
         label.frame = CGRectMake(_spacing + (_spacing +width)*index + 1, 0, width - 2, height );
         label.text = nil;
         label.text = charStr;
-        label.textColor = RGBCOLOR(73, 158, 40);
+        label.textColor = DefaultGreenColor;
         label.font = self.textFont;
         label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:label];

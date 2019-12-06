@@ -10,6 +10,7 @@
 
 @interface TRUSchemeTokenViewController : TRUBaseViewController
 @property (assign, nonatomic) int schemetype;
+@property (assign, nonatomic) BOOL isNeedpush;//是否该显示push
 @property (assign, nonatomic) BOOL isShowAuth;//是否该显示showAuth
 @property (nonatomic, copy) void (^completionBlock)(NSDictionary *tokenDic);
 //@property (assign, nonatomic) BOOL isFirstLogin;//是否为第一次登陆,默认值为NO

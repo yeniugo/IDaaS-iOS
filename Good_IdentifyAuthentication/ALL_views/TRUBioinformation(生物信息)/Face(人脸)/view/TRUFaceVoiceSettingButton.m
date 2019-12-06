@@ -45,8 +45,13 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    self.titleLabel.x = 20.0;
-    self.titleLabel.width = self.bounds.size.width;
+//    if (self.isDeleteBtn) {
+//
+//    }else{
+//
+//    }
+    self.titleLabel.x = 25.0;
+    self.titleLabel.width = self.bounds.size.width-60.0;
     self.imageView.x = self.width - self.imageView.width - 20.0;
     self.imageView.size = CGSizeMake(16.0, 16.0);
     self.imageView.y = (self.height - self.imageView.size.height) * 0.5;

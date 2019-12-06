@@ -47,13 +47,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    label.hidden = YES;
-    [_scanJsonView stop];
-    [_scanJsonView playWithCompletion:^(BOOL animationFinished) {
-        if (animationFinished) {
-            label.hidden = NO;
-        }
-    }];
+//    label.hidden = YES;
+//    [_scanJsonView stop];
+//    [_scanJsonView playWithCompletion:^(BOOL animationFinished) {
+//        if (animationFinished) {
+//            label.hidden = NO;
+//        }
+//    }];
     NSString *URLstr = [TRUCompanyAPI getCompany].cims_server_url;
     if (URLstr.length>0) {//说明已经切换了
         self.bingEmailBtn.hidden = NO;
@@ -78,18 +78,41 @@
 }
 -(void)customUI{
     
-    [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
-    [_AgreementBtn setTitleColor:DefaultColor forState:UIControlStateNormal];
-    _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [_bingEmailBtn setBackgroundColor:DefaultColor];
+    self.bingEmailBtn.backgroundColor = DefaultGreenColor;
+    self.bingEmailBtn.layer.cornerRadius = 5;
+    self.bingEmailBtn.layer.masksToBounds = YES;
+    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:scanBtn];
+    scanBtn.frame = CGRectMake((SCREENW - 100)/2.0, (SCREENH - 100)*378.0/(378.0+334.0), 100, 100);
+    [scanBtn addTarget:self action:@selector(scanViewTap) forControlEvents:UIControlEventTouchUpInside];
+    scanBtn.backgroundColor = DefaultGreenColor;
+    scanBtn.layer.masksToBounds = YES; //没这句话它圆不起来
+    scanBtn.layer.cornerRadius = 50.0; //设置图片圆角的大小
+    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanlogin"]];
+    [scanBtn addSubview:icon];
+    icon.frame = CGRectMake(34, 34, 32, 32);
     
-    _scanJsonView = [LOTAnimationView animationNamed:@"Scandata.json"];
-    _scanJsonView.frame = CGRectMake(0, 0, 230, 230);
-    [_ScanView addSubview:_scanJsonView];
+    UILabel *scanLB = [[UILabel alloc] init];
+    [self.view addSubview:scanLB];
+    scanLB.frame = CGRectMake(0, (SCREENH - 100)*378.0/(378.0+334.0) + 100 + 20, SCREENW, 14);
+    scanLB.textAlignment = NSTextAlignmentCenter;
+    scanLB.text = @"扫一扫绑定";
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanViewTap)];
-    [_scanJsonView addGestureRecognizer:tap];
-    _scanJsonView.userInteractionEnabled = YES;
+    
+    
+//    [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
+//    [_AgreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//    _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+//    [_bingEmailBtn setBackgroundColor:DefaultColor];
+    
+//    _scanJsonView = [LOTAnimationView animationNamed:@"Scandata.json"];
+//    _scanJsonView.frame = CGRectMake(0, 0, 230, 230);
+//    [_ScanView addSubview:_scanJsonView];
+    
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanViewTap)];
+//    [_scanJsonView addGestureRecognizer:tap];
+//    _scanJsonView.userInteractionEnabled = YES;
     
     //[self addScanViewMessage:@"http://192.168.1.214:8100/authn/download.html?spcode=8284f8b351c34cc0a9a68bd960fba8fc"];
 }
@@ -131,17 +154,18 @@
         NSString *spcode = dic[@"spcode"];
         if (spcode.length>0){//
 //            [xindunsdk initEnv:@"com.example.demo" url:currentCims];
-            [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+            [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:currentCims devfpUrl:currentCims];
+//            [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
             NSString *para = [xindunsdk encryptByUkey:spcode];
             NSDictionary *dic = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-            [TRUhttpManager sendCIMSRequestWithUrl:[currentCims stringByAppendingString:@"mapi/01/verify/getspinfo"] withParts:dic onResult:^(int errorno, id responseBody) {
+            [TRUhttpManager getCIMSRequestWithUrl:[currentCims stringByAppendingString:@"api/ios/cims.html"] withParts:dic onResult:^(int errorno, id responseBody) {
                 //[weakSelf hideHudDelay:0.0];
                 YCLog(@"--%d-->%@",errorno,responseBody);
                 if (errorno == 0 && responseBody) {
-                    NSDictionary *dict = [xindunsdk decodeServerResponse:responseBody];
+                    NSDictionary *dict = responseBody;
                     YCLog(@"--->%@",dict);
-                    if ([dict[@"code"] intValue] == 0) {
-                        NSDictionary *dicc = dict[@"resp"];
+                    if (1) {
+                        NSDictionary *dicc = responseBody;
                         TRUCompanyModel *companyModel = [TRUCompanyModel modelWithDic:dicc];
                         companyModel.desc = dic[@"description"];
                         [TRUCompanyAPI saveCompany:companyModel];
@@ -155,7 +179,8 @@
                                 //[weakSelf changeIconWithName:companyModel.icon_url];
                                 //切换服务地址 http://192.168.1.115:8000/cims
 //                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
-                                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+                                bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
+//                                [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
 //                                YCLog(@"initXdSDK %d",res);
                                 [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -170,7 +195,8 @@
                             //[weakSelf changeIconWithName:companyModel.icon_url];
                             //切换服务地址 http://192.168.1.115:8000/cims
 //                            bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
-                            [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
+                            bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
+//                            [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
 //                            YCLog(@"initXdSDK %d",res);
                             [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                             [[NSUserDefaults standardUserDefaults] synchronize];

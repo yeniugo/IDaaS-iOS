@@ -18,15 +18,19 @@
 #import "TRULicenseAgreementViewController.h"
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
-
+#import "YZXGesturesView.h"
+#import "TRUEnterAPPAuthView.h"
 
 @interface TRUGestureSettingViewController ()
 
-@property (nonatomic, strong) UILabel *topLabel;
-@property (nonatomic, weak) HUIPatternLockView *patternLockView;
-@property (nonatomic, strong) LOTAnimationView *identifylotView;
-@property (nonatomic, strong) LOTAnimationView *loadlotView;
+@property (nonatomic, strong) YZXGesturesView             *YZXGesturesView;
+
+
+//手势解锁提示文本
+@property (strong, nonatomic) UILabel *hintLabel;
+//设置手势成功id
+@property (nonatomic, copy) NSArray             *selectedID;
+
 
 @property (nonatomic, strong) NSString *firstGesture;
 
@@ -50,132 +54,102 @@
     __weak typeof(self) weakSelf = self;
     self.title = @"开启手势验证";
     self.linelabel.hidden = YES;
-    
-    //iconImgview lotview
     CGFloat lastY = 100;
+    //iconImgview lotview
     
-    UIImageView *iconImgview = [[UIImageView alloc] init];
-    [self.view addSubview:iconImgview];
-    NSString *imgurlstr = [TRUCompanyAPI getCompany].logo_url;
-    [iconImgview yy_setImageWithURL:[NSURL URLWithString:imgurlstr] placeholder:[UIImage imageNamed:@"ges_bg"]];
-    iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 65, 100, 100);
+    
+    self.hintLabel = [[UILabel alloc] init];
+    self.hintLabel.frame = CGRectMake(0, SCREENH / 2.0 - (SCREENW - 80.0) / 2.0 - 40, SCREENW, 20);
+    self.hintLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.hintLabel];
+    self.hintLabel.textColor = [UIColor darkGrayColor];
+    self.hintLabel.text = @"请输入手势";
     if (kDevice_Is_iPhoneX) {
-        iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 105, 100, 100);
+        self.hintLabel.frame = CGRectMake(0, lastY + 115, SCREEN_WIDTH, 20);
     }else{
-        iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 65, 100, 100);
+        self.hintLabel.frame = CGRectMake(0, lastY + 75, SCREEN_WIDTH, 20);
     }
     
-    _identifylotView = [LOTAnimationView animationNamed:@"GestureAppend.json"];
-    _identifylotView.size = CGSizeMake(160, 160);
-    _identifylotView.centerX = self.view.centerX;
-    _identifylotView.centerY = iconImgview.centerY;
-    [self.view addSubview:_identifylotView];
-    _identifylotView.hidden = YES;
-    
-    UILabel *topLabel = [[UILabel alloc] init];
-    topLabel.font = [UIFont systemFontOfSize:15];
-    topLabel.text = @"请设置您的手势密码";
-    topLabel.textColor = [UIColor darkGrayColor];
-    topLabel.textAlignment = NSTextAlignmentCenter;
-    topLabel.frame = CGRectMake(0, lastY + 75, SCREEN_WIDTH, 20);
-    [self.view addSubview:topLabel];
-    self.topLabel = topLabel;
-    
-    if (kDevice_Is_iPhoneX) {
-        topLabel.frame = CGRectMake(0, lastY + 115, SCREEN_WIDTH, 20);
-    }else{
-        topLabel.frame = CGRectMake(0, lastY + 75, SCREEN_WIDTH, 20);
-    }
-    //  
-    //指纹矩阵出现前的动画
-    _loadlotView= [LOTAnimationView animationNamed:@"Gestureloading.json"];
-    _loadlotView.size = CGSizeMake(230, 230);
-    _loadlotView.centerX = self.view.width / 2.0;
-    _loadlotView.y = topLabel.bottom + 30;
-    [self.view addSubview:_loadlotView];
-    
-    //指纹矩阵
-    UIImage *normalDotImage = [UIImage imageNamed:@"ges_normal"];
-    UIImage *highlightedDotImage = [UIImage imageNamed:@"ges_selected"];
-    HUIPatternLockView *patternLockView = [[HUIPatternLockView alloc] init];
-    patternLockView.backgroundColor = [UIColor clearColor];
-    patternLockView.size = CGSizeMake(252, 252);
-    patternLockView.centerX = self.view.width / 2.0;
-    if (kDevice_Is_iPhoneX) {
-        patternLockView.y = topLabel.bottom + 60;
-    }else{
-        patternLockView.y = topLabel.bottom + 20;
-    }
-    patternLockView.normalDotImage = normalDotImage;
-    patternLockView.highlightedDotImage = highlightedDotImage;
-    patternLockView.lineWidth = 6;
-    patternLockView.lineColor = lineDefaultColor;
-    patternLockView.didDrawPatternWithPassword = ^(HUIPatternLockView *lockView,NSUInteger dotCounts, NSString *password){
-        [weakSelf verifyGesture:password gesDotCount:dotCounts];
-    };
-    self.patternLockView = patternLockView;
-    [_loadlotView playWithCompletion:^(BOOL animationFinished) {
-        //在动画完成后，添加指纹矩阵
-        if (animationFinished) {
-            weakSelf.loadlotView.hidden = YES;
-            [weakSelf.view addSubview:patternLockView];
-        }
-    }];
-    
+    [self.view addSubview:self.YZXGesturesView];
     //用户协议
-    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-    [self.view addSubview:txtLabel];
-    txtLabel.text = @"使用此App,即表示同意该";
-    txtLabel.font = [UIFont systemFontOfSize:14];
-    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:agreementBtn];
-    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-    if (kDevice_Is_iPhoneX) {
-        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-    }
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"使用此App,即表示同意该";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//    }
 }
-- (void)verifyGesture:(NSString *)gesture gesDotCount:(NSInteger)gesDotCount{
-    UIColor *wrongLineColor = [UIColor redColor];
-    
-    if (gesDotCount < 4) {
-        self.topLabel.text = @"至少连接4个点，请重画";
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.topLabel.text = self.firstGesture.length > 0 ? @"请再次绘制手势" : @"绘制解锁图案";
-            self.patternLockView.lineColor = lineDefaultColor;
-            [self.patternLockView resetDotsState];
-        });
-        return;
-    }
-    iunmber++;
-    if (self.firstGesture.length > 0) {
-        if ([gesture isEqualToString:self.firstGesture]) {
-            [self registerGesture:gesture];
-            //request
+
+- (YZXGesturesView *)YZXGesturesView
+{
+    if (!_YZXGesturesView) {
+        CGRect frame = CGRectZero;
+        frame.size = CGSizeMake(252, 252);
+        if (kDevice_Is_iPhoneX) {
+            frame.origin.y = self.hintLabel.bottom + 60;
         }else{
-            self.topLabel.text = @"图案错误，请重试";
-            self.topLabel.textColor = wrongLineColor;
-            self.patternLockView.lineColor = wrongLineColor;
-            self.patternLockView.highlightedDotImage = [UIImage imageNamed:@"ges_wrong"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.patternLockView resetDotsState];
-                [self.patternLockView setLineColor:lineDefaultColor];
-                self.firstGesture = nil;
-                self.patternLockView.highlightedDotImage = [UIImage imageNamed:@"ges_selected"];
-                self.topLabel.text = @"请重新绘制手势";
-                self.topLabel.textColor = [UIColor darkGrayColor];
-            });
+            frame.origin.y = self.hintLabel.bottom + 20;
         }
-        return;
+        frame.origin.x = (self.view.width - 252)/2.0;
+        _YZXGesturesView = [[YZXGesturesView alloc] initWithFrame:frame];
+//        _YZXGesturesView = [[YZXGesturesView alloc] initWithFrame:CGRectMake(40, SCREENH / 2.0 - (SCREENW - 80.0) / 2.0, SCREENW - 80.0, SCREENW - 80.0)];
+        _YZXGesturesView.backgroundColor = [UIColor clearColor];
+        
+        __weak typeof(self) weakSelf = self;
+        //设置手势，记录设置的密码，待确定后确定
+        _YZXGesturesView.gestureBlock = ^(NSArray *selectedID) {
+            //            weak_self.selectedID = selectedID;
+            
+            [weakSelf verifyGesture:[selectedID componentsJoinedByString:@""]];
+        };
+        _YZXGesturesView.gestureErrorBlock = ^{
+            weakSelf.hintLabel.text = @"手势长度不足4个，请重新输入";
+            weakSelf.hintLabel.textColor = [UIColor redColor];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if(weakSelf.firstGesture.length){
+                    weakSelf.hintLabel.text = @"请再次输入手势";
+                }else{
+                    weakSelf.hintLabel.text = @"请输入手势";
+                }
+                weakSelf.hintLabel.textColor = [UIColor darkGrayColor];
+            });
+        };
     }
-    self.firstGesture = gesture;
-    [self.patternLockView resetDotsState];
-    [self.patternLockView setLineColor:lineDefaultColor];
-    self.topLabel.text = @"请再次绘制手势";
+    return _YZXGesturesView;
+}
+
+- (void)verifyGesture:(NSString *)gesture {
+    if (self.firstGesture.length) {
+        if ([self.firstGesture isEqualToString:gesture]) {
+            [self registerGesture:gesture];
+            self.hintLabel.textColor = [UIColor darkGrayColor];
+            self.hintLabel.text = @"验证手势成功";
+        }else{
+            self.hintLabel.textColor = [UIColor darkGrayColor];
+            self.hintLabel.text = @"两次手势不一致，请重新输入";
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.firstGesture = nil;
+                [self.YZXGesturesView resetNormal];
+                self.hintLabel.textColor = [UIColor darkGrayColor];
+                self.hintLabel.text = @"请输入手势";
+            });
+            
+        }
+    }else{
+        self.firstGesture = gesture;
+        [self.YZXGesturesView resetNormal];
+        self.hintLabel.textColor = [UIColor darkGrayColor];
+        self.hintLabel.text = @"请再次输入手势";
+    }
 }
 
 -(void)registerGesture:(NSString *)gesture {
@@ -185,16 +159,12 @@
     }
     [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
     [TRUFingerGesUtil saveGesturePwd:encryptedGesture];
+    
     __weak typeof(self) weakSelf = self;
-    _identifylotView.hidden = NO;
-    [_identifylotView playWithCompletion:^(BOOL animationFinished) {
-        if (animationFinished) {
-            if (weakSelf.backBlocked) {
-                weakSelf.backBlocked();
-            }
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }
-    }];
+    if (weakSelf.backBlocked) {
+        weakSelf.backBlocked();
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSString *)encryptGesture:(NSString *)gesture {
@@ -248,7 +218,7 @@
 
     } else if ([buttonTitle isEqualToString:@"重新设置"]) {
         self.firstGesture = nil;
-        self.topLabel.text = @"绘制解锁图案";
+        self.hintLabel.text = @"绘制解锁图案";
     }
 }
 

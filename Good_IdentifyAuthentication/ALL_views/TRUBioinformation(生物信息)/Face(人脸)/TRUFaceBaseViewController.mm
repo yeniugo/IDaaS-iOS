@@ -101,6 +101,7 @@ NS_ENUM(DetectType) {
     [UIApplication sharedApplication].idleTimerDisabled = YES;  //开启保持屏幕唤醒
     self.scrollView.scrollEnabled = NO;
     
+    self.navigationBar.hidden = YES;
     
     [self.view addSubview:self.gifView];
     
@@ -176,6 +177,7 @@ NS_ENUM(DetectType) {
     
     if (note != nil) {
         [self.navigationController popViewControllerAnimated:YES];
+//        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

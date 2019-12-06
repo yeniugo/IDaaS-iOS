@@ -82,7 +82,7 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     long seconds_cli = (long)time((time_t*)NULL);
     long gs_detal = [[def objectForKey:@"PERCENTKEY"] longValue];
-    int sec = (seconds_cli - gs_detal) % 30;
+    int sec = (seconds_cli - gs_detal*30) % 30;
     if (sec < 0) {
         sec = ABS(sec);
     }

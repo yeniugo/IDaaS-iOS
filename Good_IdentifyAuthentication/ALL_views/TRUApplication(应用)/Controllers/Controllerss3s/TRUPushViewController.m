@@ -389,7 +389,7 @@
         }else{
             if ([weakSelf.pushModel.authtype isEqualToString:@"6"]) {//人脸
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2019-03-30"];
+                int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
                 
                 if (dd >= 0) {
                     [weakSelf setDismissBlock:^(BOOL confirm){
@@ -528,7 +528,7 @@ static NSInteger pushCount = 0;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
     self.navigationController.navigationBar.hidden = YES;
     //北明项目
     _logoImgView.hidden = YES;

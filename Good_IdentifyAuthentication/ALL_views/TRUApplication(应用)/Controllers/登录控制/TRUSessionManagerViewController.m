@@ -56,6 +56,12 @@
     
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationBar.hidden = NO;
+}
+
 - (void)initDataSource{
     self.dataSource = [NSMutableArray array];
     [self loadSSOLoginInfo];

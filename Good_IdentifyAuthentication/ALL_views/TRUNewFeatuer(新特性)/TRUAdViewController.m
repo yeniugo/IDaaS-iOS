@@ -9,7 +9,7 @@
 #import "TRUAdViewController.h"
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
+#import <Masonry.h>
 @interface TRUAdViewController ()
 
 @end
@@ -18,25 +18,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.navigationBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageview = [[UIImageView alloc] init];
+    imageview.backgroundColor = [UIColor clearColor];
+    imageview.image = [UIImage imageNamed:@"applauchIcon.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
-    if (str.length>0) {
-        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
-    }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
-    }
-    if (kDevice_Is_iPhoneX) {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        CGFloat wid = rect.size.width;
-        CGFloat hei = rect.size.height - 34;
-        imageview.frame = CGRectMake(0, 0, wid, hei);
-    }else{
-        imageview.frame = [UIScreen mainScreen].bounds;
-    }
-    
+    UILabel *showLable = [[UILabel alloc] init];
+    showLable.text = @"移动安全认证";
+    [self.view addSubview:showLable];
     [self.view addSubview:imageview];
+    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-125);
+    }];
+    [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.height.equalTo(@(62));
+        make.width.equalTo(@(62));
+        make.bottom.equalTo(showLable.mas_top).with.offset(-25);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

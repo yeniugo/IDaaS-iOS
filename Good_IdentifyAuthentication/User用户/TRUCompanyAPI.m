@@ -63,8 +63,37 @@ static NSString *TRUCompanyKEY = @"913d3d1ses762af60e2qb3467ad1864p";
     if (company.software_name) {
         [mutableDic setObject:company.software_name forKey:@"software_name"];
     }
-    
-    
+    NSString *key;
+    if (company.hasProtal) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasProtal"];
+    if (company.hasQrCode) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasQrCode"];
+    if (company.hasFace) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasFace"];
+    if (company.hasVoice) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasVoice"];
+    if (company.hasMtd) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasMtd"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    YCLog(@"--Company--dic-->%@",dic);
     [defaults setObject:mutableDic.copy forKey:TRUCompanyKEY];

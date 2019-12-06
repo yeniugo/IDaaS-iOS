@@ -36,6 +36,27 @@
 /** 自定义软件名称 */
 @property (nonatomic, copy) NSString *software_name;
 
+/**
+ 是否有微门户
+ */
+@property (nonatomic, assign) BOOL hasProtal;
 
+/**
+ 是否有扫码
+ */
+@property (nonatomic, assign) BOOL hasQrCode;
+
+/**
+ 是否有人脸
+ */
+@property (nonatomic, assign) BOOL hasFace;
+/**
+ 是否有声纹
+ */
+@property (nonatomic, assign) BOOL hasVoice;
+/**
+ 是否有MTD
+ */
+@property (nonatomic, assign) BOOL hasMtd;
 + (instancetype)modelWithDic:(NSDictionary *)dic;
 @end

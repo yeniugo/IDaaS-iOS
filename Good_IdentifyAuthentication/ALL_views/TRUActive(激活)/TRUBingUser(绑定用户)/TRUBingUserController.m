@@ -28,9 +28,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputphonemailTF;
 @property (weak, nonatomic) IBOutlet UITextField *inputpasswordTF;//验证码
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
+@property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
+@property (weak, nonatomic) IBOutlet UIView *AccountbottomView;
 
 @property (nonatomic, weak) NSTimer *timer;
-
+@property (nonatomic, copy) NSString *loginStr;
+@property (nonatomic,assign) int activeModel;
 @end
 
 @implementation TRUBingUserController
@@ -49,30 +52,45 @@
     [super viewDidLoad];
     self.title = @"绑定";
     isEmail = isPhone = isEmployee = NO;
-    
+    self.verifyBtn.backgroundColor = DefaultGreenColor;
+    self.verifyBtn.layer.cornerRadius = 5;
+    self.verifyBtn.layer.masksToBounds = YES;
+    self.AccountbottomView.layer.cornerRadius = 5;
+    self.AccountbottomView.layer.borderWidth = 1;
+    self.AccountbottomView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
+    self.numView.layer.cornerRadius = 5;
+    self.numView.layer.borderWidth = 1;
+    self.numView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
+    self.iphoneEmialView.layer.cornerRadius = 5;
+    self.iphoneEmialView.layer.borderWidth = 1;
+    self.iphoneEmialView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
+            self.loginStr = modeStr;
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
                 isEmail = YES;
                 _inputoneTF.placeholder = @"请输入您的邮箱";
                 _numView.hidden = YES;
                 _sendBtn.hidden = NO;
                 _iphoneEmialView.hidden = NO;
+                self.activeModel = 1;
             }else if ([modeStr isEqualToString:@"2"]){
                 isPhone = YES;
                 _inputoneTF.placeholder = @"请输入您的手机号";
                 _numView.hidden = YES;
                 _sendBtn.hidden = NO;
                 _iphoneEmialView.hidden = NO;
+                self.activeModel = 2;
             }else if ([modeStr isEqualToString:@"3"]){
                 isEmployee = YES;
-                _inputoneTF.placeholder = @"请输入您的工号/用户名";
+                _inputoneTF.placeholder = @"请输入您的账号";
                 _numView.hidden = NO;
                 _sendBtn.hidden = YES;
                 _iphoneEmialView.hidden = YES;
+                self.activeModel = 3;
             }
         }
         
@@ -80,28 +98,28 @@
         [_inputoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     }
     _inputpasswordTF.secureTextEntry = YES;
-    [_sendBtn setBackgroundColor:DefaultColor];
+    [_sendBtn setBackgroundColor:DefaultGreenColor];
     _sendBtn.layer.masksToBounds = YES;
     _sendBtn.layer.cornerRadius = 5.0;
     
     
     //用户协议
-    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-    [self.view addSubview:txtLabel];
-    txtLabel.text = @"使用此App,即表示同意该";
-    txtLabel.font = [UIFont systemFontOfSize:14];
-    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:agreementBtn];
-    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-    
-    if (kDevice_Is_iPhoneX) {
-        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-    }
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"使用此App,即表示同意该";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//    }
     
 }
 
@@ -141,13 +159,19 @@
 #pragma mark -验证
 - (IBAction)VerifyBtnClick:(UIButton *)sender {
     [self.view endEditing:YES];
-    if (_inputpasswordTF.text.length == 0 && isEmployee) {
-        [self showHudWithText:@"请输入密码"];
+    
+    if (_inputoneTF.text.trim.length == 0 && isEmployee) {
+        [self showHudWithText:@"请输入正确的账号/验证码信息"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if (_inputphonemailTF.text.length == 0 && isEmployee == NO) {
-        [self showHudWithText:@"请输入您收到的验证码"];
+    if (_inputpasswordTF.text.trim.length == 0 && isEmployee) {
+        [self showHudWithText:@"请输入正确的账号/密码信息"];
+        [self hideHudDelay:1.5f];
+        return;
+    }
+    if (_inputphonemailTF.text.trim.length == 0 && isEmployee == NO) {
+        [self showHudWithText:@"请输入正确的账号/验证码信息"];
         [self hideHudDelay:1.5f];
         return;
     }
@@ -213,27 +237,27 @@
 
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
     
-    if (_inputoneTF.text.length == 0 && isEmail){
+    if (_inputoneTF.text.trim.length == 0 && isEmail){
         [self showHudWithText:@"请输入您的邮箱"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if (_inputoneTF.text.length == 0 && isPhone){
+    if (_inputoneTF.text.trim.length == 0 && isPhone){
         [self showHudWithText:@"请输入您的手机号"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if ([_inputoneTF.text isPhone] && isEmail) {
+    if ([_inputoneTF.text.trim isPhone] && isEmail) {
         [self showHudWithText:@"请输入正确格式的邮箱账号"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if ([_inputoneTF.text isEmail] && isPhone) {
+    if ([_inputoneTF.text.trim isEmail] && isPhone) {
         [self showHudWithText:@"请输入正确格式的手机号"];
         [self hideHudDelay:1.5f];
         return;
     }
-    NSString *str = _inputoneTF.text;
+    NSString *str = _inputoneTF.text.trim;
     if ([str isPhone]) {//是手机号
         [self requestCodeForUser:str type:@"phone"];
     }else if ([str isEmail]){//是邮箱
@@ -279,7 +303,7 @@
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
         NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
         if (errorno == 0) {
@@ -312,7 +336,7 @@
                             [TRUUserAPI saveUser:model];
                             AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
                             appdelegate.isNeedPush = YES;
-                            if ([self checkPersonInfoVC:model]) {//yes 表示需要完善信息
+                            if (0) {//yes 表示需要完善信息
                                 TRUAddPersonalInfoViewController *infoVC = [[TRUAddPersonalInfoViewController alloc] init];
                                 if ([type isEqualToString:@"phone"]) {
                                     infoVC.phone = model.phone;
@@ -337,13 +361,36 @@
             [self showHudWithText:@"网络错误，请稍后重试"];
             [self hideHudDelay:2.0];
         }else if(9001 == errorno){
-            [self showHudWithText:@"激活码不正确，请确认后重新输入"];
-            [self hideHudDelay:2.0];
+            if ([type isEqualToString:@"email"]) {
+                [self showHudWithText:@"请输入正确的账号/验证码信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [self showHudWithText:@"请输入正确的账号/验证码信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"employeenum"]){
+                [self showHudWithText:@"请输入正确的账号/密码"];
+                [self hideHudDelay:2.0];
+            }
+            
+        }else if(9002 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"employeenum"]){
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }
         }else if (9019 == errorno){
             [self deal9019Error];
+        }else if (9016 == errorno){
+            [self showHudWithText:@"验证码失效"];
+            [self hideHudDelay:2.0];
         }else{
-            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
-            [self showHudWithText:err];
+            NSString *err = [NSString stringWithFormat:@"%@",message];
+            [self showHudWithText:@"激活失败"];
             [self hideHudDelay:2.0];
         }
     }];
@@ -359,7 +406,7 @@
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     YCLog(@"baseUrl = %@",baseUrl);
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
         if (0 == errorno) {
             YCLog(@"发送成功");
@@ -370,8 +417,29 @@
             [weakSelf startTimer];
             
         }else if (-5004 == errorno){
-            [weakSelf showHudWithText:@"网络错误，请稍后重试"];
-            [weakSelf hideHudDelay:2.0];
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"邮箱错误"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"手机号错误"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9001 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9002 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
         }else if (9021 == errorno){
@@ -386,9 +454,12 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (9036 == errorno){
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
-            [weakSelf showHudWithText:err];
+            [weakSelf showHudWithText:@"激活失败"];
             [weakSelf hideHudDelay:2.0];
         }
     }];
@@ -401,7 +472,7 @@
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:signStr isType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [self hideHudDelay:0.0];
         if (0 == errorno) {
             YCLog(@"发送成功");
@@ -410,6 +481,12 @@
             
         }else if (-5004 == errorno){
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9001 == errorno){
+            [weakSelf showHudWithText:@"请输入正确的账号/密码"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9002 == errorno){
+            [weakSelf showHudWithText:@"请输入正确的账号信息"];
             [weakSelf hideHudDelay:2.0];
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
@@ -427,7 +504,7 @@
             [weakSelf deal9026ErrorWithBlock:nil];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
-            [weakSelf showHudWithText:err];
+            [weakSelf showHudWithText:@"激活失败"];
             [weakSelf hideHudDelay:2.0];
         }
     }];

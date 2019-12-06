@@ -19,7 +19,7 @@
 #import "TRUGestureModify2ViewController.h"
 #import "TRUhttpManager.h"
 #import "gesAndFingerNVController.h"
-
+#import "TRUEnterAPPAuthView.h"
 @interface TRUCheckBingController ()
 
 @property (weak, nonatomic) IBOutlet UIView *iphoneEmialView;
@@ -29,8 +29,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputpasswordTF;//验证码
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 @property (nonatomic, weak) NSTimer *timer;
-
+@property (weak, nonatomic) IBOutlet UIView *AccountbottomView;
 @end
 
 @implementation TRUCheckBingController
@@ -48,10 +49,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"登录验证";
+    self.AccountbottomView.layer.cornerRadius = 5;
+    self.AccountbottomView.layer.borderWidth = 1;
+    self.AccountbottomView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
+    self.numView.layer.cornerRadius = 5;
+    self.numView.layer.borderWidth = 1;
+    self.numView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
+    self.iphoneEmialView.layer.cornerRadius = 5;
+    self.iphoneEmialView.layer.borderWidth = 1;
+    self.iphoneEmialView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
     TRUBaseNavigationController *nav = self.navigationController;
-    [nav setNavBarColor:DefaultGreenColor];
+//    [nav setNavBarColor:DefaultGreenColor];
     isEmail = isPhone = isEmployee = NO;
-    
+    self.verifyBtn.backgroundColor = DefaultGreenColor;
+    self.verifyBtn.layer.cornerRadius = 5;
+    self.verifyBtn.layer.masksToBounds = YES;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
@@ -73,7 +85,7 @@
                 _iphoneEmialView.hidden = NO;
             }else if ([modeStr isEqualToString:@"3"]){
                 isEmployee = YES;
-                _inputoneTF.placeholder = @"请输入您的工号/用户名";
+                _inputoneTF.placeholder = @"请输入您的账号";
                 NSString *str = [TRUUserAPI getUser].employeenum;
                 if (str.length == 0) {
                     _inputoneTF.text = [TRUUserAPI getUser].employeenum;
@@ -92,29 +104,29 @@
         [_inputoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     }
     _inputpasswordTF.secureTextEntry = YES;
-    [_sendBtn setBackgroundColor:DefaultColor];
+    [_sendBtn setBackgroundColor:DefaultGreenColor];
     _sendBtn.layer.masksToBounds = YES;
     _sendBtn.layer.cornerRadius = 5.0;
     
     
     //用户协议
-    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-    [self.view addSubview:txtLabel];
-    txtLabel.text = @"使用此App,即表示同意该";
-    txtLabel.font = [UIFont systemFontOfSize:14];
-    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:agreementBtn];
-    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-    
-    if (kDevice_Is_iPhoneX) {
-        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-    }
-    
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"使用此App,即表示同意该";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//    }
+    TRUEnterAPPAuthView.lockid=2;
 }
 
 -(void)valueChanged:(UITextField *)field{
@@ -304,8 +316,28 @@
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
             [weakSelf hideHudDelay:2.0];
         }else if(9001 == errorno){
-            [weakSelf showHudWithText:@"激活码不正确，请确认后重新输入"];
-            [weakSelf hideHudDelay:2.0];
+            if ([type isEqualToString:@"email"]) {
+                [self showHudWithText:@"请输入正确的账号/验证码信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [self showHudWithText:@"请输入正确的账号/验证码信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"employeenum"]){
+                [self showHudWithText:@"请输入正确的账号/密码"];
+                [self hideHudDelay:2.0];
+            }
+            
+        }else if(9002 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }else if([type isEqualToString:@"employeenum"]){
+                [self showHudWithText:@"请输入正确的账号信息"];
+                [self hideHudDelay:2.0];
+            }
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
         }else{
@@ -355,6 +387,22 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (9001 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号/验证码信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号/验证码信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9002 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:err];
@@ -396,6 +444,12 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (9001 == errorno){
+            [weakSelf showHudWithText:@"请输入正确的账号/密码"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9002 == errorno){
+            [weakSelf showHudWithText:@"请输入正确的账号信息"];
+            [weakSelf hideHudDelay:2.0];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:err];

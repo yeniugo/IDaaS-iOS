@@ -16,7 +16,7 @@ NS_ENUM(AuthViewType) {
     };
 @interface TRUEnterAPPAuthView : UIWindow
 @property (nonatomic, copy) void (^didClickLoginSuccessBlock)();
-
+@property (class,nonatomic,assign) NSInteger lockid;
 + (void)showAuthView;
 
 + (void)showLoading;
@@ -26,4 +26,6 @@ NS_ENUM(AuthViewType) {
 + (void)dismissAuthView;
 
 + (void)dismissAuthViewAndCleanStatus;
++ (void)lockView;
++ (void)unlockView;
 @end

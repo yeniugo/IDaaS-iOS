@@ -96,7 +96,7 @@
         //同步用户信息
         NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
         NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/voice"] withParts:dictt onResult:^(int errorno, id responseBody) {
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/voice"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message){
             [weakSelf hideHudDelay:0.0];
             NSString *tip = @"";
             if (0 == errorno) {
@@ -135,6 +135,8 @@
                 [weakSelf deal9008Error];
                 
                 return;
+            }else if (9033 == errorno){
+                tip = message;
             }else{
                 tip = [NSString stringWithFormat:@"其他错误（%d）",errorno];
                 [weakSelf showHudWithText:tip];

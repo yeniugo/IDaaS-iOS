@@ -15,6 +15,7 @@
 #import "TRUUserAPI.h"
 #import <iflyMSC/IFlyISVRecognizer.h>
 #import "TRUhttpManager.h"
+
 @interface TRUVoiceSettingViewController ()
 
 @end
@@ -59,7 +60,7 @@
     
     [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@100);
-        make.top.equalTo(self.view).offset(100);
+        make.top.equalTo(self.view).offset(kNavBarAndStatusBarHeight+20);
         make.centerX.equalTo(self.view);
     }];
     
@@ -114,12 +115,14 @@
                 [weakSelf showHudWithText:tip];
                 [weakSelf hideHudDelay:2.0];
                 [weakSelf.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.0];
+//                [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
             }];
 
         }else{
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
             [weakSelf hideHudDelay:2.0];
             [weakSelf.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.0];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         }
     } cancelBlock:^{
         

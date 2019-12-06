@@ -12,4 +12,6 @@
 - (BOOL)isEmail;
 //仅验证大陆手机号 11位 具体号段不做校验
 - (BOOL)isPhone;
+- (BOOL)isIP;
+- (BOOL)isLinuxUser;
 @end

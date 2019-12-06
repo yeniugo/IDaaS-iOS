@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +21,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assdddddd.png" highlightedImage="assdddddd.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applauchIcon.png" highlightedImage="applauchIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
+                                <rect key="frame" x="156.5" y="434" width="62" height="62"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="DXz-YQ-j8p"/>
+                                    <constraint firstAttribute="width" constant="62" id="uzM-2u-EBA"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="移动安全认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3b-Nq-89T">
+                                <rect key="frame" x="135.5" y="521" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" id="Jrx-5o-3cW"/>
-                            <constraint firstAttribute="trailing" secondItem="A1X-NF-nTo" secondAttribute="trailing" id="O72-W1-6Nz"/>
-                            <constraint firstItem="A1X-NF-nTo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="cS6-xd-rif"/>
-                            <constraint firstItem="A1X-NF-nTo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fmC-bQ-j95"/>
+                            <constraint firstItem="D3b-Nq-89T" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" constant="25" id="7F7-Fv-J9F"/>
+                            <constraint firstAttribute="bottom" secondItem="D3b-Nq-89T" secondAttribute="bottom" constant="125" id="Bud-zU-dDQ"/>
+                            <constraint firstItem="D3b-Nq-89T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="D9D-Pt-daB"/>
+                            <constraint firstItem="A1X-NF-nTo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XRu-pm-QxG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +51,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="assdddddd.png" width="1242" height="2208"/>
+        <image name="applauchIcon.png" width="186" height="186"/>
     </resources>
 </document>

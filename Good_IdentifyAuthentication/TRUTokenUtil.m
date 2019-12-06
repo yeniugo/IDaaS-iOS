@@ -28,6 +28,8 @@ static NSString *NEEDPUSHKEY = @"NEEDPUSHKEY";
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def removeObjectForKey:TRUTOKENKEY];
 //    [def removeObjectForKey:NEEDPUSHKEY];
+    [def removeObjectForKey:@"VerifyFingerNumber"];
+    [def removeObjectForKey:@"VerifyFingerNumber1"];
     [def synchronize];
 }
 

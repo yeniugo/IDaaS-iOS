@@ -13,7 +13,7 @@
 #import "TRUFingerGesUtil.h"
 #import <AVFoundation/AVFoundation.h>
 #import "TRUAuthSacnViewController.h"
-
+#import "TRUEnterAPPAuthView.h"
 #import "FireflyAlertView.h"
 
 //#import "UIViewController+LSNavigationController.h"
@@ -33,6 +33,8 @@
 @property (assign, nonatomic) BOOL isRight;//alert方向,YES时，右边是确定，左边是取消，NO时，左边确定，右边取消
 //@property (nonatomic, strong) 
 
+@property (nonatomic, assign) BOOL isCurrentPage;
+
 @end
 
 @implementation TRUBaseViewController
@@ -40,17 +42,31 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+    self.isCurrentPage = YES;
+    DDLogWarn(@"%@ viewWillAppear",[self class]);
 }
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self reloadNavigationBar];
+    [self reloadNavigationBar];
+    [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultNavColor] forBarMetrics:UIBarMetricsDefault];
+//    UIImage *shadowImage = [[UIImage alloc] init];
+    
+    [self.navigationBar setShadowImage:[self ls_imageWithColor:RGBCOLOR(255, 255, 255)]];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
+    if (self.navigationController.childViewControllers.count>1) {
+        TRUBaseNavigationController *vc = self.navigationController;
+        self.leftItemBtn = [vc setLeftBarbutton];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemBtn];
+    }
+    TRUBaseNavigationController *vc = self.navigationController;
+    vc.cancelGesture = YES;
     self.view.clipsToBounds = YES;
     self.showed9019Error = NO;
-    
+//    self.isCurrentPage = YES;
     self.view.backgroundColor = RGBCOLOR(247, 249, 250);
     //黑线 (maybe change image)
     if (kDevice_Is_iPhoneX) {
@@ -60,7 +76,7 @@
     }
     _linelabel.backgroundColor = RGBCOLOR(180, 180, 180);
     [self.view addSubview:_linelabel];
-    
+    _linelabel.backgroundColor = [UIColor clearColor];
 //    self.scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    if (kDevice_Is_iPhoneX) {
 //        self.scanBtn.size = CGSizeMake(SCREENW/5.f - 10, 30);
@@ -79,6 +95,12 @@
 //    
 //    YCLog(@"00------->%d",ii);
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    DDLogWarn(@"%@ viewWillDisappear",[self class]);
+    self.isCurrentPage = NO;
 }
 
 -(void)scanQRButtonClick{
@@ -169,24 +191,32 @@
 - (void)showConfrimCancelDialogAlertViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void (^)())confrimBlock cancelBlock:(void (^)())cancelBlock{
 //    self.alertCancel = nil;
 //    self.alertComfirm = nil;
-    self.alertComfirm = confrimBlock;
-    self.alertCancel = cancelBlock;
-    self.isRight = confirmRight;
-    self.cancelTitleStr = cancelTitle;
-    self.comfirmTitleStr = confrimTitle;
-    UIAlertView *alert;
-    if (confirmRight) {
-        alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
-    }else{
-//        alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
-        if (cancelTitle && cancelTitle.length>0) {
-            alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertComfirm = confrimBlock;
+        self.alertCancel = cancelBlock;
+        self.isRight = confirmRight;
+        self.cancelTitleStr = cancelTitle;
+        self.comfirmTitleStr = confrimTitle;
+        UIAlertView *alert;
+        if (confirmRight) {
+            alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
         }else{
-            alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:nil];
+            //        alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+            if (cancelTitle && cancelTitle.length>0) {
+                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+            }else{
+                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:nil];
+            }
         }
-    }
+        if (self.isCurrentPage) {
+            //        UIWindow *window = self.view.window;
+            //        if ([[[UIApplication sharedApplication] windows] lastObject]==window) {
+            //
+            //        }
+            [alert show];
+        }
+    });
     
-    [alert show];
 }
 
 -(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView{
@@ -197,7 +227,9 @@
 {
     if (self.isRight) {
         if (self.cancelTitleStr.length==0) {
-            self.alertComfirm();
+            if (self.alertComfirm) {
+                self.alertComfirm();
+            }
         }else{
             switch (buttonIndex) {
                 case 0:
@@ -253,7 +285,7 @@
 - (void)deal9008Error{
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-        
+        [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
         
@@ -278,7 +310,7 @@
     }
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
@@ -306,6 +338,13 @@
         if (block) block();
     } cancelBlock:nil];
 }
+//设备已禁用
+- (void)deal9025ErrorWithBlock:(void(^)())block{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的账号已被禁用，请联系管理员。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+        if (block) block();
+    } cancelBlock:nil];
+}
+
 //拒绝
 - (void)deal9026ErrorWithBlock:(void(^)())block{
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您绑定的设备数量已达上限，想要绑定该设备，请先删除一个已激活设备。" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
@@ -353,7 +392,11 @@ static const char TRUHUDKey = '\0';
     [self.hud hideAnimated:YES afterDelay:delay];
 }
 
-
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    self.view.y = 0;
+    self.view.height = SCREENH;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

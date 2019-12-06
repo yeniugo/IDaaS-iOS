@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"声纹";
+    self.title = @"注册声纹";
     self.sst = TRAIN_SST;
     int err;
     NSString *authid = [xindunsdk getCIMSVoiceAuthIDForUser:[TRUUserAPI getUser].userId];
@@ -117,6 +117,7 @@
             model.voiceid = voiceID;
             [TRUUserAPI saveUser:model];
             [weakSelf.navigationController popViewControllerAnimated:YES];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         }else if (-5004 == errorno){//网络错误
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
             [weakSelf hideHudDelay:2.0];
@@ -135,6 +136,7 @@
 }
 - (void)popVC{
     [self.navigationController popViewControllerAnimated:YES];
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
 }
 
 

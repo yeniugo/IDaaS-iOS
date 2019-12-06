@@ -10,7 +10,7 @@
 
 @interface TRULogIdentifyCell()
 
-
+@property (nonatomic,strong) UIView *lineView;
 
 @end
 
@@ -19,6 +19,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.selectionStyle = UITableViewCellSeparatorStyleNone;
+    UIView *lineView = [[UIView alloc] init];
+    [self.contentView addSubview:lineView];
+    lineView.backgroundColor = RGBCOLOR(234,234,234);
+    self.lineView = lineView;
 }
 
 - (IBAction)switchValueChange:(UISwitch *)sender {
@@ -41,6 +46,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.lineView.frame = CGRectMake(0, self.bounds.size.height -1, self.bounds.size.width, 0.5);
 }
 
 @end

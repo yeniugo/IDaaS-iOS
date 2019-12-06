@@ -26,6 +26,14 @@
         return;
     }
     [self deleteCookies];
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"PushCancel"] forState:UIControlStateNormal];
+//    [rightBtn addTarget:self action:@selector(rightBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [rightBtn.widthAnchor constraintEqualToConstant:30].active = YES;
+//    [rightBtn.heightAnchor constraintEqualToConstant:30].active = YES;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    self.leftItemBtn.hidden = YES;
+//    self.title = @"111111111111111111111111111111111111111111111111111111111111111111";
     NSString *encodeStr = [self.urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     encodeStr = [encodeStr stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     self.myRequestUrl = [NSURL URLWithString:encodeStr];

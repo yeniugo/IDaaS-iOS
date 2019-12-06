@@ -13,11 +13,20 @@
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"
 #import "TRUVoiceInitViewController.h"
+#import "TRUPersonalSmailModel.h"
+#import "TRUTimeSyncUtil.h"
+#import "TRUFingerGesUtil.h"
+#import "TRUTokenUtil.h"
+#import "TRUCompanyModel.h"
+#import "TRUCompanyAPI.h"
+#import <AFNetworking.h>
+#import "AppDelegate.h"
+#import "TRUCompanyAPI.h"
+#import "TrusfortDevId.h"
+#import "TRUAPPLogIdentifyController.h"
 @interface TRUPersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *imageArray;//图标
-@property (nonatomic,strong) NSArray *titleArray;//标题
-@property (nonatomic,strong) NSArray *commitArray;//跳转控制器,字符串
+@property (nonatomic,strong) NSArray *dataArray;//图标
 @end
 
 @implementation TRUPersonalViewController
@@ -25,8 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    [self syncUserInfo];
+    self.title = @"我的";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
-    self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kTabBarHeight-kNavBarAndStatusBarHeight);
+    self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kTabBarHeight);
     [self.view addSubview:self.tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalBigCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalBigCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalSmaillCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalSmaillCell"];
@@ -36,9 +47,106 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [UIView new];
-    self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"PersonalAboutUS",@"PersonalFeedback"]];
-    self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"关于我们",@"问题反馈"]];
-    self.commitArray = @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceSettingViewController",@"TRUVoiceSettingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController",@"TRUFeedbackViewController"]];
+//    self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"linuxSSH"],@[@"PersonalAboutUS"]];
+//    self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"服务器账号管理"],@[@"关于我们"]];
+//    self.commitArray = @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceSettingViewController",@"TRUVoiceSettingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUSSHViewController"],@[@"TRUAboutUsViewController"]];
+    __weak typeof(self) weakSelf = self;
+    
+    TRUPersonalSmailModel *model1 = [[TRUPersonalSmailModel alloc] init];
+    model1.cellType = PersonalSmaillCellNormal;
+    model1.leftIcon = @"PersonalFace";
+    model1.leftStr = @"人脸信息";
+    model1.cellClickBlock = ^{
+        NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
+        NSString *pushVCStr = @"TRUFaceSettingViewController";
+        if (![faceinfo isEqualToString:@"1"]) {
+            pushVCStr = @"TRUFaceGuideViewController";
+        }
+        [weakSelf pushVC:pushVCStr];
+    };
+    
+    TRUPersonalSmailModel *model2 = [[TRUPersonalSmailModel alloc] init];
+    model2.cellType = PersonalSmaillCellNormal;
+    model2.leftIcon = @"PersonalVoice";
+    model2.leftStr = @"声纹信息";
+    model2.cellClickBlock = ^{
+        NSString *voiceid = [TRUUserAPI getUser].voiceid;
+        NSString *pushVCStr = @"TRUVoiceSettingViewController";
+        if (!voiceid.length) {
+            pushVCStr = @"TRUVoiceInitViewController";
+        }
+        [weakSelf pushVC:pushVCStr];
+    };
+    
+    TRUPersonalSmailModel *model3 = [[TRUPersonalSmailModel alloc] init];
+    model3.cellType = PersonalSmaillCellNormal;
+    model3.leftIcon = @"PersonalSafe";
+    model3.leftStr = @"安全保护";
+//    model3.disVC = @"TRUAPPLogIdentifyController";
+    model3.cellClickBlock = ^{
+        TRUAPPLogIdentifyController *vc = [[TRUAPPLogIdentifyController alloc] init];
+        vc.isFromSetting = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    };
+    
+    TRUPersonalSmailModel *model4 = [[TRUPersonalSmailModel alloc] init];
+    model4.cellType = PersonalSmaillCellNormal;
+    model4.leftIcon = @"PersonalDevice";
+    model4.leftStr = @"设备管理";
+    model4.disVC = @"TRUDevicesManagerController";
+    
+    TRUPersonalSmailModel *model5 = [[TRUPersonalSmailModel alloc] init];
+    model5.cellType = PersonalSmaillCellNormal;
+    model5.leftIcon = @"linuxSSH";
+    model5.leftStr = @"运维账号";
+    model5.disVC = @"TRUSSHViewController";
+    
+    TRUPersonalSmailModel *model6 = [[TRUPersonalSmailModel alloc] init];
+    model6.cellType = PersonalSmaillCellRightIcon;
+    model6.leftIcon = @"timeLeft";
+    model6.leftStr = @"时间校准";
+    model6.rightIcon = @"timeRight";
+    model6.cellClickBlock = ^{
+        [weakSelf syncTime];
+    };
+    
+    TRUPersonalSmailModel *model7 = [[TRUPersonalSmailModel alloc] init];
+    model7.cellType = PersonalSmaillCellRightLBwithIcon;
+    model7.leftIcon = @"PersonalAboutUS";
+    model7.leftStr = @"检查更新";
+    model7.rightStr = [self getAppVersion];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    model7.canUpdate = delegate.hasUpdate;
+    model7.cellClickBlock = ^{
+        [weakSelf checkUpdataWithPlist];
+//        [weakSelf checkVersion];
+    };
+    
+    TRUPersonalSmailModel *model8 = [[TRUPersonalSmailModel alloc] init];
+    model8.cellType = PersonalSmaillCellCenterLB;
+    model8.CenterStr = @"解除绑定";
+    model8.cellClickBlock = ^{
+        [weakSelf unbindDevice];
+    };
+    
+    
+    TRUCompanyModel *model = [TRUCompanyAPI getCompany];
+//    model.hasFace = NO;
+//    model.hasVoice = YES;
+    if (model.hasFace && model.hasVoice) {
+        self.dataArray = @[@[model1,model2],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+    }else if(model.hasFace && !model.hasVoice){
+        self.dataArray = @[@[model1],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+    }else if(!model.hasFace && model.hasVoice){
+        self.dataArray = @[@[model2],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+    }else{
+        self.dataArray = @[@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+    }
+}
+
+- (void)pushVC:(NSString *)VCName{
+    UIViewController *pushVC = [[NSClassFromString(VCName) alloc] init];
+    [self.navigationController pushViewController:pushVC animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -59,7 +167,11 @@
     if (section==0) {
         return 0.01;
     }else{
-        return 10;
+        if (section == self.dataArray.count) {
+            return 40;
+        }else{
+            return 10;
+        }
     }
 }
 
@@ -81,24 +193,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    YCLog(@"cell.subviews.count = %d",cell.subviews.count);
-//    cell.separatorInset = UIEdgeInsetsMake(0, SCREENW , 0, 0);
-//    if (indexPath.section) {
-//        NSArray *tempArray = self.titleArray[indexPath.section-1];
-//        if (indexPath.row==tempArray.count-1) {
-//            cell.separatorInset = UIEdgeInsetsMake(0, SCREENW , 0, 0);
-//        }
-//    }
-//    if (cell.subviews.count>1) {
-//        for (int i = 1;i<cell.subviews.count;i++) {
-//            [cell.subviews[i] removeFromSuperview];
-//        }
-//    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     YCLog(@"section = %d",section);
-    return [self.commitArray[section] count];
+    if (section == 0) {
+        return 1;
+    }else{
+        return [self.dataArray[section-1] count];
+    }
 //    switch (section) {
 //        case 0:
 //            return 1;
@@ -126,7 +229,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return self.dataArray.count + 1;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
@@ -152,17 +255,12 @@
     }
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }else{
         TRUPersonalSmaillCell *smallCell = cell;
-        NSString *imageName = self.imageArray[indexPath.section-1][indexPath.row];
-        YCLog(@"imageName = %@",imageName);
-        smallCell.icon.image = [UIImage imageNamed:imageName];
-        NSString *titleStr = self.titleArray[indexPath.section-1][indexPath.row];
-        YCLog(@"titleStr = %@",titleStr);
-        smallCell.message.text = titleStr;
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        smallCell.cellModel = self.dataArray[indexPath.section-1][indexPath.row];
+        
 //        if (indexPath.row == [(NSArray *)(self.titleArray[indexPath.section-1]) count]-1) {
 //            smallCell.isShowLine = NO;
 //        }else{
@@ -176,33 +274,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     __weak typeof(self) weakSelf = self;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSString *classStr = self.commitArray[indexPath.section][indexPath.row];
-    UIViewController *pushVC = [[NSClassFromString(classStr) alloc] init];
-    if ([classStr isEqual:@"TRUFaceSettingViewController"]) {
-        NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
-        if ([faceinfo isEqualToString:@"1"]) {
-        }else{
-            pushVC = [[NSClassFromString(@"TRUFaceGuideViewController") alloc] init];
+    if (indexPath.section == 0) {
+        return;
+    }else{
+        TRUPersonalSmailModel *cellModel = self.dataArray[indexPath.section - 1][indexPath.row];
+        if (cellModel.disVC.length) {
+            [self pushVC:cellModel.disVC];
+        }else if(cellModel.cellClickBlock){
+            cellModel.cellClickBlock();
         }
-        TRUBaseNavigationController *nav = self.navigationController;
-        nav.backBlock = ^{
-//            [weakSelf syncUserInfo];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        };
     }
-    if ([classStr isEqualToString:@"TRUVoiceSettingViewController"]) {
-        NSString *voiceid = [TRUUserAPI getUser].voiceid;
-        if (voiceid.length > 0) {
-        }else{
-            pushVC = [[NSClassFromString(@"TRUVoiceInitViewController") alloc] init];
-        }
-        TRUBaseNavigationController *nav = self.navigationController;
-        nav.backBlock = ^{
-//            [weakSelf syncUserInfo];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        };
-    }
-    [self.navigationController pushViewController:pushVC animated:YES];
+}
+
+- (NSString *)getAppVersion{
+    NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
+    NSString *version =  dic[@"CFBundleShortVersionString"];
+//    NSString *bundleVersion = dic[@"CFBundleVersion"];
+    return version;
 }
 
 - (void)syncUserInfo{
@@ -230,6 +318,217 @@
         }
     }];
     
+}
+
+-(void)syncSPinfo{
+    NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL_SPCODE"];
+    if (spcode.length>0) {
+        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSString *para = [xindunsdk encryptByUkey:spcode];
+        NSDictionary *dict = @{@"params" : [NSString stringWithFormat:@"%@",para]};
+        [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:dict onResult:^(int errorno, id responseBody) {
+            //            NSLog(@"--%d-->%@",errorno,responseBody);
+            if (errorno == 0 && responseBody) {
+                NSDictionary *dictionary = responseBody;
+                if (1) {
+                    NSDictionary *dic = responseBody;
+                    TRUCompanyModel *companyModel = [TRUCompanyModel modelWithDic:dic];
+                    companyModel.desc = dic[@"description"];
+                    [TRUCompanyAPI saveCompany:companyModel];
+//                    NSLog(@"-121-->%@",companyModel.desc);
+                }
+            }
+        }];
+    }
+}
+#pragma mark - 检查更新
+-(void)checkVersion{
+    // 获取发布版本的version
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    //http://itunes.apple.com/lookup?id=1095195364
+    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=1195763218"];//
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSArray *array = responseObject[@"results"];
+        if ([array count] > 0) {
+            NSDictionary *dic = array[0];
+            NSString *appStoreVersion = dic[@"version"];
+            //打印版本号
+            [self checkAppUpdate:appStoreVersion];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"获取版本号失败！");
+    }];
+}
+
+-(void)checkAppUpdate:(NSString *)appInfo{
+    //版本
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
+    if ([self updeWithDicString:version andOldString:appInfo]) {
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        delegate.hasUpdate = YES;
+        UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *url = @"https://itunes.apple.com/cn/app/id1195763218?mt=8";
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        }];
+        
+        UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertVC addAction:cancelAction];
+        [alertVC addAction:confrimAction];//
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+            [delegate.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+        });
+    }else{
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        delegate.hasUpdate = NO;
+        YCLog(@"不用更新");
+    }
+}
+
+
+
+-(BOOL)updeWithDicString:(NSString *)version andOldString:(NSString *)appVersion{
+    
+    NSArray *a1 = [version componentsSeparatedByString:@"."];
+    NSArray *a2 = [appVersion componentsSeparatedByString:@"."];
+    
+    for (int i = 0; i < [a1 count]; i++) {
+        if ([a2 count] > i) {
+            if ([[a1 objectAtIndex:i] intValue] < [[a2 objectAtIndex:i] intValue]) {
+                return YES;
+            }
+            else if ([[a1 objectAtIndex:i] intValue] > [[a2 objectAtIndex:i] intValue])
+            {
+                return NO;
+            }
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    return [a1 count] < [a2 count];
+}
+
+- (void)syncTime{
+    [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
+        [self hideHudDelay:0.0];
+        if (error == 0) {
+            [self showHudWithText:@"校准成功"];
+            [self hideHudDelay:2.0];
+        }else if (error == -5004){
+            [self showHudWithText:@"网络错误，稍后请重试"];
+            [self hideHudDelay:2.0];
+        }else if (9008 == error){
+            [self deal9008Error];
+        }else{
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
+            [self showHudWithText:err];
+            [self hideHudDelay:2.0];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+        });
+    }];
+}
+
+- (void)checkUpdataWithPlist{
+    __weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
+    updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
+    [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            YCLog(@"dic = %@",responseObject);
+            TRUCompanyModel *model1 = [TRUCompanyAPI getCompany];
+            TRUCompanyModel *model2 = [TRUCompanyModel modelWithDic:responseObject];
+            [TRUCompanyAPI saveCompany:model2];
+            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
+            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+            
+            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
+                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+            }else{
+                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
+                    [delegate restUIForApp];
+                } cancelBlock:nil];
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"error");
+    }];
+}
+
+- (void)unbindDevice{
+    NSString *userid = [TRUUserAPI getUser].userId;
+    __weak typeof(self) weakSelf = self;
+    [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"此操作将会删除您手机内的账户信息，确定要解除绑定？" confrimTitle:@"解除绑定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+        [weakSelf showHudWithText:@"正在解除绑定..."];
+        NSString *uuid = [xindunsdk getCIMSUUID:userid];
+        
+        NSArray *deleteDevices = @[uuid];
+        NSString *deldevs = nil;
+        if (!deleteDevices || deleteDevices.count == 0) {
+            deldevs = @"";
+        }else{
+            deldevs = [deleteDevices componentsJoinedByString:@","];
+        }
+        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSArray *ctx = @[@"del_uuids",deldevs];
+        NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+        NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+        NSDictionary *paramsDic = @{@"params" : params};
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+            [weakSelf hideHudDelay:0.0];
+            if (errorno == 0) {
+                [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+                [TRUUserAPI deleteUser];
+                //清除APP解锁方式
+                [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+                [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+                [TRUTokenUtil cleanLocalToken];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+                id delegate = [UIApplication sharedApplication].delegate;
+                if ([delegate respondsToSelector:@selector(changeAvtiveRootVC)]) {
+                    [delegate performSelector:@selector(changeAvtiveRootVC) withObject:nil];
+                }
+#pragma clang diagnostic pop
+            }else if (-5004 == errorno){
+                [weakSelf showHudWithText:@"网络错误，请稍后重试"];
+                [weakSelf hideHudDelay:2.0];
+            }else if (9008 == errorno){
+                [weakSelf deal9008Error];
+            }else if (9019 == errorno){
+                [weakSelf deal9019Error];
+            }else{
+                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+                [weakSelf showHudWithText:err];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }];
+        
+    } cancelBlock:^{
+        YCLog(@"cancel");
+    }];
 }
 
 

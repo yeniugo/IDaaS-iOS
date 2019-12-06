@@ -28,7 +28,9 @@
 
 #define DefaultColor  [UIColor colorWithRed:32.0 / 255 green:144.0 / 255 blue:54.0 / 255 alpha:1.0]
 
-#define DefaultGreenColor  [UIColor colorWithRed:34.0 / 255 green:156.0 / 255 blue:69.0 / 255 alpha:1.0]
+#define DefaultGreenColor  [UIColor colorWithRed:0.0 / 255 green:150.0 / 255 blue:255.0 / 255 alpha:1.0]
+
+#define DefaultNavColor   [UIColor colorWithRed:255.0 / 255 green:255.0 / 255 blue:255.0 / 255 alpha:1.0]
 
 #define TRUPUSHNOTIFICATION  @"TRUPUSHNOTIFICATIONKEY"
 
@@ -57,6 +59,16 @@
 #define PointHeightRatio6 (SCREEN_HEIGHT / 750.0)
 #define PointHeightPointRatio6 (SCREEN_HEIGHT / 667.0)
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
+#define PointWidthRatioX (SCREENW/375.0)
+
+//无导航栏和无TabBar
+#define PointHeightRatioX1 (CGFloat)(kDevice_Is_iPhoneX?((SCREENH-44.0-34.0)/(812.0-44.0-34.0)),((SCREENH-20.0)/(812.0-44.0-34.0)))
+//无导航栏和有TabBar
+#define PointHeightRatioX2 (CGFloat)(kDevice_Is_iPhoneX?((SCREENH-44.0-83.0)/(812.0-44.0-83.0)),((SCREENH-20.0-49.0)/(812.0-44.0-83.0)))
+//有导航栏和无TabBar
+#define PointHeightRatioX3 (CGFloat)(kDevice_Is_iPhoneX?((SCREENH-88.0-34.0)/(812.0-88.0-34.0)):((SCREENH-64.0)/(812.0-88.0-34.0)))
+//有导航栏和有TabBar
+#define PointHeightRatioX4 (CGFloat)(kDevice_Is_iPhoneX?((SCREENH-88.0-83.0)/(812.0-88.0-83.0)),((SCREENH-64.0-49.0)/(812.0-88.0-83.0)))
 //#define PixelHeightRatio6 (SCREEN_HEIGHT / 1334.0)
 //#define PointHeightRatio6 (SCREEN_HEIGHT / 677.0)
 //#define PixelWidthRatio6 (SCREEN_WIDTH / 750.0)
@@ -69,6 +81,8 @@
 #define kNavBarAndStatusBarHeight (CGFloat)(kDevice_Is_iPhoneX?(88.0):(64.0))
 /*TabBar高度*/
 #define kTabBarHeight (CGFloat)(kDevice_Is_iPhoneX?(49.0 + 34.0):(49.0))
+
+#define kTabBarBottom (CGFloat)(kDevice_Is_iPhoneX?(34.0):(0.0))
 
 #define	APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define APP_VERSION_EQUAL_TO(v) ([APP_VERSION compare:v options:NSNumericSearch] == NSOrderedSame)

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LSNavigationController.h"
-@interface TRUBaseNavigationController : UINavigationController
-
+@interface TRUBaseNavigationController : LSNavigationController
+//@property (nonatomic,strong) UIButton *leftBtn;
 @property (nonatomic, copy) void (^backBlock)();
 - (void)setNavBarColor:(UIColor *)color;
+- (UIButton *)setLeftBarbutton;
 @end

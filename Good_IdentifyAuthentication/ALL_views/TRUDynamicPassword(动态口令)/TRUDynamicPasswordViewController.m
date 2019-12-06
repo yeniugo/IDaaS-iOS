@@ -38,14 +38,13 @@ static NSString *userId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"动态口令";
     userId = [TRUUserAPI getUser].userId;
     [self customUI];
     isFirstEnter = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewBackGround) name:@"EnterForegroundDyPw" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewBackGround) name:@"EnterForegroundDyPw" object:nil];
 }
-
-
 
 -(BOOL)checkNumberView{
     int labelNum = 0;
@@ -129,6 +128,7 @@ static NSString *userId;
 //    [self startCountdown];
 //    [self initTimeCountNotFirst];
 //    self.scanBtn.hidden = NO;
+//    [self initTimeCount];
 }
 
 - (void)startCountdown{
@@ -151,21 +151,27 @@ static NSString *userId;
         [self startCountWithTime:29];
     }else{
         dytime = dytime + self.dislink.duration / 30.0;
+//        [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
+//        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"动画进度%.2f",_aniationView.animationProgress]];
+        
     }
 }
 - (void)initTimeCountNotFirst{
     
     if (isFirstEnter) {
         dytime = [TRUTimeSyncUtil getTimePercent];
+        YCLog(@"dytime 5 = %.2f",dytime);
     }else{
         dytime = [TRUTimeSyncUtil getTimePercent] + [TRUTimeSyncUtil getTimeSpan];
+        YCLog(@"dytime 5 = %.2f",dytime);
         
     }
     
     if (dytime >= 1.0) {
         dytime = dytime - 1.0;
-        
+        YCLog(@"dytime 7 = %.2f",dytime);
     }
+    YCLog(@"dytime 8 = %.2f",dytime);
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
     [_timeView startCountWithTime:num];
@@ -175,13 +181,21 @@ static NSString *userId;
 - (void)initTimeCount{
     if (isFirstEnter) {
         dytime = [TRUTimeSyncUtil getTimePercent];
+        YCLog(@"dytime 1 = %.2f",dytime);
+//        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"dytime 1 = %.2f",dytime]];
     }else{
         dytime = [TRUTimeSyncUtil getTimePercent] + [TRUTimeSyncUtil getTimeSpan];
+        YCLog(@"dytime 2 = %.2f",dytime);
+//        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"dytime 2 = %.2f",dytime]];
     }
     
     if (dytime >= 1.0) {
         dytime = dytime - 1.0;
+        YCLog(@"dytime 3 = %.2f",dytime);
+//        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"dytime 3 = %.2f",dytime]];
     }
+    YCLog(@"dytime 4 = %.2f",dytime);
+//    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"dytime 4 = %.2f",dytime]];
     [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:isFirst];
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
@@ -224,6 +238,9 @@ static NSString *userId;
     if (timeNum >= 0) {
         NSString *txt = [NSString stringWithFormat:@"%zdS", timeNum];
         self.numLabel.text = txt;
+//        if (abs((30-timeNum-1)/30 - self.aniationView.animationProgress)>0.05) {
+//            [_aniationView playFromProgress:(30-timeNum-1)/30 toProgress:1.0 withCompletion:nil];
+//        }
     }else{
         [self stopCount];
     }
@@ -296,6 +313,7 @@ static NSString *userId;
         _timeView.frame = CGRectMake((SCREENW - 170)/2.f, 285 + SCREENW/2.f, 170, 25);
         label.frame = CGRectMake(0, 315 + SCREENW/2.f, SCREENW, 20);
         _refreshBtn.frame = CGRectMake((SCREENW -80)/2.f, 380 + SCREENW/2.f, 80, 80);
+        _syncLabel.frame = CGRectMake((SCREENW -80)/2.f, 380 + SCREENW/2.f+88, 80, 20);
     }
 }
 

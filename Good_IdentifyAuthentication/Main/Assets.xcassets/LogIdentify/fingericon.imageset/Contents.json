@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "fingericon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fingericon@2x.png",
+      "filename" : "指纹@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "fingericon@3x.png",
+      "filename" : "指纹@3x.png",
       "scale" : "3x"
     }
   ],

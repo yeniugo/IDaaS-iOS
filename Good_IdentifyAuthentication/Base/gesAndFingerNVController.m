@@ -105,6 +105,7 @@
         self.backBlock();
     }else{
         [self popViewControllerAnimated:YES];
+        
     }
     
 }
@@ -134,7 +135,7 @@
     return [super popToViewController:viewController animated:animated];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 #pragma mark UINavigationControllerDelegate

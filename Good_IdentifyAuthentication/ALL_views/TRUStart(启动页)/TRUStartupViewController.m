@@ -28,25 +28,27 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationBar.hidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageview = [[UIImageView alloc] init];
+    imageview.backgroundColor = [UIColor clearColor];
+    imageview.image = [UIImage imageNamed:@"applauchIcon.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
-    if (str.length>0) {
-        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
-    }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
-        
-    }
-    if (kDevice_Is_iPhoneX) {
-        CGRect rect = [UIScreen mainScreen].bounds;
-        CGFloat wid = rect.size.width;
-        CGFloat hei = rect.size.height - 34;
-        imageview.frame = CGRectMake(0, 0, wid, hei) ;
-    }else{
-        imageview.frame = [UIScreen mainScreen].bounds;
-    }
+    UILabel *showLable = [[UILabel alloc] init];
+    showLable.text = @"移动安全认证";
+    [self.view addSubview:showLable];
     [self.view addSubview:imageview];
+    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).with.offset(-125);
+    }];
+    [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.height.equalTo(@(62));
+        make.width.equalTo(@(62));
+        make.bottom.equalTo(showLable.mas_top).with.offset(-25);
+    }];
     [self fetchData];
 }
 -(void)viewDidLayoutSubviews{
@@ -55,6 +57,10 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
 }
 
 #pragma mark 同步信息
@@ -79,40 +85,42 @@
         });
     }else{
         //同步一次用户信息
-        __weak typeof(self) weakSelf = self;
-        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-        NSString *paras = [xindunsdk encryptByUkey:currentUserId ctx:nil signdata:nil isDeviceType:NO];
-        NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
-            [weakSelf hideHudDelay:0.0];
-            NSDictionary *dicc = nil;
-            if (errorno == 0 && responseBody) {
-                dicc = [xindunsdk decodeServerResponse:responseBody];
-                if ([dicc[@"code"] intValue] == 0) {
-                    dicc = dicc[@"resp"];
-                    //用户信息同步成功
-                    TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
-                    model.userId = currentUserId;
-                    [TRUUserAPI saveUser:model];
-                    //同步信息成功，信息完整，跳转页面
-                    !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
-                }
-            }else if(9008 == errorno){
-                //秘钥失效
-                [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
-                [TRUUserAPI deleteUser];
-                [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
-                [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-                !weakSelf.completionBlock ? : weakSelf.completionBlock(nil);
-            }else if (9019 == errorno){
-                //用户被禁用 取本地
-                TRUUserModel *model = [TRUUserAPI getUser];
-                !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
-            }else{
-                TRUUserModel *model = [TRUUserAPI getUser];
-                !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
-            }
-        }];
+//        __weak typeof(self) weakSelf = self;
+        TRUUserModel *model = [TRUUserAPI getUser];
+        !self.completionBlock ? : self.completionBlock(model);
+//        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+//        NSString *paras = [xindunsdk encryptByUkey:currentUserId ctx:nil signdata:nil isDeviceType:NO];
+//        NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+//        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
+//            [weakSelf hideHudDelay:0.0];
+//            NSDictionary *dicc = nil;
+//            if (errorno == 0 && responseBody) {
+//                dicc = [xindunsdk decodeServerResponse:responseBody];
+//                if ([dicc[@"code"] intValue] == 0) {
+//                    dicc = dicc[@"resp"];
+//                    //用户信息同步成功
+//                    TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
+//                    model.userId = currentUserId;
+//                    [TRUUserAPI saveUser:model];
+//                    //同步信息成功，信息完整，跳转页面
+//                    !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
+//                }
+//            }else if(9008 == errorno){
+//                //秘钥失效
+//                [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+//                [TRUUserAPI deleteUser];
+//                [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+//                [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+//                !weakSelf.completionBlock ? : weakSelf.completionBlock(nil);
+//            }else if (9019 == errorno){
+//                //用户被禁用 取本地
+//                TRUUserModel *model = [TRUUserAPI getUser];
+//                !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
+//            }else{
+//                TRUUserModel *model = [TRUUserAPI getUser];
+//                !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
+//            }
+//        }];
     }
 }
 

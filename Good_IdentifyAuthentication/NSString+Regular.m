@@ -17,6 +17,14 @@
     NSString * regExp = @"^1\\d{10}$";
     return [self validateWithRegExp:regExp];
 }
+- (BOOL)isIP{
+    NSString * regExp = @"(2(5[0-5]{1}|[0-4]\\d{1})|[0-1]?\\d{1,2})(\\.(2(5[0-5]{1}|[0-4]\\d{1})|[0-1]?\\d{1,2})){3}";
+    return [self validateWithRegExp:regExp];
+}
+- (BOOL)isLinuxUser{
+    NSString * regExp = @"^[a-zA-Z0-9~!@#$%^&*()_{}:;<>?]{0,20}$";
+    return [self validateWithRegExp:regExp];
+}
 - (BOOL)validateWithRegExp: (NSString *)regExp
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regExp];

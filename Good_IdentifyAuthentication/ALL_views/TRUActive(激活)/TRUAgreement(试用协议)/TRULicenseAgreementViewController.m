@@ -23,7 +23,7 @@
 }
 - (void)setupViews {
     [self setTitle:@"软件许可协议"];
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     NSString *str;
     NSString *urlstr = [TRUCompanyAPI getCompany].user_agreement_url;

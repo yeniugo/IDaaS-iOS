@@ -23,6 +23,7 @@
 #import "TRUCompanyAPI.h"
 #import "TRUhttpManager.h"
 #import "AppDelegate.h"
+#import "TRUMTDTool.h"
 @interface TRUPushingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *accountLB;
 @property (weak, nonatomic) IBOutlet UILabel *ipLB;
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bigTitleTopConstraint;//"您正在通过**登录"到顶部边距
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logLBTopToBigTitleConstraint;//登录账户距离主标题的距离
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *underlineConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *pushOKBtn;
 
 @property (weak, nonatomic) NSTimer *pushTimer;
 @end
@@ -137,6 +139,10 @@
             self.dismissBlock(YES);
         }
     }];
+    [self dismissVC:0];
+    if (self.dismissBlock) {
+        self.dismissBlock(YES);
+    }
 }
 
 - (IBAction)cancleBtnClick:(UIButton *)sender {
@@ -234,6 +240,7 @@
 }
 - (IBAction)confirm:(id)sender {
     [self downBtnDone];
+    [TRUMTDTool uploadDevInfo];
 }
 
 //同意允许登录
@@ -315,7 +322,7 @@
         NSString *userId = [TRUUserAPI getUser].userId;
         NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:sign isDeviceType:NO];
         NSDictionary *paramsDic = @{@"params" : para};
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
 //            [weakSelf hideHudDelay:0.0];
             if (errorno == 0) {
                 //结束后调用动画
@@ -339,6 +346,11 @@
                 
             }else if (9019 == errorno){
                 [weakSelf deal9019Error];
+                
+            }else if (9033 == errorno){
+                [weakSelf showHudWithText:message];
+                [weakSelf hideHudDelay:2.0];
+                [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
             }else{
                 NSString *err = [NSString stringWithFormat:@"获取验证请求失败，请稍后重试（%d）",errorno];
                 [weakSelf showHudWithText:err];
@@ -395,7 +407,7 @@
                 [self.pushTimer invalidate];
                 self.pushTimer = nil;
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2019-03-30"];
+                int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
                 
                 if (dd >= 0) {
                     [self setDismissBlock:^(BOOL confirm){
@@ -436,6 +448,14 @@
             self.dismissBlock(res);
         }
     }];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [JPUSHService setBadge:0];
+    if (self.dismissBlock) {
+        BOOL res = [confrim isEqualToString:@"1"] ? YES : NO;
+        self.dismissBlock(res);
+    }
 //    [self.navigationController popViewControllerAnimated:YES];
 //    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 //    [JPUSHService setBadge:0];
@@ -551,8 +571,9 @@ static NSInteger pushCount = 0;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
-    self.navigationController.navigationBar.hidden = YES;
+//    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    self.navigationController.navigationBar.hidden = YES;
+    self.navigationBar.hidden = YES;
     //北明项目
 //    _logoImgView.hidden = YES;
 //    NSString *spName = [TRUCompanyAPI getCompany].icon_url;
@@ -598,7 +619,10 @@ static NSInteger pushCount = 0;
 
 -(void)customUI{
     self.linelabel.hidden = YES;
-    self.view.backgroundColor = DefaultGreenColor;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.pushOKBtn.backgroundColor = DefaultGreenColor;
+    self.pushOKBtn.layer.cornerRadius = 55.0;
+    self.pushOKBtn.layer.masksToBounds = YES;
     self.bigTitleTopConstraint.constant = 118*PointHeightPointRatio6;
     if(IS_IPHONE_5||IS_IPHONE_4_OR_LESS){
         self.confirmButtonTopConstraint.constant = 10;

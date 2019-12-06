@@ -62,7 +62,7 @@
 //    } cancelBlock:^{
 //        [weakSelf dismissVC];
 //    }];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResultWithMessage:^(int errorno, id responseBody, NSString *message){
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             [weakSelf showHudWithText:@"认证成功"];
@@ -76,6 +76,9 @@
             [weakSelf deal9008Error];
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
+        }else if (9033 == errorno){
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }else if (9025 == errorno){
             [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
                 [weakSelf dismissVC];

@@ -9,5 +9,5 @@
 #import "TRUBaseViewController.h"
 
 @interface TRUAPPLogIdentifyController : TRUBaseViewController
-
+@property (nonatomic,assign) BOOL isFromSetting;//是否从设置界面启动
 @end

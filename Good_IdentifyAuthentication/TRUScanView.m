@@ -75,7 +75,7 @@
                                                       object:nil
                                                        queue:[NSOperationQueue currentQueue]
                                                   usingBlock: ^(NSNotification *_Nonnull note) {
-                                                      self.output.rectOfInterest = [self.scanLayer metadataOutputRectOfInterestForRect:self.frame];
+                                                      self.output.rectOfInterest = [self.scanLayer metadataOutputRectOfInterestForRect:self.scanView.frame];
                                                   }];
     
     

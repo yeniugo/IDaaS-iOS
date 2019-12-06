@@ -40,7 +40,7 @@
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
     NSString *version =  dic[@"CFBundleShortVersionString"];
     NSString *bundleVersion = dic[@"CFBundleVersion"];
-    NSString *vstr = [NSString stringWithFormat:@"V%@(%@)",version,bundleVersion];
+    NSString *vstr = [NSString stringWithFormat:@"V%@",version];
     
     
         if (spcode.length>0) {
@@ -48,14 +48,14 @@
             NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
             NSString *para = [xindunsdk encryptByUkey:spcode];
             NSDictionary *dict = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-            [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getspinfo"] withParts:dict onResult:^(int errorno, id responseBody) {
+            [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:dict onResult:^(int errorno, id responseBody) {
                 [weakSelf hideHudDelay:0.0];
-                NSLog(@"--%d-->%@",errorno,responseBody);
+//                NSLog(@"--%d-->%@",errorno,responseBody);
                 if (errorno == 0 && responseBody) {
-                    NSDictionary *dictionary = [xindunsdk decodeServerResponse:responseBody];
-                    NSLog(@"--->%@",dictionary);
-                    if ([dictionary[@"code"] intValue] == 0) {
-                        NSDictionary *dicc = dictionary[@"resp"];
+                    NSDictionary *dictionary = responseBody;
+//                    NSLog(@"--->%@",dictionary);
+                    if (1) {
+                        NSDictionary *dicc = responseBody;
                         TRUCompanyModel *companyModel = [TRUCompanyModel modelWithDic:dicc];
                         companyModel.desc = dic[@"description"];
                         [TRUCompanyAPI saveCompany:companyModel];

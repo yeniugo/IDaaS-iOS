@@ -95,7 +95,7 @@
     //
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"请按住按钮,读出上面的8位数字.\n读完一组数字,请松开.";
-    tipLabel.textColor = [UIColor blackColor];
+    tipLabel.textColor = RGBCOLOR(102, 102, 102);
     tipLabel.font = [UIFont systemFontOfSize:CommonTipFont * PointHeightRatio6];
     tipLabel.textAlignment = NSTextAlignmentCenter;
     tipLabel.numberOfLines = 0;
@@ -124,10 +124,13 @@
     _btnBGlotview.hidden = YES;
     //
     YCVoiceButton *pressBtn = [YCVoiceButton buttonWithType:UIButtonTypeCustom];
+    pressBtn.backgroundColor = DefaultGreenColor;
     [pressBtn addTarget:self action:@selector(startRecVoice) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.pressBtn = pressBtn];
     [pressBtn setImage:[UIImage imageNamed:@"mic3"] forState:UIControlStateNormal];
     pressBtn.size = CGSizeMake(80, 80);
+    pressBtn.layer.cornerRadius = 40;
+    pressBtn.layer.masksToBounds = YES;
     pressBtn.x = SCREENW/2.f - 40;
     pressBtn.centerY = _btnBGlotview.centerY;
     __weak typeof(self) weakSelf = self;
@@ -135,23 +138,52 @@
         [weakSelf.vocieLotView stop];
     };
     pressBtn.TouchBeganBlock =^(){
-        [self startRecVoice];
-        weakSelf.btnBGlotview.hidden = NO;
-        [weakSelf.vocieLotView play];
-        [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
-            weakSelf.pressBtn.size = CGSizeMake(70, 70);
-            weakSelf.pressBtn.x = SCREENW/2.f - 35;
-            if (animationFinished) {
-                weakSelf.pressBtn.size = CGSizeMake(80, 80);
-                weakSelf.pressBtn.x = SCREENW/2.f - 40;
+        AVAuthorizationStatus videoAuthStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+        if (videoAuthStatus == AVAuthorizationStatusNotDetermined) {// 未询问用户是否授权
+            AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+            if ([audioSession respondsToSelector:@selector(requestRecordPermission:)]) {
+                [audioSession performSelector:@selector(requestRecordPermission:) withObject:^(BOOL granted) {
+                    if (granted) {
+                        [self startRecVoice];
+                        weakSelf.btnBGlotview.hidden = NO;
+                        [weakSelf.vocieLotView play];
+                        [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
+                            weakSelf.pressBtn.size = CGSizeMake(70, 70);
+                            weakSelf.pressBtn.x = SCREENW/2.f - 35;
+                            if (animationFinished) {
+                                weakSelf.pressBtn.size = CGSizeMake(80, 80);
+                                weakSelf.pressBtn.x = SCREENW/2.f - 40;
+                            }
+                        }];
+                    } else {
+                        [self showConfrimCancelDialogAlertViewWithTitle:@"未开启录音功能" msg:@"请到设置中开启声纹设置" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                    }
+                }];
             }
-        }];
+        } else if(videoAuthStatus == AVAuthorizationStatusRestricted || videoAuthStatus == AVAuthorizationStatusDenied) {
+            // 未授权
+            [self showConfrimCancelDialogAlertViewWithTitle:@"未开启录音功能" msg:@"请到设置中开启声纹设置" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+        } else{
+            // 已授权
+            [self startRecVoice];
+            weakSelf.btnBGlotview.hidden = NO;
+            [weakSelf.vocieLotView play];
+            [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
+                weakSelf.pressBtn.size = CGSizeMake(70, 70);
+                weakSelf.pressBtn.x = SCREENW/2.f - 35;
+                if (animationFinished) {
+                    weakSelf.pressBtn.size = CGSizeMake(80, 80);
+                    weakSelf.pressBtn.x = SCREENW/2.f - 40;
+                }
+            }];
+        }
+        
     };
     
     
     UILabel *bottomLabel = [[UILabel alloc] init];
     bottomLabel.text = @"长按开始说话";
-    bottomLabel.textColor = [UIColor blackColor];
+    bottomLabel.textColor = RGBCOLOR(102, 102, 102);
     bottomLabel.font = [UIFont systemFontOfSize:CommonTipFont * PointHeightRatio6];
     bottomLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:bottomLabel];
@@ -222,6 +254,7 @@
         [self showHudWithText:@"初始化语音引擎超时，请稍后重试"];
         [self hideHudDelay:2.0];
         [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.0];
+//        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
     }
 }
 
@@ -268,7 +301,7 @@
     }
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:text];
     [attrStr addAttribute:NSForegroundColorAttributeName
-                    value:DefaultColor
+                    value:DefaultGreenColor
                     range:NSMakeRange(10, 1)];
     self.sstLabel.attributedText = attrStr;
 }

@@ -102,6 +102,7 @@
         TRUFaceInitViewController *faceInitVC = [[TRUFaceInitViewController alloc] init];
         [self.navigationController presentViewController:faceInitVC animated:YES completion:^{
             [self.navigationController popViewControllerAnimated:NO];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         }];
     }else if (authStatus == AVAuthorizationStatusNotDetermined){
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
@@ -110,6 +111,7 @@
                 //            [self.navigationController pushViewController:faceInitVC animated:YES];
                 [self.navigationController presentViewController:faceInitVC animated:YES completion:^{
                     [self.navigationController popViewControllerAnimated:NO];
+//                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                 }];
             }else{
                 [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{

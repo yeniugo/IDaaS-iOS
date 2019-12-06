@@ -32,7 +32,8 @@
     }
     self.navigationController.viewControllers = tempArray;
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
+    self.navigationBar.hidden = NO;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
     
     [self.view addSubview:self.tableView];
@@ -212,8 +213,10 @@
 //        [self dismissViewControllerAnimated:YES completion:^{
 //            weakSelf.backBlock(userId);
 //        }];
-        [self.navigationController popViewControllerAnimated:NO];
+        
         weakSelf.backBlock(userId);
+        [self.navigationController popViewControllerAnimated:NO];
+//        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
     }
 }
 

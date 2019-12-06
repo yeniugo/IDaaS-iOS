@@ -189,6 +189,7 @@
                 }else{
                     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
                         [self.navigationController popViewControllerAnimated:YES];
+//                        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                     } cancelBlock:^{
                         
                     }];
@@ -200,6 +201,7 @@
     }else if(audioSession.recordPermission == AVAudioSessionRecordPermissionDenied){
         [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kMicrophoneFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
             [self.navigationController popViewControllerAnimated:YES];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         } cancelBlock:^{
             
         }];
@@ -221,7 +223,7 @@
     
     NSString *currentTimeStr = [self getCurrentTimes];
     //    NSLog(@"----->%@",currentTimeStr);
-    int dd = [self compareDate:currentTimeStr withDate:@"2019-03-30"];
+    int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
     //    NSLog(@"----->%d",dd);
     if (dd >= 0) {
         [self startFace];

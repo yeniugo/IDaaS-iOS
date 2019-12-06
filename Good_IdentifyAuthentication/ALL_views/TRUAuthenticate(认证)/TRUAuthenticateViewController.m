@@ -45,22 +45,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setCustomUI];
-    //请求今日验证数量
-    [self getDateCount];
-    //请求当前请求数量
-    [self getPushInfo];
+    
     
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:kRefresh3DataNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:@"refreshNumber" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
 //    if (self.navigationController.childViewControllers.count==1) {
 //        self.navigationController.navigationBarHidden = YES;
 //    }
 //    [UIApplication sharedApplication].statusBarHidden = YES;
+    //请求今日验证数量
+    [self getDateCount];
+    //请求当前请求数量
+    [self getPushInfo];
     if (@available(iOS 11.0, *)) {
         [self.scrollView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
     } else {
@@ -71,7 +74,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
+    self.navigationBar.hidden = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -145,12 +149,12 @@
                         //更新  当前请求的数量
                         if (badgeNumber>0) {
                             [weakSelf startPushCounterAndRefresh];
-                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
+//                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
                             //                        _topView.requestImgview.hidden = NO;
                             //                        _topView.requestLabel.text = [NSString stringWithFormat:@"%ld",(long)badgeNumber];
                             [weakSelf.authBtn setAuthNumber:badgeNumber];
                         }else{
-                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
+//                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
                             [weakSelf.authBtn setAuthNumber:badgeNumber];
                         }
                     }
@@ -193,12 +197,12 @@
 
 - (void)syncAuthData{
     [self getPushInfo];
-    [self getDateCount];
+//    [self getDateCount];
     [self.scrollView.mj_header endRefreshing];
 }
 
 - (void)setCustomUI{
-    self.navigationController.navigationBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(syncAuthData)];
     [self.view addSubview:self.scrollView];
@@ -275,7 +279,7 @@
     [self.scrollView addSubview:self.scanButton];
     [self.scanButton addTarget:self action:@selector(scanBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    CGFloat scanBtnW = [UIScreen mainScreen].scale*85/2;
+    CGFloat scanBtnW = PointHeightPointRatio6*107;
     CGFloat scanBtnH = scanBtnW;
     CGFloat scanBtnX = (SCREENW-scanBtnW)/2;
     CGFloat scanBtnY = imageH+bottomH*0.95-scanBtnH;
@@ -371,7 +375,7 @@
 -(void)loginBtnClick{
     TRUSessionManagerViewController *vc = [[TRUSessionManagerViewController alloc] init];
     //    TRUBaseNavigationController *nav = self.navigationController;
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
     //    [nav setNavBarColor:DefaultGreenColor];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -385,7 +389,7 @@
     });
     TRUSessionManagerViewController *vc = [[TRUSessionManagerViewController alloc] init];
 
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
 
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -443,6 +447,7 @@
 //                        [self dismissViewControllerAnimated:YES completion:nil];
 //                    }
                     [self.navigationController popViewControllerAnimated:YES];
+//                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                 } cancelBlock:nil];
             }
         }];
@@ -452,6 +457,7 @@
 //            [self dismissViewControllerAnimated:YES completion:nil];
 //            [self.navigationController popViewControllerAnimated:YES];
             [self.navigationController popViewControllerAnimated:YES];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         } cancelBlock:nil];
     }
 }
@@ -559,8 +565,9 @@ static NSInteger pushCount = NSIntegerMax;
             [weakSelf syncAuthData];
         }];
         TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
-        [nav setNavBarColor:ViewDefaultBgColor];
-        [self.navigationController presentViewController:nav animated:YES completion:nil];
+//        [nav setNavBarColor:ViewDefaultBgColor];
+//        [self.navigationController presentViewController:nav animated:YES completion:nil];
+        [self.navigationController pushViewController:authVC animated:YES];
     }else{
         [self showHudWithText:@"暂无认证请求，请试试下拉刷新或重新发起认证"];
 //        __weak typeof(self)weakSelf = self;

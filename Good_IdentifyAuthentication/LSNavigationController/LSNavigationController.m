@@ -35,6 +35,8 @@
     if (self.viewControllers.count>=1) {
         viewController.hidesBottomBarWhenPushed=YES;
     }
+    
+//    [HAMLogOutputWindow printLog:@"push11111"];
     [super pushViewController:viewController animated:animated];
 }
 -(void)setCancelGesture:(BOOL)cancelGesture

@@ -14,5 +14,6 @@
 @property (nonatomic,copy) NSString *appName;
 @property (nonatomic,copy) NSString *username;
 @property (nonatomic,copy) NSString *activation;
+@property (nonatomic,copy) NSString *appId;
 //+ (instancetype)modelWithDic:(NSDictionary *)dic;
 @end

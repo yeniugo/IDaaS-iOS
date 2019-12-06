@@ -71,7 +71,7 @@
     NSString *para = [xindunsdk requestOrverifyCIMSFaceForUser:userid faceData:imgData ctx:ctxx signdata:sign isType:NO];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:para, @"params", nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResultWithMessage:^(int errorno, id responseBody, NSString *message){
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             
@@ -107,6 +107,9 @@
             [weakSelf deal9008Error];
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
+        }else if (9033 == errorno){
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }else{//其他
             YCLog(@"---->%d",errorno);
             

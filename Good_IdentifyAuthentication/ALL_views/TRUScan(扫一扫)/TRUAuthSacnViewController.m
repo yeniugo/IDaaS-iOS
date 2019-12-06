@@ -17,7 +17,7 @@
 #import "TRUPushAuthModel.h"
 #import "TRUhttpManager.h"
 #import "TRUMultipleAccountsViewController.h"
-
+#import "AppDelegate.h"
 @interface TRUAuthSacnViewController ()
 @property (nonatomic, weak) UIView *maskView;
 
@@ -32,6 +32,7 @@
     // Do any additional setup after loading the view.
    
 //    [self setUpNav];
+    self.navigationBar.hidden = YES;
     [self setUPMaskView];
     [self setUPScanView];
     self.canSacn = YES;
@@ -155,8 +156,6 @@
                         [self performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
                     }
                 }
-                
-                
             }else{
                 [self showConfrimCancelDialogViewWithTitle:@"" msg:@"无效二维码，请确认二维码来源！" confrimTitle:@"确认" cancelTitle:@"" confirmRight:YES confrimBolck:^{
                     [weakSelf restartScan];
@@ -164,15 +163,12 @@
                 } cancelBlock:nil];
             }
         }
-        
-        
     }];
     
     [self.maskView addSubview:self.scanView = scanView];
     [scanView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.top.right.bottom.equalTo(self.maskView);
     }];
-    
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"放入框内，自动扫描";
@@ -186,11 +182,7 @@
         make.top.equalTo(self.scanView.scanView.mas_bottom).offset(10.0 * PointHeightRatio6);
     }];
     
-    
-    
     UIButton *pinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    pinBtn.backgroundColor = BtnDefaultBgColor;
-//    [pinBtn setTitle:@"使用帮助" forState:UIControlStateNormal];
     [pinBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.maskView addSubview:pinBtn];
     [pinBtn mas_makeConstraints:^(MASConstraintMaker *make){
@@ -230,15 +222,24 @@
 //            [weakSelf dismissViewControllerAnimated:YES completion:nil];
 //        });
         [self.navigationController popViewControllerAnimated:YES];
+//        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
         authVC.pushModel = pushModel;
         authVC.userNo = userId;
         [authVC setDismissBlock:^(BOOL confirm) {
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
         }];
-        TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *rootnav = delegate.window.rootViewController;
+            [rootnav pushViewController:authVC animated:YES];
+        }
         
-        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
+//        TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
+//
+//        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
         
     }];
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc];
@@ -246,29 +247,40 @@
 ////        self.navigationController.navigationBarHidden = NO;
 //    }];
 //    [self.navigationController popViewControllerAnimated:NO];
-    [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController pushViewController:vc animated:YES];
+    UINavigationController *pushNav = self.navigationController;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pushNav pushViewController:vc animated:YES];
+    });
+    [self.navigationController popViewControllerAnimated:NO];
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
 }
 
 - (void)popAuthViewVCWithPushModel:(TRUPushAuthModel*)pushModel userNo:(NSString *)userNo{
+    UINavigationController *pushNav = self.navigationController;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        __weak typeof(self) weakSelf = self;
+        TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
+        authVC.pushModel = pushModel;
+        authVC.userNo = userNo;
+        [authVC setDismissBlock:^(BOOL confirm) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            //        [self.navigationController popViewControllerAnimated:YES];
+        }];
+        //        TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
+        //    [self.navigationController popViewControllerAnimated:NO];
+        //    [self presentViewController:nav animated:YES completion:nil];
+        //    [self.navigationController pushViewController:authVC animated:YES];
+        //    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        UINavigationController *nav = delegate.window.rootViewController;
+        [pushNav pushViewController:authVC animated:YES];
+    });
     [self.navigationController popViewControllerAnimated:NO];
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
     [self.scanView stopScaning];
     [self.scanView stopAnimation];
     self.canSacn = NO;
-    
-    __weak typeof(self) weakSelf = self;
-    TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
-    authVC.pushModel = pushModel;
-    authVC.userNo = userNo;
-    [authVC setDismissBlock:^(BOOL confirm) {
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
-//    [self.navigationController popViewControllerAnimated:NO];
-//    [self presentViewController:nav animated:YES completion:nil];
-//    [self.navigationController pushViewController:authVC animated:YES];
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
-    
 }
 
 - (void)cancelBtnClick{
@@ -279,6 +291,7 @@
 //        [self dismissViewControllerAnimated:YES completion:nil];
 //    }
     [self.navigationController popViewControllerAnimated:YES];
+//    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
 }
 - (void)restartScan{
     [self.scanView beginScanning];

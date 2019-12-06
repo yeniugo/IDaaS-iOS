@@ -27,7 +27,7 @@
 @property (nonatomic, strong) LOTAnimationView *identifylotView;
 @property (nonatomic, strong) LOTAnimationView *fingerLotView;
 @property (nonatomic, strong) UILabel *topLabel;
-
+@property (nonatomic, strong) UIButton *fingerBtn;//指纹验证按钮
 @end
 
 @implementation TRUVerifyFingerprintViewController
@@ -40,6 +40,13 @@
     [self setupViews];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    TRUBaseNavigationController *nav = self.navigationController;
+    nav.backBlock = nil;
+    [TRUEnterAPPAuthView unlockView];
+}
+
 - (void)setupViews {
     
     self.title = @"指纹验证";
@@ -49,52 +56,22 @@
     //iconImgview lotview
     CGFloat lastY = 100;
     
-    UIImageView *iconImgview = [[UIImageView alloc] init];
-    [self.view addSubview:iconImgview];
-    NSString *imgurlstr = [TRUCompanyAPI getCompany].logo_url;
-    [iconImgview yy_setImageWithURL:[NSURL URLWithString:imgurlstr] placeholder:[UIImage imageNamed:@"ges_bg"]];
-    iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 65, 100, 100);
-    
-    if (kDevice_Is_iPhoneX) {
-        iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 105, 100, 100);
-    }else{
-        iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 65, 100, 100);
-    }
-    
-    _identifylotView= [LOTAnimationView animationNamed:@"GestureAppend.json"];
-    _identifylotView.size = CGSizeMake(160, 160);
-    _identifylotView.centerX = self.view.centerX;
-    _identifylotView.centerY = iconImgview.centerY;
-    [self.view addSubview:_identifylotView];
-    _identifylotView.hidden = YES;
-    
-    
     UILabel *topLabel = [[UILabel alloc] init];
     topLabel.font = [UIFont systemFontOfSize:15];
     topLabel.text = @"请验证您的指纹";
-    topLabel.textColor = [UIColor darkGrayColor];
+    topLabel.textColor = DefaultGreenColor;
     topLabel.textAlignment = NSTextAlignmentCenter;
-    topLabel.frame = CGRectMake(0, lastY + 75, SCREEN_WIDTH, 20);
+    topLabel.frame = CGRectMake(0, 368, SCREEN_WIDTH, 20);
     [self.view addSubview:topLabel];
     self.topLabel = topLabel;
     
-    if (kDevice_Is_iPhoneX) {
-        topLabel.frame = CGRectMake(0, lastY + 115, SCREEN_WIDTH, 20);
-    }else{
-        topLabel.frame = CGRectMake(0, lastY + 75, SCREEN_WIDTH, 20);
-    }
-    
-    _fingerLotView = [LOTAnimationView animationNamed:@"fingerprint.json"];
-    _fingerLotView.size = CGSizeMake(100, 112);
-    _fingerLotView.centerX = self.view.width / 2.f;
-    _fingerLotView.centerY = self.view.height/2.f +20;
-//    _fingerLotView.y = topLabel.bottom + 50;
-    [self.view addSubview:_fingerLotView];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
-    [_fingerLotView addGestureRecognizer:tap];
-    _fingerLotView.userInteractionEnabled = YES;
-    
+    self.fingerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.fingerBtn setImage:[UIImage imageNamed:@"icon_finger"] forState:UIControlStateNormal];
+    [self.fingerBtn setImage:[UIImage imageNamed:@"icon_finger"] forState:UIControlStateSelected];
+    [self.fingerBtn addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.fingerBtn];
+    self.fingerBtn.frame = CGRectMake((SCREENW - 60)/2.0, 278, 60, 60);
+    topLabel.frame = CGRectMake(0, 278 + 60, SCREEN_WIDTH, 20);
     
     if (self.isDoingAuth && [TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeture) {
         //忘记手势
@@ -102,7 +79,7 @@
         [self.view addSubview:otherModeBtn];
         otherModeBtn.frame = CGRectMake(SCREENW/2.f -60, SCREENH - 60, 120, 30);
         [otherModeBtn setTitle:@"其他方式登录" forState:UIControlStateNormal];
-        [otherModeBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
+        [otherModeBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
         otherModeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [otherModeBtn addTarget:self action:@selector(otherModeBtnClick) forControlEvents:UIControlEventTouchUpInside];
         if (kDevice_Is_iPhoneX){
@@ -110,17 +87,17 @@
         }
     }else{
         //用户协议
-        UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-        [self.view addSubview:txtLabel];
-        txtLabel.text = @"使用此App,即表示同意该";
-        txtLabel.font = [UIFont systemFontOfSize:14];
-        UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.view addSubview:agreementBtn];
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-        [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-        [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-        agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//        UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//        [self.view addSubview:txtLabel];
+//        txtLabel.text = @"使用此App,即表示同意该";
+//        txtLabel.font = [UIFont systemFontOfSize:14];
+//        UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.view addSubview:agreementBtn];
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//        [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//        [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//        agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -147,6 +124,7 @@
                 NSString *info = nil;
                 if (success) {
                     info = @"验证成功";
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                 }else{
                     switch (error.code) {
                         case LAErrorUserFallback:
@@ -162,6 +140,7 @@
                                         _backBlocked(NO);
                                     }
                                     [self.navigationController popViewControllerAnimated:YES];
+//                                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                                 });
                             }
                             break;
@@ -196,26 +175,23 @@
                         if (weskSelf.completionBlock) {
                             weskSelf.completionBlock();
                         }
-                        [weskSelf.fingerLotView playWithCompletion:^(BOOL animationFinished) {
-                            if (animationFinished) {
-                                _identifylotView.hidden = NO;
-                                [weskSelf.identifylotView playWithCompletion:^(BOOL animationFinished) {
-                                    if (animationFinished) {
-                                        if (self.openFingerAuth) {
-                                            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
-                                            if (_backBlocked) {
-                                                _backBlocked(YES);
-                                            }
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }else if (self.isDoingAuth) {
-                                            [TRUEnterAPPAuthView dismissAuthView];
-                                        }else{
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }
-                                    }
-                                }];
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                        if (self.openFingerAuth) {
+                            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
+                            if (_backBlocked) {
+                                _backBlocked(YES);
                             }
-                        }];
+                            [self.navigationController popViewControllerAnimated:YES];
+                            //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
+                        }else if (self.isDoingAuth) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                            [TRUEnterAPPAuthView dismissAuthView];
+                            //                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                            //                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                        }else{
+                            [self.navigationController popViewControllerAnimated:YES];
+                            //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
+                        }
                         
                     }else if ([@"再试一次" isEqualToString:info]) {
                         [weskSelf startVerifyFingerprint:nil];
@@ -231,6 +207,7 @@
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
                                 [TRUEnterAPPAuthView dismissAuthView];
+//                                [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -268,6 +245,7 @@
                                         _backBlocked(NO);
                                     }
                                     [self.navigationController popViewControllerAnimated:YES];
+//                                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                                 });
                             }
                             break;
@@ -302,26 +280,20 @@
                         if (weskSelf.completionBlock) {
                             weskSelf.completionBlock();
                         }
-                        [weskSelf.fingerLotView playWithCompletion:^(BOOL animationFinished) {
-                            if (animationFinished) {
-                                _identifylotView.hidden = NO;
-                                [weskSelf.identifylotView playWithCompletion:^(BOOL animationFinished) {
-                                    if (animationFinished) {
-                                        if (self.openFingerAuth) {
-                                            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
-                                            if (_backBlocked) {
-                                                _backBlocked(YES);
-                                            }
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }else if (self.isDoingAuth) {
-                                            [TRUEnterAPPAuthView dismissAuthView];
-                                        }else{
-                                            [self.navigationController popViewControllerAnimated:YES];
-                                        }
-                                    }
-                                }];
+                        if (self.openFingerAuth) {
+                            [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
+                            if (_backBlocked) {
+                                _backBlocked(YES);
                             }
-                        }];
+                            [self.navigationController popViewControllerAnimated:YES];
+                            //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
+                        }else if (self.isDoingAuth) {
+                            [TRUEnterAPPAuthView dismissAuthView];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                        }else{
+                            [self.navigationController popViewControllerAnimated:YES];
+                            //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
+                        }
                         
                     }else if ([@"再试一次" isEqualToString:info]) {
                         [weskSelf startVerifyFingerprint:nil];
@@ -337,6 +309,7 @@
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
                                 [TRUEnterAPPAuthView dismissAuthView];
+//                                [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"

@@ -124,6 +124,7 @@
                     weakSelf.codeBtn.enabled = YES;
                     [weakSelf hideHudDelay:2.0];
                     [weakSelf.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
+//                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                     return;
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
@@ -132,6 +133,7 @@
                 weakSelf.codeBtn.enabled = YES;
                 [weakSelf hideHudDelay:2.0];
                 [weakSelf.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
+//                [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                 return;
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
@@ -140,6 +142,7 @@
             weakSelf.codeBtn.enabled = YES;
             [weakSelf hideHudDelay:2.0];
             [weakSelf.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
+//            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
             return;
         }else if(errorno == -5004){
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];

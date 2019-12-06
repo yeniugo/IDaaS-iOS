@@ -70,12 +70,12 @@ static HAMLogOutputWindow __strong * sharedHAMLogOutputWindow = nil;
 #pragma mark - Init
 
 - (instancetype)init {
-    self = [super initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200)];
+    self = [super initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     if (self) {
         // self
         self.rootViewController = [UIViewController new]; // suppress warning
-        self.windowLevel = UIWindowLevelAlert;
-        [self setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3]];
+        self.windowLevel = 3000.0;
+        [self setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
         self.userInteractionEnabled = NO;
         
         // text view
