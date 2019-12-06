@@ -47,7 +47,8 @@
 #endif
     
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : RGBCOLOR(94, 95, 96), NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
-    [bar tru_setBackgroudColor:ViewDefaultBgColor];
+//    [bar tru_setBackgroudColor:ViewDefaultBgColor];
+    [bar setBackgroundColor:ViewDefaultBgColor];
     [bar setShadowImage:[UIImage new]];
     
 }
@@ -67,20 +68,20 @@
 }
 
 - (void)setNavBarColor:(UIColor *)color{
-    [self.navigationBar tru_setBackgroudColor:color];
+    [self.navigationBar setBackgroundColor:color];
     [self.navigationBar setShadowImage:[UIImage new]];
     self.backgroundColor = color;
 }
 
 - (void)setTitle:(NSString *)title{
     [super setTitle:title];
-    if(@available(iOS 12.0,*)){
-        if (self.backgroundColor==nil) {
-            [self setNavBarColor:DefaultGreenColor];
-        }else{
-            [self setNavBarColor:self.backgroundColor];
-        }
-    }
+//    if(@available(iOS 12.0,*)){
+//        if (self.backgroundColor==nil) {
+//            [self setNavBarColor:DefaultGreenColor];
+//        }else{
+//            [self setNavBarColor:self.backgroundColor];
+//        }
+//    }
     //    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
 }
 

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cellEditButton;
 @property (weak, nonatomic) IBOutlet UILabel *cellCenterLable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellDetailsRightConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *rightArrowImageView;
 @property (nonatomic,strong) UIView *lineView;//下划线
 @end
 
@@ -109,6 +110,7 @@
             self.cellDetailsLabel.hidden = NO;
             self.cellEditButton.hidden = YES;
             self.cellCenterLable.hidden = YES;
+            self.rightArrowImageView.hidden = YES;
             self.cellTitleLabel.text = cellDate.titleStr;
             self.cellDetailsLabel.text = cellDate.detailsStr;
             self.cellDetailsRightConstraint.constant = -16.0f;
@@ -120,6 +122,7 @@
             self.cellDetailsLabel.hidden = NO;
             self.cellEditButton.hidden = NO;
             self.cellCenterLable.hidden = YES;
+            self.rightArrowImageView.hidden = YES;
             self.cellTitleLabel.text = cellDate.titleStr;
             self.cellDetailsLabel.text = cellDate.detailsStr;
             self.cellDetailsRightConstraint.constant = 10.0f;
@@ -131,9 +134,20 @@
             self.cellDetailsLabel.hidden = YES;
             self.cellEditButton.hidden = YES;
             self.cellCenterLable.hidden = NO;
+            self.rightArrowImageView.hidden = YES;
             self.cellCenterLable.text = cellDate.centerStr;
         }
             break;
+        case 3:
+        {
+            self.cellTitleLabel.hidden = NO;
+            self.cellDetailsLabel.hidden = NO;
+            self.cellEditButton.hidden = YES;
+            self.cellCenterLable.hidden = YES;
+            self.cellTitleLabel.text = cellDate.titleStr;
+            self.cellDetailsLabel.text = cellDate.detailsStr;
+            self.cellDetailsRightConstraint.constant = 10.0f;
+        }
         default:
             break;
     }

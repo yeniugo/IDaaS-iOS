@@ -88,7 +88,10 @@
             }else if (9008 == errorno){
                 [weakSelf deal9008Error];
             }else if (9019 == errorno){
-                [weakSelf deal9019Error];
+//                [weakSelf deal9019Error];
+                [weakSelf dele9019ErrorWithBlock:^{
+                    [weakSelf dismissVC:0];
+                }];
             }else if (-5004 == errorno){
                 [weakSelf showHudWithText:@"网络错误 请稍后重试"];
                 [weakSelf hideHudDelay:2.0];
@@ -148,14 +151,20 @@
     __weak typeof(self) weakSelf = self;
     NSString *authtype = self.pushModel.authtype;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [self showHudWithText:@""];
+//    [self showHudWithText:@""];
     NSString *user = [TRUUserAPI getUser].userId;
-    NSString *sign = [NSString stringWithFormat:@"%@%@", self.pushModel.token,@"2"];
-    NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"2"];
+    NSString *userStr;
+    if (self.userNo.length) {
+        userStr = self.userNo;
+    }else{
+        userStr = user;
+    }
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@", self.pushModel.token,@"2",userStr];
+    NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"2",@"userid",userStr];
     NSString *para = [xindunsdk encryptByUkey:user ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-        [weakSelf hideHudDelay:0.0];
+//        [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             //结束后调用动画
             [weakSelf post3DataNoti];
@@ -189,14 +198,14 @@
     __weak typeof(self) weakSelf = self;
     NSString *authtype = self.pushModel.authtype;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [self showHudWithText:@""];
+//    [self showHudWithText:@""];
     NSString *user = [TRUUserAPI getUser].userId;
-    NSString *sign = [NSString stringWithFormat:@"%@%@", self.pushModel.token,@"4"];
-    NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"4"];
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@", self.pushModel.token,@"4",user];
+    NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"4",@"userid",user];
     NSString *para = [xindunsdk encryptByUkey:user ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-        [weakSelf hideHudDelay:0.0];
+//        [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             
         }else if (9002 == errorno){
@@ -293,13 +302,21 @@
         __weak typeof(self) weakSelf = self;
         NSString *authtype = self.pushModel.authtype;
         NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-        [self showHudWithText:@""];
-        NSString *sign = [NSString stringWithFormat:@"%@%@", self.pushModel.token,@"1"];
-        NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"1"];
-        NSString *para = [xindunsdk encryptByUkey:self.userNo ctx:ctxx signdata:sign isDeviceType:NO];
+//        [self showHudWithText:@""];
+        NSString *user = [TRUUserAPI getUser].userId;
+        NSString *userStr;
+        if (self.userNo.length) {
+            userStr = self.userNo;
+        }else{
+            userStr = user;
+        }
+        NSString *sign = [NSString stringWithFormat:@"%@%@%@", self.pushModel.token,@"1",userStr];
+        NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"1",@"userid",userStr];
+        NSString *userId = [TRUUserAPI getUser].userId;
+        NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:sign isDeviceType:NO];
         NSDictionary *paramsDic = @{@"params" : para};
         [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-            [weakSelf hideHudDelay:0.0];
+//            [weakSelf hideHudDelay:0.0];
             if (errorno == 0) {
                 //结束后调用动画
                 [weakSelf post3DataNoti];

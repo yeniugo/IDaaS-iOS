@@ -69,6 +69,7 @@ static NSString *userId;
     isFirstEnter = YES;
     [self showHudWithText:@"正在同步动态口令..."];
     [self hideHudDelay:2.0];
+    __weak typeof(self) weakSelf = self;
     [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
 
         [self hideHudDelay:0.0];
@@ -84,10 +85,8 @@ static NSString *userId;
             [self initTimeCount];
             [self showHudWithText:@"同步成功"];
             [self hideHudDelay:2.0];
-            __weak typeof(self) weakSelf = self;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                weakSelf.refreshBtn.enabled = YES;
-            });
+            
+            
         }else if (error == -5004){
             [self showHudWithText:@"网络错误，稍后请重试"];
             [self hideHudDelay:2.0];
@@ -98,6 +97,9 @@ static NSString *userId;
             [self showHudWithText:err];
             [self hideHudDelay:2.0];
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            weakSelf.refreshBtn.enabled = YES;
+        });
     }];
 }
 
@@ -298,7 +300,10 @@ static NSString *userId;
 }
 
 
-
+- (void)dealloc{
+//    [super dealloc];
+    YCLog(@"TRUDynamicPasswordViewController dealloc");
+}
 
 
 - (void)didReceiveMemoryWarning {

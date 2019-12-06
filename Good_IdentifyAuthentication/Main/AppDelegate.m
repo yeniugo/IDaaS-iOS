@@ -68,6 +68,8 @@
     [self initJPush:launchOptions];
     //init（xindun）
     [self initXdSDK];
+    
+    
 //    for (int i = 0; i < 10000; i++) {
 //        @autoreleasepool{
 //            NSString *userId = [TRUUserAPI getUser].userId;
@@ -80,10 +82,10 @@
 //        }
 //    }
 //    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
-    [HAMLogOutputWindow printLog:@"didFinishLaunchingWithOptions"];
-    NSString *isss = [xindunsdk getDeviceId];
-    
-    NSDictionary *dic = [xindunsdk getDeviceInfo];
+//    [HAMLogOutputWindow printLog:@"didFinishLaunchingWithOptions"];
+//    NSString *isss = [xindunsdk getDeviceId];
+//    [HAMLogOutputWindow printLog:isss];
+//    NSDictionary *dic = [xindunsdk getDeviceInfo];
 //    YCLog(@"dic = ");
     //初始化MSC
     [self initMSC];
@@ -94,6 +96,8 @@
     //检查版本更新
     [self checkVersion];
 //    [self checkNewVersion];
+//    [self checkNewVersion];
+//    [self checkUpdataWithPlist];
     //    [xindunsdk getDeviceInfo];
     //广告页
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -420,9 +424,7 @@
     [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
     [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
     TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
-    
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
-    
     self.window.rootViewController = nav;
 }
 #pragma mark 返回原APP
@@ -466,7 +468,7 @@
                         
                     }else{
                         [self getTokenVC:2];
-                        [HAMLogOutputWindow printLog:@"getTokenVC 2"];
+//                        [HAMLogOutputWindow printLog:@"getTokenVC 2"];
                     }
                 }
             }else if ([tokenStr isEqualToString:@"logout"]){
@@ -548,7 +550,7 @@
         case 1:
         {
             if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
-                [HAMLogOutputWindow printLog:@"2.1s"];
+//                [HAMLogOutputWindow printLog:@"2.1s"];
                 dispatchTime = 2.1;
             }else{
                 dispatchTime = 0.5;
@@ -589,7 +591,7 @@
         {
 //            dispatchTime = 2.1;
             if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
-                [HAMLogOutputWindow printLog:@"2.1s"];
+//                [HAMLogOutputWindow printLog:@"2.1s"];
                 dispatchTime = 2.1;
             }else{
                 dispatchTime = 0.5;
@@ -610,7 +612,7 @@
                         urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                     }
                 }
-                [HAMLogOutputWindow printLog:@"1111"];
+//                [HAMLogOutputWindow printLog:@"1111"];
                 weakSelf.soureSchme = nil;
                 weakSelf.thirdAwakeTokenStatus = 0;
                 if (self.window.rootViewController.presentedViewController) {
@@ -647,7 +649,7 @@
         case 3:
         {
             if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
-                [HAMLogOutputWindow printLog:@"2.1s"];
+//                [HAMLogOutputWindow printLog:@"2.1s"];
                 dispatchTime = 2.1;
             }else{
                 dispatchTime = 0.5;
@@ -675,7 +677,7 @@
         case 4:
         {
             if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
-                [HAMLogOutputWindow printLog:@"2.1s"];
+//                [HAMLogOutputWindow printLog:@"2.1s"];
                 dispatchTime = 2.1;
             }else{
                 dispatchTime = 0.5;
@@ -895,7 +897,7 @@
     __weak typeof(self) weakSelf = self;
     CGFloat dispatchTime;
     if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
-        [HAMLogOutputWindow printLog:@"2.1s"];
+//        [HAMLogOutputWindow printLog:@"2.1s"];
         dispatchTime = 2.1;
     }else{
         dispatchTime = 0.5;
@@ -1173,30 +1175,143 @@
     __weak typeof(self) weakSelf = self;
     AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager GET:@"https://www.quketing.com/plist/idass.plist" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSString *bundleidStr = [weakSelf getPlistVersionWithPlist:responseObject];
-//        NSString *updateStr = [weakSelf getPlistFouceWithPlist:responseObject];
-//        if (updateStr.length) {
-//            if ([updateStr isEqualToString:@"1"]) {
-//                [weakSelf checkNewAppUpdate:bundleidStr withFouce:YES];
-//            }else{
-//                [weakSelf checkNewAppUpdate:bundleidStr withFouce:NO];
-//            }
-//        }else{
-//            [weakSelf checkNewAppUpdate:bundleidStr withFouce:NO];
-//        }
-//        YCLog(@"bundleidStr = %@",bundleidStr);
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/ios/cims.html",baseUrl];
+    [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YCLog(@"update = %@",responseObject);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString *bundle_version = responseObject[@"bundle_version"];
+            BOOL force_update = [responseObject[@"force_update"] boolValue];
+            NSString *url = responseObject[@"url"];
+            [weakSelf checkNewAppUpdate:bundle_version updateURL:url withFouce:force_update];
+        }
+        //        NSString *bundleidStr = [weakSelf getPlistVersionWithPlist:responseObject];
+        //        NSString *updateStr = [weakSelf getPlistFouceWithPlist:responseObject];
+        //        if (updateStr.length) {
+        //            if ([updateStr isEqualToString:@"1"]) {
+        //                [weakSelf checkNewAppUpdate:bundleidStr withFouce:YES];
+        //            }else{
+        //                [weakSelf checkNewAppUpdate:bundleidStr withFouce:NO];
+        //            }
+        //        }else{
+        //            [weakSelf checkNewAppUpdate:bundleidStr withFouce:NO];
+        //        }
+        //        YCLog(@"bundleidStr = %@",bundleidStr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YCLog(@"error");
     }];
-    if(@available(iOS 10.0,*)){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass1.plist"] options:nil completionHandler:^(BOOL success) {
+    //    if(@available(iOS 10.0,*)){
+    //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass1.plist"] options:nil completionHandler:^(BOOL success) {
+    //
+    //        }];
+    //    }else{
+    //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass1.plist"]];
+    //    }
+}
 
-        }];
+-(void)checkNewAppUpdate:(NSString *)appInfo updateURL:(NSString *)updateURL withFouce:(BOOL)fouce{
+    //版本
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    CGFloat dispatchTime;
+    if ([self.window.rootViewController isKindOfClass: [TRUBaseTabBarController class]]) {
+        //        [HAMLogOutputWindow printLog:@"2.1s"];
+        dispatchTime = 0.1;
     }else{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass1.plist"]];
+        dispatchTime = 20;
     }
+    //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
+    if ([self updeWithDicString:version andOldString:appInfo]) {
+        if (fouce) {
+            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //                NSString *url = @"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass.plist";
+                NSString *url = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",updateURL];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+                //                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //                    [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+                //                });
+            }];
+            
+            //            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //
+            //            }];
+            //            [alertVC addAction:cancelAction];
+            [alertVC addAction:confrimAction];//
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+            });
+        }else{
+            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSString *url = [NSString stringWithFormat:@"itms-services:///?action=download-manifest&url=%@",updateURL];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+            }];
+            
+            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alertVC addAction:cancelAction];
+            [alertVC addAction:confrimAction];//
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+            });
+            
+        }
+    }else{
+        YCLog(@"不用更新");
+    }
+}
+
+- (void)checkUpdataWithPlist{
+    __weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/ios/cims.html",baseUrl];
+    [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSString *url = responseObject[@"url"];
+            if (url.length) {
+                if ([url hasPrefix:@"https://"]) {
+                    [weakSelf getPlistWithURL:url];
+                }else{
+                    url = [NSString stringWithFormat:@"%@%@",baseUrl,url];
+                    [weakSelf getPlistWithURL:url];
+                }
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"error");
+    }];
+}
+
+- (void)getPlistWithURL:(NSString *)url{
+    __weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *bundleidStr = [weakSelf getPlistVersionWithPlist:responseObject];
+        NSString *updateStr = [weakSelf getPlistFouceWithPlist:responseObject];
+        if (updateStr.length) {
+            if ([updateStr isEqualToString:@"1"]) {
+                [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:YES];
+            }else{
+                [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:NO];
+            }
+        }else{
+            [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:NO];
+        }
+        YCLog(@"bundleidStr = %@",bundleidStr);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"error");
+    }];
 }
 
 - (NSString *)getPlistVersionWithPlist:(id)plist{
@@ -1226,21 +1341,21 @@
     return nil;
 }
 
-- (void)checkVersionFromEnterprise{
-    UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",@"1111"] preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *url = @"https://itunes.apple.com/cn/app/id1195763218?mt=8";
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-    }];
-    
-    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [alertVC addAction:cancelAction];
-    [alertVC addAction:confrimAction];//
-    [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
-}
+//- (void)checkVersionFromEnterprise{
+//    UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",@"1111"] preferredStyle:UIAlertControllerStyleAlert];
+//
+//    UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        NSString *url = @"https://itunes.apple.com/cn/app/id1195763218?mt=8";
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+//    }];
+//
+//    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//    }];
+//    [alertVC addAction:cancelAction];
+//    [alertVC addAction:confrimAction];//
+//    [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+//}
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本
@@ -1261,52 +1376,53 @@
         }];
         [alertVC addAction:cancelAction];
         [alertVC addAction:confrimAction];//
-        [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+        });
     }else{
         YCLog(@"不用更新");
     }
 }
 
--(void)checkNewAppUpdate:(NSString *)appInfo withFouce:(BOOL)fouce{
-    //版本
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    
-    //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
-    if ([self updeWithDicString:version andOldString:appInfo]) {
-        if (fouce) {
-            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSString *url = @"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass.plist";
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-            }];
-            
+//-(void)checkNewAppUpdate:(NSString *)appInfo withFouce:(BOOL)fouce{
+//    //版本
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+//
+//    //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
+//    if ([self updeWithDicString:version andOldString:appInfo]) {
+//        if (fouce) {
+//            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+//
+//            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                NSString *url = @"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass.plist";
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+//            }];
+//
+////            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+////
+////            }];
+////            [alertVC addAction:cancelAction];
+//            [alertVC addAction:confrimAction];//
+//            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+//        }else{
+//            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+//
+//            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                NSString *url = @"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass.plist";
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+//            }];
+//
 //            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //
 //            }];
 //            [alertVC addAction:cancelAction];
-            [alertVC addAction:confrimAction];//
-            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
-        }else{
-            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSString *url = @"itms-services:///?action=download-manifest&url=https://www.quketing.com/plist/idass.plist";
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-            }];
-            
-            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alertVC addAction:cancelAction];
-            [alertVC addAction:confrimAction];//
-            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
-        }
-    }else{
-        YCLog(@"不用更新");
-    }
-}
+//            [alertVC addAction:confrimAction];//
+//            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+//        }
+//    }else{
+//        YCLog(@"不用更新");
+//    }
+//}
 
 -(BOOL)updeWithDicString:(NSString *)version andOldString:(NSString *)appVersion{
     

@@ -56,7 +56,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-iN-Kay">
-                        <rect key="frame" x="247.5" y="8.5" width="47" height="32"/>
+                        <rect key="frame" x="247.5" y="14.5" width="47" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="47" id="59j-of-Q8C"/>
                             <constraint firstAttribute="height" constant="32" id="F8x-X2-0u1"/>
@@ -72,7 +72,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Sen-la-W4Y" firstAttribute="leading" secondItem="ZuF-yN-47S" secondAttribute="trailing" constant="10" id="L27-ad-pz2"/>
-                    <constraint firstItem="6lg-FK-gbO" firstAttribute="top" secondItem="78h-iN-Kay" secondAttribute="bottom" constant="4" id="LO4-ZA-slI"/>
+                    <constraint firstItem="6lg-FK-gbO" firstAttribute="top" secondItem="78h-iN-Kay" secondAttribute="bottom" constant="-2" id="LO4-ZA-slI"/>
                     <constraint firstAttribute="bottom" secondItem="6lg-FK-gbO" secondAttribute="bottom" constant="14" id="OZA-yD-p7p"/>
                     <constraint firstItem="ZuF-yN-47S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="Vsz-up-0Cq"/>
                     <constraint firstItem="Sen-la-W4Y" firstAttribute="top" secondItem="cMw-E2-bl3" secondAttribute="bottom" constant="6" id="Ytq-uD-0GX"/>

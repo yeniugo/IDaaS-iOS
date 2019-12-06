@@ -674,7 +674,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        NSArray *arr = _txtArr[0];
+//        NSArray *arr = _txtArr[0];
         if (indexPath.row > 0) {
             TRUGestureModify1ViewController *modify1VC = [[TRUGestureModify1ViewController alloc] init];
             [self.navigationController pushViewController:modify1VC animated:YES];

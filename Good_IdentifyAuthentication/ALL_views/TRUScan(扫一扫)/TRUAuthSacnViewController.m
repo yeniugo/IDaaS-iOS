@@ -16,6 +16,7 @@
 #import "TRUBaseNavigationController.h"
 #import "TRUPushAuthModel.h"
 #import "TRUhttpManager.h"
+#import "TRUMultipleAccountsViewController.h"
 
 @interface TRUAuthSacnViewController ()
 @property (nonatomic, weak) UIView *maskView;
@@ -104,50 +105,57 @@
             
             if ([op isEqualToString:@"login"]) {
                 NSString *userNo = [TRUUserAPI getUser].userId;
-                if (userNo){
-                    __weak typeof(self) weakSelf = self;
-                    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-                    NSString *sign = authcode;
-                    NSArray *ctxx = @[@"token",sign];
-                    NSString *para = [xindunsdk encryptByUkey:userNo ctx:ctxx signdata:sign isDeviceType:YES];
-                    NSDictionary *paramsDic = @{@"params" : para};
-                    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/push/fetch"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-                        [self hideHudDelay:0.0];
-                        NSDictionary *dic = nil;
-                        if (errorno == 0 && responseBody) {
-                            dic = [xindunsdk decodeServerResponse:responseBody];
-                            if ([dic[@"code"] intValue] == 0) {
-                                dic = dic[@"resp"];
-                                TRUPushAuthModel *model = [TRUPushAuthModel modelWithDic:dic];
-                                model.token = authcode;
-                                [weakSelf popAuthViewVCWithPushModel:model userNo:userNo];
-                            }
-                        }else if (errorno == 9008){
-                            [weakSelf deal9008Error];
-                        }else if (9019 == errorno){
-                            [weakSelf deal9019Error];
-                        }else if (errorno == -5004){
-                            [weakSelf showHudWithText:@"网络错误 请稍后重试"];
-                            [weakSelf hideHudDelay:2.0];
-                            [weakSelf performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
-                        }else if (errorno == 9002){
-                            [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"二维码过期，请刷新二维码重新扫描" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                                [weakSelf restartScan];
-                            } cancelBlock:nil];
-                        }else{
-                            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
-                            [weakSelf showHudWithText:err];
-                            [weakSelf hideHudDelay:2.0];
-                            [weakSelf performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
-                        }
-                    }];
-
-                    
+                if(0){
+//                    [self popMultipleAccountsWithPushModel];
                 }else{
-                    [self showHudWithText:@"无效二维码"];
-                    [self hideHudDelay:2.0];
-                    [self performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
+                    if (userNo){
+                        __weak typeof(self) weakSelf = self;
+                        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                        NSString *sign = authcode;
+                        NSArray *ctxx = @[@"token",sign];
+                        NSString *para = [xindunsdk encryptByUkey:userNo ctx:ctxx signdata:sign isDeviceType:YES];
+                        NSDictionary *paramsDic = @{@"params" : para};
+                        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/push/fetch"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+                            [self hideHudDelay:0.0];
+                            NSDictionary *dic = nil;
+                            if (errorno == 0 && responseBody) {
+                                dic = [xindunsdk decodeServerResponse:responseBody];
+                                if ([dic[@"code"] intValue] == 0) {
+                                    dic = dic[@"resp"];
+                                    TRUPushAuthModel *model = [TRUPushAuthModel modelWithDic:dic];
+                                    model.token = authcode;
+                                    if ([TRUUserAPI haveSubUser]) {
+                                        [weakSelf popMultipleAccountsWithPushModel:model];
+                                    }else{
+                                        [weakSelf popAuthViewVCWithPushModel:model userNo:userNo];
+                                    }
+                                }
+                            }else if (errorno == 9008){
+                                [weakSelf deal9008Error];
+                            }else if (9019 == errorno){
+                                [weakSelf deal9019Error];
+                            }else if (errorno == -5004){
+                                [weakSelf showHudWithText:@"网络错误 请稍后重试"];
+                                [weakSelf hideHudDelay:2.0];
+                                [weakSelf performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
+                            }else if (errorno == 9002){
+                                [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"二维码过期，请刷新二维码重新扫描" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                                    [weakSelf restartScan];
+                                } cancelBlock:nil];
+                            }else{
+                                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+                                [weakSelf showHudWithText:err];
+                                [weakSelf hideHudDelay:2.0];
+                                [weakSelf performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
+                            }
+                        }];
+                    }else{
+                        [self showHudWithText:@"无效二维码"];
+                        [self hideHudDelay:2.0];
+                        [self performSelector:@selector(restartScan)  withObject:nil afterDelay:2.1];
+                    }
                 }
+                
                 
             }else{
                 [self showConfrimCancelDialogViewWithTitle:@"" msg:@"无效二维码，请确认二维码来源！" confrimTitle:@"确认" cancelTitle:@"" confirmRight:YES confrimBolck:^{
@@ -210,7 +218,39 @@
         }];
     }
 }
+
+- (void)popMultipleAccountsWithPushModel:(TRUPushAuthModel*)pushModel{
+    
+    TRUMultipleAccountsViewController *vc = [[TRUMultipleAccountsViewController alloc] init];
+    vc.selected = YES;
+    vc.pushModel = pushModel;
+    [vc setBackBlock:^(NSString *userId) {
+        __weak typeof(self) weakSelf = self;
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//        });
+        [self.navigationController popViewControllerAnimated:YES];
+        TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
+        authVC.pushModel = pushModel;
+        authVC.userNo = userId;
+        [authVC setDismissBlock:^(BOOL confirm) {
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        }];
+        TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
+        
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
+        
+    }];
+    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc];
+//    [self presentViewController:nav animated:YES completion:^{
+////        self.navigationController.navigationBarHidden = NO;
+//    }];
+//    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)popAuthViewVCWithPushModel:(TRUPushAuthModel*)pushModel userNo:(NSString *)userNo{
+    [self.navigationController popViewControllerAnimated:NO];
     [self.scanView stopScaning];
     [self.scanView stopAnimation];
     self.canSacn = NO;
@@ -221,19 +261,28 @@
     authVC.userNo = userNo;
     [authVC setDismissBlock:^(BOOL confirm) {
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//        [self.navigationController popViewControllerAnimated:YES];
     }];
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
+//    [self.navigationController popViewControllerAnimated:NO];
+//    [self presentViewController:nav animated:YES completion:nil];
+//    [self.navigationController pushViewController:authVC animated:YES];
+    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:nav animated:YES completion:nil];
     
-    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)cancelBtnClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    if(self.navigationController.childViewControllers.count>1){
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)restartScan{
     [self.scanView beginScanning];
     [self.scanView resumeAnimation];
-
 }
 - (BOOL)checckVideoAuthorization{
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];

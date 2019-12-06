@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LSNavigationController.h"
 @interface TRUBaseNavigationController : UINavigationController
 
 @property (nonatomic, copy) void (^backBlock)();

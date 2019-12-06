@@ -21,6 +21,10 @@ static char overlayKey = '\0';
     objc_setAssociatedObject(self, &overlayKey, overlay, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 - (void)tru_setBackgroudColor:(UIColor *)backgroudColor{
+//    self.backgroundColor = backgroudColor;
+//    self.barTintColor = backgroudColor;
+//    [self setTranslucent:NO];
+//    return;
     if (!self.overlay) {
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
@@ -76,27 +80,29 @@ static char overlayKey = '\0';
 //}
 
 - (void)tru_setBackgroudColors:(NSArray *)backgroudColors{
-    UIColor *startcolor = [backgroudColors firstObject];
-    UIColor *endcolor = [backgroudColors lastObject];
-    UIGraphicsBeginImageContext(self.bounds.size);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
-    [path closePath];
-    [self drawLinearGradient:context path:path.CGPath startColor:startcolor.CGColor endColor:endcolor.CGColor];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-    if (!self.overlay) {
-        [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
-        self.overlay.userInteractionEnabled = NO;
-       
-        self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth;    // Should not set `UIViewAutoresizingFlexibleHeight`
-        [[self.subviews firstObject] insertSubview:self.overlay atIndex:0];
-    }
-    imgView.frame = self.overlay.bounds;
-    [self.overlay addSubview:imgView];
+    self.barTintColor = [backgroudColors firstObject];
+    [self setTranslucent:NO];
+//    UIColor *startcolor = [backgroudColors firstObject];
+//    UIColor *endcolor = [backgroudColors lastObject];
+//    UIGraphicsBeginImageContext(self.bounds.size);
+//
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
+//    [path closePath];
+//    [self drawLinearGradient:context path:path.CGPath startColor:startcolor.CGColor endColor:endcolor.CGColor];
+//    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+//    if (!self.overlay) {
+//        [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
+//        self.overlay.userInteractionEnabled = NO;
+//
+//        self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth;    // Should not set `UIViewAutoresizingFlexibleHeight`
+//        [[self.subviews firstObject] insertSubview:self.overlay atIndex:0];
+//    }
+//    imgView.frame = self.overlay.bounds;
+//    [self.overlay addSubview:imgView];
     
 }
 

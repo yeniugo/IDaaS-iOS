@@ -158,6 +158,11 @@
         [weakSelf showActivityWithText:@""];
         if (errorno == 0) {
             [weakSelf.dataSource removeObject:model];
+            if (weakSelf.dataSource.count==0) {
+                TRUSessionManagerModel *model = [[TRUSessionManagerModel alloc] init];
+                model.sessionid = @"SSOID";
+                [weakSelf.dataSource addObject:model];
+            }
             [weakSelf.mainTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             [weakSelf hideHudDelay:0];
             [weakSelf.mainTable reloadData];

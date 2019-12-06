@@ -275,7 +275,7 @@
     [self.scrollView addSubview:self.scanButton];
     [self.scanButton addTarget:self action:@selector(scanBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    CGFloat scanBtnW = 100*PointHeightRatio6;
+    CGFloat scanBtnW = [UIScreen mainScreen].scale*85/2;
     CGFloat scanBtnH = scanBtnW;
     CGFloat scanBtnX = (SCREENW-scanBtnW)/2;
     CGFloat scanBtnY = imageH+bottomH*0.95-scanBtnH;
@@ -400,29 +400,58 @@
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusAuthorized) {
         TRUAuthSacnViewController *scanVC = [[TRUAuthSacnViewController alloc] init];
-        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-        [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
-            
-        }];
-        
+//        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//        [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
+//
+//        }];
+//        if ([TRUUserAPI haveSubUser]) {
+//            [self.navigationController pushViewController:scanVC animated:YES];
+//        }else{
+//            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//            [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
+//            }];
+//        }
+        [self.navigationController pushViewController:scanVC animated:YES];
     }else if (authStatus == AVAuthorizationStatusNotDetermined){
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
                 TRUAuthSacnViewController *scanVC = [[TRUAuthSacnViewController alloc] init];
-                AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-                [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
-                    
-                }];
+//                AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//                [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
+//
+//                }];
+//                [self.navigationController pushViewController:scanVC animated:YES];
+//                if ([TRUUserAPI haveSubUser]) {
+//                    [self.navigationController pushViewController:scanVC animated:YES];
+//                }else{
+//                    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//                    [delegate.window.rootViewController presentViewController:scanVC animated:YES completion:^{
+//                    }];
+//                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //回调或者说是通知主线程刷新，
+                    [self.navigationController pushViewController:scanVC animated:YES];
+                });
+                
             }else{
                 [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
+//                    [self dismissViewControllerAnimated:YES completion:nil];
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                    if([TRUUserAPI haveSubUser]){
+//                        [self.navigationController popViewControllerAnimated:YES];
+//                    }else{
+//                        [self dismissViewControllerAnimated:YES completion:nil];
+//                    }
+                    [self.navigationController popViewControllerAnimated:YES];
                 } cancelBlock:nil];
             }
         }];
         //
     }else if (authStatus ==AVAuthorizationStatusDenied || authStatus == AVAuthorizationStatusRestricted){
         [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         } cancelBlock:nil];
     }
 }

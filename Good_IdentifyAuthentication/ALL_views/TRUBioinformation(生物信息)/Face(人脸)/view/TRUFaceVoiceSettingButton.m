@@ -27,11 +27,12 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         self.imageView.hidden = YES;
-        
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }else{
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         self.imageView.hidden = NO;
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
     }
 }
 

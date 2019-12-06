@@ -137,207 +137,107 @@
     if (@available(iOS 11.0, *)) {
         LAContext *ctx = [[LAContext alloc] init];
         if ([ctx canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:NULL]) {
-            if (0) {
-                ctx.localizedFallbackTitle = @"密码登录";
-                [ctx evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"使用FaceID进行登录验证" reply:^(BOOL success, NSError * _Nullable error) {
-                    NSString *info = nil;
-                    if (success) {
-                        info = @"验证成功";
-                        
-                    }else{
-                        switch (error.code) {
-                            case LAErrorUserFallback:
-                                info = @"再试一次";
-                                break;
-                            case LAErrorUserCancel:
-                            {
-                                if (weskSelf.isDoingAuth) {
-                                    info = @"取消验证";
-                                }else{
-                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                        if (_backBlocked) {
-                                            _backBlocked(NO);
-                                        }
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    });
-                                }
-                                break;
-                            }
-                            case LAErrorSystemCancel:
-                            default:
-                                info = @"再试一次";
-                                //                            if (iunmber <= 3) {
-                                //                                info = @"再试一次";
-                                //                            }else{
-                                //                                info = @"指纹验证失败";
-                                //                            }
-                                break;
-                                break;
-                        }
-                        YCLog(@"fail");
-                    }
+            
+            ctx.localizedFallbackTitle = @"密码登录";
+            [ctx evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"使用FaceID进行登录验证" reply:^(BOOL success, NSError * _Nullable error) {
+                NSString *info = nil;
+                if (success) {
+                    info = @"验证成功";
                     
-                    
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        
-                        if ([@"验证成功" isEqualToString:info]) {
-                            weskSelf.topLabel.text = info;
-                            [weskSelf.topLabel setNeedsDisplay];
-                            _identifylotView.hidden = NO;
-                            
-                            NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-                            NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
-                            [def setObject:printNum forKey:@"VerifyFingerNumber"];
-                            [def setObject:printNum forKey:@"VerifyFingerNumber2"];
-                            if (weskSelf.completionBlock) {
-                                weskSelf.completionBlock();
-                            }
-                            [weskSelf.identifylotView playWithCompletion:^(BOOL animationFinished) {
-                                if (animationFinished) {
-                                    if (self.openFaceAuth) {
-                                        [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFace];
-                                        if (_backBlocked) {
-                                            _backBlocked(YES);
-                                        }
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    }else if (self.isDoingAuth) {
-                                        [TRUEnterAPPAuthView dismissAuthView];
-                                    }else{
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    }
-                                }
-                            }];
-                            
-                        }else if ([@"再试一次" isEqualToString:info]) {
-                            [weskSelf startVerifyFingerprint:nil];
-                            
-                        } else if ([@"取消验证" isEqualToString:info]) {
-                            weskSelf.topLabel.text = @"取消验证，可点击图案重新认证";
-                        }else if ([@"指纹验证失败" isEqualToString:info]){
-                            weskSelf.topLabel.text = @"FaceID登录失败";
+                }else{
+                    switch (error.code) {
+                        case LAErrorUserFallback:
+                            info = @"再试一次";
+                            break;
+                        case LAErrorUserCancel:
+                        {
                             if (weskSelf.isDoingAuth) {
-                                [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                                    //                                [xindunsdk deactivateAllUsers];
-                                    [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
-                                    [TRUUserAPI deleteUser];
+                                
+                                info = @"取消验证";
+                            }else{
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    if (_backBlocked) {
+                                        _backBlocked(NO);
+                                    }
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                });
+                            }
+                            break;
+                        }
+                        case LAErrorTouchIDLockout:{
+                            info = @"人脸验证失败";
+                            break;
+                        }
+                        case LAErrorSystemCancel:
+                            break;
+                        default:
+                            info = @"再试一次";
+                            break;
+                    }
+                    YCLog(@"fail");
+                }
+                
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    if ([@"验证成功" isEqualToString:info]) {
+                        weskSelf.topLabel.text = info;
+                        [weskSelf.topLabel setNeedsDisplay];
+                        _identifylotView.hidden = NO;
+                        
+                        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+                        NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
+                        [def setObject:printNum forKey:@"VerifyFingerNumber"];
+                        [def setObject:printNum forKey:@"VerifyFingerNumber2"];
+                        if (weskSelf.completionBlock) {
+                            weskSelf.completionBlock();
+                        }
+                        [weskSelf.identifylotView playWithCompletion:^(BOOL animationFinished) {
+                            if (animationFinished) {
+                                if (self.openFaceAuth) {
+                                    [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFace];
+                                    if (_backBlocked) {
+                                        _backBlocked(YES);
+                                    }
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }else if (self.isDoingAuth) {
                                     [TRUEnterAPPAuthView dismissAuthView];
-                                    //                                [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
+                                }else{
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }
+                            }
+                        }];
+                        
+                    }else if ([@"再试一次" isEqualToString:info]) {
+                        [weskSelf startVerifyFingerprint:nil];
+                        
+                    } else if ([@"取消验证" isEqualToString:info]) {
+                        weskSelf.topLabel.text = @"取消验证，可点击图案重新认证";
+                    }else if ([@"人脸验证失败" isEqualToString:info]){
+                        weskSelf.topLabel.text = @"人脸验证失败";
+                        if (weskSelf.isDoingAuth) {
+                            [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                                
+                                NSString *userid = [TRUUserAPI getUser].userId;
+                                [xindunsdk deactivateUser:userid];
+                                [TRUUserAPI deleteUser];
+                                [TRUEnterAPPAuthView dismissAuthView];
+                                //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                                    id delegate = [UIApplication sharedApplication].delegate;
-                                    if ([delegate respondsToSelector:@selector(changeRootVCForLogin)]) {
-                                        [delegate performSelector:@selector(changeRootVCForLogin) withObject:nil];
-                                    }
+                                id delegate = [UIApplication sharedApplication].delegate;
+                                if ([delegate respondsToSelector:@selector(changeRootVCForLogin)]) {
+                                    [delegate performSelector:@selector(changeRootVCForLogin) withObject:nil];
+                                }
 #pragma clang diagnostic pop
-                                } cancelBlock:^{
-                                    
-                                }];
+                            } cancelBlock:^{
                                 
-                            }
-                        }
-                    });
-                }];
-            }else{
-                ctx.localizedFallbackTitle = @"密码登录";
-                [ctx evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"使用FaceID进行登录验证" reply:^(BOOL success, NSError * _Nullable error) {
-                    NSString *info = nil;
-                    if (success) {
-                        info = @"验证成功";
-                        
-                    }else{
-                        switch (error.code) {
-                            case LAErrorUserFallback:
-                                info = @"再试一次";
-                                break;
-                            case LAErrorUserCancel:
-                            {
-                                if (weskSelf.isDoingAuth) {
-                                    info = @"取消验证";
-                                }else{
-                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                        if (_backBlocked) {
-                                            _backBlocked(NO);
-                                        }
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    });
-                                }
-                                break;
-                            }
-                            case LAErrorSystemCancel:
-                            default:
-                                info = @"再试一次";
-                                //                            if (iunmber <= 3) {
-                                //                                info = @"再试一次";
-                                //                            }else{
-                                //                                info = @"指纹验证失败";
-                                //                            }
-                                break;
-                                break;
-                        }
-                        YCLog(@"fail");
-                    }
-                    
-                    
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        
-                        if ([@"验证成功" isEqualToString:info]) {
-                            weskSelf.topLabel.text = info;
-                            [weskSelf.topLabel setNeedsDisplay];
-                            _identifylotView.hidden = NO;
-                            
-                            NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-                            NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
-                            [def setObject:printNum forKey:@"VerifyFingerNumber"];
-                            [def setObject:printNum forKey:@"VerifyFingerNumber2"];
-                            if (weskSelf.completionBlock) {
-                                weskSelf.completionBlock();
-                            }
-                            [weskSelf.identifylotView playWithCompletion:^(BOOL animationFinished) {
-                                if (animationFinished) {
-                                    if (self.openFaceAuth) {
-                                        [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFace];
-                                        if (_backBlocked) {
-                                            _backBlocked(YES);
-                                        }
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    }else if (self.isDoingAuth) {
-                                        [TRUEnterAPPAuthView dismissAuthView];
-                                    }else{
-                                        [self.navigationController popViewControllerAnimated:YES];
-                                    }
-                                }
                             }];
                             
-                        }else if ([@"再试一次" isEqualToString:info]) {
-                            [weskSelf startVerifyFingerprint:nil];
-                            
-                        } else if ([@"取消验证" isEqualToString:info]) {
-                            weskSelf.topLabel.text = @"取消验证，可点击图案重新认证";
-                        }else if ([@"指纹验证失败" isEqualToString:info]){
-                            weskSelf.topLabel.text = @"FaceID登录失败";
-                            if (weskSelf.isDoingAuth) {
-                                [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                                    //                                [xindunsdk deactivateAllUsers];
-                                    [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
-                                    [TRUUserAPI deleteUser];
-                                    [TRUEnterAPPAuthView dismissAuthView];
-                                    //                                [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-                                    id delegate = [UIApplication sharedApplication].delegate;
-                                    if ([delegate respondsToSelector:@selector(changeRootVCForLogin)]) {
-                                        [delegate performSelector:@selector(changeRootVCForLogin) withObject:nil];
-                                    }
-#pragma clang diagnostic pop
-                                } cancelBlock:^{
-                                    
-                                }];
-                                
-                            }
                         }
-                    });
-                }];
-            }
+                    }
+                });
+            }];
         } else {
             weskSelf.topLabel.text = @"该设备暂时不支持FaceID验证，请去设置开启";
         }

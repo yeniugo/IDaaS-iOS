@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TRUSubUserModel.h"
 @interface TRUUserModel : NSObject<NSCoding>
 /** 用户名 */
 @property (nonatomic, copy) NSString *userId;
@@ -29,7 +29,8 @@
 @property (nonatomic, copy) NSString *voiceid;
 /** 人脸 */
 @property (nonatomic, copy) NSString *faceinfo;
-
+/** 子账号 */
+@property (nonatomic, strong) NSArray *accounts;
 + (instancetype)modelWithUserId:(NSString *)userId;
 + (instancetype)modelWithDic:(NSDictionary *)dic;
 

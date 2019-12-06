@@ -13,4 +13,5 @@ pod 'YYWebImage'
 #pod 'CocoaLumberjack'
 pod 'Bugly'
 pod 'CocoaLumberjack'
+pod 'YYModel'
 end

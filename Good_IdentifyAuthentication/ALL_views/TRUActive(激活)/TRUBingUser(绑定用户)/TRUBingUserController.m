@@ -260,6 +260,19 @@
         _iphoneEmialView.hidden = YES;
     }
 }
+- (NSString *)toReadableJSONStringWithDic:(NSDictionary *)dic {
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dic
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:nil];
+    
+    if (data == nil) {
+        return nil;
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    return string;
+}
 - (void)active4User:(NSString *)activeNumber pushID:(NSString *)pushID type:(NSString *)type{
     __weak typeof(self) weakSelf = self;
     NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\"", [self.inputoneTF.text.trim UTF8String],[pushID UTF8String], [type UTF8String],[activeNumber UTF8String]];
@@ -277,15 +290,24 @@
                 //同步用户信息
                 NSString *paras = [xindunsdk encryptByUkey:userId ctx:nil signdata:nil isDeviceType:NO];
                 NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+//                NSString *baseUrl1 = @"http://192.168.1.150:8004";
                 [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
                     [weakSelf hideHudDelay:0.0];
                     NSDictionary *dicc = nil;
                     if (errorno == 0 && responseBody) {
                         dicc = [xindunsdk decodeServerResponse:responseBody];
+                        
                         if ([dicc[@"code"] intValue] == 0) {
                             dicc = dicc[@"resp"];
+//                            NSString *oldStr = dicc[@"accounts"];
+//                            NSString *replaceOld = @"\"";
+//                            NSString *replaceNew = @"\"";
+//                            NSString *strUrl = [oldStr stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+//                            NSMutableDictionary *mutDic = [NSMutableDictionary dictionaryWithDictionary:dicc];
+//                            dicc[@"accounts"] = strUrl;
                             //用户信息同步成功
-                            TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
+                            TRUUserModel *model = [TRUUserModel yy_modelWithDictionary:dicc];
+                            NSString *json = [self toReadableJSONStringWithDic:dicc];
                             model.userId = userId;
                             [TRUUserAPI saveUser:model];
                             AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;

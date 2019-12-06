@@ -16,7 +16,7 @@
 
 #import "FireflyAlertView.h"
 
-
+//#import "UIViewController+LSNavigationController.h"
 @interface TRUBaseViewController ()<UIAlertViewDelegate>
 @property (nonatomic, assign) __block BOOL showed9019Error;
 /** hud */
@@ -47,6 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self reloadNavigationBar];
     self.view.clipsToBounds = YES;
     self.showed9019Error = NO;
     

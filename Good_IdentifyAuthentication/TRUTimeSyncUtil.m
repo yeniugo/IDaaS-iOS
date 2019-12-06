@@ -33,7 +33,12 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
     NSArray *ctxx = @[@"randa",seed];
     NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:seed isDeviceType:NO];
 // 添加了一个防崩溃
+    int i = 0;
     while (para.length==0) {
+        i++;
+        if (i>4) {
+            return;
+        }
         seed = [self ret33bitString];
         ctxx = @[@"randa",seed];
         para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:seed isDeviceType:NO];
@@ -41,6 +46,9 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
     NSDictionary *paramsDic = @{@"params" : para};
     __block long seconds_cli = (long)time((time_t *)NULL);
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/totp/sync"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        if (errorno!=0) {
+            return;
+        }
         NSDictionary *dic = nil;
         dic = [xindunsdk decodeServerResponse:responseBody];
         if ([dic[@"code"] intValue] == 0) {

@@ -150,9 +150,9 @@
 //                }
                 if (delegate.isNeedPush) {
                     [self getNetToken];
-                    [HAMLogOutputWindow printLog:@"self getNetToken"];
+//                    [HAMLogOutputWindow printLog:@"self getNetToken"];
                 }else{
-                    [HAMLogOutputWindow printLog:@"showFingerWithCompletionBlock"];
+//                    [HAMLogOutputWindow printLog:@"showFingerWithCompletionBlock"];
                     [self showFingerWithCompletionBlock:^{
                         [weakSelf getNetToken];
                     }];
@@ -321,10 +321,10 @@
             dic[@"status"] = @(errorno);
             //!weakSelf.completionBlock ? : weakSelf.completionBlock(dic);
         }
-        [HAMLogOutputWindow printLog:@"getNetToken dic"];
+//        [HAMLogOutputWindow printLog:@"getNetToken dic"];
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
         if (delegate.tokenCompletionBlock) {
-            [HAMLogOutputWindow printLog:@"getNetToken dic1111"];
+//            [HAMLogOutputWindow printLog:@"getNetToken dic1111"];
             delegate.tokenCompletionBlock(dic);
         }else if(weakSelf.completionBlock){
             weakSelf.completionBlock(dic);

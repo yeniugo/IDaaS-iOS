@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3G-8a-trq" userLabel="标题">
-                        <rect key="frame" x="10" y="14" width="55" height="16"/>
+                        <rect key="frame" x="10" y="14" width="100" height="16"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="55" id="Idg-de-hZ4"/>
+                            <constraint firstAttribute="width" constant="100" id="Idg-de-hZ4"/>
                             <constraint firstAttribute="height" constant="16" id="aZQ-ah-hGZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU4-Gt-gil" userLabel="内容">
-                        <rect key="frame" x="80" y="13.5" width="210" height="16"/>
+                        <rect key="frame" x="125" y="13.5" width="165" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="2da-YK-asj"/>
                         </constraints>
@@ -57,6 +57,13 @@
                         <color key="textColor" red="1" green="0.1803921568627451" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RightAccessoryDisclosureLight" translatesAutoresizingMaskIntoConstraints="NO" id="KPw-IZ-2BE">
+                        <rect key="frame" x="300" y="15" width="10" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="H0f-fZ-xxb"/>
+                            <constraint firstAttribute="width" constant="10" id="YhE-fl-mZs"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="AU4-Gt-gil" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Ai-59-Fsv"/>
@@ -66,20 +73,26 @@
                     <constraint firstItem="Hhv-z5-Ikl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cBM-HV-4tt"/>
                     <constraint firstItem="Q3G-8a-trq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gi9-SC-wjG"/>
                     <constraint firstItem="RDP-hC-t8s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hhu-O5-Ixn"/>
+                    <constraint firstAttribute="trailing" secondItem="KPw-IZ-2BE" secondAttribute="trailing" constant="10" id="pE9-bI-EPR"/>
                     <constraint firstItem="RDP-hC-t8s" firstAttribute="leading" secondItem="AU4-Gt-gil" secondAttribute="trailing" constant="6" id="pVu-Mj-ZF5"/>
                     <constraint firstAttribute="trailing" secondItem="RDP-hC-t8s" secondAttribute="trailing" constant="10" id="qdG-xe-jym"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="KPw-IZ-2BE" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="uI1-WB-Ok8"/>
+            </constraints>
             <connections>
                 <outlet property="cellCenterLable" destination="Hhv-z5-Ikl" id="hmc-SM-YlA"/>
                 <outlet property="cellDetailsLabel" destination="AU4-Gt-gil" id="j6s-6c-u57"/>
                 <outlet property="cellDetailsRightConstraint" destination="pVu-Mj-ZF5" id="eDa-WC-SZi"/>
                 <outlet property="cellEditButton" destination="RDP-hC-t8s" id="0C5-EK-N4G"/>
                 <outlet property="cellTitleLabel" destination="Q3G-8a-trq" id="uMz-3c-yNT"/>
+                <outlet property="rightArrowImageView" destination="KPw-IZ-2BE" id="Q7j-IU-DaE"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="RightAccessoryDisclosureLight" width="8" height="13"/>
         <image name="editPhone" width="14" height="14"/>
     </resources>
 </document>

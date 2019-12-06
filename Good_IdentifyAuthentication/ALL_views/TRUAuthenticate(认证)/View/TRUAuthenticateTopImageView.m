@@ -11,6 +11,7 @@
 #import <YYWebImage.h>
 @interface TRUAuthenticateTopImageView()
 @property (nonatomic,strong) UIImageView *backgroundImageView;
+@property (nonatomic,assign) int number;
 @end
 
 @implementation TRUAuthenticateTopImageView
@@ -51,6 +52,7 @@
         self.detailsLabel.textAlignment = NSTextAlignmentCenter;
 //        self.detailsLabel.adjustsFontSizeToFitWidth=YES;
         [self addSubview:self.detailsLabel];
+        self.number = 0;
     }
     return self;
 }
@@ -58,6 +60,7 @@
 - (void)setAuthNumber:(NSInteger)number{
     NSLog(@"今日验证次数:  %ld",number);
     self.detailsLabel.text = [NSString stringWithFormat:@"今日认证次数:  %ld",number];
+    self.number = number;
 }
 
 - (void)layoutSubviews{
@@ -75,7 +78,7 @@
     }
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.font = [UIFont systemFontOfSize:15];
-    self.detailsLabel.text = @"今日认证次数:  0";
+    self.detailsLabel.text = [NSString stringWithFormat:@"今日认证次数:  %d",self.number];
     self.detailsLabel.centerX = self.bounds.size.width/2;
     self.detailsLabel.centerY = self.titleLabel.centerY + 20;
 }

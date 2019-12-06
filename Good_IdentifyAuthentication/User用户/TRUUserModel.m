@@ -7,6 +7,7 @@
 //
 
 #import "TRUUserModel.h"
+#import "TRUSubUserModel.h"
 #import <objc/runtime.h>
 
 static TRUUserModel *userModel=nil;
@@ -23,9 +24,15 @@ static TRUUserModel *userModel=nil;
 
 + (instancetype)modelWithDic:(NSDictionary *)dic{
     id model = [[self alloc] init];
-    [model setValuesForKeysWithDictionary:dic];
+    [model yy_modelSetWithDictionary:dic];
     return model;
 }
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+             @"accounts" : [TRUSubUserModel class]
+             };
+}
+
 //兼容
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     

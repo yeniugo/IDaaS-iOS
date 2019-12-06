@@ -1,3 +1,4 @@
+
 //
 //  TRUBaseNavigationController.m
 //  Good_IdentifyAuthentication
@@ -25,7 +26,7 @@
     
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     [bar tru_setBackgroudColor:DefaultGreenColor];
-    [bar setShadowImage:[UIImage new]];
+//    [bar setShadowImage:[UIImage new]];
     
 }
 
@@ -43,7 +44,7 @@
 
 - (void)setNavBarColor:(UIColor *)color{
     [self.navigationBar tru_setBackgroudColor:color];
-    [self.navigationBar setShadowImage:[UIImage new]];
+//    [self.navigationBar setShadowImage:[UIImage new]];
     self.backgroundColor = color;
 }
 
@@ -60,13 +61,13 @@
         self.delegate = weakSelf;
     }
     if(@available(iOS 12.0,*)){
-//        if (self.backgroundColor==nil) {
-//            [self setNavBarColor:DefaultGreenColor];
-//        }else{
-//            [self setNavBarColor:self.backgroundColor];
-//        }
+        //        if (self.backgroundColor==nil) {
+        //            [self setNavBarColor:DefaultGreenColor];
+        //        }else{
+        //            [self setNavBarColor:self.backgroundColor];
+        //        }
     }
-//    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
+    //    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,18 +80,18 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitleColor:ViewDefaultBgColor forState:UIControlStateNormal];
     [backBtn setTitle:@"" forState:UIControlStateNormal];
-//    [backBtn setBackgroundImage:img forState:UIControlStateNormal];
+    //    [backBtn setBackgroundImage:img forState:UIControlStateNormal];
     [backBtn setBackgroundImage:img forState:UIControlStateNormal];
     [backBtn setBackgroundImage:img forState:UIControlStateHighlighted];
     [backBtn addTarget:self action:@selector(navPop) forControlEvents:UIControlEventTouchUpInside];
     backBtn.frame = CGRectMake(0, 0, 40, 50);
-//    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    //    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     if(@available(iOS 12.0,*)){
-//        if (self.backgroundColor==nil) {
-//            [self setNavBarColor:DefaultGreenColor];
-//        }else{
-//            [self setNavBarColor:self.backgroundColor];
-//        }
+        //        if (self.backgroundColor==nil) {
+        //            [self setNavBarColor:DefaultGreenColor];
+        //        }else{
+        //            [self setNavBarColor:self.backgroundColor];
+        //        }
     }
     return backBtn;
     
@@ -98,7 +99,7 @@
 
 
 - (void)navPop{
-//    YCLog(@"navPop");
+    //    YCLog(@"navPop");
     if (self.backBlock) {
         self.backBlock();
     }else{
@@ -144,7 +145,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if ( gestureRecognizer == self.interactivePopGestureRecognizer ) {
         if (self.viewControllers.count <= 1 || self.visibleViewController == [self.viewControllers objectAtIndex:0] ) {
-//            XDLog(@"gestureRecognizerShouldBegin:No");
+            //            XDLog(@"gestureRecognizerShouldBegin:No");
             return NO;
         }
     }

@@ -38,9 +38,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RightAccessoryDisclosureLight" translatesAutoresizingMaskIntoConstraints="NO" id="TdZ-HY-PQe">
-                        <rect key="frame" x="290" y="14" width="15" height="20.5"/>
+                        <rect key="frame" x="295" y="18" width="10" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="abp-GP-nYQ"/>
+                            <constraint firstAttribute="width" constant="10" id="abp-GP-nYQ"/>
+                            <constraint firstAttribute="height" constant="14" id="v8c-F2-Roc"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pN-VE-9vw">
@@ -79,17 +80,18 @@
                     <constraint firstItem="HTZ-ib-xGt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5k9-6A-mQP"/>
                     <constraint firstAttribute="trailing" secondItem="HTZ-ib-xGt" secondAttribute="trailing" constant="15" id="7jJ-Wc-El6"/>
                     <constraint firstAttribute="trailing" secondItem="pxv-g0-u3k" secondAttribute="trailing" id="A6g-tO-TKT"/>
-                    <constraint firstItem="pxv-g0-u3k" firstAttribute="top" secondItem="TdZ-HY-PQe" secondAttribute="bottom" constant="14" id="AnJ-9u-s7L"/>
                     <constraint firstItem="7QE-jG-GFy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="CMs-MR-ph5"/>
                     <constraint firstItem="7QE-jG-GFy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OlQ-H4-SOw"/>
                     <constraint firstItem="T8n-71-sNo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QcD-ln-Xi0"/>
                     <constraint firstItem="4pN-VE-9vw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qp9-vR-TE4"/>
                     <constraint firstAttribute="trailing" secondItem="TdZ-HY-PQe" secondAttribute="trailing" constant="15" id="Yb0-ml-Cft"/>
-                    <constraint firstItem="TdZ-HY-PQe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Yxm-Ke-ITh"/>
                     <constraint firstAttribute="trailing" secondItem="4pN-VE-9vw" secondAttribute="trailing" constant="15" id="lbY-x3-HVQ"/>
                     <constraint firstAttribute="bottom" secondItem="pxv-g0-u3k" secondAttribute="bottom" id="tkg-yR-IJX"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="TdZ-HY-PQe" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="YKy-yS-qak"/>
+            </constraints>
             <connections>
                 <outlet property="ArrowIcon" destination="TdZ-HY-PQe" id="7fQ-84-Mxu"/>
                 <outlet property="iconImageView" destination="T8n-71-sNo" id="coZ-Of-oXa"/>

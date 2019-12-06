@@ -60,12 +60,13 @@
 #pragma mark 同步信息
 - (void)fetchData {
     NSString *currentUserId = [TRUUserAPI getUser].userId;
-    NSString *isss = [xindunsdk getDeviceId];
-    NSString *uuid = [xindunsdk getCIMSUUID:currentUserId];
+//    NSString *isss = [xindunsdk getDeviceId];
+//    NSString *uuid = [xindunsdk getCIMSUUID:currentUserId];
 //    YCLog(@"%s, currentUserId : %@", __func__, currentUserId);
     __weak typeof(self) weakSelf = self;
     //|| [xindunsdk isUserInitialized:currentUserId] == false
     //920358aa8ea7442c9929d325acc14ade
+    
     if (!currentUserId || currentUserId.length == 0 || [xindunsdk isUserInitialized:currentUserId] == false) {//判断有没有用户
         if (currentUserId && currentUserId.length > 0) {
             NSDictionary *dic = [xindunsdk userInitializedInfo:currentUserId];

@@ -35,9 +35,6 @@
     
     [self setNumber:self.passwords.firstObject];
     [self setSSTLable:1 total:self.passwords.count];
-    
-    
-    
 }
 
 -(void)startRecVoice {

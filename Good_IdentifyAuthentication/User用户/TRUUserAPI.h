@@ -16,5 +16,8 @@
 + (TRUUserModel *)getUser;
 //删除用户
 + (void)deleteUser;
-
++(BOOL)haveSubUser;
++ (NSArray *)getSubUser;
++ (NSArray *)getAllUser;
++(int)subUserCount;
 @end

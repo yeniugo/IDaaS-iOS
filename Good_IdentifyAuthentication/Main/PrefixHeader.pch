@@ -13,9 +13,11 @@
 #import "UIView+FrameExt.h"
 #import <Masonry.h>
 #import "TRUUserModel.h"
+#import "TRUSubUserModel.h"
 #import "TRUConst.h"
 #import "UIColor+HEX.h"
 #import "TRUMacros.h"
 #import "HAMLogOutputWindow.h"
+#import <YYModel.h>
 
 #endif
