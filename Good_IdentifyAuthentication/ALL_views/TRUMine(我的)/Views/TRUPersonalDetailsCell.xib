@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TRUPersonalDetailsCell" id="KGk-i7-Jjw" customClass="TRUPersonalDetailsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3G-8a-trq" userLabel="标题">
+                        <rect key="frame" x="10" y="14" width="55" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="Idg-de-hZ4"/>
+                            <constraint firstAttribute="height" constant="16" id="aZQ-ah-hGZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU4-Gt-gil" userLabel="内容">
+                        <rect key="frame" x="80" y="13.5" width="210" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="2da-YK-asj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDP-hC-t8s">
+                        <rect key="frame" x="296" y="15" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="cex-fQ-UVC"/>
+                            <constraint firstAttribute="width" constant="14" id="obu-S0-hhT"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="editPhone"/>
+                        <connections>
+                            <action selector="editButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pKL-sa-tMK"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhv-z5-Ikl" userLabel="centerLB">
+                        <rect key="frame" x="160.5" y="15.5" width="0.0" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="b9B-Xh-rBl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.1803921568627451" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AU4-Gt-gil" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Ai-59-Fsv"/>
+                    <constraint firstItem="Hhv-z5-Ikl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="3tA-qx-cux"/>
+                    <constraint firstItem="AU4-Gt-gil" firstAttribute="leading" secondItem="Q3G-8a-trq" secondAttribute="trailing" constant="15" id="QI7-IJ-mpo"/>
+                    <constraint firstItem="Q3G-8a-trq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="R35-k2-kvS"/>
+                    <constraint firstItem="Hhv-z5-Ikl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cBM-HV-4tt"/>
+                    <constraint firstItem="Q3G-8a-trq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gi9-SC-wjG"/>
+                    <constraint firstItem="RDP-hC-t8s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hhu-O5-Ixn"/>
+                    <constraint firstItem="RDP-hC-t8s" firstAttribute="leading" secondItem="AU4-Gt-gil" secondAttribute="trailing" constant="6" id="pVu-Mj-ZF5"/>
+                    <constraint firstAttribute="trailing" secondItem="RDP-hC-t8s" secondAttribute="trailing" constant="10" id="qdG-xe-jym"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellCenterLable" destination="Hhv-z5-Ikl" id="hmc-SM-YlA"/>
+                <outlet property="cellDetailsLabel" destination="AU4-Gt-gil" id="j6s-6c-u57"/>
+                <outlet property="cellDetailsRightConstraint" destination="pVu-Mj-ZF5" id="eDa-WC-SZi"/>
+                <outlet property="cellEditButton" destination="RDP-hC-t8s" id="0C5-EK-N4G"/>
+                <outlet property="cellTitleLabel" destination="Q3G-8a-trq" id="uMz-3c-yNT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="editPhone" width="14" height="14"/>
+    </resources>
+</document>
