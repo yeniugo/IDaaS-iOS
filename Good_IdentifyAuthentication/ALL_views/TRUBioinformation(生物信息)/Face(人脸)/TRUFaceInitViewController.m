@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置人脸信息";
-    self.maxDetectionTimes = 3;
+//    self.maxDetectionTimes = 3;
 }
 
 - (NSMutableArray *)getActionSequence {
@@ -39,18 +39,8 @@
 }
 
 - (void)onDetectSuccessWithImages:(NSMutableArray *)images {
-    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-//    NSMutableArray *imageList = [[NSMutableArray alloc] init];
-    for (int i = 0; i < images.count; i++) {
-        NSString *fileName;
-        if (i == 0) {
-            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
-        } else {
-            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
-        }
-        YCLog(@"filename:%@",fileName);
-    }
-    UIImage *bestimg = [images firstObject];
+    STSilentLivenessImage *stImage = images[0];
+    UIImage *bestimg = stImage.image;
     NSData *imgData = UIImageJPEGRepresentation(bestimg, 0.8);
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
@@ -160,6 +150,8 @@
      */
 }
 - (void)dismissVC{
+    [self onBackButton];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

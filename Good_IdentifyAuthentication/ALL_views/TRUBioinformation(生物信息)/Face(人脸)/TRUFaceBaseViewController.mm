@@ -11,8 +11,11 @@
 #import <AuthenAnti_SpoofingSDK/AuthenAnti_SpoofingSDK.h>
 #import "TRUFaceGifView.h"
 #import <objc/runtime.h>
+#import <objc/runtime.h>
 #import "TRUMacros.h"
-
+#import "STSilentLivenessCommon.h"
+#import "UIView+STLayout.h"
+#import "STStartAndStopIndicatorView.h"
 #define FcameraView CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 #define usingRuntimeProcess NO
 
@@ -24,33 +27,33 @@ NS_ENUM(DetectType) {
     FaceDetectionWaitNewDetect =  2  //等待结果
     };
 
-@interface TRUFaceBaseViewController ()<AmCameraDelegate, AuthenAnti_SpoofingDelegate>{
+@interface TRUFaceBaseViewController ()<STSilentLivenessDetectorDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>{
 #if TARGET_IPHONE_SIMULATOR
 #else
-    BOOL    faceVerifysucceed;
-    BOOL    cancelled;          //是否取消过界面
-    BOOL    canStopDetection;   //可以取消检测,该属性针对如下情况设置:活体的动作检测只进行了1秒,而录像至少需要3秒
-    BOOL    userCancelledVerify;//用户点击了导航栏的返回键, 取消了人脸确认
-    BOOL    newAction;          //启动新动作的标志, 要启动新动作检测时设为TRUE, 新动作检测开启后设置为FALSE
-    NSInteger actionCount;
-    
-    NSMutableArray *faceImageArray; //储存活体过程中的输出人脸图像
-    AVAudioPlayer  *_audioPlayer; //音频控制
-    NSCameraOption *cameraOption;   //摄像头相关操作
-    DetectResult dResult;    //活体检测结果
-    DetectType  currentAction;  //当前动作类型
-    int successTimes; //检测成功次数标记
-    UIButton *_voiceButton;//声音按钮开关
-    AuthenAnti_Spoofing *Anti_Spoof_Object; //图像处理对象
-    CGFloat voiceValue;//音量
+    NSMutableArray *_previousSecondTimestamps;
 #endif
     
 }
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIView *cameraView;     //摄像头操作主界面
-//@property (nonatomic, strong) UILabel *infoView;       //摄像头获取的各帧图像的显示界面
-@property (nonatomic, strong) UIImageView *showView;    //摄像头获取的各帧图像的显示界面
-@property (strong, nonatomic) TRUFaceGifView *gifView;       //底部动画视图
+@property (nonatomic, strong) NSString *bundlePathStr;
+
+//@property (nonatomic, weak) id<STSilentLivenessDetectorDelegate> detectorDelegate;
+
+@property (nonatomic, strong) UIImageView *imageMaskView;
+
+@property (nonatomic, strong) UIButton *promptButton;
+
+@property (strong, nonatomic) NSOperationQueue *mainQueue;
+
+@property (nonatomic, strong) AVCaptureDeviceInput *deviceInput;
+@property (nonatomic, strong) AVCaptureVideoDataOutput *dataOutput;
+@property (nonatomic, strong) AVCaptureSession *session;
+@property (nonatomic, strong) AVCaptureDevice *deviceFront;
+
+@property (nonatomic, assign) CGRect previewframe;
+@property (nonatomic, assign) BOOL isCameraPermission;
+@property (nonatomic, assign) CFAbsoluteTime lastUpdateTime;
+
+@property (nonatomic, weak) UIButton *backButton;
 @end
 
 @implementation TRUFaceBaseViewController
@@ -60,716 +63,644 @@ NS_ENUM(DetectType) {
 {
     self = [super init];
     if (self) {
+        {
+        // 资源路径
+        _bundlePathStr = [[NSBundle mainBundle] pathForResource:@"st_silent_liveness_resource" ofType:@"bundle"];
+        // 获取模型路径
+        NSString *modelPathStr =
+        [NSString pathWithComponents:@[_bundlePathStr, @"model", @"SenseID_Composite_Silent_Liveness.model"]];
+        // 获取授权文件路径
+        NSString *financeLicensePathStr =
+        [[NSBundle mainBundle] pathForResource:@"SenseID_Liveness_Silent" ofType:@"lic"];
+        _detector = [[STSilentLivenessDetector alloc] initWithModelPath:modelPathStr
+                                                     financeLicensePath:financeLicensePathStr
+                                                            setDelegate:self];
+        //设置静默活体检测的超时时间
+        [_detector setTimeOutDuration:10.0];
+        //设置静默活体通过条件
+        [_detector setLivenessPasslimitTime:3 passFrames:4];
+        //设置人脸远近判断条件
+        [_detector setLivenessFaceTooFar:0.4 tooClose:0.8];
         
-        faceImageArray = [[NSMutableArray alloc] init];
-        newAction = false;
-        currentAction = DTypeNone; //默认为没有动作
-        
-        cameraOption = [[NSCameraOption alloc] init]; //创建摄像头操作对象
-        cameraOption.delegate = self;
-        canStopDetection  = FALSE;
-        userCancelledVerify = FALSE;
-        
-        //活体检测对象设置 Demo
-//        [[LivenessConfig instance] setLivenessObj];
-//        [LivenessConfig instance].livenessObj.delegate = self;
-        Anti_Spoof_Object = [[AuthenAnti_Spoofing alloc] init];
-        Anti_Spoof_Object.delegate = self;
-        //Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
-        if ([self getActionSequence].count > 0) {
-            Anti_Spoof_Object.actionSequence = [self getActionSequence];
-            YCLog(@"ActionSequence = %@",[self getActionSequence]);
-        }
-        Anti_Spoof_Object.maxActionRepeatCount = 2;
-        Anti_Spoof_Object.maxActionSkipCount = 2;
-        Anti_Spoof_Object.difficultyLevel = 3;
-        Anti_Spoof_Object.maxActionTime = 5.0;
-        cancelled = FALSE;
+        _detector.isBrowOcclusion = NO;
+    }
+    
+    _previousSecondTimestamps = [[NSMutableArray alloc] init];
+    
+    _previewframe = CGRectMake(0, 0, kSTScreenWidth, kSTScreenHeight);
+    
+    _mainQueue = [NSOperationQueue mainQueue];
+    
+    
+    
+    _isCameraPermission = NO;
     }
     return self;
 }
 
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    [self.view addSubview:self.scrollView];
-    self.scrollView.contentSize = IS_IPHONE_4_OR_LESS ? CGSizeMake(SCREEN_WIDTH, 568) : CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
-    
-    [UIApplication sharedApplication].idleTimerDisabled = YES;  //开启保持屏幕唤醒
-    self.scrollView.scrollEnabled = NO;
-    
-    
-    [self.view addSubview:self.gifView];
-    
-    [self gifView];
-    
-    
-    
-#pragma mark - 中间摄像头部分主区域
-    //[self.scrollView addSubview:self.cameraView];   //添加cameraView
-    //    [self.scrollView addSubview:self.infoView]; //摄像头获取的各帧图像的显示界面
-    //[self.scrollView addSubview:self.showView]; //摄像头获取的各帧图像的显示界面
-    
+- (void)startDetection {
+    if (self.session && [self.session isRunning] && self.detector) {
+        [self.detector startDetection];
+    }
 }
 
--(void)enterBackground{
-    _audioPlayer.volume = 0.0;
+
+#pragma - mark -
+#pragma - mark Life Cycle
+
+- (void)loadView {
+    [super loadView];
+    [self setupUI];
+    
+    [self displayViewsIfRunning:YES];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//    self.navigationBar.hidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
+#if !TARGET_IPHONE_SIMULATOR
+    
+    [self setupCaptureSession];
+    
+#endif
+    TRUBaseNavigationController *nav = self.navigationController;
+    nav.backBlock = ^{
+        [self onBackButton];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-#pragma mark - 中间摄像头部分主区域
-    [self.scrollView addSubview:self.cameraView];   //添加cameraView
-    [self.scrollView addSubview:self.showView]; //摄像头获取的各帧图像的显示界面
-    [self setUpCancleButton];
-    //[self setUpVoiceButton];
-#pragma mark - 摄像头初始化
-    [cameraOption cameraVideoSessionWithView:_cameraView];  //创建 AVCaptureSession 并启动
-    [cameraOption startCameraVideoSession]; //启动扫描
-    
-    [self newSongWithSongName:@"main"];
-    
-    
+    [STStartAndStopIndicatorView sharedIndicatorStopAnimate];
+    [self showHudWithText:@""];
+    [self hideHudDelay:0.1];
+    TRUBaseNavigationController *nav = self.navigationController;
+    nav.backBlock = ^{
+        [self onBackButton];
+    };
 }
 
-
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDisappear:) name:@"DismissFaceVerifyController" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterBackground) name:TRUEnterBackgroundKey object:nil];
-    //延迟4秒说完开始的语音
-    [NSTimer scheduledTimerWithTimeInterval:4.0 target:Anti_Spoof_Object selector:@selector(newDetectAction) userInfo:nil repeats:NO];
+    if (self.detector && self.session && self.dataOutput && ![self.session isRunning]) {
+        [self.session startRunning];
+    }
+    [self cameraStart];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].idleTimerDisabled = NO; //关闭保持屏幕唤醒
-    [self viewDisappear:nil]; //不使用通知模式
-}
-
--(void)viewDisappear:(NSNotification *)note
-{
-    if ([_audioPlayer isPlaying])
-    {
-        [_audioPlayer stop];
-    }
-    //    if ([_audioPlayer isPlaying])
-    //    {
-    //        [_audioPlayer stop];
-    //    }
+- (void)dealloc {
+#if !TARGET_IPHONE_SIMULATOR
     
-    if (self.gifView.isAnimating)
-    {
-        [self.gifView stopAnimating];
+    if (_session) {
+        [_session beginConfiguration];
+        [_session removeOutput:_dataOutput];
+        [_session removeInput:_deviceInput];
+        [_session commitConfiguration];
+        
+        if ([_session isRunning]) {
+            [_session stopRunning];
+        }
+        _session = nil; //! OCLINT
     }
-    _audioPlayer.volume = 0.5;
-    userCancelledVerify = TRUE;
-    //    [cameraOption setCanStopVideoWriting];  //设置为可以停止录像
-    //    [cameraOption stopVideoWriting];        //终止 AVCaptureSession 的录像
-    [cameraOption stopCameraVideoSession];  //终止 AVCaptureSession 的扫描
-    
-    if (note != nil) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+#endif
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma - mark -
+#pragma - mark Private Methods
 
+//- (void)willResignActive {
+//
+//}
 
-//从摄像头缓冲区获取图像 Demo
-#pragma mark -
-#pragma mark AmCameraDelegate delegate
+- (void)setupUI {
+    self.view.backgroundColor = [UIColor blackColor];
+    self.imageMaskView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kSTScreenWidth, kSTScreenHeight)];
+    self.imageMaskView.userInteractionEnabled = YES;
+    self.imageMaskView.contentMode = UIViewContentModeScaleAspectFill;
+    //    self.imageMaskView.tag = 1000;
+    [self.view addSubview:self.imageMaskView];
+    //    self.navigationBar.hidden = NO;
+    // ------NavBar
+    //    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    //
+    //    CGFloat navigationBarHeight = 44;
+    //
+    //    UIView *navBarView =
+    //    [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSTScreenWidth, statusBarHeight + navigationBarHeight)];
+    //    navBarView.backgroundColor = kSTColorWithRGB(0x0A7FFB);
+    //
+    //    [self.imageMaskView addSubview:navBarView];
+    
+    // ------返回按钮
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setFrame:CGRectMake(kSTScreenWidth - 50 , 30, 38, 38)];
+    [backButton setImage:[UIImage imageNamed:@"facecancle"] forState:UIControlStateNormal];
+//    backButton.titleLabel.font = [UIFont systemFontOfSize:17.0f];
+    [backButton addTarget:self action:@selector(onBackButton) forControlEvents:UIControlEventTouchUpInside];
+//    [navBarView addSubview:backButton];
+    [self.view addSubview:backButton];
+    self.backButton = backButton;
+    // ------提示文字
+    self.promptButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 80, kSTScreenWidth, 70.0)];
+    self.promptButton.titleLabel.font = [UIFont systemFontOfSize:17.0f];
+    self.promptButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    [self.promptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.promptButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+    [self showPromptButtonText:@"请将人脸置于屏幕中央保持不动" imageName:@"notice.png"];
+    [self.imageMaskView addSubview:self.promptButton];
+//    self.imageMaskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+//    self.imageMaskView.backgroundColor = [UIColor redColor];
+//    [self.view bringSubviewToFront:self.imageMaskView];
+//    [self.view bringSubviewToFront:backButton];
+}
 
-- (void)sessionOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-{
-    if (newAction) { //启动新的动作检测
-        newAction = false;
-        [Anti_Spoof_Object newDetectAction];
-        //YCLog(@"Anti_Spoof_Object.actionSequence = %@",Anti_Spoof_Object.actionSequence);
-        dispatch_async(dispatch_get_main_queue(), ^() {
-            [self showActionTips];
-        });
+- (void)setupCaptureSession {
+    self.session = [[AVCaptureSession alloc] init];
+    
+    // iPhone 4S, +
+    self.session.sessionPreset = AVCaptureSessionPreset640x480;
+    
+    AVCaptureVideoPreviewLayer *captureVideoPreviewLayer =
+    [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
+    captureVideoPreviewLayer.frame = self.previewframe;
+    
+    [captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    [self.view.layer addSublayer:captureVideoPreviewLayer];
+    [self.view bringSubviewToFront:self.imageMaskView];
+    [self.view bringSubviewToFront:self.backButton];
+    
+//    [self.view bringSubviewToFront:self.navigationBar];
+    NSArray *devices = [AVCaptureDevice devices];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == AVCaptureDevicePositionFront) {
+            self.deviceFront = device;
+        }
     }
     
-    if(!canStopDetection) //动作检测没有结束, 继续进行检测
-    {
-        [Anti_Spoof_Object imageFromOutputSampleBuffer:sampleBuffer];
+    int frameRate;
+    CMTime frameDuration = kCMTimeInvalid;
+    frameRate = 30;
+    frameDuration = CMTimeMake(1, frameRate);
+    
+    NSError *error = nil;
+    if ([self.deviceFront lockForConfiguration:&error]) {
+        self.deviceFront.activeVideoMaxFrameDuration = frameDuration;
+        self.deviceFront.activeVideoMinFrameDuration = frameDuration;
+        [self.deviceFront unlockForConfiguration];
+    }
+    
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self.deviceFront error:&error];
+    self.deviceInput = input;
+    self.dataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    
+    [self.dataOutput setAlwaysDiscardsLateVideoFrames:YES];
+    
+    [self.dataOutput
+     setVideoSettings:@{(id) kCVPixelBufferPixelFormatTypeKey: [NSNumber numberWithInt:kCVPixelFormatType_32BGRA]}];
+    
+    dispatch_queue_t queueBuffer = dispatch_queue_create("LIVENESS_BUFFER_QUEUE", NULL);
+    
+    [self.dataOutput setSampleBufferDelegate:self queue:queueBuffer];
+    
+    [self.session beginConfiguration];
+    
+    if ([self.session canAddOutput:self.dataOutput]) {
+        [self.session addOutput:self.dataOutput];
+    }
+    if ([self.session canAddInput:input]) {
+        [self.session addInput:input];
+    }
+    
+    [self.session commitConfiguration];
+}
+
+- (UIImage *)imageWithFullFileName:(NSString *)fileName {
+    NSString *filePath = [NSString pathWithComponents:@[self.bundlePathStr, @"images", fileName]];
+    
+    return [UIImage imageWithContentsOfFile:filePath];
+}
+
+- (void)displayViewsIfRunning:(BOOL)isRunning {
+    self.promptButton.hidden = !isRunning;
+}
+
+- (void)cameraStart {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    switch (authStatus) {
+        case AVAuthorizationStatusNotDetermined: {
+            [AVCaptureDevice
+             requestAccessForMediaType:AVMediaTypeVideo
+             completionHandler:^(BOOL granted) {
+                 if (granted) {
+                     if (self.session && [self.session isRunning] && self.detector) {
+                         [self.detector startDetection];
+                     }
+                     self.isCameraPermission = YES;
+                 } else {
+                     
+                 }
+             }];
+            break;
+        }
+        case AVAuthorizationStatusAuthorized: {
+            if (self.session && [self.session isRunning] && self.detector) {
+                [self.detector startDetection];
+            }
+            self.isCameraPermission = YES;
+            break;
+        }
+        case AVAuthorizationStatusDenied:
+        case AVAuthorizationStatusRestricted: {
+            
+            
+            break;
+        }
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+#pragma - mark -
+#pragma - mark Event Response
 
-#pragma mark - 活体检测协议方法
-#pragma mark NSBioAssayDelegate
-
-//提供用于对比的人脸图像接口 Demo
--(void)faceImageForVerify:(UIImage *)image multiFace:(BOOL)isMultiFace
-{
-    if(image == Nil) //未发现人脸相关操作
-    {
-        //        [cameraOption setCanStopVideoWriting]; //设置为可以停止录像
-        return;
+- (void)onBackButton {
+    self.isCameraPermission = NO;
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+    //
+    //        if ([self.session isRunning]) {
+    //            [self.session stopRunning];
+    //        }
+    //    });
+    [self.detector cancelDetection];
+    if ([self.session isRunning]) {
+        [self.session stopRunning];
     }
     
-    [faceImageArray addObject:image];
-    if([faceImageArray count] == 1) { //表示已经当前图像为动作检测前截取的
-        //        [cameraOption startVideoWriting]; //开始录像
-        //        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    }
+    //    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 
-//活体检测结果
-- (void) bioAssayResult:(DetectResult)detectResult
-{
-    //canStopDetection = TRUE;
+#pragma - mark -
+#pragma - mark AVCaptureVideoDataOutputSampleBufferDelegate
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
+       fromConnection:(AVCaptureConnection *)connection {
+    CMTime timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
     
-    //用户点击返回按钮, 取消了人脸验证, 不进行后面判断和处理
-    if (userCancelledVerify) {
-        return;
+    if (self.detector) {
+        [self.detector trackAndDetectWithCMSampleBuffer:sampleBuffer
+                                         faceOrientaion:STIDSilentLiveness_FACE_LEFT
+                                           previewframe:self.previewframe
+                                       videoOrientation:connection.videoOrientation
+                                        isVideoMirrored:connection.isVideoMirrored];
     }
-    dResult = detectResult;
+}
+
+- (int)calculateFramerateAtTimestamp:(CMTime)timestamp {
+    [_previousSecondTimestamps addObject:[NSValue valueWithCMTime:timestamp]];
     
-    if (![cameraOption canStopVideoWriting]) { //检测结束, 录像尚未结束
-        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doWithResult) userInfo:nil repeats:NO];
-        return;
+    CMTime oneSecond = CMTimeMake(1, 1);
+    CMTime oneSecondAgo = CMTimeSubtract(timestamp, oneSecond);
+    
+    while (CMTIME_COMPARE_INLINE([_previousSecondTimestamps[0] CMTimeValue], <, oneSecondAgo)) {
+        [_previousSecondTimestamps removeObjectAtIndex:0];
     }
     
-    [self doWithResult];
+    if ([_previousSecondTimestamps count] > 1) {
+        const Float64 duration = CMTimeGetSeconds(CMTimeSubtract([[_previousSecondTimestamps lastObject] CMTimeValue],
+                                                                 [_previousSecondTimestamps[0] CMTimeValue]));
+        const float newRate = (float) ([_previousSecondTimestamps count] - 1) / duration;
+        return (int) roundf(newRate);
+    }
+    return 0;
+}
+
+//#pragma - mark -
+//#pragma - mark STSilentLivenessDetectorDelegate
+
+- (void)silentLivenessFaceRect:(CGRect)rect {
+    //    if (self.detectorDelegate && [self.detectorDelegate respondsToSelector:@selector(silentLivenessFaceRect:)]) {
+    //        [self.mainQueue addOperationWithBlock:^{
+    //            [self.detectorDelegate silentLivenessFaceRect:rect];
+    //        }];
+    //    }
 }
 
 
-- (void) doWithResult
-{
-    if (![cameraOption canStopVideoWriting]) { //检测结束, 录像尚未结束
-        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(doWithResult) userInfo:nil repeats:NO];
-        return;
-    }
+- (void)silentLivenessDidSuccessfulGetProtobufData:(NSData *)protobufData
+                                            images:(NSArray *)imageArr
+                                         faceRects:(NSArray *)faceRectArr {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //    [HAMLogOutputWindow printLog:@"人脸检测成功"];
+    [self onDetectSuccessWithImages:imageArr];
+    //    [self onBackButton];
+    //    NSString *userid = [TRUUserAPI getUser].userId;
+    //    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    //    NSString *params = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
+    //    NSDictionary *paramsDic = @{@"params" : params};
+    //    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getfaceToken"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+    //        if (errorno==0 && responseBody!=nil) {
+    //            NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+    //            int code = [dic[@"code"] intValue];
+    //            if (code == 0) {
+    //                dic = dic[@"resp"];
+    //                NSString *token = dic[@"token"];
+    //                NSString *terimal = dic[@"terminalNo"];
+    //
+    //                NSString *sedPath = [[NSBundle mainBundle] pathForResource:@"public_demo_key.pem" ofType:nil];
+    //                int sedRet = -1;
+    //                sedRet = TC_loadEncryptSeed(sedPath);
+    //                if (sedRet>=0) {
+    //                    if (imageArr[0]) {
+    //                        STSilentLivenessImage *stImage = imageArr[0];
+    //                        UIImage *imagesrc = stImage.image;
+    //                        NSData *imgData = UIImageJPEGRepresentation(imagesrc, 1.0f);
+    //                        NSString *imgB64 = [imgData base64EncodedStringWithOptions:0];
+    //                        NSData *encData = TC_encryptData(imgB64, terimal, token);
+    //                        if (encData) {
+    //                            NSString *iosRet = [encData base64EncodedStringWithOptions:0];
+    //                            token = @"fafafasfafafasfadfadffa";
+    //                            NSString *userid = [TRUUserAPI getUser].userId;
+    //                            NSString *sign = [NSString stringWithFormat:@"%@%@%@",token,@"1",@"2"];
+    //                            NSArray *ctxx = @[@"token",token,@"confirm",@"1",@"wsType",@"2"];
+    //                            NSString *para = [xindunsdk requestOrverifyCIMSFaceForUser:userid faceData:encData ctx:ctxx signdata:sign isType:NO];
+    //                            NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:para, @"params", nil];
+    //                            NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    //                            [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResult:^(int errorno1, id responseBody1) {
+    //                                if (errorno1==0) {
+    //
+    //                                }else{
+    //
+    //                                }
+    //                            }];
+    //
+    //                        }else
+    //                        {
+    //                            NSLog(@"加密失败！");
+    //                        }
+    //                    }
+    //
+    //                }else
+    //                {
+    //                    //Error
+    //                }
+    //            }
+    //
+    //        }else{
+    //
+    //        }
+    //    }];
     
-#pragma 到此处表示视频录像和活体检测均已结束
     
-    //    [cameraOption stopVideoWriting]; //终止 AVCaptureSession 的录像
-    //[cameraOption stopCameraVideoSession]; //终止 AVCaptureSession 的扫描
-    faceVerifysucceed = YES;
     
-    //printf("[faceImageArray count]==%d\n\n", (int)[faceImageArray count]);
     
-//    if (dResult.initFailed || dResult.faceNotFound) {// || [faceImageArray count]==0) {
-//        faceVerifysucceed = false;
-//        printf("initFailed or faceNotFound\n\n");
-//        [self.gifView stopAnimating];
-//        self.gifView.type = TRUFaceGifTypeFail;
-//        [self newSongWithSongName:@"failed"];
-//        [self performSelector:@selector(restartDetection) withObject:nil afterDelay:2];//延迟说完失败语音
-//        return;
-//    }
+    //    if (self.detectorDelegate &&
+    //        [self.detectorDelegate
+    //         respondsToSelector:@selector(silentLivenessDidSuccessfulGetProtobufData:images:faceRects:)]) {
+    //            [self.mainQueue addOperationWithBlock:^{
+    //                [self.detectorDelegate silentLivenessDidSuccessfulGetProtobufData:protobufData
+    //                                                                           images:imageArr
+    //                                                                        faceRects:faceRectArr];
+    //            }];
+    //        }
+}
+
+- (void)silentLivenessDidFailWithLivenessResult:(STIDSilentLivenessResult)livenessResult
+                                      faceError:(STIDSilentLivenessFaceError)faceError
+                                   protobufData:(NSData *)protobufData
+                                         images:(NSArray *)imageArr
+                                      faceRects:(NSArray *)faceRectArr {
+    [self displayViewsIfRunning:NO];
+    __weak typeof(self) weakSelf = self;
+    //    [self showViewsWithliveStatus:liveStatusFaild];
     
-//    if (dResult.isSucceed) {
-//        self.gifView.type = TRUFaceGifTypeSuccess;
-//        [self newSongWithSongName:@"success"];
-//        //[self performSelector:@selector(nextViewController) withObject:nil afterDelay:3];
-//        [self onDetectSuccessWithImages:faceImageArray];
-//        return;
-//    }
-    
-    /*
-     初始化失败；
-     未发现人脸；
-     动作不符合规范；
-     检测超时；
-     检测成功。
-     */
-    //仰头、点头、左摇头、右摇头、张嘴、眨眼
-//    NSArray *actions = @[@"仰头", @"点头", @"左摇头", @"右摇头", @"张嘴", @"眨眼"];
-//    for (int actIndex=0; actIndex<6; actIndex++)
-//    {
-//        if (dResult.action[actIndex] == DStateFailed)
-//        {
-//            faceVerifysucceed = false;
-//            printf("%s 检测失败\n\n", [[actions objectAtIndex:actIndex] UTF8String]);
-//            [self.gifView stopAnimating];
-//            self.gifView.type = TRUFaceGifTypeBlendFail;
-//            [self newSongWithSongName:@"failed_actionblend"];
-//            [self performSelector:@selector(restartDetection) withObject:nil afterDelay:3];//延迟说完失败语音
-//            return;
-//        }
-//    }
-    [self.gifView stopAnimating];
-    switch (currentAction) {
-        case DTypeNodUp:
-            if(dResult.action[0]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
+    switch (livenessResult) {
+        case STIDSilentLiveness_E_LICENSE_INVALID: {
+            //            self.messageLabel.text = @"未通过授权验证";
+            [self showHudWithText:@"未通过授权验证"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_LICENSE_FILE_NOT_FOUND: {
+            //            self.messageLabel.text = @"授权文件不存在";
+            [self showHudWithText:@"授权文件不存在"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_LICENSE_BUNDLE_ID_INVALID: {
+            //            self.messageLabel.text = @"绑定包名错误";
+            [self showHudWithText:@"绑定包名错误"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_LICENSE_EXPIRE: {
+            //            self.messageLabel.text = @"授权文件过期";
+            [self showHudWithText:@"授权文件过期"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+            
+        case STIDSilentLiveness_E_LICENSE_VERSION_MISMATCH: {
+            //            self.messageLabel.text = @"License与SDK版本不匹";
+            [self showHudWithText:@"License与SDK版本不匹"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+            
+        case STIDSilentLiveness_E_LICENSE_PLATFORM_NOT_SUPPORTED: {
+            //            self.messageLabel.text = @"License不支持当前平台";
+            [self showHudWithText:@"License不支持当前平台"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+            
+        case STIDSilentLiveness_E_MODEL_INVALID: {
+            //            self.messageLabel.text = @"模型文件错误";
+            [self showHudWithText:@"模型文件错误"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_MODEL_FILE_NOT_FOUND: {
+            //            self.messageLabel.text = @"模型文件不存在";
+            [self showHudWithText:@"模型文件不存在"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_MODEL_EXPIRE: {
+            //            self.messageLabel.text = @"模型文件过期";
+            [self showHudWithText:@"模型文件过期"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_INVALID_ARGUMENT: {
+            //            self.messageLabel.text = @"参数设置不合法";
+            [self showHudWithText:@"参数设置不合法"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_CALL_API_IN_WRONG_STATE: {
+            //            self.messageLabel.text = @"错误的方法状态调用";
+            [self showHudWithText:@"错误的方法状态调用"];
+            [self hideHudDelay:2.0f];
+            break;
+        }
+        case STIDSilentLiveness_E_FAILED: {
+            if (faceError == STIDSilentLiveness_E_HACK) {
+                //                self.messageLabel.text = @"未通过活体检测";
+                [self showHudWithText:@"未通过活体检测"];
+                [self hideHudDelay:2.0f];
+                [self showConfrimCancelDialogViewWithTitle:@"" msg:@"人脸检测失败" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                     [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-                
+                } cancelBlock:^{
+                    [weakSelf onBackButton];
+                }];
             }
             break;
-        case DTypeNodDown:
-            if(dResult.action[1]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
-                    
-                    [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-            }
-            break;
-        case DTypeShakeL:
-            if(dResult.action[2]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
-                    
-                    [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-            }
-            break;
-        case DTypeShakeR:
-            if(dResult.action[3]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
-                    
-                    [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-            }
-            break;
-        case DTypeMouth:
-            if(dResult.action[4]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
-                    
-                    [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-            }
-            break;
-        case DTypeBlink:
-            if(dResult.action[5]==DStateSucceed){
-                successTimes ++;
-                if(successTimes>=_maxDetectionTimes){
-                    YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-                    [self onDetectSuccessWithImages:faceImageArray];
-                    canStopDetection = YES;
-                    [cameraOption stopCameraVideoSession];
-                    self.gifView.type = TRUFaceGifTypeSuccess;
-                }else{
-                    [self restartDetection];
-                    self.gifView.type = TRUFaceGifTypeNextStep;
-                }
-            }else{
-                //[self onDetectFailWithMessage:@"验证失败"];
-                [self restartDetection];
-                self.gifView.type = TRUFaceGifTypeNextStep;
-            }
-            break;
+        }
         default:
             break;
     }
-    //[self.gifView stopAnimating];
-    //self.gifView.type = TRUFaceGifTypeNextStep;
-    
-    if (dResult.isTimeOut) {
-        faceVerifysucceed = false;
-        printf("操作超时。\n\n");
-        [self.gifView stopAnimating];
-        self.gifView.type = TRUFaceGifTypeTimeOut;
-        [self newSongWithSongName:@"failed_timeout"];
-        [self performSelector:@selector(restartDetection) withObject:nil afterDelay:2];//延迟说完失败语音
-        return;
-    }
+    //    if (self.detectorDelegate &&
+    //        [self.detectorDelegate respondsToSelector:@selector
+    //         (silentLivenessDidFailWithLivenessResult:faceError:protobufData:images:faceRects:)]) {
+    //            [self.mainQueue addOperationWithBlock:^{
+    //                [self.detectorDelegate silentLivenessDidFailWithLivenessResult:livenessResult
+    //                                                                     faceError:faceError
+    //                                                                  protobufData:protobufData
+    //                                                                        images:imageArr
+    //                                                                     faceRects:faceRectArr];
+    //            }];
+    //        }
 }
 
-//提示即将进行检测的动作,参数为即将进行检测的动作
-- (void) presentActionTips:(DetectType)detectType isRepeat:(BOOL)isRepeat isSkip:(BOOL)isSkip
-{
-    YCLog(@"actionCount=%ld detectType=%ld isRepeat=%d, isSkip=%d", (long)actionCount, detectType, isRepeat, isSkip);
-    if (detectType == DTypeNone) {
-        if (self.gifView.isAnimating) {
-            [self.gifView stopAnimating];
-        }
-        return;
-    }
+- (void)onDetectSuccessWithImages:(NSArray *)images{
+    YCLog(@"人脸检测成功");
+}
+
+
+- (void)silentLivenessDidCancel {
+    [self displayViewsIfRunning:NO];
+    //    if (self.detectorDelegate && [self.detectorDelegate respondsToSelector:@selector(silentLivenessDidCancel)]) {
+    //        [self.mainQueue addOperationWithBlock:^{
+    //            [self.detectorDelegate silentLivenessDidCancel];
+    //        }];
+    //    }
+}
+
+- (void)silentLivenessDistanceStatus:(STIDSilentLivenessFaceDistanceStatus)distanceStatus
+                         boundStatus:(STIDSilentLivenessFaceBoundStatus)boundStatus
+                          silentFace:(STSilentLivenessFace *)silentFace {
+    CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent() * 1000;
     
-    //在此处重新开始计时, 当计时达到规定等待结束的时间, 在视频流输出方法中启动新的动作检测
-    isRepeat = (currentAction==detectType);
-    currentAction = detectType;
-    self.gifView.type = TRUFaceGifTypeHoldOn;
-    [self.gifView stopAnimating];
-    
-    if (actionCount >= 1 && isRepeat) {//在不超过检测时间内的当前动作重复
-        YCLog(@"isRepeat");
-        self.gifView.type = TRUFaceGifTypeRepeat;
-        [self newSongWithSongName:@"failed_actionblend"];
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startNewAction) userInfo:nil repeats:NO];
-    } else if (actionCount >= 1 && isSkip) {//失败
-        YCLog(@"isSkip");
-        self.gifView.type = TRUFaceGifTypeSkip;
-        //        [self newSongWithSongName:@"next_step"];
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startNewAction) userInfo:nil repeats:NO];
-        YCLog(@"动作检测失败actionSequence = %@",Anti_Spoof_Object.actionSequence);
-    } else if (actionCount >= 1) {//成功
-        YCLog(@"isSuccess");
-        successTimes ++;
-        if(successTimes>=self.maxDetectionTimes){
-            YCLog(@"[faceImageArray count] = %lu",(unsigned long)[faceImageArray count]);
-            [self onDetectSuccessWithImages:faceImageArray];
-            self.gifView.type = TRUFaceGifTypeSuccess;
-            currentAction = DTypeNone;
-            _audioPlayer.volume = 0.0;
-            [self newSongWithSongName:@"success"];
-        }else{
-            self.gifView.type = TRUFaceGifTypeNextStep;
-            [self newSongWithSongName:@"next_step"];
-            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startNewAction) userInfo:nil repeats:NO];
+    if ((currentTime - self.lastUpdateTime) > 300) {
+        if (silentFace.isFaceOcclusion) {
+            [self showPromptButtonText:[self faceOcclusionStringWithFaceModel:silentFace] imageName:@"notice.png"];
+        } else if (distanceStatus == STIDSilentLiveness_FACE_TOO_FAR) {
+            [self showPromptButtonText:@"请移动手机靠近面部" imageName:@"far away.png"];
+        } else if (distanceStatus == STIDSilentLiveness_FACE_TOO_CLOSE) {
+            [self showPromptButtonText:@"请移动手机远离面部" imageName:@"close to.png"];
+        } else if (distanceStatus == STIDSilentLiveness_DISTANCE_FACE_NORMAL &&
+                   boundStatus == STIDSilentLiveness_FACE_IN_BOUNDE) {
+            [self showPromptButtonText:@"人脸验证中" imageName:@"detection.png"];
+            
+        } else {
+            [self showPromptButtonText:@"请将人脸置于屏幕中央保持不动" imageName:@"notice.png"];
         }
         
-    } else {
-        YCLog(@"isStartNewAction");
-        [self startNewAction];
+        self.lastUpdateTime = CFAbsoluteTimeGetCurrent() * 1000;
     }
+}
+
+- (NSString *)faceOcclusionStringWithFaceModel:(STSilentLivenessFace *)face {
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
     
-    actionCount ++;//++后变为第二个动作
-}
-
-
-
-//人脸不在指定区域
-- (void)faceNotInTargetArea:(FaceFrame)flFrame {
-    YCLog(@"faceNotInTargetArea");
-    UILabel *faceOutOfFrame = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 45)];
-    faceOutOfFrame.textAlignment = NSTextAlignmentCenter;
-    faceOutOfFrame.text = @"您的脸不在指定区域";
-    faceOutOfFrame.textColor = [UIColor redColor];
-    faceOutOfFrame.numberOfLines = 0;
-    faceOutOfFrame.font = [UIFont boldSystemFontOfSize:25];
-    faceOutOfFrame.backgroundColor = RGBACOLOR(10, 10, 10, 0.65); //RGB(209, 209, 209, 1.0);
-    [self.scrollView addSubview:faceOutOfFrame];
-    [NSTimer scheduledTimerWithTimeInterval:1.0f target:faceOutOfFrame selector:@selector(removeFromSuperview) userInfo:nil repeats:NO];
-}
-
-#pragma mark -- self defined method
-
-//显示即将进行的检测阶段
-- (void) showActionTips {
-    YCLog(@"showActionTips");
-    if (currentAction == DTypeNodUp)
-    {
-        //printf("Nod Up detect start\n");
-        [self newSongWithSongName:@"detection_type_pitch_up"];
-        self.gifView.type = TRUFaceGifTypeHeadRise;
-        [self.gifView startAnimating];
+    if (face.browOcclusionStatus == STIDSilentLiveness_OCCLUSION) {
+        [tempStr appendFormat:@"眉毛、"];
     }
-    else if (currentAction == DTypeNodDown)
-    {
-        //printf("Nod Down detect start\n");
-        [self newSongWithSongName:@"detection_type_pitch_down"];
-        self.gifView.type = TRUFaceGifTypeHeadDown;
-        [self.gifView startAnimating];
+    if (face.eyeOcclusionStatus == STIDSilentLiveness_OCCLUSION) {
+        [tempStr appendFormat:@"眼部、"];
     }
-    else if (currentAction == DTypeShakeL)
-    {
-        //printf("Shake Left detect start\n");
-        [self newSongWithSongName:@"detection_type_yaw_left"];
-        self.gifView.type = TRUFaceGifTypeShakeLeft;
-        [self.gifView startAnimating];
+    if (face.noseOcclusionStatus == STIDSilentLiveness_OCCLUSION) {
+        [tempStr appendFormat:@"鼻部、"];
     }
-    else if (currentAction == DTypeShakeR)
-    {
-        //printf("Shake Right detect start\n");
-        [self newSongWithSongName:@"detection_type_yaw_right"];
-        self.gifView.type = TRUFaceGifTypeShakeRight;
-        [self.gifView startAnimating];
+    if (face.mouthOcclusionStatus == STIDSilentLiveness_OCCLUSION) {
+        [tempStr appendFormat:@"嘴部"];
     }
-    else if (currentAction == DTypeMouth)
-    {
-        //printf("Mouth detect start\n");
-        [self newSongWithSongName:@"detection_type_mouth_open"];
-        self.gifView.type = TRUFaceGifTypeMouthOpen;
-        [self.gifView startAnimating];
+    NSString *theLast = [tempStr substringFromIndex:[tempStr length] - 1];
+    if ([theLast isEqualToString:@"、"]) {
+        tempStr = (NSMutableString *) [tempStr substringToIndex:([tempStr length] - 1)];
     }
-    else if (currentAction == DTypeBlink)
-    {
-        //printf("blink detect start\n");
-        [self newSongWithSongName:@"detection_type_eye_blink"];
-        self.gifView.type = TRUFaceGifTypeBlink;
-        [self.gifView startAnimating];
-    }
+    return [NSString stringWithFormat:@"请正对手机，去除%@遮挡", tempStr];
 }
-
-- (void)startNewAction {
-    newAction = TRUE;
-}
-
-#pragma mark - runtime process
-
-+(BOOL)resolveInstanceMethod:(SEL)sel
-{
-    class_addMethod([self class], sel, (IMP)methodNotImplemented, "v@:");
-    return [super resolveInstanceMethod:sel];
-}
-
-void methodNotImplemented (id self, SEL _cmd)
-{
-    if (!usingRuntimeProcess) {
-        return;
-    }
-    
-    NSString * method = NSStringFromSelector(_cmd);
-    if (_cmd == @selector(faceNotInTargetArea:) || _cmd == @selector(actionDegree: degree:))
-    {
-        printf("Warning: [AuthenAnti_SpoofingDelegate %s] not implemented in %s\n", [method UTF8String], [NSStringFromClass([self class]) UTF8String]);
-    }
-}
-
-- (NSMutableArray *)getActionSequence {
-    return  [NSMutableArray array];//[[NSMutableArray alloc] initWithArray:@[@"0", @"1", @"2", @"16"]];
-}
-- (void)onDetectSuccessWithImages:(NSMutableArray *)images {
-    //    self.infoView.text = [NSString stringWithFormat:@"成功:%lu",(unsigned long)images.count];
-    YCLog(@"onDetectSuccessWithImages:%lu",(unsigned long)images.count);
-}
-- (void)onDetectFailWithMessage:(NSString *)message {
-    //    self.infoView.text = [NSString stringWithFormat:@"失败请重新开始验证"];
-    //[self restartDetection];
-    
-}
-
-- (UIScrollView *)scrollView
-{
-    if (_scrollView == nil)
-    {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _scrollView.contentSize = IS_IPHONE_4_OR_LESS ? CGSizeMake(SCREEN_WIDTH, 568) : CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
-        _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.scrollEnabled = YES;
-    }
-    return _scrollView;
-}
-
-
-
-
-//重新一组中的单个动作
--(void)restartDetection{
-    YCLog(@"restartDetection");
-    //    faceImageArray = [[NSMutableArray alloc] init];
-    //    newAction = false;
-    //    currentAction = DTypeNone; //默认为没有动作
-    //    cameraOption = [[NSCameraOption alloc] init]; //创建摄像头操作对象
-//    cameraOption.delegate = self;
-//    canStopDetection  = FALSE;
-//    userCancelledVerify = FALSE;
-    
-    //活体检测对象设置 Demo
-    //    Anti_Spoof_Object = [[AuthenAnti_Spoofing alloc] init];
-    //    Anti_Spoof_Object.delegate = self;
-    //    Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
-    if ([self getActionSequence].count > 0) {
-        Anti_Spoof_Object.actionSequence = [self getActionSequence];
-    }
-    Anti_Spoof_Object.maxActionRepeatCount = 2;
-    Anti_Spoof_Object.maxActionSkipCount = 2;
-    Anti_Spoof_Object.difficultyLevel = 3;
-    Anti_Spoof_Object.maxActionTime = 5.0;
-    newAction = TRUE;
-    YCLog(@"Anti_Spoof_Object.maxActionTime = %f",Anti_Spoof_Object.maxActionTime);
-    //    Anti_Spoof_Object.maxActionRepeatCount = 2;
-//    Anti_Spoof_Object.maxActionSkipCount = 2;
-//    Anti_Spoof_Object.difficultyLevel = 3;
-//    Anti_Spoof_Object.maxActionTime = 5.0;
-//    cancelled = FALSE;
-//    [cameraOption cameraVideoSessionWithView:_cameraView];
-//    [cameraOption startCameraVideoSession]; //启动扫描
-//    [NSTimer scheduledTimerWithTimeInterval:1.0 target:Anti_Spoof_Object selector:@selector(newDetectAction) userInfo:nil repeats:NO];
-}
-
-- (void)restartGroupDetection{
-    faceImageArray = [[NSMutableArray alloc] init];
-    newAction = false;
-    currentAction = DTypeNone; //默认为没有动作
-    cameraOption = [[NSCameraOption alloc] init]; //创建摄像头操作对象
-    cameraOption.delegate = self;
-    canStopDetection  = FALSE;
-    userCancelledVerify = FALSE;
-    
-    //活体检测对象设置 Demo
-    Anti_Spoof_Object = [[AuthenAnti_Spoofing alloc] init];
-    Anti_Spoof_Object.delegate = self;
-    //Anti_Spoof_Object.faceFrame = {480.0*0.05, 20.0, 480.0*0.95, 640.0*0.95}; //人脸限制区域
-    if ([self getActionSequence].count > 0) {
-        Anti_Spoof_Object.actionSequence = [self getActionSequence];
-    }
-    Anti_Spoof_Object.maxActionRepeatCount = 2;
-    Anti_Spoof_Object.maxActionSkipCount = 2;
-    Anti_Spoof_Object.difficultyLevel = 3;
-    Anti_Spoof_Object.maxActionTime = 5.0;
-    
-    actionCount = 0;
-    _audioPlayer.volume = 0.5;
-    cancelled = FALSE;
-    [cameraOption cameraVideoSessionWithView:_cameraView];
-    [cameraOption startCameraVideoSession]; //启动扫描
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:Anti_Spoof_Object selector:@selector(newDetectAction) userInfo:nil repeats:NO];
-}
-
-
-//添加语音
-- (void)newSongWithSongName:(NSString *)songName
-{
-    if (_audioPlayer.isPlaying)
-    {
-        [_audioPlayer stop];
-        _audioPlayer = nil;
-    }
-    
-    NSError *error;
-    NSString *fileName = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Audio.bundle/%@",songName] ofType:@"mp3"];
-    NSData *data = [NSData dataWithContentsOfFile:fileName];
-    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:&error];
-    if (error)
-    {
-        printf("songError = %s\n\n",[error.description UTF8String]);
-    }
-    audioPlayer.enableRate = YES;
-    audioPlayer.rate = 1.0;
-    audioPlayer.volume = 1.0;
-    [audioPlayer prepareToPlay];
-    [audioPlayer play];
-    _audioPlayer = audioPlayer;
-}
-
-#pragma mark - getter and setter
-
-- (TRUFaceGifView *)gifView {
-    if (_gifView == nil) {
-        CGFloat height = SCREENH * 0.3;
-        _gifView = [[TRUFaceGifView alloc] init];
-        [self.view addSubview:_gifView];
-        _gifView.type = TRUFaceGifTypePreShow;
-        [_gifView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(self.view);
-            make.height.equalTo(@(height));
-        }];
-    }
-    return _gifView;
-}
-
-- (UIImageView *)showView {
-    if (_showView == nil) {
-        _showView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 30, SCREENW, SCREENW - 20)];
-        _showView.image = [UIImage imageNamed:@"Image.bundle/FaceFrame.png"];
-        _showView.contentMode = UIViewContentModeScaleAspectFit;
-        _showView.userInteractionEnabled = YES;
-    }
-    return _showView;
-}
-
-- (UIView *)cameraView {
-    if (_cameraView == nil) {
-        _cameraView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENW, SCREENH-40)];
-    }
-    return _cameraView;
-}
-
-#pragma mark 退出按钮
-- (void)setUpCancleButton{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundImage:[UIImage imageNamed:@"facecancle"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(calcelButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.showView addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@40.0);
-        make.height.equalTo(@39.0);
-        make.left.equalTo(self.showView).offset(20.0);
-        make.top.equalTo(self.showView).offset(5.0);
+- (void)showPromptButtonText:(NSString *)text imageName:(NSString *)imageName {
+    [self.mainQueue addOperationWithBlock:^{
+        [self.promptButton setTitle:text forState:UIControlStateNormal];
+        [self.promptButton setImage:[self imageWithFullFileName:imageName] forState:UIControlStateNormal];
     }];
-    
-}
-- (void)setUpVoiceButton{
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundImage:[UIImage imageNamed:@"facevoice"] forState:UIControlStateNormal];
-    [self.showView addSubview:btn];
-    [btn addTarget:self action:@selector(voiceButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@28.0);
-        make.height.equalTo(@25.0);
-        make.right.equalTo(self.showView).offset(-20.0);
-        make.top.equalTo(self.showView).offset(5.0);
-    }];
-    
 }
 
--(void)voiceButtonClick:(UIButton *)btn{
-    btn.selected = !btn.selected;
-    if (btn.selected) {
-        voiceValue = _audioPlayer.volume;
-        _audioPlayer.volume = 0.0;
-    }else{
-        _audioPlayer.volume = 1.0;
+- (void)restartDetection{
+    
+    // 资源路径
+    _bundlePathStr = [[NSBundle mainBundle] pathForResource:@"st_silent_liveness_resource" ofType:@"bundle"];
+    // 获取模型路径
+    NSString *modelPathStr =
+    [NSString pathWithComponents:@[_bundlePathStr, @"model", @"SenseID_Composite_Silent_Liveness.model"]];
+    // 获取授权文件路径
+    NSString *financeLicensePathStr =
+    [[NSBundle mainBundle] pathForResource:@"SenseID_Liveness_Silent" ofType:@"lic"];
+    _detector = [[STSilentLivenessDetector alloc] initWithModelPath:modelPathStr
+                                                 financeLicensePath:financeLicensePathStr
+                                                        setDelegate:self];
+    //设置静默活体检测的超时时间
+    [_detector setTimeOutDuration:10.0];
+    //设置静默活体通过条件
+    [_detector setLivenessPasslimitTime:3 passFrames:4];
+    //设置人脸远近判断条件
+    [_detector setLivenessFaceTooFar:0.4 tooClose:0.8];
+    
+    _previousSecondTimestamps = [[NSMutableArray alloc] init];
+    
+    _previewframe = CGRectMake(0, 0, kSTScreenWidth, kSTScreenHeight);
+    
+    _mainQueue = [NSOperationQueue mainQueue];
+    
+    _isCameraPermission = NO;
+    
+    [self displayViewsIfRunning:YES];
+    
+    [STStartAndStopIndicatorView sharedIndicatorStopAnimate];
+    
+    [self setupCaptureSession];
+    
+    
+    if (self.detector && self.session && self.dataOutput && ![self.session isRunning]) {
+        [self.session startRunning];
     }
+    [self cameraStart];
+    //    self.navigationBar.hidden = NO;
+    
+    //    [self hideHudDelay:0.0];
+    
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    NSString *log = [NSString stringWithFormat:@"导航控制器隐藏属性变化了"];
+    DDLogError(log);
+//    if (self.navigationBar.hidden) {
+//        self.navigationBar.hidden = NO;
+//    }
+    
+}
 
-- (void)calcelButtonClick{
-    userCancelledVerify = YES;
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 #endif
 @end

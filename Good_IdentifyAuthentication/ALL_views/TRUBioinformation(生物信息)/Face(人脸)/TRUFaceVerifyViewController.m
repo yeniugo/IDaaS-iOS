@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.maxDetectionTimes = 1;
+//    self.maxDetectionTimes = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,18 +36,8 @@
 }
 
 - (void)onDetectSuccessWithImages:(NSMutableArray *)images {
-    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    //    NSMutableArray *imageList = [[NSMutableArray alloc] init];
-    for (int i = 0; i < images.count; i++) {
-        NSString *fileName;
-        if (i == 0) {
-            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
-        } else {
-            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
-        }
-        YCLog(@"filename:%@",fileName);
-    }
-    UIImage *bestimg = [images firstObject];
+    STSilentLivenessImage *stImage = images[0];
+    UIImage *bestimg = stImage.image;
     NSData *imgData = UIImageJPEGRepresentation(bestimg, 0.8);
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *ftoken = self.facetoken ? self.facetoken : @"dummy_token";
@@ -85,7 +75,7 @@
         }else{//其他
             YCLog(@"---->%d",errorno);
             [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                [weakSelf restartGroupDetection];
+                [weakSelf restartDetection];
             } cancelBlock:^{
                 [weakSelf dismissVC];
             }];

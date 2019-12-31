@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.maxDetectionTimes = 1;
+//    self.maxDetectionTimes = 1;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -111,7 +111,7 @@
             YCLog(@"---->%d",errorno);
             
             [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"识别的人脸和录入的人脸信息不匹配，身份验证失败！是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                [weakSelf restartGroupDetection];
+                [weakSelf restartDetection];
             } cancelBlock:^{
                 [weakSelf dismissVC];
             }];

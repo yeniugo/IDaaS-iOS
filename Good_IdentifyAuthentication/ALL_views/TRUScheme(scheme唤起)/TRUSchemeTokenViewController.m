@@ -88,6 +88,7 @@
     delegate.thirdAwakeTokenStatus = 0;
     delegate.isNeedPush = YES;
     delegate.appid = nil;
+    delegate.apid = nil;
     delegate.isFromSDK = NO;
     delegate.isMainSDK = NO;
     delegate.tokenCompletionBlock = nil;
@@ -99,6 +100,9 @@
 
 - (void)showPushToken{
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if (delegate.thirdAwakeTokenStatus == 11) {
+        [self pushAuth1];
+    }
     if(!delegate.isMainSDK){
         return;
     }
@@ -629,7 +633,7 @@
                     NSString *userid = [TRUUserAPI getUser].userId;
 //                    [self pushAuth1];
                 }else if (self.isNeedpush){
-                    [self pushAuth1];
+//                    [self pushAuth1];
                 }
             }
             break;

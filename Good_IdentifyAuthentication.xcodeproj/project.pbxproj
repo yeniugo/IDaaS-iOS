@@ -214,6 +214,12 @@
 		12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BB1F8CC72E001BB1A9 /* TRUUserAPI.m */; };
 		12FAC8BF1F8CC72E001BB1A9 /* TRUUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */; };
 		12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
+		2D0AF47223B36B7B00E401FE /* st_silent_liveness_resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D0AF45E23B36B7B00E401FE /* st_silent_liveness_resource.bundle */; };
+		2D0AF47323B36B7B00E401FE /* STStartAndStopIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0AF45F23B36B7B00E401FE /* STStartAndStopIndicatorView.m */; };
+		2D0AF47423B36B7C00E401FE /* SenseID_Liveness_Silent.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D0AF46023B36B7B00E401FE /* SenseID_Liveness_Silent.lic */; };
+		2D0AF47523B36B7C00E401FE /* UIView+STLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0AF46323B36B7B00E401FE /* UIView+STLayout.m */; };
+		2D0AF47623B36B7C00E401FE /* libSTSilentLivenessDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0AF46523B36B7B00E401FE /* libSTSilentLivenessDetector.a */; };
+		2D0AF47723B36B7C00E401FE /* STSilentLivenessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0AF46D23B36B7B00E401FE /* STSilentLivenessController.m */; };
 		2D1886272277F4A700826ACF /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1886262277F4A700826ACF /* TRUSubUserModel.m */; };
 		2D18862A2277FC2A00826ACF /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1886292277FC2A00826ACF /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D18862F2277FC6A00826ACF /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D18862B2277FC6600826ACF /* TRUMultipleAccountsViewController.m */; };
@@ -619,6 +625,23 @@
 		12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUUserModel.m; sourceTree = "<group>"; };
 		12FAC8C21F8CCF85001BB1A9 /* TRUVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUVersionUtil.h; sourceTree = "<group>"; };
 		12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUVersionUtil.m; sourceTree = "<group>"; };
+		2D0AF45E23B36B7B00E401FE /* st_silent_liveness_resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = st_silent_liveness_resource.bundle; sourceTree = "<group>"; };
+		2D0AF45F23B36B7B00E401FE /* STStartAndStopIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStartAndStopIndicatorView.m; sourceTree = "<group>"; };
+		2D0AF46023B36B7B00E401FE /* SenseID_Liveness_Silent.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SenseID_Liveness_Silent.lic; sourceTree = "<group>"; };
+		2D0AF46123B36B7B00E401FE /* STSilentLivenessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessController.h; sourceTree = "<group>"; };
+		2D0AF46223B36B7B00E401FE /* STSilentLivenessRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessRect.h; sourceTree = "<group>"; };
+		2D0AF46323B36B7B00E401FE /* UIView+STLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+STLayout.m"; sourceTree = "<group>"; };
+		2D0AF46423B36B7B00E401FE /* STSilentLivenessFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessFace.h; sourceTree = "<group>"; };
+		2D0AF46523B36B7B00E401FE /* libSTSilentLivenessDetector.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSTSilentLivenessDetector.a; sourceTree = "<group>"; };
+		2D0AF46623B36B7B00E401FE /* STSilentLivenessFaceEnumType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessFaceEnumType.h; sourceTree = "<group>"; };
+		2D0AF46723B36B7B00E401FE /* STStartAndStopIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STStartAndStopIndicatorView.h; sourceTree = "<group>"; };
+		2D0AF46823B36B7B00E401FE /* STSilentLivenessImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessImage.h; sourceTree = "<group>"; };
+		2D0AF46923B36B7B00E401FE /* STSilentLivenessDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessDetector.h; sourceTree = "<group>"; };
+		2D0AF46D23B36B7B00E401FE /* STSilentLivenessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSilentLivenessController.m; sourceTree = "<group>"; };
+		2D0AF46E23B36B7B00E401FE /* STSilentLivenessEnumTypeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessEnumTypeHeader.h; sourceTree = "<group>"; };
+		2D0AF46F23B36B7B00E401FE /* UIView+STLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+STLayout.h"; sourceTree = "<group>"; };
+		2D0AF47023B36B7B00E401FE /* STSilentLivenessCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessCommon.h; sourceTree = "<group>"; };
+		2D0AF47123B36B7B00E401FE /* STSilentLivenessDetectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSilentLivenessDetectorDelegate.h; sourceTree = "<group>"; };
 		2D1886252277F4A600826ACF /* TRUSubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUSubUserModel.h; sourceTree = "<group>"; };
 		2D1886262277F4A700826ACF /* TRUSubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserModel.m; sourceTree = "<group>"; };
 		2D1886282277FC2900826ACF /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
@@ -713,6 +736,7 @@
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				1256332C1F7A21F7007FF392 /* CoreGraphics.framework in Frameworks */,
 				1256332A1F7A21E6007FF392 /* SystemConfiguration.framework in Frameworks */,
+				2D0AF47623B36B7C00E401FE /* libSTSilentLivenessDetector.a in Frameworks */,
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
 				2DD8774321A7D85600572D71 /* libxindunsdk.a in Frameworks */,
 				125633261F7A21CD007FF392 /* CoreFoundation.framework in Frameworks */,
@@ -970,6 +994,7 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2D0AF45D23B36B7B00E401FE /* libSTSilentLivenessController */,
 				12476A221FA18C47000055CB /* AuthenFace */,
 				124769CB1FA18B41000055CB /* MJRefresh */,
 				128208731F98A341004DD5C6 /* HUIPatternLockView */,
@@ -1732,6 +1757,30 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		2D0AF45D23B36B7B00E401FE /* libSTSilentLivenessController */ = {
+			isa = PBXGroup;
+			children = (
+				2D0AF45E23B36B7B00E401FE /* st_silent_liveness_resource.bundle */,
+				2D0AF45F23B36B7B00E401FE /* STStartAndStopIndicatorView.m */,
+				2D0AF46023B36B7B00E401FE /* SenseID_Liveness_Silent.lic */,
+				2D0AF46123B36B7B00E401FE /* STSilentLivenessController.h */,
+				2D0AF46223B36B7B00E401FE /* STSilentLivenessRect.h */,
+				2D0AF46323B36B7B00E401FE /* UIView+STLayout.m */,
+				2D0AF46423B36B7B00E401FE /* STSilentLivenessFace.h */,
+				2D0AF46523B36B7B00E401FE /* libSTSilentLivenessDetector.a */,
+				2D0AF46623B36B7B00E401FE /* STSilentLivenessFaceEnumType.h */,
+				2D0AF46723B36B7B00E401FE /* STStartAndStopIndicatorView.h */,
+				2D0AF46823B36B7B00E401FE /* STSilentLivenessImage.h */,
+				2D0AF46923B36B7B00E401FE /* STSilentLivenessDetector.h */,
+				2D0AF46D23B36B7B00E401FE /* STSilentLivenessController.m */,
+				2D0AF46E23B36B7B00E401FE /* STSilentLivenessEnumTypeHeader.h */,
+				2D0AF46F23B36B7B00E401FE /* UIView+STLayout.h */,
+				2D0AF47023B36B7B00E401FE /* STSilentLivenessCommon.h */,
+				2D0AF47123B36B7B00E401FE /* STSilentLivenessDetectorDelegate.h */,
+			);
+			path = libSTSilentLivenessController;
+			sourceTree = "<group>";
+		};
 		2D4B97082181A23800867797 /* TRUScheme(scheme唤起) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1961,12 +2010,14 @@
 				121645771F97429700808730 /* Lisence.txt in Resources */,
 				12749EB61FC7E8FE00183EB4 /* TRUPushViewController.xib in Resources */,
 				2D32E98B228AA2CF0032A95A /* dongtaikouling.json in Resources */,
+				2D0AF47223B36B7B00E401FE /* st_silent_liveness_resource.bundle in Resources */,
 				128D5CF31F7DE3A500753EE5 /* TRUDevicesManagerCell.xib in Resources */,
 				128D5D031F7E3A4D00753EE5 /* TRUAboutUSCell.xib in Resources */,
 				2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */,
 				12098A0820CFA4D20027D927 /* Audio.bundle in Resources */,
 				12409F5D1F8F3E2E000D342D /* scanBG.png in Resources */,
 				1233C7541FB18A8200356383 /* pushjiantou.json in Resources */,
+				2D0AF47423B36B7C00E401FE /* SenseID_Liveness_Silent.lic in Resources */,
 				12F443601FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.xib in Resources */,
 				12F037191F9EE0F9007F4C19 /* fingerprint.json in Resources */,
 				12662C5A1FCD06080058140F /* TRUAddPhoneViewController.xib in Resources */,
@@ -2069,6 +2120,7 @@
 				1256333B1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m in Sources */,
 				12C0D3231F790CDC00972218 /* TRUMineViewController.m in Sources */,
 				2D1886342277FD0300826ACF /* TRUMultipleAccountsCell.m in Sources */,
+				2D0AF47723B36B7C00E401FE /* STSilentLivenessController.m in Sources */,
 				12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */,
 				121645461F97347B00808730 /* TRUFaceBaseViewController.mm in Sources */,
 				12F4435F1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.m in Sources */,
@@ -2149,6 +2201,7 @@
 				12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */,
 				2D1886302277FC6A00826ACF /* TRUSelectModel.m in Sources */,
 				12476A111FA18B41000055CB /* UIScrollView+MJExtension.m in Sources */,
+				2D0AF47323B36B7B00E401FE /* STStartAndStopIndicatorView.m in Sources */,
 				12476A0D1FA18B41000055CB /* MJRefreshStateHeader.m in Sources */,
 				12409F891F8F40FF000D342D /* TRUTextField.m in Sources */,
 				2D18862A2277FC2A00826ACF /* TRUMultipleAccountsSchemeViewController.m in Sources */,
@@ -2167,6 +2220,7 @@
 				12436A65210844590070F966 /* TRUVerifyFingerprintViewController.m in Sources */,
 				12476A131FA18B41000055CB /* UIView+MJExtension.m in Sources */,
 				128208761F98A341004DD5C6 /* HUIPatternLockView.m in Sources */,
+				2D0AF47523B36B7C00E401FE /* UIView+STLayout.m in Sources */,
 				12436A70210844710070F966 /* TRUGestureVerifyViewController.m in Sources */,
 				12C29FDF1F96067100087FB7 /* MyTabBarButton.m in Sources */,
 				2D1886272277F4A700826ACF /* TRUSubUserModel.m in Sources */,
@@ -2376,6 +2430,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Xindun",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/libSTSilentLivenessController",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2420,6 +2475,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Xindun",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/libSTSilentLivenessController",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

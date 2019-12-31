@@ -394,8 +394,8 @@
         }else{
             if ([self.pushModel.authtype isEqualToString:@"6"]) {//人脸
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2019-03-30"];
-                
+//                int dd = [self compareDate:currentTimeStr withDate:@"2019-03-30"];
+                int dd = 1;
                 if (dd >= 0) {
                     [self setDismissBlock:^(BOOL confirm){
                         if (confirm) {
