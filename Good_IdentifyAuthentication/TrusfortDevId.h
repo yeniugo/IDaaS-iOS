@@ -80,7 +80,7 @@ static NSString *CrashReportURL = @"CrashReportURL";
 
 /**
  *  从芯盾设备指纹云平台获取本机设备ID
- *  @param appId     芯盾设备指纹云平台服务端为客户分配的ID
+ *  @param APPID     芯盾设备指纹云平台服务端为客户分配的ID
  *  @param URL       芯盾设备指纹云平台获取iOS设备指纹的接口地址，如：https://id.trusfort.com:8043/xdid/mapi
  *  @param onresult  异步回调，格式
                                  error： 0 - 成功，其他 - 错误码
@@ -95,7 +95,7 @@ static NSString *CrashReportURL = @"CrashReportURL";
 
 /**
  *  从芯盾设备指纹云平台获取本机设备ID
- *  @param appId     芯盾设备指纹云平台服务端为客户分配的ID
+ *  @param APPID     芯盾设备指纹云平台服务端为客户分配的ID
  *  @param URL       芯盾设备指纹云平台获取iOS设备指纹的接口地址，如：https://id.trusfort.com:8043/xdid/mapi
  *  @param extInfo     用户自定义json格式参数，字符串类型
  *  @param onresult  异步回调，格式
@@ -109,22 +109,7 @@ static NSString *CrashReportURL = @"CrashReportURL";
  */
 + (void)getDeviceIdOnline:(NSString*)appId withServer:(NSString *)URL withExtInfo:(NSString *)extInfo OnResult:(void (^)(int error, id dicResult))onresult;
 
-/**
- *  从芯盾设备指纹云平台获取本机设备ID
- *  @param appId     芯盾设备指纹云平台服务端为客户分配的ID
- *  @param URL       芯盾设备指纹云平台获取iOS设备指纹的接口地址，如：https://id.trusfort.com:8043/xdid/mapi
- *  @param filter    设备信息过滤标识，默认为空，获取全量信息
- *  @param extInfo     用户自定义json格式参数，字符串类型
- *  @param onresult  异步回调，格式
- error： 0 - 成功，其他 - 错误码
- dictResult：字典对象，包含如下内容
- - devid：设备ID
- - devname：设备名称
- - is_emu：是否模拟器
- - is_root：是否越狱
- 
- */
-+ (void)getDeviceIdOnline:(NSString*)appId withServer:(NSString *)URL withFilter:(NSString *)filter withExtInfo:(NSString *)extInfo OnResult:(void (^)(int error, id dicResult))onresult;
++ (void)getDeviceIdOnlineIMP:(NSString*)appId withServer:(NSString *)URL withExtInfo:(NSString *)extInfo useWB:(BOOL)useWB OnResult:(void (^)(int error, id dicResult))onresult;
 
 /**
  *  上报设备环境信息
@@ -150,6 +135,8 @@ static NSString *CrashReportURL = @"CrashReportURL";
  */
 + (NSDictionary *)getEncryptedDeviceInfo: (NSString *)appId;
 
+
+
 /**
  *  获取加密设备信息
  *  @param APPID        芯盾设备指纹云平台服务端为客户分配的ID
@@ -157,7 +144,16 @@ static NSString *CrashReportURL = @"CrashReportURL";
  *  @return             @{"error" : @"错误码", @"devinfo" : @"设备信息密文"}
  
  */
+
 + (NSDictionary *)getEncryptedDeviceInfo: (NSString *)appId deviceType:(int)deviceType;
+
+/**
+ *  获取明文设备信息
+ *  @param APPID        芯盾设备指纹云平台服务端为客户分配的ID
+ *  @return             @{"error" : @"错误码", @"devinfo" : @"设备信息密文"}
+ 
+ */
++ (NSDictionary *)getPlainDeviceInfo: (NSString *)appId;
 
 /**
  * 获取缓存的在线设备指纹服务器响应。

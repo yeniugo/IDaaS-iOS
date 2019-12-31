@@ -17,7 +17,7 @@
     //http://192.168.1.115:8080/cims
 #if TARGET_IPHONE_SIMULATOR
     //http://192.168.1.215:8100/cims
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.204:8004" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.141:8004" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [[TRUCompanyModel alloc] init];
 //    companymodel.activation_mode = @"1";

@@ -68,13 +68,13 @@
     _hasScanBtn = hasScanBtn;
     if (hasScanBtn) {
         self.passwordLB.frame = CGRectMake(35*PointWidthRatioX, 40*PointWidthRatioX, 178*PointWidthRatioX, 33*PointWidthRatioX);
-        self.passwordLB.font = [UIFont systemFontOfSize:44*PointWidthRatioX];
+        self.passwordLB.font = [UIFont systemFontOfSize:28*PointWidthRatioX];
         self.progressView.frame = CGRectMake(35*PointWidthRatioX, 92*PointWidthRatioX, 178*PointWidthRatioX, 1);
         self.scanBtn.frame = CGRectMake(262*PointWidthRatioX, 44*PointWidthRatioX, 27*PointWidthRatioX, 27*PointWidthRatioX);
         self.qrBtn.frame = CGRectMake(319*PointWidthRatioX, 44*PointWidthRatioX, 27*PointWidthRatioX, 27*PointWidthRatioX);
     }else{
         self.passwordLB.frame = CGRectMake(35*PointWidthRatioX, 40*PointWidthRatioX, 178*PointWidthRatioX, 33*PointWidthRatioX);
-        self.passwordLB.font = [UIFont systemFontOfSize:44*PointWidthRatioX];
+        self.passwordLB.font = [UIFont systemFontOfSize:28*PointWidthRatioX];
         self.progressView.frame = CGRectMake(35*PointWidthRatioX, 92*PointWidthRatioX, 178*PointWidthRatioX, 1);
         self.scanBtn.frame = CGRectMake(305*PointWidthRatioX, 44*PointWidthRatioX, 27*PointWidthRatioX, 27*PointWidthRatioX);
     }

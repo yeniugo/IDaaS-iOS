@@ -1662,6 +1662,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 #pragma mark - 版本更新
+
 -(void)checkVersion{
     // 获取发布版本的version
     AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
@@ -1771,7 +1772,7 @@
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *url = responseObject[@"url"];
             if (url.length) {
-                if ([url hasPrefix:@"https://"]) {
+                if ([url hasPrefix:@"https:"]) {
                     [weakSelf getPlistWithURL:url];
                 }else{
                     url = [NSString stringWithFormat:@"%@%@",baseUrl,url];

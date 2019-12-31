@@ -15,6 +15,7 @@
 #import "TRUAuthSacnViewController.h"
 #import "TRUEnterAPPAuthView.h"
 #import "FireflyAlertView.h"
+#import "TRUUserAPI.h"
 
 //#import "UIViewController+LSNavigationController.h"
 @interface TRUBaseViewController ()<UIAlertViewDelegate>
@@ -285,6 +286,8 @@
 - (void)deal9008Error{
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+        [TRUUserAPI deleteUser];
         [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
