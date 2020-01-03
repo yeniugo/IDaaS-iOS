@@ -36,5 +36,6 @@ static BOOL isShowPortal = YES;
 @property (nonatomic, assign) BOOL hasUpdate;//是否有更新
 @property (nonatomic,assign) BOOL launchWithAuth;//程序第一次或者进入后台的时候有没有设置手势指纹
 - (void)restUIForApp;
+- (void)checkUpdataWithPlist;
 @end
 

@@ -64,10 +64,10 @@
 //        [dynamicLB textAlignmentLeftAndRight];
         
         UILabel *passwordLB = [[UILabel alloc] init];
-        passwordLB.font = [UIFont systemFontOfSize:60*PointHeightRatioX3];
-        if ([UIScreen mainScreen].scale > 2.1) {
-            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
-        }
+        passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
+//        if ([UIScreen mainScreen].scale > 2.1) {
+//            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
+//        }
         passwordLB.textAlignment = NSTextAlignmentCenter;
         passwordLB.textColor = RGBCOLOR(51, 51, 51);
         [self addSubview:passwordLB];

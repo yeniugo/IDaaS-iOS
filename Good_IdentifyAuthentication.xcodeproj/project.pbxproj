@@ -228,12 +228,10 @@
 		2D32E998228AA95E0032A95A /* TRUPortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E98F228AA95E0032A95A /* TRUPortalModel.m */; };
 		2D32E999228AA95E0032A95A /* TRUPortalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E993228AA95E0032A95A /* TRUPortalHeaderView.m */; };
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
-		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
-		2D50B59522D87A1B0037F089 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D50B59222D87A1B0037F089 /* trusfort.lic */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
@@ -277,6 +275,8 @@
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
 		2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC21981230FD87300459748 /* TRUPortalHeader.m */; };
+		2DD29DC523BF3650006328FD /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DD29DC423BF3650006328FD /* trusfort.lic */; };
+		2DD29DC723BF3A3F006328FD /* applauchIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD29DC623BF3A3E006328FD /* applauchIcon1.png */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
@@ -560,7 +560,7 @@
 		12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUScanView.m; sourceTree = "<group>"; };
 		12B6B2351F8DE91300A3B7A6 /* TRUTimeSyncUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTimeSyncUtil.h; sourceTree = "<group>"; };
 		12B6B2361F8DE91300A3B7A6 /* TRUTimeSyncUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTimeSyncUtil.m; sourceTree = "<group>"; };
-		12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Good_IdentifyAuthentication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C0D2CA1F7907DC00972218 /* 健康陕西.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康陕西.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0D2CE1F7907DC00972218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		12C0D2D01F7907DC00972218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		12C0D2D11F7907DC00972218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -679,7 +679,6 @@
 		2D32E994228AA95E0032A95A /* TRUPortalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPortalCell.m; sourceTree = "<group>"; };
 		2D32E995228AA95E0032A95A /* TRUPortalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPortalHeaderView.h; sourceTree = "<group>"; };
 		2D32E996228AA95E0032A95A /* TRUPortalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPortalCell.h; sourceTree = "<group>"; };
-		2D40D4ED23226A2300EC0C3F /* applauchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applauchIcon.png; sourceTree = "<group>"; };
 		2D41270D219569AC005369FB /* TRUSSOBlankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSOBlankView.h; sourceTree = "<group>"; };
 		2D41270E219569AC005369FB /* TRUSSOBlankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSOBlankView.m; sourceTree = "<group>"; };
 		2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSchemeTokenViewController.m; sourceTree = "<group>"; };
@@ -688,7 +687,6 @@
 		2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTokenUtil.m; sourceTree = "<group>"; };
 		2D4B970F2181A59D00867797 /* TRUEnterAPPAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUEnterAPPAuthView.h; sourceTree = "<group>"; };
 		2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUEnterAPPAuthView.m; sourceTree = "<group>"; };
-		2D50B59222D87A1B0037F089 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D55CB1F230CF61300C31F60 /* TRUPersonalSmailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalSmailModel.h; sourceTree = "<group>"; };
 		2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalSmailModel.m; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
@@ -771,6 +769,8 @@
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
 		2DC21980230FD87300459748 /* TRUPortalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPortalHeader.h; sourceTree = "<group>"; };
 		2DC21981230FD87300459748 /* TRUPortalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeader.m; sourceTree = "<group>"; };
+		2DD29DC423BF3650006328FD /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
+		2DD29DC623BF3A3E006328FD /* applauchIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applauchIcon1.png; sourceTree = "<group>"; };
 		2DD459E621D2290B00237161 /* TRUSelectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSelectModel.h; sourceTree = "<group>"; };
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -1039,7 +1039,7 @@
 			children = (
 				2DB18DF3232637CC00473824 /* TRUMTDTool.h */,
 				2DB18DF2232637CC00473824 /* TRUMTDTool.m */,
-				2D50B59222D87A1B0037F089 /* trusfort.lic */,
+				2DD29DC423BF3650006328FD /* trusfort.lic */,
 				2D89BBAD2338AB7800528C72 /* libxindunsdk.a */,
 				2D89BBAE2338AB7800528C72 /* TrusfortDevId.h */,
 				2D89BBAF2338AB7800528C72 /* xindunsdk.h */,
@@ -1694,7 +1694,7 @@
 		12C0D2CB1F7907DC00972218 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */,
+				12C0D2CA1F7907DC00972218 /* 健康陕西.app */,
 				12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */,
 				12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */,
 			);
@@ -1704,7 +1704,7 @@
 		12C0D2CC1F7907DC00972218 /* Good_IdentifyAuthentication */ = {
 			isa = PBXGroup;
 			children = (
-				2D40D4ED23226A2300EC0C3F /* applauchIcon.png */,
+				2DD29DC623BF3A3E006328FD /* applauchIcon1.png */,
 				1242D81420B4210C008EDF07 /* allspIcon */,
 				126BCFFC1FB05FFA00B84B7A /* Good_IdentifyAuthentication.entitlements */,
 				12749E8D1FC7C9FE00183EB4 /* ALL_views */,
@@ -2097,7 +2097,7 @@
 			);
 			name = Good_IdentifyAuthentication;
 			productName = Good_IdentifyAuthentication;
-			productReference = 12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */;
+			productReference = 12C0D2CA1F7907DC00972218 /* 健康陕西.app */;
 			productType = "com.apple.product-type.application";
 		};
 		12C0D2E21F7907DC00972218 /* Good_IdentifyAuthenticationTests */ = {
@@ -2206,9 +2206,9 @@
 				2D7D92B12188016A00163645 /* TRUPushingViewController.xib in Resources */,
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
 				12354C671FA84B8A00B6B92E /* topMenuClick.json in Resources */,
-				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
+				2DD29DC723BF3A3F006328FD /* applauchIcon1.png in Resources */,
 				12409F571F8F3E17000D342D /* tabbardata02.json in Resources */,
 				2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */,
 				12354C5F1FA81A6900B6B92E /* TRUSessionManagerCell.xib in Resources */,
@@ -2216,7 +2216,6 @@
 				12579DF41F99E6E300422FBD /* GestureAppend.json in Resources */,
 				1247446C2029A0EC00639F18 /* huonangaozhao@2x.png in Resources */,
 				128D5D0C1F7E430700753EE5 /* TRULogIdentifyCell.xib in Resources */,
-				2D50B59522D87A1B0037F089 /* trusfort.lic in Resources */,
 				12F7C45C1FAC0A6100EF1DF5 /* tabbardata03.json in Resources */,
 				12F037211F9F1F79007F4C19 /* fingerbg.png in Resources */,
 				123D100A202AA0CB000CEB60 /* Scandata.json in Resources */,
@@ -2250,6 +2249,7 @@
 				2D7FFF5B21894B6D00FCA1ED /* TRUPersonalDetailsCell.xib in Resources */,
 				128208831F98AFE4004DD5C6 /* Gestureloading.json in Resources */,
 				121C48D41F7CFF8F0077AE34 /* TRUMineCell.xib in Resources */,
+				2DD29DC523BF3650006328FD /* trusfort.lic in Resources */,
 				123AE10E1FF1E6FF009F9183 /* pushcanale.json in Resources */,
 				12C0D2D81F7907DC00972218 /* Main.storyboard in Resources */,
 				128D5CEE1F7DDB4800753EE5 /* TRUDevicesManagerController.xib in Resources */,
@@ -2647,6 +2647,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -2668,6 +2669,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2677,7 +2679,7 @@
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "健康陕西";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2695,7 +2697,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = AG9SM32322;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NCZM4397B2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2715,6 +2718,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2723,10 +2727,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
+				PRODUCT_NAME = "健康陕西";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = appstore_com.trusfort.cims;
+				PROVISIONING_PROFILE_SPECIFIER = TrusfrotCIMSEnterprise;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

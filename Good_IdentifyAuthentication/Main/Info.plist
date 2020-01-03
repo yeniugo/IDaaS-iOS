@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>善认</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -48,7 +48,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.3</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -61,7 +61,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>217</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>trusfortcims</string>
@@ -73,19 +73,19 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>我们需要通过您的蓝牙信息获取您的设备相关数据</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>我们需要通过您的蓝牙信息获取您的设备相关数据</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>我们需要通过您的蓝牙信息获取您的设备相关数据</string>
 	<key>NSCameraUsageDescription</key>
 	<string>使用扫描二维码功能需要获取您的相机权限</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>我们使用FaceID做登录控制需要您的FaceID权限</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>我们需要通过您的地理位置信息进行大数据分析，以确保账户安全</string>
 	<key>NSLocationUsageDescription</key>
 	<string>我们需要通过您的地理位置信息进行大数据分析，以确保账户安全</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>我们需要通过您的地理位置信息进行大数据分析，以确保账户安全</string>
-	<key>NSLocationAlwaysUsageDescription</key>
 	<string>我们需要通过您的地理位置信息进行大数据分析，以确保账户安全</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>使用声纹功能需要获取您的录音权限</string>

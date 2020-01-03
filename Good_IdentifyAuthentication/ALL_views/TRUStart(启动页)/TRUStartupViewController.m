@@ -32,7 +32,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"applauchIcon.png"];
+    imageview.image = [UIImage imageNamed:@"applauchIcon1.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];

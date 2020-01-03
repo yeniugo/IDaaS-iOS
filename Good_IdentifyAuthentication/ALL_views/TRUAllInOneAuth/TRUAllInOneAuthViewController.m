@@ -81,6 +81,7 @@ static double dytime = 0.0;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
     }
+    [delegate checkUpdataWithPlist];
 }
 
 - (void)checkUpdataWithPlist{
