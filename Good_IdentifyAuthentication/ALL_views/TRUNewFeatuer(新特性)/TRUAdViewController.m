@@ -9,7 +9,7 @@
 #import "TRUAdViewController.h"
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
+#import "TRUhttpManager.h"
 @interface TRUAdViewController ()
 
 @end
@@ -57,6 +57,22 @@
         make.left.equalTo(self.view).offset(20);
         make.right.equalTo(self.view).offset(-20);
         make.bottom.equalTo(self.view).offset(-bottom);
+    }];
+    NSString *urlStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *host = [NSURL URLWithString:urlStr].host;
+    __weak typeof(self) weakSelf = self;
+    [TRUhttpManager resolveHost:host onResult:^(BOOL canhost, BOOL isIpV6) {
+        if (canhost) {
+            if (isIpV6) {
+                [weakSelf showHudWithText:@"您正在使用ipv6"];
+                [weakSelf hideHudDelay:2.0];
+            }else{
+//                [weakSelf showHudWithText:@"您正在使用ipv4"];
+//                [weakSelf hideHudDelay:2.0];
+            }
+        }else{
+
+        }
     }];
 }
 

@@ -62,6 +62,9 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
                 [[NSUserDefaults standardUserDefaults] setObject:@(seconds_cli) forKey:@"GS_DETAL_KEY"];
 // 添加了一个数据保存
                 [[NSUserDefaults standardUserDefaults] synchronize];
+                YCLog(@"synctime = %d",seconds_cli);
+                NSString *log1 = [NSString stringWithFormat:@"同步动态口令时间差:%ld",seconds_cli];
+                DDLogError(log1);
                 if (syncFinshBlock) {
                     syncFinshBlock(0);
                 }

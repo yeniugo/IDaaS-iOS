@@ -79,6 +79,7 @@ const char* jailbreak_tool_pathes[] = {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     YCLog(@"更新开始-----");
     [delegate checkUpdataWithPlist];
+    [self postVersion];
     if ([self isJailBreak]) {
         [self showConfrimCancelDialogViewWithTitle:@"手机已经越狱" msg:nil confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
     }
@@ -93,7 +94,7 @@ const char* jailbreak_tool_pathes[] = {
 //        });
         [self showFinger];
         [self pushtoken];
-        [HAMLogOutputWindow printLog:@"base 1"];
+//        [HAMLogOutputWindow printLog:@"base 1"];
 //        [HAMLogOutputWindow printLog:@"TRUBaseTabBarController viewDidLoad2"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
@@ -154,6 +155,24 @@ const char* jailbreak_tool_pathes[] = {
         }
     }
     return NO;
+}
+
+- (void)postVersion{
+    __weak typeof(self) weakSelf = self;
+    NSString *mainuserid = [TRUUserAPI getUser].userId;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *sign = [NSString stringWithFormat:@"%@",version];
+    NSArray *ctxx = @[@"appversion",version];
+    NSString *paras = [xindunsdk encryptByUkey:mainuserid ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/appinfo"] withParts:dictt onResult:^(int errorno, id responseBody){
+        if (errorno==0) {
+            
+        }else{
+            
+        }
+    }];
 }
 
 

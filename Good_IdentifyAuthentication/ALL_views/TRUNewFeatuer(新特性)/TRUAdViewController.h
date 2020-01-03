@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TRUAdViewController : UIViewController
+#import "TRUBaseViewController.h"
+@interface TRUAdViewController : TRUBaseViewController
 
 @end
