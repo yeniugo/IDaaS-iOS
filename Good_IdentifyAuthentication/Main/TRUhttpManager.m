@@ -19,18 +19,6 @@
  */
 + (void)sendCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResult:(void (^)(int errorno, id responseBody))onResult{
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    NSString *host = [NSURL URLWithString:url].host;
-    [self resolveHost:host onResult:^(BOOL canhost, BOOL isIpV6) {
-        if (canhost) {
-            if (isIpV6) {
-                [HAMLogOutputWindow printLog:@"ipv6"];
-            }else{
-                [HAMLogOutputWindow printLog:@"ipv4"];
-            }
-        }else{
-
-        }
-    }];
     if ((delegate.thirdAwakeTokenStatus==2) || (delegate.thirdAwakeTokenStatus==3)) {
         if (![url hasSuffix:@"/mapi/01/device/delete"]) {
             return;
@@ -96,18 +84,6 @@
 
 + (void)sendCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResultWithMessage:(void (^)(int errorno, id responseBody,NSString *message))onResult{
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    NSString *host = [NSURL URLWithString:url].host;
-    [self resolveHost:host onResult:^(BOOL canhost, BOOL isIpV6) {
-        if (canhost) {
-            if (isIpV6) {
-                [HAMLogOutputWindow printLog:@"ipv6"];
-            }else{
-                [HAMLogOutputWindow printLog:@"ipv4"];
-            }
-        }else{
-
-        }
-    }];
     if ((delegate.thirdAwakeTokenStatus==2) || (delegate.thirdAwakeTokenStatus==3)) {
         if (![url hasSuffix:@"/mapi/01/device/delete"]) {
             return;
@@ -423,103 +399,6 @@
     
 }
 
--(BOOL)resolveHost:(NSString*)hostname onResult:(void (^)(BOOL canhost, BOOL isIpV6))onResult
 
-{
-    
-    Boolean result;
-    
-    CFHostRef hostRef;
-    
-    CFArrayRef addresses;
-    
-    NSString*ipAddress =nil;
-    
-    hostRef =CFHostCreateWithName(kCFAllocatorDefault, (__bridge CFStringRef)hostname);
-//    NSLog(@"resolve hostRef=%@",hostRef);
-    if(hostRef) {
-        
-        result =CFHostStartInfoResolution(hostRef,kCFHostAddresses,NULL);// pass an error instead of NULL here to find out why it failed
-//        NSLog(@"resolve result=%d",result);
-        if(result) {
-            
-            addresses =CFHostGetAddressing(hostRef, &result);
-            
-        }
-        
-    }
-    
-    if(result) {
-        
-        CFIndex index =0;
-        
-        CFDataRef ref = (CFDataRef)CFArrayGetValueAtIndex(addresses, index);
-        
-        int port=0;
-        
-        struct sockaddr*addressGeneric;
-        
-        NSData*myData = (__bridge NSData*)ref;
-        
-        addressGeneric = (struct sockaddr*)[myData bytes];
-        
-        switch(addressGeneric->sa_family) {
-                
-            case AF_INET: {
-                
-                struct sockaddr_in*ip4;
-                
-                char dest[INET_ADDRSTRLEN];
-                
-                ip4 = (struct sockaddr_in*)[myData bytes];
-                
-                port =ntohs(ip4->sin_port);
-                
-                ipAddress = [NSString stringWithFormat:@"%s",inet_ntop(AF_INET, &ip4->sin_addr, dest,sizeof dest)];
-//                NSLog(@"resolve AF_INET,ipAddress=%@",ipAddress);
-                onResult(YES,NO);
-            }
-                
-                break;
-                
-            case AF_INET6: {
-                //NSLog(@"resolve AF_INET6");
-                struct sockaddr_in6*ip6;
-                
-                char dest[INET6_ADDRSTRLEN];
-                
-                ip6 = (struct sockaddr_in6*)[myData bytes];
-                
-                port =ntohs(ip6->sin6_port);
-                
-                ipAddress = [NSString stringWithFormat:@"%s",inet_ntop(AF_INET6, &ip6->sin6_addr, dest,sizeof dest)];
-//                NSLog(@"resolve AF_INET6,ipAddress=%@",ipAddress);
-                onResult(YES,YES);
-            }
-                
-                break;
-                
-            default:
-                
-                ipAddress =nil;
-//                NSLog(@"resolve NO NET TYPE");
-                onResult(NO,NO);
-                break;
-                
-        }
-        
-    }
-    
-    if(ipAddress) {
-        
-        return YES;
-        
-    }else{
-        
-        return NO;
-        
-    }
-    
-}
 
 @end

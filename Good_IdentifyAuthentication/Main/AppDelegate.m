@@ -47,15 +47,12 @@
 #import "TRUScreenShotAlert.h"
 #import "TRULogToFile.h"
 #import "TRUDynamicPasswordViewController.h"
-#import "WHPingTester.h"
-#import <arpa/inet.h>
-#import <netdb.h>
-@interface AppDelegate ()<WHPingDelegate>
+
+@interface AppDelegate ()
 //@property (nonatomic, copy) NSString *soureSchme;
 @property (nonatomic, copy) NSString *RemoteTokenStr;//远程token字符串
 @property (nonatomic, copy) NSDictionary *launchOptions;
-@property(nonatomic, strong) WHPingTester* pingTester;
-@property (nonatomic, assign) int pingtimes;
+
 @end
 
 @implementation AppDelegate
@@ -123,13 +120,6 @@
     self.window.rootViewController = [[TRUAdViewController alloc] init];
     [self.window makeKeyAndVisible];
     
-    NSString *urlStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *host = [NSURL URLWithString:urlStr].host;
-//    self.pingTester = [[WHPingTester alloc] initWithHostName:host];
-//    self.pingTester.delegate = self;
-//    [self.pingTester startPing];
-//    self.pingtimes = 1;
-    
     
     NSString *imgUrlStr;
     if(isCustom){
@@ -165,98 +155,6 @@
     return YES;
 }
 
-
-- (void) didPingSucccessWithTime:(float)time withError:(NSError *)error
-{
-    if(!error)
-    {
-        static dispatch_once_t onceToken;
-//        [HAMLogOutputWindow printLog:@"ipv6"];
-        [self.pingTester stopPing];
-    }else{
-//        [HAMLogOutputWindow printLog:@"ipv4"];
-        if (self.pingtimes<6) {
-            self.pingtimes++;
-            [self.pingTester stopPing];
-            [self.pingTester startPing];
-        }else{
-            [self.pingTester stopPing];
-        }
-    }
-}
-
-- (void) didPingError:(NSError *)error{
-    if (self.pingtimes<6) {
-        self.pingtimes++;
-        [self.pingTester stopPing];
-        [self.pingTester startPing];
-    }else{
-        [self.pingTester stopPing];
-    }
-}
-
-
--(BOOL)resolveHost:(NSString*)hostname onResult:(void (^)(BOOL canhost, BOOL isIpV6))onResult
-
-{
-    Boolean result;
-    CFHostRef hostRef;
-    CFArrayRef addresses;
-    NSString*ipAddress =nil;
-    hostRef =CFHostCreateWithName(kCFAllocatorDefault, (__bridge CFStringRef)hostname);
-//    NSLog(@"resolve hostRef=%@",hostRef);
-    if(hostRef) {
-        result =CFHostStartInfoResolution(hostRef,kCFHostAddresses,NULL);// pass an error instead of NULL here to find out why it failed
-//        NSLog(@"resolve result=%d",result);
-        if(result) {
-            addresses =CFHostGetAddressing(hostRef, &result);
-        }
-    }
-    if(result) {
-        CFIndex index =0;
-        CFDataRef ref = (CFDataRef)CFArrayGetValueAtIndex(addresses, index);
-        int port=0;
-        struct sockaddr*addressGeneric;
-        NSData*myData = (__bridge NSData*)ref;
-        addressGeneric = (struct sockaddr*)[myData bytes];
-        switch(addressGeneric->sa_family) {
-            case AF_INET: {
-                struct sockaddr_in*ip4;
-                char dest[INET_ADDRSTRLEN];
-                ip4 = (struct sockaddr_in*)[myData bytes];
-                port =ntohs(ip4->sin_port);
-                ipAddress = [NSString stringWithFormat:@"%s",inet_ntop(AF_INET, &ip4->sin_addr, dest,sizeof dest)];
-//                NSLog(@"resolve AF_INET,ipAddress=%@",ipAddress);
-                onResult(YES,NO);
-            }
-                break;
-            case AF_INET6: {
-                //NSLog(@"resolve AF_INET6");
-                struct sockaddr_in6*ip6;
-                char dest[INET6_ADDRSTRLEN];
-                ip6 = (struct sockaddr_in6*)[myData bytes];
-                port =ntohs(ip6->sin6_port);
-                ipAddress = [NSString stringWithFormat:@"%s",inet_ntop(AF_INET6, &ip6->sin6_addr, dest,sizeof dest)];
-//                NSLog(@"resolve AF_INET6,ipAddress=%@",ipAddress);
-//                onResult(YES,YES);
-//                self.pingTester = [[WHPingTester alloc] initWithHostName:host];
-//                self.pingTester.delegate = self;
-//                [self.pingTester startPing];
-            }
-                break;
-            default:
-                ipAddress =nil;
-//                NSLog(@"resolve NO NET TYPE");
-                onResult(NO,NO);
-                break;
-        }
-    }
-    if(ipAddress) {
-        return YES;
-    }else{
-        return NO;
-    }
-}
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;
@@ -1709,7 +1607,7 @@
         //        [HAMLogOutputWindow printLog:@"2.1s"];
         dispatchTime = 0.1;
     }else{
-        dispatchTime = 20;
+        dispatchTime = 2.0;
     }
     //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
     if ([self updeWithDicString:version andOldString:appInfo]) {

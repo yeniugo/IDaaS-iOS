@@ -195,8 +195,6 @@
 		2D0CA376229F77DA0072F4E7 /* Progressimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA375229F77D90072F4E7 /* Progressimage.m */; };
 		2D149A2022A66DF600CD3CD5 /* ida.bsb.com.cn.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2D149A1F22A66DF500CD3CD5 /* ida.bsb.com.cn.cer */; };
 		2D1E52CB22E7F34D004E8722 /* TRUScreenShotAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1E52CA22E7F34D004E8722 /* TRUScreenShotAlert.m */; };
-		2D20101723AB6DF00085616C /* WHPingTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D20101523AB6DF00085616C /* WHPingTester.m */; };
-		2D20101823AB6DF00085616C /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D20101623AB6DF00085616C /* SimplePing.m */; };
 		2D268EE3224A0B7600293458 /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D268EE2224A0B7600293458 /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
 		2D448D1C223B95680070307F /* SenseID_Liveness_Silent.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D448D19223B95680070307F /* SenseID_Liveness_Silent.lic */; };
@@ -589,10 +587,6 @@
 		2D149A1F22A66DF500CD3CD5 /* ida.bsb.com.cn.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ida.bsb.com.cn.cer; sourceTree = "<group>"; };
 		2D1E52C922E7F34D004E8722 /* TRUScreenShotAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUScreenShotAlert.h; sourceTree = "<group>"; };
 		2D1E52CA22E7F34D004E8722 /* TRUScreenShotAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUScreenShotAlert.m; sourceTree = "<group>"; };
-		2D20101323AB6DF00085616C /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
-		2D20101423AB6DF00085616C /* WHPingTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHPingTester.h; sourceTree = "<group>"; };
-		2D20101523AB6DF00085616C /* WHPingTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHPingTester.m; sourceTree = "<group>"; };
-		2D20101623AB6DF00085616C /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		2D268EE1224A0B7600293458 /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
 		2D268EE2224A0B7600293458 /* TRUMultipleAccountsSchemeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsSchemeViewController.m; sourceTree = "<group>"; };
 		2D41270D219569AC005369FB /* TRUSSOBlankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSOBlankView.h; sourceTree = "<group>"; };
@@ -959,7 +953,6 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				2D20101223AB6DF00085616C /* pingTool */,
 				2D4F83FA224CDCA3003C08AA /* TCSafe-iOS-0616 */,
 				2D4F83F3224CBFD6003C08AA /* xindunsdk */,
 				2D448D18223B953D0070307F /* FaceVerity */,
@@ -1684,17 +1677,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		2D20101223AB6DF00085616C /* pingTool */ = {
-			isa = PBXGroup;
-			children = (
-				2D20101323AB6DF00085616C /* SimplePing.h */,
-				2D20101423AB6DF00085616C /* WHPingTester.h */,
-				2D20101523AB6DF00085616C /* WHPingTester.m */,
-				2D20101623AB6DF00085616C /* SimplePing.m */,
-			);
-			path = pingTool;
-			sourceTree = "<group>";
-		};
 		2D448D18223B953D0070307F /* FaceVerity */ = {
 			isa = PBXGroup;
 			children = (
@@ -2143,7 +2125,6 @@
 				12436A73210844710070F966 /* TRUGestureSettingViewController.m in Sources */,
 				12476A0F1FA18B41000055CB /* MJRefreshConst.m in Sources */,
 				2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */,
-				2D20101723AB6DF00085616C /* WHPingTester.m in Sources */,
 				12B6B22F1F8DE6D500A3B7A6 /* TRULoginScanViewController.m in Sources */,
 				1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */,
 				1256334F1F7A4471007FF392 /* UINavigationBar+BackgroundColor.m in Sources */,
@@ -2201,7 +2182,6 @@
 				12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */,
 				2DDF9A2B2282C46D00616C31 /* TRULockWindow.m in Sources */,
 				12476A111FA18B41000055CB /* UIScrollView+MJExtension.m in Sources */,
-				2D20101823AB6DF00085616C /* SimplePing.m in Sources */,
 				12476A0D1FA18B41000055CB /* MJRefreshStateHeader.m in Sources */,
 				12409F891F8F40FF000D342D /* TRUTextField.m in Sources */,
 				12476A101FA18B41000055CB /* NSBundle+MJRefresh.m in Sources */,

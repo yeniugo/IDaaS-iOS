@@ -24,7 +24,7 @@
     companymodel.activation_mode = @"2";
     [TRUCompanyAPI saveCompany:companymodel];
 #else
-    [[NSUserDefaults standardUserDefaults] setObject:@"https://test1.bsb.com.cn:8100/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"https://ida.bsb.com.cn/cims" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [[TRUCompanyModel alloc] init];
     companymodel.activation_mode = @"2";

@@ -16,7 +16,5 @@
 
 + (void)sendCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResultWithMessage:(void (^)(int errorno, id responseBody,NSString *message))onResult;
 
--(BOOL)resolveHost:(NSString*)hostname onResult:(void (^)(BOOL canhost, BOOL isIpV6))onResult;
-
 +(BOOL)resolveHost:(NSString*)hostname onResult:(void (^)(BOOL canhost, BOOL isIpV6))onResult;
 @end
