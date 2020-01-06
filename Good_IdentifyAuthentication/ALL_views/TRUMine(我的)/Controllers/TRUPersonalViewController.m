@@ -86,7 +86,7 @@
     model3.cellClickBlock = ^{
         TRUAPPLogIdentifyController *vc = [[TRUAPPLogIdentifyController alloc] init];
         vc.isFromSetting = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     };
     
     TRUPersonalSmailModel *model4 = [[TRUPersonalSmailModel alloc] init];
