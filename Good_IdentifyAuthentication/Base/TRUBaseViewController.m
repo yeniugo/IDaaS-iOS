@@ -403,5 +403,9 @@ static const char TRUHUDKey = '\0';
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc{
+    YCLog(@"%@ dealloc 内存释放",[self class]);
+}
+
 @end
 
