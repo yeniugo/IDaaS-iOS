@@ -263,20 +263,24 @@
     }else if (authStatus == AVAuthorizationStatusNotDetermined){
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
-                TRULoginScanViewController *scanVC = [[TRULoginScanViewController alloc] init];
-                scanVC.backBlock =^(BOOL isTurn){
-                    //跳转绑定页面
-                    if (isTurn){
-                        TRUBingUserController *bingUserVC = [[TRUBingUserController alloc] init];
-                        [self.navigationController pushViewController:bingUserVC animated:YES];
-                    }
-                };
-                TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:scanVC];
-                [self presentViewController:nav animated:YES completion:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    TRULoginScanViewController *scanVC = [[TRULoginScanViewController alloc] init];
+                    scanVC.backBlock =^(BOOL isTurn){
+                        //跳转绑定页面
+                        if (isTurn){
+                            TRUBingUserController *bingUserVC = [[TRUBingUserController alloc] init];
+                            [self.navigationController pushViewController:bingUserVC animated:YES];
+                        }
+                    };
+                    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:scanVC];
+                    [self presentViewController:nav animated:YES completion:nil];
+                });
             }else{
-                [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                } cancelBlock:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    } cancelBlock:nil];
+                });
             }
         }];
         //

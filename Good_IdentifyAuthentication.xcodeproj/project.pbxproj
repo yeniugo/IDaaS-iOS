@@ -560,7 +560,7 @@
 		12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUScanView.m; sourceTree = "<group>"; };
 		12B6B2351F8DE91300A3B7A6 /* TRUTimeSyncUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTimeSyncUtil.h; sourceTree = "<group>"; };
 		12B6B2361F8DE91300A3B7A6 /* TRUTimeSyncUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTimeSyncUtil.m; sourceTree = "<group>"; };
-		12C0D2CA1F7907DC00972218 /* 健康陕西.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康陕西.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C0D2CA1F7907DC00972218 /* 健康云.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康云.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0D2CE1F7907DC00972218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		12C0D2D01F7907DC00972218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		12C0D2D11F7907DC00972218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1694,7 +1694,7 @@
 		12C0D2CB1F7907DC00972218 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12C0D2CA1F7907DC00972218 /* 健康陕西.app */,
+				12C0D2CA1F7907DC00972218 /* 健康云.app */,
 				12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */,
 				12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */,
 			);
@@ -2097,7 +2097,7 @@
 			);
 			name = Good_IdentifyAuthentication;
 			productName = Good_IdentifyAuthentication;
-			productReference = 12C0D2CA1F7907DC00972218 /* 健康陕西.app */;
+			productReference = 12C0D2CA1F7907DC00972218 /* 健康云.app */;
 			productType = "com.apple.product-type.application";
 		};
 		12C0D2E21F7907DC00972218 /* Good_IdentifyAuthenticationTests */ = {
@@ -2679,7 +2679,7 @@
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
-				PRODUCT_NAME = "健康陕西";
+				PRODUCT_NAME = "健康云";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2728,7 +2728,7 @@
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
-				PRODUCT_NAME = "健康陕西";
+				PRODUCT_NAME = "健康云";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
 				PROVISIONING_PROFILE_SPECIFIER = TrusfrotCIMSEnterprise;
 				TARGETED_DEVICE_FAMILY = 1;
