@@ -218,6 +218,8 @@
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
+		2D10B24B23C31AD20059F124 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D10B24923C31AD10059F124 /* libxindunsdk.a */; };
+		2D10B24D23C320510059F124 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D10B24C23C320500059F124 /* trusfort.lic */; };
 		2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56122FD55DF000112AC /* MYCircleView.m */; };
 		2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56522FD589B000112AC /* CircleDynamicView.m */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
@@ -254,7 +256,6 @@
 		2D89624522F9634700782CCA /* YZXGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89623F22F9634600782CCA /* YZXGesturesView.m */; };
 		2D89624622F9634700782CCA /* YZXPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89624022F9634600782CCA /* YZXPointView.m */; };
 		2D89624722F9634700782CCA /* YZXInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89624122F9634600782CCA /* YZXInfoView.m */; };
-		2D89BBB02338AB7800528C72 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D89BBAD2338AB7800528C72 /* libxindunsdk.a */; };
 		2D8B730F21D32BFB006D8281 /* LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730721D32BFB006D8281 /* LSNavigationController.m */; };
 		2D8B731021D32BFB006D8281 /* UINavigationBar+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730821D32BFB006D8281 /* UINavigationBar+LSNavigationController.m */; };
 		2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
@@ -275,7 +276,6 @@
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
 		2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC21981230FD87300459748 /* TRUPortalHeader.m */; };
-		2DD29DC523BF3650006328FD /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DD29DC423BF3650006328FD /* trusfort.lic */; };
 		2DD29DC723BF3A3F006328FD /* applauchIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD29DC623BF3A3E006328FD /* applauchIcon1.png */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
@@ -659,6 +659,9 @@
 		2D0BED3A21C8F75C002AB0C1 /* TRUMultipleAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsCell.h; sourceTree = "<group>"; };
 		2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsCell.m; sourceTree = "<group>"; };
 		2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUMultipleAccountsCell.xib; sourceTree = "<group>"; };
+		2D10B24923C31AD10059F124 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
+		2D10B24A23C31AD20059F124 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
+		2D10B24C23C320500059F124 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D13E56022FD55DF000112AC /* MYCircleDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCircleDefine.h; sourceTree = "<group>"; };
 		2D13E56122FD55DF000112AC /* MYCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCircleView.m; sourceTree = "<group>"; };
 		2D13E56222FD55DF000112AC /* MYCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCircleView.h; sourceTree = "<group>"; };
@@ -729,9 +732,7 @@
 		2D89624222F9634600782CCA /* YZXPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXPointView.h; sourceTree = "<group>"; };
 		2D89624322F9634600782CCA /* YZXGesturesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXGesturesView.h; sourceTree = "<group>"; };
 		2D89624422F9634600782CCA /* YZXDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXDefine.h; sourceTree = "<group>"; };
-		2D89BBAD2338AB7800528C72 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D89BBAE2338AB7800528C72 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
-		2D89BBAF2338AB7800528C72 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
 		2D8B730721D32BFB006D8281 /* LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSNavigationController.m; sourceTree = "<group>"; };
 		2D8B730821D32BFB006D8281 /* UINavigationBar+LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+LSNavigationController.m"; sourceTree = "<group>"; };
 		2D8B730921D32BFB006D8281 /* UIScrollView+LSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LSCategory.h"; sourceTree = "<group>"; };
@@ -769,7 +770,6 @@
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
 		2DC21980230FD87300459748 /* TRUPortalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPortalHeader.h; sourceTree = "<group>"; };
 		2DC21981230FD87300459748 /* TRUPortalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeader.m; sourceTree = "<group>"; };
-		2DD29DC423BF3650006328FD /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DD29DC623BF3A3E006328FD /* applauchIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applauchIcon1.png; sourceTree = "<group>"; };
 		2DD459E621D2290B00237161 /* TRUSelectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSelectModel.h; sourceTree = "<group>"; };
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
@@ -810,7 +810,7 @@
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
-				2D89BBB02338AB7800528C72 /* libxindunsdk.a in Frameworks */,
+				2D10B24B23C31AD20059F124 /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
@@ -1037,12 +1037,12 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
+				2D10B24C23C320500059F124 /* trusfort.lic */,
+				2D10B24923C31AD10059F124 /* libxindunsdk.a */,
+				2D10B24A23C31AD20059F124 /* xindunsdk.h */,
 				2DB18DF3232637CC00473824 /* TRUMTDTool.h */,
 				2DB18DF2232637CC00473824 /* TRUMTDTool.m */,
-				2DD29DC423BF3650006328FD /* trusfort.lic */,
-				2D89BBAD2338AB7800528C72 /* libxindunsdk.a */,
 				2D89BBAE2338AB7800528C72 /* TrusfortDevId.h */,
-				2D89BBAF2338AB7800528C72 /* xindunsdk.h */,
 			);
 			name = Xindun;
 			path = ..;
@@ -2249,7 +2249,7 @@
 				2D7FFF5B21894B6D00FCA1ED /* TRUPersonalDetailsCell.xib in Resources */,
 				128208831F98AFE4004DD5C6 /* Gestureloading.json in Resources */,
 				121C48D41F7CFF8F0077AE34 /* TRUMineCell.xib in Resources */,
-				2DD29DC523BF3650006328FD /* trusfort.lic in Resources */,
+				2D10B24D23C320510059F124 /* trusfort.lic in Resources */,
 				123AE10E1FF1E6FF009F9183 /* pushcanale.json in Resources */,
 				12C0D2D81F7907DC00972218 /* Main.storyboard in Resources */,
 				128D5CEE1F7DDB4800753EE5 /* TRUDevicesManagerController.xib in Resources */,

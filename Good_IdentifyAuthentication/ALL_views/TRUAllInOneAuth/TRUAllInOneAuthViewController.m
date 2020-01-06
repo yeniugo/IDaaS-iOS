@@ -878,7 +878,7 @@ static NSInteger pushCount = NSIntegerMax;
     NSDate *date = [NSDate date];
     double time = [date timeIntervalSince1970];
     double timeDifference = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] doubleValue];
-    long time1 = (long)(time-timeDifference)/30;
+    long time1 = (long)(time-timeDifference)/60;
     double time2 = [[NSUserDefaults standardUserDefaults] doubleForKey:@"password1"];
     if (self.firstRun) {
         [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
@@ -886,7 +886,7 @@ static NSInteger pushCount = NSIntegerMax;
         self.firstRun = NO;
         //        [self requestData];
         NSString *userid = [TRUUserAPI getUser].userId;
-        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+        NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:60 xdstrlong:6];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
     }else{
@@ -894,7 +894,7 @@ static NSInteger pushCount = NSIntegerMax;
             YCLog(@"change------------");
             //            [self requestData];
             NSString *userid = [TRUUserAPI getUser].userId;
-            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+            NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:60 xdstrlong:6];
             self.rectView.passwordStr = passwordStr;
             self.circleDynamicView.passwordStr = passwordStr;
             [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
@@ -902,7 +902,7 @@ static NSInteger pushCount = NSIntegerMax;
         }else{
         }
     }
-    return (long long)((time-timeDifference)*100)%3000/3000.0;
+    return (long long)((time-timeDifference)*100)%6000/6000.0;
 }
 
 #pragma mark - 检查更新
