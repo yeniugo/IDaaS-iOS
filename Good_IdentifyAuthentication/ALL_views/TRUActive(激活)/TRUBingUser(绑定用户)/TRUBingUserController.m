@@ -30,10 +30,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 @property (weak, nonatomic) IBOutlet UIView *AccountbottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneemailTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verifySendTopContraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verifyButtonTopContraint;
 
 @property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, copy) NSString *loginStr;
 @property (nonatomic,assign) int activeModel;
+@property (nonatomic,assign) BOOL multipleVerify;
 @end
 
 @implementation TRUBingUserController
@@ -64,13 +68,17 @@
     self.iphoneEmialView.layer.cornerRadius = 5;
     self.iphoneEmialView.layer.borderWidth = 1;
     self.iphoneEmialView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
+    self.inputphonemailTF.delegate = self;
+    self.inputpasswordTF.delegate = self;
+    self.inputphonemailTF.delegate = self;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
+            modeStr = @"4";
             self.loginStr = modeStr;
-            if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
+            if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号,4:工号密码加手机，5工号密码加邮箱)
                 isEmail = YES;
                 _inputoneTF.placeholder = @"请输入您的邮箱";
                 _numView.hidden = YES;
@@ -91,6 +99,26 @@
                 _sendBtn.hidden = YES;
                 _iphoneEmialView.hidden = YES;
                 self.activeModel = 3;
+            }else if ([modeStr isEqualToString:@"4"]){
+                isEmployee = YES;
+                _inputoneTF.placeholder = @"请输入您的账号";
+                _numView.hidden = NO;
+                _sendBtn.hidden = YES;
+                _iphoneEmialView.hidden = YES;
+                self.activeModel = 4;
+                self.phoneemailTopConstraint.constant = 140;
+                self.verifySendTopContraint.constant = 140;
+                self.verifyButtonTopContraint.constant = - 55;
+            }else if ([modeStr isEqualToString:@"5"]){
+                isEmployee = YES;
+                _inputoneTF.placeholder = @"请输入您的账号";
+                _numView.hidden = NO;
+                _sendBtn.hidden = YES;
+                _iphoneEmialView.hidden = YES;
+                self.phoneemailTopConstraint.constant = 140;
+                self.verifySendTopContraint.constant = 140;
+                self.verifyButtonTopContraint.constant = - 55;
+                self.activeModel = 5;
             }
         }
         
@@ -101,28 +129,47 @@
     [_sendBtn setBackgroundColor:DefaultGreenColor];
     _sendBtn.layer.masksToBounds = YES;
     _sendBtn.layer.cornerRadius = 5.0;
-    
-    
-    //用户协议
-//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-//    [self.view addSubview:txtLabel];
-//    txtLabel.text = @"使用此App,即表示同意该";
-//    txtLabel.font = [UIFont systemFontOfSize:14];
-//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.view addSubview:agreementBtn];
-//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-//    [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
-//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-//
-//    if (kDevice_Is_iPhoneX) {
-//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-//    }
-    
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//如果为回车则下一个输入框或者登录
+    switch (self.activeModel) {
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+
+        }
+            break;
+        case 3:
+        {
+
+        }
+            break;
+        case 4:
+        {
+            if (textField == self.inputoneTF) {
+                [self.inputpasswordTF becomeFirstResponder];
+            }else if(textField == self.inputpasswordTF){
+                [self firstVerify];
+            }else if(textField == self.inputphonemailTF){
+                
+            }
+        }
+            break;
+        case 5:
+        {
+
+        }
+            break;
+        default:
+            break;
+    }
+    return YES;
+}
 
 -(void)valueChanged:(UITextField *)field{
     NSString *str = field.text;
@@ -132,22 +179,56 @@
         isEmployee = NO;
         isEmail = NO;
         [self hiddenWithfalsh:1];
-        //        [self stopTimer];
-        //        [self.sendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        //        self.sendBtn.enabled = YES;
+        
     }else if ([str isEmail]){
         isPhone = NO;
         isEmployee = NO;
         isEmail = YES;
         [self hiddenWithfalsh:1];
-        //        [self stopTimer];
-        //        [self.sendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        //        self.sendBtn.enabled = YES;
     }else{
-        isPhone = NO;
-        isEmployee = YES;
-        isEmail = NO;
-        [self hiddenWithfalsh:2];
+        switch (self.activeModel) {
+            case 3:
+            {
+                isPhone = NO;
+                isEmployee = YES;
+                isEmail = NO;
+                [self hiddenWithfalsh:2];
+            }
+                break;
+            case 4:
+            {
+                if (self.multipleVerify) {
+                    isPhone = NO;
+                    isEmployee = YES;
+                    isEmail = NO;
+                    [self hiddenWithfalsh:3];
+                }else{
+                    isPhone = NO;
+                    isEmployee = YES;
+                    isEmail = NO;
+                    [self hiddenWithfalsh:2];
+                }
+            }
+                break;
+            case 5:
+            {
+                if (self.multipleVerify) {
+                    isPhone = NO;
+                    isEmployee = YES;
+                    isEmail = NO;
+                    [self hiddenWithfalsh:3];
+                }else{
+                    isPhone = NO;
+                    isEmployee = YES;
+                    isEmail = NO;
+                    [self hiddenWithfalsh:2];
+                }
+            }
+                break;
+            default:
+                break;
+        }
+        
     }
 }
 
@@ -159,7 +240,6 @@
 #pragma mark -验证
 - (IBAction)VerifyBtnClick:(UIButton *)sender {
     [self.view endEditing:YES];
-    
     if (_inputoneTF.text.trim.length == 0 && isEmployee) {
         [self showHudWithText:@"请输入正确的账号/验证码信息"];
         [self hideHudDelay:1.5f];
@@ -182,9 +262,38 @@
         [self verifyJpushId:@"phone"];
     }
     if (isEmployee) {//员工号验证
-        //        先去判定是否审批
-        [self requestCodeForUserEmployeenum:_inputoneTF.text type:@"employeenum"];
+        switch (self.activeModel) {
+            case 3:
+            {
+                [self requestCodeForUserEmployeenum:_inputoneTF.text type:@"employeenum"];
+            }
+                break;
+            case 4:
+            {
+                if (self.multipleVerify) {
+                    [self verifyJpushId:@"phone"];
+                }else{
+                    [self firstVerify];
+                }
+            }
+                break;
+            case 5:
+            {
+                if (self.multipleVerify) {
+                    [self verifyJpushId:@"email"];
+                }else{
+                    [self firstVerify];
+                }
+            }
+                break;
+            default:
+                break;
+        }
     }
+}
+
+- (void)firstVerify{
+    
 }
 
 -(void)verifyJpushId:(NSString *)type{
@@ -194,29 +303,6 @@
     [self showHudWithText:@"正在激活..."];
     
     if (!pushID || pushID.length == 0) {//说明pushid获取失败
-        //#if TARGET_IPHONE_SIMULATOR
-        //        pushID = @"";
-        //#else
-        //        [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
-        //            if(resCode == 0){
-        //                YCLog(@"registrationID获取成功：%@",registrationID);
-        //                NSUserDefaults *stdDefaults = [NSUserDefaults standardUserDefaults];
-        //                [stdDefaults setObject:registrationID forKey:@"TRUPUSHID"];
-        //                [stdDefaults synchronize];
-        //                if ([type isEqualToString:@"employeenum"]) {
-        //                    [self active4User:self.inputpasswordTF.text.trim pushID:registrationID type:type];
-        //                }else{
-        //                    [self active4User:activeNumber pushID:registrationID type:type];
-        //                }
-        //            }
-        //            else{
-        //                YCLog(@"registrationID获取失败，code：%d",resCode);
-        //                [self showHudWithText:@"激活失败，请重试"];
-        //                [self hideHudDelay:2.0];
-        //            }
-        //        }];
-        //没有获取到也可以激活成功
-        
         if ([type isEqualToString:@"employeenum"]) {
             [self active4User:self.inputpasswordTF.text.trim pushID:@"1234567890" type:type];
         }else{
@@ -236,7 +322,12 @@
 }
 
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
-    
+    if (self.activeModel==4) {
+        return;
+    }
+    if (self.activeModel==5) {
+        return;
+    }
     if (_inputoneTF.text.trim.length == 0 && isEmail){
         [self showHudWithText:@"请输入您的邮箱"];
         [self hideHudDelay:1.5f];
@@ -282,6 +373,10 @@
         _numView.hidden = NO;
         _sendBtn.hidden = YES;
         _iphoneEmialView.hidden = YES;
+    }else if (teger == 3){//二次验证，全开
+        _numView.hidden = NO;
+        _sendBtn.hidden = NO;
+        _iphoneEmialView.hidden = NO;
     }
 }
 - (NSString *)toReadableJSONStringWithDic:(NSDictionary *)dic {
