@@ -104,6 +104,7 @@
 }
 
 -(void)scanQRButtonClick{
+    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusAuthorized) {
         TRUAuthSacnViewController *vc = [[TRUAuthSacnViewController alloc] init];
@@ -111,20 +112,26 @@
         [self presentViewController:vc animated:YES completion:nil];
         
     }else if (authStatus == AVAuthorizationStatusNotDetermined){
+        __weak typeof(self) weakSelf = self;
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             if (granted) {
                 TRUAuthSacnViewController *vc = [[TRUAuthSacnViewController alloc] init];
                 
-                [self presentViewController:vc animated:YES completion:nil];
+                [strongSelf presentViewController:vc animated:YES completion:nil];
             }else{
-                [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                __weak typeof(self) weakSelf1 = strongSelf;
+                [strongSelf showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                    __strong typeof(weakSelf) strongSelf1 = weakSelf1;
+                    [strongSelf1 dismissViewControllerAnimated:YES completion:nil];
                 } cancelBlock:nil];
             }
         }];
     }else if (authStatus == AVAuthorizationStatusDenied || authStatus == AVAuthorizationStatusRestricted){
+        __weak typeof(self) weakSelf = self;
         [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-            [self dismissViewControllerAnimated:YES completion:nil];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf dismissViewControllerAnimated:YES completion:nil];
         } cancelBlock:nil];
     }
     
@@ -191,12 +198,14 @@
 - (void)showConfrimCancelDialogAlertViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void (^)())confrimBlock cancelBlock:(void (^)())cancelBlock{
 //    self.alertCancel = nil;
 //    self.alertComfirm = nil;
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.alertComfirm = confrimBlock;
-        self.alertCancel = cancelBlock;
-        self.isRight = confirmRight;
-        self.cancelTitleStr = cancelTitle;
-        self.comfirmTitleStr = confrimTitle;
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.alertComfirm = confrimBlock;
+        strongSelf.alertCancel = cancelBlock;
+        strongSelf.isRight = confirmRight;
+        strongSelf.cancelTitleStr = cancelTitle;
+        strongSelf.comfirmTitleStr = confrimTitle;
         UIAlertView *alert;
         if (confirmRight) {
             alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
@@ -208,7 +217,7 @@
                 alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:nil];
             }
         }
-        if (self.isCurrentPage) {
+        if (strongSelf.isCurrentPage) {
             //        UIWindow *window = self.view.window;
             //        if ([[[UIApplication sharedApplication] windows] lastObject]==window) {
             //
@@ -401,6 +410,11 @@ static const char TRUHUDKey = '\0';
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    YCLog(@"%@ 界面消失",[self class]);
 }
 
 - (void)dealloc{

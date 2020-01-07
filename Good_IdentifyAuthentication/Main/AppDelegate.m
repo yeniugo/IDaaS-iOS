@@ -122,11 +122,12 @@
     //    [self.window bringSubviewToFront:launchImageView];
     __weak typeof(self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.thirdAwakeTokenStatus) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf.thirdAwakeTokenStatus) {
             
         }else{
             //            [HAMLogOutputWindow printLog:@"configRootBaseVCForApplication3"];
-            [weakSelf configRootBaseVCForApplication:application WithOptions:launchOptions];
+            [strongSelf configRootBaseVCForApplication:application WithOptions:launchOptions];
         }
     });
 
@@ -201,7 +202,7 @@
     
     NSDictionary *userInfo  = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     
-    __weak typeof(self) weakSelf = self;
+    
     BOOL isNewFeature = [TRUVersionUtil isFirstLauch];
     __block UIViewController *rootVC;
     isNewFeature = NO;
@@ -209,7 +210,9 @@
         rootVC = [[TRUNewFeatuerViewController alloc] init];
     }else{//无新版本
         TRUStartupViewController *startVC = [[TRUStartupViewController alloc] init];
+        __weak typeof(self) weakSelf = self;
         startVC.completionBlock = ^(TRUUserModel *userModel) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             if (userModel && userModel.userId.length > 0) {
                 if (0) {//yes 表示需要完善信息
                     TRUAddPersonalInfoViewController *infoVC = [[TRUAddPersonalInfoViewController alloc] init];
@@ -228,7 +231,7 @@
                     UIViewController *vc1 = [[TRUAllInOneAuthViewController alloc] init];
                     TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc1];
                     if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
-                        self.launchWithAuth = YES;
+                        strongSelf.launchWithAuth = YES;
 //                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
                         UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
                         baseNav.viewControllers = @[vc1,vc2];
@@ -244,14 +247,14 @@
                 
                 rootVC = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
             }
-            weakSelf.window.rootViewController = rootVC;
+            strongSelf.window.rootViewController = rootVC;
             
             if (userInfo) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                    if(@available(iOS 10.0,*)){
 //
 //                    }
-                    [weakSelf application:application didReceiveRemoteNotification:userInfo];
+                    [strongSelf application:application didReceiveRemoteNotification:userInfo];
 //                    [weakSelf application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:^(UIBackgroundFetchResult result) {
                     
 //                    }];
