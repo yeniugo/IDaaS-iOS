@@ -68,7 +68,7 @@
     self.iphoneEmialView.layer.cornerRadius = 5;
     self.iphoneEmialView.layer.borderWidth = 1;
     self.iphoneEmialView.layer.borderColor = RGBCOLOR(215, 215, 215).CGColor;
-    self.inputphonemailTF.delegate = self;
+    self.inputoneTF.delegate = self;
     self.inputpasswordTF.delegate = self;
     self.inputphonemailTF.delegate = self;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
@@ -131,45 +131,104 @@
     _sendBtn.layer.cornerRadius = 5.0;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-//如果为回车则下一个输入框或者登录
-    switch (self.activeModel) {
-        case 1:
-        {
-            
-        }
-            break;
-        case 2:
-        {
-
-        }
-            break;
-        case 3:
-        {
-
-        }
-            break;
-        case 4:
-        {
-            if (textField == self.inputoneTF) {
-                [self.inputpasswordTF becomeFirstResponder];
-            }else if(textField == self.inputpasswordTF){
-                [self firstVerify];
-            }else if(textField == self.inputphonemailTF){
-                
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+        switch (self.activeModel) {
+            case 1:
+            {
+                if (textField == self.inputoneTF) {
+                    [self.inputphonemailTF becomeFirstResponder];
+                }else{
+                    [self VerifyBtnClick:nil];
+                }
             }
+                break;
+            case 2:
+            {
+                if (textField == self.inputoneTF) {
+                    [self.inputphonemailTF becomeFirstResponder];
+                }else{
+                    [self VerifyBtnClick:nil];
+                }
+            }
+                break;
+            case 3:
+            {
+                if (textField == self.inputoneTF) {
+                    [self.inputpasswordTF becomeFirstResponder];
+                }else{
+                    [self VerifyBtnClick:nil];
+                }
+            }
+                break;
+            case 4:
+            {
+                if (textField == self.inputoneTF) {
+                    [self.inputpasswordTF becomeFirstResponder];
+                }else if(textField == self.inputpasswordTF){
+                    [self firstVerify];
+                }else if(textField == self.inputphonemailTF){
+                    [self VerifyBtnClick:nil];
+                }
+            }
+                break;
+            case 5:
+            {
+                if (textField == self.inputoneTF) {
+                    [self.inputpasswordTF becomeFirstResponder];
+                }else if(textField == self.inputpasswordTF){
+                    [self firstVerify];
+                }else if(textField == self.inputphonemailTF){
+                    [self VerifyBtnClick:nil];
+                }
+            }
+                break;
+            default:
+                break;
         }
-            break;
-        case 5:
-        {
-
-        }
-            break;
-        default:
-            break;
+        return YES; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
     }
     return YES;
 }
+
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    switch (self.activeModel) {
+//        case 1:
+//        {
+//
+//        }
+//            break;
+//        case 2:
+//        {
+//
+//        }
+//            break;
+//        case 3:
+//        {
+//
+//        }
+//            break;
+//        case 4:
+//        {
+//            if (textField == self.inputoneTF) {
+//                [self.inputpasswordTF becomeFirstResponder];
+//            }else if(textField == self.inputpasswordTF){
+//                [self firstVerify];
+//            }else if(textField == self.inputphonemailTF){
+//
+//            }
+//        }
+//            break;
+//        case 5:
+//        {
+//
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//    return YES;
+//}
 
 -(void)valueChanged:(UITextField *)field{
     NSString *str = field.text;

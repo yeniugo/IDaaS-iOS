@@ -236,6 +236,7 @@
 		2D50B59522D87A1B0037F089 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D50B59222D87A1B0037F089 /* trusfort.lic */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
+		2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
 		2D76957521886E07009648B7 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
@@ -693,6 +694,8 @@
 		2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalSmailModel.m; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
 		2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRURoundNumberBtn.m; sourceTree = "<group>"; };
+		2D67C6C223C4709A0012B596 /* TRUMutableLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMutableLoginModel.h; sourceTree = "<group>"; };
+		2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMutableLoginModel.m; sourceTree = "<group>"; };
 		2D76956721886B24009648B7 /* TRUPersonalBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalBigCell.h; sourceTree = "<group>"; };
 		2D76956821886B24009648B7 /* TRUPersonalBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalBigCell.m; sourceTree = "<group>"; };
 		2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPersonalBigCell.xib; sourceTree = "<group>"; };
@@ -1207,6 +1210,8 @@
 				2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */,
 				2DD459E621D2290B00237161 /* TRUSelectModel.h */,
 				2DD459E721D2290B00237161 /* TRUSelectModel.m */,
+				2D67C6C223C4709A0012B596 /* TRUMutableLoginModel.h */,
+				2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */,
 			);
 			path = "TRUBingUser(绑定用户)";
 			sourceTree = "<group>";
@@ -2353,6 +2358,7 @@
 				12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */,
 				121C48D31F7CFF8F0077AE34 /* TRUMineCell.m in Sources */,
 				2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */,
+				2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */,
 				12C0D32C1F790D1600972218 /* TRUDynamicPasswordViewController.m in Sources */,
 				12436A73210844710070F966 /* TRUGestureSettingViewController.m in Sources */,
 				12098A0720CFA4D20027D927 /* NSCameraOption.mm in Sources */,
