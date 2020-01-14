@@ -208,13 +208,13 @@
         strongSelf.comfirmTitleStr = confrimTitle;
         UIAlertView *alert;
         if (confirmRight) {
-            alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
+            alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:strongSelf cancelButtonTitle:cancelTitle otherButtonTitles:confrimTitle, nil];
         }else{
             //        alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
             if (cancelTitle && cancelTitle.length>0) {
-                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
+                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:strongSelf cancelButtonTitle:confrimTitle otherButtonTitles:cancelTitle, nil];
             }else{
-                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:self cancelButtonTitle:confrimTitle otherButtonTitles:nil];
+                alert = [[UIAlertView alloc]initWithTitle:title message:msg delegate:strongSelf cancelButtonTitle:confrimTitle otherButtonTitles:nil];
             }
         }
         if (strongSelf.isCurrentPage) {

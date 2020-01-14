@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TRUCheckBingController">
             <connections>
                 <outlet property="AccountbottomView" destination="hdG-X1-TrS" id="BZb-kG-wsZ"/>
+                <outlet property="emailphoneTopConstraint" destination="Bhq-9d-gnQ" id="5FN-rC-cke"/>
                 <outlet property="inputoneTF" destination="1YI-5C-Hqg" id="fM1-nC-MaN"/>
                 <outlet property="inputpasswordTF" destination="oVm-t2-sZ9" id="Vaj-uT-dO8"/>
                 <outlet property="inputphonemailTF" destination="oXL-Gc-AWm" id="Fv4-i5-qNF"/>
                 <outlet property="iphoneEmialView" destination="hHc-vr-OVA" id="iCh-ME-CNW"/>
                 <outlet property="numView" destination="puB-bf-iXc" id="rL5-sL-9DW"/>
                 <outlet property="sendBtn" destination="C1s-Ng-qFt" id="MkO-cY-u8c"/>
+                <outlet property="sendBtnTopConstraint" destination="FfN-uE-Gho" id="w1R-Qd-x33"/>
                 <outlet property="verifyBtn" destination="v2V-F6-QX3" id="0qc-99-pGU"/>
+                <outlet property="verifyTopConstraint" destination="hZd-Zh-Db9" id="CfA-xe-SDq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,7 +36,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="fH8-39-YKo"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -74,7 +74,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="r7b-fO-ttD"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -118,7 +117,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="JgB-5O-1PQ"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -160,31 +158,43 @@
                         <action selector="sendCodeBtnClcik:" destination="-1" eventType="touchUpInside" id="lfm-LG-VWO"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSm-my-zjp">
+                    <rect key="frame" x="18" y="260" width="339" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Ocs-aD-TCO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="hHc-vr-OVA" firstAttribute="top" secondItem="hdG-X1-TrS" secondAttribute="bottom" constant="30" id="Bhq-9d-gnQ"/>
                 <constraint firstItem="C1s-Ng-qFt" firstAttribute="top" secondItem="hdG-X1-TrS" secondAttribute="bottom" constant="31" id="FfN-uE-Gho"/>
                 <constraint firstItem="C1s-Ng-qFt" firstAttribute="leading" secondItem="hHc-vr-OVA" secondAttribute="trailing" constant="10" id="MPF-Tq-tpY"/>
+                <constraint firstItem="jSm-my-zjp" firstAttribute="trailing" secondItem="puB-bf-iXc" secondAttribute="trailing" id="VL2-wo-TSf"/>
                 <constraint firstAttribute="trailing" secondItem="C1s-Ng-qFt" secondAttribute="trailing" constant="16" id="Vka-s5-rs5"/>
                 <constraint firstItem="puB-bf-iXc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="Vl0-tb-mUZ"/>
+                <constraint firstItem="jSm-my-zjp" firstAttribute="leading" secondItem="puB-bf-iXc" secondAttribute="leading" id="XHE-he-41k"/>
                 <constraint firstItem="v2V-F6-QX3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="XcM-ne-aGQ"/>
                 <constraint firstAttribute="trailing" secondItem="puB-bf-iXc" secondAttribute="trailing" constant="18" id="aTG-Ua-MZt"/>
                 <constraint firstAttribute="trailing" secondItem="hdG-X1-TrS" secondAttribute="trailing" constant="18" id="ewu-K6-UWz"/>
                 <constraint firstItem="v2V-F6-QX3" firstAttribute="top" secondItem="hHc-vr-OVA" secondAttribute="bottom" constant="80" id="hZd-Zh-Db9"/>
                 <constraint firstItem="hdG-X1-TrS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="lKj-kJ-Nje"/>
+                <constraint firstItem="jSm-my-zjp" firstAttribute="top" secondItem="puB-bf-iXc" secondAttribute="bottom" constant="20" id="niJ-IW-6dY"/>
                 <constraint firstItem="puB-bf-iXc" firstAttribute="top" secondItem="hdG-X1-TrS" secondAttribute="bottom" constant="30" id="q0X-mX-rnb"/>
                 <constraint firstItem="hHc-vr-OVA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="vky-kP-REx"/>
                 <constraint firstItem="hdG-X1-TrS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="wJb-xy-RGe"/>
                 <constraint firstAttribute="trailing" secondItem="v2V-F6-QX3" secondAttribute="trailing" constant="18" id="xZJ-lt-Q5a"/>
             </constraints>
-            <point key="canvasLocation" x="-430.5" y="-231.5"/>
+            <point key="canvasLocation" x="-431.19999999999999" y="-231.63418290854574"/>
         </view>
     </objects>
     <resources>
         <image name="addappeye" width="53" height="31"/>
         <image name="addappeyeclose" width="53" height="36"/>
-        <image name="addappuser" width="41" height="45"/>
+        <image name="addappuser" width="16" height="19"/>
         <image name="bing_yaoshi" width="59" height="46"/>
     </resources>
 </document>

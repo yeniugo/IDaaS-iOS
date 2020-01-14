@@ -32,6 +32,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
 @property (nonatomic, weak) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UIView *AccountbottomView;
+
+@property (nonatomic,assign) int activeModel;
+@property (nonatomic,assign) BOOL multipleVerify;
+
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *token;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *verifyTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailphoneTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sendBtnTopConstraint;
+
 @end
 
 @implementation TRUCheckBingController
@@ -96,6 +108,38 @@
                 _numView.hidden = NO;
                 _sendBtn.hidden = YES;
                 _iphoneEmialView.hidden = YES;
+            }else if ([modeStr isEqualToString:@"4"]){
+                isEmployee = YES;
+                _inputoneTF.placeholder = @"请输入您的账号";
+                _numView.hidden = NO;
+                _sendBtn.hidden = YES;
+                _iphoneEmialView.hidden = YES;
+                NSString *str = [TRUUserAPI getUser].employeenum;
+                if (str.length == 0) {
+                    _inputoneTF.text = [TRUUserAPI getUser].employeenum;
+                }else{
+                    _inputoneTF.text = str;
+                }
+                self.activeModel = 4;
+                self.emailphoneTopConstraint.constant = 140;
+                self.sendBtnTopConstraint.constant = 140;
+                self.verifyTopConstraint.constant = - 55;
+            }else if ([modeStr isEqualToString:@"5"]){
+                NSString *str = [TRUUserAPI getUser].employeenum;
+                if (str.length == 0) {
+                    _inputoneTF.text = [TRUUserAPI getUser].employeenum;
+                }else{
+                    _inputoneTF.text = str;
+                }
+                isEmployee = YES;
+                _inputoneTF.placeholder = @"请输入您的账号";
+                _numView.hidden = NO;
+                _sendBtn.hidden = YES;
+                _iphoneEmialView.hidden = YES;
+                self.emailphoneTopConstraint.constant = 140;
+                self.sendBtnTopConstraint.constant = 140;
+                self.verifyTopConstraint.constant = - 55;
+                self.activeModel = 5;
             }
             _inputoneTF.enabled = NO;
         }
@@ -127,6 +171,10 @@
 //        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
 //    }
     TRUEnterAPPAuthView.lockid=2;
+}
+
+- (void)resetUI{
+    
 }
 
 -(void)valueChanged:(UITextField *)field{
@@ -186,6 +234,81 @@
         //        先去判定是否审批
         [self requestCodeForUserEmployeenum:_inputoneTF.text type:@"employeenum"];
     }
+}
+
+- (void)firstVerify{
+    __weak typeof(self) weakSelf = self;
+    NSUserDefaults *stdDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *pushID = [stdDefaults objectForKey:@"TRUPUSHID"];
+    if(pushID.length==0){
+        pushID = @"1234567890";
+    }
+    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, @"employeenum",self.inputpasswordTF.text];
+    NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/checkUserInfo"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        if (errorno==0) {
+            if (responseBody!=nil) {
+                NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+                YCLog(@"dic = %@",dic);
+                weakSelf.verifyButtonTopContraint.constant = 20;
+                weakSelf.iphoneEmialView.hidden = NO;
+                weakSelf.sendBtn.hidden = NO;
+                weakSelf.showPhoneOrEmailLB.hidden = NO;
+                weakSelf.multipleVerify = YES;
+                [weakSelf.inputpasswordTF endEditing:YES];
+                [weakSelf.inputoneTF endEditing:YES];
+                weakSelf.inputpasswordTF.userInteractionEnabled = NO;
+                weakSelf.inputoneTF.userInteractionEnabled = NO;
+                weakSelf.inputphonemailTF.hidden = NO;
+//                weakSelf.phoneCodelineView.hidden = NO;
+                [weakSelf.inputphonemailTF becomeFirstResponder];
+                weakSelf.inputoneTF.textColor = RGBCOLOR(153, 153, 153);
+                weakSelf.inputpasswordTF.textColor = RGBCOLOR(153, 153, 153);
+                dic = dic[@"resp"];
+                weakSelf.phone = dic[@"phone"];
+                weakSelf.token = dic[@"token"];
+                weakSelf.email = dic[@"email"];
+                if (weakSelf.activeModel==5) {
+                    if (weakSelf.email.length==0) {
+                        weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"邮箱： "];
+                    }else if (weakSelf.phone.length==11){
+                        weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"邮箱：%@",[weakSelf getEmailFromStr:weakSelf.email]];
+                    }
+                    
+                }else if (weakSelf.activeModel==4){
+                    if (weakSelf.phone.length==0) {
+                        weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"手机号： "];
+                    }else if (weakSelf.phone.length==11){
+                        weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"手机号： *** **** *%@",[weakSelf.phone substringFromIndex:8]];
+                    }
+                }
+                [self sendCodeBtnClcik:nil];
+//                [weakSelf.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+            }
+        }else if(errorno==-5004){
+            [self showHudWithText:@"网络错误"];
+            [self hideHudDelay:2.0];
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
+        }else if (9021 == errorno){
+//            weakSelf.sendBtn.enabled = YES;
+            //            [weakSelf startTimer];
+            [weakSelf deal9021ErrorWithBlock:nil];
+        }else if (9022 == errorno){
+            [weakSelf deal9022ErrorWithBlock:nil];
+        }else if (9023 == errorno){
+            [weakSelf stopTimer];
+            [weakSelf deal9023ErrorWithBlock:nil];
+        }else if (9026 == errorno){
+            [weakSelf stopTimer];
+            [weakSelf deal9026ErrorWithBlock:nil];
+        }else{
+            [self showHudWithText:@"用户名密码错误"];
+            [self hideHudDelay:2.0];
+        }
+    }];
 }
 
 -(void)verifyJpushId:(NSString *)type{
