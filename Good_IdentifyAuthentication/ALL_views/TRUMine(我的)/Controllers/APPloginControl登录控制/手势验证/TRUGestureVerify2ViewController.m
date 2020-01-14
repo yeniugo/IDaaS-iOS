@@ -66,9 +66,9 @@
             }else if ([modeStr isEqualToString:@"3"]){
                 msgstr = @"您已录入错误手势5次，我们将通过用户名密码登录之后，重新绘制手势。";
             }else if ([modeStr isEqualToString:@"4"]){
-                ssss = @"我们将通过用户名密码登录加手机号之后，重新绘制手势。";
+                msgstr = @"我们将通过用户名密码登录加手机号之后，重新绘制手势。";
             }else if ([modeStr isEqualToString:@"5"]){
-                ssss = @"我们将通过用户名密码登录加邮箱之后，重新绘制手势。";
+                msgstr = @"我们将通过用户名密码登录加邮箱之后，重新绘制手势。";
             }
         }
         

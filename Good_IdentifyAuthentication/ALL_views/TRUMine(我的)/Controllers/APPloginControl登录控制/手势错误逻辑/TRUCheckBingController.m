@@ -39,6 +39,7 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *token;
+@property (weak, nonatomic) IBOutlet UILabel *showPhoneOrEmailLB;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *verifyTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailphoneTopConstraint;
@@ -81,6 +82,7 @@
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
+            modeStr = @"5";
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
                 isEmail = YES;
                 _inputoneTF.placeholder = @"请输入您的邮箱";
@@ -131,6 +133,8 @@
                 }else{
                     _inputoneTF.text = str;
                 }
+                _inputoneTF.text = @"1234";
+                _inputpasswordTF.text = @"qwer1234";
                 isEmployee = YES;
                 _inputoneTF.placeholder = @"请输入您的账号";
                 _numView.hidden = NO;
@@ -231,8 +235,33 @@
         [self verifyJpushId:@"phone"];
     }
     if (isEmployee) {//员工号验证
-        //        先去判定是否审批
-        [self requestCodeForUserEmployeenum:_inputoneTF.text type:@"employeenum"];
+        switch (self.activeModel) {
+            case 3:
+            {
+                [self requestCodeForUserEmployeenum:_inputoneTF.text type:@"employeenum"];
+            }
+                break;
+            case 4:
+            {
+                if (self.multipleVerify) {
+                    [self verifyJpushId:@"phone"];
+                }else{
+                    [self firstVerify];
+                }
+            }
+                break;
+            case 5:
+            {
+                if (self.multipleVerify) {
+                    [self verifyJpushId:@"email"];
+                }else{
+                    [self firstVerify];
+                }
+            }
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -252,7 +281,7 @@
             if (responseBody!=nil) {
                 NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
                 YCLog(@"dic = %@",dic);
-                weakSelf.verifyButtonTopContraint.constant = 20;
+                weakSelf.verifyTopConstraint.constant = 20;
                 weakSelf.iphoneEmialView.hidden = NO;
                 weakSelf.sendBtn.hidden = NO;
                 weakSelf.showPhoneOrEmailLB.hidden = NO;
@@ -309,6 +338,60 @@
             [self hideHudDelay:2.0];
         }
     }];
+}
+
+- (NSString *)getEmailFromStr:(NSString *)str{
+//    str = @"afasfdaf@fafa@abc.com";
+    NSMutableArray *array = [self getRangeStr:str findText:@"@"];
+    NSString *firstStr;
+    NSString *lastStr;
+    NSString *resultStr;
+    if (array.count>0) {
+        if ([array lastObject]>3) {
+            firstStr = [str substringToIndex:3];
+            lastStr = [str substringFromIndex:[[array lastObject] intValue]];
+            resultStr = [NSString stringWithFormat:@"%@****%@",firstStr,lastStr];
+        }else{
+            resultStr = str;
+        }
+    }
+    return resultStr;
+}
+
+- (NSMutableArray *)getRangeStr:(NSString *)text findText:(NSString *)findText
+{
+    NSMutableArray *arrayRanges = [NSMutableArray arrayWithCapacity:20];
+    if (findText == nil && [findText isEqualToString:@""]) {
+        return nil;
+    }
+    NSRange rang = [text rangeOfString:findText]; //获取第一次出现的range
+    if (rang.location != NSNotFound && rang.length != 0) {
+        [arrayRanges addObject:[NSNumber numberWithInteger:rang.location]];//将第一次的加入到数组中
+        NSRange rang1 = {0,0};
+        NSInteger location = 0;
+        NSInteger length = 0;
+        for (int i = 0;; i++)
+        {
+            if (0 == i) {//去掉这个xxx
+                location = rang.location + rang.length;
+                length = text.length - rang.location - rang.length;
+                rang1 = NSMakeRange(location, length);
+            }else
+            {
+                location = rang1.location + rang1.length;
+                length = text.length - rang1.location - rang1.length;
+                rang1 = NSMakeRange(location, length);
+            }
+            //在一个range范围内查找另一个字符串的range
+            rang1 = [text rangeOfString:findText options:NSCaseInsensitiveSearch range:rang1];
+            if (rang1.location == NSNotFound && rang1.length == 0) {
+                break;
+            }else//添加符合条件的location进数组
+                [arrayRanges addObject:[NSNumber numberWithInteger:rang1.location]];
+        }
+        return arrayRanges;
+    }
+    return nil;
 }
 
 -(void)verifyJpushId:(NSString *)type{
@@ -368,6 +451,14 @@
     }
 }
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
+    if (self.activeModel==4) {
+        [self requestCodeForUser:self.phone type:@"phone"];
+        return;
+    }
+    if (self.activeModel==5) {
+        [self requestCodeForUser:self.email type:@"email"];
+        return;
+    }
     if (_inputoneTF.text.length == 0 && isEmail) {
         [self showHudWithText:@"请输入您的邮箱"];
         [self hideHudDelay:1.5f];
@@ -420,6 +511,13 @@
     
     NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\"", [self.inputoneTF.text.trim UTF8String],[pushID UTF8String], [type UTF8String],[activeNumber UTF8String]];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
+    if (self.activeModel == 4) {
+        singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\",\"token\":\"%s\"", [self.phone UTF8String],[pushID UTF8String], [type UTF8String],[activeNumber UTF8String],[self.token UTF8String]];
+        para = [xindunsdk encryptBySkey:self.phone ctx:singStr isType:YES];
+    }else if (self.activeModel ==5){
+        singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\",\"token\":\"%s\"", [self.email UTF8String],[pushID UTF8String], [type UTF8String],[activeNumber UTF8String],[self.token UTF8String]];
+        para = [xindunsdk encryptBySkey:self.email ctx:singStr isType:YES];
+    }
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
@@ -481,6 +579,13 @@
     __weak typeof(self) weakSelf = self;
     NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"type\":\"%s\"}", [self.inputoneTF.text.trim UTF8String], [type UTF8String]];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:signStr isType:NO];
+    if (self.activeModel == 4) {
+        signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\",\"token\":\"%s\"}", self.phone, [type UTF8String],[self.token UTF8String]];
+        para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:signStr isType:NO];
+    }else if (self.activeModel ==5){
+        signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\",\"token\":\"%s\"}", self.email, [type UTF8String],[self.token UTF8String]];
+        para = [xindunsdk encryptBySkey:self.email ctx:signStr isType:NO];
+    }
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {

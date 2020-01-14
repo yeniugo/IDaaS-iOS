@@ -18,6 +18,7 @@
                 <outlet property="numView" destination="puB-bf-iXc" id="rL5-sL-9DW"/>
                 <outlet property="sendBtn" destination="C1s-Ng-qFt" id="MkO-cY-u8c"/>
                 <outlet property="sendBtnTopConstraint" destination="FfN-uE-Gho" id="w1R-Qd-x33"/>
+                <outlet property="showPhoneOrEmailLB" destination="jSm-my-zjp" id="Mw4-is-Guf"/>
                 <outlet property="verifyBtn" destination="v2V-F6-QX3" id="0qc-99-pGU"/>
                 <outlet property="verifyTopConstraint" destination="hZd-Zh-Db9" id="CfA-xe-SDq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
