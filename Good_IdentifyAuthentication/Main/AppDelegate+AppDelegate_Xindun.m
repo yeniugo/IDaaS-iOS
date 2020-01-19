@@ -52,5 +52,7 @@
     NSString *crashURL = [NSString stringWithFormat:@"%@/crash_report",@"https://mtg.trusfort.com:8443/xdid"];
     [TrusfortDfsSdk setupCustormCrashReportURL:crashURL];
     [TrusfortDfsSdk enableSensor:YES];
+    YCLog(@"sdk initXdSDK");
+    [HAMLogOutputWindow printLog:@"初始化sdk"];
 }
 @end

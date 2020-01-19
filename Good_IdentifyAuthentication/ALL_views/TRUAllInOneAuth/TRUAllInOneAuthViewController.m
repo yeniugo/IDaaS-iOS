@@ -248,10 +248,10 @@ static double dytime = 0.0;
 }
 
 - (void)showAppAuth{
-    [HAMLogOutputWindow printLog:@"showscheme1"];
+//    [HAMLogOutputWindow printLog:@"showscheme1"];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if ([delegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
-        [HAMLogOutputWindow printLog:@"showscheme2"];
+//        [HAMLogOutputWindow printLog:@"showscheme2"];
         UINavigationController *rootnav = delegate.window.rootViewController;
         [rootnav pushViewController:delegate.appPushVC animated:NO];
         delegate.appPushVC = nil;

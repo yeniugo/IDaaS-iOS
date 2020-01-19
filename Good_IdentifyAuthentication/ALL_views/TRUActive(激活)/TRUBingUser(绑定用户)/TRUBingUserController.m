@@ -135,8 +135,8 @@
     _sendBtn.layer.masksToBounds = YES;
     _sendBtn.layer.cornerRadius = 5.0;
 #ifdef DEBUG
-    self.inputoneTF.text = @"1234";
-    self.inputpasswordTF.text = @"qwer1234";
+//    self.inputoneTF.text = @"1234";
+//    self.inputpasswordTF.text = @"qwer1234";
 #endif
     
 }
@@ -152,8 +152,8 @@
     self.inputoneTF.text = nil;
     self.inputpasswordTF.text = nil;
     self.inputphonemailTF.text = nil;
-    self.inputoneTF.enabel = YES;
-    self.inputpasswordTF.enabel = YES;
+    self.inputoneTF.enabled = YES;
+    self.inputpasswordTF.enabled = YES;
     self.multipleVerify = NO;
     self.phone = nil;
     self.email = nil;

@@ -93,7 +93,7 @@ static id _instance = nil;
     
     win.hidden = NO;
     win.authType = AuthViewTypeAuth;
-    [HAMLogOutputWindow printLog:@"showAuthView"];
+//    [HAMLogOutputWindow printLog:@"showAuthView"];
 }
 
 + (void)showLoading{
@@ -142,7 +142,7 @@ static id _instance = nil;
     win.hidden = YES;
     win.rootViewController = nil;
     win.authType = AuthViewTypeNone;
-    [HAMLogOutputWindow printLog:@"dismissAuthView"];
+//    [HAMLogOutputWindow printLog:@"dismissAuthView"];
     [TRUMTDTool uploadDevInfo];
 }
 
@@ -164,7 +164,7 @@ static id _instance = nil;
 //    [DDLog addLogger:fileLogger];
 //
 //    DDLogVerbose(@"Verbose");
-    [HAMLogOutputWindow printLog:@"dismissAuthViewAndCleanStatus"];
+//    [HAMLogOutputWindow printLog:@"dismissAuthViewAndCleanStatus"];
 }
 
 + (TRUBaseNavigationController *)authVC{

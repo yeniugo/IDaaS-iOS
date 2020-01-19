@@ -53,7 +53,8 @@
     }else{
         [self requestPushModelFromServerWithToken:self.token];
     }
-    
+    YCLog(@"sdk 推送界面");
+    [HAMLogOutputWindow printLog:@"推送界面启动"];
 }
 
 

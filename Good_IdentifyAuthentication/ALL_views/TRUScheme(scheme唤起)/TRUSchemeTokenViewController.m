@@ -57,6 +57,11 @@
 }
 
 - (void)showPushToken{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if (delegate.thirdAwakeTokenStatus == 11) {
+        [self pushAuth1];
+        return;
+    }
     if([TRUUserAPI haveSubUser]){
 //        [HAMLogOutputWindow printLog:@"有子账号"];
         __weak typeof(self) weakSelf = self;
@@ -141,6 +146,37 @@
         NSString *userid = [TRUUserAPI getUser].userId;
         [self getTokenWithRefreshTokenAndTokenByUserid:userid];
     }
+}
+
+- (void)pushAuth1{
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+    NSArray *ctx = @[@"userid",userid,@"appid",appdelegate.appid,@"apid",appdelegate.apid];
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@",userid,appdelegate.appid,appdelegate.apid];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getcode"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody,NSString *message){
+//        YCLog(@"verify/getcode = %d",errorno);
+        NSDictionary *dic;
+        if (errorno == 0 && responseBody) {
+            dic = [xindunsdk decodeServerResponse:responseBody];
+            int code = [dic[@"code"] intValue];
+            if (code == 0) {
+                dic = dic[@"resp"];
+                NSString *code = dic[@"code"];
+                NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
+                dicc[@"code"] = code;
+                dicc[@"codeerror"] = @"0";
+                dicc[@"message"] = message;
+                if (appdelegate.appCompletionBlock) {
+                    appdelegate.appCompletionBlock(dicc);
+                }
+            }
+            YCLog(@"");
+        }
+    }];
 }
 
 
@@ -364,6 +400,29 @@
             }
             break;
         }
+        case 11:
+                {
+                    if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
+                    }else{
+                        if (delegate.isNeedPush) {
+                            NSString *userid = [TRUUserAPI getUser].userId;
+                        }else if (self.isNeedpush){
+                        }
+                    }
+                    break;
+                }
+                case 12:
+                {
+                    [TRUEnterAPPAuthView dismissAuthView];
+                    [self unbind];
+                    break;
+                }
+                case 13:
+                {
+                    [TRUEnterAPPAuthView dismissAuthView];
+                    [self unbindwithback];
+                    break;
+                }
         default:
             break;
     }
@@ -411,7 +470,6 @@
                 TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
                 model.userId = userid;
                 [TRUUserAPI saveUser:model];
-                
                 NSString *sign = [NSString stringWithFormat:@"%@%@%@",userid,refreshToken,delegate.appid];
                 NSArray *ctxx = @[@"userId",userid,@"refreshToken",refreshToken,@"appId",delegate.appid];
                 NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
@@ -468,7 +526,6 @@
                         if ([weakdelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
                             UINavigationController *rootnav = delegate.window.rootViewController;
                             [rootnav popViewControllerAnimated:YES];
-//                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }
                         if (weakdelegate.appCompletionBlock) {
                             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -476,7 +533,7 @@
                             weakdelegate.appCompletionBlock(dic);
                         }
                     }else if(errorno ==90037){
-                        [HAMLogOutputWindow printLog:@"90037"];
+//                        [HAMLogOutputWindow printLog:@"90037"];
                         [TRUEnterAPPAuthView showAuthView];
                         //            [self getAppAuthToken];
                     }else{

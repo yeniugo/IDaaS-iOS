@@ -48,6 +48,7 @@
 #import "TRUAPPLogIdentifyController.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 //@property (nonatomic, copy) NSString *soureSchme;
+@property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *RemoteTokenStr;//远程token字符串
 @property (nonatomic, copy) NSDictionary *launchOptions;
 @end
@@ -91,7 +92,7 @@
 ////            }
 //        }
 //    }
-//    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
+    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 //    [HAMLogOutputWindow printLog:@"didFinishLaunchingWithOptions"];
 //    NSString *isss = [xindunsdk getDeviceId];
 //    [HAMLogOutputWindow printLog:isss];
@@ -130,8 +131,8 @@
             [strongSelf configRootBaseVCForApplication:application WithOptions:launchOptions];
         }
     });
-
-
+    [HAMLogOutputWindow printLog:[[NSUserDefaults standardUserDefaults] objectForKey:@"TRUPUSHID"]];
+    
     [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"OAuthVerify"];
     CGFloat sysversion = [[[UIDevice currentDevice] systemVersion] floatValue];
     if (sysversion >= 9.0){
@@ -566,86 +567,119 @@
     [self initXdSDK];
     NSString *str = [NSString stringWithFormat:@"%@",url.query];
     NSString *userid = [TRUUserAPI getUser].userId;
-    
     if ([str containsString:@"&"]) {
-        NSArray *queryArr = [str componentsSeparatedByString:@"&"];
-//        if(queryArr.count==4){
-//            [self getAuthWithURL:url];
-//            return YES;
-//        }
-        self.soureSchme = [[queryArr.firstObject componentsSeparatedByString:@"="] lastObject];
-        NSString *tokenStr = [[[queryArr lastObject] componentsSeparatedByString:@"="] lastObject];
-        NSString *type = [[[queryArr lastObject] componentsSeparatedByString:@"="] firstObject];
-        if([url.host isEqualToString:@"auth"]){
-            self.isMainSDK = YES;
-            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-            NSArray *urlArray = [url.query componentsSeparatedByString:@"&"];
-            if (urlArray.count==2) {
-                NSString *appid = [[urlArray[0] componentsSeparatedByString:@"="] lastObject];
-                self.appid = appid;
-//                [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"appid = %@",appid]];
-                NSString *type = [[urlArray[1] componentsSeparatedByString:@"="] lastObject];
-                self.isFromSDK = NO;
-                [self getAuthWithType:[type intValue]];
-                
-            }
-            if (urlArray.count==3) {
-                NSString *appid = [[urlArray[0] componentsSeparatedByString:@"="] lastObject];
-                self.appid = appid;
-//                [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"appid = %@",appid]];
-                NSString *type = [[urlArray[1] componentsSeparatedByString:@"="] lastObject];
-                self.soureSchme = [[urlArray[2] componentsSeparatedByString:@"="] lastObject];
-                self.isFromSDK = YES;
-                [self getAuthWithType:[type intValue]];
-                
-            }
-        }else if([type isEqualToString:@"type"]){//蓝信调用
-            if([tokenStr isEqualToString:@"getLocalToken"]){
-                [self getTokenVC:1];
-            }else if([tokenStr isEqualToString:@"getNetToken"]){
-                //self.fromThirdAwake = YES;
-                self.thirdAwakeTokenStatus = 2;
-                if (!userid || userid.length==0) {
-                    //[self application:self initWithOptions:nil];
-                    //[[UIApplication sharedApplication] openURL:@"trusfortcims://"];
-                    //[self application:self initWithOptions:nil];
+        if ([url.host isEqualToString:@"auth"]){
+            NSArray *queryArr = [str componentsSeparatedByString:@"&"];
+            self.soureSchme = [[queryArr.firstObject componentsSeparatedByString:@"="] lastObject];
+            NSString *tokenStr = [[[queryArr lastObject] componentsSeparatedByString:@"="] lastObject];
+            NSString *type = [[[queryArr lastObject] componentsSeparatedByString:@"="] firstObject];
+            if([url.host isEqualToString:@"auth"]){
+                self.isMainSDK = YES;
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                NSArray *urlArray = [url.query componentsSeparatedByString:@"&"];
+                if (urlArray.count==2) {
+                    NSString *appid = [[urlArray[0] componentsSeparatedByString:@"="] lastObject];
+                    self.appid = appid;
+    //                [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"appid = %@",appid]];
+                    NSString *type = [[urlArray[1] componentsSeparatedByString:@"="] lastObject];
+                    self.isFromSDK = NO;
+                    [self getAuthWithType:[type intValue]];
                     
-                }else{
-                    if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
-//                        [self application:self initWithOptions:nil];
+                }
+                if (urlArray.count==3) {
+                    NSString *appid = [[urlArray[0] componentsSeparatedByString:@"="] lastObject];
+                    self.appid = appid;
+    //                [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"appid = %@",appid]];
+                    NSString *type = [[urlArray[1] componentsSeparatedByString:@"="] lastObject];
+                    self.soureSchme = [[urlArray[2] componentsSeparatedByString:@"="] lastObject];
+                    self.isFromSDK = YES;
+                    [self getAuthWithType:[type intValue]];
+                    
+                }
+            }else if([type isEqualToString:@"type"]){//蓝信调用
+                if([tokenStr isEqualToString:@"getLocalToken"]){
+                    [self getTokenVC:1];
+                }else if([tokenStr isEqualToString:@"getNetToken"]){
+                    //self.fromThirdAwake = YES;
+                    self.thirdAwakeTokenStatus = 2;
+                    if (!userid || userid.length==0) {
+                        //[self application:self initWithOptions:nil];
+                        //[[UIApplication sharedApplication] openURL:@"trusfortcims://"];
+                        //[self application:self initWithOptions:nil];
                         
                     }else{
-                        [self getTokenVC:2];
-//                        [HAMLogOutputWindow printLog:@"getTokenVC 2"];
+                        if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
+    //                        [self application:self initWithOptions:nil];
+                            
+                        }else{
+                            [self getTokenVC:2];
+    //                        [HAMLogOutputWindow printLog:@"getTokenVC 2"];
+                        }
                     }
+                }else if ([tokenStr isEqualToString:@"logout"]){
+                    [self getTokenVC:3];
+                }else if ([tokenStr isEqualToString:@"unBind"]){
+                    [self getTokenVC:4];
                 }
-            }else if ([tokenStr isEqualToString:@"logout"]){
-                [self getTokenVC:3];
-            }else if ([tokenStr isEqualToString:@"unBind"]){
-                [self getTokenVC:4];
-            }
-        }else{
-            if (userid && [xindunsdk isUserInitialized:userid]) {
-                
-                if (!tokenStr) {
-                    tokenStr = @"";
-                }
-                [[NSUserDefaults standardUserDefaults] setObject:self.soureSchme forKey:@"WAKEUPSOURESCHME"];
-                [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"OAuthVerify"];
-                [[NSUserDefaults standardUserDefaults] setObject:tokenStr forKey:@"WAKEUPTOKENKEY"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                NSDictionary *dic = @{@"token" : tokenStr};
-                
-                [self popAuthVCWithUserInfo:dic];
-                
             }else{
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self showWakeUPErrorInfo:tokenStr];
+                if (userid && [xindunsdk isUserInitialized:userid]) {
+                    
+                    if (!tokenStr) {
+                        tokenStr = @"";
+                    }
+                    [[NSUserDefaults standardUserDefaults] setObject:self.soureSchme forKey:@"WAKEUPSOURESCHME"];
+                    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"OAuthVerify"];
+                    [[NSUserDefaults standardUserDefaults] setObject:tokenStr forKey:@"WAKEUPTOKENKEY"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    NSDictionary *dic = @{@"token" : tokenStr};
+                    
+                    [self popAuthVCWithUserInfo:dic];
+                    
+                }else{
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self showWakeUPErrorInfo:tokenStr];
+                        });
                     });
-                });
+                }
             }
+        }else if([url.host isEqualToString:@"auth1"]){
+            [self configRootBaseVCForApplication:[UIApplication sharedApplication] WithOptions:self.launchOptions];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            NSArray *urlArray = [url.query componentsSeparatedByString:@"&"];
+            for (NSString *str in urlArray) {
+                NSArray *tmp = [str componentsSeparatedByString:@"="];
+                NSString *key = [tmp firstObject];
+                NSArray *value = [tmp lastObject];
+                if (key && value) {
+                    dic[key] = value;
+                }
+            }
+            NSString *scheme = dic[@"scheme"];
+            NSString *type = dic[@"type"];
+            NSString *appid = dic[@"appid"];
+            NSString *apid = dic[@"apid"];
+            NSString *phone = dic[@"phone"];
+            if (scheme.length) {
+                self.soureSchme = scheme;
+            }
+            if (appid.length) {
+                self.appid = appid;
+            }
+            if (apid.length) {
+                self.apid = apid;
+            }
+            NSString *schemeType;
+            if ([type isEqualToString:@"auth"]) {
+                schemeType = @"11";
+            }else if ([type isEqualToString:@"logout"]){
+                schemeType = @"12";
+            }else if ([type isEqualToString:@"logoutWithBack"]){
+                schemeType = @"13";
+            }
+            [self getAuth1WithType:[schemeType intValue]];
         }
+        
     }else{//针对于日报社项目
         if (options){
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:options];
@@ -802,6 +836,142 @@
             self.thirdAwakeTokenStatus = 1;
         }
     }
+}
+
+- (void)getAuth1WithType:(int)type{
+    __weak typeof(self) weakSelf = self;
+    TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+    self.thirdAwakeTokenStatus = type;
+    tokenVC.schemetype = type;
+    CGFloat dispatchTime = 2.5;
+    if ([self.window.rootViewController isKindOfClass: [TRUAdViewController class]]) {
+        //                [HAMLogOutputWindow printLog:@"2.1s"];
+        dispatchTime = 2.5;
+    }else{
+        dispatchTime = 0.5;
+    }
+    tokenVC.isNeedpush = YES;
+    self.appCompletionBlock = ^(NSDictionary *tokenDic){
+        NSString *urlStr;
+        NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        if ([weakSelf.soureSchme containsString:@"://"]) {
+            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+        }else{
+            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+        }
+        weakSelf.soureSchme = nil;
+        weakSelf.thirdAwakeTokenStatus = 0;
+        weakSelf.isFromSDK = NO;
+        weakSelf.phone = nil;
+        weakSelf.isNeedPush = NO;
+        weakSelf.appid = nil;
+        weakSelf.apid = nil;
+        if (self.window.rootViewController.presentedViewController) {
+            [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{
+                YCLog(@"dismissViewController success");
+//                [HAMLogOutputWindow printLog:@"dismissViewController success"];
+                if (@available(iOS 10.0,*)) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                    }];
+//                    [HAMLogOutputWindow printLog:@"auth1"];
+                }else{
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                }
+            }];
+        }else{
+            if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                UINavigationController *rootnav = self.window.rootViewController;
+                [rootnav popToRootViewControllerAnimated:NO];
+//                [HAMLogOutputWindow printLog:@"poptorootsuccess"];
+            }
+            if (@available(iOS 10.0,*)) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+//                    self.tokenCompletionBlock = nil;
+                    self.appCompletionBlock = nil;
+                }];
+//                [HAMLogOutputWindow printLog:@"auth2"];
+            }else{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+//                self.tokenCompletionBlock = nil;
+                self.appCompletionBlock = nil;
+            }
+        }
+    };
+    if (type == 12) {
+        self.appCompletionBlock = nil;
+    }else if(type == 13){
+        self.appCompletionBlock = ^(NSDictionary *tokenDic){
+            NSString *urlStr;
+            NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+            if ([weakSelf.soureSchme containsString:@"://"]) {
+                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            }
+            weakSelf.soureSchme = nil;
+            weakSelf.thirdAwakeTokenStatus = 0;
+            weakSelf.isFromSDK = NO;
+            weakSelf.phone = nil;
+            weakSelf.isNeedPush = NO;
+            weakSelf.appid = nil;
+            weakSelf.apid = nil;
+            if (self.window.rootViewController.presentedViewController) {
+                [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{
+                    YCLog(@"dismissViewController success");
+//                    [HAMLogOutputWindow printLog:@"dismissViewController success"];
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                        }];
+//                        [HAMLogOutputWindow printLog:@"auth1"];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                }];
+            }else{
+                if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                    UINavigationController *rootnav = self.window.rootViewController;
+                    [rootnav popToRootViewControllerAnimated:NO];
+//                    [HAMLogOutputWindow printLog:@"poptorootsuccess"];
+                }
+                if (@available(iOS 10.0,*)) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+//                        self.tokenCompletionBlock = nil;
+                        self.appCompletionBlock = nil;
+                    }];
+//                    [HAMLogOutputWindow printLog:@"auth2"];
+                }else{
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+//                    self.tokenCompletionBlock = nil;
+                    self.appCompletionBlock = nil;
+                }
+            }
+        };
+        
+    }
+    if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone){
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (1) {
+//                    [HAMLogOutputWindow printLog:@"pushAuthVC"];
+                    weakSelf.appPushVC = tokenVC;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"pushAuthVC" object:nil];
+                }
+            });
+        }else{
+            NSString *currentUserId = [TRUUserAPI getUser].userId;
+            if (!currentUserId || currentUserId.length == 0 || [xindunsdk isUserInitialized:currentUserId] == false) {
+                if(type==2){
+                    self.thirdAwakeTokenStatus = 1;
+                }else{
+                    if (type==3) {
+                        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                        dic[@"status"] = @(0);
+                        self.appCompletionBlock(dic);
+                    }
+                }
+            } else {
+            }
+            
+        }
 }
 
 #pragma mark net scheme token
@@ -1523,7 +1693,7 @@
             [rootnav popToRootViewControllerAnimated:YES];
         }
     }
-    [HAMLogOutputWindow printLog:@"dismissAuthView1"];
+//    [HAMLogOutputWindow printLog:@"dismissAuthView1"];
     [TRUEnterAPPAuthView dismissAuthView];
     YCLog(@"applicationWillEnterForeground");
     __weak typeof(self) weakSelf = self;
@@ -1547,7 +1717,7 @@
                     if (!self.thirdAwakeTokenStatus) {
                         [TRUEnterAPPAuthView showAuthView];
                     }else{
-                        [HAMLogOutputWindow printLog:@"dismissAuthView2"];
+//                        [HAMLogOutputWindow printLog:@"dismissAuthView2"];
                         [TRUEnterAPPAuthView dismissAuthView];
                     }
                 }else{
@@ -1561,7 +1731,7 @@
                         if (!self.thirdAwakeTokenStatus) {
                             [TRUEnterAPPAuthView showAuthView];
                         }else{
-                            [HAMLogOutputWindow printLog:@"dismissAuthView3"];
+//                            [HAMLogOutputWindow printLog:@"dismissAuthView3"];
                             [TRUEnterAPPAuthView dismissAuthView];
                         }
                     }else{
