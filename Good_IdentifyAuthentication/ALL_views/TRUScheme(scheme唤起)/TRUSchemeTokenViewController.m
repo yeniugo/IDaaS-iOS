@@ -43,12 +43,6 @@
     CGFloat y = [UIScreen mainScreen].bounds.size.height/2-h/2;
     if(self.schemetype==5){
     }else{
-//        self.loadingView.frame = CGRectMake(x, y, w, h);
-//        [self.view addSubview:self.loadingView];
-//        [self.loadingView startAnimating];
-//        self.loadingView.color = [UIColor blackColor];
-//        self.loadingView.userInteractionEnabled = NO;
-        
     }
 //    self.loadingView = nil;
     __weak typeof(self) weakSelf = self;
@@ -102,6 +96,7 @@
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus == 11) {
         [self pushAuth1];
+        return;
     }
     if(!delegate.isMainSDK){
         return;
@@ -631,11 +626,23 @@
             }else{
                 if (delegate.isNeedPush) {
                     NSString *userid = [TRUUserAPI getUser].userId;
-//                    [self pushAuth1];
+                    [self pushAuth1];
                 }else if (self.isNeedpush){
 //                    [self pushAuth1];
                 }
             }
+            break;
+        }
+        case 12:
+        {
+            [TRUEnterAPPAuthView dismissAuthView];
+            [self unbind];
+            break;
+        }
+        case 13:
+        {
+            [TRUEnterAPPAuthView dismissAuthView];
+            [self unbindwithback];
             break;
         }
         default:
@@ -669,7 +676,13 @@
                     appdelegate.appCompletionBlock(dicc);
                 }
             }
-            NSLog(@"");
+        }else{
+            NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
+            dicc[@"codeerror"] = [NSString stringWithFormat:@"%d",errorno];
+            dicc[@"message"] = message;
+            if (appdelegate.appCompletionBlock) {
+                appdelegate.appCompletionBlock(dicc);
+            }
         }
     }];
 }
@@ -718,6 +731,9 @@
                 AppDelegate *delegate1 = [UIApplication sharedApplication].delegate;
                 if (delegate1.thirdAwakeTokenStatus==2) {
                     delegate1.thirdAwakeTokenStatus=1;
+                }
+                if (delegate1.thirdAwakeTokenStatus==12 || delegate1.thirdAwakeTokenStatus==13) {
+                    delegate1.thirdAwakeTokenStatus=11;
                 }
             }
 #pragma clang diagnostic pop

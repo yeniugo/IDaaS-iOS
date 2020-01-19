@@ -527,7 +527,7 @@
     [self initXdSDK];
     NSString *str = [NSString stringWithFormat:@"%@",url.query];
     NSString *userid = [TRUUserAPI getUser].userId;
-    self.fullSoureSchme = url.absoluteString;
+    self.fullSoureSchme = url.absoluteString; 
     if ([str containsString:@"&"]) {
         if ([url.host isEqualToString:@"auth"]) {
             [self configRootBaseVCForApplication:[UIApplication sharedApplication] WithOptions:self.launchOptions];
@@ -623,8 +623,10 @@
             NSString *schemeType;
             if ([type isEqualToString:@"auth"]) {
                 schemeType = @"11";
-            }else if ([type isEqualToString:@"unbind"]){
+            }else if ([type isEqualToString:@"logout"]){
                 schemeType = @"12";
+            }else if ([type isEqualToString:@"logoutWithBack"]){
+                schemeType = @"13";
             }
             [self getAuth1WithType:[schemeType intValue]];
         }else{
@@ -691,7 +693,7 @@
         NSString *urlStr;
         NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
         if ([weakSelf.soureSchme containsString:@"://"]) {
-            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }else{
             urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }
@@ -733,7 +735,57 @@
             }
         }
     };
-    
+    if (type == 12) {
+        self.appCompletionBlock = nil;
+    }else if(type == 13){
+        self.appCompletionBlock = ^(NSDictionary *tokenDic){
+            NSString *urlStr;
+            NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+            if ([weakSelf.soureSchme containsString:@"://"]) {
+                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            }
+            weakSelf.soureSchme = nil;
+            weakSelf.thirdAwakeTokenStatus = 0;
+            weakSelf.isFromSDK = NO;
+            weakSelf.phone = nil;
+            weakSelf.isNeedPush = NO;
+            weakSelf.appid = nil;
+            weakSelf.apid = nil;
+            if (self.window.rootViewController.presentedViewController) {
+                [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{
+                    YCLog(@"dismissViewController success");
+                    [HAMLogOutputWindow printLog:@"dismissViewController success"];
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                        }];
+                        [HAMLogOutputWindow printLog:@"auth1"];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                }];
+            }else{
+                if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                    UINavigationController *rootnav = self.window.rootViewController;
+                    [rootnav popToRootViewControllerAnimated:NO];
+                    [HAMLogOutputWindow printLog:@"poptorootsuccess"];
+                }
+                if (@available(iOS 10.0,*)) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                        self.tokenCompletionBlock = nil;
+                        self.appCompletionBlock = nil;
+                    }];
+                    [HAMLogOutputWindow printLog:@"auth2"];
+                }else{
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    self.tokenCompletionBlock = nil;
+                    self.appCompletionBlock = nil;
+                }
+            }
+        };
+        
+    }
     if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone){
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (1) {
@@ -1553,7 +1605,7 @@
                         [TRUEnterAPPAuthView dismissAuthView];
                     }
                 }else{
-                    if (self.thirdAwakeTokenStatus!=4) {
+                    if (self.thirdAwakeTokenStatus!=4 && self.thirdAwakeTokenStatus != 12 && self.thirdAwakeTokenStatus != 13) {
                         [TRUEnterAPPAuthView showAuthView];
                     }
                 }
@@ -1569,7 +1621,7 @@
                             [TRUEnterAPPAuthView dismissAuthView];
                         }
                     }else{
-                        if (self.thirdAwakeTokenStatus!=4) {
+                        if (self.thirdAwakeTokenStatus!=4 && self.thirdAwakeTokenStatus != 12 && self.thirdAwakeTokenStatus != 13) {
                             [TRUEnterAPPAuthView showAuthView];
                         }
                     }
