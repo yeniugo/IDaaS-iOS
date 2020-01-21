@@ -321,7 +321,7 @@
             case 4:
             {
                 if (self.multipleVerify) {
-                    [self verifyJpushId:@"phone"];
+                    [self verifyJpushId:@"employeenumPhone"];
                 }else{
                     [self firstVerify];
                 }
@@ -330,7 +330,7 @@
             case 5:
             {
                 if (self.multipleVerify) {
-                    [self verifyJpushId:@"email"];
+                    [self verifyJpushId:@"employeenumEmail"];
                 }else{
                     [self firstVerify];
                 }
@@ -502,11 +502,11 @@
 
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
     if (self.activeModel==4) {
-        [self requestCodeForUser:self.phone type:@"phone"];
+        [self requestCodeForUser:self.phone type:@"employeenumPhone"];
         return;
     }
     if (self.activeModel==5) {
-        [self requestCodeForUser:self.email type:@"email"];
+        [self requestCodeForUser:self.email type:@"employeenumEmail"];
         return;
     }
     if (_inputoneTF.text.trim.length == 0 && isEmail){
