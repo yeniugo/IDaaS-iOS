@@ -486,6 +486,7 @@
 - (void)getToken{
     __weak typeof(self) weakSelf = self;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"状态码=%d",delegate.thirdAwakeTokenStatus]];
     switch (delegate.thirdAwakeTokenStatus) {
         case 1:
         {
@@ -627,8 +628,10 @@
                 if (delegate.isNeedPush) {
                     NSString *userid = [TRUUserAPI getUser].userId;
                     [self pushAuth1];
+                    [HAMLogOutputWindow printLog:@"11-delegate.isNeedPush"];
                 }else if (self.isNeedpush){
-//                    [self pushAuth1];
+                    [self pushAuth1];
+                    [HAMLogOutputWindow printLog:@"11-self.isNeedPush"];
                 }
             }
             break;

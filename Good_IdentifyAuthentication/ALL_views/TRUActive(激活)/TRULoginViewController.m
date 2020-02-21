@@ -75,10 +75,8 @@
 {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
-    
 }
 -(void)customUI{
-    
     [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
     [_AgreementBtn setTitleColor:DefaultColor forState:UIControlStateNormal];
     _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];

@@ -310,7 +310,6 @@
                     }else{
                         urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
                     }
-                    
                     weakDelegate.soureSchme = nil;
                     weakDelegate.thirdAwakeTokenStatus = 0;
                     //weakSelf.fromThirdAwake = NO;
@@ -330,18 +329,39 @@
                 });
             }
                 break;
+            case 11:
+            {
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 11;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
+                    NSString *urlStr;
+                    NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                    if ([weakDelegate.soureSchme containsString:@"://"]) {
+                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                    }else{
+                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                    }
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                };
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tokenVC];
+                    [weakDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+                });
+            }
+                break;
             default:
                 break;
         }
-        
-        
         //YCLog(@"self.navigationController = %@",self.navigationController);
-        
-        
     }
 }
-
-
 
 -(void)customUI{
     

@@ -106,6 +106,7 @@
 //    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 #else
 #endif
+    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 //    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"didFinishLaunchingWithOptions %@",[self getNowTimeTimestamp3]]];
     NSString *isss = [xindunsdk getDeviceId];
     
@@ -621,7 +622,7 @@
                 self.apid = apid;
             }
             NSString *schemeType;
-            if ([type isEqualToString:@"auth"]) {
+            if ([type isEqualToString:@"auth1"]) {
                 schemeType = @"11";
             }else if ([type isEqualToString:@"logout"]){
                 schemeType = @"12";
@@ -1527,6 +1528,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [HAMLogOutputWindow printLog:@"applicationDidEnterBackground"];
     [[NSNotificationCenter defaultCenter] postNotificationName:TRUEnterBackgroundKey object:nil];
     [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
     self.thirdAwakeTokenStatus = 0;
