@@ -1689,7 +1689,11 @@
     if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *rootnav = self.window.rootViewController;
         if (rootnav.viewControllers>1) {
+            
             UIViewController *vc = [rootnav.viewControllers lastObject];
+            if ([rootnav.viewControllers.firstObject isKindOfClass:[TRULoginViewController class]]) {
+                return;
+            }
             [rootnav popToRootViewControllerAnimated:YES];
         }
     }

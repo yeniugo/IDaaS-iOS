@@ -82,7 +82,7 @@
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
-            modeStr = @"5";
+//            modeStr = @"5";
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
                 isEmail = YES;
                 _inputoneTF.placeholder = @"请输入您的邮箱";
@@ -133,8 +133,8 @@
                 }else{
                     _inputoneTF.text = str;
                 }
-                _inputoneTF.text = @"1234";
-                _inputpasswordTF.text = @"qwer1234";
+//                _inputoneTF.text = @"1234";
+//                _inputpasswordTF.text = @"qwer1234";
                 isEmployee = YES;
                 _inputoneTF.placeholder = @"请输入您的账号";
                 _numView.hidden = NO;
@@ -244,7 +244,7 @@
             case 4:
             {
                 if (self.multipleVerify) {
-                    [self verifyJpushId:@"phone"];
+                    [self verifyJpushId:@"employeenumPhone"];
                 }else{
                     [self firstVerify];
                 }
@@ -253,7 +253,7 @@
             case 5:
             {
                 if (self.multipleVerify) {
-                    [self verifyJpushId:@"email"];
+                    [self verifyJpushId:@"employeenumEmail"];
                 }else{
                     [self firstVerify];
                 }
@@ -452,11 +452,11 @@
 }
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
     if (self.activeModel==4) {
-        [self requestCodeForUser:self.phone type:@"phone"];
+        [self requestCodeForUser:self.phone type:@"employeenumPhone"];
         return;
     }
     if (self.activeModel==5) {
-        [self requestCodeForUser:self.email type:@"email"];
+        [self requestCodeForUser:self.email type:@"employeenumEmail"];
         return;
     }
     if (_inputoneTF.text.length == 0 && isEmail) {
