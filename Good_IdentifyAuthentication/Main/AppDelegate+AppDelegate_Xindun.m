@@ -45,7 +45,7 @@
     
     YCLog(@"initXdSDK %d",result);
 //    [xindunsdk getDeviceIdOnline:@"com.example.demo" withServer:@"https://dfs.trusfort.com/xdid/mapi" OnResult:^(int error, id dicResult) {
-//        YCLog(@"error = %d,dicResult = %@",error,dicResult);
+//        YCLog(@"error = %d,dicResult = %@",error,dicResult);
 //    }];
     //
     [TrusfortDfsSdk initEnv:@"com.example.demo"];

@@ -81,7 +81,7 @@
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
-//            modeStr = @"4";
+            modeStr = @"1";
             self.loginStr = modeStr;
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号,4:工号密码加手机，5工号密码加邮箱)
                 isEmail = YES;
@@ -305,6 +305,7 @@
         [self hideHudDelay:1.5f];
         return;
     }
+    
     if (isEmail) {//邮箱验证
         [self verifyJpushId:@"email"];
     }
@@ -529,13 +530,35 @@
         [self hideHudDelay:1.5f];
         return;
     }
+    switch (self.activeModel) {
+        case 1:
+        {
+            if (![self.inputoneTF.text isEmail]) {
+                [self showHudWithText:@"请输入正确的账号"];
+                [self hideHudDelay:1.5f];
+                return;
+            }
+        }
+            break;
+        case 2:
+        {
+            if (![self.inputoneTF.text isPhone]) {
+                [self showHudWithText:@"请输入正确的账号"];
+                [self hideHudDelay:1.5f];
+                return;
+            }
+        }
+            break;
+        default:
+            break;
+    }
     NSString *str = _inputoneTF.text.trim;
     if ([str isPhone]) {//是手机号
         [self requestCodeForUser:str type:@"phone"];
     }else if ([str isEmail]){//是邮箱
         [self requestCodeForUser:str type:@"email"];
     }else{
-        [self showHudWithText:@"请输入正确的手机号/邮箱"];
+        [self showHudWithText:@"请输入正确的账号"];
         [self hideHudDelay:1.5f];
         return;
     }
@@ -776,7 +799,7 @@
             [weakSelf showHudWithText:@"请输入正确的账号/密码"];
             [weakSelf hideHudDelay:2.0];
         }else if (9002 == errorno){
-            [weakSelf showHudWithText:@"请输入正确的账号信息"];
+            [weakSelf showHudWithText:@"账号或密码不正确"];
             [weakSelf hideHudDelay:2.0];
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
