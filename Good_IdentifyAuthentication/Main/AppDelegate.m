@@ -106,7 +106,7 @@
 //    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 #else
 #endif
-    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
+//    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 //    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"didFinishLaunchingWithOptions %@",[self getNowTimeTimestamp3]]];
     NSString *isss = [xindunsdk getDeviceId];
     

@@ -365,11 +365,13 @@
     __weak typeof(self) weakSelf = self;
     NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\"}", self.inputoneTF.text, [type UTF8String]];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text ctx:signStr isType:NO];
+    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"para = %@",para]];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     YCLog(@"baseUrl = %@",baseUrl);
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
+        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"激活 = %d，%@",errorno,message]];
         if (0 == errorno) {
             YCLog(@"发送成功");
             //第一次申请 也就是第一次进入这个页面，开始倒计时

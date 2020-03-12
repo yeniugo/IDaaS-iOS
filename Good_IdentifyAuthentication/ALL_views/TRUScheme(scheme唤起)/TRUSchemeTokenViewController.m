@@ -211,7 +211,7 @@
     __weak typeof(self) weakSelf = self;
     NSString *mainuserid = [TRUUserAPI getUser].userId;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *paras = [xindunsdk encryptByUkey:mainuserid ctx:nil signdata:nil isDeviceType:NO];
+    NSString *paras = [xindunsdk encryptByUkey:mainuserid ctx:nil signdata:nil isDeviceType:YES];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     YCLog(@"111111111111111");
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/token/gen"] withParts:dictt onResult:^(int errorno, id responseBody){
@@ -712,8 +712,8 @@
         deldevs = [deleteDevices componentsJoinedByString:@","];
     }
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSArray *ctx = @[@"del_uuids",deldevs];
-    NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",@"thirdapp"];
+    NSString *sign = [NSString stringWithFormat:@"%@%@",deldevs,@"thirdapp"];
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
@@ -775,8 +775,8 @@
         deldevs = [deleteDevices componentsJoinedByString:@","];
     }
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSArray *ctx = @[@"del_uuids",deldevs];
-    NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",@"thirdapp"];
+    NSString *sign = [NSString stringWithFormat:@"%@%@",deldevs,@"thirdapp"];
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
@@ -1170,7 +1170,8 @@
         NSString *authcode = dic[@"authcode"];
         NSString *spcode = dic[@"spcode"];
         if (spcode.length>0){//
-            [xindunsdk initEnv:@"com.example.demo" url:currentCims];
+//            [xindunsdk initEnv:@"com.example.demo" url:currentCims];
+            [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:currentCims devfpUrl:currentCims];
             NSString *para = [xindunsdk encryptByUkey:spcode];
             NSDictionary *dic = @{@"params" : [NSString stringWithFormat:@"%@",para]};
             __weak typeof(self) weakSelf = self;
@@ -1199,7 +1200,8 @@
                                 [[NSUserDefaults standardUserDefaults] setObject:spcode forKey:@"CIMSURL_SPCODE"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                 
-                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+//                                bool res = [xindunsdk initCIMSEnv:@"com.example.demo" url:companyModel.cims_server_url];
+                                bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
                                 YCLog(@"initXdSDK %d",res);
                                 [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -1216,7 +1218,8 @@
                             [[NSUserDefaults standardUserDefaults] setObject:spcode forKey:@"CIMSURL_SPCODE"];
                             [[NSUserDefaults standardUserDefaults] synchronize];
                             
-                            bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+//                            bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+                            bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
                             YCLog(@"initXdSDK %d",res);
                             [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                             [[NSUserDefaults standardUserDefaults] synchronize];

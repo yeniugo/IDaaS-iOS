@@ -161,7 +161,8 @@
             NSString *authcode = dic[@"authcode"];
             NSString *spcode = dic[@"spcode"];
             if (spcode.length>0){//
-                [xindunsdk initEnv:@"com.example.demo" url:currentCims];
+//                [xindunsdk initEnv:@"com.example.demo" url:currentCims];
+                [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:currentCims devfpUrl:currentCims];
                 NSString *para = [xindunsdk encryptByUkey:spcode];
                 NSDictionary *dic = @{@"params" : [NSString stringWithFormat:@"%@",para]};
                 [TRUhttpManager sendCIMSRequestWithUrl:[currentCims stringByAppendingString:@"mapi/01/verify/getspinfo"] withParts:dic onResult:^(int errorno, id responseBody) {
@@ -184,7 +185,8 @@
                                     //切换icon
                                     [weakSelf changeIconWithName:companyModel.icon_url];
                                     //切换服务地址 http://192.168.1.115:8000/cims
-                                    bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+//                                    bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+                                    bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
                                     YCLog(@"initXdSDK %d",res);
                                     [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -202,7 +204,8 @@
                                 //切换icon
                                 [weakSelf changeIconWithName:companyModel.icon_url];
                                 //切换服务地址 http://192.168.1.115:8000/cims
-                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+//                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
+                                bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
                                 YCLog(@"initXdSDK %d",res);
                                 [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];

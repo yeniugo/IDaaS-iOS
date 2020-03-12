@@ -265,6 +265,34 @@
             [delegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
         }
     }
+    [self refreshToken];
+}
+
+- (void)refreshToken{
+    NSString *mainuserid = [TRUUserAPI getUser].userId;
+        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSString *paras = [xindunsdk encryptByUkey:mainuserid ctx:nil signdata:nil isDeviceType:YES];
+        NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+        YCLog(@"111111111111111");
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/token/gen"] withParts:dictt onResult:^(int errorno, id responseBody){
+            YCLog(@"111111111111111+");
+            [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"refreshtoken error = %d",errorno]];
+            if(errorno==0){
+                YCLog(@"%@",responseBody);
+                if (responseBody!=nil) {
+                    NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+                    if([dic[@"code"] intValue]==0){
+                        dic = dic[@"resp"];
+                        NSString *refreshToken = dic[@"refresh_token"];
+                        [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:@"refresh_token"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                    }
+                }
+            }else{
+                
+            }
+        }];
 }
 
 - (void)hideLocalAuth{

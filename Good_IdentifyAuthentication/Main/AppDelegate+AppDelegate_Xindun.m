@@ -16,7 +16,7 @@
     //http://192.168.1.115:8080/cims
     //测试环境http://36.110.121.56:8100/authn
 #if TARGET_IPHONE_SIMULATOR
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal.mwr.gov.cn:8100/authn" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://36.110.121.56:8100/authn" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [[TRUCompanyModel alloc] init];
 //    companymodel.activation_mode = @"1";
@@ -50,7 +50,12 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal.mwr.gov.cn:8100/authn" forKey:@"CIMSURL"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     
-    bool result = [xindunsdk initEnv:@"com.example.demo" url:kServerUrl];
+    bool result = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:kServerUrl devfpUrl:kServerUrl];
+    if (result) {
+        [HAMLogOutputWindow printLog:@"初始化sdk成功"];
+    }else{
+        [HAMLogOutputWindow printLog:@"初始化sdk失败"];
+    }
     YCLog(@"initXdSDK %d",result);
     
     //

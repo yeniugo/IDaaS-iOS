@@ -236,8 +236,8 @@
         deldevs = [deleteDevices componentsJoinedByString:@","];
     }
     __weak typeof(self) weakSelf = self;
-    NSArray *ctx = @[@"del_uuids",deldevs];
-    NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",@"localapp"];
+    NSString *sign = [NSString stringWithFormat:@"%@%@",deldevs,@"localapp"];
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {

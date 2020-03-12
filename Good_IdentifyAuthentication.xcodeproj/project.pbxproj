@@ -253,7 +253,8 @@
 		2D9EDBBC21C37B7F00658183 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EDBBB21C37B7F00658183 /* HAMLogOutputWindow.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2DD8774121A7D35500572D71 /* TRUBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */; };
-		2DD8774321A7D85600572D71 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD8774221A7D85600572D71 /* libxindunsdk.a */; };
+		2DDFCFC9241939E400E55E2C /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DDFCFC8241939E400E55E2C /* trusfort.lic */; };
+		2DDFCFCB24193CE200E55E2C /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
 		91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
@@ -508,7 +509,6 @@
 		128208781F98A392004DD5C6 /* TRUScanFingerprintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUScanFingerprintView.h; sourceTree = "<group>"; };
 		128208791F98A392004DD5C6 /* TRUScanFingerprintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUScanFingerprintView.m; sourceTree = "<group>"; };
 		128208821F98AFE4004DD5C6 /* Gestureloading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Gestureloading.json; sourceTree = "<group>"; };
-		1282A7B620B2712400DD72C5 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
 		128D5CEA1F7DDB4800753EE5 /* TRUDevicesManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUDevicesManagerController.h; sourceTree = "<group>"; };
 		128D5CEB1F7DDB4800753EE5 /* TRUDevicesManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUDevicesManagerController.m; sourceTree = "<group>"; };
 		128D5CEC1F7DDB4800753EE5 /* TRUDevicesManagerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRUDevicesManagerController.xib; sourceTree = "<group>"; };
@@ -656,6 +656,9 @@
 		2D32E98A228AA2CF0032A95A /* dongtaikouling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dongtaikouling.json; sourceTree = "<group>"; };
 		2D41270D219569AC005369FB /* TRUSSOBlankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSOBlankView.h; sourceTree = "<group>"; };
 		2D41270E219569AC005369FB /* TRUSSOBlankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSOBlankView.m; sourceTree = "<group>"; };
+		2D45EA7824188B7800D85013 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
+		2D45EA7A24188B7800D85013 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
+		2D45EA7B24188B7800D85013 /* TrusfortBigdataSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortBigdataSDK.h; sourceTree = "<group>"; };
 		2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSchemeTokenViewController.m; sourceTree = "<group>"; };
 		2D4B970A2181A23800867797 /* TRUSchemeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUSchemeTokenViewController.h; sourceTree = "<group>"; };
 		2D4B970C2181A4DB00867797 /* TRUTokenUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTokenUtil.h; sourceTree = "<group>"; };
@@ -702,7 +705,8 @@
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DD8773F21A7D35500572D71 /* TRUBuildingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBuildingViewController.h; sourceTree = "<group>"; };
 		2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUBuildingViewController.m; sourceTree = "<group>"; };
-		2DD8774221A7D85600572D71 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
+		2DDFCFC8241939E400E55E2C /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
+		2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		2DE40B09218BF48B002A37D1 /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		2DEA329021A159170055F719 /* TRULoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoadingViewController.h; sourceTree = "<group>"; };
@@ -728,6 +732,7 @@
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
 				125633381F7A22B1007FF392 /* libresolv.tbd in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
+				2DDFCFCB24193CE200E55E2C /* libxindunsdk.a in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
@@ -738,7 +743,6 @@
 				1256332A1F7A21E6007FF392 /* SystemConfiguration.framework in Frameworks */,
 				2D0AF47623B36B7C00E401FE /* libSTSilentLivenessDetector.a in Frameworks */,
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
-				2DD8774321A7D85600572D71 /* libxindunsdk.a in Frameworks */,
 				125633261F7A21CD007FF392 /* CoreFoundation.framework in Frameworks */,
 				125633241F7A21BD007FF392 /* CFNetwork.framework in Frameworks */,
 				91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */,
@@ -960,8 +964,11 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				1282A7B620B2712400DD72C5 /* xindunsdk.h */,
-				2DD8774221A7D85600572D71 /* libxindunsdk.a */,
+				2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */,
+				2DDFCFC8241939E400E55E2C /* trusfort.lic */,
+				2D45EA7B24188B7800D85013 /* TrusfortBigdataSDK.h */,
+				2D45EA7824188B7800D85013 /* TrusfortDevId.h */,
+				2D45EA7A24188B7800D85013 /* xindunsdk.h */,
 			);
 			name = Xindun;
 			path = ..;
@@ -1986,6 +1993,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DDFCFC9241939E400E55E2C /* trusfort.lic in Resources */,
 				1242D81620B4213E008EDF07 /* CDYHlogo.png in Resources */,
 				12409F961F8F48A1000D342D /* TRUApplictionCell.xib in Resources */,
 				12F037291F9F4964007F4C19 /* voicebg.json in Resources */,
@@ -2408,8 +2416,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
+				CODE_SIGN_IDENTITY = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -2445,6 +2453,7 @@
 				PROVISIONING_PROFILE = "8f15133b-dde4-4193-b35c-ad3020f2a76e";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2490,6 +2499,7 @@
 				PROVISIONING_PROFILE = "8f15133b-dde4-4193-b35c-ad3020f2a76e";
 				PROVISIONING_PROFILE_SPECIFIER = MwrXindunLanzheng2019;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Release;
 		};
