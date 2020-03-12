@@ -264,17 +264,6 @@
     [self.loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:self.loginBtn];
 
-//    UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-//    collectionViewLayout.itemSize = CGSizeMake(authBtnW, authBtnH);
-//    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, authBtnY, SCREENW, authBtnH) collectionViewLayout:collectionViewLayout];
-//    self.collectionView.backgroundColor = [UIColor clearColor];
-//    self.collectionView.scrollEnabled = NO;
-//    [self.collectionView registerClass:[TRUAuthenticateCollectionCell class] forCellWithReuseIdentifier:@"TRUAuthenticateCollectionCell"];
-//    self.collectionView.delegate = self;
-//    self.collectionView.dataSource = self;
-//    self.imageArray = @[@"AuthBtnIcon",@"LoginBtnIcon"];
-//    self.titleArray = @[@"认证请求",@"登录控制"];
-//    [self.scrollView addSubview:self.collectionView];
     self.scanButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.scrollView addSubview:self.scanButton];
     [self.scanButton addTarget:self action:@selector(scanBtnClick:) forControlEvents:UIControlEventTouchUpInside];

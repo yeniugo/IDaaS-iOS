@@ -406,7 +406,9 @@
                     }else{
                         if (delegate.isNeedPush) {
                             NSString *userid = [TRUUserAPI getUser].userId;
+                            [self pushAuth1];
                         }else if (self.isNeedpush){
+                            [self pushAuth1];
                         }
                     }
                     break;

@@ -670,7 +670,7 @@
                 self.apid = apid;
             }
             NSString *schemeType;
-            if ([type isEqualToString:@"auth"]) {
+            if ([type isEqualToString:@"auth1"]) {
                 schemeType = @"11";
             }else if ([type isEqualToString:@"logout"]){
                 schemeType = @"12";

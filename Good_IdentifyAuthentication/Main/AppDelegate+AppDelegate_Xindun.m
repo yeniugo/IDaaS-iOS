@@ -43,6 +43,7 @@
     bool result = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:kServerUrl devfpUrl:kServerUrl];
 //    bool result = [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:kServerUrl];
     
+    
     YCLog(@"initXdSDK %d",result);
 //    [xindunsdk getDeviceIdOnline:@"com.example.demo" withServer:@"https://dfs.trusfort.com/xdid/mapi" OnResult:^(int error, id dicResult) {
 //        YCLog(@"error = %d,dicResult = %@",error,dicResult);

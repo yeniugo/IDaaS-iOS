@@ -81,7 +81,7 @@
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
-            modeStr = @"1";
+//            modeStr = @"1";
             self.loginStr = modeStr;
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号,4:工号密码加手机，5工号密码加邮箱)
                 isEmail = YES;
@@ -322,6 +322,11 @@
             case 4:
             {
                 if (self.multipleVerify) {
+                    if (self.inputphonemailTF.text.length==0) {
+                        [self showHudWithText:@"请输入验证码信息"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self verifyJpushId:@"employeenumPhone"];
                 }else{
                     [self firstVerify];
@@ -331,6 +336,11 @@
             case 5:
             {
                 if (self.multipleVerify) {
+                    if (self.inputphonemailTF.text.length==0) {
+                        [self showHudWithText:@"请输入验证码信息"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self verifyJpushId:@"employeenumEmail"];
                 }else{
                     [self firstVerify];
@@ -503,10 +513,20 @@
 
 - (IBAction)sendCodeBtnClcik:(UIButton *)sender {
     if (self.activeModel==4) {
+        if (self.phone.length == 0) {
+            [self showHudWithText:@"手机号不存在"];
+            [self hideHudDelay:1.5f];
+            return;
+        }
         [self requestCodeForUser:self.phone type:@"employeenumPhone"];
         return;
     }
     if (self.activeModel==5) {
+        if (self.email.length == 0) {
+            [self showHudWithText:@"邮箱不存在"];
+            [self hideHudDelay:1.5f];
+            return;
+        }
         [self requestCodeForUser:self.email type:@"employeenumEmail"];
         return;
     }
@@ -677,7 +697,10 @@
                 [self showHudWithText:@"请输入正确的账号/密码"];
                 [self hideHudDelay:2.0];
             }
-            
+            if (self.activeModel==4 || self.activeModel==5) {
+                [self showHudWithText:@"请输入正确的验证码"];
+                [self hideHudDelay:2.0];
+            }
         }else if(9002 == errorno){
             if ([type isEqualToString:@"email"]) {
                 [self showHudWithText:@"请输入正确的账号信息"];
@@ -686,7 +709,11 @@
                 [self showHudWithText:@"请输入正确的账号信息"];
                 [self hideHudDelay:2.0];
             }else if([type isEqualToString:@"employeenum"]){
-                [self showHudWithText:@"请输入正确的账号信息"];
+                [self showHudWithText:@"账号密码不正确"];
+                [self hideHudDelay:2.0];
+            }
+            if (self.activeModel==4 || self.activeModel==5) {
+                [self showHudWithText:@"请输入正确的验证码"];
                 [self hideHudDelay:2.0];
             }
         }else if (9019 == errorno){
@@ -694,6 +721,13 @@
         }else if (9016 == errorno){
             [self showHudWithText:@"验证码失效"];
             [self hideHudDelay:2.0];
+        }else if(90041==errorno){
+            [self showHudWithText:@"验证码失效"];
+            [self hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self resetUI];
+            });
+            
         }else{
             NSString *err = [NSString stringWithFormat:@"%@",message];
             [self showHudWithText:@"激活失败"];
