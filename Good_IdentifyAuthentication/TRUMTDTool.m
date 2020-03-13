@@ -15,13 +15,19 @@
         return;
     }
     NSDictionary *userInfo = @{@"userId":[TRUUserAPI getUser].userId,@"dataType":@"ios.marketing.cims"};
-    [TrusfortDfsSdk reportDeviceEnvInfo:@"com.example.demo" withServer:@"http://mtg.trusfort.com:8000/xdid/mapi" withExtInfo:userInfo OnResult:^(int error, id dicResult) {
+    NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *reportURL = [cimsurl stringByAppendingString:@"/mapi/01/init/getDeviceFingerPrintingId/mapi"];
+    [TrusfortDfsSdk reportDeviceEnvInfo:@"com.example.demo" withServer:reportURL withExtInfo:userInfo OnResult:^(int error, id dicResult) {
         NSString *msg = nil;
         if (dicResult!=nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[dicResult dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             msg = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
+            [HAMLogOutputWindow printLog:@"mtd成功"];
+        }else{
+            [HAMLogOutputWindow printLog:@"mtd失败"];
         }
         YCLog(@"error:%d\nmeg:%@",error,msg);
+        
     }];
 }
 @end

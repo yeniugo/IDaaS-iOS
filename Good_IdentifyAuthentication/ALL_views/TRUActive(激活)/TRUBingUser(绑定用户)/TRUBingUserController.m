@@ -19,6 +19,7 @@
 #import "TRUhttpManager.h"
 #import "AppDelegate.h"
 #import "TRUTokenUtil.h"
+#import "UIButton+Touch.h"
 @interface TRUBingUserController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *numView;
@@ -76,6 +77,7 @@
     self.inputoneTF.delegate = self;
     self.inputpasswordTF.delegate = self;
     self.inputphonemailTF.delegate = self;
+    self.verifyBtn.timeInterval = 0.5;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
