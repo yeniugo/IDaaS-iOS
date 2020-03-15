@@ -22,7 +22,7 @@
 //    companymodel.activation_mode = @"1";
     [TRUCompanyAPI saveCompany:companymodel];
 #else
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://36.110.121.56:8100/authn" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal.mwr.gov.cn:8100/authn" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel2 = [[TRUCompanyModel alloc] init];
     companymodel2.activation_mode = @"2";

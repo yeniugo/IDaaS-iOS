@@ -23,6 +23,7 @@
 #import "AppDelegate.h"
 #import "TRUHightlightedBtn.h"
 #import <AVFoundation/AVFoundation.h>
+#import "TRUTimeSyncUtil.h"
 @interface TRUAuthenticateViewController ()
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) TRUAuthenticateTopImageView *topImageView;
@@ -47,6 +48,13 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:kRefresh3DataNotification object:nil];
+    [self syncTime];
+}
+
+- (void)syncTime{
+    [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
+        
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

@@ -253,10 +253,10 @@
 		2D9EDBBC21C37B7F00658183 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EDBBB21C37B7F00658183 /* HAMLogOutputWindow.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2DD8774121A7D35500572D71 /* TRUBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */; };
-		2DDFCFC9241939E400E55E2C /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DDFCFC8241939E400E55E2C /* trusfort.lic */; };
 		2DDFCFCB24193CE200E55E2C /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
+		2DED34A9241B8D330079D6AB /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DED34A8241B8D330079D6AB /* trusfort.lic */; };
 		91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
 /* End PBXBuildFile section */
 
@@ -705,12 +705,12 @@
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DD8773F21A7D35500572D71 /* TRUBuildingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBuildingViewController.h; sourceTree = "<group>"; };
 		2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUBuildingViewController.m; sourceTree = "<group>"; };
-		2DDFCFC8241939E400E55E2C /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		2DE40B09218BF48B002A37D1 /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		2DEA329021A159170055F719 /* TRULoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoadingViewController.h; sourceTree = "<group>"; };
 		2DEA329121A159170055F719 /* TRULoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRULoadingViewController.m; sourceTree = "<group>"; };
+		2DED34A8241B8D330079D6AB /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.release.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.release.xcconfig"; sourceTree = "<group>"; };
 		4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.debug.xcconfig"; sourceTree = "<group>"; };
 		D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Good_IdentifyAuthentication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -964,8 +964,8 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
+				2DED34A8241B8D330079D6AB /* trusfort.lic */,
 				2DDFCFCA24193CE200E55E2C /* libxindunsdk.a */,
-				2DDFCFC8241939E400E55E2C /* trusfort.lic */,
 				2D45EA7B24188B7800D85013 /* TrusfortBigdataSDK.h */,
 				2D45EA7824188B7800D85013 /* TrusfortDevId.h */,
 				2D45EA7A24188B7800D85013 /* xindunsdk.h */,
@@ -1940,7 +1940,7 @@
 					12C0D2C91F7907DC00972218 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = AG9SM32322;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1993,7 +1993,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDFCFC9241939E400E55E2C /* trusfort.lic in Resources */,
 				1242D81620B4213E008EDF07 /* CDYHlogo.png in Resources */,
 				12409F961F8F48A1000D342D /* TRUApplictionCell.xib in Resources */,
 				12F037291F9F4964007F4C19 /* voicebg.json in Resources */,
@@ -2053,6 +2052,7 @@
 				12202D9B2019E5D10084FB7C /* defalticon@3x.png in Resources */,
 				1247446B2029A0EC00639F18 /* huonangaozhao@3x.png in Resources */,
 				1242D81A20B421C0008EDF07 /* chengduyinhang@2x.png in Resources */,
+				2DED34A9241B8D330079D6AB /* trusfort.lic in Resources */,
 				124161911FE8BBE000A680E0 /* img_0.png in Resources */,
 				124AE61C1FE0DDAB00D915FF /* pwddata.json in Resources */,
 				126D106520BBA6D100751234 /* applaunch.png in Resources */,
@@ -2416,9 +2416,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -2448,10 +2448,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = comshuilibu.lanzheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8f15133b-dde4-4193-b35c-ad3020f2a76e";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
