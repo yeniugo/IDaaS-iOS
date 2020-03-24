@@ -143,7 +143,7 @@ static id _instance = nil;
     win.rootViewController = nil;
     win.authType = AuthViewTypeNone;
 //    [HAMLogOutputWindow printLog:@"dismissAuthView"];
-    [TRUMTDTool uploadDevInfo];
+//    [TRUMTDTool uploadDevInfo];
 }
 
 + (void)dismissAuthViewAndCleanStatus{

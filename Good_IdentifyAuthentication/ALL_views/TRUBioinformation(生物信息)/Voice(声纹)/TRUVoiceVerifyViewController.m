@@ -10,6 +10,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
+#import "TRUMTDTool.h"
 @interface TRUVoiceVerifyViewController ()
 
 @end
@@ -84,9 +85,9 @@
         return;
     }
     if([[dic objectForKey:DCS] isEqualToString:SUCCESS] ){
-        
+//        [TRUMTDTool uploadDevInfo];
         YCLog(@"声纹验证成功");
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
         if (self.isTest) {
             [self showHudWithText:@"声纹验证成功"];
             [self hideHudDelay:2.0];
@@ -112,6 +113,7 @@
             [weakSelf hideHudDelay:0.0];
             NSString *tip = @"";
             if (0 == errorno) {
+                [TRUMTDTool uploadDevInfo];
                 tip = @"声纹验证成功";
             }else if (9019 == errorno){
                 [weakSelf deal9019Error];

@@ -197,7 +197,7 @@
                                     [[NSUserDefaults standardUserDefaults] setObject:spcode forKey:@"CIMSURL_SPCODE"];
                                     [[NSUserDefaults standardUserDefaults] synchronize];
                                     //切换icon
-                                    [weakSelf changeIconWithName:companyModel.icon_url];
+//                                    [weakSelf changeIconWithName:companyModel.icon_url];
                                     //切换服务地址 http://192.168.1.115:8000/cims
 //                                    bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
                                     bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
@@ -217,7 +217,7 @@
                                 [[NSUserDefaults standardUserDefaults] setObject:spcode forKey:@"CIMSURL_SPCODE"];
                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                 //切换icon
-                                [weakSelf changeIconWithName:companyModel.icon_url];
+//                                [weakSelf changeIconWithName:companyModel.icon_url];
                                 //切换服务地址 http://192.168.1.115:8000/cims
 //                                bool res = [xindunsdk initEnv:@"com.example.demo" url:companyModel.cims_server_url];
                                 bool res = [xindunsdk initCIMSEnv:@"com.example.demo" serviceUrl:companyModel.cims_server_url devfpUrl:companyModel.cims_server_url];
@@ -389,46 +389,46 @@
 
 -(void)changeIconWithName:(NSString *)Iconname{
     YCLog(@"-Iconname-%@",Iconname);
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.3) {
-        if ([Iconname isEqualToString:@"湖南高招"]) {
-            if ([UIApplication sharedApplication].supportsAlternateIcons) {
-                YCLog(@"你可以更换icon");
-                [[UIApplication sharedApplication] setAlternateIconName:@"huonangaozhao" completionHandler:^(NSError * _Nullable error) {
-                    if (!error) {
-                        YCLog(@"成功更换为%@",@"huonangaozhao");
-                    }else{
-                        YCLog(@"error:%@",error);
-                    }
-                }];
-            }else{
-                YCLog(@"非常抱歉，你不能更换icon");
-            }
-        }else if ([Iconname isEqualToString:@"成都银行"]){//成都银行
-            if ([UIApplication sharedApplication].supportsAlternateIcons) {
-                YCLog(@"你可以更换icon");
-                [[UIApplication sharedApplication] setAlternateIconName:@"chengduyinhang" completionHandler:^(NSError * _Nullable error) {
-                    if (!error) {
-                        YCLog(@"成功更换为%@",@"chengduyinhang");
-                    }else{
-                        YCLog(@"error:%@",error);
-                    }
-                }];
-            }else{
-                YCLog(@"非常抱歉，你不能更换icon");
-            }
-        }else{
-            [[UIApplication sharedApplication] setAlternateIconName:nil completionHandler:^(NSError * _Nullable error) {
-                if (!error) {
-                    YCLog(@"成功还原图标");
-                }else{
-                    YCLog(@"error:%@",error);
-                }
-            }];
-        }
-    }else{
-        //低版本不支持
-        YCLog(@"error:%@",@"低版本不支持");
-    }
+//    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.3) {
+//        if ([Iconname isEqualToString:@"湖南高招"]) {
+//            if ([UIApplication sharedApplication].supportsAlternateIcons) {
+//                YCLog(@"你可以更换icon");
+//                [[UIApplication sharedApplication] setAlternateIconName:@"huonangaozhao" completionHandler:^(NSError * _Nullable error) {
+//                    if (!error) {
+//                        YCLog(@"成功更换为%@",@"huonangaozhao");
+//                    }else{
+//                        YCLog(@"error:%@",error);
+//                    }
+//                }];
+//            }else{
+//                YCLog(@"非常抱歉，你不能更换icon");
+//            }
+//        }else if ([Iconname isEqualToString:@"成都银行"]){//成都银行
+//            if ([UIApplication sharedApplication].supportsAlternateIcons) {
+//                YCLog(@"你可以更换icon");
+//                [[UIApplication sharedApplication] setAlternateIconName:@"chengduyinhang" completionHandler:^(NSError * _Nullable error) {
+//                    if (!error) {
+//                        YCLog(@"成功更换为%@",@"chengduyinhang");
+//                    }else{
+//                        YCLog(@"error:%@",error);
+//                    }
+//                }];
+//            }else{
+//                YCLog(@"非常抱歉，你不能更换icon");
+//            }
+//        }else{
+//            [[UIApplication sharedApplication] setAlternateIconName:nil completionHandler:^(NSError * _Nullable error) {
+//                if (!error) {
+//                    YCLog(@"成功还原图标");
+//                }else{
+//                    YCLog(@"error:%@",error);
+//                }
+//            }];
+//        }
+//    }else{
+//        //低版本不支持
+//        YCLog(@"error:%@",@"低版本不支持");
+//    }
 }
 
 -(void)activeWith:(NSString *)userno andtype:(NSString *)type authCode:(NSString *)authCode pushid:(NSString *)pushid{

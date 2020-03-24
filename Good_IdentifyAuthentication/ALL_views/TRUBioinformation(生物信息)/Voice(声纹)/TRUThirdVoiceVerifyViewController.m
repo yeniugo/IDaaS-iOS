@@ -11,6 +11,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
+#import "TRUMTDTool.h"
 @interface TRUThirdVoiceVerifyViewController ()
 
 @end
@@ -84,7 +85,7 @@
         return;
     }
     if([[dic objectForKey:DCS] isEqualToString:SUCCESS] ){
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
         YCLog(@"声纹验证成功");
         __weak typeof(self) weakSelf = self;
         NSString *userid = [TRUUserAPI getUser].userId;
@@ -100,6 +101,7 @@
             [weakSelf hideHudDelay:0.0];
             NSString *tip = @"";
             if (0 == errorno) {
+                [TRUMTDTool uploadDevInfo];
                 tip = @"声纹验证成功";
                 [weakSelf showHudWithText:tip];
                 [weakSelf hideHudDelay:2.0];

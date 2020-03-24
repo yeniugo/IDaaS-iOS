@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *iosSchema;
 @property (nonatomic,copy) NSString *androidDownloadUrl;
 @property (nonatomic,copy) NSString *iosDownloadUrl;
+@property (nonatomic,copy) NSString *type;
 + (instancetype)modelWithDic:(NSDictionary *)dic;
 @end
 

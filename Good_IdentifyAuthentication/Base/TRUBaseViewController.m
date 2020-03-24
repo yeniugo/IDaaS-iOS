@@ -376,7 +376,12 @@ static const char TRUHUDKey = '\0';
 }
 
 - (void)showHudWithText:(NSString *)text{
-    
+//    __weak typeof(self) weakSelf = self;
+//       dispatch_async(dispatch_get_main_queue(), ^{
+//           weakSelf.hud.mode = MBProgressHUDModeText;
+//           weakSelf.hud.label.text = text;
+//           [weakSelf.hud showAnimated:YES];
+//       });
     self.hud.mode = MBProgressHUDModeText;
     self.hud.label.text = text;
     [self.hud showAnimated:YES];
@@ -397,7 +402,10 @@ static const char TRUHUDKey = '\0';
     [self.hud showAnimated:YES];
 }
 - (void)hideHudDelay:(NSTimeInterval)delay{
-    
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [weakSelf.hud hideAnimated:YES afterDelay:delay];
+//    });
     [self.hud hideAnimated:YES afterDelay:delay];
 }
 

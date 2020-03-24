@@ -135,11 +135,11 @@
     [self.pushTimer invalidate];
     self.pushTimer = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRefresh3DataNotification object:nil];
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (self.dismissBlock) {
-            self.dismissBlock(YES);
-        }
-    }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        if (self.dismissBlock) {
+//            self.dismissBlock(YES);
+//        }
+//    }];
     [self dismissVC:0];
     if (self.dismissBlock) {
         self.dismissBlock(YES);
@@ -440,15 +440,15 @@
 - (void)dismissVC:(NSString *)confrim{
     [self.pushTimer invalidate];
     self.pushTimer = nil;
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-        [JPUSHService setBadge:0];
-        if (self.dismissBlock) {
-            BOOL res = [confrim isEqualToString:@"1"] ? YES : NO;
-            self.dismissBlock(res);
-        }
-    }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//
+//        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//        [JPUSHService setBadge:0];
+//        if (self.dismissBlock) {
+//            BOOL res = [confrim isEqualToString:@"1"] ? YES : NO;
+//            self.dismissBlock(res);
+//        }
+//    }];
     [self.navigationController popViewControllerAnimated:YES];
 //    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -492,8 +492,11 @@
     vocieVC.isTest = NO;
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:vocieVC];
     if (rootVC.presentedViewController) {
-        [rootVC.presentedViewController dismissViewControllerAnimated:NO completion:^{
-            [rootVC presentViewController:nav animated:YES completion:nil];
+        [rootVC.presentedViewController dismissViewControllerAnimated:YES completion:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [rootVC presentViewController:nav animated:YES completion:nil];
+            });
+            
         }];
     }else{
         [rootVC presentViewController:nav animated:YES completion:nil];

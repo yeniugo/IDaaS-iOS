@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import "TRUTokenUtil.h"
 #import "UIButton+Touch.h"
+#import "TRUMTDTool.h"
 @interface TRUBingUserController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *numView;
@@ -83,7 +84,7 @@
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
-//            modeStr = @"1";
+//            modeStr = @"4";
             self.loginStr = modeStr;
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号,4:工号密码加手机，5工号密码加邮箱)
                 isEmail = YES;
@@ -148,19 +149,30 @@
     _numView.hidden = NO;
     _sendBtn.hidden = YES;
     _iphoneEmialView.hidden = YES;
+    self.inputoneTF.textColor = RGBCOLOR(0, 0, 0);
+    self.inputpasswordTF.textColor = RGBCOLOR(0, 0, 0);
     self.phoneemailTopConstraint.constant = 140;
     self.verifySendTopContraint.constant = 140;
     self.verifyButtonTopContraint.constant = - 55;
     self.inputoneTF.text = nil;
     self.inputpasswordTF.text = nil;
     self.inputphonemailTF.text = nil;
-    self.inputoneTF.enabled = YES;
-    self.inputpasswordTF.enabled = YES;
+    self.inputoneTF.userInteractionEnabled = YES;
+    self.inputpasswordTF.userInteractionEnabled = YES;
     self.multipleVerify = NO;
     self.phone = nil;
     self.email = nil;
     self.token = nil;
+    self.inputoneTF.enabled = YES;
+    self.inputpasswordTF.enabled = YES;
+    self.showPhoneOrEmailLB.text = @"";
 }
+
+//- (void)qrScan{
+//    if ([self.delegate respondsToSelector:@selector(restartQRScan)]) {
+//        [self.delegate restartQRScan];
+//    }
+//}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([string isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
@@ -292,7 +304,7 @@
 #pragma mark -验证
 - (IBAction)VerifyBtnClick:(UIButton *)sender {
     [self.view endEditing:YES];
-    if (_inputoneTF.text.trim.length == 0 && isEmployee) {
+    if (_inputoneTF.text.trim.length == 0 && self.activeModel ==3) {
         [self showHudWithText:@"请输入正确的账号/验证码信息"];
         [self hideHudDelay:1.5f];
         return;
@@ -329,8 +341,26 @@
                         [self hideHudDelay:1.5f];
                         return;
                     }
+                    if (self.inputpasswordTF.text.length ==0) {
+                        
+                    }
+                    if (self.phone.length==0) {
+                        [self showHudWithText:@"请联系管理员补全手机号信息"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self verifyJpushId:@"employeenumPhone"];
                 }else{
+                    if (self.inputoneTF.text.length == 0) {
+                        [self showHudWithText:@"请输入手机号"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
+                    if (self.inputpasswordTF.text.length == 0) {
+                        [self showHudWithText:@"请输入密码"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self firstVerify];
                 }
             }
@@ -343,8 +373,23 @@
                         [self hideHudDelay:1.5f];
                         return;
                     }
+                    if (self.email.length==0) {
+                        [self showHudWithText:@"请联系管理员补全邮箱信息"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self verifyJpushId:@"employeenumEmail"];
                 }else{
+                    if (self.inputoneTF.text.length == 0) {
+                        [self showHudWithText:@"请输入邮箱"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
+                    if (self.inputpasswordTF.text.length == 0) {
+                        [self showHudWithText:@"请输入密码"];
+                        [self hideHudDelay:1.5f];
+                        return;
+                    }
                     [self firstVerify];
                 }
             }
@@ -362,7 +407,22 @@
     if(pushID.length==0){
         pushID = @"1234567890";
     }
-    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, @"employeenum",self.inputpasswordTF.text];
+    NSString *type;
+    switch (self.activeModel) {
+        case 4:
+        {
+            type = @"employeenumPhone";
+        }
+            break;
+        case 5:
+        {
+            type = @"employeenumEmail";
+        }
+            break;
+        default:
+            break;
+    }
+    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, type,self.inputpasswordTF.text];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
@@ -395,7 +455,6 @@
                     }else if (weakSelf.phone.length==11){
                         weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"邮箱：%@",[weakSelf getEmailFromStr:weakSelf.email]];
                     }
-                    
                 }else if (weakSelf.activeModel==4){
                     if (weakSelf.phone.length==0) {
                         weakSelf.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"手机号： "];
@@ -411,6 +470,9 @@
             [self hideHudDelay:2.0];
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
+        }else if (9002 == errorno){
+            [self showHudWithText:@"用户不存在"];
+            [self hideHudDelay:2.0];
         }else if (9021 == errorno){
 //            weakSelf.sendBtn.enabled = YES;
             //            [weakSelf startTimer];
@@ -423,8 +485,11 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (9036 == errorno){
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
         }else{
-            [self showHudWithText:@"用户名密码错误"];
+            [self showHudWithText:@"用户名/密码错误"];
             [self hideHudDelay:2.0];
         }
     }];
@@ -532,22 +597,22 @@
         [self requestCodeForUser:self.email type:@"employeenumEmail"];
         return;
     }
-    if (_inputoneTF.text.trim.length == 0 && isEmail){
+    if (_inputoneTF.text.trim.length == 0 && self.activeModel ==1){
         [self showHudWithText:@"请输入您的邮箱"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if (_inputoneTF.text.trim.length == 0 && isPhone){
+    if (_inputoneTF.text.trim.length == 0 && self.activeModel ==2){
         [self showHudWithText:@"请输入您的手机号"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if ([_inputoneTF.text.trim isPhone] && isEmail) {
+    if (![_inputoneTF.text.trim isEmail] && self.activeModel == 1) {
         [self showHudWithText:@"请输入正确格式的邮箱账号"];
         [self hideHudDelay:1.5f];
         return;
     }
-    if ([_inputoneTF.text.trim isEmail] && isPhone) {
+    if (![_inputoneTF.text.trim isPhone] && self.activeModel ==2) {
         [self showHudWithText:@"请输入正确格式的手机号"];
         [self hideHudDelay:1.5f];
         return;
@@ -633,6 +698,7 @@
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
+//        errorno = 90041;
         NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
         if (errorno == 0) {
             NSString *userId = nil;
@@ -648,8 +714,8 @@
                     NSDictionary *dicc = nil;
                     if (errorno == 0 && responseBody) {
                         dicc = [xindunsdk decodeServerResponse:responseBody];
-                        
                         if ([dicc[@"code"] intValue] == 0) {
+//                            [TRUMTDTool uploadDevInfo];
                             dicc = dicc[@"resp"];
 //                            NSString *oldStr = dicc[@"accounts"];
 //                            NSString *replaceOld = @"\"";
@@ -662,6 +728,7 @@
                             NSString *json = [self toReadableJSONStringWithDic:dicc];
                             model.userId = userId;
                             [TRUUserAPI saveUser:model];
+                            [TRUMTDTool uploadDevInfo];
                             AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
                             appdelegate.isNeedPush = YES;
                             if (0) {//yes 表示需要完善信息
@@ -689,33 +756,20 @@
             [self showHudWithText:@"网络错误，请稍后重试"];
             [self hideHudDelay:2.0];
         }else if(9001 == errorno){
-            if ([type isEqualToString:@"email"]) {
-                [self showHudWithText:@"请输入正确的账号/验证码信息"];
-                [self hideHudDelay:2.0];
-            }else if([type isEqualToString:@"phone"]){
-                [self showHudWithText:@"请输入正确的账号/验证码信息"];
-                [self hideHudDelay:2.0];
-            }else if([type isEqualToString:@"employeenum"]){
+            if (self.activeModel == 3){
                 [self showHudWithText:@"请输入正确的账号/密码"];
                 [self hideHudDelay:2.0];
-            }
-            if (self.activeModel==4 || self.activeModel==5) {
-                [self showHudWithText:@"请输入正确的验证码"];
+            }else{
+                [self showHudWithText:@"请输入正确的账号/验证码"];
                 [self hideHudDelay:2.0];
             }
         }else if(9002 == errorno){
-            if ([type isEqualToString:@"email"]) {
-                [self showHudWithText:@"请输入正确的账号信息"];
-                [self hideHudDelay:2.0];
-            }else if([type isEqualToString:@"phone"]){
-                [self showHudWithText:@"请输入正确的账号信息"];
-                [self hideHudDelay:2.0];
-            }else if([type isEqualToString:@"employeenum"]){
-                [self showHudWithText:@"账号密码不正确"];
+            if([type isEqualToString:@"employeenum"]){
+                [self showHudWithText:@"密码错误"];
                 [self hideHudDelay:2.0];
             }
             if (self.activeModel==4 || self.activeModel==5) {
-                [self showHudWithText:@"请输入正确的验证码"];
+                [self showHudWithText:@"验证码错误"];
                 [self hideHudDelay:2.0];
             }
         }else if (9019 == errorno){
@@ -723,13 +777,19 @@
         }else if (9016 == errorno){
             [self showHudWithText:@"验证码失效"];
             [self hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self resetUI];
+            });
         }else if(90041==errorno){
-            [self showHudWithText:@"验证码失效"];
+            [self showHudWithText:@"token失效"];
             [self hideHudDelay:2.0];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self resetUI];
             });
             
+        }else if (9036 == errorno){
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
         }else{
             NSString *err = [NSString stringWithFormat:@"%@",message];
             [self showHudWithText:@"激活失败"];
@@ -780,6 +840,14 @@
             }else if([type isEqualToString:@"phone"]){
                 [weakSelf showHudWithText:@"请输入正确的账号信息"];
                 [weakSelf hideHudDelay:2.0];
+            }else{
+                if (self.activeModel == 4) {
+                    [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                    [weakSelf hideHudDelay:2.0];
+                }else if (self.activeModel ==5 ){
+                    [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                    [weakSelf hideHudDelay:2.0];
+                }
             }
         }else if (9002 == errorno){
             if ([type isEqualToString:@"email"]) {
@@ -788,6 +856,14 @@
             }else if([type isEqualToString:@"phone"]){
                 [weakSelf showHudWithText:@"请输入正确的账号信息"];
                 [weakSelf hideHudDelay:2.0];
+            }else{
+                if (self.activeModel == 4) {
+                    [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                    [weakSelf hideHudDelay:2.0];
+                }else if (self.activeModel ==5 ){
+                    [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                    [weakSelf hideHudDelay:2.0];
+                }
             }
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
@@ -803,9 +879,23 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
-        }else if (9036 == errorno){
-            [weakSelf showHudWithText:message];
+        }else if(90041==errorno){
+            [self showHudWithText:@"token失效"];
+            [self hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self resetUI];
+            });
+        }else if (90044 == errorno){
+            [weakSelf showHudWithText:@"稍后再重试发送验证码"];
             [weakSelf hideHudDelay:2.0];
+        }else if (9036 == errorno){
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [self qrScan];
+//            });
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
+            
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:@"激活失败"];
@@ -851,6 +941,9 @@
         }else if (9026 == errorno){
             [weakSelf stopTimer];
             [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (9036 == errorno){
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:@"激活失败"];

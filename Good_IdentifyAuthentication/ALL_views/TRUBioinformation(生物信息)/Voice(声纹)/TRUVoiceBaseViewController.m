@@ -10,7 +10,7 @@
 #import "TRUDigitBlockInputView.h"
 #import "YCAnimationNumberView.h"
 #import "YCVoiceButton.h"
-
+#import "TRUMTDTool.h"
 @interface TRUVoiceBaseViewController ()<IFlyISVDelegate>
 
 @property (nonatomic, strong) TRUDigitBlockInputView *inputView1;
@@ -243,6 +243,7 @@
 - (void)onResult:(NSDictionary *)dic {
 //    [self.animaImageView stopAnimating];
     [self stopWaveAnimation];
+    
 }
 
 //发生错误

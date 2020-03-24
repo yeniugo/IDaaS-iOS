@@ -11,6 +11,7 @@
 #import "TRUUserAPI.h"
 #import "RadomMutableNumber.h"
 #import "TRUhttpManager.h"
+#import "TRUMTDTool.h"
 @interface TRUFaceInitViewController ()
 
 @end
@@ -65,6 +66,7 @@
             model.faceinfo = @"1";
             [TRUUserAPI saveUser:model];
             [weakSelf performSelector:@selector(dismissVC) withObject:nil afterDelay:2.0];
+            [TRUMTDTool uploadDevInfo];
         }else if (-5004 == errorno){//网络错误
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
             [weakSelf hideHudDelay:2.0];

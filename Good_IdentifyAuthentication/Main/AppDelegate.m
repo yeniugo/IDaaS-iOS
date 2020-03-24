@@ -92,7 +92,7 @@
 ////            }
 //        }
 //    }
-    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
+//    [[HAMLogOutputWindow sharedInstance] setHidden:NO];
 //    [HAMLogOutputWindow printLog:@"didFinishLaunchingWithOptions"];
 //    NSString *isss = [xindunsdk getDeviceId];
 //    [HAMLogOutputWindow printLog:isss];
@@ -122,7 +122,7 @@
     //    [self.window addSubview:launchImageView];
     //    [self.window bringSubviewToFront:launchImageView];
     __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf.thirdAwakeTokenStatus) {
             
@@ -857,7 +857,7 @@
         if ([weakSelf.soureSchme containsString:@"://"]) {
             urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }else{
-            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }
         weakSelf.soureSchme = nil;
         weakSelf.thirdAwakeTokenStatus = 0;
@@ -885,12 +885,14 @@
 //                [HAMLogOutputWindow printLog:@"poptorootsuccess"];
             }
             if (@available(iOS 10.0,*)) {
+                urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
 //                    self.tokenCompletionBlock = nil;
                     self.appCompletionBlock = nil;
                 }];
 //                [HAMLogOutputWindow printLog:@"auth2"];
             }else{
+                urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 //                self.tokenCompletionBlock = nil;
                 self.appCompletionBlock = nil;
@@ -904,7 +906,7 @@
             NSString *urlStr;
             NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
             if ([weakSelf.soureSchme containsString:@"://"]) {
-                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=logout&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }else{
                 urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }

@@ -20,7 +20,7 @@
 #import "TRULicenseAgreementViewController.h"
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
+#import "TRUMTDTool.h"
 
 @interface TRUVerifyFingerprintViewController ()
 
@@ -182,14 +182,17 @@
                                 _backBlocked(YES);
                             }
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }else if (self.isDoingAuth) {
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                             [TRUEnterAPPAuthView dismissAuthView];
+                            [TRUMTDTool uploadDevInfo];
                             //                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                             //                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                         }else{
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }
                         
@@ -286,12 +289,15 @@
                                 _backBlocked(YES);
                             }
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }else if (self.isDoingAuth) {
                             [TRUEnterAPPAuthView dismissAuthView];
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                            [TRUMTDTool uploadDevInfo];
                         }else{
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }
                         

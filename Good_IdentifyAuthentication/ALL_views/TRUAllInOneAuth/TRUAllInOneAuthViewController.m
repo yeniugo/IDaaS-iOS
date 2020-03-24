@@ -30,7 +30,7 @@
 #import <AFNetworking.h>
 #import "TRUCompanyAPI.h"
 #import "TRUMTDTool.h"
-#import "TrusfortDevId.h"
+//#import "TrusfortDevId.h"
 #import "TRUTimeSyncUtil.h"
 @interface TRUAllInOneAuthViewController ()
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -61,7 +61,7 @@ static double dytime = 0.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [TRUMTDTool uploadDevInfo];
+//    [TRUMTDTool uploadDevInfo];
     [self setCustomUI];
     [self refreshData];
     [self getPushInfo];
@@ -77,10 +77,25 @@ static double dytime = 0.0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MineIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
     }
+}
+
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [self getPushInfo];
+//}
+
+- (void)refreshList{
+//    YCLog(@"test");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self getPushInfo];
+    });
+    
 }
 
 - (void)checkUpdataWithPlist{
@@ -104,10 +119,10 @@ static double dytime = 0.0;
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
-                [TrusfortDfsSdk enableSensor:model2.hasMtd];
+//                [TrusfortDfsSdk enableSensor:model2.hasMtd];
             }else{
                 [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
-                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
+//                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
                     [delegate restUIForApp];
                 } cancelBlock:nil];
 //                self.updateStatus = 2;
@@ -212,10 +227,10 @@ static double dytime = 0.0;
             //
             //        }];
             //            [HAMLogOutputWindow printLog:@"TRUBaseTabBarController pushtoken2"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //                [HAMLogOutputWindow printLog:@"showapppush2"];
                 if (delegate.tokenPushVC) {
-                    //                    [HAMLogOutputWindow printLog:@"showapppush3"];
+//                    [HAMLogOutputWindow printLog:@"showapppush3"];
                 }else{
                     //                    [HAMLogOutputWindow printLog:@"showapppush4"];
                 }
@@ -379,7 +394,7 @@ static double dytime = 0.0;
                 if (cellmodel.appName.length==0) {
                     return;
                 }
-                if([cellmodel.h5Url hasPrefix:@"https://"]||[cellmodel.h5Url hasPrefix:@"http://"]){
+                if([cellmodel.type isEqualToString:@"h5"]){
                     [weakSelf getTokenWithRefreshTokenAndTokenByUseridwithappid:cellmodel.appId withResult:^(NSString *token) {
                         NSString *urlstr = [NSString stringWithFormat:@"%@?token=%@",cellmodel.h5Url,token];
                         if([cellmodel.h5Url hasSuffix:@"?token="]){
@@ -389,7 +404,7 @@ static double dytime = 0.0;
                         webview.urlStr = urlstr;
                         [weakSelf.navigationController pushViewController:webview animated:YES];
                     }];
-                }else{
+                }else if([cellmodel.type isEqualToString:@"scheme"]){
                     NSString *urlStr = cellmodel.iosSchema;
                     if(![urlStr containsString:@"://"]){
                         urlStr = [NSString stringWithFormat:@"%@://",urlStr];
@@ -457,7 +472,7 @@ static double dytime = 0.0;
                 if (cellmodel.appName.length==0) {
                     return;
                 }
-                if([cellmodel.h5Url hasPrefix:@"https://"]||[cellmodel.h5Url hasPrefix:@"http://"]){
+                if([cellmodel.type isEqualToString:@"h5"]){
                     [weakSelf getTokenWithRefreshTokenAndTokenByUseridwithappid:cellmodel.appId withResult:^(NSString *token) {
                         NSString *urlstr = [NSString stringWithFormat:@"%@?token=%@",cellmodel.h5Url,token];
                         if([cellmodel.h5Url hasSuffix:@"?token="]){
@@ -467,7 +482,7 @@ static double dytime = 0.0;
                         webview.urlStr = urlstr;
                         [weakSelf.navigationController pushViewController:webview animated:YES];
                     }];
-                }else{
+                }else if([cellmodel.type isEqualToString:@"scheme"]){
                     NSString *urlStr = cellmodel.iosSchema;
                     if(![urlStr containsString:@"://"]){
                         urlStr = [NSString stringWithFormat:@"%@://",urlStr];
@@ -652,8 +667,13 @@ static double dytime = 0.0;
                 [weakSelf deal9008Error];
             }else if (9019 == errorno){
                 [weakSelf deal9019Error];
+            }else if (9025 == errorno){
+                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                } cancelBlock:^{
+                }];
             }else{
-                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];//[NSString stringWithFormat:@"其他错误 %d", error];
+                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+                //[NSString stringWithFormat:@"其他错误 %d", error];
                 [weakSelf showHudWithText:err];
                 [weakSelf hideHudDelay:2.0];
             }
@@ -762,6 +782,10 @@ static double dytime = 0.0;
                 [weakSelf deal9008Error];
             }else if (9019 == errorno){
                 [weakSelf deal9019Error];
+            }else if (9025 == errorno){
+                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                } cancelBlock:^{
+                }];
             }else{
                 if (userid && userid.length > 0) {
                     NSDictionary *dic = [xindunsdk userInitializedInfo:userid];

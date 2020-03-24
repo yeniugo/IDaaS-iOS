@@ -83,6 +83,7 @@
         if (arr.count>0) {
             NSString *modeStr = arr[0];
 //            modeStr = @"5";
+            self.activeModel = [modeStr intValue];
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
                 isEmail = YES;
                 _inputoneTF.placeholder = @"请输入您的邮箱";
@@ -178,7 +179,25 @@
 }
 
 - (void)resetUI{
-    
+    _numView.hidden = NO;
+    _sendBtn.hidden = YES;
+    _iphoneEmialView.hidden = YES;
+    self.inputpasswordTF.textColor = RGBCOLOR(0, 0, 0);
+    self.emailphoneTopConstraint.constant = 140;
+    self.verifyTopConstraint.constant = 140;
+    self.sendBtnTopConstraint.constant = - 55;
+//    self.inputoneTF.text = nil;
+    self.inputpasswordTF.text = nil;
+    self.inputphonemailTF.text = nil;
+//    self.inputoneTF.enabled = YES;
+    self.inputpasswordTF.userInteractionEnabled = YES;
+    self.multipleVerify = NO;
+    self.phone = nil;
+    self.email = nil;
+    self.token = nil;
+//    self.inputoneTF.enabled = YES;
+    self.inputpasswordTF.enabled = YES;
+    self.showPhoneOrEmailLB.text = @"";
 }
 
 -(void)valueChanged:(UITextField *)field{
@@ -272,7 +291,22 @@
     if(pushID.length==0){
         pushID = @"1234567890";
     }
-    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, @"employeenum",self.inputpasswordTF.text];
+    NSString *type;
+    switch (self.activeModel) {
+        case 4:
+        {
+            type = @"employeenumPhone";
+        }
+            break;
+        case 5:
+        {
+            type = @"employeenumEmail";
+        }
+            break;
+        default:
+            break;
+    }
+    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, type,self.inputpasswordTF.text];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
@@ -520,9 +554,12 @@
     }
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+//    [self hideHudDelay:0.0];
+    
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
         [weakSelf hideHudDelay:0.0];
         NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+//        errorno = 90041;
         if (errorno == 0) {
             NSString *userId = nil;
             int err = [xindunsdk privateVerifyCIMSInitForUserNo:self.inputoneTF.text.trim response:dic[@"resp"] userId:&userId];
@@ -538,29 +575,42 @@
             [weakSelf hideHudDelay:2.0];
         }else if(9001 == errorno){
             if ([type isEqualToString:@"email"]) {
-                [self showHudWithText:@"请输入正确的账号/验证码信息"];
-                [self hideHudDelay:2.0];
+                [weakSelf showHudWithText:@"验证码信息错误"];
+                [weakSelf hideHudDelay:2.0];
             }else if([type isEqualToString:@"phone"]){
-                [self showHudWithText:@"请输入正确的账号/验证码信息"];
-                [self hideHudDelay:2.0];
+                [weakSelf showHudWithText:@"验证码信息错误"];
+                [weakSelf hideHudDelay:2.0];
             }else if([type isEqualToString:@"employeenum"]){
-                [self showHudWithText:@"请输入正确的账号/密码"];
+                [weakSelf showHudWithText:@"密码错误"];
+                [weakSelf hideHudDelay:2.0];
+            }else{
+                [self showHudWithText:@"验证码错误"];
                 [self hideHudDelay:2.0];
             }
             
         }else if(9002 == errorno){
             if ([type isEqualToString:@"email"]) {
-                [self showHudWithText:@"请输入正确的账号信息"];
-                [self hideHudDelay:2.0];
+                [weakSelf showHudWithText:@"验证码信息错误"];
+                [weakSelf hideHudDelay:2.0];
             }else if([type isEqualToString:@"phone"]){
-                [self showHudWithText:@"请输入正确的账号信息"];
-                [self hideHudDelay:2.0];
+                [weakSelf showHudWithText:@"验证码信息错误"];
+                [weakSelf hideHudDelay:2.0];
             }else if([type isEqualToString:@"employeenum"]){
-                [self showHudWithText:@"请输入正确的账号信息"];
-                [self hideHudDelay:2.0];
+                [weakSelf showHudWithText:@"密码错误"];
+                [weakSelf hideHudDelay:2.0];
+            }else{
+                [weakSelf showHudWithText:@"验证码错误"];
+                [weakSelf hideHudDelay:2.0];
             }
         }else if (9019 == errorno){
             [weakSelf deal9019Error];
+        }else if(90041==errorno){
+            [weakSelf showHudWithText:@"token失效"];
+            [weakSelf hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf resetUI];
+            });
+            
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:err];
@@ -631,6 +681,16 @@
                 [weakSelf showHudWithText:@"请输入正确的账号信息"];
                 [weakSelf hideHudDelay:2.0];
             }
+        }else if(90041==errorno){
+            [self showHudWithText:@"token失效"];
+            [self hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self resetUI];
+            });
+            
+        }else if (90044 == errorno){
+            [weakSelf showHudWithText:@"稍后再重试发送验证码"];
+            [weakSelf hideHudDelay:2.0];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:err];
@@ -684,7 +744,6 @@
             [weakSelf hideHudDelay:2.0];
         }
     }];
-
 }
 
 - (BOOL)checkPersonInfoVC:(TRUUserModel *)model{

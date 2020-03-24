@@ -22,6 +22,7 @@
 #import "TRUhttpManager.h"
 #import "TRUTokenUtil.h"
 #import "YZXGesturesView.h"
+#import "TRUMTDTool.h"
 @interface TRUGestureModify2ViewController ()
 
 @property (nonatomic, strong) UILabel *topLabel;
@@ -133,6 +134,7 @@
             [self registerGesture:gesture];
             self.hintLabel.textColor = [UIColor darkGrayColor];
             self.hintLabel.text = @"验证手势成功";
+            [TRUMTDTool uploadDevInfo];
         }else{
             self.hintLabel.textColor = [UIColor darkGrayColor];
             self.hintLabel.text = @"两次手势不一致，请重新输入";
@@ -170,12 +172,12 @@
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
         if(delegate.thirdAwakeTokenStatus==1){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
-        }
-        if(delegate.thirdAwakeTokenStatus==2){
+        }else if(delegate.thirdAwakeTokenStatus==2){
             //                [weakSelf getNetToken];
-        }
-        if (delegate.thirdAwakeTokenStatus==8) {
+        }else if (delegate.thirdAwakeTokenStatus==8) {
             [weakSelf getAuthToken];
+        }else if (delegate.thirdAwakeTokenStatus==11) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
         }
     }else{
         if (self.oldEncryptedGesture.length == 0 || encryptedGesture.length == 0) {

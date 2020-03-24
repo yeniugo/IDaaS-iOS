@@ -27,6 +27,7 @@
 #import <YYWebImage.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "YZXGesturesView.h"
+#import "TRUMTDTool.h"
 @interface TRUGestureVerify2ViewController ()
 @property (nonatomic, strong) UILabel *topLabel;
 @property (nonatomic, strong) YZXGesturesView             *YZXGesturesView;
@@ -220,7 +221,7 @@
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
         [def setObject:printNum forKey:@"VerifyFingerNumber2"];
-        
+        [TRUMTDTool uploadDevInfo];
         if (self.completionBlock) {
             self.completionBlock();
         }
@@ -344,6 +345,10 @@
                 ssss = @"您需要通过短信验证身份，然后重新设置手势";
             }else if ([modeStr isEqualToString:@"3"]){
                 ssss = @"您需要通过密码验证身份，然后重新设置手势";
+            }else if ([modeStr isEqualToString:@"4"]){
+                ssss = @"我们将通过用户名密码登录加手机号之后，重新绘制手势。";
+            }else if ([modeStr isEqualToString:@"5"]){
+                ssss = @"我们将通过用户名密码登录加邮箱之后，重新绘制手势。";
             }
         }
         

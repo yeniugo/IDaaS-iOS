@@ -484,6 +484,39 @@
                 }
             }
                 break;
+            case 11:
+            {
+                delegate.isNeedPush = YES;
+                TRUSchemeTokenViewController *tokenVC = [[TRUSchemeTokenViewController alloc] init];
+                tokenVC.schemetype = 11;
+                tokenVC.isShowAuth = NO;
+                __weak typeof(self) weakSelf = self;
+                __weak AppDelegate *weakDelegate = delegate;
+                //                NSString *sourceScheme = delegate.soureSchme;
+                NSString *cimsURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                tokenVC.completionBlock== ^(NSDictionary *tokenDic){
+                    NSString *urlStr;
+                    NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                    if ([delegate.soureSchme containsString:@"://"]) {
+                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                    }else{
+                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                    }
+                    if (@available(iOS 10.0,*)) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
+                            
+                        }];
+                    }else{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                    }
+                    
+                };
+                if ([weakDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+                    UINavigationController *rootnav = weakDelegate.window.rootViewController;
+                    [rootnav pushViewController:tokenVC animated:YES];
+                }
+            }
+                break;
             default:
                 break;
         }

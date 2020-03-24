@@ -16,7 +16,7 @@
 #import <Lottie/Lottie.h>
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
+#import "TRUMTDTool.h"
 #import "TRUGestureVerify2ViewController.h"
 
 
@@ -196,12 +196,15 @@
                                 _backBlocked(YES);
                             }
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }else if (self.isDoingAuth) {
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                             [TRUEnterAPPAuthView dismissAuthView];
+                            [TRUMTDTool uploadDevInfo];
                         }else{
                             [self.navigationController popViewControllerAnimated:YES];
+                            [TRUMTDTool uploadDevInfo];
                             //                                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
                         }
 //                        [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
@@ -220,6 +223,7 @@
                                 [TRUUserAPI deleteUser];
                                 [TRUEnterAPPAuthView dismissAuthView];
                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+                                [TRUMTDTool uploadDevInfo];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"

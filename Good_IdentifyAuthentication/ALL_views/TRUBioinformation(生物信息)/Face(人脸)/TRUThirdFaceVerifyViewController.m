@@ -12,7 +12,7 @@
 #import "TRUUserAPI.h"
 #import "TRUIflyMSCUtil.h"
 #import "TRUhttpManager.h"
-
+#import "TRUMTDTool.h"
 @interface TRUThirdFaceVerifyViewController ()
 
 @end
@@ -74,7 +74,7 @@
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResultWithMessage:^(int errorno, id responseBody, NSString *message){
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
             [weakSelf showHudWithText:@"唤起认证成功"];
             [weakSelf hideHudDelay:2.0];
             if (weakSelf.isMoreVerify) {//再去做声纹认证
@@ -86,6 +86,7 @@
                     vocieVC.isPushVerify = YES;
                     
                     [weakSelf.navigationController pushViewController:vocieVC animated:YES];
+                    [TRUMTDTool uploadDevInfo];
                 }else{
                     [weakSelf showHudWithText:@"您未初始化声纹，请选择其他认证"];
                     [weakSelf hideHudDelay:2.0];

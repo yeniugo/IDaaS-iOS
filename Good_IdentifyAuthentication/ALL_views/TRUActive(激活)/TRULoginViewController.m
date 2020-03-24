@@ -69,7 +69,14 @@
     }else{
         self.titleLabel.text = [NSString stringWithFormat:@"芯盾统一身份认证"];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartQRCodeScan) name:@"trurestartQRscan" object:nil];
 }
+
+- (void)restartQRCodeScan{
+    [self scanViewTap];
+}
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -116,6 +123,10 @@
     
     //[self addScanViewMessage:@"http://192.168.1.214:8100/authn/download.html?spcode=8284f8b351c34cc0a9a68bd960fba8fc"];
 }
+
+//- (void)restartQRScan{
+//    [self scanViewTap];
+//}
 
 - (void)addScanViewMessage:(NSString *)result{
     __weak typeof(self) weakSelf = self;
@@ -341,6 +352,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -31,6 +31,8 @@
 #import "YZXGesturesView.h"
 #import "YZXDefine.h"
 #import "YZXInfoView.h"
+#import "TRUMTDTool.h"
+
 @interface TRUGestureVerifyViewController ()
 //@property (nonatomic, strong) LOTAnimationView *identifylotView;
 //@property (nonatomic, strong) LOTAnimationView *loadlotView;
@@ -313,6 +315,7 @@
     if([encryptedGesture isEqualToString:[TRUFingerGesUtil getGesturePwd]]){
         self.topLabel.textColor = [UIColor darkGrayColor];
         self.topLabel.text = @"手势密码验证成功";
+//        [TRUMTDTool uploadDevInfo];
 //        self.hintLabel.textColor = [UIColor darkGrayColor];
 //        self.hintLabel.text = @"手势密码验证成功";
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -328,6 +331,7 @@
                 //                        self.isAuth = YES;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                 [TRUEnterAPPAuthView dismissAuthView];
+                [TRUMTDTool uploadDevInfo];
             }else{
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 //                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
@@ -339,6 +343,7 @@
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                 [TRUEnterAPPAuthView dismissAuthView];
+                [TRUMTDTool uploadDevInfo];
             }else{
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 //                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];

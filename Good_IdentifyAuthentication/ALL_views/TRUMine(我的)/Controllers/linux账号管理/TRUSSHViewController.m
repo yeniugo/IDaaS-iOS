@@ -128,6 +128,7 @@
             [weakSelf showHudWithText:[NSString stringWithFormat:@"%d错误",errorno]];
             [weakSelf hideHudDelay:2.0];
         }
+        
     }];
 }
 

@@ -20,6 +20,7 @@
 #import <YYWebImage.h>
 #import "YZXGesturesView.h"
 #import "TRUEnterAPPAuthView.h"
+#import "TRUMTDTool.h"
 @interface TRUGestureModify1ViewController ()
 
 @property (nonatomic, strong) UILabel *topLabel;
@@ -163,6 +164,7 @@
         TRUGestureModify2ViewController *modifyViewController = [[TRUGestureModify2ViewController alloc] init];
         modifyViewController.oldEncryptedGesture = encryptedGesture;
         [self.navigationController pushViewController:modifyViewController animated:NO];
+        [TRUMTDTool uploadDevInfo];
     }else{
         self.topLabel.text = @"图案错误，请重试";
         self.topLabel.textColor = wrongLineColor;

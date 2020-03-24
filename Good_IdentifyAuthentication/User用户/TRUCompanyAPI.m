@@ -94,6 +94,11 @@ static NSString *TRUCompanyKEY = @"913d3d1ses762af60e2qb3467ad1864p";
         key = @"0";
     }
     [mutableDic setObject:key forKey:@"hasMtd"];
+    if (company.mtdExternalUrl.length == 0) {
+        
+    }else{
+        [mutableDic setObject:company.mtdExternalUrl forKey:@"mtdExternalUrl"];
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    YCLog(@"--Company--dic-->%@",dic);
     [defaults setObject:mutableDic.copy forKey:TRUCompanyKEY];

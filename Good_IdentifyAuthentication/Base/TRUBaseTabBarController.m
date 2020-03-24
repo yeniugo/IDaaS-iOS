@@ -96,6 +96,9 @@
         [delegate.window.rootViewController presentViewController:rootnav animated:YES completion:nil];
         delegate.appPushVC = nil;
     }
+//    if (delegate.thirdAwakeTokenStatus==11) {
+//
+//    }
 }
 
 

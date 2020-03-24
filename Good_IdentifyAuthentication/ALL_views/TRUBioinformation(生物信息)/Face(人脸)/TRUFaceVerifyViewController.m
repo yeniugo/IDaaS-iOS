@@ -11,7 +11,7 @@
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
 #import "GTMBase64.h"
-
+#import "TRUMTDTool.h"
 @interface TRUFaceVerifyViewController ()
 
 @end
@@ -65,9 +65,11 @@
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResultWithMessage:^(int errorno, id responseBody, NSString *message){
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
             [weakSelf showHudWithText:@"认证成功"];
             [weakSelf hideHudDelay:2.0];
             [weakSelf performSelector:@selector(dismissVC) withObject:nil afterDelay:2.0];
+            [TRUMTDTool uploadDevInfo];
         }else if (-5004 == errorno){//网络错误
             [weakSelf showHudWithText:@"网络错误，请稍后重试"];
             [weakSelf hideHudDelay:2.0];

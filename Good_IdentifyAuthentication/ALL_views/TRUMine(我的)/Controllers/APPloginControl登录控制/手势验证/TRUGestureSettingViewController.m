@@ -20,7 +20,7 @@
 #import <YYWebImage.h>
 #import "YZXGesturesView.h"
 #import "TRUEnterAPPAuthView.h"
-
+#import "TRUMTDTool.h"
 @interface TRUGestureSettingViewController ()
 
 @property (nonatomic, strong) YZXGesturesView             *YZXGesturesView;
@@ -133,6 +133,7 @@
             [self registerGesture:gesture];
             self.hintLabel.textColor = [UIColor darkGrayColor];
             self.hintLabel.text = @"验证手势成功";
+            [TRUMTDTool uploadDevInfo];
         }else{
             self.hintLabel.textColor = [UIColor darkGrayColor];
             self.hintLabel.text = @"两次手势不一致，请重新输入";

@@ -8,10 +8,12 @@
 
 #import "TRUBaseViewController.h"
 
+
+
 @interface TRUBingUserController : TRUBaseViewController
 
 @property (weak, nonatomic) IBOutlet UIView *iphoneEmialView;
 
-
+//@property (nonatomic ,weak) id delegate;
 
 @end

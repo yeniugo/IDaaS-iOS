@@ -58,5 +58,7 @@
  是否有MTD
  */
 @property (nonatomic, assign) BOOL hasMtd;
+
+@property (nonatomic, assign) NSString *mtdExternalUrl;
 + (instancetype)modelWithDic:(NSDictionary *)dic;
 @end

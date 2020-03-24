@@ -59,7 +59,15 @@
 - (void)showPushToken{
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus == 11) {
-        [self pushAuth1];
+        if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
+        }else{
+            if (delegate.isNeedPush) {
+                NSString *userid = [TRUUserAPI getUser].userId;
+                [self pushAuth1];
+            }else if (self.isNeedpush){
+                [self pushAuth1];
+            }
+        }
         return;
     }
     if([TRUUserAPI haveSubUser]){
@@ -175,6 +183,13 @@
                 }
             }
             YCLog(@"");
+        }else{
+            NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
+            dicc[@"codeerror"] = [NSString stringWithFormat:@"%d",errorno];
+            dicc[@"message"] = message;
+            if (appdelegate.appCompletionBlock) {
+                appdelegate.appCompletionBlock(dicc);
+            }
         }
     }];
 }
@@ -311,9 +326,6 @@
                     }
             }
 //            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            
-            
-                
             }
             break;
         }
@@ -401,30 +413,30 @@
             break;
         }
         case 11:
-                {
+        {
                     if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
                     }else{
                         if (delegate.isNeedPush) {
                             NSString *userid = [TRUUserAPI getUser].userId;
                             [self pushAuth1];
                         }else if (self.isNeedpush){
-                            [self pushAuth1];
+//                            [self pushAuth1];
                         }
                     }
-                    break;
-                }
-                case 12:
-                {
-                    [TRUEnterAPPAuthView dismissAuthView];
-                    [self unbind];
-                    break;
-                }
-                case 13:
-                {
-                    [TRUEnterAPPAuthView dismissAuthView];
-                    [self unbindwithback];
-                    break;
-                }
+            break;
+        }
+        case 12:
+        {
+            [TRUEnterAPPAuthView dismissAuthView];
+            [self unbind];
+            break;
+        }
+        case 13:
+        {
+            [TRUEnterAPPAuthView dismissAuthView];
+            [self unbindwithback];
+            break;
+        }
         default:
             break;
     }
