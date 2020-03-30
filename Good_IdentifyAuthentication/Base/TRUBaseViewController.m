@@ -292,6 +292,7 @@
 #pragma clang diagnostic pop
 }
 - (void)deal9008Error{
+    DDLogWarn(@"接口9008解绑");
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
@@ -319,7 +320,21 @@
     }
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
+//    if (@available(iOS 13.0, *)) {
+//        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+//            return UIStatusBarStyleDarkContent;
+//        }else{
+//            return UIStatusBarStyleDefault;
+//        }
+//    } else {
+//        return UIStatusBarStyleDefault;
+//    }
+//    return UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];

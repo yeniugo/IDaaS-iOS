@@ -7,11 +7,11 @@
 //
 
 #import "TRUPortalModel.h"
-
+#import <YYModel.h>
 @implementation TRUPortalModel
 + (instancetype)modelWithDic:(NSDictionary *)dic{
     id model = [[self alloc] init];
-    [model setValuesForKeysWithDictionary:dic];
+    [model yy_modelSetWithDictionary:dic];
     return model;
 }
 @end

@@ -82,6 +82,7 @@
     self.scanView = [[TRUScanView alloc] initWithScanLine];
     [self.scanView setScanResultBlock:^(NSString *result) {
         YCLog(@"--11111-->%@",result);
+//        [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"扫码信息为url = %@",result]];
         //判断扫描的二维码是激活，还是获取多租户信息
         if ([result hasPrefix:@"http://"]||[result hasPrefix:@"https://"]) {
             if ([result containsString:@"download"]) {
@@ -182,9 +183,11 @@
                 [TRUhttpManager getCIMSRequestWithUrl:[currentCims stringByAppendingString:@"api/ios/cims.html"] withParts:dic onResult:^(int errorno, id responseBody) {
                     [weakSelf hideHudDelay:0.0];
                     YCLog(@"--%d-->%@",errorno,responseBody);
+//                    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"获取后台配置信息 error = %d",errorno]];
                     if (errorno == 0 && responseBody) {
                         NSDictionary *dict = responseBody;
                         YCLog(@"--->%@",dict);
+                        
                         if (1) {
                             NSDictionary *dicc = responseBody;
                             TRUCompanyModel *companyModel = [TRUCompanyModel modelWithDic:dicc];
@@ -206,6 +209,7 @@
                                     [[NSUserDefaults standardUserDefaults] setObject:companyModel.cims_server_url forKey:@"CIMSURL"];
                                     [[NSUserDefaults standardUserDefaults] synchronize];
                                     [weakSelf dismissViewControllerAnimated:YES completion:^{
+//                                        [HAMLogOutputWindow printLog:@"扫码流程成功0"];
                                         if (weakSelf.backBlock) {
                                             weakSelf.backBlock(YES);
                                         }
@@ -232,7 +236,9 @@
                                 }else if ([op isEqualToString:@"login"]){
                                     
                                     [weakSelf dismissViewControllerAnimated:YES completion:^{
+                                        
                                         if (weakSelf.backBlock) {
+//                                            [HAMLogOutputWindow printLog:@"扫码流程成功1"];
                                             weakSelf.backBlock(YES);
                                         }
                                     }];

@@ -7,11 +7,11 @@
 //
 
 #import "TRUSessionManagerModel.h"
-
+#import <YYModel.h>
 @implementation TRUSessionManagerModel
 + (instancetype)modelWithDic:(NSDictionary *)dic{
     id model = [[self alloc] init];
-    [model setValuesForKeysWithDictionary:dic];
+    [model yy_modelSetWithDictionary:dic];
     return model;
 }
 //为了兼容

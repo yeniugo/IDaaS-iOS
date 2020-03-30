@@ -7,11 +7,11 @@
 //
 
 #import "TRUDeviceModel.h"
-
+#import <YYModel.h>
 @implementation TRUDeviceModel
 + (instancetype)modelWithDic:(NSDictionary *)dic{
     id model = [[self alloc] init];
-    [model setValuesForKeysWithDictionary:dic];
+    [model yy_modelSetWithDictionary:dic];
     if ([dic[@"isactive"] integerValue] == 0) {
         
     }

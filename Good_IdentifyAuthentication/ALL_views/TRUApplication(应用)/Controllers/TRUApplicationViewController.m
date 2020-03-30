@@ -53,7 +53,7 @@ static CGFloat KcollectionViewY = 315;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
     self.navigationController.navigationBar.hidden = YES;
     
     self.scanBtn.hidden = NO;

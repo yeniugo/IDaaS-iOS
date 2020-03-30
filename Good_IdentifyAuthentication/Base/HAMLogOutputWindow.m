@@ -143,7 +143,7 @@ static HAMLogOutputWindow __strong * sharedHAMLogOutputWindow = nil;
         }
         
         NSMutableAttributedString* logString = [[NSMutableAttributedString alloc] initWithString:log.log];
-        UIColor* logColor = currentTimestamp - log.timestamp > 0.1 ? [UIColor blackColor] : [UIColor yellowColor]; // yellow if new, white if more than 0.1 second ago
+        UIColor* logColor = currentTimestamp - log.timestamp > 0.1 ? [UIColor blackColor] : [UIColor redColor]; // yellow if new, white if more than 0.1 second ago
         [logString addAttribute:NSForegroundColorAttributeName value:logColor range:NSMakeRange(0, logString.length)];
         
         [attributedString appendAttributedString:logString];

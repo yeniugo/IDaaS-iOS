@@ -154,7 +154,21 @@
 //    return [super popToViewController:viewController animated:animated];
 //}
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
+//    if (@available(iOS 13.0, *)) {
+//        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+//            return UIStatusBarStyleDarkContent;
+//        }else{
+//            return UIStatusBarStyleDefault;
+//        }
+//    } else {
+//        return UIStatusBarStyleDefault;
+//    }
+//    return UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        return UIStatusBarStyleDefault;
+    }
 }
 
 #pragma mark UINavigationControllerDelegate
