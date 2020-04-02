@@ -706,7 +706,7 @@
             
             if (err == 0) {
                 //同步用户信息
-                
+                [weakSelf showHudWithText:@"正在激活"];
                 NSString *paras = [xindunsdk encryptByUkey:userId ctx:nil signdata:nil isDeviceType:NO];
                 NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
 //                NSString *baseUrl1 = @"http://192.168.1.150:8004";

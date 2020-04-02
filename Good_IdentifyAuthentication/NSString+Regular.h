@@ -14,4 +14,6 @@
 - (BOOL)isPhone;
 - (BOOL)isIP;
 - (BOOL)isLinuxUser;
+- (BOOL)isBase64Str;
+
 @end

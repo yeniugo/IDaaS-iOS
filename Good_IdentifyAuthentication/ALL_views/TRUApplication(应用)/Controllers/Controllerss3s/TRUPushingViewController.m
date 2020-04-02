@@ -408,7 +408,7 @@
                 [self.pushTimer invalidate];
                 self.pushTimer = nil;
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
+                int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
                 
                 if (dd >= 0) {
                     [self setDismissBlock:^(BOOL confirm){

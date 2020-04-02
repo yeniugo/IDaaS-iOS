@@ -117,7 +117,7 @@
     
     NSString *currentTimeStr = [self getCurrentTimes];
     //    NSLog(@"----->%@",currentTimeStr);
-    int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
+    int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
     //    NSLog(@"----->%d",dd);
     if (dd >= 0) {
         [self verifyFace];

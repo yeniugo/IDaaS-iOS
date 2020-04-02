@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,20 +33,18 @@
                     <rect key="frame" x="18" y="185" width="243" height="55"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oXL-Gc-AWm">
-                            <rect key="frame" x="42" y="12" width="193" height="30"/>
+                            <rect key="frame" x="36" y="12" width="199" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="fH8-39-YKo"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bing_yaoshi" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-VQ-qyu">
-                            <rect key="frame" x="6" y="15" width="30" height="25"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bing_duanxin" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-VQ-qyu">
+                            <rect key="frame" x="10" y="15" width="20" height="18"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="g7k-zF-nnI"/>
-                                <constraint firstAttribute="height" constant="25" id="gsa-rn-E5A"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="j2w-Ky-iqQ"/>
-                                <constraint firstAttribute="width" constant="30" id="kBb-FK-14F"/>
+                                <constraint firstAttribute="height" constant="18" id="gsa-rn-E5A"/>
+                                <constraint firstAttribute="width" constant="20" id="kBb-FK-14F"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -56,7 +54,7 @@
                         <constraint firstItem="JOT-VQ-qyu" firstAttribute="top" secondItem="hHc-vr-OVA" secondAttribute="top" constant="15" id="QHG-nt-gl5"/>
                         <constraint firstAttribute="trailing" secondItem="oXL-Gc-AWm" secondAttribute="trailing" constant="8" id="UW6-85-mI2"/>
                         <constraint firstAttribute="height" constant="55" id="cmB-NT-ryz"/>
-                        <constraint firstItem="JOT-VQ-qyu" firstAttribute="leading" secondItem="hHc-vr-OVA" secondAttribute="leading" constant="6" id="mjn-Sz-r6e"/>
+                        <constraint firstItem="JOT-VQ-qyu" firstAttribute="leading" secondItem="hHc-vr-OVA" secondAttribute="leading" constant="10" id="mjn-Sz-r6e"/>
                         <constraint firstItem="oXL-Gc-AWm" firstAttribute="leading" secondItem="JOT-VQ-qyu" secondAttribute="trailing" constant="6" id="wFp-7E-6l8"/>
                     </constraints>
                 </view>
@@ -64,14 +62,14 @@
                     <rect key="frame" x="18" y="185" width="339" height="55"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bing_yaoshi" translatesAutoresizingMaskIntoConstraints="NO" id="7ZK-Dk-Bk1">
-                            <rect key="frame" x="6" y="15" width="30" height="25"/>
+                            <rect key="frame" x="10" y="15" width="20" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="rwt-Ck-euv"/>
-                                <constraint firstAttribute="width" constant="30" id="sOs-ut-Gm4"/>
+                                <constraint firstAttribute="width" constant="20" id="sOs-ut-Gm4"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oVm-t2-sZ9">
-                            <rect key="frame" x="44" y="13" width="244" height="30"/>
+                            <rect key="frame" x="38" y="13" width="250" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="r7b-fO-ttD"/>
                             </constraints>
@@ -98,7 +96,7 @@
                         <constraint firstItem="7ZK-Dk-Bk1" firstAttribute="top" secondItem="puB-bf-iXc" secondAttribute="top" constant="15" id="JJF-jf-Tff"/>
                         <constraint firstAttribute="trailing" secondItem="XY5-5i-sL2" secondAttribute="trailing" constant="8" id="Onh-oY-AK7"/>
                         <constraint firstItem="XY5-5i-sL2" firstAttribute="top" secondItem="puB-bf-iXc" secondAttribute="top" constant="15" id="cqE-m4-2cu"/>
-                        <constraint firstItem="7ZK-Dk-Bk1" firstAttribute="leading" secondItem="puB-bf-iXc" secondAttribute="leading" constant="6" id="gOe-Od-TnF"/>
+                        <constraint firstItem="7ZK-Dk-Bk1" firstAttribute="leading" secondItem="puB-bf-iXc" secondAttribute="leading" constant="10" id="gOe-Od-TnF"/>
                         <constraint firstItem="oVm-t2-sZ9" firstAttribute="top" secondItem="puB-bf-iXc" secondAttribute="top" constant="13" id="lTv-J7-luk"/>
                         <constraint firstItem="XY5-5i-sL2" firstAttribute="leading" secondItem="oVm-t2-sZ9" secondAttribute="trailing" constant="8" id="xSu-rQ-kKd"/>
                     </constraints>
@@ -196,6 +194,7 @@
         <image name="addappeye" width="53" height="31"/>
         <image name="addappeyeclose" width="53" height="36"/>
         <image name="addappuser" width="16" height="19"/>
-        <image name="bing_yaoshi" width="59" height="46"/>
+        <image name="bing_duanxin" width="62" height="56"/>
+        <image name="bing_yaoshi" width="56" height="62"/>
     </resources>
 </document>

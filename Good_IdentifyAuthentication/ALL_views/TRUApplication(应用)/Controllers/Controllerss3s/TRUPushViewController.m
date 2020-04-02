@@ -389,7 +389,7 @@
         }else{
             if ([weakSelf.pushModel.authtype isEqualToString:@"6"]) {//人脸
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2020-03-31"];
+                int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
                 
                 if (dd >= 0) {
                     [weakSelf setDismissBlock:^(BOOL confirm){

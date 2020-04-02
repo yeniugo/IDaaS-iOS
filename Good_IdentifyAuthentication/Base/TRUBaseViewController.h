@@ -34,5 +34,6 @@
 - (void)showActivityWithText:(NSString *)text;
 - (void)hideHudDelay:(NSTimeInterval)delay;
 
+- (void)sendMail;
 
 @end

@@ -32,6 +32,7 @@
 #import "TRUMTDTool.h"
 //#import "TrusfortDevId.h"
 #import "TRUTimeSyncUtil.h"
+#import "UIScrollView+UITouch.h"
 @interface TRUAllInOneAuthViewController ()
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) TRUBottomScanView *bottomScanView;
@@ -332,7 +333,7 @@ static double dytime = 0.0;
             bottomScanView.scanButtonClick = ^{
                 [weakSelf scanBtnClick];
             };
-            
+
             [self.scrollView addSubview:bottomScanView];
             CircleDynamicView *circleDynamicView = [[CircleDynamicView alloc] initWithFrame:CGRectMake(0, 0, SCREENW, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6)];
             circleDynamicView.backgroundColor = [UIColor whiteColor];

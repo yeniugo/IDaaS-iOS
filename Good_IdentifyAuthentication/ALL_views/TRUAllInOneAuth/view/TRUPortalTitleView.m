@@ -23,13 +23,15 @@
         [self addSubview:titleLB];
         titleLB.textAlignment = NSTextAlignmentCenter;
         titleLB.frame = self.bounds;
-        titleLB.text = @"微 门 户";
+        titleLB.text = @"微门户";
         titleLB.font = [UIFont systemFontOfSize:14*PointWidthRatioX];
         self.titleLB = titleLB;
         
         UIView *lineView = [[UIView alloc] init];
+        
         [self addSubview:lineView];
-        lineView.backgroundColor = RGBCOLOR(153, 153, 153);
+        lineView.backgroundColor = RGBCOLOR(247, 249, 250);
+        self.lineView = lineView;
     }
     return self;
 }
@@ -37,7 +39,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
 //    self.titleLB.frame = self.bounds;
-    self.lineView.frame = CGRectMake(0, self.bounds.size.height-1, self.bounds.size.height-1, 0.5);
+    self.lineView.frame = CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width-(3 / [UIScreen mainScreen].scale), (3 / [UIScreen mainScreen].scale));
 }
 
 /*

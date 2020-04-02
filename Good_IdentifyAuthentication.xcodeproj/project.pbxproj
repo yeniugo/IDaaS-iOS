@@ -13,7 +13,6 @@
 		12098A0720CFA4D20027D927 /* NSCameraOption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12098A0020CFA4D10027D927 /* NSCameraOption.mm */; };
 		12098A0820CFA4D20027D927 /* Audio.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0120CFA4D10027D927 /* Audio.bundle */; };
 		12098A0920CFA4D20027D927 /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0220CFA4D10027D927 /* Image.bundle */; };
-		12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */; };
 		1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */; };
 		1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216452E1F96F2C200808730 /* TRUNetworkStatus.m */; };
 		121645331F96F2DF00808730 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645321F96F2DF00808730 /* Reachability.m */; };
@@ -215,7 +214,6 @@
 		12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
 		2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A628230BCCEA00C2F326 /* UILabel+Alignment.m */; };
 		2D00A62D230C03EB00C2F326 /* TRUQRShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */; };
-		2D07D11F2421FB5900DE4996 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D07D11C2421FB5900DE4996 /* libxindunsdk.a */; };
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
@@ -263,6 +261,13 @@
 		2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
 		2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */; };
 		2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731421D36F0C006D8281 /* UIButton+Touch.m */; };
+		2D96CE552432F302009080DC /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
+		2D96CEB624333CF2009080DC /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAC24333CF1009080DC /* unzip.c */; };
+		2D96CEB724333CF2009080DC /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAD24333CF1009080DC /* zip.c */; };
+		2D96CEB824333CF2009080DC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAE24333CF1009080DC /* ioapi.c */; };
+		2D96CEB924333CF2009080DC /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAF24333CF1009080DC /* mztools.c */; };
+		2D96CEBA24333CF2009080DC /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEB524333CF1009080DC /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2D96CECC24343109009080DC /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CECB24343109009080DC /* libxindunsdk.a */; };
 		2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
 		2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
@@ -274,6 +279,8 @@
 		2DAA2797230A9A2E00B3A6C4 /* TRUPortalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */; };
 		2DAA279D230AA7BB00B3A6C4 /* TRUPortalTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */; };
 		2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB18DF2232637CC00473824 /* TRUMTDTool.m */; };
+		2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */; };
+		2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */; };
 		2DC1B025231FA1A900A8A8DF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B024231FA1A900A8A8DF /* libc++.tbd */; };
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
@@ -313,7 +320,6 @@
 		12098A0120CFA4D10027D927 /* Audio.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Audio.bundle; sourceTree = "<group>"; };
 		12098A0220CFA4D10027D927 /* Image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Image.bundle; sourceTree = "<group>"; };
 		12098A0320CFA4D10027D927 /* NSCameraOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCameraOption.h; sourceTree = "<group>"; };
-		12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthenAnti_SpoofingSDK.framework; sourceTree = "<group>"; };
 		1212B5F81FDE52C600A19444 /* TRUNewFeatuerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUNewFeatuerViewController.h; sourceTree = "<group>"; };
 		1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUNewFeatuerViewController.m; sourceTree = "<group>"; };
 		1216452D1F96F2C200808730 /* TRUNetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUNetworkStatus.h; sourceTree = "<group>"; };
@@ -655,7 +661,6 @@
 		2D00A629230BCCEA00C2F326 /* UILabel+Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Alignment.h"; sourceTree = "<group>"; };
 		2D00A62B230C03EB00C2F326 /* TRUQRShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUQRShowViewController.h; sourceTree = "<group>"; };
 		2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUQRShowViewController.m; sourceTree = "<group>"; };
-		2D07D11C2421FB5900DE4996 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
 		2D07D11E2421FB5900DE4996 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
 		2D0BED3421C8F25E002AB0C1 /* TRUMultipleAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsViewController.h; sourceTree = "<group>"; };
@@ -747,6 +752,19 @@
 		2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LSNavigationController.m"; sourceTree = "<group>"; };
 		2D8B731321D36F0C006D8281 /* UIButton+Touch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Touch.h"; sourceTree = "<group>"; };
 		2D8B731421D36F0C006D8281 /* UIButton+Touch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Touch.m"; sourceTree = "<group>"; };
+		2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthenAnti_SpoofingSDK.framework; sourceTree = "<group>"; };
+		2D96CEAA24333CF1009080DC /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		2D96CEAC24333CF1009080DC /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		2D96CEAD24333CF1009080DC /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		2D96CEAE24333CF1009080DC /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		2D96CEAF24333CF1009080DC /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		2D96CEB024333CF1009080DC /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		2D96CEB124333CF1009080DC /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		2D96CEB224333CF1009080DC /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		2D96CEB324333CF1009080DC /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		2D96CEB424333CF1009080DC /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		2D96CEB524333CF1009080DC /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
+		2D96CECB24343109009080DC /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D99779621CB97F200B5019E /* TRUSubUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSubUserModel.h; sourceTree = "<group>"; };
 		2D99779721CB97F200B5019E /* TRUSubUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserModel.m; sourceTree = "<group>"; };
 		2D99779921CB982100B5019E /* TRUSubUserAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSubUserAPI.h; sourceTree = "<group>"; };
@@ -769,6 +787,10 @@
 		2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalTitleView.m; sourceTree = "<group>"; };
 		2DB18DF2232637CC00473824 /* TRUMTDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMTDTool.m; sourceTree = "<group>"; };
 		2DB18DF3232637CC00473824 /* TRUMTDTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMTDTool.h; sourceTree = "<group>"; };
+		2DBE8A2F24346A9800A5DB7E /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		2DBE8A342435C98200A5DB7E /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
+		2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
 		2DC1B024231FA1A900A8A8DF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2DC1B026231FA1D700A8A8DF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
@@ -806,14 +828,14 @@
 				121645371F972D0000808730 /* AVFoundation.framework in Frameworks */,
 				121C48CF1F7CE47F0077AE34 /* MapKit.framework in Frameworks */,
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
-				12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
+				2D96CE552432F302009080DC /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
-				2D07D11F2421FB5900DE4996 /* libxindunsdk.a in Frameworks */,
+				2D96CECC24343109009080DC /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
@@ -1026,9 +1048,9 @@
 		12476A221FA18C47000055CB /* AuthenFace */ = {
 			isa = PBXGroup;
 			children = (
+				2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */,
 				120989FE20CFA4D00027D927 /* AMGifRes.bundle */,
 				12098A0120CFA4D10027D927 /* Audio.bundle */,
-				12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */,
 				120989FF20CFA4D10027D927 /* AuthenModRes.bundle */,
 				12098A0220CFA4D10027D927 /* Image.bundle */,
 				12098A0320CFA4D10027D927 /* NSCameraOption.h */,
@@ -1040,7 +1062,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D07D11C2421FB5900DE4996 /* libxindunsdk.a */,
+				2D96CECB24343109009080DC /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2DB18DF3232637CC00473824 /* TRUMTDTool.h */,
@@ -1078,6 +1100,7 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2D96CEA924333CF1009080DC /* zip */,
 				2D13E55F22FD55DF000112AC /* MYCircleView */,
 				2D89623D22F9634600782CCA /* GestureUnlock */,
 				2D8B730621D32BFB006D8281 /* LSNavigationController */,
@@ -1800,6 +1823,8 @@
 		12C0D3311F790E6000972218 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2DBE8A2F24346A9800A5DB7E /* NSString+Base64.h */,
+				2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */,
 				12409F841F8F40DE000D342D /* NSString+Regular.h */,
 				12409F851F8F40DE000D342D /* NSString+Regular.m */,
 				12409F811F8F40C6000D342D /* NSString+Trim.h */,
@@ -1818,6 +1843,8 @@
 				2D8B731421D36F0C006D8281 /* UIButton+Touch.m */,
 				2D00A629230BCCEA00C2F326 /* UILabel+Alignment.h */,
 				2D00A628230BCCEA00C2F326 /* UILabel+Alignment.m */,
+				2DBE8A342435C98200A5DB7E /* UIScrollView+UITouch.h */,
+				2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */,
 			);
 			name = Category;
 			path = ..;
@@ -2006,6 +2033,32 @@
 				2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */,
 			);
 			path = LSNavigationController;
+			sourceTree = "<group>";
+		};
+		2D96CEA924333CF1009080DC /* zip */ = {
+			isa = PBXGroup;
+			children = (
+				2D96CEAA24333CF1009080DC /* ZipArchive.h */,
+				2D96CEAB24333CF1009080DC /* minizip */,
+				2D96CEB524333CF1009080DC /* ZipArchive.m */,
+			);
+			path = zip;
+			sourceTree = "<group>";
+		};
+		2D96CEAB24333CF1009080DC /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				2D96CEAC24333CF1009080DC /* unzip.c */,
+				2D96CEAD24333CF1009080DC /* zip.c */,
+				2D96CEAE24333CF1009080DC /* ioapi.c */,
+				2D96CEAF24333CF1009080DC /* mztools.c */,
+				2D96CEB024333CF1009080DC /* crypt.h */,
+				2D96CEB124333CF1009080DC /* zip.h */,
+				2D96CEB224333CF1009080DC /* unzip.h */,
+				2D96CEB324333CF1009080DC /* mztools.h */,
+				2D96CEB424333CF1009080DC /* ioapi.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		2DAA2787230A4EE000B3A6C4 /* TRUAllInOneAuth */ = {
@@ -2345,6 +2398,7 @@
 				121645461F97347B00808730 /* TRUFaceBaseViewController.mm in Sources */,
 				12F4435F1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.m in Sources */,
 				12409F9A1F8F4B22000D342D /* TRULoginViewController.m in Sources */,
+				2D96CEBA24333CF2009080DC /* ZipArchive.m in Sources */,
 				12476A031FA18B41000055CB /* MJRefreshFooter.m in Sources */,
 				12409F8C1F8F411C000D342D /* TRUTimerButton.m in Sources */,
 				12C0D3371F790E8700972218 /* TRUTabBar.m in Sources */,
@@ -2353,6 +2407,7 @@
 				12486CA520CE81260071ABC2 /* gesAndFingerNVController.m in Sources */,
 				2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */,
 				2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */,
+				2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */,
 				12749EC01FC7EAB700183EB4 /* TRUAuthorizedWebViewController.m in Sources */,
 				2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */,
 				12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */,
@@ -2360,6 +2415,7 @@
 				2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */,
 				2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */,
 				12C0D32C1F790D1600972218 /* TRUDynamicPasswordViewController.m in Sources */,
+				2D96CEB924333CF2009080DC /* mztools.c in Sources */,
 				12436A73210844710070F966 /* TRUGestureSettingViewController.m in Sources */,
 				12098A0720CFA4D20027D927 /* NSCameraOption.mm in Sources */,
 				12476A0F1FA18B41000055CB /* MJRefreshConst.m in Sources */,
@@ -2373,6 +2429,7 @@
 				12409F751F8F3FCE000D342D /* TRUFingerGesUtil.m in Sources */,
 				2D89624622F9634700782CCA /* YZXPointView.m in Sources */,
 				12409F951F8F48A1000D342D /* TRUApplictionCell.m in Sources */,
+				2D96CEB724333CF2009080DC /* zip.c in Sources */,
 				12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */,
 				2DAA2791230A83EE00B3A6C4 /* TRURectDynamicView.m in Sources */,
 				2D7FFF5E2189563600FCA1ED /* TRUPersonalDetailsModel.m in Sources */,
@@ -2409,6 +2466,7 @@
 				121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
 				2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */,
+				2D96CEB624333CF2009080DC /* unzip.c in Sources */,
 				12436A64210844590070F966 /* TRUVerifyFaceViewController.m in Sources */,
 				128D5D021F7E3A4D00753EE5 /* TRUAboutUSCell.m in Sources */,
 				12F9002B1F9DF4FC001125A3 /* TRUIflyMSCUtil.m in Sources */,
@@ -2442,6 +2500,7 @@
 				2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */,
 				2D8B731021D32BFB006D8281 /* UINavigationBar+LSNavigationController.m in Sources */,
 				12F542CA1F906964005AAEFC /* TRUTimeView.m in Sources */,
+				2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */,
 				12C29FDE1F96067100087FB7 /* MyTabBar.m in Sources */,
 				1216454E1F97348F00808730 /* TRUFaceGifView.m in Sources */,
 				121645331F96F2DF00808730 /* Reachability.m in Sources */,
@@ -2457,6 +2516,7 @@
 				12476A131FA18B41000055CB /* UIView+MJExtension.m in Sources */,
 				128208761F98A341004DD5C6 /* HUIPatternLockView.m in Sources */,
 				2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */,
+				2D96CEB824333CF2009080DC /* ioapi.c in Sources */,
 				12436A70210844710070F966 /* TRUGestureVerifyViewController.m in Sources */,
 				2D89624522F9634700782CCA /* YZXGesturesView.m in Sources */,
 				12C29FDF1F96067100087FB7 /* MyTabBarButton.m in Sources */,
@@ -2653,7 +2713,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Runxin Liu (WZ8S7XMP4A)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 218;
+				CURRENT_PROJECT_VERSION = 219;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -2675,7 +2735,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2703,7 +2763,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 218;
+				CURRENT_PROJECT_VERSION = 219;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2724,7 +2784,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2736,7 +2796,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSAd_Hot;
+				PROVISIONING_PROFILE_SPECIFIER = appstore_cims;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

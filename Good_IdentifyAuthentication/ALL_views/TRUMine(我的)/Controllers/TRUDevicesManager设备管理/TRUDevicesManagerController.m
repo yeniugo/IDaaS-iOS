@@ -14,6 +14,8 @@
 #import "TRUFingerGesUtil.h"
 #import "TRUhttpManager.h"
 #import "TRUTokenUtil.h"
+#import "NSString+Regular.h"
+#import "NSString+Base64.h"
 @interface TRUDevicesManagerController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *deviceList;
@@ -53,6 +55,9 @@
                         if ([dicres isKindOfClass:[NSDictionary class]]) {
                             NSDictionary *dic = (NSDictionary *)dicres;
                             TRUDeviceModel *model = [TRUDeviceModel modelWithDic:dic];
+                            if([model.devname isBase64Str]){
+                                model.devname = [model.devname base64Decode];
+                            }
                             if ([model.ifself isEqualToString:@"1"]) {
                                 [weakSelf.deviceList insertObject:model atIndex:0];
                             }else{

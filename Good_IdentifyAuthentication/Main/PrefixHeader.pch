@@ -8,16 +8,17 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
-
-#import "TRUBaseNavigationController.h"
-#import "UIView+FrameExt.h"
-#import <Masonry.h>
-#import "TRUUserModel.h"
-#import "TRUSubUserModel.h"
-#import "TRUConst.h"
-#import "UIColor+HEX.h"
-#import "TRUMacros.h"
-#import "HAMLogOutputWindow.h"
-#import <YYModel.h>
-
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import "TRUBaseNavigationController.h"
+    #import "UIView+FrameExt.h"
+    #import <Masonry.h>
+    #import "TRUUserModel.h"
+    #import "TRUSubUserModel.h"
+    #import "TRUConst.h"
+    #import "UIColor+HEX.h"
+    #import "TRUMacros.h"
+    #import "HAMLogOutputWindow.h"
+    #import <YYModel.h>
+#endif
 #endif

@@ -87,7 +87,7 @@
             [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
             [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
             [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-            DDLogWarn(@"userid = %@,SDK初始化 %@",currentUserId,[xindunsdk isUserInitialized:currentUserId]?@"成功":@"失败");
+            DDLogWarn(@"userid = %@,mfa SDK初始化 %@",currentUserId,[xindunsdk isUserInitialized:currentUserId]?@"成功":@"失败");
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             !weakSelf.completionBlock ? : weakSelf.completionBlock(nil);

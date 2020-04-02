@@ -15,9 +15,12 @@
 #import "TRUAuthSacnViewController.h"
 #import "TRUEnterAPPAuthView.h"
 #import "FireflyAlertView.h"
+#import "TRUUserAPI.h"
+#import "ZipArchive.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 //#import "UIViewController+LSNavigationController.h"
-@interface TRUBaseViewController ()<UIAlertViewDelegate>
+@interface TRUBaseViewController ()<UIAlertViewDelegate,MFMailComposeViewControllerDelegate>
 @property (nonatomic, assign) __block BOOL showed9019Error;
 /** hud */
 @property (nonatomic, weak) MBProgressHUD *hud;
@@ -34,6 +37,9 @@
 //@property (nonatomic, strong) 
 
 @property (nonatomic, assign) BOOL isCurrentPage;
+
+@property (assign,nonatomic) NSTimeInterval lastTouchTime;
+@property (assign,nonatomic) int clickAllTime;
 
 @end
 
@@ -293,12 +299,14 @@
 }
 - (void)deal9008Error{
     DDLogWarn(@"接口9008解绑");
-    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"密钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        
         [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-        
+        [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+        [TRUUserAPI deleteUser];
 //        [xindunsdk deactivateAllUsers];
         [self back2UnActiveRootVC];
     } cancelBlock:nil];
@@ -337,7 +345,20 @@
     }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
     [self.view endEditing:YES];
+    NSTimeInterval time = [self getNowTimeTimestamp];
+    if (time - self.lastTouchTime <=0.5) {
+        ++self.clickAllTime;
+//        NSLog(@"clicktime = %d",self.clickAllTime);
+        if (self.clickAllTime==7) {
+            [self sendMail];
+            self.clickAllTime = -100;
+        }
+    }else{
+        self.clickAllTime = 1;
+    }
+    self.lastTouchTime = time;
 }
 //待审批
 - (void)deal9021ErrorWithBlock:(void(^)())block{
@@ -438,6 +459,143 @@ static const char TRUHUDKey = '\0';
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     YCLog(@"%@ 界面消失",[self class]);
+}
+
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSTimeInterval time = [self getNowTimeTimestamp];
+////    NSLog(@"clicktime0 = %f",time);
+//    if (time - self.lastTouchTime <=0.5) {
+//        ++self.clickAllTime;
+////        NSLog(@"clicktime = %d",self.clickAllTime);
+//    }else{
+//        self.clickAllTime = 1;
+//    }
+//    self.lastTouchTime = time;
+//}
+
+-(NSTimeInterval)getNowTimeTimestamp{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+
+    NSTimeInterval a=[dat timeIntervalSince1970];
+
+    return a;
+}
+
+- (void)sendMail{
+    if (![MFMailComposeViewController canSendMail]) {
+        [self showHudWithText:@"请设置好系统邮件账户"];
+        [self hideHudDelay:2.0];
+        return;
+    }
+    NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    DDLogFileManagerDefault *logFileManager = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:documentsDirectory];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    //获取log文件夹路径
+//    NSString *logDirectory = [fileLogger.logFileManager logsDirectory];
+    //获取排序后的log名称
+    NSArray <NSString *>*logsNameArray = [fileLogger.logFileManager sortedLogFileNames];
+    NSString *zipPath = [self createZipArchiveWithFiles:logsNameArray];
+    
+    [self shareByEmailWithPath:zipPath];
+}
+
+- (void)shareByEmailWithPath:(NSString *)path{
+    MFMailComposeViewController *mailSender = [[MFMailComposeViewController alloc]init];
+    mailSender.mailComposeDelegate = self;
+    [mailSender setToRecipients:@[@"hukai@trusfort.com"]];
+    [mailSender setSubject:@"test title"];
+    //以下为具体业务代码
+    NSData *data = [NSData dataWithContentsOfFile:path];//文件数据
+    NSString *extension;//文件类型识别字符串，如文件扩展名
+    extension = [[path pathExtension] uppercaseString];
+    NSString *mimeType = nil;//这个不能错，错了的话会闪退
+    if ([extension isEqualToString:@"MOV"] || [extension isEqualToString:@"MP4"]) {
+        mimeType = @"video/quicktime";
+    }else if ([extension isEqualToString:@"MP3"] || [extension isEqualToString:@"M4A"]) {
+        mimeType = @"audio/mpeg3";
+    }else if ([extension isEqualToString:@"JPG"] || [extension isEqualToString:@"JPEG"]) {
+        mimeType = @"image/jpeg";
+    }else if ([extension isEqualToString:@"PNG"]) {
+        mimeType = @"image/png";
+    }else if ([extension isEqualToString:@"TXT"]) {
+        mimeType = @"text/plain";
+    }else if ([extension isEqualToString:@"PDF"]) {
+        mimeType = @"application/pdf";
+    }else if ([extension isEqualToString:@"DOC"] || [extension isEqualToString:@"DOCX"]) {
+        mimeType = @"application/msword";
+    }else if ([extension isEqualToString:@"XLS"] || [extension isEqualToString:@"XLSX"]) {
+        mimeType = @"application/vnd.ms-exceld";
+    }else if ([extension isEqualToString:@"PPT"] || [extension isEqualToString:@"PPTX"]) {
+        mimeType = @"application/vnd.ms-powerpoint";
+    }else if ([extension isEqualToString:@"ZIP"]) {
+        mimeType = @"application/zip";
+    }else{
+        return ;
+    }
+    NSString *name = [path lastPathComponent];
+    [mailSender addAttachmentData:data mimeType:mimeType fileName:name];
+    [self presentViewController:mailSender animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    switch (result) {
+        case MFMailComposeResultCancelled:
+        {
+        }
+            break;
+        case MFMailComposeResultSaved:
+        {
+        }
+            break;
+        case MFMailComposeResultSent:
+        {
+            YCLog(@"发送邮件成功");
+        }
+            break;
+        case MFMailComposeResultFailed:
+        {
+        }
+            break;
+    }
+}
+
+
+- (NSString*) createZipArchiveWithFiles:(NSArray*)files
+{
+    return [self createZipArchiveWithFiles:files andPassword:nil];
+}
+
+
+
+- (NSString*) createZipArchiveWithFiles:(NSArray*)files andPassword:(NSString*)password
+{
+    ZipArchive* zip = [[ZipArchive alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+     NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+//    NSLog(@"formatted time is: %@",dateTime);
+    NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    DDLogFileManagerDefault *logFileManager = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:documentsDirectory];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    NSString *logDirectory = [fileLogger.logFileManager logsDirectory];
+    NSString* zipPath = [NSString stringWithFormat:@"%@/%@.zip",logDirectory, dateTime];
+    BOOL ok;
+    if (password && password.length > 0) {
+      ok = [zip CreateZipFile2:zipPath Password:password];
+    } else {
+      ok = [zip CreateZipFile2:zipPath];
+    }
+//    XCTAssertTrue(ok, @"created zip file");
+    for (NSString* file in files) {
+        NSString *filePatch = [documentsDirectory stringByAppendingFormat:@"/%@",file];
+        ok = [zip addFileToZip:filePatch newname:[filePatch lastPathComponent]];
+//        XCTAssertTrue(ok, @"added file to zip archive");
+    }
+    ok = [zip CloseZipFile2];
+//    XCTAssertTrue(ok, @"closed zip file");
+    return zipPath;
 }
 
 - (void)dealloc{
