@@ -25,7 +25,7 @@
     if (str.length>0) {
         [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
     }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
+        imageview.image = [UIImage imageNamed:@"applaunch11111"];
     }
     if (kDevice_Is_iPhoneX) {
         CGRect rect = [UIScreen mainScreen].bounds;

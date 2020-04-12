@@ -231,13 +231,13 @@
 #pragma clang diagnostic pop
 }
 - (void)deal9008Error{
-    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"密钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
         
-//        [xindunsdk deactivateAllUsers];
+        [xindunsdk deactivateAllUsers];
         [self back2UnActiveRootVC];
     } cancelBlock:nil];
 }

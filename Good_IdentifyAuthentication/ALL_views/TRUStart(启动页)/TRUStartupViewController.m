@@ -35,7 +35,7 @@
     if (str.length>0) {
         [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
     }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
+        imageview.image = [UIImage imageNamed:@"applaunch11111"];
         
     }
     if (kDevice_Is_iPhoneX) {
@@ -71,7 +71,12 @@
             NSInteger errcode = [dic[@"status"] integerValue];
             NSError *err = [NSError errorWithDomain:@"com.trusfort.usererror" code:errcode userInfo:dic];
             [Bugly reportError:err];
+            
         }
+        [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+        [TRUUserAPI deleteUser];
+        [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+        [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             !weakSelf.completionBlock ? : weakSelf.completionBlock(nil);
         });

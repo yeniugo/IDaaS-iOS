@@ -21,7 +21,7 @@
 #import "TRUAPPLogIdentifyController.h"
 #import "MJRefresh.h"
 #import "TRUActiveAppViewController.h"
-#import "TRUFaceVerifyViewController.h"
+//#import "TRUFaceVerifyViewController.h"
 #import <Bugly/Bugly.h>
 
 #import <YYWebImage.h>

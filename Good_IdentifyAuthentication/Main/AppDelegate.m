@@ -693,11 +693,13 @@
     self.appCompletionBlock = ^(NSDictionary *tokenDic){
         NSString *urlStr;
         NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSString *phone = [TRUUserAPI getUser].phone;
         if ([weakSelf.soureSchme containsString:@"://"]) {
-            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }else{
-            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }
+        urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         weakSelf.soureSchme = nil;
         weakSelf.thirdAwakeTokenStatus = 0;
         weakSelf.isFromSDK = NO;
@@ -709,11 +711,14 @@
             [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:^{
                 YCLog(@"dismissViewController success");
                 [HAMLogOutputWindow printLog:@"dismissViewController success"];
+//                urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 if (@available(iOS 10.0,*)) {
+//                    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
                     }];
                     [HAMLogOutputWindow printLog:@"auth1"];
                 }else{
+//                    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
                 }
             }];
@@ -723,7 +728,9 @@
                 [rootnav popToRootViewControllerAnimated:NO];
                 [HAMLogOutputWindow printLog:@"poptorootsuccess"];
             }
+//            urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             if (@available(iOS 10.0,*)) {
+                
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
                     self.tokenCompletionBlock = nil;
                     self.appCompletionBlock = nil;
@@ -742,10 +749,11 @@
         self.appCompletionBlock = ^(NSDictionary *tokenDic){
             NSString *urlStr;
             NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+            NSString *phone = [TRUUserAPI getUser].phone;
             if ([weakSelf.soureSchme containsString:@"://"]) {
-                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=logout&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }else{
-                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&phone=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }
             weakSelf.soureSchme = nil;
             weakSelf.thirdAwakeTokenStatus = 0;
@@ -1582,6 +1590,7 @@
     [HAMLogOutputWindow printLog:@"applicationWillEnterForeground"];
     if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
         [self.window.rootViewController.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+        YCLog(@"clean presentVC");
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"EnterForegroundDyPw" object:nil];

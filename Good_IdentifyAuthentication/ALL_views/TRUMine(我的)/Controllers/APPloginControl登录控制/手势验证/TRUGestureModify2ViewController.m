@@ -202,6 +202,9 @@
         if(delegate.thirdAwakeTokenStatus==2){
             [self getNetToken];
         }
+        if (delegate.thirdAwakeTokenStatus==11) {
+            [self getAuthCode];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
     }else{
         if (self.oldEncryptedGesture.length == 0 || encryptedGesture.length == 0) {
@@ -211,6 +214,49 @@
         [TRUFingerGesUtil saveGesturePwd:encryptedGesture];
         [self.navigationController popToRootViewControllerAnimated:NO];
     }
+}
+
+- (void)getAuthCode{
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+    NSArray *ctx = @[@"userid",userid,@"appid",appdelegate.appid,@"apid",appdelegate.apid];
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@",userid,appdelegate.appid,appdelegate.apid];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getcode"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody,NSString *message){
+//        YCLog(@"verify/getcode = %d",errorno);
+        NSDictionary *dic;
+        if (errorno == 0 && responseBody) {
+            dic = [xindunsdk decodeServerResponse:responseBody];
+            int code = [dic[@"code"] intValue];
+            if (code == 0) {
+                dic = dic[@"resp"];
+                NSString *code = dic[@"code"];
+                NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
+                dicc[@"code"] = code;
+                dicc[@"codeerror"] = @"0";
+                dicc[@"message"] = message;
+                if (appdelegate.appCompletionBlock) {
+                    appdelegate.appCompletionBlock(dicc);
+                }
+//                    if (self.completionBlock) {
+//                        self.completionBlock(dic);
+//                    }
+            }
+        }else{
+            NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
+            dicc[@"codeerror"] = [NSString stringWithFormat:@"%d",errorno];
+            dicc[@"message"] = message;
+            if (appdelegate.appCompletionBlock) {
+                appdelegate.appCompletionBlock(dicc);
+            }
+//                if (self.completionBlock) {
+//                    self.completionBlock(dic);
+//                }
+        }
+    }];
 }
 
 - (NSString *)encryptGesture:(NSString *)gesture {

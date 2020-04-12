@@ -12,6 +12,7 @@
 #import "TRUhttpManager.h"
 @implementation TRUTimeSyncUtil
 static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
+long gs_time;
 + (void)syncTime{
     
     long gs_detal= [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] longValue];
@@ -52,6 +53,8 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
             if( [xindunsdk checkCIMSHmac:userId randa:seed shmac:shmac]){
                 seconds_cli = seconds_cli - time ;
                 [[NSUserDefaults standardUserDefaults] setObject:@(seconds_cli) forKey:@"GS_DETAL_KEY"];
+                gs_time = seconds_cli;
+//                YCLog(@"动态口令时间差 = %f",seconds_cli);
 // 添加了一个数据保存
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 if (syncFinshBlock) {

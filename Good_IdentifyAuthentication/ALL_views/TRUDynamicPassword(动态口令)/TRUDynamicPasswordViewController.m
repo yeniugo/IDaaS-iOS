@@ -14,7 +14,7 @@
 #import "TRUUserAPI.h"
 #import "TRUTimeSyncUtil.h"
 #import "TRUHomeButton.h"
-
+#import "UIButton+Touch.h"
 
 @interface TRUDynamicPasswordViewController ()
 @property (nonatomic, strong) CADisplayLink *dislink;
@@ -26,6 +26,10 @@
 @property (nonatomic, strong)UILabel *numLabel;
 @property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, strong)UILabel *syncLabel;//时间同步按钮下面文字
+@property (nonatomic,copy) NSString *password;
+@property (nonatomic,copy) NSString *lastPassword;
+@property (atomic,assign) long gs_timeNow;
+@property (atomic,assign) long gs_timelast;
 @end
 
 @implementation TRUDynamicPasswordViewController
@@ -34,7 +38,7 @@ static double dytime = 0.0;
 BOOL isFirstEnter = YES;
 BOOL isFirst = YES;
 static NSString *userId;
-
+extern long gs_time;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +46,7 @@ static NSString *userId;
     userId = [TRUUserAPI getUser].userId;
     [self customUI];
     isFirstEnter = YES;
+    self.refreshBtn.timeInterval = 0.5;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewBackGround) name:@"EnterForegroundDyPw" object:nil];
     
 }
@@ -65,11 +70,11 @@ static NSString *userId;
 
 -(void)requestData{
     
-    _refreshBtn.enabled = NO;
+//    _refreshBtn.enabled = NO;
     
     isFirstEnter = YES;
     [self showHudWithText:@"正在同步动态口令..."];
-    [self hideHudDelay:2.0];
+//    [self hideHudDelay:2.0];
     __weak typeof(self) weakSelf = self;
     [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
         
@@ -98,9 +103,9 @@ static NSString *userId;
             [self showHudWithText:err];
             [self hideHudDelay:2.0];
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakSelf.refreshBtn.enabled = YES;
-        });
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            weakSelf.refreshBtn.enabled = YES;
+//        });
     }];
 }
 
@@ -136,14 +141,44 @@ static NSString *userId;
     
     if (!self.dislink) {
         self.dislink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setProgressNumber)];
+        self.dislink.frameInterval = 60;
         [self.dislink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     }
     
 }
-
+//int tempTest;
 - (void)setProgressNumber{//PERCENTKEY
+//    YCLog(@"dytime = %f",dytime);
     
+//    self.gs_timeNow = gs_time;
+//    if (self.gs_timelast != self.gs_timeNow) {
+//        self.gs_timelast = self.gs_timeNow;
+//        YCLog(@"gs_time = %ld",gs_time);
+//
+//    if (self.gs_timeNow == 0) {
+//        self.gs_timeNow = -1;
+//    }else{
+//        self.gs_timeNow = 0;
+//    }
+//    self.gs_timeNow = gs_time;
+//    tempTest = tempTest +1 ;
+//    if (tempTest%2 == 0) {
+//        self.password = [xindunsdk getCIMSDynamicCode:userId temp:0];
+//    }else{
+//        self.password = [xindunsdk getCIMSDynamicCode:userId temp:1];
+//    }
+    self.password = [xindunsdk getCIMSDynamicCode:userId];
+//    lastPassword;
+    if (self.lastPassword.length == 0) {
+        self.lastPassword = self.password;
+    }else if(![self.lastPassword isEqualToString:self.password]){
+        self.lastPassword = self.password;
+//        float timesync = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] floatValue];
+//        NSNumber *time = [[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"];
+        YCLog(@"动态口令为 = %@,时间差为= %ld",self.lastPassword,gs_time);
+    }
     if (dytime >= 1.0) {
+        
         [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:NO];
         dytime = 0.0;
         [_aniationView stop];
@@ -262,7 +297,7 @@ static NSString *userId;
     label.font = [UIFont systemFontOfSize:13];
     
     _refreshBtn = [[TRUHomeButton alloc] initWithFrame:CGRectMake((SCREENW -80*PointHeightRatio6)/2.f, 300 + SCREENW/2.f, 80*PointHeightRatio6, 80*PointHeightRatio6) withButtonClickEvent:^(TRUHomeButton *sender) {
-        sender.enabled = NO;
+//        sender.enabled = NO;
         [self requestData];
     }];
     [_refreshBtn setBackgroundImage:[UIImage imageNamed:@"synctime"] forState:UIControlStateNormal];

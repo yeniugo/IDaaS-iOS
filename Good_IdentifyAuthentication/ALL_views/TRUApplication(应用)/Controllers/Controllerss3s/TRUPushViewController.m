@@ -16,8 +16,8 @@
 #import "TRUActiveAppViewController.h"
 #import <Lottie/Lottie.h>
 #import "TRUVoiceVerifyViewController.h"
-#import "TRUFaceVerifyViewController.h"
-#import "TRUThirdFaceVerifyViewController.h"
+//#import "TRUFaceVerifyViewController.h"
+//#import "TRUThirdFaceVerifyViewController.h"
 #import "TRUThirdVoiceVerifyViewController.h"
 #import <YYWebImage.h>
 #import "TRUCompanyAPI.h"
@@ -264,15 +264,15 @@
             if ([arr[0] isEqualToString:@"6"]) {//先人脸 后声纹
                 
                 if (isInitFace) {
-                    TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
-                    faceVC.facetoken = self.pushModel.token;
-                    faceVC.isMoreVerify = YES;
-                    
-                    faceVC.popThirdFaceBlock =^(){
-                        [self performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:0.5];
-                        
-                    };
-                    [self.navigationController pushViewController:faceVC animated:YES];
+//                    TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
+//                    faceVC.facetoken = self.pushModel.token;
+//                    faceVC.isMoreVerify = YES;
+//
+//                    faceVC.popThirdFaceBlock =^(){
+//                        [self performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:0.5];
+//
+//                    };
+//                    [self.navigationController pushViewController:faceVC animated:YES];
                 }else{
                     [self showHudWithText:@"您未初始化人脸，请选择其他方式认证"];
                     [self hideHudDelay:2.0];
@@ -355,12 +355,12 @@
             if ([self.pushModel.authtype isEqualToString:@"6"]) {//人脸
                 
                 if (isInitFace) {
-                    TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
-                    faceVC.facetoken = self.pushModel.token;
-                    faceVC.popThirdFaceBlock =^(){
-                        [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:0.5];
-                    };
-                    [weakSelf.navigationController pushViewController:faceVC animated:YES];
+//                    TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
+//                    faceVC.facetoken = self.pushModel.token;
+//                    faceVC.popThirdFaceBlock =^(){
+//                        [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:0.5];
+//                    };
+//                    [weakSelf.navigationController pushViewController:faceVC animated:YES];
                 }else{
                     [weakSelf showHudWithText:@"您未初始化人脸，请选择其他方式认证"];
                     [weakSelf hideHudDelay:2.0];
@@ -464,17 +464,17 @@
     }
 }
 - (void)popFaceAuthViewToken:(NSString *)token{
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    TRUFaceVerifyViewController *faceVC = [[TRUFaceVerifyViewController alloc] init];
-    faceVC.facetoken = token;
-    faceVC.isTest = NO;
-    if (rootVC.presentedViewController) {
-        [rootVC.presentedViewController dismissViewControllerAnimated:NO completion:^{
-            [rootVC presentViewController:faceVC animated:YES completion:nil];
-        }];
-    }else{
-        [rootVC presentViewController:faceVC animated:YES completion:nil];
-    }
+//    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+//    TRUFaceVerifyViewController *faceVC = [[TRUFaceVerifyViewController alloc] init];
+//    faceVC.facetoken = token;
+//    faceVC.isTest = NO;
+//    if (rootVC.presentedViewController) {
+//        [rootVC.presentedViewController dismissViewControllerAnimated:NO completion:^{
+//            [rootVC presentViewController:faceVC animated:YES completion:nil];
+//        }];
+//    }else{
+//        [rootVC presentViewController:faceVC animated:YES completion:nil];
+//    }
 }
 
 

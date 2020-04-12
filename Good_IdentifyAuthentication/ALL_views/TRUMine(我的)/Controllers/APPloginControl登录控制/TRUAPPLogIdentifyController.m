@@ -335,14 +335,17 @@
                 tokenVC.schemetype = 11;
                 __weak typeof(self) weakSelf = self;
                 __weak AppDelegate *weakDelegate = delegate;
+                delegate.isNeedPush = YES;
                 tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
                     NSString *urlStr;
                     NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                    NSString *phone = [TRUUserAPI getUser].phone;
                     if ([weakDelegate.soureSchme containsString:@"://"]) {
-                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
                     }
+                    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     if (@available(iOS 10.0,*)) {
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:nil completionHandler:^(BOOL success) {
                         }];

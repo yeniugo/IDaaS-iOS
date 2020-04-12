@@ -95,7 +95,15 @@
 - (void)showPushToken{
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus == 11) {
-        [self pushAuth1];
+        if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
+        }else{
+            if (delegate.isNeedPush) {
+                NSString *userid = [TRUUserAPI getUser].userId;
+                [self pushAuth1];
+            }else if (self.isNeedpush){
+                [self pushAuth1];
+            }
+        }
         return;
     }
     if(!delegate.isMainSDK){
@@ -534,6 +542,10 @@
         {
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             if (delegate.isMainSDK) {
+//                [self showConfrimCancelDialogViewWithTitle:@"" msg:@"第三方应用需要解绑蓝证，确认后请重新激活蓝证。" confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+////                    [self dismissViewControllerAnimated:YES completion:nil];
+//                    [self unbind];
+//                } cancelBlock:nil];
                 [self unbind];
             }else{
                 if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
@@ -555,6 +567,11 @@
         {
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             if (delegate.isMainSDK) {
+//                [self showConfrimCancelDialogViewWithTitle:@"" msg:@"第三方应用需要解绑蓝证，确认后请重新激活蓝证。" confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//                //                    [self dismissViewControllerAnimated:YES completion:nil];
+////                        [self unbind];
+//                    [self unbindwithback];
+//                } cancelBlock:nil];
                 [self unbindwithback];
             }else{
                 [TRUTokenUtil cleanLocalToken];
@@ -602,6 +619,10 @@
                 }
                 //__weak typeof(self) weakSelf = self;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [self showConfrimCancelDialogViewWithTitle:@"" msg:@"第三方应用需要解绑蓝证，确认后请重新激活蓝证。" confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//                    //                    [self dismissViewControllerAnimated:YES completion:nil];
+//                            [weakSelf unbindwithback];
+//                    } cancelBlock:nil];
                     [weakSelf unbindwithback];
                 });
             }
@@ -628,10 +649,8 @@
                 if (delegate.isNeedPush) {
                     NSString *userid = [TRUUserAPI getUser].userId;
                     [self pushAuth1];
-                    [HAMLogOutputWindow printLog:@"11-delegate.isNeedPush"];
                 }else if (self.isNeedpush){
-                    [self pushAuth1];
-                    [HAMLogOutputWindow printLog:@"11-self.isNeedPush"];
+//                            [self pushAuth1];
                 }
             }
             break;
@@ -639,12 +658,22 @@
         case 12:
         {
             [TRUEnterAPPAuthView dismissAuthView];
+//            [self unbind];
+//            [self showConfrimCancelDialogViewWithTitle:@"" msg:@"第三方应用需要解绑蓝证，确认后请重新激活蓝证。" confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//            //                    [self dismissViewControllerAnimated:YES completion:nil];
+//                [self unbind];
+//            } cancelBlock:nil];
             [self unbind];
             break;
         }
         case 13:
         {
             [TRUEnterAPPAuthView dismissAuthView];
+//            [self unbindwithback];
+//            [self showConfrimCancelDialogViewWithTitle:@"" msg:@"第三方应用需要解绑蓝证，确认后请重新激活蓝证。" confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//            //                    [self dismissViewControllerAnimated:YES completion:nil];
+//                    [self unbindwithback];
+//            } cancelBlock:nil];
             [self unbindwithback];
             break;
         }
@@ -678,6 +707,9 @@
                 if (appdelegate.appCompletionBlock) {
                     appdelegate.appCompletionBlock(dicc);
                 }
+                if (self.completionBlock) {
+                    self.completionBlock(dic);
+                }
             }
         }else{
             NSMutableDictionary *dicc = [NSMutableDictionary dictionary];
@@ -685,6 +717,9 @@
             dicc[@"message"] = message;
             if (appdelegate.appCompletionBlock) {
                 appdelegate.appCompletionBlock(dicc);
+            }
+            if (self.completionBlock) {
+                self.completionBlock(dic);
             }
         }
     }];
@@ -711,9 +746,10 @@
     }else{
         deldevs = [deleteDevices componentsJoinedByString:@","];
     }
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",@"thirdapp"];
-    NSString *sign = [NSString stringWithFormat:@"%@%@",deldevs,@"thirdapp"];
+    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",[NSString stringWithFormat:@"thirdapp-appid=%@",delegate.appid]];
+    NSString *sign = [NSString stringWithFormat:@"%@thirdapp-appid=%@",deldevs,delegate.appid];
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
@@ -775,8 +811,9 @@
         deldevs = [deleteDevices componentsJoinedByString:@","];
     }
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",@"thirdapp"];
-    NSString *sign = [NSString stringWithFormat:@"%@%@",deldevs,@"thirdapp"];
+//    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSArray *ctx = @[@"del_uuids",deldevs,@"confirm",[NSString stringWithFormat:@"thirdapp-appid=%@",delegate.appid]];
+    NSString *sign = [NSString stringWithFormat:@"%@thirdapp-appid=%@",deldevs,delegate.appid];
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {

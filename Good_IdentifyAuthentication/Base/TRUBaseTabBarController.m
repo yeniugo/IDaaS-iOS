@@ -120,8 +120,10 @@
             NSString *bundle_version = responseObject[@"bundle_version"];
             BOOL force_update = [responseObject[@"force_update"] boolValue];
             NSString *url = responseObject[@"url"];
+//            [weakSelf checkNewAppUpdate:@"1.0.0" updateURL:url withFouce:force_update];
             [weakSelf checkNewAppUpdate:bundle_version updateURL:url withFouce:force_update];
         }
+//        [weakSelf checkNewAppUpdate:@"3.0.0" updateURL:@"https://www.baidu.com" withFouce:YES];
         //        NSString *bundleidStr = [weakSelf getPlistVersionWithPlist:responseObject];
         //        NSString *updateStr = [weakSelf getPlistFouceWithPlist:responseObject];
         //        if (updateStr.length) {
@@ -242,7 +244,11 @@
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if ([delegate.window.rootViewController isKindOfClass:[UITabBarController class]]) {
         [HAMLogOutputWindow printLog:@"showscheme2"];
+        if (delegate.appPushVC == nil) {
+            return;
+        }
         UINavigationController *rootnav = [[TRUBaseNavigationController alloc] initWithRootViewController:delegate.appPushVC];
+        
         [delegate.window.rootViewController presentViewController:rootnav animated:NO completion:nil];
         delegate.appPushVC = nil;
         [HAMLogOutputWindow printLog:@"打开授权界面1"];
