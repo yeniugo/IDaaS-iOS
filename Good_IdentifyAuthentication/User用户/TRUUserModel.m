@@ -26,6 +26,9 @@ static TRUUserModel *userModel=nil;
     [model setValuesForKeysWithDictionary:dic];
     return model;
 }
+
+
+
 //兼容
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     

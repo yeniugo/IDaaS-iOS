@@ -32,9 +32,9 @@ NSString *kPhotoAlbumFailedTip = @"请在iPhone的“设置-隐私-相册”选�
 NSString *kBadErrorTip = @"网络不给力，请检查网络设置";
 #ifdef ENV_DEBUG
 //测试环境
-NSString *kServerUrl = @"http://192.168.1.99:8000/cims";
+NSString *kServerUrl = @"http://58.23.16.249:8180/authn";
 #else
-NSString *kServerUrl = @"http://xd3.trusfort.com:8000/cims";
+NSString *kServerUrl = @"http://58.23.16.249:8180/authn";
 #endif
 //正式环境
 //"http://xd3.trusfort.com:8000/cims

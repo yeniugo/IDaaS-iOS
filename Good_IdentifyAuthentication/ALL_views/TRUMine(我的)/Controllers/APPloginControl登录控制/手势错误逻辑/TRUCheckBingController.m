@@ -17,7 +17,7 @@
 #import "TRUFingerGesUtil.h"
 #import "TRULicenseAgreementViewController.h"
 #import "TRUGestureModify2ViewController.h"
-
+#import "TRUhttpManager.h"
 
 @interface TRUCheckBingController ()
 
@@ -63,7 +63,9 @@
         _inputoneTF.text = emailstr;
     }
     [_inputoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
-    
+    _inputoneTF.enabled = NO;
+    _inputoneTF.backgroundColor = [UIColor clearColor];
+    _iphoneEmialView.backgroundColor = RGBCOLOR(247, 249, 250);
     
     _inputpasswordTF.secureTextEntry = YES;
     [_sendBtn setBackgroundColor:DefaultColor];
@@ -72,22 +74,22 @@
     
     
     //用户协议
-    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-    [self.view addSubview:txtLabel];
-    txtLabel.text = @"使用此App,即表示同意该";
-    txtLabel.font = [UIFont systemFontOfSize:14];
-    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:agreementBtn];
-    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-    
-    if (kDevice_Is_iPhoneX) {
-        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-    }
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"使用此App,即表示同意该";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//    }
     
 }
 
@@ -204,30 +206,36 @@
     }
 }
 - (void)active4User:(NSString *)activeNumber pushID:(NSString *)pushID type:(NSString *)type{
-//    __weak typeof(self) weakSelf = self;
-    [xindunsdk verifyCIMSActiveForUser:self.inputoneTF.text.trim type:type authCode:activeNumber pushID:pushID onResult:^(int error, id res) {
+    __weak typeof(self) weakSelf = self;
+    NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\"", [self.inputoneTF.text.trim UTF8String],[pushID UTF8String], [type UTF8String],[activeNumber UTF8String]];
+    NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
         [self hideHudDelay:0.0];
-        
-        if (0 == error) {
-//            if ([TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
-//
-//            }
-            [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
-            TRUGestureModify2ViewController *modifyViewController = [[TRUGestureModify2ViewController alloc] init];
-            modifyViewController.ISrebinding = YES;
-            [self.navigationController pushViewController:modifyViewController animated:NO];
-        }else if(-5004 == error){
-            [self showHudWithText:@"网络错误，请稍后重试"];
-            [self hideHudDelay:2.0];
-        }else if(9001 == error){
-            [self showHudWithText:@"激活码不正确，请确认后重新输入"];
-            [self hideHudDelay:2.0];
-        }else if (9019 == error){
-            [self deal9019Error];
+        if (errorno == 0) {
+            NSString *userId = nil;
+            int err = [xindunsdk privateVerifyCIMSInitForUserNo:self.inputoneTF.text.trim response:dic[@"resp"] userId:&userId];
+            //            NSLog(@"---11111111111--->%d---->%@",err,userId);
+            if (err == 0) {
+                //同步用户信息
+                TRUGestureModify2ViewController *modifyViewController = [[TRUGestureModify2ViewController alloc] init];
+                modifyViewController.ISrebinding = YES;
+                [weakSelf.navigationController pushViewController:modifyViewController animated:NO];
+            }
+        }else if(-5004 == errorno){
+            [weakSelf showHudWithText:@"网络错误，请稍后重试"];
+            [weakSelf hideHudDelay:2.0];
+        }else if(9001 == errorno){
+            [weakSelf showHudWithText:@"激活码不正确，请确认后重新输入"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
         }else{
-            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
-            [self showHudWithText:err];
-            [self hideHudDelay:2.0];
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }
@@ -238,37 +246,42 @@
 
 -(void)requestCodeForUser:(NSString *)user type:(NSString *)type{
     [self showHudWithText:@"正在申请激活码..."];
-    [xindunsdk requestCIMSActiveForUser:self.inputoneTF.text.trim type:type onResult:^(int error, id response) {
-        [self hideHudDelay:0.0];
-        if (0 == error) {
+    __weak typeof(self) weakself = self;
+    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"type\":\"%s\"}", [self.inputoneTF.text.trim UTF8String], [type UTF8String]];
+    NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:signStr isType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [weakself hideHudDelay:0.0];
+        if (0 == errorno) {
             YCLog(@"发送成功");
             //第一次申请 也就是第一次进入这个页面，开始倒计时
-            [self showHudWithText:@"发送成功"];
-            [self hideHudDelay:2.0];
-            self.sendBtn.enabled = NO;
-            [self startTimer];
+            [weakself showHudWithText:@"发送成功"];
+            [weakself hideHudDelay:2.0];
+            weakself.sendBtn.enabled = NO;
+            [weakself startTimer];
             
-        }else if (-5004 == error){
-            [self showHudWithText:@"网络错误，请稍后重试"];
-            [self hideHudDelay:2.0];
-        }else if (9019 == error){
-            [self deal9019Error];
-        }else if (9021 == error){
-            self.sendBtn.enabled = NO;
-            [self startTimer];
-            [self deal9021ErrorWithBlock:nil];
-        }else if (9022 == error){
-            [self deal9022ErrorWithBlock:nil];
-        }else if (9023 == error){
-            [self stopTimer];
-            [self deal9023ErrorWithBlock:nil];
-        }else if (9026 == error){
-            [self stopTimer];
-//            [self deal9026ErrorWithBlock:nil];
+        }else if (-5004 == errorno){
+            [weakself showHudWithText:@"网络错误，请稍后重试"];
+            [weakself hideHudDelay:2.0];
+        }else if (9019 == errorno){
+            [weakself deal9019Error];
+        }else if (9021 == errorno){
+            weakself.sendBtn.enabled = NO;
+            [weakself startTimer];
+            [weakself deal9021ErrorWithBlock:nil];
+        }else if (9022 == errorno){
+            [weakself deal9022ErrorWithBlock:nil];
+        }else if (9023 == errorno){
+            [weakself stopTimer];
+            [weakself deal9023ErrorWithBlock:nil];
+        }else if (9026 == errorno){
+            [weakself stopTimer];
+            //[self deal9026ErrorWithBlock:nil];
         }else{
-            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
-            [self showHudWithText:err];
-            [self hideHudDelay:2.0];
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            [weakself showHudWithText:err];
+            [weakself hideHudDelay:2.0];
         }
     }];
 }

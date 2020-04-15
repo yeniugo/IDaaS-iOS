@@ -13,7 +13,7 @@
 #import <Bugly/Bugly.h>
 #import "NSString+Trim.h"
 #import "TRUVersionUtil.h"
-
+#import "TRUhttpManager.h"
 
 @interface TRUStartupViewController ()
 
@@ -72,37 +72,39 @@
         
         //同步一次用户信息
         //
-        [xindunsdk getCIMSUserInfoForUser:currentUserId onResult:^(int error, id response) {
-            
-//            NSLog(@"%s, currentUserId : %@, error : %d", __func__, currentUserId, error);
-            if (0 == error) {
-                //用户信息同步成功
-                TRUUserModel *model = [TRUUserModel modelWithDic:response];
-                model.userId = currentUserId;
-                [TRUUserAPI saveUser:model];
-                //同步信息成功，信息完整，跳转页面
-                !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
-                
-            }else if(9008 == error){
+        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSString *paras = [xindunsdk encryptByUkey:currentUserId ctx:nil signdata:nil isDeviceType:NO];
+        NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
+            NSDictionary *dicc = nil;
+            if (errorno == 0 && responseBody) {
+                dicc = [xindunsdk decodeServerResponse:responseBody];
+                if ([dicc[@"code"] intValue] == 0) {
+                    dicc = dicc[@"resp"];
+                    //用户信息同步成功
+                    TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
+                    model.userId = currentUserId;
+                    [TRUUserAPI saveUser:model];
+                    //同步信息成功，信息完整，跳转页面
+                    !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
+                }
+            }else if(9008 == errorno){
                 //秘钥失效
-                [xindunsdk deactivateAllUsers];
+                [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
                 [TRUUserAPI deleteUser];
                 [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
                 [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
                 !weakSelf.completionBlock ? : weakSelf.completionBlock(nil);
-            }else if (9019 == error){
+            }else if (9019 == errorno){
                 //用户被禁用 取本地
                 TRUUserModel *model = [TRUUserAPI getUser];
                 !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
-                
             }else{
                 TRUUserModel *model = [TRUUserAPI getUser];
                 !weakSelf.completionBlock ? : weakSelf.completionBlock(model);
             }
         }];
-        
     }
-
 }
 
 

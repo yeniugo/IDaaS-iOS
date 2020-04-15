@@ -109,7 +109,7 @@
     
     //员工号
     UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(gap, kLabelY + (20 + KgapH) *3, 80, 20)];
-    label4.text = @"员工号";
+    label4.text = @"域账号";
     label4.font = [UIFont systemFontOfSize:KfontSize];
     [self addSubview:label4];
     _userNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*gap +40, kLabelY + (20 + KgapH) *3, 120, 20)];
@@ -135,6 +135,7 @@
     [changeBtn setImage:[UIImage imageNamed:@"identify_jiantou"] forState:UIControlStateNormal];
     changeBtn.frame = CGRectMake(SCREENW - 4*gap - 15, kLabelY + (20 + KgapH) *4 -5, 30, 30);
     [self addSubview:changeBtn];
+    changeBtn.hidden = YES;
     [changeBtn addTarget:self action:@selector(changePhoneBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 

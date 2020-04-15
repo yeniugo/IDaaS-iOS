@@ -24,7 +24,6 @@
 		122AD7A21FA9A9E000E5963F /* YCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 122AD7A11FA9A9E000E5963F /* YCAlertView.m */; };
 		122C1F7B1F94AE8E00E118D2 /* TRUFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 122C1F791F94AE8E00E118D2 /* TRUFeedbackViewController.m */; };
 		122C1F7C1F94AE8E00E118D2 /* TRUFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122C1F7A1F94AE8E00E118D2 /* TRUFeedbackViewController.xib */; };
-		122EC9B11FD7D6C200C41B71 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 122EC9B01FD7D6C200C41B71 /* libxindunsdk.a */; };
 		1233C7541FB18A8200356383 /* pushjiantou.json in Resources */ = {isa = PBXBuildFile; fileRef = 1233C7531FB18A8200356383 /* pushjiantou.json */; };
 		12354C671FA84B8A00B6B92E /* topMenuClick.json in Resources */ = {isa = PBXBuildFile; fileRef = 12354C661FA84B8A00B6B92E /* topMenuClick.json */; };
 		12354C6B1FA86B1B00B6B92E /* TRUModifyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12354C6A1FA86B1B00B6B92E /* TRUModifyInfoViewController.m */; };
@@ -113,7 +112,6 @@
 		128D5D0B1F7E430700753EE5 /* TRULogIdentifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5D091F7E430700753EE5 /* TRULogIdentifyCell.m */; };
 		128D5D0C1F7E430700753EE5 /* TRULogIdentifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128D5D0A1F7E430700753EE5 /* TRULogIdentifyCell.xib */; };
 		12A662B11FC2C2A600C20D81 /* YCAnimationNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A662B01FC2C2A600C20D81 /* YCAnimationNumberView.m */; };
-		12B6B22F1F8DE6D500A3B7A6 /* TRULoginScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B22E1F8DE6D500A3B7A6 /* TRULoginScanViewController.m */; };
 		12B6B2331F8DE7C900A3B7A6 /* TRUScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */; };
 		12B6B2371F8DE91300A3B7A6 /* TRUTimeSyncUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B2361F8DE91300A3B7A6 /* TRUTimeSyncUtil.m */; };
 		12C0D2CF1F7907DC00972218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D2CE1F7907DC00972218 /* main.m */; };
@@ -156,9 +154,33 @@
 		12F9002B1F9DF4FC001125A3 /* TRUIflyMSCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F9002A1F9DF4FC001125A3 /* TRUIflyMSCUtil.m */; };
 		12F9002E1F9DFA47001125A3 /* pushDone.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F9002D1F9DFA47001125A3 /* pushDone.json */; };
 		12FAC8B81F8CC6B5001BB1A9 /* TRUStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8B71F8CC6B5001BB1A9 /* TRUStartupViewController.m */; };
-		12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BB1F8CC72E001BB1A9 /* TRUUserAPI.m */; };
 		12FAC8BF1F8CC72E001BB1A9 /* TRUUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */; };
 		12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
+		2D2CFE1221391AB700C13D22 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDF121391AB700C13D22 /* IQTextView.m */; };
+		2D2CFE1321391AB700C13D22 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDF521391AB700C13D22 /* IQToolbar.m */; };
+		2D2CFE1421391AB700C13D22 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDF721391AB700C13D22 /* IQTitleBarButtonItem.m */; };
+		2D2CFE1521391AB700C13D22 /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDF821391AB700C13D22 /* IQBarButtonItem.m */; };
+		2D2CFE1621391AB700C13D22 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDF921391AB700C13D22 /* IQUIView+IQKeyboardToolbar.m */; };
+		2D2CFE1721391AB700C13D22 /* IQPreviousNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFDFA21391AB700C13D22 /* IQPreviousNextView.m */; };
+		2D2CFE1821391AB700C13D22 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0221391AB700C13D22 /* IQKeyboardManager.bundle */; };
+		2D2CFE1921391AB700C13D22 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0521391AB700C13D22 /* IQKeyboardManager.m */; };
+		2D2CFE1A21391AB700C13D22 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0721391AB700C13D22 /* IQNSArray+Sort.m */; };
+		2D2CFE1B21391AB700C13D22 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0921391AB700C13D22 /* IQUITextFieldView+Additions.m */; };
+		2D2CFE1C21391AB700C13D22 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0A21391AB700C13D22 /* IQUIScrollView+Additions.m */; };
+		2D2CFE1D21391AB700C13D22 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0B21391AB700C13D22 /* IQUIView+Hierarchy.m */; };
+		2D2CFE1E21391AB700C13D22 /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE0F21391AB700C13D22 /* IQUIViewController+Additions.m */; };
+		2D2CFE1F21391AB700C13D22 /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE1121391AB700C13D22 /* IQKeyboardReturnKeyHandler.m */; };
+		2D2CFE212139305A00C13D22 /* TRUUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2CFE202139305A00C13D22 /* TRUUserAPI.m */; };
+		2D4CA9B021B7C16B008C9AD3 /* TRUUserLoginInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA9AF21B7C16B008C9AD3 /* TRUUserLoginInfoModel.m */; };
+		2D5507292150E0E200E9DDF5 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5507282150E0E200E9DDF5 /* libxindunsdk.a */; };
+		2D601AC1212EA5D900D551E0 /* TRURegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D601ABF212EA5D900D551E0 /* TRURegisterController.m */; };
+		2D601AC2212EA5D900D551E0 /* TRURegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D601AC0212EA5D900D551E0 /* TRURegisterController.xib */; };
+		2D601ACA212EC24400D551E0 /* TRURegisterSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D601AC8212EC24400D551E0 /* TRURegisterSuccess.m */; };
+		2D601ACB212EC24400D551E0 /* TRURegisterSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D601AC9212EC24400D551E0 /* TRURegisterSuccess.xib */; };
+		2D7A4FD6212FA87F000BE350 /* TRURegister4sController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7A4FD5212FA87F000BE350 /* TRURegister4sController.xib */; };
+		2D8B731821D37053006D8281 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731621D37052006D8281 /* UIButton+Touch.m */; };
+		2D9EDBB921C37B6700658183 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EDBB821C37B6700658183 /* HAMLogOutputWindow.m */; };
+		2DF62407214BA03E00D39784 /* TRUhttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF62405214BA03E00D39784 /* TRUhttpManager.m */; };
 		91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
 /* End PBXBuildFile section */
 
@@ -205,8 +227,6 @@
 		122C1F781F94AE8E00E118D2 /* TRUFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFeedbackViewController.h; sourceTree = "<group>"; };
 		122C1F791F94AE8E00E118D2 /* TRUFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFeedbackViewController.m; sourceTree = "<group>"; };
 		122C1F7A1F94AE8E00E118D2 /* TRUFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRUFeedbackViewController.xib; sourceTree = "<group>"; };
-		122EC9AF1FD7D6C100C41B71 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
-		122EC9B01FD7D6C200C41B71 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		1233C7531FB18A8200356383 /* pushjiantou.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pushjiantou.json; sourceTree = "<group>"; };
 		12354C661FA84B8A00B6B92E /* topMenuClick.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topMenuClick.json; sourceTree = "<group>"; };
 		12354C691FA86B1B00B6B92E /* TRUModifyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUModifyInfoViewController.h; sourceTree = "<group>"; };
@@ -353,8 +373,6 @@
 		128D5D0A1F7E430700753EE5 /* TRULogIdentifyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRULogIdentifyCell.xib; sourceTree = "<group>"; };
 		12A662AF1FC2C2A600C20D81 /* YCAnimationNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCAnimationNumberView.h; sourceTree = "<group>"; };
 		12A662B01FC2C2A600C20D81 /* YCAnimationNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCAnimationNumberView.m; sourceTree = "<group>"; };
-		12B6B22D1F8DE6D500A3B7A6 /* TRULoginScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRULoginScanViewController.h; sourceTree = "<group>"; };
-		12B6B22E1F8DE6D500A3B7A6 /* TRULoginScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRULoginScanViewController.m; sourceTree = "<group>"; };
 		12B6B2311F8DE7C900A3B7A6 /* TRUScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUScanView.h; sourceTree = "<group>"; };
 		12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUScanView.m; sourceTree = "<group>"; };
 		12B6B2351F8DE91300A3B7A6 /* TRUTimeSyncUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTimeSyncUtil.h; sourceTree = "<group>"; };
@@ -432,11 +450,57 @@
 		12FAC8B61F8CC6B5001BB1A9 /* TRUStartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUStartupViewController.h; sourceTree = "<group>"; };
 		12FAC8B71F8CC6B5001BB1A9 /* TRUStartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUStartupViewController.m; sourceTree = "<group>"; };
 		12FAC8BA1F8CC72E001BB1A9 /* TRUUserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUUserAPI.h; sourceTree = "<group>"; };
-		12FAC8BB1F8CC72E001BB1A9 /* TRUUserAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUUserAPI.m; sourceTree = "<group>"; };
 		12FAC8BC1F8CC72E001BB1A9 /* TRUUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUUserModel.h; sourceTree = "<group>"; };
 		12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUUserModel.m; sourceTree = "<group>"; };
 		12FAC8C21F8CCF85001BB1A9 /* TRUVersionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUVersionUtil.h; sourceTree = "<group>"; };
 		12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUVersionUtil.m; sourceTree = "<group>"; };
+		2D2CFDF121391AB700C13D22 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		2D2CFDF221391AB700C13D22 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		2D2CFDF421391AB700C13D22 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		2D2CFDF521391AB700C13D22 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		2D2CFDF621391AB700C13D22 /* IQPreviousNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQPreviousNextView.h; sourceTree = "<group>"; };
+		2D2CFDF721391AB700C13D22 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		2D2CFDF821391AB700C13D22 /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		2D2CFDF921391AB700C13D22 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		2D2CFDFA21391AB700C13D22 /* IQPreviousNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQPreviousNextView.m; sourceTree = "<group>"; };
+		2D2CFDFB21391AB700C13D22 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		2D2CFDFC21391AB700C13D22 /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		2D2CFDFD21391AB700C13D22 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		2D2CFDFF21391AB700C13D22 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		2D2CFE0021391AB700C13D22 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		2D2CFE0221391AB700C13D22 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		2D2CFE0321391AB700C13D22 /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		2D2CFE0421391AB700C13D22 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		2D2CFE0521391AB700C13D22 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		2D2CFE0721391AB700C13D22 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		2D2CFE0821391AB700C13D22 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		2D2CFE0921391AB700C13D22 /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		2D2CFE0A21391AB700C13D22 /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
+		2D2CFE0B21391AB700C13D22 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		2D2CFE0C21391AB700C13D22 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		2D2CFE0D21391AB700C13D22 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		2D2CFE0E21391AB700C13D22 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		2D2CFE0F21391AB700C13D22 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		2D2CFE1021391AB700C13D22 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		2D2CFE1121391AB700C13D22 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		2D2CFE202139305A00C13D22 /* TRUUserAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUUserAPI.m; sourceTree = "<group>"; };
+		2D4CA9AE21B7C16B008C9AD3 /* TRUUserLoginInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUUserLoginInfoModel.h; sourceTree = "<group>"; };
+		2D4CA9AF21B7C16B008C9AD3 /* TRUUserLoginInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUUserLoginInfoModel.m; sourceTree = "<group>"; };
+		2D5507272150E0E200E9DDF5 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
+		2D5507282150E0E200E9DDF5 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
+		2D601ABE212EA5D900D551E0 /* TRURegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURegisterController.h; sourceTree = "<group>"; };
+		2D601ABF212EA5D900D551E0 /* TRURegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRURegisterController.m; sourceTree = "<group>"; };
+		2D601AC0212EA5D900D551E0 /* TRURegisterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRURegisterController.xib; sourceTree = "<group>"; };
+		2D601AC7212EC24400D551E0 /* TRURegisterSuccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURegisterSuccess.h; sourceTree = "<group>"; };
+		2D601AC8212EC24400D551E0 /* TRURegisterSuccess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRURegisterSuccess.m; sourceTree = "<group>"; };
+		2D601AC9212EC24400D551E0 /* TRURegisterSuccess.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRURegisterSuccess.xib; sourceTree = "<group>"; };
+		2D7A4FD5212FA87F000BE350 /* TRURegister4sController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRURegister4sController.xib; sourceTree = "<group>"; };
+		2D8B731621D37052006D8281 /* UIButton+Touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Touch.m"; sourceTree = "<group>"; };
+		2D8B731721D37053006D8281 /* UIButton+Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Touch.h"; sourceTree = "<group>"; };
+		2D9EDBB721C37B6600658183 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
+		2D9EDBB821C37B6700658183 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
+		2DF62405214BA03E00D39784 /* TRUhttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUhttpManager.m; sourceTree = "<group>"; };
+		2DF62406214BA03E00D39784 /* TRUhttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUhttpManager.h; sourceTree = "<group>"; };
 		35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.release.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.release.xcconfig"; sourceTree = "<group>"; };
 		4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.debug.xcconfig"; sourceTree = "<group>"; };
 		D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Good_IdentifyAuthentication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -448,7 +512,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				121645391F972D2100808730 /* AddressBook.framework in Frameworks */,
-				122EC9B11FD7D6C200C41B71 /* libxindunsdk.a in Frameworks */,
 				121645371F972D0000808730 /* AVFoundation.framework in Frameworks */,
 				121C48CF1F7CE47F0077AE34 /* MapKit.framework in Frameworks */,
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
@@ -462,6 +525,7 @@
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
+				2D5507292150E0E200E9DDF5 /* libxindunsdk.a in Frameworks */,
 				1256332C1F7A21F7007FF392 /* CoreGraphics.framework in Frameworks */,
 				1256332A1F7A21E6007FF392 /* SystemConfiguration.framework in Frameworks */,
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
@@ -664,8 +728,8 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				122EC9B01FD7D6C200C41B71 /* libxindunsdk.a */,
-				122EC9AF1FD7D6C100C41B71 /* xindunsdk.h */,
+				2D5507282150E0E200E9DDF5 /* libxindunsdk.a */,
+				2D5507272150E0E200E9DDF5 /* xindunsdk.h */,
 			);
 			name = Xindun;
 			path = ..;
@@ -674,6 +738,7 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2D2CFDEF21391AB700C13D22 /* IQKeyboardManager */,
 				124769CB1FA18B41000055CB /* MJRefresh */,
 				128208731F98A341004DD5C6 /* HUIPatternLockView */,
 				121645341F9727D700808730 /* iflyMSC.framework */,
@@ -702,6 +767,8 @@
 				121645761F97429700808730 /* Lisence.txt */,
 				12C0D2D01F7907DC00972218 /* AppDelegate.h */,
 				12C0D2D11F7907DC00972218 /* AppDelegate.m */,
+				2DF62406214BA03E00D39784 /* TRUhttpManager.h */,
+				2DF62405214BA03E00D39784 /* TRUhttpManager.m */,
 				125633391F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.h */,
 				1256333A1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m */,
 				12C0D2D61F7907DC00972218 /* Main.storyboard */,
@@ -732,7 +799,7 @@
 			isa = PBXGroup;
 			children = (
 				12FAC8BA1F8CC72E001BB1A9 /* TRUUserAPI.h */,
-				12FAC8BB1F8CC72E001BB1A9 /* TRUUserAPI.m */,
+				2D2CFE202139305A00C13D22 /* TRUUserAPI.m */,
 				12FAC8BC1F8CC72E001BB1A9 /* TRUUserModel.h */,
 				12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */,
 			);
@@ -758,6 +825,8 @@
 				12409F981F8F4B22000D342D /* TRULoginViewController.m */,
 				12409F991F8F4B22000D342D /* TRULoginViewController.xib */,
 				12749E971FC7CCD300183EB4 /* TRUBingUser(绑定用户) */,
+				2D601ABD212EA59100D551E0 /* TRURegister(用户注册) */,
+				2D601AC3212EC1D900D551E0 /* TRURegisterSuccess(注册成功) */,
 				12B6B2301F8DE7B900A3B7A6 /* views */,
 				12749E991FC7CD0A00183EB4 /* TRUScan(扫码) */,
 				12749E981FC7CCF100183EB4 /* TRUUserInfo(个人信息) */,
@@ -778,6 +847,7 @@
 		12749E971FC7CCD300183EB4 /* TRUBingUser(绑定用户) */ = {
 			isa = PBXGroup;
 			children = (
+				2D4CA9AD21B7C0DC008C9AD3 /* Model */,
 				124201481FB5568000F892B1 /* TRUBingUserController.h */,
 				124201491FB5568000F892B1 /* TRUBingUserController.m */,
 				1242014A1FB5568000F892B1 /* TRUBingUserController.xib */,
@@ -798,8 +868,6 @@
 		12749E991FC7CD0A00183EB4 /* TRUScan(扫码) */ = {
 			isa = PBXGroup;
 			children = (
-				12B6B22D1F8DE6D500A3B7A6 /* TRULoginScanViewController.h */,
-				12B6B22E1F8DE6D500A3B7A6 /* TRULoginScanViewController.m */,
 			);
 			path = "TRUScan(扫码)";
 			sourceTree = "<group>";
@@ -983,6 +1051,8 @@
 				12C0D3051F7908C800972218 /* TRUBaseNavigationController.m */,
 				125633161F79E0C5007FF392 /* TRUBaseTabBarController.h */,
 				125633171F79E0C5007FF392 /* TRUBaseTabBarController.m */,
+				2D9EDBB721C37B6600658183 /* HAMLogOutputWindow.h */,
+				2D9EDBB821C37B6700658183 /* HAMLogOutputWindow.m */,
 				12C29FDA1F96067100087FB7 /* MyTabBar.h */,
 				12C29FDB1F96067100087FB7 /* MyTabBar.m */,
 				12C29FDC1F96067100087FB7 /* MyTabBarButton.h */,
@@ -1167,6 +1237,8 @@
 		12C0D3311F790E6000972218 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2D8B731721D37053006D8281 /* UIButton+Touch.h */,
+				2D8B731621D37052006D8281 /* UIButton+Touch.m */,
 				12409F841F8F40DE000D342D /* NSString+Regular.h */,
 				12409F851F8F40DE000D342D /* NSString+Regular.m */,
 				12409F811F8F40C6000D342D /* NSString+Trim.h */,
@@ -1214,6 +1286,113 @@
 			name = push;
 			path = ..;
 			sourceTree = "<group>";
+		};
+		2D2CFDEF21391AB700C13D22 /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFDF021391AB700C13D22 /* IQTextView */,
+				2D2CFDF321391AB700C13D22 /* IQToolbar */,
+				2D2CFDFE21391AB700C13D22 /* Constants */,
+				2D2CFE0121391AB700C13D22 /* Resources */,
+				2D2CFE0321391AB700C13D22 /* IQKeyboardReturnKeyHandler.h */,
+				2D2CFE0421391AB700C13D22 /* IQKeyboardManager.h */,
+				2D2CFE0521391AB700C13D22 /* IQKeyboardManager.m */,
+				2D2CFE0621391AB700C13D22 /* Categories */,
+				2D2CFE1121391AB700C13D22 /* IQKeyboardReturnKeyHandler.m */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		2D2CFDF021391AB700C13D22 /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFDF121391AB700C13D22 /* IQTextView.m */,
+				2D2CFDF221391AB700C13D22 /* IQTextView.h */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		2D2CFDF321391AB700C13D22 /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFDF421391AB700C13D22 /* IQUIView+IQKeyboardToolbar.h */,
+				2D2CFDF521391AB700C13D22 /* IQToolbar.m */,
+				2D2CFDF621391AB700C13D22 /* IQPreviousNextView.h */,
+				2D2CFDF721391AB700C13D22 /* IQTitleBarButtonItem.m */,
+				2D2CFDF821391AB700C13D22 /* IQBarButtonItem.m */,
+				2D2CFDF921391AB700C13D22 /* IQUIView+IQKeyboardToolbar.m */,
+				2D2CFDFA21391AB700C13D22 /* IQPreviousNextView.m */,
+				2D2CFDFB21391AB700C13D22 /* IQToolbar.h */,
+				2D2CFDFC21391AB700C13D22 /* IQBarButtonItem.h */,
+				2D2CFDFD21391AB700C13D22 /* IQTitleBarButtonItem.h */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		2D2CFDFE21391AB700C13D22 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFDFF21391AB700C13D22 /* IQKeyboardManagerConstantsInternal.h */,
+				2D2CFE0021391AB700C13D22 /* IQKeyboardManagerConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2D2CFE0121391AB700C13D22 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFE0221391AB700C13D22 /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2D2CFE0621391AB700C13D22 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2D2CFE0721391AB700C13D22 /* IQNSArray+Sort.m */,
+				2D2CFE0821391AB700C13D22 /* IQUIViewController+Additions.h */,
+				2D2CFE0921391AB700C13D22 /* IQUITextFieldView+Additions.m */,
+				2D2CFE0A21391AB700C13D22 /* IQUIScrollView+Additions.m */,
+				2D2CFE0B21391AB700C13D22 /* IQUIView+Hierarchy.m */,
+				2D2CFE0C21391AB700C13D22 /* IQNSArray+Sort.h */,
+				2D2CFE0D21391AB700C13D22 /* IQUIScrollView+Additions.h */,
+				2D2CFE0E21391AB700C13D22 /* IQUITextFieldView+Additions.h */,
+				2D2CFE0F21391AB700C13D22 /* IQUIViewController+Additions.m */,
+				2D2CFE1021391AB700C13D22 /* IQUIView+Hierarchy.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		2D4CA9AD21B7C0DC008C9AD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D4CA9AE21B7C16B008C9AD3 /* TRUUserLoginInfoModel.h */,
+				2D4CA9AF21B7C16B008C9AD3 /* TRUUserLoginInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D601ABD212EA59100D551E0 /* TRURegister(用户注册) */ = {
+			isa = PBXGroup;
+			children = (
+				2D601ABE212EA5D900D551E0 /* TRURegisterController.h */,
+				2D601ABF212EA5D900D551E0 /* TRURegisterController.m */,
+				2D601AC0212EA5D900D551E0 /* TRURegisterController.xib */,
+				2D7A4FD5212FA87F000BE350 /* TRURegister4sController.xib */,
+			);
+			path = "TRURegister(用户注册)";
+			sourceTree = "<group>";
+		};
+		2D601AC3212EC1D900D551E0 /* TRURegisterSuccess(注册成功) */ = {
+			isa = PBXGroup;
+			children = (
+				2D601AC7212EC24400D551E0 /* TRURegisterSuccess.h */,
+				2D601AC8212EC24400D551E0 /* TRURegisterSuccess.m */,
+				2D601AC9212EC24400D551E0 /* TRURegisterSuccess.xib */,
+			);
+			name = "TRURegisterSuccess(注册成功)";
+			path = "Good_IdentifyAuthentication/ALL_views/TRUActive(激活)/TRURegisterSuccess(注册成功)";
+			sourceTree = SOURCE_ROOT;
 		};
 		51747254D93A4DD21A54B2FD /* Pods */ = {
 			isa = PBXGroup;
@@ -1318,7 +1497,7 @@
 				TargetAttributes = {
 					12C0D2C91F7907DC00972218 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = TPCFL2FZJS;
+						DevelopmentTeam = AG9SM32322;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1349,6 +1528,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1376,6 +1556,7 @@
 				12579DF41F99E6E300422FBD /* GestureAppend.json in Resources */,
 				128D5D0C1F7E430700753EE5 /* TRULogIdentifyCell.xib in Resources */,
 				12F7C45C1FAC0A6100EF1DF5 /* tabbardata03.json in Resources */,
+				2D601ACB212EC24400D551E0 /* TRURegisterSuccess.xib in Resources */,
 				12F037211F9F1F79007F4C19 /* fingerbg.png in Resources */,
 				12409F9B1F8F4B22000D342D /* TRULoginViewController.xib in Resources */,
 				121645771F97429700808730 /* Lisence.txt in Resources */,
@@ -1391,6 +1572,7 @@
 				12C0D2DD1F7907DC00972218 /* LaunchScreen.storyboard in Resources */,
 				12C0D2DA1F7907DC00972218 /* Assets.xcassets in Resources */,
 				12409F5C1F8F3E2E000D342D /* tick_reveal.json in Resources */,
+				2D7A4FD6212FA87F000BE350 /* TRURegister4sController.xib in Resources */,
 				12F9002E1F9DFA47001125A3 /* pushDone.json in Resources */,
 				122C1F7C1F94AE8E00E118D2 /* TRUFeedbackViewController.xib in Resources */,
 				12476A0E1FA18B41000055CB /* MJRefresh.bundle in Resources */,
@@ -1399,6 +1581,8 @@
 				128208831F98AFE4004DD5C6 /* Gestureloading.json in Resources */,
 				121C48D41F7CFF8F0077AE34 /* TRUMineCell.xib in Resources */,
 				12EC8A581FFF82DC00F3AAB1 /* Images.xcassets in Resources */,
+				2D601AC2212EA5D900D551E0 /* TRURegisterController.xib in Resources */,
+				2D2CFE1821391AB700C13D22 /* IQKeyboardManager.bundle in Resources */,
 				123AE10E1FF1E6FF009F9183 /* pushcanale.json in Resources */,
 				12C0D2D81F7907DC00972218 /* Main.storyboard in Resources */,
 				128D5CEE1F7DDB4800753EE5 /* TRUDevicesManagerController.xib in Resources */,
@@ -1484,7 +1668,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2CFE1921391AB700C13D22 /* IQKeyboardManager.m in Sources */,
 				12476A081FA18B41000055CB /* MJRefreshBackGifFooter.m in Sources */,
+				2D2CFE1221391AB700C13D22 /* IQTextView.m in Sources */,
 				12476A051FA18B41000055CB /* MJRefreshAutoGifFooter.m in Sources */,
 				12476A0B1FA18B41000055CB /* MJRefreshGifHeader.m in Sources */,
 				1282086B1F989E8C004DD5C6 /* TRUGestureSettingViewController.m in Sources */,
@@ -1494,12 +1680,15 @@
 				12F45C811F7B3D9100C89C4D /* TRUMineMenuView.m in Sources */,
 				128D5CF21F7DE3A500753EE5 /* TRUDevicesManagerCell.m in Sources */,
 				12476A021FA18B41000055CB /* MJRefreshComponent.m in Sources */,
+				2D601ACA212EC24400D551E0 /* TRURegisterSuccess.m in Sources */,
+				2D2CFE1F21391AB700C13D22 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				125633441F7A2602007FF392 /* TRUConst.m in Sources */,
 				12FAC8BF1F8CC72E001BB1A9 /* TRUUserModel.m in Sources */,
 				1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */,
+				2D2CFE1C21391AB700C13D22 /* IQUIScrollView+Additions.m in Sources */,
 				1256333B1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m in Sources */,
+				2D2CFE212139305A00C13D22 /* TRUUserAPI.m in Sources */,
 				12C0D3231F790CDC00972218 /* TRUMineViewController.m in Sources */,
-				12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */,
 				12F4435F1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.m in Sources */,
 				12409F9A1F8F4B22000D342D /* TRULoginViewController.m in Sources */,
 				12476A031FA18B41000055CB /* MJRefreshFooter.m in Sources */,
@@ -1509,12 +1698,17 @@
 				121C48D31F7CFF8F0077AE34 /* TRUMineCell.m in Sources */,
 				12C0D32C1F790D1600972218 /* TRUDynamicPasswordViewController.m in Sources */,
 				12476A0F1FA18B41000055CB /* MJRefreshConst.m in Sources */,
-				12B6B22F1F8DE6D500A3B7A6 /* TRULoginScanViewController.m in Sources */,
 				1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */,
+				2D2CFE1421391AB700C13D22 /* IQTitleBarButtonItem.m in Sources */,
 				1256334F1F7A4471007FF392 /* UINavigationBar+BackgroundColor.m in Sources */,
+				2D2CFE1621391AB700C13D22 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				2D601AC1212EA5D900D551E0 /* TRURegisterController.m in Sources */,
 				12C0D3031F79088200972218 /* TRUBaseViewController.m in Sources */,
 				128D5D071F7E405A00753EE5 /* TRUAPPLogIdentifyController.m in Sources */,
 				12409F751F8F3FCE000D342D /* TRUFingerGesUtil.m in Sources */,
+				2D2CFE1A21391AB700C13D22 /* IQNSArray+Sort.m in Sources */,
+				2D2CFE1521391AB700C13D22 /* IQBarButtonItem.m in Sources */,
+				2D4CA9B021B7C16B008C9AD3 /* TRUUserLoginInfoModel.m in Sources */,
 				124ADA551FCBF4CE003B3F0E /* TRUVerifyFaceViewController.m in Sources */,
 				12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */,
 				12F542D11F90A183005AAEFC /* TRUDeviceModel.m in Sources */,
@@ -1527,6 +1721,7 @@
 				12F45C7E1F7B355200C89C4D /* TRUUserInfoModel.m in Sources */,
 				12F45C7B1F7B353600C89C4D /* TRUBaseModel.m in Sources */,
 				12EB0259210881BC00E43F29 /* TRUGestureVerify2ViewController.m in Sources */,
+				2D8B731821D37053006D8281 /* UIButton+Touch.m in Sources */,
 				128D5CFB1F7E268600753EE5 /* TRUAboutUsViewController.m in Sources */,
 				12B6B2331F8DE7C900A3B7A6 /* TRUScanView.m in Sources */,
 				1220488C21085DC700589AC5 /* TRUCheckBingController.m in Sources */,
@@ -1540,23 +1735,29 @@
 				12409F791F8F40A1000D342D /* MBProgressHUD.m in Sources */,
 				128D5D0B1F7E430700753EE5 /* TRULogIdentifyCell.m in Sources */,
 				12579DF21F99A95700422FBD /* TRUNormalButton.m in Sources */,
+				2D2CFE1721391AB700C13D22 /* IQPreviousNextView.m in Sources */,
 				125633181F79E0C5007FF392 /* TRUBaseTabBarController.m in Sources */,
 				12662C591FCD06080058140F /* TRUAddPhoneViewController.m in Sources */,
 				12C0D3061F7908C800972218 /* TRUBaseNavigationController.m in Sources */,
 				12A662B11FC2C2A600C20D81 /* YCAnimationNumberView.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
 				128D5CED1F7DDB4800753EE5 /* TRUDevicesManagerController.m in Sources */,
+				2D2CFE1E21391AB700C13D22 /* IQUIViewController+Additions.m in Sources */,
 				128208721F98A234004DD5C6 /* TRUGestureVerifyViewController.m in Sources */,
 				12476A111FA18B41000055CB /* UIScrollView+MJExtension.m in Sources */,
 				12476A0D1FA18B41000055CB /* MJRefreshStateHeader.m in Sources */,
 				12409F891F8F40FF000D342D /* TRUTextField.m in Sources */,
 				12476A101FA18B41000055CB /* NSBundle+MJRefresh.m in Sources */,
 				12F542CA1F906964005AAEFC /* TRUTimeView.m in Sources */,
+				2D2CFE1D21391AB700C13D22 /* IQUIView+Hierarchy.m in Sources */,
+				2DF62407214BA03E00D39784 /* TRUhttpManager.m in Sources */,
 				12F0371C1F9F1406007F4C19 /* TRUGestureModify1ViewController.m in Sources */,
 				12C29FDE1F96067100087FB7 /* MyTabBar.m in Sources */,
+				2D9EDBB921C37B6700658183 /* HAMLogOutputWindow.m in Sources */,
 				121645331F96F2DF00808730 /* Reachability.m in Sources */,
 				12C0D3401F790EA000972218 /* UIView+FrameExt.m in Sources */,
 				1282086F1F989EDC004DD5C6 /* TRUVerifyFingerprintViewController.m in Sources */,
+				2D2CFE1321391AB700C13D22 /* IQToolbar.m in Sources */,
 				12C0D33E1F790EA000972218 /* UIColor+HEX.m in Sources */,
 				12409F801F8F40A8000D342D /* QTVertificationCodeLabel.m in Sources */,
 				12476A131FA18B41000055CB /* UIView+MJExtension.m in Sources */,
@@ -1568,6 +1769,7 @@
 				122C1F7B1F94AE8E00E118D2 /* TRUFeedbackViewController.m in Sources */,
 				12409F831F8F40C6000D342D /* NSString+Trim.m in Sources */,
 				12F45C8D1F7B8B7D00C89C4D /* TRUHomeButton.m in Sources */,
+				2D2CFE1B21391AB700C13D22 /* IQUITextFieldView+Additions.m in Sources */,
 				122AD7A21FA9A9E000E5963F /* YCAlertView.m in Sources */,
 				12F0371F1F9F15EF007F4C19 /* TRUGestureModify2ViewController.m in Sources */,
 				125633551F7A4B40007FF392 /* TRUMineUserInfoView.m in Sources */,
@@ -1734,7 +1936,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = TPCFL2FZJS;
+				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1763,8 +1965,8 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59968843-7fb5-4ced-be11-b84fefe6c6da";
-				PROVISIONING_PROFILE_SPECIFIER = "善认dev";
+				PROVISIONING_PROFILE = "08301222-69c3-41f1-8ea5-fb4e2f84d440";
+				PROVISIONING_PROFILE_SPECIFIER = CommonTestProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1779,7 +1981,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TPCFL2FZJS;
+				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1808,8 +2010,8 @@
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59968843-7fb5-4ced-be11-b84fefe6c6da";
-				PROVISIONING_PROFILE_SPECIFIER = "善认dev";
+				PROVISIONING_PROFILE = "08301222-69c3-41f1-8ea5-fb4e2f84d440";
+				PROVISIONING_PROFILE_SPECIFIER = CommonTestProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

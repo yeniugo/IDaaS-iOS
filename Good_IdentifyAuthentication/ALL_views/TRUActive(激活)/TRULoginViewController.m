@@ -11,9 +11,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TRULicenseAgreementViewController.h"
 #import "TRUBingUserController.h"
-#import "TRULoginScanViewController.h"
+//#import "TRULoginScanViewController.h"
 #import "TRUBaseNavigationController.h"
-#import "TRUBaseNavigationController.h"
+//#import "TRUBaseNavigationController.h"
+#import "TRURegisterController.h"
 
 @interface TRULoginViewController ()
 
@@ -25,6 +26,12 @@
 
 @property (strong, nonnull) LOTAnimationView *scanJsonView;
 
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *welcomTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBackHeightConstraint;
 
 @end
 
@@ -41,12 +48,14 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     label.hidden = YES;
-    [_scanJsonView stop];
-    [_scanJsonView playWithCompletion:^(BOOL animationFinished) {
-        if (animationFinished) {
-            label.hidden = NO;
-        }
-    }];
+//    [_scanJsonView stop];
+//    [_scanJsonView playWithCompletion:^(BOOL animationFinished) {
+//        if (animationFinished) {
+//            label.hidden = NO;
+//        }
+//    }];
+    //YCLog("kServerUrl = %@",kServerUrl);
+    
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -60,94 +69,47 @@
     [_AgreementBtn setTitleColor:DefaultColor forState:UIControlStateNormal];
     _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [_bingEmailBtn setBackgroundColor:DefaultColor];
+    [_registerBtn setBackgroundColor:DefaultColor];
     
-    _scanJsonView = [LOTAnimationView animationNamed:@"Scandata.json"];
-    _scanJsonView.frame = CGRectMake(0, 0, 230, 230);
-    [_ScanView addSubview:_scanJsonView];
-    
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanViewTap)];
-    [_scanJsonView addGestureRecognizer:tap];
-    _scanJsonView.userInteractionEnabled = YES;
-    
-//    label = [[UILabel alloc] init];
-//    label.text = @"用户绑定";
-//    label.font = [UIFont systemFontOfSize:14];
-//    label.textColor = [UIColor darkGrayColor];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.frame = CGRectMake(70, 170, 80, 20);
-//    [_ScanView addSubview:label];
-//    [_ScanView bringSubviewToFront:label];
-//    label.hidden = YES;
-//    [_scanJsonView playWithCompletion:^(BOOL animationFinished) {
-//        if (animationFinished) {
-//            label.hidden = NO;
-//        }
-//    }];
+//
+    if (IS_IPHONE_4_OR_LESS) {
+        self.imageWidthConstraint.constant = 200;
+        self.imageHeightConstraint.constant = 240;
+        self.welcomTopConstraint.constant = 150;
+    }else if(IS_IPHONE_5){
+        self.imageWidthConstraint.constant = 250;
+        self.imageHeightConstraint.constant = 300;
+        self.welcomTopConstraint.constant = 150;
+    }else {
+        self.imageWidthConstraint.constant = 350*PointHeightRatio6;
+        self.imageHeightConstraint.constant = 420*PointHeightRatio6;
+        self.welcomTopConstraint.constant = 250 *PointHeightRatio6;
+        self.imageTopConstraint.constant = -90*PointHeightRatio6;
+//        self.imageTopConstraint.constant = 100 * PointHeightRatio6;
+        if (kDevice_Is_iPhoneX) {
+            self.imageWidthConstraint.constant = 300*PointHeightRatio6;
+            self.imageHeightConstraint.constant = 360*PointHeightRatio6;
+            self.imageTopConstraint.constant = -40*PointHeightRatio6 - 60;
+            self.welcomTopConstraint.constant = 160 *PointHeightRatio6 + 70;
+        }
+    }
+    self.loginBackHeightConstraint.constant = SCREENW*1262.0/1125.0;
 }
 //绑定用户
--(void)scanViewTap{
-    TRUBingUserController *bingUserVC = [[TRUBingUserController alloc] init];
-    [self.navigationController pushViewController:bingUserVC animated:YES];
-}
-#pragma mark - 扫码
 - (IBAction)bingEmailBtnClick:(UIButton *)sender {
+//    TRUBingUserController *bingUserVC = [[TRUBingUserController alloc] init];
+//    [self.navigationController pushViewController:bingUserVC animated:YES];
+    TRURegisterController *registerVC = [[TRURegisterController alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+- (IBAction)registerBtnClick:(id)sender {
+//    TRURegisterController *registerVC = [[TRURegisterController alloc] init];
+//    [self.navigationController pushViewController:registerVC animated:YES];
     TRUBingUserController *bingUserVC = [[TRUBingUserController alloc] init];
     [self.navigationController pushViewController:bingUserVC animated:YES];
 }
 
-
-- (IBAction)AgreementBtnClick:(id)sender {
-    TRULicenseAgreementViewController *lisenceVC = [[TRULicenseAgreementViewController alloc] init];
-    [self.navigationController pushViewController:lisenceVC animated:YES];
-}
-
-
-
-
-
-- (void)showConfrimCancelDialogViewWithTitle:(NSString *)title msg:(NSString *)msg confrimTitle:(NSString *)confrimTitle cancelTitle:(NSString *)cancelTitle confirmRight:(BOOL)confirmRight confrimBolck:(void (^)())confrimBlock cancelBlock:(void (^)())cancelBlock{
-    
-    UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:confrimTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        if (confrimBlock) {
-            confrimBlock();
-        }
-    }];
-    if (cancelTitle && cancelTitle.length > 0) {
-        UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            if (cancelBlock) {
-                cancelBlock();
-            }
-            
-        }];
-        if (confirmRight) {
-            [alertVC addAction:cancelAction];
-            [alertVC addAction:confrimAction];
-        }else{
-            [alertVC addAction:confrimAction];
-            [alertVC addAction:cancelAction];
-        }
-    }else{
-        [alertVC addAction:confrimAction];
-    }
-    
-    UIViewController *controler = !self.navigationController ? self : self.navigationController;
-    
-    if (controler.presentedViewController && [controler.presentedViewController isKindOfClass:[UIAlertController class]]) {
-        [controler.presentedViewController dismissViewControllerAnimated:NO completion:^{
-            [controler presentViewController:alertVC animated:YES completion:nil];
-        }];
-    }else{
-        [controler presentViewController:alertVC animated:YES completion:nil];
-    }
-    
-    
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

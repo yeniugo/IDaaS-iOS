@@ -40,14 +40,14 @@
     
     __weak typeof(self) weakSelf = self;
     
-    
+//    self.title = @"重置手势";
     
     self.linelabel.hidden = YES;
     
     //iconImgview lotview
     CGFloat lastY = 100;
     
-    UIImageView *iconImgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ges_bg"]];
+    UIImageView *iconImgview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"roundicon"]];
     [self.view addSubview:iconImgview];
     iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 60, 100, 100);
     if (kDevice_Is_iPhoneX) {
@@ -119,21 +119,21 @@
     
     
     //用户协议
-    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 122, SCREENH - 50, 165, 20)];
-    [self.view addSubview:txtLabel];
-    txtLabel.text = @"善认·一站式移动身份管理";
-    txtLabel.font = [UIFont systemFontOfSize:14];
-    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:agreementBtn];
-    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 50, 90, 20);
-    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-    if (kDevice_Is_iPhoneX) {
-        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-    }
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 122, SCREENH - 50, 165, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"善认·一站式移动身份管理";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 50, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//    }
     
 }
 

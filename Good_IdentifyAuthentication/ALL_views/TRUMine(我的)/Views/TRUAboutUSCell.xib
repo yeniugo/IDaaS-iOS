@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,40 +19,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITQ-rg-4J3">
-                        <rect key="frame" x="8" y="9" width="30" height="30"/>
+                        <rect key="frame" x="15" y="13" width="17" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="aEe-zB-HtO"/>
-                            <constraint firstAttribute="height" constant="30" id="zJh-Mu-1HI"/>
+                            <constraint firstAttribute="width" constant="17" id="aEe-zB-HtO"/>
+                            <constraint firstAttribute="height" constant="21" id="zJh-Mu-1HI"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="善认·一站式移动身份管理(IDaaS)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW3-fX-1Pq">
-                        <rect key="frame" x="46" y="14" width="207" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软件名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTg-4m-a0i">
+                        <rect key="frame" x="42" y="14" width="70" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="Ocp-Ws-fai"/>
+                            <constraint firstAttribute="height" constant="21" id="nad-Dh-WhO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="善认·一站式移动身份管理(IDaaS)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HW3-fX-1Pq">
+                        <rect key="frame" x="81" y="14" width="224" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="eMi-xH-0tB"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软件名称" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTg-4m-a0i">
-                        <rect key="frame" x="261" y="14" width="51" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="51" id="Ocp-Ws-fai"/>
-                            <constraint firstAttribute="height" constant="21" id="nad-Dh-WhO"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="qTg-4m-a0i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="442-Y7-xa5"/>
-                    <constraint firstItem="qTg-4m-a0i" firstAttribute="leading" secondItem="HW3-fX-1Pq" secondAttribute="trailing" constant="8" id="7UJ-lR-RX7"/>
-                    <constraint firstItem="ITQ-rg-4J3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="Gsk-cP-pR8"/>
-                    <constraint firstItem="ITQ-rg-4J3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="OjH-e4-Aqb"/>
-                    <constraint firstItem="HW3-fX-1Pq" firstAttribute="leading" secondItem="ITQ-rg-4J3" secondAttribute="trailing" constant="8" id="baF-tz-wVa"/>
+                    <constraint firstItem="qTg-4m-a0i" firstAttribute="leading" secondItem="ITQ-rg-4J3" secondAttribute="trailing" constant="10" id="Fib-JZ-ubQ"/>
+                    <constraint firstItem="ITQ-rg-4J3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Gsk-cP-pR8"/>
+                    <constraint firstItem="ITQ-rg-4J3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OjH-e4-Aqb"/>
                     <constraint firstItem="HW3-fX-1Pq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="h6h-5R-xhl"/>
-                    <constraint firstAttribute="trailing" secondItem="qTg-4m-a0i" secondAttribute="trailing" constant="8" id="u89-Eq-dzy"/>
+                    <constraint firstAttribute="trailing" secondItem="HW3-fX-1Pq" secondAttribute="trailing" constant="15" id="pT8-aK-dS2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

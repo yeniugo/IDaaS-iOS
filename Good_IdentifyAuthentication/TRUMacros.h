@@ -52,12 +52,19 @@
 #define PointWidthRatio6P (SCREEN_WIDTH / 414.0)
 //本次设计按照6的尺寸设计，所以以6作为标准
 #define PointHeightRatio6 (SCREEN_HEIGHT / 750.0)
-#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
 //#define PixelHeightRatio6 (SCREEN_HEIGHT / 1334.0)
 //#define PointHeightRatio6 (SCREEN_HEIGHT / 677.0)
 //#define PixelWidthRatio6 (SCREEN_WIDTH / 750.0)
 //#define PointWidthRatio6 (SCREEN_WIDTH / 375.0)
-
+/*状态栏高度*/
+#define kStatusBarHeight (CGFloat)(kDevice_Is_iPhoneX?(44.0):(20.0))
+/*导航栏高度*/
+#define kNavBarHeight (44)
+/*状态栏和导航栏总高度*/
+#define kNavBarAndStatusBarHeight (CGFloat)(kDevice_Is_iPhoneX?(88.0):(64.0))
+/*TabBar高度*/
+#define kTabBarHeight (CGFloat)(kDevice_Is_iPhoneX?(49.0 + 34.0):(49.0))
 
 #define	APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define APP_VERSION_EQUAL_TO(v) ([APP_VERSION compare:v options:NSNumericSearch] == NSOrderedSame)

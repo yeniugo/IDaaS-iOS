@@ -12,7 +12,7 @@
 #import "xindunsdk.h"
 #import "NSString+Trim.h"
 #import "NSString+Regular.h"
-
+#import "TRUhttpManager.h"
 @interface TRUAddPhoneViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -55,19 +55,24 @@
     self.phoneTF.enabled = NO;
     [self startTimer];
     sender.enabled = NO;
-    [xindunsdk requestCIMSAuthCodeForUser:userid phone:phone type:@"1" onResult:^(int error, id response) {
-        if (error == 0) {
+    NSString *sign = [NSString stringWithFormat:@"%@%@",phone,@"1"];
+    NSArray *ctxx = @[@"phone",phone,@"authtype",@"1"];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *para = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *paraDic = @{@"params":para};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getauthcode"] withParts:paraDic onResult:^(int errorno, id responseBody) {
+        if (errorno == 0) {
             [weakself showHudWithText:@"验证码已发送"];
             [weakself hideHudDelay:2.0];
             self.codeBtn.enabled = NO;
             [weakself.codeTF becomeFirstResponder];
-        }else if (-5004 == error){
+        }else if (-5004 == errorno){
             [weakself showHudWithText:@"网络错误，请稍后重试"];
             [weakself hideHudDelay:2.0];
-        }else if (9019 == error){
+        }else if (9019 == errorno){
             [weakself deal9019Error];
         }else{
-            NSString *err = [NSString stringWithFormat:@"获取验证码失败（%d）",error];
+            NSString *err = [NSString stringWithFormat:@"获取验证码失败（%d）",errorno];
             [weakself showHudWithText:err];
             [weakself hideHudDelay:2.0];
         }
@@ -97,36 +102,41 @@
         return;
     }
     [self showActivityWithText:@"正在绑定.."];
-    [xindunsdk requestCIMSUserInfoSync2ForUser:userid info:phone type:@"phone" authcode:authcode onResult:^(int error) {
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@",phone,@"phone",authcode];
+    NSArray *ctxx = @[@"userno",phone,@"type",@"phone",@"authcode",authcode];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *para = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *paraDic = @{@"params":para};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/userinfosync2"] withParts:paraDic onResult:^(int errorno, id responseBody) {
         [weakself hideHudDelay:0];
-        
-        if (error == 0) {
-            
-            TRUUserModel *user = [TRUUserAPI getUser];
-            user.phone = phone;
-            [TRUUserAPI saveUser:user];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
-            [weakself showHudWithText:@"添加手机号成功"];
-            [self stopTimer];
-            self.codeBtn.enabled = YES;
-            [weakself hideHudDelay:2.0];
-            [weakself.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
-            
-        }else if(error == -5004){
+        if (errorno == 0 && responseBody) {
+            NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+            int code = [dic[@"code"] intValue];
+            if (code == 0) {
+                TRUUserModel *user = [TRUUserAPI getUser];
+                user.phone = phone;
+                [TRUUserAPI saveUser:user];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changephonesuccess" object:nil];
+                [weakself showHudWithText:@"添加手机号成功"];
+                [weakself stopTimer];
+                weakself.codeBtn.enabled = YES;
+                [weakself hideHudDelay:2.0];
+                [weakself.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.1];
+            }
+        }else if(errorno == -5004){
             [weakself showHudWithText:@"网络错误，请稍后重试"];
             [weakself hideHudDelay:2.0];
-        }else if (9004 == error){
+        }else if (9004 == errorno){
             [weakself showHudWithText:@"手机号重复"];
             [weakself hideHudDelay:2.0];
             weakself.phoneTF.enabled = YES;
-        }else if (9019 == error){
+        }else if (9019 == errorno){
             [weakself deal9019Error];
         }else{
-            NSString *err = [NSString stringWithFormat:@"同步手机号失败（%d）",error];
+            NSString *err = [NSString stringWithFormat:@"同步手机号失败（%d）",errorno];
             [weakself showHudWithText:err];
             [weakself hideHudDelay:2.0];
         }
-        
     }];
     
 }

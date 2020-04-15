@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *iphoneEmialView;
 
-
+@property (assign, nonatomic) BOOL isRegister;
 
 @end

@@ -12,7 +12,7 @@
 #import "TRUTimerButton.h"
 #import "NSString+Regular.h"
 #import "TRUFingerGesUtil.h"
-
+#import "TRUhttpManager.h"
 @interface TRUAddPersonalInfoViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
@@ -105,7 +105,13 @@
 - (void)requestEmailAuthCode{
     NSString *userNo = [TRUUserAPI getUser].userId;
     __weak typeof(self) weakself = self;
-    [xindunsdk requestCIMSEmailCode:userNo email:self.phoneTF.text authType:@"1" onResult:^(int error) {
+    NSString *sign = [NSString stringWithFormat:@"%@%@",self.phoneTF.text,@"1"];
+    NSArray *ctxx = @[@"mail",self.phoneTF.text,@"authtype",@"1"];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *para = [xindunsdk encryptByUkey:userNo ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *paraDic = @{@"params":para};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/getmailcode"] withParts:paraDic onResult:^(int error, id responseBody) {
+    //[xindunsdk requestCIMSEmailCode:userNo email:self.phoneTF.text authType:@"1" onResult:^(int error) {
         if (0 == error) {
             [weakself showHudWithText:@"邮件验证码已发送，请输入验证码"];
             [weakself hideHudDelay:2.0];
@@ -183,7 +189,13 @@
     
     NSString *userNo = [TRUUserAPI getUser].userId;
     [self showHudWithText:@"请稍后..."];
-    [xindunsdk requestCIMSUserInfoSync2ForUser:userNo info:self.phoneTF.text type:codeType authcode:authcode onResult:^(int error) {
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@",self.phoneTF.text,codeType,authcode];
+    NSArray *ctxx = @[@"userno",self.phoneTF.text,@"type",codeType,@"authcode",authcode];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *para = [xindunsdk encryptByUkey:userNo ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *paraDic = @{@"params":para};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/userinfosync2"] withParts:paraDic onResult:^(int error, id responseBody) {
+    //[xindunsdk requestCIMSUserInfoSync2ForUser:userNo info:self.phoneTF.text type:codeType authcode:authcode onResult:^(int error) {
         [weakself hideHudDelay:0];
         if (error == 0) {
             [self stopTimer];
@@ -202,20 +214,26 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
             id delegate = [UIApplication sharedApplication].delegate;
-            
-            if (window.rootViewController == weakself.navigationController) {
+            if(self.isFirstRegist){
                 if ([delegate respondsToSelector:@selector(changeRootVC)]) {
                     [delegate performSelector:@selector(changeRootVC)];
                 }
-                
             }else{
-                
-                [weakself.navigationController dismissViewControllerAnimated:NO completion:^{
+                if (window.rootViewController == weakself.navigationController) {
                     if ([delegate respondsToSelector:@selector(changeRootVC)]) {
                         [delegate performSelector:@selector(changeRootVC)];
                     }
-                }];
+                    
+                }else{
+                    
+                    [weakself.navigationController dismissViewControllerAnimated:NO completion:^{
+                        if ([delegate respondsToSelector:@selector(changeRootVC)]) {
+                            [delegate performSelector:@selector(changeRootVC)];
+                        }
+                    }];
+                }
             }
+            
 #pragma clang diagnostic pop
         }else if(error == -5004){
             [weakself showHudWithText:@"网络错误，请稍后重试"];

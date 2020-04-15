@@ -29,6 +29,8 @@
 @property (nonatomic, copy) NSString *voiceid;
 /** 人脸 */
 @property (nonatomic, copy) NSString *faceinfo;
+//是否设置了验证信息
+//@property (nonatomic, assign) BOOL verification;
 
 + (instancetype)modelWithUserId:(NSString *)userId;
 + (instancetype)modelWithDic:(NSDictionary *)dic;

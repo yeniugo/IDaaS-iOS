@@ -30,6 +30,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone&&self.navigationController.viewControllers.count==1){
+        self.isFirstRegist = YES;
+    }
     [self requestData];
 }
 - (void)viewDidLoad {
@@ -166,6 +169,7 @@
     if (btn.isSelected) {
         
         TRUGestureSettingViewController *gesVC = [[TRUGestureSettingViewController alloc] init];
+        gesVC.isFirstRegist = self.isFirstRegist;
         gesVC.backBlocked =^(){
             [self requestData];
         };
@@ -178,6 +182,12 @@
                 //                TRUGestureVerify2ViewController *gesVC = [[TRUGestureVerify2ViewController alloc] init];
                 //                gesVC.closeGesAuth = YES;
                 //                [self.navigationController pushViewController:gesVC animated:YES];
+                if([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone&&self.navigationController.viewControllers.count>1){
+                    id delegate = [UIApplication sharedApplication].delegate;
+                    if ([delegate respondsToSelector:@selector(changeLoginRootVC)]) {
+                        [delegate performSelector:@selector(changeLoginRootVC)];
+                    }
+                }
             } cancelBlock:^{
                 btn.selected = !btn.selected;
             }];
@@ -189,6 +199,7 @@
     if (btn.selected) {
         
         TRUVerifyFingerprintViewController *fingerVC = [[TRUVerifyFingerprintViewController alloc] init];
+        fingerVC.isFirstRegist = self.isFirstRegist;
         fingerVC.openFingerAuth = YES;
         [self.navigationController pushViewController:fingerVC animated:YES];
         fingerVC.backBlocked =^(BOOL ison){
@@ -215,9 +226,17 @@
         //                [self requestData];
         //            };
         //        }
+        
     }else{
         [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您确定要关闭指纹登录验证" confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
             [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+            YCLog(@"%d",[TRUFingerGesUtil getLoginAuthFingerType]);
+            if([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone&&self.navigationController.viewControllers.count>1){
+                id delegate = [UIApplication sharedApplication].delegate;
+                if ([delegate respondsToSelector:@selector(changeLoginRootVC)]) {
+                    [delegate performSelector:@selector(changeLoginRootVC)];
+                }
+            }
         } cancelBlock:^{
             btn.selected = !btn.selected;
         }];
@@ -231,6 +250,7 @@
         
         TRUVerifyFaceViewController *faceVC = [[TRUVerifyFaceViewController alloc] init];
         faceVC.openFaceAuth = YES;
+        faceVC.isFirstRegist = self.isFirstRegist;
         [self.navigationController pushViewController:faceVC animated:YES];
         faceVC.backBlocked =^(BOOL ison){
             [self requestData];

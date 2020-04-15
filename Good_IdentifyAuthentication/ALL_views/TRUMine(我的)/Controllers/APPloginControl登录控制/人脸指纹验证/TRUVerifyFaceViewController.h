@@ -15,6 +15,8 @@
 //是否正在进行指纹验证
 @property (nonatomic, assign) BOOL isDoingAuth;
 
+@property (assign,nonatomic) BOOL isFirstRegist;
+
 @property (copy, nonatomic) void(^backBlocked)(BOOL ison);
 
 @end

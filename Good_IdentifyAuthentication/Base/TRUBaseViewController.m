@@ -122,12 +122,24 @@
     }
 #pragma clang diagnostic pop
 }
+
+- (void)back2LoginRootVC{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    id delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate respondsToSelector:@selector(changRestDataVC)]) {
+        [delegate performSelector:@selector(changRestDataVC) withObject:nil];
+    }
+#pragma clang diagnostic pop
+}
 - (void)deal9008Error{
     [self showConfrimCancelDialogViewWithTitle:@"" msg:@"秘钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
+        [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+        [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
 //        [xindunsdk deactivateAllUsers];
-        [self back2UnActiveRootVC];
+        [self back2LoginRootVC];
     } cancelBlock:nil];
 }
 - (void)deal9019Error{
@@ -193,7 +205,7 @@ static const char TRUHUDKey = '\0';
 }
 
 - (void)showHudWithText:(NSString *)text{
-    
+    //[self.hud showAnimated:NO];
     self.hud.mode = MBProgressHUDModeText;
     self.hud.label.text = text;
     [self.hud showAnimated:YES];

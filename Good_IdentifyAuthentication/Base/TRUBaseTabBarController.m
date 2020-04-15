@@ -45,9 +45,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (!self.isAddUserInfo) {
-        [self showFinger];
-    }
+    
     [self setUpTabbar];
     [self setUPChildrenVC];
     
@@ -74,6 +72,9 @@
 ///移除自带的tabBar
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (!self.isAddUserInfo) {
+        [self showFinger];
+    }
     for(UIView *child in self.tabBar.subviews){
         if([child isKindOfClass:[UIControl class]]){
             [child removeFromSuperview];

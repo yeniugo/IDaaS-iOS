@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMw-E2-bl3">
-                        <rect key="frame" x="84" y="17" width="154" height="21"/>
+                        <rect key="frame" x="84" y="17" width="155.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="DhF-pF-K1t"/>
                         </constraints>
@@ -45,7 +45,7 @@
                         <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否接受推送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-FK-gbO">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否接受推送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-FK-gbO">
                         <rect key="frame" x="229" y="44.5" width="83" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="83" id="rHS-Ae-As6"/>
@@ -55,11 +55,11 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-iN-Kay">
-                        <rect key="frame" x="246" y="18.5" width="50" height="22"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-iN-Kay">
+                        <rect key="frame" x="247.5" y="8.5" width="47" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="59j-of-Q8C"/>
-                            <constraint firstAttribute="height" constant="22" id="F8x-X2-0u1"/>
+                            <constraint firstAttribute="width" constant="47" id="59j-of-Q8C"/>
+                            <constraint firstAttribute="height" constant="32" id="F8x-X2-0u1"/>
                         </constraints>
                         <state key="normal" image="sliderbtnOff">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,6 +69,16 @@
                             <action selector="sliderBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hd2-bp-Qas"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="左滑解绑设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44e-aa-Ot3">
+                        <rect key="frame" x="219" y="24" width="85" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="lfC-n1-Buv"/>
+                            <constraint firstAttribute="width" constant="85" id="n0Q-FA-2az"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.58039215686274503" green="0.58039215686274503" blue="0.58188174703737827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Sen-la-W4Y" firstAttribute="leading" secondItem="ZuF-yN-47S" secondAttribute="trailing" constant="10" id="L27-ad-pz2"/>
@@ -79,8 +89,10 @@
                     <constraint firstItem="cMw-E2-bl3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="gX3-HX-CPi"/>
                     <constraint firstItem="ZuF-yN-47S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="iv7-HM-O1w"/>
                     <constraint firstItem="78h-iN-Kay" firstAttribute="leading" secondItem="cMw-E2-bl3" secondAttribute="trailing" constant="8" id="km4-oq-mid"/>
+                    <constraint firstAttribute="trailing" secondItem="44e-aa-Ot3" secondAttribute="trailing" constant="16" id="nzR-hR-3Ja"/>
                     <constraint firstAttribute="trailing" secondItem="6lg-FK-gbO" secondAttribute="trailing" constant="8" id="rZf-xr-ITr"/>
                     <constraint firstItem="78h-iN-Kay" firstAttribute="centerX" secondItem="6lg-FK-gbO" secondAttribute="centerX" id="uLh-kE-p3S"/>
+                    <constraint firstItem="44e-aa-Ot3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uii-p8-xL3"/>
                     <constraint firstItem="cMw-E2-bl3" firstAttribute="leading" secondItem="ZuF-yN-47S" secondAttribute="trailing" constant="10" id="xoz-xM-QeU"/>
                 </constraints>
             </tableViewCellContentView>
@@ -94,7 +106,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="sliderbtnOff" width="70" height="23"/>
-        <image name="sliderbtnOn" width="70" height="23"/>
+        <image name="sliderbtnOff" width="47" height="31"/>
+        <image name="sliderbtnOn" width="47" height="31"/>
     </resources>
 </document>

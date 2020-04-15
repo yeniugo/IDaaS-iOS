@@ -75,7 +75,7 @@
 #pragma mark - Private methods
 
 - (void)setupViews {
-    
+//    self.title = @"验证手势";
     if (self.isDoingAuth) {
         UIImage *img = [[UIImage imageNamed:@"backbtn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -94,7 +94,7 @@
     
     UIImageView *iconImgview = [[UIImageView alloc] init];
     [self.view addSubview:iconImgview];
-    iconImgview.image = [UIImage imageNamed:@"ges_bg"];
+    iconImgview.image = [UIImage imageNamed:@"roundicon"];
     iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 65, 100, 100);
     if (kDevice_Is_iPhoneX) {
         iconImgview.frame = CGRectMake(SCREENW/2.f - 50, 105, 100, 100);
@@ -172,22 +172,22 @@
         }
     }else{
         //用户协议
-        UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
-        [self.view addSubview:txtLabel];
-        txtLabel.text = @"使用此App,即表示同意该";
-        txtLabel.font = [UIFont systemFontOfSize:14];
-        UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.view addSubview:agreementBtn];
-        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
-        [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-        [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
-        agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
-        
-        if (kDevice_Is_iPhoneX) {
-            txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
-            agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
-        }
+//        UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//        [self.view addSubview:txtLabel];
+//        txtLabel.text = @"使用此App,即表示同意该";
+//        txtLabel.font = [UIFont systemFontOfSize:14];
+//        UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.view addSubview:agreementBtn];
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//        [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//        [agreementBtn setTitleColor:RGBCOLOR(32, 144, 54) forState:UIControlStateNormal];
+//        agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        if (kDevice_Is_iPhoneX) {
+//            txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//            agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
+//        }
     }
 }
 

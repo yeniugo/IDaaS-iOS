@@ -12,6 +12,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUFingerGesUtil.h"
+#import "TRUhttpManager.h"
 
 @interface TRUDevicesManagerController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -31,48 +32,50 @@
     if (!_deviceList) {
         _deviceList = [NSMutableArray new];
     }
+    __weak typeof(self) weakself = self;
     [self showHudWithText:@"获取设备列表..."];
     NSString *userid = [TRUUserAPI getUser].userId;
     [self.deviceList removeAllObjects];
-    [xindunsdk getCIMSActivedDeviceListForUser:userid onResult:^(int error, id response) {
-        [self hideHudDelay:0.0];
-        if (error == 0) {
-            
-            id deviceinfos = [response objectForKey:@"deviceinfos"];
-            if ([deviceinfos isKindOfClass:[NSArray class]]) {
-                for (id dicres in deviceinfos) {
-                    
-                    if ([dicres isKindOfClass:[NSDictionary class]]) {
-                       
-                        NSDictionary *dic = (NSDictionary *)dicres;
-                        TRUDeviceModel *model = [TRUDeviceModel modelWithDic:dic];
-                        if ([model.ifself isEqualToString:@"1"]) {
-                            [self.deviceList insertObject:model atIndex:0];
-                        }else{
-                            [self.deviceList addObject:model];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:YES];
+    NSDictionary *paramsDic = @{@"params" : paras};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/getlist"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [weakself hideHudDelay:0.0];
+        NSDictionary *dic = nil;
+        if (errorno == 0 && ![responseBody isKindOfClass:[NSNull class]]) {
+            dic = [xindunsdk decodeServerResponse:responseBody];
+            if ([dic[@"code"] intValue] == 0) {
+                dic = dic[@"resp"];
+                id deviceinfos = [dic objectForKey:@"deviceinfos"];
+                if ([deviceinfos isKindOfClass:[NSArray class]]) {
+                    NSArray *arr = (NSArray *)deviceinfos;
+                    for (id dicres in arr) {
+                        if ([dicres isKindOfClass:[NSDictionary class]]) {
+                            NSDictionary *dic = (NSDictionary *)dicres;
+                            TRUDeviceModel *model = [TRUDeviceModel modelWithDic:dic];
+                            if ([model.ifself isEqualToString:@"1"]) {
+                                [weakself.deviceList insertObject:model atIndex:0];
+                            }else{
+                                [weakself.deviceList addObject:model];
+                            }
                         }
-                        
                     }
+                    [weakself.myTableView reloadData];
                 }
-                [self.myTableView reloadData];
-                
             }
-            
-        }else if(-5004 == error){
+        }else if(-5004 == errorno){
             NSString *err = @"网络问题，请稍后重试";
-            [self showHudWithText:err];
-            [self hideHudDelay:2.0];
-        }else if (9008 == error){
-            [self deal9008Error];
-        }else if (9019 == error){
-            [self deal9019Error];
+            [weakself showHudWithText:err];
+            [weakself hideHudDelay:2.0];
+        }else if (9008 == errorno){
+            [weakself deal9008Error];
+        }else if (9019 == errorno){
+            [weakself deal9019Error];
         }else{
-            NSString *err = [NSString stringWithFormat:@"获取设备列表失败（%d）",error];
-            [self showHudWithText:err];
-            [self hideHudDelay:2.0];
+            NSString *err = [NSString stringWithFormat:@"获取设备列表失败（%d）",errorno];
+            [weakself showHudWithText:err];
+            [weakself hideHudDelay:2.0];
         }
-        
-        
     }];
 }
 - (void)configPuchSetting:(UIButton *)sw model:(TRUDeviceModel *)model{
@@ -96,30 +99,49 @@
         msg = @"是否确认关闭APP一键推送功能？";
     }
     [self showConfrimCancelDialogViewWithTitle:title msg:msg confrimTitle:@"确认" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-        [weakself showHudWithText:@"更新推送设置..."];
-//        sw.enabled = NO;
-        [xindunsdk requestCIMSDevicePushConfigForUser:userid openDevices:opens closeDevices:close onResult:^(int error) {
-            [weakself hideHudDelay:0.0];
-            if (error == 0) {
-                
-                [weakself loadDeviceList];
-                
-            }else if (9019 == error){
-                [self deal9019Error];
-            }else{
-                NSString *err = [NSString stringWithFormat:@"更新推送设置失败（%d）",error];
-                [weakself showHudWithText:err];
-                [weakself hideHudDelay:2.0];
-            }
-            
-//            sw.enabled = YES;
-        }];
+        [self closeOrOpen:opens andcloseDevices:close];
     } cancelBlock:^{
 //        sw.selected = !sw.selected;
     }];
     
 }
 
+-(void)closeOrOpen:(NSArray *)openDevices andcloseDevices:(NSArray *)closeDevices{
+    [self showHudWithText:@"更新推送设置..."];
+    NSString *userid = [TRUUserAPI getUser].userId;
+    if (userid) {
+        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+        NSString *opendevs = nil;
+        NSString *closedevs = nil;
+        if (!openDevices || openDevices.count == 0) {
+            opendevs = @"";
+        }else{
+            opendevs = [openDevices componentsJoinedByString:@","];
+        }
+        if (!closeDevices || closeDevices.count == 0) {
+            closedevs = @"";
+        }else{
+            closedevs = [closeDevices componentsJoinedByString:@","];
+        }
+        __weak typeof(self) weakself = self;
+        NSString *sign = [NSString stringWithFormat:@"%@%@",opendevs,closedevs];
+        NSArray *ctx = @[@"open_uuids",opendevs,@"close_uuids",closedevs];
+        NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+        NSDictionary *paramsDic = @{@"params" : paras};
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/pushconfig"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+            [weakself hideHudDelay:0.0];
+            if (errorno == 0) {
+                [weakself loadDeviceList];
+            }else if (9019 == errorno){
+                [weakself deal9019Error];
+            }else{
+                NSString *err = [NSString stringWithFormat:@"更新推送设置失败（%d）",errorno];
+                [weakself showHudWithText:err];
+                [weakself hideHudDelay:2.0];
+            }
+        }];
+    }
+}
 
 -(void)customUI{
     _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, SCREENW, SCREENH - 64) style:UITableViewStylePlain];
@@ -179,34 +201,7 @@
     if ([model.ifself isEqualToString:@"1"]) {
         [self showConfrimCancelDialogViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
             [weakself showHudWithText:@"正在解除绑定..."];
-            NSString *uuid = [xindunsdk getCIMSUUID:userid];
-            [xindunsdk requestCIMSDeviceDeleteForUser:userid deleteDevices:@[uuid] onResult:^(int error) {
-                [weakself hideHudDelay:0];
-                if (error == 0) {
-
-                    [xindunsdk getDeviceId];
-                    [xindunsdk deactivateAllUsers];
-                    [TRUUserAPI deleteUser];
-                    //清除APP解锁方式
-                    [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-                    id delegate = [UIApplication sharedApplication].delegate;
-                    if ([delegate respondsToSelector:@selector(changeAvtiveRootVC)]) {
-                        [delegate performSelector:@selector(changeAvtiveRootVC) withObject:nil];
-                    }
-#pragma clang diagnostic pop
-                }else if (- 5004 == error){
-                    [weakself showHudWithText:@"网络错误，请稍后重试"];
-                    [weakself hideHudDelay:2.0];
-                }else if (9019 == error){
-                    [self deal9019Error];
-                }else{
-                    NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
-                    [weakself showHudWithText:err];
-                    [weakself hideHudDelay:2.0];
-                }
-            }];
+            [self deleteDeviceUserid:userid andUuid:model.uuid isben:YES];
             
             
         } cancelBlock:^{
@@ -214,23 +209,7 @@
         }];
     }else{
         [weakself showConfrimCancelDialogViewWithTitle:@"" msg:msg confrimTitle:@"删除" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-            [xindunsdk requestCIMSDeviceDeleteForUser:userid deleteDevices:@[model.uuid] onResult:^(int error) {
-                if (error == 0) {
-                    [weakself loadDeviceList];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kRefresh3DataNotification object:nil];
-                }else if (-5004 == error){
-                    
-                    [weakself showHudWithText:@"网络错误，请稍后重试"];
-                    [weakself hideHudDelay:2.0];
-                    
-                }else if (9019 == error){
-                    [self deal9019Error];
-                }else{
-                    NSString *err = [NSString stringWithFormat:@"删除失败（%d）",error];
-                    [weakself showHudWithText:err];
-                    [weakself hideHudDelay:2.0];
-                }
-            }];
+            [self deleteDeviceUserid:userid andUuid:model.uuid isben:NO];
         } cancelBlock:^{
             [tableView setEditing:NO animated:YES];
         }];
@@ -239,7 +218,53 @@
     
 }
 
-
+-(void)deleteDeviceUserid:(NSString *)userid andUuid:(NSString *)uuid isben:(BOOL)isBen{
+    
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSArray *deleteDevices = @[uuid];
+    NSString *deldevs = nil;
+    if (!deleteDevices || deleteDevices.count == 0) {
+        deldevs = @"";
+    }else{
+        deldevs = [deleteDevices componentsJoinedByString:@","];
+    }
+    __weak typeof(self) weakself = self;
+    NSArray *ctx = @[@"del_uuids",deldevs];
+    NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+    NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+    NSDictionary *paramsDic = @{@"params" : params};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [weakself hideHudDelay:0.0];
+        if (errorno == 0) {
+            if (isBen) {
+                [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+                [TRUUserAPI deleteUser];
+                //清除APP解锁方式
+                [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
+                [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+                id delegate = [UIApplication sharedApplication].delegate;
+                if ([delegate respondsToSelector:@selector(changRestDataVC)]) {
+                    [delegate performSelector:@selector(changRestDataVC) withObject:nil];
+                }
+#pragma clang diagnostic pop
+            }else{
+                [weakself loadDeviceList];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kRefresh3DataNotification object:nil];
+            }
+        }else if (-5004 == errorno){
+            [weakself showHudWithText:@"网络错误，请稍后重试"];
+            [weakself hideHudDelay:2.0];
+        }else if (9019 == errorno){
+            [weakself deal9019Error];
+        }else{
+            NSString *err = [NSString stringWithFormat:@"删除失败（%d）",errorno];
+            [weakself showHudWithText:err];
+            [weakself hideHudDelay:2.0];
+        }
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

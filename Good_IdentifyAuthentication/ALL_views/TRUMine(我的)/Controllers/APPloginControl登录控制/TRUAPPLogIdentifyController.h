@@ -9,5 +9,5 @@
 #import "TRUBaseViewController.h"
 
 @interface TRUAPPLogIdentifyController : TRUBaseViewController
-
+@property (assign,nonatomic) BOOL isFirstRegist;
 @end

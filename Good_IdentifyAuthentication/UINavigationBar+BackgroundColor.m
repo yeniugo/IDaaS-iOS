@@ -24,16 +24,60 @@ static char overlayKey = '\0';
     if (!self.overlay) {
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
+        if (kDevice_Is_iPhoneX) {
+            self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 45)];
+        }
         self.overlay.userInteractionEnabled = NO;
         self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth;    // Should not set `UIViewAutoresizingFlexibleHeight`
         [[self.subviews firstObject] insertSubview:self.overlay atIndex:0];
+        //        [self.subviews insertSubview:self.overlay atIndex:0];
+        if(self.subviews.count==0){
+            [self addSubview:self.overlay];
+            self.overlay.frame = CGRectMake(0, -20, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)+ 20 );
+            if (kDevice_Is_iPhoneX) {
+                self.overlay.frame = CGRectMake(0, -44, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 45);
+            }
+            //            [[self.subviews firstObject] insertSubview:self.overlay atIndex:0];
+        }
     }else{
         [self.overlay.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj removeFromSuperview];
         }];
     }
     self.overlay.backgroundColor = backgroudColor;
+//    if (!self.overlay) {
+//        [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + 20)];
+//        self.overlay.userInteractionEnabled = NO;
+//        self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth;    // Should not set `UIViewAutoresizingFlexibleHeight`
+//        [[self.subviews firstObject] insertSubview:self.overlay atIndex:0];
+//    }else{
+//        [self.overlay.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            [obj removeFromSuperview];
+//        }];
+//    }
+//    self.overlay.backgroundColor = backgroudColor;
 }
+-(void)didAddSubview:(UIView *)subview{
+    [super didAddSubview:subview];
+    if(@available(iOS 12.0,*)){
+        if (self.subviews.count >= 3) {
+            //            YCLog(@"tabbar.subviews = %@",self.subviews);
+            //            int i = 0;
+            //            for (UIView *view in self.subviews) {
+            //                if ([view isKindOfClass:[UIView class]]) {
+            //                    i++;
+            //                }
+            //
+            //            }
+            //            YCLog(@"uiviewclasscount = %d",i);
+            if (self.subviews[1]!=self.overlay) {
+                [self insertSubview:self.overlay aboveSubview:[self.subviews firstObject]];
+            }
+        }
+    }
+}
+
 - (void)tru_setBackgroudColors:(NSArray *)backgroudColors{
     UIColor *startcolor = [backgroudColors firstObject];
     UIColor *endcolor = [backgroudColors lastObject];

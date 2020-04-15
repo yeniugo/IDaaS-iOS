@@ -11,7 +11,7 @@
 @interface TRUGestureSettingViewController : TRUBaseViewController
 
 @property (nonatomic, copy) NSString *phone;
-
+@property (assign,nonatomic) BOOL isFirstRegist;
 @property (copy, nonatomic) void(^backBlocked)();
 
 @end

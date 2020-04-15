@@ -26,4 +26,6 @@
 
 @property (copy, nonatomic) void(^backBlocked)();
 
+@property (nonatomic, assign) BOOL isFirstRegist;
+
 @end

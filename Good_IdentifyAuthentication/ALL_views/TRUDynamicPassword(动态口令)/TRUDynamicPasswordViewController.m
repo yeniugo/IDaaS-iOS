@@ -14,8 +14,6 @@
 #import "TRUUserAPI.h"
 #import "TRUTimeSyncUtil.h"
 #import "TRUHomeButton.h"
-#import "TRUFingerGesUtil.h"
-#import "TRUAPPLogIdentifyController.h"
 
 
 @interface TRUDynamicPasswordViewController ()
@@ -25,10 +23,13 @@
 @property(nonatomic, strong) TRUTimeView *timeView;
 @property(nonatomic, strong) LOTAnimationView *refreshView;
 @property(nonatomic, strong) TRUHomeButton *refreshBtn;
-
+@property (nonatomic, strong)UILabel *numLabel;
+@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, strong)UILabel *syncLabel;//时间同步按钮下面文字
 @end
 
 @implementation TRUDynamicPasswordViewController
+NSInteger timeNum = 0;
 static double dytime = 0.0;
 BOOL isFirstEnter = YES;
 BOOL isFirst = YES;
@@ -39,11 +40,12 @@ static NSString *userId;
     [super viewDidLoad];
     userId = [TRUUserAPI getUser].userId;
     [self customUI];
-    
     isFirstEnter = YES;
-    isFirst = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewBackGround) name:@"EnterForegroundDyPw" object:nil];
+    
 }
+
+
 
 -(BOOL)checkNumberView{
     int labelNum = 0;
@@ -59,28 +61,32 @@ static NSString *userId;
     }
 }
 
+
 -(void)requestData{
-     
+    
     _refreshBtn.enabled = NO;
    
     isFirstEnter = YES;
     [self showHudWithText:@"正在同步动态口令..."];
+    [self hideHudDelay:2.0];
     [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
 
         [self hideHudDelay:0.0];
         if (error == 0) {
-            BOOL isss = [self checkNumberView];
-            if (isss) {
-                [self initTimeCountNotFirst];
-            }else{
-                isFirst = YES;
-                [self initTimeCount];
-            }
+            
+//            BOOL isss = [self checkNumberView];
+//            if (isss) {
+//                [self initTimeCountNotFirst];
+//            }else{
+//                isFirst = YES;
+//                [self initTimeCount];
+//            }
+            [self initTimeCount];
             [self showHudWithText:@"同步成功"];
             [self hideHudDelay:2.0];
-            __weak typeof(self) weakself = self;
+            __weak typeof(self) weakSelf = self;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                weakself.refreshBtn.enabled = YES;
+                weakSelf.refreshBtn.enabled = YES;
             });
         }else if (error == -5004){
             [self showHudWithText:@"网络错误，稍后请重试"];
@@ -88,32 +94,39 @@ static NSString *userId;
         }else if (9008 == error){
             [self deal9008Error];
         }else{
-
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
             [self showHudWithText:err];
             [self hideHudDelay:2.0];
         }
-
     }];
-
 }
 
 -(void)viewBackGround{
     [self requestData];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    if (isFirstEnter) {
+//        [self initTimeCount];
+//    }else{
+//        [self initTimeCountNotFirst];
+//    }
+    [self initTimeCount];
+    [self startCountdown];
+//    [self requestData];
+    self.scanBtn.hidden = NO;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self checkLoginAuth];
-    if (isFirstEnter) {
-        [self initTimeCount];
-    }else{
-        [self initTimeCountNotFirst];
-    }
-//    [self initTimeCount];
-    [self startCountdown];
-    self.scanBtn.hidden = NO;
+    isFirst = isFirstEnter = YES;
+    userId = [TRUUserAPI getUser].userId;
+    dytime = 0.0;
+////    [self initTimeCount];
+//    [self startCountdown];
+//    [self initTimeCountNotFirst];
+//    self.scanBtn.hidden = NO;
 }
 
 - (void)startCountdown{
@@ -131,21 +144,25 @@ static NSString *userId;
         [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:NO];
         dytime = 0.0;
         [_aniationView stop];
-        [_aniationView play];
+        [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
         [_timeView startCountWithTime:29];
+        [self startCountWithTime:29];
     }else{
         dytime = dytime + self.dislink.duration / 30.0;
     }
 }
 - (void)initTimeCountNotFirst{
+    
     if (isFirstEnter) {
         dytime = [TRUTimeSyncUtil getTimePercent];
     }else{
         dytime = [TRUTimeSyncUtil getTimePercent] + [TRUTimeSyncUtil getTimeSpan];
+        
     }
     
     if (dytime >= 1.0) {
         dytime = dytime - 1.0;
+        
     }
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
@@ -167,6 +184,7 @@ static NSString *userId;
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
     [_timeView startCountWithTime:num];
+    [self startCountWithTime:num];
     isFirstEnter = NO;
     isFirst = NO;
 }
@@ -181,11 +199,39 @@ static NSString *userId;
     self.scanBtn.hidden = YES;
 }
 
+
+-(void)startCountWithTime:(NSInteger)timeNumber{
+    [self stopCount];
+    NSString *txt = [NSString stringWithFormat:@"%zdS", timeNumber];
+    timeNum = timeNumber;
+    self.numLabel.text = txt;
+    
+    __weak typeof(self) weskself = self;
+    if (!self.timer){
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:weskself selector:@selector(dealCount) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+        weskself.timer = timer;
+    }
+}
+-(void)stopCount{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+- (void)dealCount{
+    timeNum -- ;
+    if (timeNum >= 0) {
+        NSString *txt = [NSString stringWithFormat:@"%zdS", timeNum];
+        self.numLabel.text = txt;
+    }else{
+        [self stopCount];
+    }
+}
+
 -(void)customUI{
     
     //获取当前UIWindow 并添加一个视图
-    UIApplication *ap = [UIApplication sharedApplication];
-    [ap.keyWindow addSubview:self.scanBtn];
+//    UIApplication *ap = [UIApplication sharedApplication];
+//    [ap.keyWindow addSubview:self.scanBtn];
     
     
     _aniationView = [LOTAnimationView animationNamed:@"pwddata.json"];
@@ -204,52 +250,56 @@ static NSString *userId;
     imgview.frame = CGRectMake(0, 100 + SCREENW/2.f, SCREENW, 120);
     
     _timeView = [[TRUTimeView alloc] initWithFrame:CGRectMake((SCREENW - 170)/2.f, 230 + SCREENW/2.f, 170, 25) withTimelength:30];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((SCREENW - 252)/2.f, 260 + SCREENW/2.f, 252, 20)];
-    label.text = @"如果多次输入动态密码验证失败请及时刷新";
+//    _timeView.hidden = YES;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 260 + SCREENW/2.f, SCREENW, 20)];
+    label.text = @"如果多次输入动态密码验证失败请及时同步时间";
+    label.textAlignment = NSTextAlignmentCenter;
     label.textColor = RGBCOLOR(107, 108, 109);
     label.font = [UIFont systemFontOfSize:13];
     
-    
-    _refreshBtn = [[TRUHomeButton alloc] initWithFrame:CGRectMake((SCREENW -80)/2.f, 300 + SCREENW/2.f, 80, 80) withButtonClickEvent:^(TRUHomeButton *sender) {
+    _refreshBtn = [[TRUHomeButton alloc] initWithFrame:CGRectMake((SCREENW -80*PointHeightRatio6)/2.f, 300 + SCREENW/2.f, 80*PointHeightRatio6, 80*PointHeightRatio6) withButtonClickEvent:^(TRUHomeButton *sender) {
         sender.enabled = NO;
         [self requestData];
     }];
     [_refreshBtn setBackgroundImage:[UIImage imageNamed:@"passwordRefresh"] forState:UIControlStateNormal];
+    
+    _syncLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 300 + SCREENW/2.f + 80*PointHeightRatio6+8, SCREENW, 20)];
+    _syncLabel.text = @"同步时间";
+    _syncLabel.textAlignment = NSTextAlignmentCenter;
+    _syncLabel.textColor = RGBCOLOR(107, 108, 109);
+    _syncLabel.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:_aniationView];
     [self.view addSubview:label];
     [self.view addSubview:_refreshBtn];
     [self.view addSubview:_timeView];
     [self.view addSubview:imgview];
+    [self.view addSubview:_syncLabel];
     
+    self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake((SCREENW - 50)/2.f, 260, 50, 20)];
+    self.numLabel.textAlignment = NSTextAlignmentCenter;
+    [self.numLabel setTextColor:RGBCOLOR(75, 159, 47)];
+    [self.view addSubview:self.numLabel];
+    self.numLabel.hidden = YES;
     if (SCREENW == 320) {
         _aniationView.frame = CGRectMake(SCREENW/4.f - 15, 80, SCREENW/2.f+30, SCREENW/3.f+60);
         self.numberView.frame = CGRectMake(SCREENW/12.f, SCREENW/4.f -(35.0 * PointHeightRatio6)/2.f + 10, SCREENW/3.f + 30, 35.0 * PointHeightRatio6);
         self.numberView.textFont = [UIFont systemFontOfSize:35.0 * PointHeightRatio6];
         imgview.frame = CGRectMake(0, 140 + SCREENW/3.f, SCREENW, 80);
         _timeView.frame = CGRectMake((SCREENW - 170)/2.f, 230 + SCREENW/3.f, 170, 25);
-        label.frame = CGRectMake((SCREENW - 252)/2.f, 260 + SCREENW/3.f, 252, 20);
+        label.frame = CGRectMake(0, 260 + SCREENW/3.f, SCREENW, 20);
         _refreshBtn.frame = CGRectMake((SCREENW -60)/2.f, 290 + SCREENW/3.f, 60, 60);
-        
-        
     }else if (kDevice_Is_iPhoneX){
         _aniationView.frame = CGRectMake(SCREENW/6.f, 130, SCREENW/3.f *2, SCREENW/2.f+30);
         imgview.frame = CGRectMake(0, 155 + SCREENW/2.f, SCREENW, 120);
         _timeView.frame = CGRectMake((SCREENW - 170)/2.f, 285 + SCREENW/2.f, 170, 25);
-        label.frame = CGRectMake((SCREENW - 252)/2.f, 315 + SCREENW/2.f, 252, 20);
+        label.frame = CGRectMake(0, 315 + SCREENW/2.f, SCREENW, 20);
         _refreshBtn.frame = CGRectMake((SCREENW -80)/2.f, 380 + SCREENW/2.f, 80, 80);
     }
 }
-#pragma mark 检查是否设置解锁方式
-- (void)checkLoginAuth{
-    //既没有手势又没有指纹
-    if ([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:@"请设置您的APP登录方式" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-            TRUAPPLogIdentifyController *settingVC = [[TRUAPPLogIdentifyController alloc] init];
-            [self.navigationController pushViewController:settingVC animated:YES];
-        } cancelBlock:nil];
-    }
-}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

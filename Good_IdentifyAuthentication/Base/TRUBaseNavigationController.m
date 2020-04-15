@@ -72,6 +72,14 @@
     if (self.childViewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
         viewController.navigationItem.leftBarButtonItem = [self setLeftBarbuttonItem];
+//        UINavigationBar *bar = nil;
+//#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+//        bar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
+//#else
+//        bar = [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
+//#endif
+//        [self.navigationBar tru_setBackgroudColor:[UIColor whiteColor]];
+//        [self.navigationBar setShadowImage:[UIImage new]];
         //        viewController.navigationItem.backBarButtonItem = [self setLeftBarbuttonItem];
     }
     if ( [self respondsToSelector:@selector(interactivePopGestureRecognizer)])

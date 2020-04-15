@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ButtonTop.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "02.png",
+      "filename" : "ButtonTop@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ButtonTop@3x.png",
       "scale" : "3x"
     }
   ],

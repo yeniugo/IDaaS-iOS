@@ -20,6 +20,7 @@
 #import "TRUFeedbackViewController.h"
 #import "TRUModifyInfoViewController.h"
 #import "TRUAddPhoneViewController.h"
+#import "TRUhttpManager.h"
 
 @interface TRUMineViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong)TRUMineUserInfoView *userinfoview;
@@ -45,7 +46,7 @@
         _imgsArr = @[@"apploginicon",@"deviceicon",@"abouticon",@"relieve"];
     }
     if (!_titlesArr) {
-        _titlesArr = @[@"APP登录验证",@"设备管理",@"关于我们",@"解除绑定"];
+        _titlesArr = @[@"APP登录验证",@"设备管理",@"版本信息",@"解除绑定"];
     }
     [self customUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userinfoChange) name:@"changephonesuccess" object:nil];
@@ -60,16 +61,23 @@
     
     //同步一次用户信息
     NSString *currentUserId = [TRUUserAPI getUser].userId;
-    [xindunsdk getCIMSUserInfoForUser:currentUserId onResult:^(int error, id response) {
-        
-        NSLog(@"%s, currentUserId : %@, error : %d", __func__, currentUserId, error);
-        if (0 == error) {
-            //用户信息同步成功
-            TRUUserModel *model = [TRUUserModel modelWithDic:response];
-            model.userId = currentUserId;
-            [TRUUserAPI saveUser:model];
-            //更新用户信息
-            [_userinfoview setModel];
+    
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *paras = [xindunsdk encryptByUkey:currentUserId ctx:nil signdata:nil isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
+        NSDictionary *dicc = nil;
+        if (errorno == 0 && responseBody) {
+            dicc = [xindunsdk decodeServerResponse:responseBody];
+            if ([dicc[@"code"] intValue] == 0) {
+                dicc = dicc[@"resp"];
+                //用户信息同步成功
+                TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
+                model.userId = currentUserId;
+                [TRUUserAPI saveUser:model];
+                //更新用户信息
+                [_userinfoview setModel];
+            }
         }
     }];
     
@@ -178,37 +186,42 @@
             [self showConfrimCancelDialogViewWithTitle:@"" msg:@"此操作将会删除您手机内全部账户信息，确定要解除绑定？" confrimTitle:@"解除绑定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
                 [weakself showHudWithText:@"正在解除绑定..."];
                 NSString *uuid = [xindunsdk getCIMSUUID:userid];
-                [xindunsdk requestCIMSDeviceDeleteForUser:userid deleteDevices:@[uuid] onResult:^(int error) {
-                    [weakself hideHudDelay:0];
-                    if (error == 0) {
-                        [xindunsdk getDeviceId];
-                        [xindunsdk deactivateAllUsers];
+                NSArray *deleteDevices = @[uuid];
+                NSString *deldevs = nil;
+                if (!deleteDevices || deleteDevices.count == 0) {
+                    deldevs = @"";
+                }else{
+                    deldevs = [deleteDevices componentsJoinedByString:@","];
+                }
+                NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+                NSArray *ctx = @[@"del_uuids",deldevs];
+                NSString *sign = [NSString stringWithFormat:@"%@",deldevs];
+                NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
+                NSDictionary *paramsDic = @{@"params" : params};
+                [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+                    [weakself hideHudDelay:0.0];
+                    if (errorno == 0) {
+                        [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
                         [TRUUserAPI deleteUser];
-                        //清除APP解锁方式  
+                        //清除APP解锁方式
                         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
                         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-                        
-                        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-                        NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
-                        [def setObject:printNum forKey:@"VerifyFingerNumber"];
-                        [def setObject:printNum forKey:@"VerifyFingerNumber2"];
-                        
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                         id delegate = [UIApplication sharedApplication].delegate;
-                        if ([delegate respondsToSelector:@selector(changeRootVCForLogin)]) {
-                            [delegate performSelector:@selector(changeRootVCForLogin) withObject:nil];
+                        if ([delegate respondsToSelector:@selector(changRestDataVC)]) {
+                            [delegate performSelector:@selector(changRestDataVC) withObject:nil];
                         }
 #pragma clang diagnostic pop
-                    }else if (-5004 == error){
+                    }else if (-5004 == errorno){
                         [weakself showHudWithText:@"网络错误，请稍后重试"];
                         [weakself hideHudDelay:2.0];
-                    }else if (9008 == error){
+                    }else if (9008 == errorno){
                         [weakself deal9008Error];
-                    }else if (9019 == error){
-                        [self deal9019Error];
+                    }else if (9019 == errorno){
+                        [weakself deal9019Error];
                     }else{
-                        NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
+                        NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
                         [weakself showHudWithText:err];
                         [weakself hideHudDelay:2.0];
                     }
