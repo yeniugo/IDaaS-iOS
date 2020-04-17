@@ -178,7 +178,7 @@ extern long gs_time;
         YCLog(@"动态口令为 = %@,时间差为= %ld",self.lastPassword,gs_time);
     }
     if (dytime >= 1.0) {
-        
+        YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
         [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:NO];
         dytime = 0.0;
         [_aniationView stop];
@@ -219,6 +219,7 @@ extern long gs_time;
         dytime = dytime - 1.0;
     }
     [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:isFirst];
+    YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
     [_timeView startCountWithTime:num];

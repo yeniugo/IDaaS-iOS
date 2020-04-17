@@ -54,7 +54,7 @@ long gs_time;
                 seconds_cli = seconds_cli - time ;
                 [[NSUserDefaults standardUserDefaults] setObject:@(seconds_cli) forKey:@"GS_DETAL_KEY"];
                 gs_time = seconds_cli;
-//                YCLog(@"动态口令时间差 = %f",seconds_cli);
+                YCLog(@"动态口令时间差 = %ld",seconds_cli);
 // 添加了一个数据保存
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 if (syncFinshBlock) {

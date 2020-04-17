@@ -7,7 +7,7 @@
 //
 
 #import "TRUThirdVoiceVerifyViewController.h"
-//#import "TRUThirdFaceVerifyViewController.h"
+#import "TRUThirdFaceVerifyViewController.h"
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
@@ -110,10 +110,10 @@
                         [weakSelf hideHudDelay:2.0];
                         [weakSelf performSelector:@selector(back2LastVC) withObject:nil afterDelay:2.0];
                     }else{
-//                        TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
-//                        faceVC.facetoken = self.voicetoken;
-//                        faceVC.isPushVerify = YES;
-//                        [weakSelf.navigationController pushViewController:faceVC animated:YES];
+                        TRUThirdFaceVerifyViewController *faceVC = [[TRUThirdFaceVerifyViewController alloc] init];
+                        faceVC.facetoken = self.voicetoken;
+                        faceVC.isPushVerify = YES;
+                        [weakSelf.navigationController pushViewController:faceVC animated:YES];
                     }
                 }else{
                     NSString *schmeStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"WAKEUPSOURESCHME"];

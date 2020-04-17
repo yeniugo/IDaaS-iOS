@@ -14,6 +14,7 @@
 #import "TRUhttpManager.h"
 #import "TRUVoiceInitViewController.h"
 #import "TRUBuildingViewController.h"
+#import "TRUFaceInitViewController.h"
 @interface TRUPersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *imageArray;//图标
@@ -39,12 +40,14 @@
     self.tableView.tableFooterView = [UIView new];
     self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"PersonalAboutUS"]];
     self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"版本信息"]];
-    self.commitArray = @[@[@"TRUPersonalDetailsViewController"],@[@"TRUBuildingViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
+    self.commitArray =  @[@[@"TRUPersonalDetailsViewController"],@[@"TRUBuildingViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self syncUserInfo];
+    TRUBaseNavigationController *nav = self.navigationController;
+    nav.backBlock = nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -195,12 +198,12 @@
 //        self.title = titleStr;
     }
     UIViewController *pushVC = [[NSClassFromString(classStr) alloc] init];
-    if ([classStr isEqual:@"TRUFaceSettingViewController"]) {
+    if ([classStr isEqual:@"TRUFaceInitViewController"]) {
         NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
         if ([faceinfo isEqualToString:@"1"]) {
         }else{
-            pushVC = [[NSClassFromString(@"TRUFaceGuideViewController") alloc] init];
         }
+        pushVC = [[NSClassFromString(@"TRUFaceInitViewController") alloc] init];
         TRUBaseNavigationController *nav = self.navigationController;
         nav.backBlock = ^{
 //            [weakSelf syncUserInfo];

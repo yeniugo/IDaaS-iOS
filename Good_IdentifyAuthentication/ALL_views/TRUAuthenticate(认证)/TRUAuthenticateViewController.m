@@ -48,6 +48,7 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:kRefresh3DataNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:@"faceviewBack" object:nil];
     [self syncTime];
 }
 

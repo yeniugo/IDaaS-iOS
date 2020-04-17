@@ -245,9 +245,14 @@
 		2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8D2154D2C100A2D1C2 /* RadomMutableNumber.mm */; };
 		2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D800C942154D3DD00A2D1C2 /* TRUhttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */; };
+		2D95721E2447000B002A0103 /* TRUFaceInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95721324470009002A0103 /* TRUFaceInitViewController.m */; };
+		2D95721F2447000B002A0103 /* TRUThirdFaceVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95721424470009002A0103 /* TRUThirdFaceVerifyViewController.m */; };
+		2D9572202447000B002A0103 /* TRUFaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9572162447000A002A0103 /* TRUFaceBaseViewController.m */; };
+		2D9572212447000B002A0103 /* TRUFaceGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9572172447000A002A0103 /* TRUFaceGuideViewController.m */; };
+		2D9572222447000B002A0103 /* TRUFaceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9572182447000A002A0103 /* TRUFaceSettingViewController.m */; };
+		2D9572232447000B002A0103 /* TRUFaceVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95721D2447000B002A0103 /* TRUFaceVerifyViewController.m */; };
 		2D9EDBBC21C37B7F00658183 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EDBBB21C37B7F00658183 /* HAMLogOutputWindow.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
-		2DC1A6302442E41D00CC178A /* applaunch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1A62F2442E41D00CC178A /* applaunch1.png */; };
 		2DD8774121A7D35500572D71 /* TRUBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
@@ -684,12 +689,23 @@
 		2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUhttpManager.m; sourceTree = "<group>"; };
 		2D800C932154D3DD00A2D1C2 /* TRUhttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUhttpManager.h; sourceTree = "<group>"; };
+		2D95721224470009002A0103 /* TRUThirdFaceVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUThirdFaceVerifyViewController.h; sourceTree = "<group>"; };
+		2D95721324470009002A0103 /* TRUFaceInitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceInitViewController.m; sourceTree = "<group>"; };
+		2D95721424470009002A0103 /* TRUThirdFaceVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUThirdFaceVerifyViewController.m; sourceTree = "<group>"; };
+		2D95721524470009002A0103 /* TRUFaceGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceGuideViewController.h; sourceTree = "<group>"; };
+		2D9572162447000A002A0103 /* TRUFaceBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceBaseViewController.m; sourceTree = "<group>"; };
+		2D9572172447000A002A0103 /* TRUFaceGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceGuideViewController.m; sourceTree = "<group>"; };
+		2D9572182447000A002A0103 /* TRUFaceSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceSettingViewController.m; sourceTree = "<group>"; };
+		2D9572192447000A002A0103 /* TRUFaceBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceBaseViewController.h; sourceTree = "<group>"; };
+		2D95721A2447000A002A0103 /* TRUFaceInitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceInitViewController.h; sourceTree = "<group>"; };
+		2D95721B2447000A002A0103 /* TRUFaceSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceSettingViewController.h; sourceTree = "<group>"; };
+		2D95721C2447000A002A0103 /* TRUFaceVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceVerifyViewController.h; sourceTree = "<group>"; };
+		2D95721D2447000B002A0103 /* TRUFaceVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceVerifyViewController.m; sourceTree = "<group>"; };
 		2D9EDBBA21C37B7E00658183 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
 		2D9EDBBB21C37B7F00658183 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2D9F5BCF21905819009B97EF /* TRUHightlightedBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUHightlightedBtn.h; sourceTree = "<group>"; };
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DBE8A632437048A00A5DB7E /* xindunsdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
-		2DC1A62F2442E41D00CC178A /* applaunch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = applaunch1.png; path = Good_IdentifyAuthentication/applaunch1.png; sourceTree = "<group>"; };
 		2DD8773F21A7D35500572D71 /* TRUBuildingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBuildingViewController.h; sourceTree = "<group>"; };
 		2DD8774021A7D35500572D71 /* TRUBuildingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUBuildingViewController.m; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -1346,6 +1362,18 @@
 		12749EAA1FC7E79800183EB4 /* Face(人脸) */ = {
 			isa = PBXGroup;
 			children = (
+				2D9572192447000A002A0103 /* TRUFaceBaseViewController.h */,
+				2D9572162447000A002A0103 /* TRUFaceBaseViewController.m */,
+				2D95721524470009002A0103 /* TRUFaceGuideViewController.h */,
+				2D9572172447000A002A0103 /* TRUFaceGuideViewController.m */,
+				2D95721A2447000A002A0103 /* TRUFaceInitViewController.h */,
+				2D95721324470009002A0103 /* TRUFaceInitViewController.m */,
+				2D95721B2447000A002A0103 /* TRUFaceSettingViewController.h */,
+				2D9572182447000A002A0103 /* TRUFaceSettingViewController.m */,
+				2D95721C2447000A002A0103 /* TRUFaceVerifyViewController.h */,
+				2D95721D2447000B002A0103 /* TRUFaceVerifyViewController.m */,
+				2D95721224470009002A0103 /* TRUThirdFaceVerifyViewController.h */,
+				2D95721424470009002A0103 /* TRUThirdFaceVerifyViewController.m */,
 				12749EAB1FC7E7A900183EB4 /* view */,
 			);
 			path = "Face(人脸)";
@@ -1573,7 +1601,6 @@
 		12C0D2C11F7907DC00972218 = {
 			isa = PBXGroup;
 			children = (
-				2DC1A62F2442E41D00CC178A /* applaunch1.png */,
 				2D6E3E8C22D3275800538819 /* xxxx11111.jpg */,
 				12C0D2CC1F7907DC00972218 /* Good_IdentifyAuthentication */,
 				12C0D2E61F7907DC00972218 /* Good_IdentifyAuthenticationTests */,
@@ -1998,7 +2025,6 @@
 				128D5D031F7E3A4D00753EE5 /* TRUAboutUSCell.xib in Resources */,
 				2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */,
 				12098A0820CFA4D20027D927 /* Audio.bundle in Resources */,
-				2DC1A6302442E41D00CC178A /* applaunch1.png in Resources */,
 				12409F5D1F8F3E2E000D342D /* scanBG.png in Resources */,
 				1233C7541FB18A8200356383 /* pushjiantou.json in Resources */,
 				2D0AF47423B36B7C00E401FE /* SenseID_Liveness_Silent.lic in Resources */,
@@ -2157,6 +2183,7 @@
 				12354C5E1FA81A6900B6B92E /* TRUSessionManagerCell.m in Sources */,
 				12F45C841F7B5E0000C89C4D /* TRUApplicationTopView.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
+				2D9572232447000B002A0103 /* TRUFaceVerifyViewController.m in Sources */,
 				12436A64210844590070F966 /* TRUVerifyFaceViewController.m in Sources */,
 				128D5D021F7E3A4D00753EE5 /* TRUAboutUSCell.m in Sources */,
 				12F9002B1F9DF4FC001125A3 /* TRUIflyMSCUtil.m in Sources */,
@@ -2178,7 +2205,9 @@
 				12A662B11FC2C2A600C20D81 /* YCAnimationNumberView.m in Sources */,
 				2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
+				2D95721E2447000B002A0103 /* TRUFaceInitViewController.m in Sources */,
 				128D5CED1F7DDB4800753EE5 /* TRUDevicesManagerController.m in Sources */,
+				2D9572212447000B002A0103 /* TRUFaceGuideViewController.m in Sources */,
 				12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */,
 				2D1886302277FC6A00826ACF /* TRUSelectModel.m in Sources */,
 				12476A111FA18B41000055CB /* UIScrollView+MJExtension.m in Sources */,
@@ -2205,9 +2234,12 @@
 				12436A70210844710070F966 /* TRUGestureVerifyViewController.m in Sources */,
 				12C29FDF1F96067100087FB7 /* MyTabBarButton.m in Sources */,
 				2D07D1272423718400DE4996 /* UIButton+Touch.m in Sources */,
+				2D9572222447000B002A0103 /* TRUFaceSettingViewController.m in Sources */,
 				2D1886272277F4A700826ACF /* TRUSubUserModel.m in Sources */,
 				12C0D2CF1F7907DC00972218 /* main.m in Sources */,
 				12476A071FA18B41000055CB /* MJRefreshAutoStateFooter.m in Sources */,
+				2D9572202447000B002A0103 /* TRUFaceBaseViewController.m in Sources */,
+				2D95721F2447000B002A0103 /* TRUThirdFaceVerifyViewController.m in Sources */,
 				12476A121FA18B41000055CB /* UIScrollView+MJRefresh.m in Sources */,
 				12436A71210844710070F966 /* TRUGestureModify1ViewController.m in Sources */,
 				2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */,

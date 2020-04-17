@@ -15,8 +15,8 @@
 #import "TRUUserAPI.h"
 #import "TRUNetworkStatus.h"
 
-//#import "TRUFaceGuideViewController.h"
-//#import "TRUFaceSettingViewController.h"
+#import "TRUFaceGuideViewController.h"
+#import "TRUFaceSettingViewController.h"
 #import "TRUVoiceInitViewController.h"
 #import "TRUVoiceSettingViewController.h"
 #import "TRUhttpManager.h"
@@ -128,12 +128,12 @@
     if (authStatus == AVAuthorizationStatusAuthorized) {
         NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
         if ([faceinfo isEqualToString:@"1"]) {
-//            TRUFaceSettingViewController *faceSetVC = [[TRUFaceSettingViewController alloc] init];
-//            [self.navigationController pushViewController:faceSetVC animated:YES];
+            TRUFaceSettingViewController *faceSetVC = [[TRUFaceSettingViewController alloc] init];
+            [self.navigationController pushViewController:faceSetVC animated:YES];
             
         }else{
-//            TRUFaceGuideViewController *vc = [[TRUFaceGuideViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
+            TRUFaceGuideViewController *vc = [[TRUFaceGuideViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
     }else if (authStatus == AVAuthorizationStatusNotDetermined){
@@ -142,12 +142,12 @@
                 if (granted) {
                     NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
                     if ([faceinfo isEqualToString:@"1"]) {
-//                        TRUFaceSettingViewController *faceSetVC = [[TRUFaceSettingViewController alloc] init];
-//                        [self.navigationController pushViewController:faceSetVC animated:YES];
+                        TRUFaceSettingViewController *faceSetVC = [[TRUFaceSettingViewController alloc] init];
+                        [self.navigationController pushViewController:faceSetVC animated:YES];
                         
                     }else{
-//                        TRUFaceGuideViewController *vc = [[TRUFaceGuideViewController alloc] init];
-//                        [self.navigationController pushViewController:vc animated:YES];
+                        TRUFaceGuideViewController *vc = [[TRUFaceGuideViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
                     }
                 }else{
                     [self showConfrimCancelDialogViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
