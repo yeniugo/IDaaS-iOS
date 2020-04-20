@@ -40,7 +40,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"PersonalAboutUS"]];
     self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"版本信息"]];
-    self.commitArray =  @[@[@"TRUPersonalDetailsViewController"],@[@"TRUBuildingViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
+    self.commitArray =  @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceInitViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -167,18 +167,8 @@ extern long gs_time;
 //    }else{
 //        self.password = [xindunsdk getCIMSDynamicCode:userId temp:1];
 //    }
-    self.password = [xindunsdk getCIMSDynamicCode:userId];
-//    lastPassword;
-    if (self.lastPassword.length == 0) {
-        self.lastPassword = self.password;
-    }else if(![self.lastPassword isEqualToString:self.password]){
-        self.lastPassword = self.password;
-//        float timesync = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] floatValue];
-//        NSNumber *time = [[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"];
-        YCLog(@"动态口令为 = %@,时间差为= %ld",self.lastPassword,gs_time);
-    }
     if (dytime >= 1.0) {
-        YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
+//        YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
         [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:NO];
         dytime = 0.0;
         [_aniationView stop];
@@ -186,7 +176,8 @@ extern long gs_time;
         [_timeView startCountWithTime:29];
         [self startCountWithTime:29];
     }else{
-        dytime = dytime + self.dislink.duration / 30.0;
+        dytime = dytime + self.dislink.duration / 30.0 *60;
+//        dytime = dytime + self.dislink.duration / 30.0;
     }
 }
 - (void)initTimeCountNotFirst{
@@ -219,7 +210,7 @@ extern long gs_time;
         dytime = dytime - 1.0;
     }
     [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:isFirst];
-    YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
+//    YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
     NSInteger num = (1 -dytime) *30 - 1;
     [_timeView startCountWithTime:num];
