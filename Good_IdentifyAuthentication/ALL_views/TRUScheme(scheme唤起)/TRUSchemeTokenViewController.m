@@ -733,13 +733,34 @@
 //                        [TRUEnterAPPAuthView showAuthView];
                         [TRULockSWindow showAuthView];
                         //            [self getAppAuthToken];
+                    }else if(errorno ==9024){
+                        [weakSelf showHudWithText:@"用户没有应用权限"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==9019){
+                        [weakSelf showHudWithText:@"用户禁用或者过期"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==9025){
+                        [weakSelf showHudWithText:@"用户没有公共账号权限"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==9001){
+                        [weakSelf showHudWithText:@"签名错误"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==9008){
+                        [weakSelf showHudWithText:@"密钥失效"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==9011){
+                        [weakSelf showHudWithText:@"应用不存在"];
+                        [weakSelf hideHudDelay:2.0];
+                    }else if(errorno ==90039){
+                        [weakSelf showHudWithText:@"用户不匹配"];
+                        [weakSelf hideHudDelay:2.0];
                     }else{
                         //            [weakSelf getAppAuthToken];
                         weakdelegate.soureSchme = nil;
                         weakdelegate.thirdAwakeTokenStatus = 0;
                         weakdelegate.isFromSDK = NO;
 //                        [weakSelf showHudWithText:[NSString stringWithFormat:@"%d",errorno]];
-                        [weakSelf showHudWithText:@"token生成失败"];
+                        [weakSelf showHudWithText:[NSString stringWithFormat:@"token生成失败,错误代码为%d",errorno]];
                         [weakSelf hideHudDelay:2.0];
                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                             if ([weakdelegate.window.rootViewController isKindOfClass:[UINavigationController class]]) {
