@@ -51,6 +51,7 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *RemoteTokenStr;//远程token字符串
 @property (nonatomic, copy) NSDictionary *launchOptions;
+@property (nonatomic,assign) UIBackgroundTaskIdentifier backIden;
 @end
 
 @implementation AppDelegate
@@ -1619,6 +1620,7 @@
 //        }
 //
 //    }
+    [self beginBackTask];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [JPUSHService setBadge:0];
     self.isFirstStart = NO;
@@ -1678,6 +1680,18 @@
         }
 //        weakSelf.thirdAwakeTokenStatus = 0;
     });
+    [self endBackTask];
+}
+
+- (void)beginBackTask{
+    _backIden = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBackTask]; // 如果在系统规定时间内任务还没有完成，在时间到之前会调用到这个方法，一般是10分钟
+    }];
+}
+
+- (void)endBackTask{
+    [[UIApplication sharedApplication] endBackgroundTask:_backIden];
+    _backIden = UIBackgroundTaskInvalid;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

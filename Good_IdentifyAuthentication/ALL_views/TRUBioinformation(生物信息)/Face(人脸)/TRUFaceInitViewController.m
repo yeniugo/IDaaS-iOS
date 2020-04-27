@@ -18,8 +18,6 @@
 
 @implementation TRUFaceInitViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置人脸信息";

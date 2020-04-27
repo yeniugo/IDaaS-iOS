@@ -7,26 +7,35 @@
 //
 
 #import "TRUFaceBaseViewController.h"
-#import "NSCameraOption.h"
+
+#if TARGET_IPHONE_SIMULATOR
+#else
 #import <AuthenAnti_SpoofingSDK/AuthenAnti_SpoofingSDK.h>
+#import "NSCameraOption.h"
 #import "TRUFaceGifView.h"
+#endif
+
 #import <objc/runtime.h>
 #import "TRUMacros.h"
 
 #define FcameraView CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 #define usingRuntimeProcess NO
 
-
+#if TARGET_IPHONE_SIMULATOR
+#else
 typedef NSInteger FaceDetectionType;
 NS_ENUM(DetectType) {
     FaceDetectionNone    =  0,  //没有检测, 也是检测结束标志
     FaceDetectionWaitResult   =  1,  //开始检测
     FaceDetectionWaitNewDetect =  2  //等待结果
     };
+#endif
 
-@interface TRUFaceBaseViewController ()<AmCameraDelegate, AuthenAnti_SpoofingDelegate>{
 #if TARGET_IPHONE_SIMULATOR
+@interface TRUFaceBaseViewController ()
+@end
 #else
+@interface TRUFaceBaseViewController ()<AmCameraDelegate, AuthenAnti_SpoofingDelegate>{
     BOOL    faceVerifysucceed;
     BOOL    cancelled;          //是否取消过界面
     BOOL    canStopDetection;   //可以取消检测,该属性针对如下情况设置:活体的动作检测只进行了1秒,而录像至少需要3秒
@@ -44,8 +53,6 @@ NS_ENUM(DetectType) {
     AuthenAnti_Spoofing *Anti_Spoof_Object; //图像处理对象
     CGFloat voiceValue;//音量
     int testCount;//检测数组数量
-#endif
-    
 }
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *cameraView;     //摄像头操作主界面
@@ -53,9 +60,24 @@ NS_ENUM(DetectType) {
 @property (nonatomic, strong) UIImageView *showView;    //摄像头获取的各帧图像的显示界面
 @property (strong, nonatomic) TRUFaceGifView *gifView;       //底部动画视图
 @end
-
+#endif
 @implementation TRUFaceBaseViewController
 #if TARGET_IPHONE_SIMULATOR
+- (NSMutableArray *) getActionSequence{
+    return [NSMutableArray array];
+}
+- (void) onDetectSuccessWithImages:(NSMutableArray *) images{
+    
+}
+- (void) onDetectFailWithMessage:(NSString *) message{
+    
+}
+- (void) restartDetection{
+    
+}
+- (void) restartGroupDetection{
+    
+}
 #else
 - (instancetype)init
 {
@@ -789,3 +811,4 @@ void methodNotImplemented (id self, SEL _cmd)
 }
 #endif
 @end
+

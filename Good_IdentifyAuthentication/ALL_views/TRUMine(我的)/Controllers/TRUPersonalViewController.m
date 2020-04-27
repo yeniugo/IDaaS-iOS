@@ -25,6 +25,7 @@
 #import "TRUMTDTool.h"
 //#import "TrusfortDevId.h"
 #import "TRUAPPLogIdentifyController.h"
+#import "TRUMailManagerViewController.h"
 @interface TRUPersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//图标
@@ -131,18 +132,23 @@
         [weakSelf unbindDevice];
     };
     
+    TRUPersonalSmailModel *model9 = [[TRUPersonalSmailModel alloc] init];
+    model9.cellType = PersonalSmaillCellNormal;
+    model9.leftIcon = @"PersonalEmail";
+    model9.leftStr = @"邮箱设备";
+    model9.disVC = @"TRUMailManagerViewController";
     
     TRUCompanyModel *model = [TRUCompanyAPI getCompany];
 //    model.hasFace = NO;
 //    model.hasVoice = YES;
     if (model.hasFace && model.hasVoice) {
-        self.dataArray = @[@[model1,model2],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+        self.dataArray = @[@[model1,model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
     }else if(model.hasFace && !model.hasVoice){
-        self.dataArray = @[@[model1],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+        self.dataArray = @[@[model1],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
     }else if(!model.hasFace && model.hasVoice){
-        self.dataArray = @[@[model2],@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+        self.dataArray = @[@[model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
     }else{
-        self.dataArray = @[@[model3],@[model4],@[model5],@[model6],@[model7],@[model8]];
+        self.dataArray = @[@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
     }
 }
 

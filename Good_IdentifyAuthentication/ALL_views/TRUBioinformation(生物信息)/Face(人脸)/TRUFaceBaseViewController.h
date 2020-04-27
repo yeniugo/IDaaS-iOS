@@ -8,8 +8,6 @@
 
 #import "TRUBaseViewController.h"
 
-
-
 @interface TRUFaceBaseViewController : TRUBaseViewController
 @property (assign, nonatomic) int maxDetectionTimes;//最大检测次数
 //@property (nonatomic, copy) void (^authFailure)();//检测失败后执行

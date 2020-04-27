@@ -33,6 +33,7 @@
 //#import "TrusfortDevId.h"
 #import "TRUTimeSyncUtil.h"
 #import "UIScrollView+UITouch.h"
+#import "TRUWebLoginManagerViewController.h"
 @interface TRUAllInOneAuthViewController ()
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) TRUBottomScanView *bottomScanView;
@@ -76,6 +77,7 @@ static double dytime = 0.0;
     self.firstRun = YES;
 //    [self startCountdown];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MineIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webloginIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
@@ -84,6 +86,11 @@ static double dytime = 0.0;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
     }
+}
+
+- (void)leftBarButtonClick{
+    TRUWebLoginManagerViewController *weblogin = [[TRUWebLoginManagerViewController alloc] init];
+    [self.navigationController pushViewController:weblogin animated:YES];
 }
 
 //- (void)viewWillAppear:(BOOL)animated{
@@ -114,7 +121,7 @@ static double dytime = 0.0;
             TRUCompanyModel *model1 = [TRUCompanyAPI getCompany];
             TRUCompanyModel *model2 = [TRUCompanyModel modelWithDic:responseObject];
             [TRUCompanyAPI saveCompany:model2];
-            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
+//            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {

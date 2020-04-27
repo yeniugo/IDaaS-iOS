@@ -261,7 +261,6 @@
 		2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
 		2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */; };
 		2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731421D36F0C006D8281 /* UIButton+Touch.m */; };
-		2D96CE552432F302009080DC /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D96CEB624333CF2009080DC /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAC24333CF1009080DC /* unzip.c */; };
 		2D96CEB724333CF2009080DC /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAD24333CF1009080DC /* zip.c */; };
 		2D96CEB824333CF2009080DC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAE24333CF1009080DC /* ioapi.c */; };
@@ -285,6 +284,12 @@
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
 		2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC21981230FD87300459748 /* TRUPortalHeader.m */; };
+		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
+		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
+		2DCF84DF24502495009697A0 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
+		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
+		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
+		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
@@ -796,6 +801,18 @@
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
 		2DC21980230FD87300459748 /* TRUPortalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPortalHeader.h; sourceTree = "<group>"; };
 		2DC21981230FD87300459748 /* TRUPortalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeader.m; sourceTree = "<group>"; };
+		2DC8E3A62451A22D00FD125A /* TRUMailManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerViewController.h; sourceTree = "<group>"; };
+		2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerViewController.m; sourceTree = "<group>"; };
+		2DC8E3A92451A25800FD125A /* TRUMailManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerCell.h; sourceTree = "<group>"; };
+		2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerCell.m; sourceTree = "<group>"; };
+		2DCF84DD24502495009697A0 /* TRUWebLoginManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUWebLoginManagerViewController.h; sourceTree = "<group>"; };
+		2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUWebLoginManagerViewController.m; sourceTree = "<group>"; };
+		2DCF84E0245024E6009697A0 /* TRUWebLoginManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUWebLoginManagerCell.h; sourceTree = "<group>"; };
+		2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUWebLoginManagerCell.m; sourceTree = "<group>"; };
+		2DCF84E3245034E8009697A0 /* TRUWebLoginTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUWebLoginTopView.h; sourceTree = "<group>"; };
+		2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUWebLoginTopView.m; sourceTree = "<group>"; };
+		2DCF84E6245040CE009697A0 /* WebLoginTableViewBackImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebLoginTableViewBackImage.h; sourceTree = "<group>"; };
+		2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLoginTableViewBackImage.m; sourceTree = "<group>"; };
 		2DD459E621D2290B00237161 /* TRUSelectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSelectModel.h; sourceTree = "<group>"; };
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -830,7 +847,6 @@
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
-				2D96CE552432F302009080DC /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
@@ -1327,6 +1343,7 @@
 		12749E9E1FC7CDC200183EB4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2DC8E3A42451A1EB00FD125A /* mailBind */,
 				2D32BB0C22B102AF00BE3169 /* linux账号管理 */,
 				12C0D3211F790CDC00972218 /* TRUMineViewController.h */,
 				12C0D3221F790CDC00972218 /* TRUMineViewController.m */,
@@ -1952,6 +1969,8 @@
 				2D32E994228AA95E0032A95A /* TRUPortalCell.m */,
 				2DC21980230FD87300459748 /* TRUPortalHeader.h */,
 				2DC21981230FD87300459748 /* TRUPortalHeader.m */,
+				2DCF84E6245040CE009697A0 /* WebLoginTableViewBackImage.h */,
+				2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2067,6 +2086,8 @@
 				2DAA278B230A529000B3A6C4 /* view */,
 				2DAA2788230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.h */,
 				2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */,
+				2DCF84DD24502495009697A0 /* TRUWebLoginManagerViewController.h */,
+				2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */,
 				2D00A62B230C03EB00C2F326 /* TRUQRShowViewController.h */,
 				2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */,
 			);
@@ -2088,6 +2109,10 @@
 				2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */,
 				2DAA279B230AA7BB00B3A6C4 /* TRUPortalTitleView.h */,
 				2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */,
+				2DCF84E0245024E6009697A0 /* TRUWebLoginManagerCell.h */,
+				2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */,
+				2DCF84E3245034E8009697A0 /* TRUWebLoginTopView.h */,
+				2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2097,6 +2122,25 @@
 			children = (
 			);
 			path = MTD;
+			sourceTree = "<group>";
+		};
+		2DC8E3A42451A1EB00FD125A /* mailBind */ = {
+			isa = PBXGroup;
+			children = (
+				2DC8E3A52451A20500FD125A /* view */,
+				2DC8E3A62451A22D00FD125A /* TRUMailManagerViewController.h */,
+				2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */,
+			);
+			path = mailBind;
+			sourceTree = "<group>";
+		};
+		2DC8E3A52451A20500FD125A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				2DC8E3A92451A25800FD125A /* TRUMailManagerCell.h */,
+				2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		51747254D93A4DD21A54B2FD /* Pods */ = {
@@ -2371,6 +2415,7 @@
 				2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */,
 				12476A051FA18B41000055CB /* MJRefreshAutoGifFooter.m in Sources */,
 				2D800C942154D3DD00A2D1C2 /* TRUhttpManager.m in Sources */,
+				2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */,
 				12476A0B1FA18B41000055CB /* MJRefreshGifHeader.m in Sources */,
 				2D32E997228AA95E0032A95A /* TRUPortalViewController.m in Sources */,
 				12476A091FA18B41000055CB /* MJRefreshBackNormalFooter.m in Sources */,
@@ -2463,10 +2508,12 @@
 				2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */,
 				12354C5E1FA81A6900B6B92E /* TRUSessionManagerCell.m in Sources */,
 				12F45C841F7B5E0000C89C4D /* TRUApplicationTopView.m in Sources */,
+				2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */,
 				121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
 				2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */,
 				2D96CEB624333CF2009080DC /* unzip.c in Sources */,
+				2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */,
 				12436A64210844590070F966 /* TRUVerifyFaceViewController.m in Sources */,
 				128D5D021F7E3A4D00753EE5 /* TRUAboutUSCell.m in Sources */,
 				12F9002B1F9DF4FC001125A3 /* TRUIflyMSCUtil.m in Sources */,
@@ -2529,9 +2576,11 @@
 				122C1F7B1F94AE8E00E118D2 /* TRUFeedbackViewController.m in Sources */,
 				1202F34B201ACEC0001743B2 /* FireflyAlertView.m in Sources */,
 				12409F831F8F40C6000D342D /* NSString+Trim.m in Sources */,
+				2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */,
 				2DFF36AD22B3AC2E00E300B9 /* TRUSSHAddViewController.m in Sources */,
 				12F45C8D1F7B8B7D00C89C4D /* TRUHomeButton.m in Sources */,
 				122AD7A21FA9A9E000E5963F /* YCAlertView.m in Sources */,
+				2DCF84DF24502495009697A0 /* TRUWebLoginManagerViewController.m in Sources */,
 				125633551F7A4B40007FF392 /* TRUMineUserInfoView.m in Sources */,
 				2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */,
 				12436A74210844710070F966 /* TRUGestureVerify2ViewController.m in Sources */,
@@ -2555,6 +2604,7 @@
 				128D5CFE1F7E2C0D00753EE5 /* TRUHomeSizeLabel.m in Sources */,
 				2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */,
 				12F41CE91FA030540038C713 /* TRUVoiceVerifyViewController.m in Sources */,
+				2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */,
 				12C0D33F1F790EA000972218 /* UIImage+Resize.m in Sources */,
 				12CED5502019CD3B0062F10F /* TRUAdViewController.m in Sources */,
 				2D7FFF622189923600FCA1ED /* TRUAuthenticateViewController.m in Sources */,
