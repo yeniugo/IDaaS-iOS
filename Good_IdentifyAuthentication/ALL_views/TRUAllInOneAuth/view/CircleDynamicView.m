@@ -57,7 +57,7 @@
         dynamicLB.font = [UIFont systemFontOfSize:16*PointHeightRatioX3];
         dynamicLB.text = @"动态口令";
         dynamicLB.textAlignment = NSTextAlignmentCenter;
-        dynamicLB.textColor = RGBCOLOR(51, 51, 51);
+        dynamicLB.textColor = [UIColor whiteColor];
         [self addSubview:dynamicLB];
         self.dynamicLB = dynamicLB;
         dynamicLB.frame = CGRectMake(0, y + 0.25 * w - 15*PointHeightRatioX3/2 , SCREENW, 15*PointHeightRatioX3);
@@ -69,7 +69,7 @@
             passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
         }
         passwordLB.textAlignment = NSTextAlignmentCenter;
-        passwordLB.textColor = RGBCOLOR(51, 51, 51);
+        passwordLB.textColor = [UIColor whiteColor];
         [self addSubview:passwordLB];
         passwordLB.frame = CGRectMake(89*PointWidthRatioX, 0.5*frame.size.height -50*PointHeightRatioX3/2 , SCREENW-89*2*PointWidthRatioX, 50*PointHeightRatioX3);
         self.passwordLB = passwordLB;
@@ -78,7 +78,7 @@
         UILabel *countLB = [[UILabel alloc] init];
         countLB.font = [UIFont systemFontOfSize:14*PointHeightRatioX3];
         countLB.textAlignment = NSTextAlignmentCenter;
-        countLB.textColor = RGBCOLOR(153,153,153);
+        countLB.textColor = [UIColor whiteColor];
         [self addSubview:countLB];
         countLB.frame = CGRectMake(0, y + 0.75 * h - 14*PointHeightRatioX3/2.0 , SCREENW, 14 *PointHeightRatioX3);
         self.countLB = countLB;

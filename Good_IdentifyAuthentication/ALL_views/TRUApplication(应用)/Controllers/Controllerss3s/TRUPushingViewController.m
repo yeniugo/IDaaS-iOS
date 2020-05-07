@@ -25,9 +25,14 @@
 #import "AppDelegate.h"
 #import "TRUMTDTool.h"
 @interface TRUPushingViewController ()
+
+/// 右1
 @property (weak, nonatomic) IBOutlet UILabel *accountLB;
+/// 右2
 @property (weak, nonatomic) IBOutlet UILabel *ipLB;
+/// 右3
 @property (weak, nonatomic) IBOutlet UILabel *localLB;
+/// 右4
 @property (weak, nonatomic) IBOutlet UILabel *TimeLB;
 @property (weak, nonatomic) IBOutlet UILabel *titleAuthLB;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmButtonTopConstraint;//确认按钮到登录信息的距离
@@ -40,6 +45,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *pushOKBtn;
 
 @property (weak, nonatomic) NSTimer *pushTimer;
+
+@property (weak, nonatomic) IBOutlet UILabel *firstLeftLB;
+@property (weak, nonatomic) IBOutlet UILabel *secondLeftLB;
+@property (weak, nonatomic) IBOutlet UILabel *thirdLeftLB;
+@property (weak, nonatomic) IBOutlet UILabel *fourthLeftLB;
+@property (weak, nonatomic) IBOutlet UILabel *fifthLeftLB;
+@property (weak, nonatomic) IBOutlet UILabel *fifthRightLB;
+
 @end
 
 @implementation TRUPushingViewController
@@ -112,23 +125,114 @@
 
 
 - (void)commonInit{
-    [self startCounter];
-    self.ipLB.text = self.pushModel.ip;
-    self.localLB.text = self.pushModel.location;
-    self.TimeLB.text = self.pushModel.dateTime;
-    NSString *userName = self.pushModel.username;
-    self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
-    if (!userName || userName.length == 0) {
-        TRUUserModel *model = [TRUUserAPI getUser];
-        if (model.phone.length>0) {
-            userName = model.phone;
-        }else if (model.email.length>0){
-            userName = model.email;
-        }else if (model.employeenum.length>0){
-            userName = model.employeenum;
+    
+    switch (self.pushModel.displayFields.count) {
+        case 4:
+        {
+            [self startCounter];
+            for (int i = 0; i<4; i++) {
+                if (1) {
+                    switch (i) {
+                        case 0:
+                        {
+                            self.firstLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.accountLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 1:
+                        {
+                            self.secondLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.ipLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 2:
+                        {
+                            self.thirdLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.localLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 3:
+                        {
+                            self.fourthLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.TimeLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 4:
+                        {
+                            self.fifthLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.fifthRightLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
+            }
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            NSString *userName = self.pushModel.username;
+            if (!userName || userName.length == 0) {
+                TRUUserModel *model = [TRUUserAPI getUser];
+                if (model.phone.length>0) {
+                    userName = model.phone;
+                }else if (model.email.length>0){
+                    userName = model.email;
+                }else if (model.employeenum.length>0){
+                    userName = model.employeenum;
+                }
+            }
+            self.accountLB.text = userName;
+            
         }
+            break;
+        case 5:
+        {
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            for (int i = 0; i<5; i++) {
+                if (1) {
+                    switch (i) {
+                        case 0:
+                        {
+                            self.firstLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.accountLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 1:
+                        {
+                            self.secondLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.ipLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 2:
+                        {
+                            self.thirdLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.localLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 3:
+                        {
+                            self.fourthLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.TimeLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        case 4:
+                        {
+                            self.fifthLeftLB.text = self.pushModel.displayFields[i][@"displayName"];
+                            self.fifthRightLB.text = self.pushModel.displayFields[i][@"value"];
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
+            }
+        }
+        default:
+            break;
     }
-    self.accountLB.text = userName;
+    
+    
 }
 
 - (IBAction)backBtnClick:(UIButton *)sender {

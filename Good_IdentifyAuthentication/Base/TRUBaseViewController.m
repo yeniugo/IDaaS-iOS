@@ -51,6 +51,7 @@
 //    [UIApplication sharedApplication].statusBarStyle=UIStatusBarStyleLightContent;
     self.isCurrentPage = YES;
     DDLogWarn(@"%@ viewWillAppear",[self class]);
+    [self setSystemBarStyle];
 }
 
 
@@ -61,7 +62,7 @@
     [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultNavColor] forBarMetrics:UIBarMetricsDefault];
 //    UIImage *shadowImage = [[UIImage alloc] init];
     
-    [self.navigationBar setShadowImage:[self ls_imageWithColor:RGBCOLOR(255, 255, 255)]];
+    [self.navigationBar setShadowImage:[self ls_imageWithColor:[UIColor clearColor]]];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     if (self.navigationController.childViewControllers.count>1) {
         TRUBaseNavigationController *vc = self.navigationController;
@@ -100,7 +101,29 @@
 //    NSInteger *ii = [UIApplication sharedApplication].applicationIconBadgeNumber;
 //    
 //    YCLog(@"00------->%d",ii);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mybarStyle) name:@"TRUEnterAPPAuthViewSuccess" object:nil];
+}
+
+- (void)mybarStyle{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.isViewLoaded && self.view.window)
+        {
+            // viewController is visible
+//            [self viewWillAppear:YES];
+            [self setSystemBarStyle];
+        }
+    });
     
+}
+
+- (void)setSystemBarStyle{
+    if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    //        return UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    //        return UIStatusBarStyleDefault;
+        }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -600,6 +623,7 @@ static const char TRUHUDKey = '\0';
 
 - (void)dealloc{
     YCLog(@"%@ dealloc 内存释放",[self class]);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -37,6 +37,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         UILabel *passwordLB = [[UILabel alloc] init];
+        passwordLB.textColor = [UIColor whiteColor];
         [self addSubview:passwordLB];
         self.passwordLB = passwordLB;
         passwordLB.textAlignment = NSTextAlignmentCenter;
@@ -44,19 +45,20 @@
         UIProgressView *progressView = [[UIProgressView alloc] init];
         CGAffineTransform rotate = CGAffineTransformMakeRotation( M_PI );
         [progressView setTransform:rotate];
-        progressView.trackTintColor = RGBACOLOR(51, 51, 51,0.2);
-        progressView.progressTintColor = RGBCOLOR(0, 150, 255);
+//        progressView.trackTintColor = RGBACOLOR(51, 51, 51,0.2);
+//        progressView.progressTintColor = RGBCOLOR(0, 150, 255);
+        progressView.progressTintColor = [UIColor whiteColor];
         [self addSubview:progressView];
         self.progressView = progressView;
         
         UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [scanBtn setBackgroundImage:[UIImage imageNamed:@"scanBlue"] forState:UIControlStateNormal];
+        [scanBtn setBackgroundImage:[UIImage imageNamed:@"scanWhite"] forState:UIControlStateNormal];
         [self addSubview:scanBtn];
         self.scanBtn = scanBtn;
         [scanBtn addTarget:self action:@selector(scanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         UIButton *qrBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [qrBtn setBackgroundImage:[UIImage imageNamed:@"qrcodeBlue"] forState:UIControlStateNormal];
+        [qrBtn setBackgroundImage:[UIImage imageNamed:@"qrcodeWhite"] forState:UIControlStateNormal];
         [self addSubview:qrBtn];
         self.qrBtn = qrBtn;
         [qrBtn addTarget:self action:@selector(qrButtonClick:) forControlEvents:UIControlEventTouchUpInside];

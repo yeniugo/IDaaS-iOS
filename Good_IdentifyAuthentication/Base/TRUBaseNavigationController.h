@@ -13,4 +13,5 @@
 @property (nonatomic, copy) void (^backBlock)();
 - (void)setNavBarColor:(UIColor *)color;
 - (UIButton *)setLeftBarbutton;
+- (UIButton *)changeToWhiteBtn;
 @end

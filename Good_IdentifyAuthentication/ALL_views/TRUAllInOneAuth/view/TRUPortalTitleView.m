@@ -32,6 +32,8 @@
         [self addSubview:lineView];
         lineView.backgroundColor = RGBCOLOR(247, 249, 250);
         self.lineView = lineView;
+        
+        
     }
     return self;
 }
@@ -40,6 +42,11 @@
     [super layoutSubviews];
 //    self.titleLB.frame = self.bounds;
     self.lineView.frame = CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width-(3 / [UIScreen mainScreen].scale), (3 / [UIScreen mainScreen].scale));
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5,5)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
 }
 
 /*

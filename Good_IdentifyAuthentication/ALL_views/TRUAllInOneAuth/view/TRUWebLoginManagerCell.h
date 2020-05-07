@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TRUWebLoginManagerCell : UITableViewCell
 @property (nonatomic,copy) NSDictionary *cellDic;
 @property (nonatomic,assign) BOOL isFirst;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

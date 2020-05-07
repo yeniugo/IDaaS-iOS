@@ -253,6 +253,7 @@
 		2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8D2154D2C100A2D1C2 /* RadomMutableNumber.mm */; };
 		2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D800C942154D3DD00A2D1C2 /* TRUhttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */; };
+		2D810EA62462A02A00791B24 /* welcomeicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D810EA52462A02A00791B24 /* welcomeicon.png */; };
 		2D89624522F9634700782CCA /* YZXGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89623F22F9634600782CCA /* YZXGesturesView.m */; };
 		2D89624622F9634700782CCA /* YZXPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89624022F9634600782CCA /* YZXPointView.m */; };
 		2D89624722F9634700782CCA /* YZXInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89624122F9634600782CCA /* YZXInfoView.m */; };
@@ -740,6 +741,7 @@
 		2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUhttpManager.m; sourceTree = "<group>"; };
 		2D800C932154D3DD00A2D1C2 /* TRUhttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUhttpManager.h; sourceTree = "<group>"; };
+		2D810EA52462A02A00791B24 /* welcomeicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeicon.png; sourceTree = "<group>"; };
 		2D89623E22F9634600782CCA /* YZXInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXInfoView.h; sourceTree = "<group>"; };
 		2D89623F22F9634600782CCA /* YZXGesturesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXGesturesView.m; sourceTree = "<group>"; };
 		2D89624022F9634600782CCA /* YZXPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXPointView.m; sourceTree = "<group>"; };
@@ -1750,6 +1752,7 @@
 			isa = PBXGroup;
 			children = (
 				2D40D4ED23226A2300EC0C3F /* applauchIcon.png */,
+				2D810EA52462A02A00791B24 /* welcomeicon.png */,
 				1242D81420B4210C008EDF07 /* allspIcon */,
 				126BCFFC1FB05FFA00B84B7A /* Good_IdentifyAuthentication.entitlements */,
 				12749E8D1FC7C9FE00183EB4 /* ALL_views */,
@@ -2321,6 +2324,7 @@
 				2D50B59522D87A1B0037F089 /* trusfort.lic in Resources */,
 				12F7C45C1FAC0A6100EF1DF5 /* tabbardata03.json in Resources */,
 				12F037211F9F1F79007F4C19 /* fingerbg.png in Resources */,
+				2D810EA62462A02A00791B24 /* welcomeicon.png in Resources */,
 				123D100A202AA0CB000CEB60 /* Scandata.json in Resources */,
 				12098A0920CFA4D20027D927 /* Image.bundle in Resources */,
 				12409F9B1F8F4B22000D342D /* TRULoginViewController.xib in Resources */,
@@ -2810,8 +2814,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 219;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -2846,7 +2850,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = appstore_cims;
+				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

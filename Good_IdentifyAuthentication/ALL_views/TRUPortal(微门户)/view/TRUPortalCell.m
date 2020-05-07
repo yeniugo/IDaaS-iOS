@@ -38,6 +38,7 @@
         self.imageview.image = nil;
     }
     self.textlabel.text = cellModel.appName;
+    [self resetUI];
 //    self.textlabel.text = @"fafafa";
 }
 
@@ -47,6 +48,37 @@
     self.textlabel.frame = CGRectMake(0, 94/125.0*self.bounds.size.width, self.bounds.size.width, 94/125.0*13);
 //    self.textlabel.text = @"fafafa";
 //    [self.textlabel sizeToFit];
+    [self resetUI];
+}
+
+- (void)resetUI{
+    switch (self.cellModel.cellType) {
+        case 0:
+        {
+            self.layer.mask = nil;
+        }
+            break;
+        case 1:
+        {
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: self.bounds byRoundingCorners:UIRectCornerBottomLeft cornerRadii:CGSizeMake(5,5)];
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            maskLayer.frame = self.bounds;
+            maskLayer.path = maskPath.CGPath;
+            self.layer.mask = maskLayer;
+        }
+            break;
+        case 2:
+        {
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: self.bounds byRoundingCorners:UIRectCornerBottomRight cornerRadii:CGSizeMake(5,5)];
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            maskLayer.frame = self.bounds;
+            maskLayer.path = maskPath.CGPath;
+            self.layer.mask = maskLayer;
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 -(void)setSelected:(BOOL)selected{

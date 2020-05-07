@@ -28,7 +28,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc]init];
+        
         UICollectionView *portalView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flow];
+        portalView.contentInset = UIEdgeInsetsMake(10, 10, 0, 10);
         portalView.backgroundColor = [UIColor clearColor];
         [self addSubview:portalView];
         CGFloat header_y = 55 * PointWidthRatioX;
@@ -47,12 +49,12 @@
         flow.minimumLineSpacing = 0;
         [self addSubview:portalView];
         __weak typeof(self) weakSelf = self;
-        portalView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            if (weakSelf.refreshBlock) {
-                weakSelf.refreshBlock();
-            }
-            [weakSelf.portalView.mj_header endRefreshing];
-        }];
+//        portalView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//            if (weakSelf.refreshBlock) {
+//                weakSelf.refreshBlock();
+//            }
+//            [weakSelf.portalView.mj_header endRefreshing];
+//        }];
         
         TRUAuthBtn *authBtn = [[TRUAuthBtn alloc] initWithFrame:CGRectMake(0, 0, SCREENW, 60 * PointWidthRatioX)];
         [self addSubview:authBtn];
@@ -77,11 +79,21 @@
     static NSString *portalCellindex = @"TRUPortalCell";
     TRUPortalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:portalCellindex forIndexPath:indexPath];
     cell.cellModel = self.dataArray[indexPath.row];
+//    if (self.dataArray.count > indexPath.row + 1) {
+//        cell.cellModel = self.dataArray[indexPath.row];
+//    }
+//    if (indexPath.row == ((self.dataArray.count-1)/3)*3-3) {
+//        cell.cellType = 1;
+//    }else if(indexPath.row == ((self.dataArray.count-1)/3)*3-1){
+//        cell.cellType = 2;
+//    }else{
+//        cell.cellType = 0;
+//    }
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return self.dataArray.count ? ((self.dataArray.count-1)/3 +1)*3 :0;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -89,7 +101,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(SCREENW/3, SCREENW/3);
+    return CGSizeMake((SCREENW-20.0)/3, (SCREENW-20.0)/3);
 }
 
 

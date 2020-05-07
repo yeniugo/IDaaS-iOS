@@ -43,6 +43,21 @@
     //    YCLog(@"tabbar.subviews = %@",self.navigationBar.subviews);
 }
 
+- (UIButton *)changeToWhiteBtn{
+    UIImage *img = [[UIImage imageNamed:@"whitebackbtn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backBtn setTitleColor:ViewDefaultBgColor forState:UIControlStateNormal];
+        [backBtn setTitle:@"      " forState:UIControlStateNormal];
+        //    [backBtn setBackgroundImage:img forState:UIControlStateNormal];
+    //    [backBtn setBackgroundImage:img forState:UIControlStateNormal];
+    //    [backBtn setBackgroundImage:img forState:UIControlStateHighlighted];
+        [backBtn setImage:[UIImage imageNamed:@"whitebackbtn"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"whitebackbtn"] forState:UIControlStateHighlighted];
+        [backBtn addTarget:self action:@selector(navPop) forControlEvents:UIControlEventTouchUpInside];
+        backBtn.frame = CGRectMake(0, 0, 40, 50);
+        return backBtn;
+}
+
 - (void)setNavBarColor:(UIColor *)color{
     //    [self.navigationBar tru_setBackgroudColor:color];
     ////    [self.navigationBar setShadowImage:[UIImage new]];

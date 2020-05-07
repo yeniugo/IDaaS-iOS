@@ -27,6 +27,8 @@
 /** 操作时间 */
 @property (nonatomic, copy) NSString *dateTime;
 
+@property (nonatomic, strong) NSArray *displayFields;
+
 /** 验证类型
  0:二维码
  1:推送

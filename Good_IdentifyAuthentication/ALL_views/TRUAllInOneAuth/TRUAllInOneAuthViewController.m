@@ -76,8 +76,8 @@ static double dytime = 0.0;
 //    }
     self.firstRun = YES;
 //    [self startCountdown];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MineIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"webloginIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MineIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"webloginIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
@@ -287,6 +287,9 @@ static double dytime = 0.0;
 }
 
 - (void)setCustomUI{
+//    self.view.backgroundColor = DefaultGreenColor;
+    [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultGreenColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     self.title = @"认证";
     self.linelabel.hidden = YES;
     int type ;
@@ -306,16 +309,18 @@ static double dytime = 0.0;
     }
 //    type = 1;
     __weak typeof(self) weakSelf = self;
+    
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
+    scrollView.backgroundColor = DefaultGreenColor;
     scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
         [weakSelf getPushInfo];
         [weakSelf syncTime];
         [weakSelf.scrollView.mj_header endRefreshing];
     }];
-    scrollView.backgroundColor = [UIColor clearColor];
+//    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH - kNavBarAndStatusBarHeight);
     scrollView.contentSize = CGSizeMake(SCREENW, SCREENH - kNavBarAndStatusBarHeight);
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -325,6 +330,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUBottomScanView *bottomScanView = [[TRUBottomScanView alloc] initWithFrame:CGRectMake(0, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6 , SCREENW, (SCREENH - kNavBarAndStatusBarHeight -kTabBarBottom)*0.4+kTabBarBottom)];
+            bottomScanView.backgroundColor = ViewDefaultBgColor;
             bottomScanView.hasQRBtn = NO;
             self.bottomScanView = bottomScanView;
             bottomScanView.authBtnClick = ^(TRUPushAuthModel * _Nonnull model) {
@@ -343,7 +349,7 @@ static double dytime = 0.0;
 
             [self.scrollView addSubview:bottomScanView];
             CircleDynamicView *circleDynamicView = [[CircleDynamicView alloc] initWithFrame:CGRectMake(0, 0, SCREENW, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6)];
-            circleDynamicView.backgroundColor = [UIColor whiteColor];
+            circleDynamicView.backgroundColor = DefaultGreenColor;
             self.circleDynamicView = circleDynamicView;
             [self.scrollView addSubview:circleDynamicView];
         }
@@ -352,6 +358,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUBottomScanView *bottomScanView = [[TRUBottomScanView alloc] initWithFrame:CGRectMake(0, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6, SCREENW, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.4+kTabBarBottom)];
+            bottomScanView.backgroundColor = ViewDefaultBgColor;
             bottomScanView.hasQRBtn = YES;
             self.bottomScanView = bottomScanView;
             bottomScanView.scanButtonClick = ^{
@@ -373,7 +380,7 @@ static double dytime = 0.0;
             };
             [self.scrollView addSubview:bottomScanView];
             CircleDynamicView *circleDynamicView = [[CircleDynamicView alloc] initWithFrame:CGRectMake(0, 0, SCREENW, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6)];
-            circleDynamicView.backgroundColor = [UIColor whiteColor];
+            circleDynamicView.backgroundColor = DefaultGreenColor;
             self.circleDynamicView = circleDynamicView;
             [self.scrollView addSubview:circleDynamicView];
         }
@@ -381,12 +388,13 @@ static double dytime = 0.0;
         case 2:
         {
             self.scrollView.hidden = NO;
-            TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX +10, SCREENW, SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX-10)];
+            TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX , SCREENW , SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX)];
+            portalView.backgroundColor = ViewDefaultBgColor;
             self.portalView = portalView;
-            portalView.refreshBlock = ^{
-                [weakSelf refreshData];
-                [weakSelf getPushInfo];
-            };
+//            portalView.refreshBlock = ^{
+//                [weakSelf refreshData];
+//                [weakSelf getPushInfo];
+//            };
             portalView.authBtnClick = ^(TRUPushAuthModel * _Nonnull model) {
                 TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
                 authVC.userNo = [TRUUserAPI getUser].userId;
@@ -452,18 +460,20 @@ static double dytime = 0.0;
                 TRUQRShowViewController *vc = [[TRUQRShowViewController alloc] init];
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
+            rectView.backgroundColor = DefaultGreenColor;
             [self.scrollView addSubview:rectView];
         }
             break;
         case 3:
         {
             self.scrollView.hidden = NO;
-            TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX+10, SCREENW, SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX-10)];
+            TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX, SCREENW, SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX)];
+            portalView.backgroundColor = ViewDefaultBgColor;
             self.portalView = portalView;
-            portalView.refreshBlock = ^{
-                [weakSelf refreshData];
-                [weakSelf getPushInfo];
-            };
+//            portalView.refreshBlock = ^{
+//                [weakSelf refreshData];
+//                [weakSelf getPushInfo];
+//            };
             portalView.authBtnClick = ^(TRUPushAuthModel * _Nonnull model) {
                 TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
                 authVC.userNo = [TRUUserAPI getUser].userId;
@@ -526,6 +536,7 @@ static double dytime = 0.0;
             rectView.scanButtonClick = ^{
                 [weakSelf scanBtnClick];
             };
+            rectView.backgroundColor = DefaultGreenColor;
             [self.scrollView addSubview:rectView];
         }
             break;
@@ -580,9 +591,20 @@ static double dytime = 0.0;
 //    [self checkLoginAuth];
     [self getPushInfo];
     [self startCountdown];
+    
 //    if (!self.isShowLock) {
 //        [self showlock];
 //    }
+}
+
+- (void)setSystemBarStyle{
+    if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDefault;
+        }
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -638,7 +660,15 @@ static double dytime = 0.0;
                     NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
                     int code = [dic[@"code"] intValue];
                     if (code == 0) {
-                        NSArray *dataArr = dic[@"resp"];
+//                        NSArray *dataArr = dic[@"resp"];
+                        NSArray *dataArr;
+                        NSMutableArray *tempArray = [NSMutableArray array];
+                        for (int i = 0; i < 5; i++) {
+                            TRUPortalModel *model = [[TRUPortalModel alloc] init];
+                            model.appName = [NSString stringWithFormat:@"%d",i];
+                            [tempArray addObject:[model yy_modelToJSONObject]];
+                        }
+                        dataArr = tempArray;
                         if (dataArr.count>0) {
                             for (int i = 0; i< dataArr.count; i++) {
                                 NSDictionary *dic = dataArr[i];
@@ -646,14 +676,26 @@ static double dytime = 0.0;
                                 [weakSelf.dataArray addObject:model];
                             }
                             if(dataArr.count%3==1){
+                                TRUPortalModel *model = [weakSelf.dataArray lastObject];
+                                model.cellType = 1;
                                 TRUPortalModel *model1 = [[TRUPortalModel alloc] init];
                                 [weakSelf.dataArray addObject:model1];
                                 TRUPortalModel *model2 = [[TRUPortalModel alloc] init];
+                                model2.cellType = 2;
                                 [weakSelf.dataArray addObject:model2];
                             }else if(dataArr.count%3==2){
-                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
-                                [weakSelf.dataArray addObject:model];
+                                TRUPortalModel *model = weakSelf.dataArray[weakSelf.dataArray.count-2];
+                                model.cellType = 1;
+                                TRUPortalModel *model1 = [[TRUPortalModel alloc] init];
+                                model1.cellType = 2;
+                                [weakSelf.dataArray addObject:model1];
+                            }else{
+                                TRUPortalModel *model1 = weakSelf.dataArray[weakSelf.dataArray.count-1];
+                                model1.cellType = 2;
+                                TRUPortalModel *model2 = weakSelf.dataArray[weakSelf.dataArray.count-3];
+                                model2.cellType = 1;
                             }
+                            
                         }else{
                             
                         }

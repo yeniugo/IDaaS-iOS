@@ -23,7 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = RGBCOLOR(231,235,238);
+    self.view.backgroundColor = DefaultGreenColor;
+    [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultGreenColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
+    TRUBaseNavigationController *vc = self.navigationController;
+    self.leftItemBtn = [vc changeToWhiteBtn];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemBtn];
+    
     self.count = 50;
     [self setCustomUI];
     [self startTimer];
@@ -181,6 +187,21 @@
     self.timer1 = nil;
     [[UIScreen mainScreen] setBrightness:self.brightness];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
+- (void)setSystemBarStyle{
+    if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDefault;
+        }
 }
 
 /*

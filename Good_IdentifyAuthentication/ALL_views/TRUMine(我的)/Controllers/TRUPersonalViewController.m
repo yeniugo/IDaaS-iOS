@@ -37,6 +37,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self syncUserInfo];
+    [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultGreenColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
+    TRUBaseNavigationController *vc = self.navigationController;
+    self.leftItemBtn = [vc changeToWhiteBtn];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemBtn];
     self.title = @"我的";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
     self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kTabBarHeight);
@@ -49,6 +54,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.bounces = NO;
 //    self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"linuxSSH"],@[@"PersonalAboutUS"]];
 //    self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"服务器账号管理"],@[@"关于我们"]];
 //    self.commitArray = @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceSettingViewController",@"TRUVoiceSettingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUSSHViewController"],@[@"TRUAboutUsViewController"]];
@@ -160,11 +166,22 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self syncUserInfo];
+    
+}
+
+- (void)setSystemBarStyle{
+    if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //        return UIStatusBarStyleDefault;
+        }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return 86;
+        return 110;
     }else{
         return 44;
     }

@@ -84,6 +84,7 @@
     }else{
         self.verticalLine.frame = CGRectMake(138.5, 0, 2, 70);
     }
+    
 }
 
 @end

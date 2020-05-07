@@ -19,14 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.navigationBar.hidden = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = DefaultGreenColor;
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"applauchIcon.png"];
+    imageview.image = [UIImage imageNamed:@"welcomeicon.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
     showLable.text = @"移动安全认证";
+    showLable.textColor = [UIColor whiteColor];
     [self.view addSubview:showLable];
     [self.view addSubview:imageview];
     [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -35,10 +36,21 @@
     }];
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(62));
-        make.width.equalTo(@(62));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-25);
+        make.height.equalTo(@(80.5));
+        make.width.equalTo(@(120.5));
+        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (@available(iOS 13.0, *)) {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDarkContent;
+    //        return UIStatusBarStyleDarkContent;
+        } else {
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    //        return UIStatusBarStyleDefault;
+        }
 }
 
 - (void)didReceiveMemoryWarning {

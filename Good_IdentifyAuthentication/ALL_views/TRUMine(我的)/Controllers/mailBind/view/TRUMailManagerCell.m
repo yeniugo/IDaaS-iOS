@@ -7,7 +7,6 @@
 //
 
 #import "TRUMailManagerCell.h"
-
 @interface TRUMailManagerCell()
 @property (nonatomic,strong) UIImageView *iconView;
 @property (nonatomic,strong) UILabel *deviceTypeLB;
@@ -45,6 +44,7 @@
         self.logoutBtn.layer.borderWidth = 1.0f;//设置边框颜色
         [self.logoutBtn addTarget:self action:@selector(cellLogoutClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.logoutBtn];
+        [self.deviceTypeLB setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         [self.deviceTypeLB mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView.mas_left).with.offset(89);
             make.top.equalTo(self.contentView.mas_top).with.offset(21);
@@ -64,9 +64,25 @@
 }
 
 - (void)setCellDic:(NSDictionary *)cellDic{
-    self.deviceTypeLB.text = @"iOS";
-    self.devicedetailLB.text = @"fafafafdasfsaffasfafdfsfsfasfafafasfafafa";
-    self.deviceTimeLB.text = @"fafafafasfaffsdf";
+    _cellDic = cellDic;
+    self.deviceTypeLB.text = cellDic[@"system"];
+    if ([[cellDic[@"system"] lowercaseString] isEqual:@"ios"]) {
+        self.iconView.image = [UIImage imageNamed:@"deveice_iphone"];
+    }else if ([[cellDic[@"system"] lowercaseString] isEqual:@"android"]){
+        self.iconView.image = [UIImage imageNamed:@"deveice_android"];
+    }else if([[cellDic[@"system"] lowercaseString] isEqual:@"pc"]){
+        self.iconView.image = [UIImage imageNamed:@"deveice_pc"];
+    }else{
+        self.iconView.image = [UIImage imageNamed:@"deveice_unknow"];
+    }
+    self.devicedetailLB.text = cellDic[@"version"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //格式可自定义
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+//    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[cellDic[@"bindTime"] longValue]];
+    NSString *timeimeString = [formatter stringFromDate:date];
+    self.deviceTimeLB.text = timeimeString;
 }
 
 - (void)cellLogoutClick{

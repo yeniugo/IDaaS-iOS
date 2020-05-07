@@ -34,6 +34,7 @@
 
 #define TRUPUSHNOTIFICATION  @"TRUPUSHNOTIFICATIONKEY"
 
+#define DefaultGreyColor [UIColor colorWithRed:231.0 / 255 green:235.0 / 255 blue:238.0 / 255 alpha:1.0]
 
 #define UIColorHex(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 green:((float)((hexValue & 0xFF00) >> 8))/255.0 blue:((float)(hexValue & 0xFF))/255.0 alpha:1.0]
 #define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH <  568.0)

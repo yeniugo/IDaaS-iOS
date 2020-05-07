@@ -28,22 +28,31 @@
 
 - (void)setCustomUI{
     self.userNameLB.text = [TRUUserAPI getUser].realname;
+    self.userNameLB.font = [UIFont systemFontOfSize:23.0];
+    self.userNameLB.textColor = [UIColor whiteColor];
 //    self.userDepartmentLB.text = [TRUUserAPI getUser].department;
     NSString *activeStr = [TRUCompanyAPI getCompany].activation_mode;
+    self.userDepartmentLB.textColor = [UIColor whiteColor];
+    self.userDepartmentLB.layer.cornerRadius = 12;
+    self.userDepartmentLB.layer.borderWidth = 1;
+    self.userDepartmentLB.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.userDepartmentLB.layer.masksToBounds = YES;
+    self.userDepartmentLB.backgroundColor = RGBACOLOR(255, 255, 255, 0.2);
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
             NSString *modeStr = arr[0];
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
-                self.userDepartmentLB.text = [TRUUserAPI getUser].email;
+                self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].email];
             }else if ([modeStr isEqualToString:@"2"]){
-                self.userDepartmentLB.text = [TRUUserAPI getUser].phone;
+                self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].phone];
             }else if ([modeStr isEqualToString:@"3"]){
-                self.userDepartmentLB.text = [TRUUserAPI getUser].employeenum;
+                self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].employeenum];
             }
         }
         
     }
+    self.contentView.backgroundColor = DefaultGreenColor;
     self.lineView = [[UIView alloc] init];
     self.lineView.backgroundColor = RGBCOLOR(234, 234, 234);
     [self addSubview:self.lineView];

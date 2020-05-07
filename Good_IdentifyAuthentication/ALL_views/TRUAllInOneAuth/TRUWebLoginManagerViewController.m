@@ -35,6 +35,11 @@
     [self getWebLoginData];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)rightBarButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -145,6 +150,20 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             });
+        }else if (9008 == errorno){
+            [weakSelf deal9008Error];
+        }else if (9019 == errorno){
+//                [weakSelf deal9019Error];
+            [weakSelf dele9019ErrorWithBlock:^{
+            }];
+        }else if (-5004 == errorno){
+            [weakSelf showHudWithText:@"网络错误 请稍后重试"];
+            [weakSelf hideHudDelay:2.0];
+            
+        }else{
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }
