@@ -83,7 +83,7 @@
     _AgreementBtn.hidden = YES;
     [_AgreementBtn setTitleColor:DefaultColor forState:UIControlStateNormal];
     _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [_bingEmailBtn setBackgroundColor:DefaultColor];
+    [_bingEmailBtn setBackgroundColor:DefaultGreenColor];
     
     _scanJsonView = [LOTAnimationView animationNamed:@"Scandata.json"];
     _scanJsonView.frame = CGRectMake(0, 0, 230, 230);

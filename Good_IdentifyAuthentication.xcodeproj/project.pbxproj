@@ -126,7 +126,7 @@
 		12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 12613ACA20171355006EB314 /* TRUCompanyAPI.m */; };
 		12662C591FCD06080058140F /* TRUAddPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12662C571FCD06080058140F /* TRUAddPhoneViewController.m */; };
 		12662C5A1FCD06080058140F /* TRUAddPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12662C581FCD06080058140F /* TRUAddPhoneViewController.xib */; };
-		126D106520BBA6D100751234 /* applaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 126D105D20BB9AF700751234 /* applaunch.png */; };
+		126D106520BBA6D100751234 /* applaunch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 126D105D20BB9AF700751234 /* applaunch1.png */; };
 		126D106B20BBB43A00751234 /* assdddddd.png in Resources */ = {isa = PBXBuildFile; fileRef = 126D106A20BBB43A00751234 /* assdddddd.png */; };
 		12749EBD1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBC1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m */; };
 		12749EC01FC7EAB700183EB4 /* TRUAuthorizedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBF1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.m */; };
@@ -209,6 +209,250 @@
 		2D4F8400224CDCA3003C08AA /* libTCSafe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4F83FD224CDCA3003C08AA /* libTCSafe.a */; };
 		2D4F8401224CDCA3003C08AA /* public_demo_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D4F83FE224CDCA3003C08AA /* public_demo_key.pem */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
+		2D656973247274BF0006FEC0 /* LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730721D32BFB006D8281 /* LSNavigationController.m */; };
+		2D656974247274BF0006FEC0 /* TRUFaceVoiceSettingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216455E1F9735D800808730 /* TRUFaceVoiceSettingButton.m */; };
+		2D656975247274BF0006FEC0 /* TRUPortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87A5FE22409C2B002699EF /* TRUPortalModel.m */; };
+		2D656976247274BF0006FEC0 /* MJRefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769E21FA18B41000055CB /* MJRefreshBackGifFooter.m */; };
+		2D656977247274BF0006FEC0 /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
+		2D656978247274BF0006FEC0 /* MJRefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769DB1FA18B41000055CB /* MJRefreshAutoGifFooter.m */; };
+		2D656979247274BF0006FEC0 /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D268EE2224A0B7600293458 /* TRUMultipleAccountsSchemeViewController.m */; };
+		2D65697A247274BF0006FEC0 /* TRUhttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */; };
+		2D65697B247274BF0006FEC0 /* MJRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769E91FA18B41000055CB /* MJRefreshGifHeader.m */; };
+		2D65697C247274BF0006FEC0 /* TRUPortalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87A5F62240984D002699EF /* TRUPortalViewController.m */; };
+		2D65697D247274BF0006FEC0 /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769E41FA18B41000055CB /* MJRefreshBackNormalFooter.m */; };
+		2D65697E247274BF0006FEC0 /* TRUCompanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 123756F12011A5FA00A33532 /* TRUCompanyModel.m */; };
+		2D65697F247274BF0006FEC0 /* TRUFaceInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645411F97347B00808730 /* TRUFaceInitViewController.m */; };
+		2D656980247274BF0006FEC0 /* MJRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769D61FA18B41000055CB /* MJRefreshHeader.m */; };
+		2D656981247274BF0006FEC0 /* TRUButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D3331F790E7F00972218 /* TRUButton.m */; };
+		2D656982247274BF0006FEC0 /* TRUMineMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C801F7B3D9100C89C4D /* TRUMineMenuView.m */; };
+		2D656983247274BF0006FEC0 /* TRUDevicesManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5CF01F7DE3A500753EE5 /* TRUDevicesManagerCell.m */; };
+		2D656984247274BF0006FEC0 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769D21FA18B41000055CB /* MJRefreshComponent.m */; };
+		2D656985247274BF0006FEC0 /* TRUConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 125633431F7A2602007FF392 /* TRUConst.m */; };
+		2D656986247274BF0006FEC0 /* TRUFaceGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216453F1F97347B00808730 /* TRUFaceGuideViewController.m */; };
+		2D656987247274BF0006FEC0 /* TRUUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BD1F8CC72E001BB1A9 /* TRUUserModel.m */; };
+		2D656988247274BF0006FEC0 /* YCDownSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F9001D1F9DD135001125A3 /* YCDownSlider.m */; };
+		2D656989247274BF0006FEC0 /* TRUNetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216452E1F96F2C200808730 /* TRUNetworkStatus.m */; };
+		2D65698A247274BF0006FEC0 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
+		2D65698B247274BF0006FEC0 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
+		2D65698C247274BF0006FEC0 /* AppDelegate+AppDelegate_Xindun.m in Sources */ = {isa = PBXBuildFile; fileRef = 1256333A1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m */; };
+		2D65698D247274BF0006FEC0 /* TRUUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8BB1F8CC72E001BB1A9 /* TRUUserAPI.m */; };
+		2D65698E247274BF0006FEC0 /* TRUFaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216453D1F97347B00808730 /* TRUFaceBaseViewController.m */; };
+		2D65698F247274BF0006FEC0 /* TRUAddPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F4435D1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.m */; };
+		2D656990247274BF0006FEC0 /* TRULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F981F8F4B22000D342D /* TRULoginViewController.m */; };
+		2D656991247274BF0006FEC0 /* MJRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769D41FA18B41000055CB /* MJRefreshFooter.m */; };
+		2D656992247274BF0006FEC0 /* TRUTimerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F8B1F8F411C000D342D /* TRUTimerButton.m */; };
+		2D656993247274BF0006FEC0 /* TRUTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D3361F790E8700972218 /* TRUTabBar.m */; };
+		2D656994247274BF0006FEC0 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
+		2D656995247274BF0006FEC0 /* MJRefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769E61FA18B41000055CB /* MJRefreshBackStateFooter.m */; };
+		2D656996247274BF0006FEC0 /* gesAndFingerNVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12486CA420CE81260071ABC2 /* gesAndFingerNVController.m */; };
+		2D656997247274BF0006FEC0 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
+		2D656998247274BF0006FEC0 /* TRUAuthorizedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBF1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.m */; };
+		2D656999247274BF0006FEC0 /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
+		2D65699A247274BF0006FEC0 /* TRULockSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDA2EC1233384AB00770F3B /* TRULockSWindow.m */; };
+		2D65699B247274BF0006FEC0 /* TRUMineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 121C48D11F7CFF8F0077AE34 /* TRUMineCell.m */; };
+		2D65699C247274BF0006FEC0 /* TRUDynamicPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D32B1F790D1600972218 /* TRUDynamicPasswordViewController.m */; };
+		2D65699D247274BF0006FEC0 /* TRUGestureSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A6D210844710070F966 /* TRUGestureSettingViewController.m */; };
+		2D65699E247274BF0006FEC0 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769F11FA18B41000055CB /* MJRefreshConst.m */; };
+		2D65699F247274BF0006FEC0 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
+		2D6569A0247274BF0006FEC0 /* TRULoginScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B22E1F8DE6D500A3B7A6 /* TRULoginScanViewController.m */; };
+		2D6569A1247274BF0006FEC0 /* TRUNewFeatuerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */; };
+		2D6569A2247274BF0006FEC0 /* UINavigationBar+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1256334E1F7A4471007FF392 /* UINavigationBar+BackgroundColor.m */; };
+		2D6569A3247274BF0006FEC0 /* TRUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D3021F79088200972218 /* TRUBaseViewController.m */; };
+		2D6569A4247274BF0006FEC0 /* TRUAPPLogIdentifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5D061F7E405A00753EE5 /* TRUAPPLogIdentifyController.m */; };
+		2D6569A5247274BF0006FEC0 /* TRUFingerGesUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F741F8F3FCE000D342D /* TRUFingerGesUtil.m */; };
+		2D6569A6247274BF0006FEC0 /* TRUApplictionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F931F8F48A1000D342D /* TRUApplictionCell.m */; };
+		2D6569A7247274BF0006FEC0 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
+		2D6569A8247274BF0006FEC0 /* TRUPersonalDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF5D2189563600FCA1ED /* TRUPersonalDetailsModel.m */; };
+		2D6569A9247274BF0006FEC0 /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87A5FA224099BE002699EF /* TRUPortalCell.m */; };
+		2D6569AA247274BF0006FEC0 /* TRUDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F542D01F90A183005AAEFC /* TRUDeviceModel.m */; };
+		2D6569AB247274BF0006FEC0 /* TRUOtherButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CC27EC1FE129BE00FE919D /* TRUOtherButton.m */; };
+		2D6569AC247274BF0006FEC0 /* TRUCheckBingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1251EA152087197000D4CB65 /* TRUCheckBingController.m */; };
+		2D6569AD247274BF0006FEC0 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769D01FA18B41000055CB /* MJRefreshBackFooter.m */; };
+		2D6569AE247274BF0006FEC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D2D11F7907DC00972218 /* AppDelegate.m */; };
+		2D6569AF247274BF0006FEC0 /* TRUScanFingerprintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128208791F98A392004DD5C6 /* TRUScanFingerprintView.m */; };
+		2D6569B0247274BF0006FEC0 /* TRUStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8B71F8CC6B5001BB1A9 /* TRUStartupViewController.m */; };
+		2D6569B1247274BF0006FEC0 /* TRUPersonalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF512189443800FCA1ED /* TRUPersonalDetailsViewController.m */; };
+		2D6569B2247274BF0006FEC0 /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769DD1FA18B41000055CB /* MJRefreshAutoNormalFooter.m */; };
+		2D6569B3247274BF0006FEC0 /* TRUUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C7D1F7B355200C89C4D /* TRUUserInfoModel.m */; };
+		2D6569B4247274BF0006FEC0 /* TRUBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C7A1F7B353600C89C4D /* TRUBaseModel.m */; };
+		2D6569B5247274BF0006FEC0 /* TRUPersonalDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF5821894B6D00FCA1ED /* TRUPersonalDetailsCell.m */; };
+		2D6569B6247274BF0006FEC0 /* TRUAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5CFA1F7E268600753EE5 /* TRUAboutUsViewController.m */; };
+		2D6569B7247274BF0006FEC0 /* TRUScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */; };
+		2D6569B8247274BF0006FEC0 /* TRUAuthenticateTopImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF652189959100FCA1ED /* TRUAuthenticateTopImageView.m */; };
+		2D6569B9247274BF0006FEC0 /* TRUScreenShotAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1E52CA22E7F34D004E8722 /* TRUScreenShotAlert.m */; };
+		2D6569BA247274BF0006FEC0 /* TRUModifyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12354C6A1FA86B1B00B6B92E /* TRUModifyInfoViewController.m */; };
+		2D6569BB247274BF0006FEC0 /* TRUBingUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 124201491FB5568000F892B1 /* TRUBingUserController.m */; };
+		2D6569BC247274BF0006FEC0 /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
+		2D6569BD247274BF0006FEC0 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769CE1FA18B41000055CB /* MJRefreshAutoFooter.m */; };
+		2D6569BE247274BF0006FEC0 /* TRUSessionManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12354C5C1FA81A6900B6B92E /* TRUSessionManagerCell.m */; };
+		2D6569BF247274BF0006FEC0 /* TRUFaceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645431F97347B00808730 /* TRUFaceSettingViewController.m */; };
+		2D6569C0247274BF0006FEC0 /* TRULicenseAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F6E1F8F3EA4000D342D /* TRULicenseAgreementViewController.m */; };
+		2D6569C1247274BF0006FEC0 /* TRUVerifyFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A60210844590070F966 /* TRUVerifyFaceViewController.m */; };
+		2D6569C2247274BF0006FEC0 /* TRUAboutUSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5D001F7E3A4D00753EE5 /* TRUAboutUSCell.m */; };
+		2D6569C3247274BF0006FEC0 /* NSString+Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F851F8F40DE000D342D /* NSString+Regular.m */; };
+		2D6569C4247274BF0006FEC0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F781F8F40A1000D342D /* MBProgressHUD.m */; };
+		2D6569C5247274BF0006FEC0 /* TRULogIdentifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5D091F7E430700753EE5 /* TRULogIdentifyCell.m */; };
+		2D6569C6247274BF0006FEC0 /* UIView+STLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D448D28223B96280070307F /* UIView+STLayout.m */; };
+		2D6569C7247274BF0006FEC0 /* TRUNormalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12579DF11F99A95700422FBD /* TRUNormalButton.m */; };
+		2D6569C8247274BF0006FEC0 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
+		2D6569C9247274BF0006FEC0 /* TRUPushingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D92AE2188016A00163645 /* TRUPushingViewController.m */; };
+		2D6569CA247274BF0006FEC0 /* TRUBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 125633171F79E0C5007FF392 /* TRUBaseTabBarController.m */; };
+		2D6569CB247274BF0006FEC0 /* TRUSessionManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBC1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m */; };
+		2D6569CC247274BF0006FEC0 /* TRUGestureModify2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A6C210844710070F966 /* TRUGestureModify2ViewController.m */; };
+		2D6569CD247274BF0006FEC0 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2D6569CE247274BF0006FEC0 /* TRUAddPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12662C571FCD06080058140F /* TRUAddPhoneViewController.m */; };
+		2D6569CF247274BF0006FEC0 /* TRUBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D3051F7908C800972218 /* TRUBaseNavigationController.m */; };
+		2D6569D0247274BF0006FEC0 /* YCAnimationNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A662B01FC2C2A600C20D81 /* YCAnimationNumberView.m */; };
+		2D6569D1247274BF0006FEC0 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
+		2D6569D2247274BF0006FEC0 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731421D36F0C006D8281 /* UIButton+Touch.m */; };
+		2D6569D3247274BF0006FEC0 /* MJRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769EB1FA18B41000055CB /* MJRefreshNormalHeader.m */; };
+		2D6569D4247274BF0006FEC0 /* STStartAndStopIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D448D1F223B96280070307F /* STStartAndStopIndicatorView.m */; };
+		2D6569D5247274BF0006FEC0 /* TRUDevicesManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5CEB1F7DDB4800753EE5 /* TRUDevicesManagerController.m */; };
+		2D6569D6247274BF0006FEC0 /* TRUCompanyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 12613ACA20171355006EB314 /* TRUCompanyAPI.m */; };
+		2D6569D7247274BF0006FEC0 /* TRULockWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A2A2282C46D00616C31 /* TRULockWindow.m */; };
+		2D6569D8247274BF0006FEC0 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769F51FA18B41000055CB /* UIScrollView+MJExtension.m */; };
+		2D6569D9247274BF0006FEC0 /* MJRefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769ED1FA18B41000055CB /* MJRefreshStateHeader.m */; };
+		2D6569DA247274BF0006FEC0 /* TRUTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F881F8F40FF000D342D /* TRUTextField.m */; };
+		2D6569DB247274BF0006FEC0 /* NSBundle+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769F31FA18B41000055CB /* NSBundle+MJRefresh.m */; };
+		2D6569DC247274BF0006FEC0 /* TRULogToFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC8B162330770A00E3D6B5 /* TRULogToFile.m */; };
+		2D6569DD247274BF0006FEC0 /* TRUPortalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D87A6012240B5B6002699EF /* TRUPortalHeaderView.m */; };
+		2D6569DE247274BF0006FEC0 /* TRUAuthenticateCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3915321AE82060091A764 /* TRUAuthenticateCollectionCell.m */; };
+		2D6569DF247274BF0006FEC0 /* UIViewController+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */; };
+		2D6569E0247274BF0006FEC0 /* UINavigationBar+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730821D32BFB006D8281 /* UINavigationBar+LSNavigationController.m */; };
+		2D6569E1247274BF0006FEC0 /* TRUTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F542C91F906964005AAEFC /* TRUTimeView.m */; };
+		2D6569E2247274BF0006FEC0 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C29FDB1F96067100087FB7 /* MyTabBar.m */; };
+		2D6569E3247274BF0006FEC0 /* TRUFaceGifView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216454D1F97348F00808730 /* TRUFaceGifView.m */; };
+		2D6569E4247274BF0006FEC0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645321F96F2DF00808730 /* Reachability.m */; };
+		2D6569E5247274BF0006FEC0 /* UIView+FrameExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D33D1F790EA000972218 /* UIView+FrameExt.m */; };
+		2D6569E6247274BF0006FEC0 /* TRUSessionManagerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12354C611FA81A8700B6B92E /* TRUSessionManagerImageCell.m */; };
+		2D6569E7247274BF0006FEC0 /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
+		2D6569E8247274BF0006FEC0 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB25F022B8F633000B2332 /* UIWebView+TS_JavaScriptContext.m */; };
+		2D6569E9247274BF0006FEC0 /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D3391F790EA000972218 /* UIColor+HEX.m */; };
+		2D6569EA247274BF0006FEC0 /* QTVertificationCodeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F7E1F8F40A8000D342D /* QTVertificationCodeLabel.m */; };
+		2D6569EB247274BF0006FEC0 /* TRUAuthenticateBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF6821899E5F00FCA1ED /* TRUAuthenticateBtn.m */; };
+		2D6569EC247274BF0006FEC0 /* TRUVerifyFingerprintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A63210844590070F966 /* TRUVerifyFingerprintViewController.m */; };
+		2D6569ED247274BF0006FEC0 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769F91FA18B41000055CB /* UIView+MJExtension.m */; };
+		2D6569EE247274BF0006FEC0 /* HUIPatternLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128208751F98A341004DD5C6 /* HUIPatternLockView.m */; };
+		2D6569EF247274BF0006FEC0 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
+		2D6569F0247274BF0006FEC0 /* TRUGestureVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A68210844710070F966 /* TRUGestureVerifyViewController.m */; };
+		2D6569F1247274BF0006FEC0 /* MyTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C29FDD1F96067100087FB7 /* MyTabBarButton.m */; };
+		2D6569F2247274BF0006FEC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D2CE1F7907DC00972218 /* main.m */; };
+		2D6569F3247274BF0006FEC0 /* MJRefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769DF1FA18B41000055CB /* MJRefreshAutoStateFooter.m */; };
+		2D6569F4247274BF0006FEC0 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 124769F71FA18B41000055CB /* UIScrollView+MJRefresh.m */; };
+		2D6569F5247274BF0006FEC0 /* TRUGestureModify1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A6B210844710070F966 /* TRUGestureModify1ViewController.m */; };
+		2D6569F6247274BF0006FEC0 /* RadomMutableNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8D2154D2C100A2D1C2 /* RadomMutableNumber.mm */; };
+		2D6569F7247274BF0006FEC0 /* TRUFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 122C1F791F94AE8E00E118D2 /* TRUFeedbackViewController.m */; };
+		2D6569F8247274BF0006FEC0 /* FireflyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1202F349201ACEBF001743B2 /* FireflyAlertView.m */; };
+		2D6569F9247274BF0006FEC0 /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F821F8F40C6000D342D /* NSString+Trim.m */; };
+		2D6569FA247274BF0006FEC0 /* TRUHomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C8C1F7B8B7D00C89C4D /* TRUHomeButton.m */; };
+		2D6569FB247274BF0006FEC0 /* YCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 122AD7A11FA9A9E000E5963F /* YCAlertView.m */; };
+		2D6569FC247274BF0006FEC0 /* Progressimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0CA375229F77D90072F4E7 /* Progressimage.m */; };
+		2D6569FD247274BF0006FEC0 /* TRUMineUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 125633541F7A4B40007FF392 /* TRUMineUserInfoView.m */; };
+		2D6569FE247274BF0006FEC0 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
+		2D6569FF247274BF0006FEC0 /* TRUGestureVerify2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12436A6E210844710070F966 /* TRUGestureVerify2ViewController.m */; };
+		2D656A00247274BF0006FEC0 /* TRUAuthSacnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F037251F9F34B3007F4C19 /* TRUAuthSacnViewController.m */; };
+		2D656A01247274BF0006FEC0 /* TRUTimeSyncUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B2361F8DE91300A3B7A6 /* TRUTimeSyncUtil.m */; };
+		2D656A02247274BF0006FEC0 /* TRUDynamicCodeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F542C61F9059E9005AAEFC /* TRUDynamicCodeLabel.m */; };
+		2D656A03247274BF0006FEC0 /* TRUFaceVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645451F97347B00808730 /* TRUFaceVerifyViewController.m */; };
+		2D656A04247274BF0006FEC0 /* QTVertificationCodeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F7C1F8F40A8000D342D /* QTVertificationCodeInputView.m */; };
+		2D656A05247274BF0006FEC0 /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
+		2D656A06247274BF0006FEC0 /* TRUSessionManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12354C591FA81A5300B6B92E /* TRUSessionManagerModel.m */; };
+		2D656A07247274BF0006FEC0 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
+		2D656A08247274BF0006FEC0 /* TRUAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F711F8F3F14000D342D /* TRUAuthModel.m */; };
+		2D656A09247274BF0006FEC0 /* TRUPushAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 122C1F6E1F94581B00E118D2 /* TRUPushAuthModel.m */; };
+		2D656A0A247274BF0006FEC0 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
+		2D656A0B247274BF0006FEC0 /* TRUThirdFaceVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1220944B200E0C5D0070FFCA /* TRUThirdFaceVerifyViewController.m */; };
+		2D656A0C247274BF0006FEC0 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
+		2D656A0D247274BF0006FEC0 /* TRUHomeSizeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 128D5CFD1F7E2C0D00753EE5 /* TRUHomeSizeLabel.m */; };
+		2D656A0E247274BF0006FEC0 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
+		2D656A0F247274BF0006FEC0 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D33B1F790EA000972218 /* UIImage+Resize.m */; };
+		2D656A10247274BF0006FEC0 /* TRUAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CED54F2019CD3B0062F10F /* TRUAdViewController.m */; };
+		2D656A11247274BF0006FEC0 /* TRUAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF612189923600FCA1ED /* TRUAuthenticateViewController.m */; };
+		2D656A13247274BF0006FEC0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1251EA19208725C800D4CB65 /* AudioToolbox.framework */; };
+		2D656A14247274BF0006FEC0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4D6332065108200D6B2E0 /* AssetsLibrary.framework */; };
+		2D656A15247274BF0006FEC0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645381F972D2100808730 /* AddressBook.framework */; };
+		2D656A16247274BF0006FEC0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645361F972D0000808730 /* AVFoundation.framework */; };
+		2D656A17247274BF0006FEC0 /* libTCSafe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4F83FD224CDCA3003C08AA /* libTCSafe.a */; };
+		2D656A18247274BF0006FEC0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121C48CE1F7CE47F0077AE34 /* MapKit.framework */; };
+		2D656A19247274BF0006FEC0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121C48CC1F7CE4720077AE34 /* CoreLocation.framework */; };
+		2D656A1A247274BF0006FEC0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121C48CA1F7CE45D0077AE34 /* MobileCoreServices.framework */; };
+		2D656A1B247274BF0006FEC0 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633371F7A22B1007FF392 /* libresolv.tbd */; };
+		2D656A1C247274BF0006FEC0 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7FC556235167AD00ED5FFA /* libxindunsdk.a */; };
+		2D656A1D247274BF0006FEC0 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633351F7A22A4007FF392 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2D656A1E247274BF0006FEC0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633331F7A224E007FF392 /* libz.tbd */; };
+		2D656A1F247274BF0006FEC0 /* libSTSilentLivenessDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D448D1B223B95680070307F /* libSTSilentLivenessDetector.a */; };
+		2D656A20247274BF0006FEC0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633311F7A223D007FF392 /* Security.framework */; };
+		2D656A21247274BF0006FEC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1256332F1F7A222D007FF392 /* UIKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		2D656A22247274BF0006FEC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1256332D1F7A2220007FF392 /* Foundation.framework */; };
+		2D656A23247274BF0006FEC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1256332B1F7A21F7007FF392 /* CoreGraphics.framework */; };
+		2D656A24247274BF0006FEC0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633291F7A21E6007FF392 /* SystemConfiguration.framework */; };
+		2D656A25247274BF0006FEC0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633271F7A21DA007FF392 /* CoreTelephony.framework */; };
+		2D656A26247274BF0006FEC0 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633251F7A21CD007FF392 /* CoreFoundation.framework */; };
+		2D656A27247274BF0006FEC0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633231F7A21BD007FF392 /* CFNetwork.framework */; };
+		2D656A28247274BF0006FEC0 /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
+		2D656A2A247274BF0006FEC0 /* CDYHlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1242D81520B4213E008EDF07 /* CDYHlogo.png */; };
+		2D656A2B247274BF0006FEC0 /* assdddddd.png in Resources */ = {isa = PBXBuildFile; fileRef = 126D106A20BBB43A00751234 /* assdddddd.png */; };
+		2D656A2C247274BF0006FEC0 /* TRUApplictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12409F941F8F48A1000D342D /* TRUApplictionCell.xib */; };
+		2D656A2D247274BF0006FEC0 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F037281F9F4964007F4C19 /* voicebg.json */; };
+		2D656A2E247274BF0006FEC0 /* TRUPushingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */; };
+		2D656A2F247274BF0006FEC0 /* TRUBingUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1242014A1FB5568000F892B1 /* TRUBingUserController.xib */; };
+		2D656A30247274BF0006FEC0 /* topMenuClick.json in Resources */ = {isa = PBXBuildFile; fileRef = 12354C661FA84B8A00B6B92E /* topMenuClick.json */; };
+		2D656A31247274BF0006FEC0 /* SenseID_Liveness_Silent.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D448D19223B95680070307F /* SenseID_Liveness_Silent.lic */; };
+		2D656A32247274BF0006FEC0 /* chengduyinhang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1242D81720B421C0008EDF07 /* chengduyinhang@3x.png */; };
+		2D656A33247274BF0006FEC0 /* TRUPersonalSmaillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */; };
+		2D656A34247274BF0006FEC0 /* st_silent_liveness_resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D448D1A223B95680070307F /* st_silent_liveness_resource.bundle */; };
+		2D656A35247274BF0006FEC0 /* tabbardata02.json in Resources */ = {isa = PBXBuildFile; fileRef = 12409F531F8F3E17000D342D /* tabbardata02.json */; };
+		2D656A36247274BF0006FEC0 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
+		2D656A37247274BF0006FEC0 /* TRUSessionManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12354C5D1FA81A6900B6B92E /* TRUSessionManagerCell.xib */; };
+		2D656A38247274BF0006FEC0 /* TRUCheckBingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1251EA162087197000D4CB65 /* TRUCheckBingController.xib */; };
+		2D656A39247274BF0006FEC0 /* GestureAppend.json in Resources */ = {isa = PBXBuildFile; fileRef = 12579DF31F99E6E300422FBD /* GestureAppend.json */; };
+		2D656A3A247274BF0006FEC0 /* huonangaozhao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1247446A2029A0EC00639F18 /* huonangaozhao@2x.png */; };
+		2D656A3B247274BF0006FEC0 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D92752823A0E4B100B6D43C /* trusfort.lic */; };
+		2D656A3C247274BF0006FEC0 /* TRULogIdentifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128D5D0A1F7E430700753EE5 /* TRULogIdentifyCell.xib */; };
+		2D656A3D247274BF0006FEC0 /* TCSafe-encrypt-ios.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2D4F83FB224CDCA3003C08AA /* TCSafe-encrypt-ios.pdf */; };
+		2D656A3E247274BF0006FEC0 /* tabbardata03.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F7C45B1FAC0A6100EF1DF5 /* tabbardata03.json */; };
+		2D656A3F247274BF0006FEC0 /* public_demo_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D4F83FE224CDCA3003C08AA /* public_demo_key.pem */; };
+		2D656A40247274BF0006FEC0 /* fingerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 12F037201F9F1F79007F4C19 /* fingerbg.png */; };
+		2D656A41247274BF0006FEC0 /* Scandata.json in Resources */ = {isa = PBXBuildFile; fileRef = 123D1009202AA0CA000CEB60 /* Scandata.json */; };
+		2D656A42247274BF0006FEC0 /* TRULoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12409F991F8F4B22000D342D /* TRULoginViewController.xib */; };
+		2D656A43247274BF0006FEC0 /* Lisence.txt in Resources */ = {isa = PBXBuildFile; fileRef = 121645761F97429700808730 /* Lisence.txt */; };
+		2D656A44247274BF0006FEC0 /* TRUDevicesManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128D5CF11F7DE3A500753EE5 /* TRUDevicesManagerCell.xib */; };
+		2D656A45247274BF0006FEC0 /* TRUAboutUSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128D5D011F7E3A4D00753EE5 /* TRUAboutUSCell.xib */; };
+		2D656A46247274BF0006FEC0 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
+		2D656A47247274BF0006FEC0 /* scanBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 12409F5B1F8F3E2E000D342D /* scanBG.png */; };
+		2D656A48247274BF0006FEC0 /* pushjiantou.json in Resources */ = {isa = PBXBuildFile; fileRef = 1233C7531FB18A8200356383 /* pushjiantou.json */; };
+		2D656A49247274BF0006FEC0 /* TRUAddPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F4435E1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.xib */; };
+		2D656A4A247274BF0006FEC0 /* fingerprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F037181F9EE0F9007F4C19 /* fingerprint.json */; };
+		2D656A4B247274BF0006FEC0 /* TRUAddPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12662C581FCD06080058140F /* TRUAddPhoneViewController.xib */; };
+		2D656A4C247274BF0006FEC0 /* tabbardata04.json in Resources */ = {isa = PBXBuildFile; fileRef = 12409F551F8F3E17000D342D /* tabbardata04.json */; };
+		2D656A4D247274BF0006FEC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12C0D2DB1F7907DC00972218 /* LaunchScreen.storyboard */; };
+		2D656A4E247274BF0006FEC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12C0D2D91F7907DC00972218 /* Assets.xcassets */; };
+		2D656A4F247274BF0006FEC0 /* tick_reveal.json in Resources */ = {isa = PBXBuildFile; fileRef = 12409F5A1F8F3E2E000D342D /* tick_reveal.json */; };
+		2D656A50247274BF0006FEC0 /* pushDone.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F9002D1F9DFA47001125A3 /* pushDone.json */; };
+		2D656A51247274BF0006FEC0 /* TRUFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122C1F7A1F94AE8E00E118D2 /* TRUFeedbackViewController.xib */; };
+		2D656A52247274BF0006FEC0 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 124769EE1FA18B41000055CB /* MJRefresh.bundle */; };
+		2D656A53247274BF0006FEC0 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 124161901FE8BBE000A680E0 /* img_1.png */; };
+		2D656A54247274BF0006FEC0 /* bbbbbbbbb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DF24628229E26A0005164B0 /* bbbbbbbbb.jpg */; };
+		2D656A55247274BF0006FEC0 /* tabbardata01.json in Resources */ = {isa = PBXBuildFile; fileRef = 12409F521F8F3E17000D342D /* tabbardata01.json */; };
+		2D656A56247274BF0006FEC0 /* defalticon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12202D982019E5D00084FB7C /* defalticon@2x.png */; };
+		2D656A57247274BF0006FEC0 /* HNGZlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 124B8543206B2B690072DB6E /* HNGZlogo.png */; };
+		2D656A58247274BF0006FEC0 /* TRUSessionManagerImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12354C621FA81A8700B6B92E /* TRUSessionManagerImageCell.xib */; };
+		2D656A59247274BF0006FEC0 /* TRUPersonalDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7FFF5921894B6D00FCA1ED /* TRUPersonalDetailsCell.xib */; };
+		2D656A5A247274BF0006FEC0 /* dongtaikouling.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D9782A922422BCD0037498F /* dongtaikouling.json */; };
+		2D656A5B247274BF0006FEC0 /* Gestureloading.json in Resources */ = {isa = PBXBuildFile; fileRef = 128208821F98AFE4004DD5C6 /* Gestureloading.json */; };
+		2D656A5C247274BF0006FEC0 /* TRUMineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 121C48D21F7CFF8F0077AE34 /* TRUMineCell.xib */; };
+		2D656A5D247274BF0006FEC0 /* pushcanale.json in Resources */ = {isa = PBXBuildFile; fileRef = 123AE10D1FF1E6FE009F9183 /* pushcanale.json */; };
+		2D656A5E247274BF0006FEC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12C0D2D61F7907DC00972218 /* Main.storyboard */; };
+		2D656A5F247274BF0006FEC0 /* TRUDevicesManagerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 128D5CEC1F7DDB4800753EE5 /* TRUDevicesManagerController.xib */; };
+		2D656A60247274BF0006FEC0 /* defalticon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12202D992019E5D10084FB7C /* defalticon@3x.png */; };
+		2D656A61247274BF0006FEC0 /* huonangaozhao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 124744692029A0EB00639F18 /* huonangaozhao@3x.png */; };
+		2D656A62247274BF0006FEC0 /* ida.bsb.com.cn.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2D149A1F22A66DF500CD3CD5 /* ida.bsb.com.cn.cer */; };
+		2D656A63247274BF0006FEC0 /* chengduyinhang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1242D81820B421C0008EDF07 /* chengduyinhang@2x.png */; };
+		2D656A64247274BF0006FEC0 /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1241618F1FE8BBE000A680E0 /* img_0.png */; };
+		2D656A65247274BF0006FEC0 /* applaunch1111.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DDD4511246B99BA00AE0A46 /* applaunch1111.png */; };
+		2D656A66247274BF0006FEC0 /* pwddata.json in Resources */ = {isa = PBXBuildFile; fileRef = 124AE61B1FE0DDAB00D915FF /* pwddata.json */; };
+		2D656A67247274BF0006FEC0 /* applaunch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 126D105D20BB9AF700751234 /* applaunch1.png */; };
+		2D656A68247274BF0006FEC0 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 12F41CEF1FA06B610038C713 /* voicebtnbg.json */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
 		2D76957521886E07009648B7 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
@@ -246,6 +490,7 @@
 		2DBB25F122B8F633000B2332 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB25F022B8F633000B2332 /* UIWebView+TS_JavaScriptContext.m */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DDA2EC2233384AB00770F3B /* TRULockSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDA2EC1233384AB00770F3B /* TRULockSWindow.m */; };
+		2DDD4512246B99BA00AE0A46 /* applaunch1111.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DDD4511246B99BA00AE0A46 /* applaunch1111.png */; };
 		2DDF9A2B2282C46D00616C31 /* TRULockWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A2A2282C46D00616C31 /* TRULockWindow.m */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
@@ -466,7 +711,7 @@
 		12662C571FCD06080058140F /* TRUAddPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUAddPhoneViewController.m; sourceTree = "<group>"; };
 		12662C581FCD06080058140F /* TRUAddPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUAddPhoneViewController.xib; sourceTree = "<group>"; };
 		126BCFFC1FB05FFA00B84B7A /* Good_IdentifyAuthentication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Good_IdentifyAuthentication.entitlements; sourceTree = "<group>"; };
-		126D105D20BB9AF700751234 /* applaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applaunch.png; sourceTree = "<group>"; };
+		126D105D20BB9AF700751234 /* applaunch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applaunch1.png; sourceTree = "<group>"; };
 		126D106A20BBB43A00751234 /* assdddddd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assdddddd.png; sourceTree = "<group>"; };
 		12749EBB1FC7EAAC00183EB4 /* TRUSessionManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUSessionManagerViewController.h; sourceTree = "<group>"; };
 		12749EBC1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSessionManagerViewController.m; sourceTree = "<group>"; };
@@ -618,6 +863,8 @@
 		2D4F83FE224CDCA3003C08AA /* public_demo_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = public_demo_key.pem; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
 		2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRURoundNumberBtn.m; sourceTree = "<group>"; };
+		2D656A6C247274BF0006FEC0 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D656A6D247274BF0006FEC0 /* Good_IdentifyAuthentication copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Good_IdentifyAuthentication copy-Info.plist"; path = "/Users/hukai/Documents/git/git-main1111/idass-ios2222/Good_IdentifyAuthentication copy-Info.plist"; sourceTree = "<absolute>"; };
 		2D76956721886B24009648B7 /* TRUPersonalBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalBigCell.h; sourceTree = "<group>"; };
 		2D76956821886B24009648B7 /* TRUPersonalBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalBigCell.m; sourceTree = "<group>"; };
 		2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPersonalBigCell.xib; sourceTree = "<group>"; };
@@ -687,6 +934,7 @@
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
 		2DDA2EC0233384AB00770F3B /* TRULockSWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULockSWindow.h; sourceTree = "<group>"; };
 		2DDA2EC1233384AB00770F3B /* TRULockSWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRULockSWindow.m; sourceTree = "<group>"; };
+		2DDD4511246B99BA00AE0A46 /* applaunch1111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applaunch1111.png; sourceTree = "<group>"; };
 		2DDF9A292282C46D00616C31 /* TRULockWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULockWindow.h; sourceTree = "<group>"; };
 		2DDF9A2A2282C46D00616C31 /* TRULockWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRULockWindow.m; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -742,6 +990,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D656A12247274BF0006FEC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D656A13247274BF0006FEC0 /* AudioToolbox.framework in Frameworks */,
+				2D656A14247274BF0006FEC0 /* AssetsLibrary.framework in Frameworks */,
+				2D656A15247274BF0006FEC0 /* AddressBook.framework in Frameworks */,
+				2D656A16247274BF0006FEC0 /* AVFoundation.framework in Frameworks */,
+				2D656A17247274BF0006FEC0 /* libTCSafe.a in Frameworks */,
+				2D656A18247274BF0006FEC0 /* MapKit.framework in Frameworks */,
+				2D656A19247274BF0006FEC0 /* CoreLocation.framework in Frameworks */,
+				2D656A1A247274BF0006FEC0 /* MobileCoreServices.framework in Frameworks */,
+				2D656A1B247274BF0006FEC0 /* libresolv.tbd in Frameworks */,
+				2D656A1C247274BF0006FEC0 /* libxindunsdk.a in Frameworks */,
+				2D656A1D247274BF0006FEC0 /* UserNotifications.framework in Frameworks */,
+				2D656A1E247274BF0006FEC0 /* libz.tbd in Frameworks */,
+				2D656A1F247274BF0006FEC0 /* libSTSilentLivenessDetector.a in Frameworks */,
+				2D656A20247274BF0006FEC0 /* Security.framework in Frameworks */,
+				2D656A21247274BF0006FEC0 /* UIKit.framework in Frameworks */,
+				2D656A22247274BF0006FEC0 /* Foundation.framework in Frameworks */,
+				2D656A23247274BF0006FEC0 /* CoreGraphics.framework in Frameworks */,
+				2D656A24247274BF0006FEC0 /* SystemConfiguration.framework in Frameworks */,
+				2D656A25247274BF0006FEC0 /* CoreTelephony.framework in Frameworks */,
+				2D656A26247274BF0006FEC0 /* CoreFoundation.framework in Frameworks */,
+				2D656A27247274BF0006FEC0 /* CFNetwork.framework in Frameworks */,
+				2D656A28247274BF0006FEC0 /* libPods-Good_IdentifyAuthentication.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1511,12 +1788,14 @@
 			children = (
 				126D106A20BBB43A00751234 /* assdddddd.png */,
 				2DF24628229E26A0005164B0 /* bbbbbbbbb.jpg */,
+				2DDD4511246B99BA00AE0A46 /* applaunch1111.png */,
 				12C0D2CC1F7907DC00972218 /* Good_IdentifyAuthentication */,
 				12C0D2E61F7907DC00972218 /* Good_IdentifyAuthenticationTests */,
 				12C0D2F11F7907DC00972218 /* Good_IdentifyAuthenticationUITests */,
 				12C0D2CB1F7907DC00972218 /* Products */,
 				51747254D93A4DD21A54B2FD /* Pods */,
 				FE1A6AEE8111DDCC71A58834 /* Frameworks */,
+				2D656A6D247274BF0006FEC0 /* Good_IdentifyAuthentication copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1526,6 +1805,7 @@
 				12C0D2CA1F7907DC00972218 /* 认证助手.app */,
 				12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */,
 				12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */,
+				2D656A6C247274BF0006FEC0 /* test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1534,7 +1814,7 @@
 			isa = PBXGroup;
 			children = (
 				2D149A1F22A66DF500CD3CD5 /* ida.bsb.com.cn.cer */,
-				126D105D20BB9AF700751234 /* applaunch.png */,
+				126D105D20BB9AF700751234 /* applaunch1.png */,
 				1242D81420B4210C008EDF07 /* allspIcon */,
 				126BCFFC1FB05FFA00B84B7A /* Good_IdentifyAuthentication.entitlements */,
 				12749E8D1FC7C9FE00183EB4 /* ALL_views */,
@@ -1908,6 +2188,24 @@
 			productReference = 12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2D656970247274BF0006FEC0 /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D656A69247274BF0006FEC0 /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				2D656971247274BF0006FEC0 /* [CP] Check Pods Manifest.lock */,
+				2D656972247274BF0006FEC0 /* Sources */,
+				2D656A12247274BF0006FEC0 /* Frameworks */,
+				2D656A29247274BF0006FEC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test;
+			productName = Good_IdentifyAuthentication;
+			productReference = 2D656A6C247274BF0006FEC0 /* test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1945,6 +2243,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 12C0D2C91F7907DC00972218;
 					};
+					2D656970247274BF0006FEC0 = {
+						DevelopmentTeam = AG9SM32322;
+						ProvisioningStyle = Manual;
+					};
 				};
 			};
 			buildConfigurationList = 12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "Good_IdentifyAuthentication" */;
@@ -1964,6 +2266,7 @@
 				12C0D2C91F7907DC00972218 /* Good_IdentifyAuthentication */,
 				12C0D2E21F7907DC00972218 /* Good_IdentifyAuthenticationTests */,
 				12C0D2ED1F7907DC00972218 /* Good_IdentifyAuthenticationUITests */,
+				2D656970247274BF0006FEC0 /* test */,
 			);
 		};
 /* End PBXProject section */
@@ -2032,8 +2335,9 @@
 				2D149A2022A66DF600CD3CD5 /* ida.bsb.com.cn.cer in Resources */,
 				1242D81A20B421C0008EDF07 /* chengduyinhang@2x.png in Resources */,
 				124161911FE8BBE000A680E0 /* img_0.png in Resources */,
+				2DDD4512246B99BA00AE0A46 /* applaunch1111.png in Resources */,
 				124AE61C1FE0DDAB00D915FF /* pwddata.json in Resources */,
-				126D106520BBA6D100751234 /* applaunch.png in Resources */,
+				126D106520BBA6D100751234 /* applaunch1.png in Resources */,
 				12F41CF01FA06B610038C713 /* voicebtnbg.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2052,10 +2356,98 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D656A29247274BF0006FEC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D656A2A247274BF0006FEC0 /* CDYHlogo.png in Resources */,
+				2D656A2B247274BF0006FEC0 /* assdddddd.png in Resources */,
+				2D656A2C247274BF0006FEC0 /* TRUApplictionCell.xib in Resources */,
+				2D656A2D247274BF0006FEC0 /* voicebg.json in Resources */,
+				2D656A2E247274BF0006FEC0 /* TRUPushingViewController.xib in Resources */,
+				2D656A2F247274BF0006FEC0 /* TRUBingUserController.xib in Resources */,
+				2D656A30247274BF0006FEC0 /* topMenuClick.json in Resources */,
+				2D656A31247274BF0006FEC0 /* SenseID_Liveness_Silent.lic in Resources */,
+				2D656A32247274BF0006FEC0 /* chengduyinhang@3x.png in Resources */,
+				2D656A33247274BF0006FEC0 /* TRUPersonalSmaillCell.xib in Resources */,
+				2D656A34247274BF0006FEC0 /* st_silent_liveness_resource.bundle in Resources */,
+				2D656A35247274BF0006FEC0 /* tabbardata02.json in Resources */,
+				2D656A36247274BF0006FEC0 /* TRUMultipleAccountsCell.xib in Resources */,
+				2D656A37247274BF0006FEC0 /* TRUSessionManagerCell.xib in Resources */,
+				2D656A38247274BF0006FEC0 /* TRUCheckBingController.xib in Resources */,
+				2D656A39247274BF0006FEC0 /* GestureAppend.json in Resources */,
+				2D656A3A247274BF0006FEC0 /* huonangaozhao@2x.png in Resources */,
+				2D656A3B247274BF0006FEC0 /* trusfort.lic in Resources */,
+				2D656A3C247274BF0006FEC0 /* TRULogIdentifyCell.xib in Resources */,
+				2D656A3D247274BF0006FEC0 /* TCSafe-encrypt-ios.pdf in Resources */,
+				2D656A3E247274BF0006FEC0 /* tabbardata03.json in Resources */,
+				2D656A3F247274BF0006FEC0 /* public_demo_key.pem in Resources */,
+				2D656A40247274BF0006FEC0 /* fingerbg.png in Resources */,
+				2D656A41247274BF0006FEC0 /* Scandata.json in Resources */,
+				2D656A42247274BF0006FEC0 /* TRULoginViewController.xib in Resources */,
+				2D656A43247274BF0006FEC0 /* Lisence.txt in Resources */,
+				2D656A44247274BF0006FEC0 /* TRUDevicesManagerCell.xib in Resources */,
+				2D656A45247274BF0006FEC0 /* TRUAboutUSCell.xib in Resources */,
+				2D656A46247274BF0006FEC0 /* TRUPersonalBigCell.xib in Resources */,
+				2D656A47247274BF0006FEC0 /* scanBG.png in Resources */,
+				2D656A48247274BF0006FEC0 /* pushjiantou.json in Resources */,
+				2D656A49247274BF0006FEC0 /* TRUAddPersonalInfoViewController.xib in Resources */,
+				2D656A4A247274BF0006FEC0 /* fingerprint.json in Resources */,
+				2D656A4B247274BF0006FEC0 /* TRUAddPhoneViewController.xib in Resources */,
+				2D656A4C247274BF0006FEC0 /* tabbardata04.json in Resources */,
+				2D656A4D247274BF0006FEC0 /* LaunchScreen.storyboard in Resources */,
+				2D656A4E247274BF0006FEC0 /* Assets.xcassets in Resources */,
+				2D656A4F247274BF0006FEC0 /* tick_reveal.json in Resources */,
+				2D656A50247274BF0006FEC0 /* pushDone.json in Resources */,
+				2D656A51247274BF0006FEC0 /* TRUFeedbackViewController.xib in Resources */,
+				2D656A52247274BF0006FEC0 /* MJRefresh.bundle in Resources */,
+				2D656A53247274BF0006FEC0 /* img_1.png in Resources */,
+				2D656A54247274BF0006FEC0 /* bbbbbbbbb.jpg in Resources */,
+				2D656A55247274BF0006FEC0 /* tabbardata01.json in Resources */,
+				2D656A56247274BF0006FEC0 /* defalticon@2x.png in Resources */,
+				2D656A57247274BF0006FEC0 /* HNGZlogo.png in Resources */,
+				2D656A58247274BF0006FEC0 /* TRUSessionManagerImageCell.xib in Resources */,
+				2D656A59247274BF0006FEC0 /* TRUPersonalDetailsCell.xib in Resources */,
+				2D656A5A247274BF0006FEC0 /* dongtaikouling.json in Resources */,
+				2D656A5B247274BF0006FEC0 /* Gestureloading.json in Resources */,
+				2D656A5C247274BF0006FEC0 /* TRUMineCell.xib in Resources */,
+				2D656A5D247274BF0006FEC0 /* pushcanale.json in Resources */,
+				2D656A5E247274BF0006FEC0 /* Main.storyboard in Resources */,
+				2D656A5F247274BF0006FEC0 /* TRUDevicesManagerController.xib in Resources */,
+				2D656A60247274BF0006FEC0 /* defalticon@3x.png in Resources */,
+				2D656A61247274BF0006FEC0 /* huonangaozhao@3x.png in Resources */,
+				2D656A62247274BF0006FEC0 /* ida.bsb.com.cn.cer in Resources */,
+				2D656A63247274BF0006FEC0 /* chengduyinhang@2x.png in Resources */,
+				2D656A64247274BF0006FEC0 /* img_0.png in Resources */,
+				2D656A65247274BF0006FEC0 /* applaunch1111.png in Resources */,
+				2D656A66247274BF0006FEC0 /* pwddata.json in Resources */,
+				2D656A67247274BF0006FEC0 /* applaunch1.png in Resources */,
+				2D656A68247274BF0006FEC0 /* voicebtnbg.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		125EDA1EC16029CA3701A0D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Good_IdentifyAuthentication-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D656971247274BF0006FEC0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2258,6 +2650,172 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D656972247274BF0006FEC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D656973247274BF0006FEC0 /* LSNavigationController.m in Sources */,
+				2D656974247274BF0006FEC0 /* TRUFaceVoiceSettingButton.m in Sources */,
+				2D656975247274BF0006FEC0 /* TRUPortalModel.m in Sources */,
+				2D656976247274BF0006FEC0 /* MJRefreshBackGifFooter.m in Sources */,
+				2D656977247274BF0006FEC0 /* TRUSSOBlankView.m in Sources */,
+				2D656978247274BF0006FEC0 /* MJRefreshAutoGifFooter.m in Sources */,
+				2D656979247274BF0006FEC0 /* TRUMultipleAccountsSchemeViewController.m in Sources */,
+				2D65697A247274BF0006FEC0 /* TRUhttpManager.m in Sources */,
+				2D65697B247274BF0006FEC0 /* MJRefreshGifHeader.m in Sources */,
+				2D65697C247274BF0006FEC0 /* TRUPortalViewController.m in Sources */,
+				2D65697D247274BF0006FEC0 /* MJRefreshBackNormalFooter.m in Sources */,
+				2D65697E247274BF0006FEC0 /* TRUCompanyModel.m in Sources */,
+				2D65697F247274BF0006FEC0 /* TRUFaceInitViewController.m in Sources */,
+				2D656980247274BF0006FEC0 /* MJRefreshHeader.m in Sources */,
+				2D656981247274BF0006FEC0 /* TRUButton.m in Sources */,
+				2D656982247274BF0006FEC0 /* TRUMineMenuView.m in Sources */,
+				2D656983247274BF0006FEC0 /* TRUDevicesManagerCell.m in Sources */,
+				2D656984247274BF0006FEC0 /* MJRefreshComponent.m in Sources */,
+				2D656985247274BF0006FEC0 /* TRUConst.m in Sources */,
+				2D656986247274BF0006FEC0 /* TRUFaceGuideViewController.m in Sources */,
+				2D656987247274BF0006FEC0 /* TRUUserModel.m in Sources */,
+				2D656988247274BF0006FEC0 /* YCDownSlider.m in Sources */,
+				2D656989247274BF0006FEC0 /* TRUNetworkStatus.m in Sources */,
+				2D65698A247274BF0006FEC0 /* TRUPersonalBigCell.m in Sources */,
+				2D65698B247274BF0006FEC0 /* TRUTokenUtil.m in Sources */,
+				2D65698C247274BF0006FEC0 /* AppDelegate+AppDelegate_Xindun.m in Sources */,
+				2D65698D247274BF0006FEC0 /* TRUUserAPI.m in Sources */,
+				2D65698E247274BF0006FEC0 /* TRUFaceBaseViewController.m in Sources */,
+				2D65698F247274BF0006FEC0 /* TRUAddPersonalInfoViewController.m in Sources */,
+				2D656990247274BF0006FEC0 /* TRULoginViewController.m in Sources */,
+				2D656991247274BF0006FEC0 /* MJRefreshFooter.m in Sources */,
+				2D656992247274BF0006FEC0 /* TRUTimerButton.m in Sources */,
+				2D656993247274BF0006FEC0 /* TRUTabBar.m in Sources */,
+				2D656994247274BF0006FEC0 /* TRUPersonalSmaillCell.m in Sources */,
+				2D656995247274BF0006FEC0 /* MJRefreshBackStateFooter.m in Sources */,
+				2D656996247274BF0006FEC0 /* gesAndFingerNVController.m in Sources */,
+				2D656997247274BF0006FEC0 /* UIScrollView+LSCategory.m in Sources */,
+				2D656998247274BF0006FEC0 /* TRUAuthorizedWebViewController.m in Sources */,
+				2D656999247274BF0006FEC0 /* TRUHightlightedBtn.m in Sources */,
+				2D65699A247274BF0006FEC0 /* TRULockSWindow.m in Sources */,
+				2D65699B247274BF0006FEC0 /* TRUMineCell.m in Sources */,
+				2D65699C247274BF0006FEC0 /* TRUDynamicPasswordViewController.m in Sources */,
+				2D65699D247274BF0006FEC0 /* TRUGestureSettingViewController.m in Sources */,
+				2D65699E247274BF0006FEC0 /* MJRefreshConst.m in Sources */,
+				2D65699F247274BF0006FEC0 /* TRUSelectModel.m in Sources */,
+				2D6569A0247274BF0006FEC0 /* TRULoginScanViewController.m in Sources */,
+				2D6569A1247274BF0006FEC0 /* TRUNewFeatuerViewController.m in Sources */,
+				2D6569A2247274BF0006FEC0 /* UINavigationBar+BackgroundColor.m in Sources */,
+				2D6569A3247274BF0006FEC0 /* TRUBaseViewController.m in Sources */,
+				2D6569A4247274BF0006FEC0 /* TRUAPPLogIdentifyController.m in Sources */,
+				2D6569A5247274BF0006FEC0 /* TRUFingerGesUtil.m in Sources */,
+				2D6569A6247274BF0006FEC0 /* TRUApplictionCell.m in Sources */,
+				2D6569A7247274BF0006FEC0 /* TRUVersionUtil.m in Sources */,
+				2D6569A8247274BF0006FEC0 /* TRUPersonalDetailsModel.m in Sources */,
+				2D6569A9247274BF0006FEC0 /* TRUPortalCell.m in Sources */,
+				2D6569AA247274BF0006FEC0 /* TRUDeviceModel.m in Sources */,
+				2D6569AB247274BF0006FEC0 /* TRUOtherButton.m in Sources */,
+				2D6569AC247274BF0006FEC0 /* TRUCheckBingController.m in Sources */,
+				2D6569AD247274BF0006FEC0 /* MJRefreshBackFooter.m in Sources */,
+				2D6569AE247274BF0006FEC0 /* AppDelegate.m in Sources */,
+				2D6569AF247274BF0006FEC0 /* TRUScanFingerprintView.m in Sources */,
+				2D6569B0247274BF0006FEC0 /* TRUStartupViewController.m in Sources */,
+				2D6569B1247274BF0006FEC0 /* TRUPersonalDetailsViewController.m in Sources */,
+				2D6569B2247274BF0006FEC0 /* MJRefreshAutoNormalFooter.m in Sources */,
+				2D6569B3247274BF0006FEC0 /* TRUUserInfoModel.m in Sources */,
+				2D6569B4247274BF0006FEC0 /* TRUBaseModel.m in Sources */,
+				2D6569B5247274BF0006FEC0 /* TRUPersonalDetailsCell.m in Sources */,
+				2D6569B6247274BF0006FEC0 /* TRUAboutUsViewController.m in Sources */,
+				2D6569B7247274BF0006FEC0 /* TRUScanView.m in Sources */,
+				2D6569B8247274BF0006FEC0 /* TRUAuthenticateTopImageView.m in Sources */,
+				2D6569B9247274BF0006FEC0 /* TRUScreenShotAlert.m in Sources */,
+				2D6569BA247274BF0006FEC0 /* TRUModifyInfoViewController.m in Sources */,
+				2D6569BB247274BF0006FEC0 /* TRUBingUserController.m in Sources */,
+				2D6569BC247274BF0006FEC0 /* TRUSubUserAPI.m in Sources */,
+				2D6569BD247274BF0006FEC0 /* MJRefreshAutoFooter.m in Sources */,
+				2D6569BE247274BF0006FEC0 /* TRUSessionManagerCell.m in Sources */,
+				2D6569BF247274BF0006FEC0 /* TRUFaceSettingViewController.m in Sources */,
+				2D6569C0247274BF0006FEC0 /* TRULicenseAgreementViewController.m in Sources */,
+				2D6569C1247274BF0006FEC0 /* TRUVerifyFaceViewController.m in Sources */,
+				2D6569C2247274BF0006FEC0 /* TRUAboutUSCell.m in Sources */,
+				2D6569C3247274BF0006FEC0 /* NSString+Regular.m in Sources */,
+				2D6569C4247274BF0006FEC0 /* MBProgressHUD.m in Sources */,
+				2D6569C5247274BF0006FEC0 /* TRULogIdentifyCell.m in Sources */,
+				2D6569C6247274BF0006FEC0 /* UIView+STLayout.m in Sources */,
+				2D6569C7247274BF0006FEC0 /* TRUNormalButton.m in Sources */,
+				2D6569C8247274BF0006FEC0 /* TRULoadingViewController.m in Sources */,
+				2D6569C9247274BF0006FEC0 /* TRUPushingViewController.m in Sources */,
+				2D6569CA247274BF0006FEC0 /* TRUBaseTabBarController.m in Sources */,
+				2D6569CB247274BF0006FEC0 /* TRUSessionManagerViewController.m in Sources */,
+				2D6569CC247274BF0006FEC0 /* TRUGestureModify2ViewController.m in Sources */,
+				2D6569CD247274BF0006FEC0 /* GTMBase64.m in Sources */,
+				2D6569CE247274BF0006FEC0 /* TRUAddPhoneViewController.m in Sources */,
+				2D6569CF247274BF0006FEC0 /* TRUBaseNavigationController.m in Sources */,
+				2D6569D0247274BF0006FEC0 /* YCAnimationNumberView.m in Sources */,
+				2D6569D1247274BF0006FEC0 /* UIImage+Color.m in Sources */,
+				2D6569D2247274BF0006FEC0 /* UIButton+Touch.m in Sources */,
+				2D6569D3247274BF0006FEC0 /* MJRefreshNormalHeader.m in Sources */,
+				2D6569D4247274BF0006FEC0 /* STStartAndStopIndicatorView.m in Sources */,
+				2D6569D5247274BF0006FEC0 /* TRUDevicesManagerController.m in Sources */,
+				2D6569D6247274BF0006FEC0 /* TRUCompanyAPI.m in Sources */,
+				2D6569D7247274BF0006FEC0 /* TRULockWindow.m in Sources */,
+				2D6569D8247274BF0006FEC0 /* UIScrollView+MJExtension.m in Sources */,
+				2D6569D9247274BF0006FEC0 /* MJRefreshStateHeader.m in Sources */,
+				2D6569DA247274BF0006FEC0 /* TRUTextField.m in Sources */,
+				2D6569DB247274BF0006FEC0 /* NSBundle+MJRefresh.m in Sources */,
+				2D6569DC247274BF0006FEC0 /* TRULogToFile.m in Sources */,
+				2D6569DD247274BF0006FEC0 /* TRUPortalHeaderView.m in Sources */,
+				2D6569DE247274BF0006FEC0 /* TRUAuthenticateCollectionCell.m in Sources */,
+				2D6569DF247274BF0006FEC0 /* UIViewController+LSNavigationController.m in Sources */,
+				2D6569E0247274BF0006FEC0 /* UINavigationBar+LSNavigationController.m in Sources */,
+				2D6569E1247274BF0006FEC0 /* TRUTimeView.m in Sources */,
+				2D6569E2247274BF0006FEC0 /* MyTabBar.m in Sources */,
+				2D6569E3247274BF0006FEC0 /* TRUFaceGifView.m in Sources */,
+				2D6569E4247274BF0006FEC0 /* Reachability.m in Sources */,
+				2D6569E5247274BF0006FEC0 /* UIView+FrameExt.m in Sources */,
+				2D6569E6247274BF0006FEC0 /* TRUSessionManagerImageCell.m in Sources */,
+				2D6569E7247274BF0006FEC0 /* TRURoundNumberBtn.m in Sources */,
+				2D6569E8247274BF0006FEC0 /* UIWebView+TS_JavaScriptContext.m in Sources */,
+				2D6569E9247274BF0006FEC0 /* UIColor+HEX.m in Sources */,
+				2D6569EA247274BF0006FEC0 /* QTVertificationCodeLabel.m in Sources */,
+				2D6569EB247274BF0006FEC0 /* TRUAuthenticateBtn.m in Sources */,
+				2D6569EC247274BF0006FEC0 /* TRUVerifyFingerprintViewController.m in Sources */,
+				2D6569ED247274BF0006FEC0 /* UIView+MJExtension.m in Sources */,
+				2D6569EE247274BF0006FEC0 /* HUIPatternLockView.m in Sources */,
+				2D6569EF247274BF0006FEC0 /* HAMLogOutputWindow.m in Sources */,
+				2D6569F0247274BF0006FEC0 /* TRUGestureVerifyViewController.m in Sources */,
+				2D6569F1247274BF0006FEC0 /* MyTabBarButton.m in Sources */,
+				2D6569F2247274BF0006FEC0 /* main.m in Sources */,
+				2D6569F3247274BF0006FEC0 /* MJRefreshAutoStateFooter.m in Sources */,
+				2D6569F4247274BF0006FEC0 /* UIScrollView+MJRefresh.m in Sources */,
+				2D6569F5247274BF0006FEC0 /* TRUGestureModify1ViewController.m in Sources */,
+				2D6569F6247274BF0006FEC0 /* RadomMutableNumber.mm in Sources */,
+				2D6569F7247274BF0006FEC0 /* TRUFeedbackViewController.m in Sources */,
+				2D6569F8247274BF0006FEC0 /* FireflyAlertView.m in Sources */,
+				2D6569F9247274BF0006FEC0 /* NSString+Trim.m in Sources */,
+				2D6569FA247274BF0006FEC0 /* TRUHomeButton.m in Sources */,
+				2D6569FB247274BF0006FEC0 /* YCAlertView.m in Sources */,
+				2D6569FC247274BF0006FEC0 /* Progressimage.m in Sources */,
+				2D6569FD247274BF0006FEC0 /* TRUMineUserInfoView.m in Sources */,
+				2D6569FE247274BF0006FEC0 /* TRUEnterAPPAuthView.m in Sources */,
+				2D6569FF247274BF0006FEC0 /* TRUGestureVerify2ViewController.m in Sources */,
+				2D656A00247274BF0006FEC0 /* TRUAuthSacnViewController.m in Sources */,
+				2D656A01247274BF0006FEC0 /* TRUTimeSyncUtil.m in Sources */,
+				2D656A02247274BF0006FEC0 /* TRUDynamicCodeLabel.m in Sources */,
+				2D656A03247274BF0006FEC0 /* TRUFaceVerifyViewController.m in Sources */,
+				2D656A04247274BF0006FEC0 /* QTVertificationCodeInputView.m in Sources */,
+				2D656A05247274BF0006FEC0 /* TRUSubUserModel.m in Sources */,
+				2D656A06247274BF0006FEC0 /* TRUSessionManagerModel.m in Sources */,
+				2D656A07247274BF0006FEC0 /* TRUMultipleAccountsCell.m in Sources */,
+				2D656A08247274BF0006FEC0 /* TRUAuthModel.m in Sources */,
+				2D656A09247274BF0006FEC0 /* TRUPushAuthModel.m in Sources */,
+				2D656A0A247274BF0006FEC0 /* TRUPersonalViewController.m in Sources */,
+				2D656A0B247274BF0006FEC0 /* TRUThirdFaceVerifyViewController.m in Sources */,
+				2D656A0C247274BF0006FEC0 /* TRUMultipleAccountsViewController.m in Sources */,
+				2D656A0D247274BF0006FEC0 /* TRUHomeSizeLabel.m in Sources */,
+				2D656A0E247274BF0006FEC0 /* TRUSchemeTokenViewController.m in Sources */,
+				2D656A0F247274BF0006FEC0 /* UIImage+Resize.m in Sources */,
+				2D656A10247274BF0006FEC0 /* TRUAdViewController.m in Sources */,
+				2D656A11247274BF0006FEC0 /* TRUAuthenticateViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2392,6 +2950,7 @@
 			baseConfigurationReference = 4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageffff;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
@@ -2417,7 +2976,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -2482,6 +3041,7 @@
 			baseConfigurationReference = 35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageffff;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -2506,7 +3066,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -2612,6 +3172,151 @@
 			};
 			name = Release;
 		};
+		2D656A6A247274BF0006FEC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageffff;
+				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
+				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AG9SM32322;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
+				INFOPLIST_FILE = "Good_IdentifyAuthentication copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/JPushLib",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/FaceVerity",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
+				);
+				MARKETING_VERSION = 1.0.8;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Bugly\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/HMSegmentedControl\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYCache\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/lottie-ios\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"lottie-ios\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsb.cims;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
+				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D656A6B247274BF0006FEC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageffff;
+				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z5ZK5Q4622;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
+				INFOPLIST_FILE = "Good_IdentifyAuthentication copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/JPushLib",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/FaceVerity",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
+				);
+				MARKETING_VERSION = 1.0.8;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Bugly\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/HMSegmentedControl\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYCache\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/lottie-ios\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"lottie-ios\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsb.cims;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
+				PROVISIONING_PROFILE_SPECIFIER = new_profile_19_11;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2647,6 +3352,15 @@
 			buildConfigurations = (
 				12C0D2FE1F7907DD00972218 /* Debug */,
 				12C0D2FF1F7907DD00972218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D656A69247274BF0006FEC0 /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D656A6A247274BF0006FEC0 /* Debug */,
+				2D656A6B247274BF0006FEC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

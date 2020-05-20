@@ -26,6 +26,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.view.backgroundColor = [UIColor whiteColor];
+    
 }
 
 - (void)viewDidLoad {
@@ -35,18 +36,20 @@
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     if (str.length>0) {
-        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
+//        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
     }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
+//        imageview.image = [UIImage imageNamed:@"LaunchImageffff"];
         
     }
     if (kDevice_Is_iPhoneX) {
         CGRect rect = [UIScreen mainScreen].bounds;
         CGFloat wid = rect.size.width;
-        CGFloat hei = rect.size.height - 34;
+        CGFloat hei = rect.size.height ;
         imageview.frame = CGRectMake(0, 0, wid, hei);
+        imageview.image = [UIImage imageNamed:@"applaunchx"];
     }else{
         imageview.frame = [UIScreen mainScreen].bounds;
+        imageview.image = [UIImage imageNamed:@"applaunch"];
     }
     [self.view addSubview:imageview];
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];

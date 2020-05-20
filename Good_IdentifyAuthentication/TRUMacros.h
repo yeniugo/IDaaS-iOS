@@ -22,13 +22,13 @@
 #define SCREENH [UIScreen mainScreen].bounds.size.height
 #define SCREENW [UIScreen mainScreen].bounds.size.width
 
-#define lineDefaultColor  [UIColor colorWithRed:247.0 / 255 green:153.0 / 255 blue:15.0 / 255 alpha:1.0]
+#define lineDefaultColor  [UIColor colorWithRed:0.0 / 255 green:155.0 / 255 blue:228.0 / 255 alpha:1.0]
 
 #define ViewDefaultBgColor  [UIColor colorWithRed:247.0 / 255 green:249.0 / 255 blue:250.0 / 255 alpha:1.0]
 
-#define DefaultColor  [UIColor colorWithRed:247.0 / 255 green:153.0 / 255 blue:15.0 / 255 alpha:1.0]
+#define DefaultColor  [UIColor colorWithRed:0.0 / 255 green:155.0 / 255 blue:228.0 / 255 alpha:1.0]
 
-#define DefaultGreenColor  [UIColor colorWithRed:247.0 / 255 green:153.0 / 255 blue:15.0 / 255 alpha:1.0]
+#define DefaultGreenColor  [UIColor colorWithRed:0.0 / 255 green:155.0 / 255 blue:228.0 / 255 alpha:1.0]
 
 #define TRUPUSHNOTIFICATION  @"TRUPUSHNOTIFICATIONKEY"
 

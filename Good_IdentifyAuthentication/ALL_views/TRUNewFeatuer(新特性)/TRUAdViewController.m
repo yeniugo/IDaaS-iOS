@@ -18,23 +18,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationBar.hidden = YES;
+    self.navigationBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageview = [[UIImageView alloc] init];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     if (str.length>0) {
-        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
+//        [imageview yy_setImageWithURL:[NSURL URLWithString:str] placeholder:nil];
     }else{
-        imageview.image = [UIImage imageNamed:@"applaunch"];
+//        imageview.image = [UIImage imageNamed:@"LaunchImageffff"];
     }
     if (kDevice_Is_iPhoneX) {
         CGRect rect = [UIScreen mainScreen].bounds;
         CGFloat wid = rect.size.width;
-        CGFloat hei = rect.size.height - 34;
+        CGFloat hei = rect.size.height ;
         imageview.frame = CGRectMake(0, 0, wid, hei);
+        imageview.image = [UIImage imageNamed:@"applaunchx"];
     }else{
         imageview.frame = [UIScreen mainScreen].bounds;
+        imageview.image = [UIImage imageNamed:@"applaunch"];
     }
     
     [self.view addSubview:imageview];

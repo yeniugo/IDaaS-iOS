@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,14 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assdddddd.png" highlightedImage="assdddddd.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImageffff" highlightedImage="LaunchImageffff" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4H-e3-aeY">
-                                <rect key="frame" x="20" y="723" width="335" height="21"/>
+                                <rect key="frame" x="20" y="681" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="W4H-e3-aeY" secondAttribute="trailing" constant="20" id="1lh-y4-vKW"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="W4H-e3-aeY" secondAttribute="bottom" constant="34" id="HkG-If-O1r"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" id="Jrx-5o-3cW"/>
+                            <constraint firstAttribute="bottom" secondItem="A1X-NF-nTo" secondAttribute="bottom" id="Jrx-5o-3cW"/>
                             <constraint firstItem="W4H-e3-aeY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="MI3-ft-XlK"/>
                             <constraint firstAttribute="trailing" secondItem="A1X-NF-nTo" secondAttribute="trailing" id="O72-W1-6Nz"/>
                             <constraint firstItem="A1X-NF-nTo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="cS6-xd-rif"/>
@@ -47,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="assdddddd.png" width="1242" height="2208"/>
+        <image name="LaunchImageffff" width="128" height="128"/>
     </resources>
 </document>

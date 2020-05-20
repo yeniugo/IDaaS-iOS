@@ -193,7 +193,7 @@
         [self.view addSubview:forgetBtn];
         forgetBtn.frame = CGRectMake(SCREENW/2.f -40, SCREENH - 50, 80, 30);
         [forgetBtn setTitle:@"忘记手势？" forState:UIControlStateNormal];
-        [forgetBtn setTitleColor:RGBCOLOR(247, 153, 15) forState:UIControlStateNormal];
+        [forgetBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
         forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [forgetBtn addTarget:self action:@selector(forgetBtnClick) forControlEvents:UIControlEventTouchUpInside];
         if (kDevice_Is_iPhoneX){

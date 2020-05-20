@@ -27,7 +27,7 @@
         self.imageW = 20;
         self.userInteractionEnabled = NO;
 //        [self setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = RGBCOLOR(239, 148, 37);
         [self.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [self setTintColor:[UIColor whiteColor]];
         self.layer.cornerRadius = self.imageW/2;

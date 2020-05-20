@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,7 +38,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="AQc-iU-Rgi"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -63,7 +60,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="HMQ-JB-NhE"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -101,7 +97,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6j-37-qoq">
                     <rect key="frame" x="18" y="319" width="339" height="55"/>
-                    <color key="backgroundColor" red="0.96862745098039216" green="0.59999999999999998" blue="0.058823529411764705" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="0.89411764709999997" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="Cth-4F-KGd"/>
                     </constraints>
@@ -128,7 +124,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DzL-Fm-Vsr"/>
                             </constraints>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -182,6 +177,6 @@
         <image name="addappeye" width="53" height="31"/>
         <image name="addappeyeclose" width="53" height="36"/>
         <image name="addappuser" width="41" height="45"/>
-        <image name="bing_yaoshi" width="59" height="46"/>
+        <image name="bing_yaoshi" width="16" height="15"/>
     </resources>
 </document>
