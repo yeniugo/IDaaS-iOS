@@ -178,7 +178,7 @@
         self.authBtn.hidden = YES;
     }else{
         self.authBtn.hidden = NO;
-        [self.authBtn setButtonTitle:[NSString stringWithFormat:@"正在登录【%@】",model.appname]];
+        [self.authBtn setButtonTitle:[NSString stringWithFormat:@"您正在登录【%@】",model.appname]];
     }
 }
 

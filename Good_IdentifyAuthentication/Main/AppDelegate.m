@@ -505,6 +505,7 @@
     TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     [nav setNavBarColor:DefaultNavColor];
+    [TRUhttpManager startALLHttp];
     self.window.rootViewController = nav;
 }
 - (void)changeRootVC{
@@ -549,6 +550,7 @@
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     nav.navigationBarHidden = YES;
     self.window.rootViewController = nav;
+    [TRUhttpManager startALLHttp];
 }
 #pragma mark 返回原APP
 - (void)back2SoureAPP{
@@ -2031,7 +2033,7 @@
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"sys-clientVersion"];
 
 //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
     if ([self updeWithDicString:version andOldString:appInfo]) {

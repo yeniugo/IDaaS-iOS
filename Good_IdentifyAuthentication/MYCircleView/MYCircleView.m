@@ -41,7 +41,7 @@
         self.ArcLayer  = [CAShapeLayer layer];
         self.ArcLayer.lineWidth = CircleTopLineWidth;
         self.ArcLayer.lineCap = kCALineCapRound;
-        self.ArcLayer.strokeColor = DefaultGreenColor.CGColor;
+        self.ArcLayer.strokeColor = ViewDefaultBgColor.CGColor;
         self.ArcLayer.fillColor = [UIColor clearColor].CGColor;
 //        self.ArcLayer.shadowColor = CircleTopCicleShadowColor.CGColor;
 //        self.ArcLayer.shadowOffset = CGSizeZero;

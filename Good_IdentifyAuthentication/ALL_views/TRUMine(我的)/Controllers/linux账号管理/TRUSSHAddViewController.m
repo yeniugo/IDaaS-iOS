@@ -12,6 +12,8 @@
 #import "TRUUserAPI.h"
 #import "NSString+Regular.h"
 #import "NSString+Trim.h"
+#import "NSString+URLEncodedString.h"
+#import "NSString+Base64.h"
 @interface TRUSSHAddViewController ()<UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 @property (nonatomic,strong) UITextField *userTF;
 @property (nonatomic,strong) UITextField *ipTF;
@@ -321,6 +323,9 @@
     }else{
         desc = [self base64EncodeString:self.descTV.text];
     }
+//    desc = desc.stringByRemovingPercentEncoding;
+//    desc = [NSString stringWithFormat:@"%@",AFPercentEscapedStringFromString([desc description])];
+//    desc = self.descTV.text;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     NSString *apptype;
@@ -329,8 +334,13 @@
     }else if(self.selectRow == 1){
         apptype = @"2";
     }
-    NSArray *ctx = @[@"userName",username,@"appType",apptype,@"desc",[NSString stringWithFormat:@"%s",[desc UTF8String]]];
-    NSString *sign = [NSString stringWithFormat:@"%@%@%s",username,apptype,[desc UTF8String]];
+//    NSString *temp = desc.gtm_stringByEscapingForURLArgument.gtm_stringByUnescapingFromURLArgument;
+    NSArray *ctx = @[@"userName",username,@"appType",apptype,@"desc",desc];
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@",username,apptype,desc];
+//    NSArray *ctx = @[@"longitude",@"104.0644931783937",@"latitude",@"30.54869699454961",@"province",@"四川省",@"city",@"成都市",@"district",@"武侯区",@"address",@"天府三街69号1栋"];
+//    NSString *sign = @"104.064493178393730.54869699454961四川省成都市武侯区天府三街69号1栋";
+//    NSArray *ctx = @[@"longitude",@"fff",@"latitude",@"ggg",@"province",@"aaa",@"city",@"bbb",@"district",@"ccc",@"address",@"ddd"];
+//    NSString *sign = @"fffgggaaabbbcccddd";
     NSString *params = [xindunsdk encryptByUkey:userid ctx:ctx signdata:sign isDeviceType:NO];
     NSDictionary *paramsDic = @{@"params" : params};
     [self showHudWithText:@"正在提交"];

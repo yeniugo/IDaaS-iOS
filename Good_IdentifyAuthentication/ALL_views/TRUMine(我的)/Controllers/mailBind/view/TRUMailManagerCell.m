@@ -59,6 +59,15 @@
             make.top.equalTo(self.deviceTypeLB.mas_bottom).with.offset(8.5);
         }];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIView *lineView = [[UIView alloc] init];
+        lineView.backgroundColor = RGBCOLOR(153, 153, 153);
+        [self.contentView addSubview:lineView];
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView);
+            make.right.equalTo(self.contentView);
+            make.height.equalTo(@(0.5));
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-1);
+        }];
     }
     return self;
 }
@@ -80,9 +89,9 @@
     //格式可自定义
     [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
 //    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[cellDic[@"bindTime"] longValue]];
-    NSString *timeimeString = [formatter stringFromDate:date];
-    self.deviceTimeLB.text = timeimeString;
+//    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[cellDic[@"bindTime"] longValue]];
+//    NSString *timeimeString = [formatter stringFromDate:date];
+    self.deviceTimeLB.text = cellDic[@"bindTime"];
 }
 
 - (void)cellLogoutClick{

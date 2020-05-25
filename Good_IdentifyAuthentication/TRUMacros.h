@@ -26,6 +26,8 @@
 
 #define ViewDefaultBgColor  [UIColor colorWithRed:247.0 / 255 green:249.0 / 255 blue:250.0 / 255 alpha:1.0]
 
+#define ViewDefaultBgColor1  [UIColor colorWithRed:243.0 / 255 green:243.0 / 255 blue:243.0 / 255 alpha:1.0]
+
 #define DefaultColor  [UIColor colorWithRed:32.0 / 255 green:144.0 / 255 blue:54.0 / 255 alpha:1.0]
 
 #define DefaultGreenColor  [UIColor colorWithRed:0.0 / 255 green:150.0 / 255 blue:255.0 / 255 alpha:1.0]

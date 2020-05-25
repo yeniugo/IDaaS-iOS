@@ -13,11 +13,11 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = RGBCOLOR(0, 150, 255);
+        self.backgroundColor = RGBACOLOR(189, 228, 255 ,1.0 );
 //        self.backgroundColor = [UIColor clearColor];
         self.titleLabel.font = [UIFont systemFontOfSize:16*PointWidthRatioX];
 //        self.titleLabel.textColor = RGBCOLOR(255, 255, 255);
-        [self setTitleColor:RGBCOLOR(255, 255, 255) forState:UIControlStateNormal];
+        [self setTitleColor:RGBCOLOR(0, 150, 255) forState:UIControlStateNormal];
 //        self.titleLabel.frame = CGRectMake(20*PointWidthRatioX, 23*PointWidthRatioX, 292*PointWidthRatioX, 15*PointWidthRatioX);
         [self setImage:[UIImage imageNamed:@"pushRightArrow"] forState:UIControlStateNormal];
 //        self.imageView.frame = CGRectMake(332*PointWidthRatioX, 23*PointWidthRatioX, 23*PointWidthRatioX, 15*PointWidthRatioX);

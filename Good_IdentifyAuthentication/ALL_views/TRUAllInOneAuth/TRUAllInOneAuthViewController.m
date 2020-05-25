@@ -77,7 +77,12 @@ static double dytime = 0.0;
     self.firstRun = YES;
 //    [self startCountdown];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"MineIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"webloginIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
+    TRUCompanyModel *model = [TRUCompanyAPI getCompany];
+//    model.hasSessionControl = 1;
+    if (model.hasSessionControl) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"webloginIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
@@ -124,7 +129,7 @@ static double dytime = 0.0;
 //            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
-            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
+            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
 //                [TrusfortDfsSdk enableSensor:model2.hasMtd];
@@ -307,7 +312,7 @@ static double dytime = 0.0;
             type = 0;
         }
     }
-//    type = 1;
+//    type = 0;
     __weak typeof(self) weakSelf = self;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -330,7 +335,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUBottomScanView *bottomScanView = [[TRUBottomScanView alloc] initWithFrame:CGRectMake(0, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6 , SCREENW, (SCREENH - kNavBarAndStatusBarHeight -kTabBarBottom)*0.4+kTabBarBottom)];
-            bottomScanView.backgroundColor = ViewDefaultBgColor;
+            bottomScanView.backgroundColor = ViewDefaultBgColor1;
             bottomScanView.hasQRBtn = NO;
             self.bottomScanView = bottomScanView;
             bottomScanView.authBtnClick = ^(TRUPushAuthModel * _Nonnull model) {
@@ -358,7 +363,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUBottomScanView *bottomScanView = [[TRUBottomScanView alloc] initWithFrame:CGRectMake(0, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.6, SCREENW, (SCREENH - kNavBarAndStatusBarHeight - kTabBarBottom)*0.4+kTabBarBottom)];
-            bottomScanView.backgroundColor = ViewDefaultBgColor;
+            bottomScanView.backgroundColor = ViewDefaultBgColor1;
             bottomScanView.hasQRBtn = YES;
             self.bottomScanView = bottomScanView;
             bottomScanView.scanButtonClick = ^{
@@ -389,7 +394,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX , SCREENW , SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX)];
-            portalView.backgroundColor = ViewDefaultBgColor;
+            portalView.backgroundColor = ViewDefaultBgColor1;
             self.portalView = portalView;
 //            portalView.refreshBlock = ^{
 //                [weakSelf refreshData];
@@ -468,7 +473,7 @@ static double dytime = 0.0;
         {
             self.scrollView.hidden = NO;
             TRUPortalView *portalView = [[TRUPortalView alloc] initWithFrame:CGRectMake(0, 120 *PointWidthRatioX, SCREENW, SCREENH - kNavBarAndStatusBarHeight - 120 *PointWidthRatioX)];
-            portalView.backgroundColor = ViewDefaultBgColor;
+            portalView.backgroundColor = ViewDefaultBgColor1;
             self.portalView = portalView;
 //            portalView.refreshBlock = ^{
 //                [weakSelf refreshData];
@@ -660,15 +665,15 @@ static double dytime = 0.0;
                     NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
                     int code = [dic[@"code"] intValue];
                     if (code == 0) {
-//                        NSArray *dataArr = dic[@"resp"];
-                        NSArray *dataArr;
-                        NSMutableArray *tempArray = [NSMutableArray array];
-                        for (int i = 0; i < 5; i++) {
-                            TRUPortalModel *model = [[TRUPortalModel alloc] init];
-                            model.appName = [NSString stringWithFormat:@"%d",i];
-                            [tempArray addObject:[model yy_modelToJSONObject]];
-                        }
-                        dataArr = tempArray;
+                        NSArray *dataArr = dic[@"resp"];
+//                        NSArray *dataArr;
+//                        NSMutableArray *tempArray = [NSMutableArray array];
+//                        for (int i = 0; i < 5; i++) {
+//                            TRUPortalModel *model = [[TRUPortalModel alloc] init];
+//                            model.appName = [NSString stringWithFormat:@"%d",i];
+//                            [tempArray addObject:[model yy_modelToJSONObject]];
+//                        }
+//                        dataArr = tempArray;
                         if (dataArr.count>0) {
                             for (int i = 0; i< dataArr.count; i++) {
                                 NSDictionary *dic = dataArr[i];

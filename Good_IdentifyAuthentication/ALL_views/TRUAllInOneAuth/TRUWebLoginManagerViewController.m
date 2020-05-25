@@ -12,6 +12,7 @@
 #import "TRUUserAPI.h"
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"
+#import "NSDictionary+NULL.h"
 @interface TRUWebLoginManagerViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
@@ -58,11 +59,33 @@
         }else if(errorno == 0 && responseBody!=nil){
             weakSelf.dataView.hidden = NO;
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+            dic = [dic processDictionaryIsNSNull:dic];
             weakSelf.dataArray = dic[@"resp"][@"accessApp"];
             weakSelf.topView.viewDic = dic[@"resp"];
             weakSelf.tgtId = dic[@"resp"][@"tgtId"];
         }else if(errorno == 90022){
             weakSelf.noneDataView.hidden = NO;
+        }else if (-5004 == errorno){
+            weakSelf.noneDataView.hidden = NO;
+            [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9008 == errorno){
+            weakSelf.noneDataView.hidden = NO;
+            [weakSelf deal9008Error];
+        }else if (9019 == errorno){
+            weakSelf.noneDataView.hidden = NO;
+            [weakSelf deal9019Error];
+        }else if (9025 == errorno){
+            weakSelf.noneDataView.hidden = NO;
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            } cancelBlock:^{
+            }];
+        }else{
+            weakSelf.noneDataView.hidden = NO;
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            //[NSString stringWithFormat:@"其他错误 %d", error];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }
@@ -184,7 +207,7 @@
         headerView.backgroundColor = [UIColor whiteColor];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,10,60,13.5)];
         label.font = [UIFont systemFontOfSize:14.0];
-        label.text = @"应用访问";
+        label.text = @"访问应用";
         [headerView addSubview:label];
         [_dataView addSubview:headerView];
         

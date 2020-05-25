@@ -44,7 +44,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemBtn];
     self.title = @"我的";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
-    self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kTabBarHeight);
+    self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kNavBarAndStatusBarHeight);
     [self.view addSubview:self.tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalBigCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalBigCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalSmaillCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalSmaillCell"];
@@ -147,15 +147,34 @@
     TRUCompanyModel *model = [TRUCompanyAPI getCompany];
 //    model.hasFace = NO;
 //    model.hasVoice = YES;
-    if (model.hasFace && model.hasVoice) {
-        self.dataArray = @[@[model1,model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
-    }else if(model.hasFace && !model.hasVoice){
-        self.dataArray = @[@[model1],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
-    }else if(!model.hasFace && model.hasVoice){
-        self.dataArray = @[@[model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
-    }else{
-        self.dataArray = @[@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
+//    if (model.hasFace && model.hasVoice) {
+//        self.dataArray = @[@[model1,model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
+//    }else if(model.hasFace && !model.hasVoice){
+//        self.dataArray = @[@[model1],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
+//    }else if(!model.hasFace && model.hasVoice){
+//        self.dataArray = @[@[model2],@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
+//    }else{
+//        self.dataArray = @[@[model3],@[model4],@[model9],@[model5],@[model6],@[model7],@[model8]];
+//    }
+    NSMutableArray *tempArray = [NSMutableArray array];
+    NSMutableArray *temp1Array = [NSMutableArray array];
+    if (model.hasFace) {
+        [temp1Array addObject:model1];
     }
+    if (model.hasVoice) {
+        [temp1Array addObject:model2];
+    }
+    if (temp1Array.count) {
+        [tempArray addObject:temp1Array];
+    }
+    [tempArray addObject:[NSArray arrayWithObject:model3]];
+    [tempArray addObject:[NSArray arrayWithObject:model4]];
+    [tempArray addObject:[NSArray arrayWithObject:model9]];
+    [tempArray addObject:[NSArray arrayWithObject:model5]];
+    [tempArray addObject:[NSArray arrayWithObject:model6]];
+    [tempArray addObject:[NSArray arrayWithObject:model7]];
+    [tempArray addObject:[NSArray arrayWithObject:model8]];
+    self.dataArray = tempArray;
 }
 
 - (void)pushVC:(NSString *)VCName{
@@ -313,7 +332,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"CFBundleShortVersionString"];
+    NSString *version =  dic[@"sys-clientVersion"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }
@@ -477,7 +496,8 @@
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
+//    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -488,7 +508,7 @@
             TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
-            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
+            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
                 [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
             }else{
                 [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{

@@ -9,6 +9,7 @@
 #import "CircleDynamicView.h"
 #import "MYCircleView.h"
 #import "UILabel+Alignment.h"
+#import <Masonry.h>
 @interface CircleDynamicView ()
 @property (nonatomic,strong) MYCircleView *myCicleView;
 
@@ -60,18 +61,25 @@
         dynamicLB.textColor = [UIColor whiteColor];
         [self addSubview:dynamicLB];
         self.dynamicLB = dynamicLB;
-        dynamicLB.frame = CGRectMake(0, y + 0.25 * w - 15*PointHeightRatioX3/2 , SCREENW, 15*PointHeightRatioX3);
+        dynamicLB.frame = CGRectMake(0, y + 0.25 * w - 15*PointHeightRatioX3/2 , SCREENW, 18*PointHeightRatioX3);
 //        [dynamicLB textAlignmentLeftAndRight];
         
         UILabel *passwordLB = [[UILabel alloc] init];
+//        passwordLB.font = [UIFont systemFontOfSize:60*PointHeightRatioX3];
+//        if ([UIScreen mainScreen].scale > 2.1) {
+//            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
+//        }
         passwordLB.font = [UIFont systemFontOfSize:60*PointHeightRatioX3];
-        if ([UIScreen mainScreen].scale > 2.1) {
-            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
-        }
+        passwordLB.minimumScaleFactor = 0.5;
         passwordLB.textAlignment = NSTextAlignmentCenter;
         passwordLB.textColor = [UIColor whiteColor];
         [self addSubview:passwordLB];
-        passwordLB.frame = CGRectMake(89*PointWidthRatioX, 0.5*frame.size.height -50*PointHeightRatioX3/2 , SCREENW-89*2*PointWidthRatioX, 50*PointHeightRatioX3);
+//        passwordLB.frame = CGRectMake(89*PointWidthRatioX, 0.5*frame.size.height -50*PointHeightRatioX3/2 , SCREENW-89*2*PointWidthRatioX, 50*PointHeightRatioX3);
+        [passwordLB mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self);
+            make.left.equalTo(self).with.offset(89*PointWidthRatioX);
+            make.right.equalTo(self).with.offset(-89*PointWidthRatioX);
+        }];
         self.passwordLB = passwordLB;
 //        [passwordLB textAlignmentLeftAndRight];
         
@@ -96,6 +104,7 @@
 - (void)setPasswordStr:(NSString *)passwordStr{
     _passwordStr = passwordStr;
     self.passwordLB.text = passwordStr;
+    self.passwordLB.adjustsFontSizeToFitWidth = YES;
     [self.passwordLB textAlignmentLeftAndRight];
 }
 

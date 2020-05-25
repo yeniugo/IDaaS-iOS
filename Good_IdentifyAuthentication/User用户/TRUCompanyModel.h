@@ -59,6 +59,10 @@
  */
 @property (nonatomic, assign) BOOL hasMtd;
 
+
+/// 是否有会话管理
+@property (nonatomic, assign) BOOL hasSessionControl;
+
 @property (nonatomic, assign) NSString *mtdExternalUrl;
 + (instancetype)modelWithDic:(NSDictionary *)dic;
 @end

@@ -94,6 +94,12 @@ static NSString *TRUCompanyKEY = @"913d3d1ses762af60e2qb3467ad1864p";
         key = @"0";
     }
     [mutableDic setObject:key forKey:@"hasMtd"];
+    if (company.hasSessionControl) {
+        key = @"1";
+    }else{
+        key = @"0";
+    }
+    [mutableDic setObject:key forKey:@"hasSessionControl"];
     if (company.mtdExternalUrl.length == 0) {
         
     }else{

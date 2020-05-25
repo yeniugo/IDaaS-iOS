@@ -11,9 +11,11 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
+#import "NSDictionary+NULL.h"
 @interface TRUMailManagerViewController ()<UITableViewDelegate,UITableViewDataSource,TRUMailManagerCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) UIView *blankView;
 @end
 
 @implementation TRUMailManagerViewController
@@ -33,9 +35,28 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [UIView new];
     [self getData];
+    
+    UIView *blankview = [[UIView alloc] init];
+    blankview.backgroundColor = [UIColor whiteColor];
+    UIImageView *addBlank = [[UIImageView alloc] init];
+    [blankview addSubview:addBlank];
+    addBlank.image = [UIImage imageNamed:@"portal_banner_blank"];
+    [self.tableView addSubview:blankview];
+    blankview.frame = CGRectMake(0, 0, SCREENW, SCREENW);
+    addBlank.frame = CGRectMake(SCREENW*0.25, SCREENW*0.25, SCREENW*0.5, SCREENW*0.4);
+    UILabel *showlabel = [[UILabel alloc] init];
+    [blankview addSubview:showlabel];
+    showlabel.textAlignment = NSTextAlignmentCenter;
+    showlabel.text = @"暂无邮箱设备";
+    showlabel.font = [UIFont systemFontOfSize:14];
+    showlabel.textColor = RGBCOLOR(136, 136, 136);
+    showlabel.frame = CGRectMake(0, SCREENW*0.75, SCREENW, 20);
+    self.blankView = blankview;
+    blankview.hidden = YES;
 }
 
 - (void)getData{
+    __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
@@ -44,17 +65,42 @@
         if (errorno == 0) {
             if (responseBody) {
                 NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+                dic = [dic processDictionaryIsNSNull:dic];
                 if ([dic[@"code"] intValue] == 0) {
                     if (dic[@"resp"]) {
                         self.dataArray = dic[@"resp"];
                         [self.tableView reloadData];
+                        if (self.dataArray.count) {
+                            
+                        }else{
+                            self.blankView.hidden = NO;
+//                            self.tableView.hidden = YES;
+//                            self.dataArray = nil;
+                        }
                     }else{
-                        self.dataArray = nil;
+                        
                     }
                 }
             }else{
-                
+                self.blankView.hidden = NO;
+                self.tableView.hidden = YES;
             }
+        }else if (-5004 == errorno){
+            [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9008 == errorno){
+            [weakSelf deal9008Error];
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
+        }else if (9025 == errorno){
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            } cancelBlock:^{
+            }];
+        }else{
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            //[NSString stringWithFormat:@"其他错误 %d", error];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }
@@ -86,6 +132,16 @@
 }
 
 - (void)cellLogoutClickWith:(NSDictionary *)dic{
+    __weak typeof(self) weakSelf = self;
+    [self showConfrimCancelDialogAlertViewWithTitle:@"您确定要解绑此邮箱设备吗？" msg:nil confrimTitle:@"是" cancelTitle:@"否" confirmRight:YES confrimBolck:^{
+        [weakSelf unBindMail:dic];
+    } cancelBlock:^{
+        
+    }];
+}
+
+- (void)unBindMail:(NSDictionary *)dic{
+    __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     NSString *sign = [NSString stringWithFormat:@"%ld",[dic[@"id"] longValue]];
@@ -94,8 +150,25 @@
     NSDictionary *paramsDic = @{@"params" : paras};
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/maildevice/unbind"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
         if (errorno == 0) {
-            [self showHudWithText:@"解绑成功"];
-            [self hideHudDelay:2.0];
+            [weakSelf showHudWithText:@"解绑成功"];
+            [weakSelf hideHudDelay:2.0];
+            [weakSelf getData];
+        }else if (-5004 == errorno){
+            [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9008 == errorno){
+            [weakSelf deal9008Error];
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
+        }else if (9025 == errorno){
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+            } cancelBlock:^{
+            }];
+        }else{
+            NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+            //[NSString stringWithFormat:@"其他错误 %d", error];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }

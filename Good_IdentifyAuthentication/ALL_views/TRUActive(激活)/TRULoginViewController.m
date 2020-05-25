@@ -32,6 +32,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnBottom;
 
 @end
 
@@ -60,8 +61,12 @@
     }else{
         self.bingEmailBtn.hidden = YES;
     }
+    if (kDevice_Is_iPhoneX){
+        self.loginBtnBottom.constant = 70 + 34;
+    }
 #if TARGET_IPHONE_SIMULATOR
     self.bingEmailBtn.hidden = NO;
+    
 #endif
     NSString *spname = [TRUCompanyAPI getCompany].spname;
     if (spname.length >0) {
@@ -107,9 +112,9 @@
     
     
     
-//    [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
-//    [_AgreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
-//    _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
+    [_AgreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+    _AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:15];
 //    [_bingEmailBtn setBackgroundColor:DefaultColor];
     
 //    _scanJsonView = [LOTAnimationView animationNamed:@"Scandata.json"];

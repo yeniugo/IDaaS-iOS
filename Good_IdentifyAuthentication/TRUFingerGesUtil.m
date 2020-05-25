@@ -7,17 +7,21 @@
 //
 
 #import "TRUFingerGesUtil.h"
-
+#import "xindunsdk.h"
 static NSString *TRULOGINAUTHTYPEKEY = @"TRULOGINAUTHTYPEKEY";
 
 //手势
 static NSString *TRUGESTUREKEY = @"TRUGESTUREKEY";
 //static NSString *TRUGESKEY = @"TRUGESKEY";
 static NSString *TRULOGINAUTHTYPEGESKEY = @"TRULOGINAUTHTYPEGESKEY";
+
+static NSString *TRULOGINAUTHTYPEGESKEYENCRYPT = @"TRULOGINAUTHTYPEGESKEYENCRYPT";
 //指纹、Face ID
 static NSString *TRUFIGERTUREKEY = @"TRUFIGERTUREKEY";
 //static NSString *TRUFIGERKEY = @"TRUFIGERKEY";
 static NSString *TRULOGINAUTHTYPEFIGERKEY = @"TRULOGINAUTHTYPEFIGERKEY";
+
+static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENCRYPT";
 
 @implementation TRUFingerGesUtil
 
@@ -37,16 +41,37 @@ static NSString *TRULOGINAUTHTYPEFIGERKEY = @"TRULOGINAUTHTYPEFIGERKEY";
 //指纹/Face ID
 + (TRULoginAuthFingerType)getLoginAuthFingerType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    if ([[def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT] stringValue].length == 0) {
+        int type = [[def objectForKey:TRULOGINAUTHTYPEFIGERKEY] integerValue];
+        [self saveLoginAuthFingerType:type];
+        [def removeObjectForKey:TRULOGINAUTHTYPEFIGERKEY];
+        return type;
+    }else{
+        NSString *key = [[def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT] stringValue];
+        NSString *loginStr = [xindunsdk decryptText:key];
+        return loginStr.intValue;
+    }
     return [[def objectForKey:TRULOGINAUTHTYPEFIGERKEY] integerValue];
 }
 + (void)saveLoginAuthFingerType:(TRULoginAuthFingerType)type{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    [def setObject:@(type) forKey:TRULOGINAUTHTYPEFIGERKEY];
+    NSString *loginStr = [xindunsdk encryptText:[NSString stringWithFormat:@"%ld",(long)type]];
+    [def setObject:loginStr forKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
     [def synchronize];
 }
 //手势
 + (TRULoginAuthGesType)getLoginAuthGesType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    if ([[def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT] stringValue].length == 0) {
+        int type = [[def objectForKey:TRULOGINAUTHTYPEGESKEY] integerValue];
+        [self saveLoginAuthGesType:type];
+        [def removeObjectForKey:TRULOGINAUTHTYPEGESKEY];
+        return type;
+    }else{
+        NSString *key = [[def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT] stringValue];
+        NSString *loginStr = [xindunsdk decryptText:key];
+        return loginStr.intValue;
+    }
     return [[def objectForKey:TRULOGINAUTHTYPEGESKEY] integerValue];
 }
 + (void)saveLoginAuthGesType:(TRULoginAuthGesType)type{
@@ -54,7 +79,8 @@ static NSString *TRULOGINAUTHTYPEFIGERKEY = @"TRULOGINAUTHTYPEFIGERKEY";
     if (type == TRULoginAuthGesTypeNone) {
         [def removeObjectForKey:TRUGESTUREKEY];
     }
-    [def setObject:@(type) forKey:TRULOGINAUTHTYPEGESKEY];
+    NSString *loginStr = [xindunsdk encryptText:[NSString stringWithFormat:@"%ld",(long)type]];
+    [def setObject:loginStr forKey:TRULOGINAUTHTYPEGESKEYENCRYPT];
     [def synchronize];
 }
 
