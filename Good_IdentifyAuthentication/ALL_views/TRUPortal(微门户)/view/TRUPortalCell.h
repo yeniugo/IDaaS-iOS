@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TRUPortalModel.h"
 NS_ASSUME_NONNULL_BEGIN
-
+typedef NS_OPTIONS(NSUInteger, collectioncellLine) {
+    collectioncellLineNone                 = 0,
+    collectioncellLineLeft                 = 1 << 0,
+    collectioncellLineTop                  = 1 << 1,
+    collectioncellLineRight                = 1 << 2,
+    collectioncellLineBottom               = 1 << 3
+};
 @interface TRUPortalCell : UICollectionViewCell
 @property (nonatomic,strong) TRUPortalModel *cellModel;
+@property (nonatomic,assign) collectioncellLine lineType;
 /// 0:默认cell，1左下角，2右下角
 //@property (nonatomic,assign) int cellType;
 @end

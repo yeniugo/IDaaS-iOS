@@ -41,13 +41,14 @@ static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENC
 //指纹/Face ID
 + (TRULoginAuthFingerType)getLoginAuthFingerType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    if ([[def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT] stringValue].length == 0) {
+    NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
+    if (temp1.length == 0) {
         int type = [[def objectForKey:TRULOGINAUTHTYPEFIGERKEY] integerValue];
         [self saveLoginAuthFingerType:type];
         [def removeObjectForKey:TRULOGINAUTHTYPEFIGERKEY];
         return type;
     }else{
-        NSString *key = [[def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT] stringValue];
+        NSString *key = [def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
         NSString *loginStr = [xindunsdk decryptText:key];
         return loginStr.intValue;
     }
@@ -62,13 +63,14 @@ static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENC
 //手势
 + (TRULoginAuthGesType)getLoginAuthGesType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    if ([[def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT] stringValue].length == 0) {
+    NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
+    if (temp1.length == 0) {
         int type = [[def objectForKey:TRULOGINAUTHTYPEGESKEY] integerValue];
         [self saveLoginAuthGesType:type];
         [def removeObjectForKey:TRULOGINAUTHTYPEGESKEY];
         return type;
     }else{
-        NSString *key = [[def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT] stringValue];
+        NSString *key = [def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT];
         NSString *loginStr = [xindunsdk decryptText:key];
         return loginStr.intValue;
     }

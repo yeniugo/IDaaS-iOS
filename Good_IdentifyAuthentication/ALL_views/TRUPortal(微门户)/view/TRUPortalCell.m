@@ -27,6 +27,9 @@
 //    [self.textlabel setLineBreakMode:NSLineBreakByWordWrapping];
     [self.textlabel setNumberOfLines:1];
     [self addSubview:self.textlabel];
+//    UIColor *lineColor = RGBCOLOR(211, 211, 211);
+//    self.contentView.layer.borderColor = lineColor.CGColor;
+//    self.contentView.layer.borderWidth = 1 / [UIScreen mainScreen].scale;
     return self;
 }
 
@@ -88,6 +91,72 @@
     }else{
         YCLog(@"取消选中cell");
     }
+}
+
+-(void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    
+    UIColor *lineColor = RGBCOLOR(211, 211, 211);
+//    if (self.lineType&collectioncellLineLeft) {
+//        CAShapeLayer *layer = [CAShapeLayer layer];
+//        layer.backgroundColor = [UIColor clearColor].CGColor;
+//        layer.lineWidth = 0.5;
+//        layer.borderWidth = 0.5;
+//        layer.strokeColor = lineColor.CGColor;
+//        layer.fillColor = nil;
+//        CGMutablePathRef path=CGPathCreateMutable();
+//
+//        CGPathMoveToPoint(path, NULL, 0.5, 0);
+//        CGPathAddLineToPoint(path, NULL, 0, rect.size.height);
+//        layer.path = path;
+//        [self.contentView.layer addSublayer:layer];
+//        CGPathRelease(path);
+//    }
+//    if (self.lineType&collectioncellLineTop) {
+//        CAShapeLayer *layer = [CAShapeLayer layer];
+//        layer.backgroundColor = [UIColor clearColor].CGColor;
+//        //        let layer = CAShapeLayer()
+//        layer.lineWidth = 0.5;
+//        layer.borderWidth = 0.5;
+//        layer.strokeColor = lineColor.CGColor;
+//        CGMutablePathRef path=CGPathCreateMutable();
+//
+//        CGPathMoveToPoint(path, NULL, 0, 0);
+//        CGPathAddLineToPoint(path, NULL, rect.size.width, 0);
+//        layer.path = path;
+//        [self.contentView.layer addSublayer:layer];
+//        CGPathRelease(path);
+//    }
+//    if (self.lineType&collectioncellLineRight) {
+//        CAShapeLayer *layer = [CAShapeLayer layer];
+//        layer.backgroundColor = [UIColor clearColor].CGColor;
+//        //        let layer = CAShapeLayer()
+//        layer.lineWidth = 0.5;
+//        layer.borderWidth = 0.5;
+//        layer.strokeColor = lineColor.CGColor;
+//        CGMutablePathRef path=CGPathCreateMutable();
+//
+//        CGPathMoveToPoint(path, NULL, rect.size.width, 0);
+//        CGPathAddLineToPoint(path, NULL, rect.size.width, rect.size.height);
+//        layer.path = path;
+//        [self.contentView.layer addSublayer:layer];
+//        CGPathRelease(path);
+//    }
+//    if (self.lineType&collectioncellLineBottom) {
+//        CAShapeLayer *layer = [CAShapeLayer layer];
+//        layer.backgroundColor = [UIColor clearColor].CGColor;
+//        //        let layer = CAShapeLayer()
+//        layer.lineWidth = 0.5;
+//        layer.borderWidth = 0.5;
+//        layer.strokeColor = lineColor.CGColor;
+//        CGMutablePathRef path=CGPathCreateMutable();
+//
+//        CGPathMoveToPoint(path, NULL, 0, rect.size.height-0.5);
+//        CGPathAddLineToPoint(path, NULL, rect.size.width, rect.size.height);
+//        layer.path = path;
+//        [self.contentView.layer addSublayer:layer];
+//        CGPathRelease(path);
+//    }
 }
 
 @end

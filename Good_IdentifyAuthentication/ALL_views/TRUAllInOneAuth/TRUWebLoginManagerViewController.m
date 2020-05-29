@@ -13,6 +13,10 @@
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"
 #import "NSDictionary+NULL.h"
+
+#define SINGLE_LINE_WIDTH          (1 / [UIScreen mainScreen].scale)
+#define SINGLE_LINE_ADJUST_OFFSET  ((1 / [UIScreen mainScreen].scale) / 2)
+
 @interface TRUWebLoginManagerViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
@@ -20,6 +24,7 @@
 @property (nonatomic,strong) UIView *dataView;
 @property (nonatomic,strong) UIView *noneDataView;
 @property (nonatomic,copy) NSString *tgtId;
+@property (nonatomic,assign) CGFloat tableviewheight;
 @end
 
 @implementation TRUWebLoginManagerViewController
@@ -104,10 +109,17 @@
         CGContextFillRect(context, rect);
         
         CGMutablePathRef path = CGPathCreateMutable();
+    
+        CGFloat pixelAdjustOffset = 0;
+        if (((int)(1 * [UIScreen mainScreen].scale) + 1) % 2 == 0) {
+            pixelAdjustOffset = SINGLE_LINE_ADJUST_OFFSET;
+        }
+        CGFloat xPos = 140 - pixelAdjustOffset;
+        
         //2-1.设置起始点
-        CGPathMoveToPoint(path, NULL, 139, 70);
+        CGPathMoveToPoint(path, NULL, xPos, 70);
         //2-2.设置目标点
-        CGPathAddLineToPoint(path, NULL, 139, frame.size.height);
+        CGPathAddLineToPoint(path, NULL, xPos, frame.size.height);
     //    CGPathAddLineToPoint(path, NULL, 50, 200);
         
         CGPathCloseSubpath(path);
@@ -118,7 +130,7 @@
         
         CGContextSetRGBStrokeColor(context, 0.88, 0.88, 0.88,1.0);
         
-        CGContextSetLineWidth(context, 1.0f);
+    CGContextSetLineWidth(context, 1.0);
         CGContextDrawPath(context, kCGPathFillStroke);
         CGPathRelease(path);
         // 从上下文中获取图片
@@ -139,6 +151,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.dataArray.count*70>self.tableviewheight) {
+        return 70;
+    }else{
+        if (indexPath.row + 1 == self.dataArray.count) {
+            return self.tableviewheight - 70*(self.dataArray.count-1);
+        }else{
+            return 70;
+        }
+    }
     return 70.0;
 }
 
@@ -212,13 +233,14 @@
         [_dataView addSubview:headerView];
         
         CGFloat tableviewheight = SCREENH - kNavBarAndStatusBarHeight - topHeight -10 - kTabBarHeight - 33.5 + 7;
+        self.tableviewheight = tableviewheight;
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight + topHeight + 10 + 33.5, SCREENW, tableviewheight) style:UITableViewStylePlain];
         self.tableView.bounces = NO;
         [_dataView addSubview:self.tableView];
         [self.tableView registerClass:[TRUWebLoginManagerCell class] forCellReuseIdentifier:@"TRUWebLoginManagerCell"];
         //    [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalSmaillCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalSmaillCell"];
         self.tableView.backgroundColor = [UIColor clearColor];
-        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[TRUWebLoginManagerViewController createImageWithFrame:CGRectMake(0, 0, SCREENW, tableviewheight)]];
+//        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[TRUWebLoginManagerViewController createImageWithFrame:CGRectMake(0, 0, SCREENW, tableviewheight)]];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

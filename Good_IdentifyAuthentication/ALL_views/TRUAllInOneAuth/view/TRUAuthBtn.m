@@ -19,7 +19,7 @@
 //        self.titleLabel.textColor = RGBCOLOR(255, 255, 255);
         [self setTitleColor:RGBCOLOR(0, 150, 255) forState:UIControlStateNormal];
 //        self.titleLabel.frame = CGRectMake(20*PointWidthRatioX, 23*PointWidthRatioX, 292*PointWidthRatioX, 15*PointWidthRatioX);
-        [self setImage:[UIImage imageNamed:@"pushRightArrow"] forState:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"blueArrow"] forState:UIControlStateNormal];
 //        self.imageView.frame = CGRectMake(332*PointWidthRatioX, 23*PointWidthRatioX, 23*PointWidthRatioX, 15*PointWidthRatioX);
     }
     return self;

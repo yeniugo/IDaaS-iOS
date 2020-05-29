@@ -11,7 +11,7 @@
 
 @interface TRUhttpManager()
 @property (nonatomic,strong) AFHTTPSessionManager *manager;
-@property (nonatomic,assign) BOOL canRequest;
+//@property (nonatomic,assign) BOOL canRequest;
 @end
 
 @implementation TRUhttpManager
@@ -29,7 +29,7 @@
         // 设置接收的Content-Type
         sharedInstance.manager.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/xml", @"text/xml",@"text/html", @"application/json",@"text/plain",nil];
         
-        sharedInstance.canRequest = YES;
+//        sharedInstance.canRequest = YES;
     }
     return sharedInstance;
 }
@@ -37,19 +37,19 @@
 + (void)getCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResult:(void (^)(int errorno, id responseBody))onResult{
     TRUhttpManager *trumanager = [self share];
     AFHTTPSessionManager *manager = trumanager.manager;
-    if (!trumanager.canRequest) {
-        return;
-    }
+//    if (!trumanager.canRequest) {
+//        return;
+//    }
     
     [manager GET:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (!trumanager.canRequest) {
-            return;
-        }
+//        if (!trumanager.canRequest) {
+//            return;
+//        }
         onResult(0,responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (!trumanager.canRequest) {
-            return;
-        }
+//        if (!trumanager.canRequest) {
+//            return;
+//        }
         onResult(-5004, nil);
     }];
 }
@@ -62,14 +62,14 @@
     
     TRUhttpManager *trumanager = [self share];
     AFHTTPSessionManager *manager = trumanager.manager;
-    if (!trumanager.canRequest) {
-        return;
-    }
+//    if (!trumanager.canRequest) {
+//        return;
+//    }
     YCLog(@"url = %@",url);
     [manager POST:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (!trumanager.canRequest) {
-            return;
-        }
+//        if (!trumanager.canRequest) {
+//            return;
+//        }
         YCLog(@" response = %@",responseObject);
         if (onResult) {
             
@@ -90,9 +90,9 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (!trumanager.canRequest) {
-            return;
-        }
+//        if (!trumanager.canRequest) {
+//            return;
+//        }
         onResult(-5004, nil);
     }];
     
@@ -103,14 +103,14 @@
     
     TRUhttpManager *trumanager = [self share];
     AFHTTPSessionManager *manager = trumanager.manager;
-    if (!trumanager.canRequest) {
-        return;
-    }
+//    if (!trumanager.canRequest) {
+//        return;
+//    }
     YCLog(@"url = %@",url);
     [manager POST:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (!trumanager.canRequest) {
-            return;
-        }
+//        if (!trumanager.canRequest) {
+//            return;
+//        }
         YCLog(@" response = %@",responseObject);
         if (onResult) {
             
@@ -144,7 +144,7 @@
 
 + (void)cancelALLHttp{
     TRUhttpManager *trumanager = [self share];
-    trumanager.canRequest = NO;
+//    trumanager.canRequest = NO;
 //    [trumanager.manager.session getTasksWithCompletionHandler:^(NSArray<NSURLSessionDataTask *> * _Nonnull dataTasks, NSArray<NSURLSessionUploadTask *> * _Nonnull uploadTasks, NSArray<NSURLSessionDownloadTask *> * _Nonnull downloadTasks) {
 //        for (NSURLSessionDataTask *task in dataTasks) {
 //            [task cancel];
@@ -154,7 +154,7 @@
 
 + (void)startALLHttp{
     TRUhttpManager *trumanager = [self share];
-    trumanager.canRequest = NO;
+//    trumanager.canRequest = YES;
 }
 
 @end

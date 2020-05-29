@@ -127,6 +127,19 @@
 - (void)commonInit{
     
     switch (self.pushModel.displayFields.count) {
+        case 0:
+        {
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            self.firstLeftLB.text = @"登录账号";
+            self.accountLB.text = self.pushModel.username;
+            self.secondLeftLB.text = @"ip地址";
+            self.ipLB.text = self.pushModel.ip;
+            self.thirdLeftLB.text = @"登录地址";
+            self.localLB.text = self.pushModel.location;
+            self.fourthLeftLB.text = @"登录时间";
+            self.TimeLB.text = self.pushModel.dateTime;
+        }
+            break;
         case 4:
         {
             [self startCounter];

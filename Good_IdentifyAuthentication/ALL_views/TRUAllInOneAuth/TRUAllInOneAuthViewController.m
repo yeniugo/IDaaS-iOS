@@ -25,7 +25,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TRUAuthSacnViewController.h"
 #import "TRUQRShowViewController.h"
-#import "TRUPersonalViewController.h"
+#import "TRUPersonalViewController1.h"
 #import "TRUEnterAPPAuthView.h"
 #import <AFNetworking.h>
 #import "TRUCompanyAPI.h"
@@ -34,7 +34,7 @@
 #import "TRUTimeSyncUtil.h"
 #import "UIScrollView+UITouch.h"
 #import "TRUWebLoginManagerViewController.h"
-@interface TRUAllInOneAuthViewController ()
+@interface TRUAllInOneAuthViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) TRUBottomScanView *bottomScanView;
 @property (nonatomic,strong) CircleDynamicView *circleDynamicView;
@@ -287,7 +287,7 @@ static double dytime = 0.0;
 }
 
 - (void)rightBarButtonClick{
-    TRUPersonalViewController *vc = [[TRUPersonalViewController alloc] init];
+    TRUPersonalViewController1 *vc = [[TRUPersonalViewController1 alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -316,15 +316,19 @@ static double dytime = 0.0;
     __weak typeof(self) weakSelf = self;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.delegate = self;
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     scrollView.backgroundColor = DefaultGreenColor;
-    scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
         [weakSelf getPushInfo];
         [weakSelf syncTime];
         [weakSelf.scrollView.mj_header endRefreshing];
     }];
+    header.stateLabel.textColor = [UIColor whiteColor];
+    header.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
+    scrollView.mj_header = header;
 //    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH - kNavBarAndStatusBarHeight);
     scrollView.contentSize = CGSizeMake(SCREENW, SCREENH - kNavBarAndStatusBarHeight);
@@ -1063,6 +1067,14 @@ static NSInteger pushCount = NSIntegerMax;
         }
     }
     return [a1 count] < [a2 count];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint offset = scrollView.contentOffset;
+    if (offset.y >= 0) {
+        offset.y = 0;
+    }
+    scrollView.contentOffset = offset;
 }
 /*
 #pragma mark - Navigation

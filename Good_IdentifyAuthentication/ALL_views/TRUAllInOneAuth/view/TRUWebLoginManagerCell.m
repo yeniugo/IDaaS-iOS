@@ -37,14 +37,14 @@
         self.systemLB.font = [UIFont systemFontOfSize:14.0];
         self.systemLB.frame = CGRectMake(160, 11.5, SCREENW - 160 - 30, 20);
         [self.contentView addSubview:self.systemLB];
-        self.verticalLine = [[UIView alloc] initWithFrame:CGRectMake(138.5, 26, 2, 44)];
+        self.verticalLine = [[UIView alloc] initWithFrame:CGRectMake(140, 26, 1, 44)];
         self.verticalLine.backgroundColor = [UIColor colorWithRed:0.898 green:0.898 blue:0.898 alpha:1.0];
         [self.contentView addSubview:self.verticalLine];
-        self.bottomCircle = [[UIView alloc] initWithFrame:CGRectMake(135.5-3,12, 14, 14)];
+        self.bottomCircle = [[UIView alloc] initWithFrame:CGRectMake(140.5-7-1,12, 14, 14)];
         self.bottomCircle.layer.cornerRadius = 7;
         self.bottomCircle.backgroundColor = RGBACOLOR(0, 150, 255, 0.4);
         [self.bottomCircle.layer masksToBounds];
-        self.topCircle = [[UIView alloc] initWithFrame:CGRectMake(135, 15, 8, 8)];
+        self.topCircle = [[UIView alloc] initWithFrame:CGRectMake(140.5-4-1, 15, 8, 8)];
         self.topCircle.layer.cornerRadius = 4;
         self.topCircle.backgroundColor = RGBACOLOR(0, 150, 255, 1.0);
         [self.topCircle.layer masksToBounds];
@@ -80,9 +80,9 @@
 //        self.topCircle.hidden = NO;
 //    }
     if (self.isFirst) {
-        self.verticalLine.frame = CGRectMake(138.5, 26, 2, 44);
+        self.verticalLine.frame = CGRectMake(138.5, 26, 2, self.height - (70-44));
     }else{
-        self.verticalLine.frame = CGRectMake(138.5, 0, 2, 70);
+        self.verticalLine.frame = CGRectMake(138.5, 0, 2, self.frame.size.height);
     }
     
 }

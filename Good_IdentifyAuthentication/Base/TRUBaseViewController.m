@@ -322,7 +322,7 @@
 }
 - (void)deal9008Error{
     DDLogWarn(@"接口9008解绑");
-    [TRUhttpManager cancelALLHttp];
+//    [TRUhttpManager cancelALLHttp];
     
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"密钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -508,8 +508,8 @@ static const char TRUHUDKey = '\0';
 
 - (void)sendMail{
     if (![MFMailComposeViewController canSendMail]) {
-        [self showHudWithText:@"请设置好系统邮件账户"];
-        [self hideHudDelay:2.0];
+//        [self showHudWithText:@"请设置好系统邮件账户"];
+//        [self hideHudDelay:2.0];
         return;
     }
     NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

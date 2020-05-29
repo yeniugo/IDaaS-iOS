@@ -57,12 +57,14 @@
         self.scanBtn = scanBtn;
         [scanBtn addTarget:self action:@selector(scanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         UIImageView *scanIcon = [[UIImageView alloc] init];
-        scanIcon.image = [UIImage imageNamed:@"scanBlue"];
+        scanIcon.image = [UIImage imageNamed:@"abctest"];
         scanIcon.frame = CGRectMake(0, 0, 32*PointWidthRatioX, 32*PointWidthRatioX);
         [scanBtn addSubview:scanIcon];
         [scanIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(scanBtn);
             make.top.equalTo(scanBtn.mas_top).with.offset(0.25*h);
+//            make.width.equalTo(@(32*PointWidthRatioX));
+//            make.height.equalTo(@(32*PointWidthRatioX));
         }];
         self.scanIcon = scanIcon;
         UILabel *scanLabel = [[UILabel alloc] init];

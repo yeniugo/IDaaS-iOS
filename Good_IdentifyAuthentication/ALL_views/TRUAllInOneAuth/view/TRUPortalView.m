@@ -15,7 +15,8 @@
 #import "TRUPortalTitleView.h"
 #import "TRUAuthBtn.h"
 #import "MJRefresh.h"
-@interface TRUPortalView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+#define PixelValue  (1/[UIScreen mainScreen].scale)
+@interface TRUPortalView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong) UICollectionView *portalView;
 @property (nonatomic,strong) UIView *blankview;
 @property (nonatomic,strong) TRUAuthBtn *authBtn;
@@ -28,10 +29,12 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc]init];
+        flow.sectionInset = UIEdgeInsetsMake(1,0,0,0);
         
         UICollectionView *portalView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flow];
         portalView.contentInset = UIEdgeInsetsMake(10, 10, 0, 10);
         portalView.backgroundColor = [UIColor clearColor];
+        
         [self addSubview:portalView];
         CGFloat header_y = 55 * PointWidthRatioX;
         // CGFloat top, left, bottom, right;
@@ -45,9 +48,8 @@
         self.portalView.dataSource = self;
         [portalView registerClass:[TRUPortalCell class] forCellWithReuseIdentifier:@"TRUPortalCell"];
         
-        flow.minimumInteritemSpacing = 0;
-        flow.minimumLineSpacing = 0;
-        [self addSubview:portalView];
+        flow.minimumInteritemSpacing = 1;
+        flow.minimumLineSpacing = 1;
         __weak typeof(self) weakSelf = self;
 //        portalView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //            if (weakSelf.refreshBlock) {
@@ -75,9 +77,15 @@
     }
 }
 
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+//    YCLog(@"section = %ld",section);
+//    return UIEdgeInsetsMake(1/[UIScreen mainScreen].scale,1/[UIScreen mainScreen].scale,1/[UIScreen mainScreen].scale,1/[UIScreen mainScreen].scale);
+//}
+
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *portalCellindex = @"TRUPortalCell";
     TRUPortalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:portalCellindex forIndexPath:indexPath];
+    
     cell.cellModel = self.dataArray[indexPath.row];
 //    if (self.dataArray.count > indexPath.row + 1) {
 //        cell.cellModel = self.dataArray[indexPath.row];
@@ -88,6 +96,23 @@
 //        cell.cellType = 2;
 //    }else{
 //        cell.cellType = 0;
+//    }
+    
+//    cell.lineType = collectioncellLineRight | collectioncellLineTop;
+//    if (indexPath.item % 3 == 0) {
+//        cell.lineType = collectioncellLineLeft | collectioncellLineRight | collectioncellLineTop;
+//    }
+//    if (self.dataArray.count<4) {
+//        cell.lineType = collectioncellLineRight | collectioncellLineTop | collectioncellLineBottom;
+//        if (indexPath.item % 3 == 0) {
+//            cell.lineType = collectioncellLineLeft | collectioncellLineRight | collectioncellLineTop | collectioncellLineBottom;
+//        }
+//    }
+//    if ((self.dataArray.count>3)&&(indexPath.item>self.dataArray.count-4)) {
+//        cell.lineType = collectioncellLineRight | collectioncellLineTop | collectioncellLineBottom;
+//        if (indexPath.item % 3 == 0) {
+//            cell.lineType = collectioncellLineLeft | collectioncellLineRight | collectioncellLineTop | collectioncellLineBottom;
+//        }
 //    }
     return cell;
 }
@@ -101,7 +126,18 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREENW-20.0)/3, (SCREENW-20.0)/3);
+//    if (indexPath.row % 3 == 1) {
+//        return CGSizeMake((SCREENW-20.0)/3, (SCREENW-20.0)/3);
+//    }
+//    CGFloat originalWidth = SCREENW-20;
+//    NSInteger width = roundf((originalWidth-5*1/[UIScreen mainScreen].scale)/3.0); // 四舍五入
+//    if (indexPath.row % 3 == 2) {
+//        CGFloat firstWidth = originalWidth-width*3-5*1/[UIScreen mainScreen].scale;
+//        firstWidth = floorf(firstWidth)+1/[UIScreen mainScreen].scale;
+//        return CGSizeMake(firstWidth, firstWidth);
+//    }
+//    return CGSizeMake(width, width);
+    return CGSizeMake(((SCREENW - 2 -20.0)/3), ((SCREENW - 2 - 20.0)/3));
 }
 
 
@@ -113,7 +149,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    CGSize size = CGSizeMake(SCREENW, 44 * PointWidthRatioX);
+    CGSize size = CGSizeMake(SCREENW-2, 44 * PointWidthRatioX);
     return size;
 }
 
@@ -127,6 +163,7 @@
 //        [collectionView registerNib:[UINib nibWithNibName:@"HeaderReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderReusableView"];
         [collectionView registerClass:[TRUPortalTitleView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TRUPortalTitleView"];
         TRUPortalTitleView *tempHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TRUPortalTitleView" forIndexPath:indexPath];
+        
         reusableView = tempHeaderView;
     } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         // 底部视图

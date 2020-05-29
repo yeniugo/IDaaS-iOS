@@ -27,11 +27,11 @@
         titleLB.font = [UIFont systemFontOfSize:14*PointWidthRatioX];
         self.titleLB = titleLB;
         
-        UIView *lineView = [[UIView alloc] init];
-        
-        [self addSubview:lineView];
-        lineView.backgroundColor = RGBCOLOR(247, 249, 250);
-        self.lineView = lineView;
+//        UIView *lineView = [[UIView alloc] init];
+//
+//        [self addSubview:lineView];
+//        lineView.backgroundColor = RGBCOLOR(247, 249, 250);
+//        self.lineView = lineView;
         
         
     }

@@ -505,7 +505,7 @@
     TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     [nav setNavBarColor:DefaultNavColor];
-    [TRUhttpManager startALLHttp];
+//    [TRUhttpManager startALLHttp];
     self.window.rootViewController = nav;
 }
 - (void)changeRootVC{
@@ -550,7 +550,7 @@
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     nav.navigationBarHidden = YES;
     self.window.rootViewController = nav;
-    [TRUhttpManager startALLHttp];
+//    [TRUhttpManager startALLHttp];
 }
 #pragma mark 返回原APP
 - (void)back2SoureAPP{

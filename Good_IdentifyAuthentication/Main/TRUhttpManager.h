@@ -19,6 +19,6 @@
 
 + (void)sendCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResultWithMessage:(void (^)(int errorno, id responseBody,NSString *message))onResult;
 
-+ (void)cancelALLHttp;
-+ (void)startALLHttp;
+//+ (void)cancelALLHttp;
+//+ (void)startALLHttp;
 @end

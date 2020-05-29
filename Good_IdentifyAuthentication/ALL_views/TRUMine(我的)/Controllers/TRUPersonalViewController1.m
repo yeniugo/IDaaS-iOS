@@ -6,7 +6,7 @@
 //  Copyright © 2018年 zyc. All rights reserved.
 //
 
-#import "TRUPersonalViewController.h"
+#import "TRUPersonalViewController1.h"
 #import "TRUPersonalBigCell.h"
 #import "TRUPersonalSmaillCell.h"
 #import "TRUUserAPI.h"
@@ -26,25 +26,37 @@
 //#import "TrusfortDevId.h"
 #import "TRUAPPLogIdentifyController.h"
 #import "TRUMailManagerViewController.h"
-@interface TRUPersonalViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TRUPersonalViewController1 ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//图标
+@property (nonatomic,strong) UIView *topView;
+//@property (nonatomic,strong) UIView *bottomView;
 @end
 
-@implementation TRUPersonalViewController
+@implementation TRUPersonalViewController1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self syncUserInfo];
-    self.view.backgroundColor = DefaultGreenColor;
-    
+//    self.view.backgroundColor = DefaultGreenColor;
+//    UIScrollView *scrollView = [[UIScrollView alloc] init];
+//    scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kNavBarAndStatusBarHeight);
+//    scrollView.showsVerticalScrollIndicator = NO;
+//    scrollView.backgroundColor = DefaultGreenColor;
+//    scrollView.contentSize = CGSizeMake(SCREENW, SCREENH-kNavBarAndStatusBarHeight);
+//    [self.view addSubview:scrollView];
     [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultGreenColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     TRUBaseNavigationController *vc = self.navigationController;
     self.leftItemBtn = [vc changeToWhiteBtn];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemBtn];
     self.title = @"我的";
+    
+    self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, 10)];
+    self.topView.backgroundColor = DefaultGreenColor;
+    [self.view addSubview:self.topView];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStyleGrouped];
     self.tableView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH-kNavBarAndStatusBarHeight);
     [self.view addSubview:self.tableView];
@@ -54,11 +66,16 @@
     self.tableView.backgroundView = nil;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//    self.tableView.multipleTouchEnabled = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.backgroundColor = RGBCOLOR(247, 249, 250);
-    self.tableView.bounces = NO;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    
+    self.tableView.bounces = YES;
+    
+    
 //    self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"linuxSSH"],@[@"PersonalAboutUS"]];
 //    self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"服务器账号管理"],@[@"关于我们"]];
 //    self.commitArray = @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceSettingViewController",@"TRUVoiceSettingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUSSHViewController"],@[@"TRUAboutUsViewController"]];
@@ -190,6 +207,13 @@
     [super viewWillAppear:animated];
     [self syncUserInfo];
     
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y<0) {
+        self.topView.height = -scrollView.contentOffset.y + 10;
+//        YCLog(@"%f",self.topView.height);
+    }
 }
 
 - (void)setSystemBarStyle{
