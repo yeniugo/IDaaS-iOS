@@ -155,7 +155,7 @@
         return 70;
     }else{
         if (indexPath.row + 1 == self.dataArray.count) {
-            return self.tableviewheight - 70*(self.dataArray.count-1);
+            return self.tableviewheight + 2/[UIScreen mainScreen].scale - 70*(self.dataArray.count-1);
         }else{
             return 70;
         }
@@ -240,16 +240,18 @@
         [self.tableView registerClass:[TRUWebLoginManagerCell class] forCellReuseIdentifier:@"TRUWebLoginManagerCell"];
         //    [self.tableView registerNib:[UINib nibWithNibName:@"TRUPersonalSmaillCell" bundle:nil] forCellReuseIdentifier:@"TRUPersonalSmaillCell"];
         self.tableView.backgroundColor = [UIColor clearColor];
+//        self.tableView.backgroundColor = [UIColor redColor];
 //        self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[TRUWebLoginManagerViewController createImageWithFrame:CGRectMake(0, 0, SCREENW, tableviewheight)]];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.tableFooterView = [UIView new];
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENH - kTabBarBottom - 40, SCREENW, kTabBarBottom + 40)];
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENH - kTabBarBottom - 49, SCREENW, kTabBarBottom + 49)];
+        int temp =  SCREENH - kTabBarBottom - 40 + 1/[UIScreen mainScreen].scale;
         footerView.backgroundColor = [UIColor whiteColor];
 //        UIButton *footerLB = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCREENW, 40)];
         UIButton *footerLB = [UIButton buttonWithType:UIButtonTypeCustom];
-        footerLB.frame = CGRectMake(0, 0, SCREENW, 40);
+        footerLB.frame = CGRectMake(0, 0, SCREENW, 49);
 //        footerLB.textAlignment = NSTextAlignmentCenter;
 //        footerLB.text = @"会话登出";
         [footerLB setTitle:@"会话登出" forState:UIControlStateNormal];
@@ -259,7 +261,7 @@
         footerLB.titleLabel.font = [UIFont systemFontOfSize: 14.0];
         [footerLB addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:footerLB];
-        UIView *footerLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENW, 1)];
+        UIView *footerLine = [[UIView alloc] initWithFrame:CGRectMake(0, -1/[UIScreen mainScreen].scale, SCREENW, 1/[UIScreen mainScreen].scale)];
         footerLine.backgroundColor = RGBCOLOR(229, 229, 229);
         [footerView addSubview:footerLine];
         [_dataView addSubview:footerView];

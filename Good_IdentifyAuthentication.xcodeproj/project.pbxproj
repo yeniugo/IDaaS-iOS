@@ -236,6 +236,7 @@
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
+		2D65F5E42485F8B20020CB98 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
@@ -271,6 +272,7 @@
 		2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
 		2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
+		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
 		2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */; };
 		2DAA278E230A700100B3A6C4 /* TRUBottomScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA278D230A700100B3A6C4 /* TRUBottomScanView.m */; };
@@ -288,7 +290,6 @@
 		2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */; };
 		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
 		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
-		2DCF84DF24502495009697A0 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
@@ -861,6 +862,7 @@
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
+				2D65F5E42485F8B20020CB98 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
@@ -2564,6 +2566,7 @@
 				2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */,
 				2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
+				2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */,
 				128D5CED1F7DDB4800753EE5 /* TRUDevicesManagerController.m in Sources */,
 				12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */,
 				12476A111FA18B41000055CB /* UIScrollView+MJExtension.m in Sources */,
@@ -2609,7 +2612,6 @@
 				2DFF36AD22B3AC2E00E300B9 /* TRUSSHAddViewController.m in Sources */,
 				12F45C8D1F7B8B7D00C89C4D /* TRUHomeButton.m in Sources */,
 				122AD7A21FA9A9E000E5963F /* YCAlertView.m in Sources */,
-				2DCF84DF24502495009697A0 /* TRUWebLoginManagerViewController.m in Sources */,
 				125633551F7A4B40007FF392 /* TRUMineUserInfoView.m in Sources */,
 				2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */,
 				12436A74210844710070F966 /* TRUGestureVerify2ViewController.m in Sources */,

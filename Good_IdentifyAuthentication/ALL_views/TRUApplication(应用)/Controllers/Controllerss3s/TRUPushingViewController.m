@@ -129,7 +129,7 @@
     switch (self.pushModel.displayFields.count) {
         case 0:
         {
-            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在登录【%@】",self.pushModel.appname];
             self.firstLeftLB.text = @"登录账号";
             self.accountLB.text = self.pushModel.username;
             self.secondLeftLB.text = @"ip地址";
@@ -182,7 +182,7 @@
                 }
                 
             }
-            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在登录【%@】",self.pushModel.appname];
             NSString *userName = self.pushModel.username;
             if (!userName || userName.length == 0) {
                 TRUUserModel *model = [TRUUserAPI getUser];
@@ -200,7 +200,7 @@
             break;
         case 5:
         {
-            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
+            self.titleAuthLB.text = [NSString stringWithFormat:@"您正在登录【%@】",self.pushModel.appname];
             for (int i = 0; i<5; i++) {
                 if (1) {
                     switch (i) {

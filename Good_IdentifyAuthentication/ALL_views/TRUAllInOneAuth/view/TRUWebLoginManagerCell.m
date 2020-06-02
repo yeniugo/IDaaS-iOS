@@ -80,9 +80,9 @@
 //        self.topCircle.hidden = NO;
 //    }
     if (self.isFirst) {
-        self.verticalLine.frame = CGRectMake(138.5, 26, 2, self.height - (70-44));
+        self.verticalLine.frame = CGRectMake(138.5+1, 26, 1, self.height - (70-44)+1);
     }else{
-        self.verticalLine.frame = CGRectMake(138.5, 0, 2, self.frame.size.height);
+        self.verticalLine.frame = CGRectMake(138.5+1, 0, 1, self.frame.size.height+1);
     }
     
 }
