@@ -63,7 +63,7 @@ static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENC
 //手势
 + (TRULoginAuthGesType)getLoginAuthGesType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
+    NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT];
     if (temp1.length == 0) {
         int type = [[def objectForKey:TRULOGINAUTHTYPEGESKEY] integerValue];
         [self saveLoginAuthGesType:type];

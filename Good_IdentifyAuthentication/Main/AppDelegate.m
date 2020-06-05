@@ -611,6 +611,10 @@
                         //[self application:self initWithOptions:nil];
                         
                     }else{
+                        NSString *userid = [TRUUserAPI getUser].userId;
+                        if (!userid.length || ![xindunsdk isUserInitialized:userid]){
+                            return NO;
+                        }
                         if ([TRUFingerGesUtil getLoginAuthFingerType]==TRULoginAuthFingerTypeNone&&[TRUFingerGesUtil getLoginAuthGesType]==TRULoginAuthGesTypeNone) {
     //                        [self application:self initWithOptions:nil];
                             
@@ -810,6 +814,10 @@
         default:
             break;
     }
+    NSString *userid = [TRUUserAPI getUser].userId;
+    if (!userid.length || ![xindunsdk isUserInitialized:userid]){
+        return;
+    }
     if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (1) {
@@ -952,6 +960,10 @@
             }
         };
         
+    }
+    NSString *userid = [TRUUserAPI getUser].userId;
+    if (!userid.length || ![xindunsdk isUserInitialized:userid]){
+        return;
     }
     if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone){
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -1195,7 +1207,7 @@
                 [self getTokenVC:1];
             }else if([tokenStr isEqualToString:@"getNetToken"]){
                 //self.fromThirdAwake = YES;
-                if (!userid || userid.length==0) {//没有激活
+                if (!userid.length || userid.length==0 || ![xindunsdk isUserInitialized:userid]) {//没有激活
                     //[self application:self initWithOptions:nil];
                     //[[UIApplication sharedApplication] openURL:@"trusfortcims://"];
 //                    [self application:self initWithOptions:nil];
@@ -1292,7 +1304,7 @@
         dispatchTime = 0.5;
     }
     NSString *userid = [TRUUserAPI getUser].userId;
-    if (!userid || userid.length==0) {
+    if (!userid || userid.length==0 || ![xindunsdk isUserInitialized:userid]) {
         //[self application:self initWithOptions:nil];
         //[[UIApplication sharedApplication] openURL:@"trusfortcims://"];
         //[self application:self initWithOptions:nil];
@@ -1486,6 +1498,10 @@
         return;
     }
     self.RemoteTokenStr = token;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    if (!userid.length || ![xindunsdk isUserInitialized:userid]){
+        return;
+    }
     if ([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone) {
         return;
     }
