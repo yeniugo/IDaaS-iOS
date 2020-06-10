@@ -42,7 +42,7 @@ static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENC
 + (TRULoginAuthFingerType)getLoginAuthFingerType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEFIGERKEYENCRYPT];
-    if (temp1.length == 0) {
+    if (temp1 == nil || temp1.length == 0) {
         int type = [[def objectForKey:TRULOGINAUTHTYPEFIGERKEY] integerValue];
         [self saveLoginAuthFingerType:type];
         [def removeObjectForKey:TRULOGINAUTHTYPEFIGERKEY];
@@ -64,7 +64,7 @@ static NSString *TRULOGINAUTHTYPEFIGERKEYENCRYPT = @"TRULOGINAUTHTYPEFIGERKEYENC
 + (TRULoginAuthGesType)getLoginAuthGesType{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSString *temp1 = [def objectForKey:TRULOGINAUTHTYPEGESKEYENCRYPT];
-    if (temp1.length == 0) {
+    if (temp1 == nil || temp1.length == 0) {
         int type = [[def objectForKey:TRULOGINAUTHTYPEGESKEY] integerValue];
         [self saveLoginAuthGesType:type];
         [def removeObjectForKey:TRULOGINAUTHTYPEGESKEY];
