@@ -40,7 +40,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.imageArray = @[@[@"PersonalFace",@"PersonalVoice"],@[@"PersonalSafe"],@[@"PersonalDevice"],@[@"PersonalAboutUS"]];
     self.titleArray = @[@[@"人脸信息",@"声纹信息"],@[@"APP安全验证"],@[@"设备管理"],@[@"版本信息"]];
-    self.commitArray =  @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceInitViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
+    self.commitArray =  @[@[@"TRUPersonalDetailsViewController"],@[@"TRUFaceVerifyViewController",@"TRUBuildingViewController"],@[@"TRUAPPLogIdentifyController"],@[@"TRUDevicesManagerController"],@[@"TRUAboutUsViewController"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -198,12 +198,12 @@
 //        self.title = titleStr;
     }
     UIViewController *pushVC = [[NSClassFromString(classStr) alloc] init];
-    if ([classStr isEqual:@"TRUFaceInitViewController"]) {
+    if ([classStr isEqual:@"TRUFaceVerifyViewController"]) {
         NSString *faceinfo = [TRUUserAPI getUser].faceinfo;
         if ([faceinfo isEqualToString:@"1"]) {
         }else{
         }
-        pushVC = [[NSClassFromString(@"TRUFaceInitViewController") alloc] init];
+        pushVC = [[NSClassFromString(@"TRUFaceVerifyViewController") alloc] init];
         TRUBaseNavigationController *nav = self.navigationController;
         nav.backBlock = ^{
 //            [weakSelf syncUserInfo];

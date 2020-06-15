@@ -44,7 +44,7 @@
     [self getDateCount];
     //请求当前请求数量
     [self getPushInfo];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:@"TRUEnterAPPAuthViewSuccess" object:nil];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAuthData) name:kRefresh3DataNotification object:nil];
@@ -104,6 +104,9 @@
                         [weakSelf.topImageView setAuthNumber:[dic[@"verifycounts"] integerValue]];
                     }
                 }
+            }else if (-5004 == errorno){
+                [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+                [weakSelf hideHudDelay:2.0];
             }
         }];
     }
@@ -151,6 +154,7 @@
             }else if (errorno == 0 && !responseBody){
 //                _topView.requestImgview.hidden = YES;
                 [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+                [weakSelf.authBtn setAuthNumber:0];
             }else if (-5004 == errorno){
                 [weakSelf showHudWithText:@"网络错误，稍后请重试"];
                 [weakSelf hideHudDelay:2.0];

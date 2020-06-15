@@ -578,6 +578,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void)onDetectSuccessWithImages:(NSArray *)images{
     YCLog(@"人脸检测成功");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"faceviewBack" object:nil];
 }
 
 
