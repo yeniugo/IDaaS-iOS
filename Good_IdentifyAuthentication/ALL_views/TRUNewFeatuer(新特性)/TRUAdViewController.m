@@ -9,7 +9,7 @@
 #import "TRUAdViewController.h"
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
-
+#import "AppDelegate.h"
 @interface TRUAdViewController ()
 
 @end
@@ -36,9 +36,32 @@
     }else{
         imageview.frame = [UIScreen mainScreen].bounds;
     }
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationInitialFinishedNotification:) name:EMMThirdPartyApplicationInitialFinishedNotification object:nil];
+//    [self performSelector:@selector(doInitialization) withObject:nil afterDelay:1.f];
     [self.view addSubview:imageview];
 }
+
+//- (void)doInitialization
+//{
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if ([appDelegate gotOpenUrlQuery] && [[EMMThirdPartyTools sharedThirdPartyTools] emmToken]) {
+//        [self applicationInitialFinishedNotification:nil];
+//        [appDelegate setGotOpenUrlQuery:NO];
+//    } else {
+//        [[EMMThirdPartyTools sharedThirdPartyTools] initializeTirdPartyApplication];
+//    }
+//}
+
+//- (void)applicationInitialFinishedNotification:(NSNotification *)nitification
+//{
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [appDelegate setGotOpenUrlQuery:NO];
+//    //  初始化完成，进入首页……
+//
+//    [appDelegate configRootBaseVCForApplication:[UIApplication sharedApplication] WithOptions:nil];
+//
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

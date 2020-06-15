@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #if TARGET_IPHONE_SIMULATOR
 #else
-#import <svnsdk/secbrowhttpprotocol.h>
+//#import <svnsdk/secbrowhttpprotocol.h>
 #endif
 @implementation TRUhttpManager
 
@@ -18,14 +18,9 @@
  * CIMS数据请求
  */
 + (void)sendCIMSRequestWithUrl:(NSString *)url withParts:(NSDictionary *)parts onResult:(void (^)(int errorno, id responseBody))onResult{
-#if TARGET_IPHONE_SIMULATOR
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-#else
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    configuration.protocolClasses = @[[SecBrowHttpProtocol class]];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-#endif
+
     manager.requestSerializer = [AFJSONRequestSerializer serializer]; // 上传JSON格式
     manager.responseSerializer = [AFJSONResponseSerializer serializer];//返回格式
     // 超时时间
@@ -56,7 +51,7 @@
         onResult(-5004, nil);
     }];
     
-    
+//    [[EMMTunnel p_sharedInstance] setTunnelAuthenticateSource:EMMTunnelAuthenticateSourceCoreService];
 }
 
 @end

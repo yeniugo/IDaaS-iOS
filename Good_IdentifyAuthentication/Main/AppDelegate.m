@@ -44,15 +44,15 @@
 #import "TRUSchemeTokenViewController.h"
 #if TARGET_IPHONE_SIMULATOR
 #else
-#import <SvnSdk/AnyOfficeSDK.h>
+//#import <SvnSdk/AnyOfficeSDK.h>
 #endif
 #if TARGET_IPHONE_SIMULATOR
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 #else
-@interface AppDelegate ()<JPUSHRegisterDelegate,NetChangeCallbackDelegate, TunnelStatusChangeDelegate,LoginDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate>
 #endif
 
-//@property (nonatomic, copy) NSString *soureSchme;
+@property (nonatomic, assign) int proxyServerPort;
 @end
 
 @implementation AppDelegate
@@ -90,20 +90,23 @@
 //        }
 //    }
     
-    NSString *isss = [xindunsdk getDeviceId];
-    
-    NSDictionary *dic = [xindunsdk getDeviceInfo];
-    YCLog(@"dic = ")
+//    NSString *isss = [xindunsdk getDeviceId];
+//
+//    NSDictionary *dic = [xindunsdk getDeviceInfo];
+//    YCLog(@"dic = ")
 #if TARGET_IPHONE_SIMULATOR
 #else
-    [self initAnyOffice];
+//    [self initAnyOffice];
+    
 #endif
+    
+//    [[EMMThirdPartyTools sharedThirdPartyTools] setEMMClientBundleIdentifier:@"com.leagsoft.emm"];
     //初始化MSC
     [self initMSC];
     //初始化Bugly
     [self initBugly];
     //更新公司信息
-    [self requestSPinfo];
+//    [self requestSPinfo];
     //检查版本更新
 //    [self checkVersion];
     
@@ -115,10 +118,7 @@
     self.window.rootViewController = [[TRUAdViewController alloc] init];
     [self.window makeKeyAndVisible];
     NSString *imgUrlStr = [TRUCompanyAPI getCompany].start_up_img_url;
-    //    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];
-    //    [launchImageView yy_setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholder:nil];
-    //    [self.window addSubview:launchImageView];
-    //    [self.window bringSubviewToFront:launchImageView];
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self configRootBaseVCForApplication:application WithOptions:launchOptions];
     });
@@ -136,113 +136,15 @@
             return NO;
         }
     }
-    
-    
-    
     return YES;
 }
+
+
 
 - (void)initBugly{
     [Bugly startWithAppId:@"70711601ce"];
 }
-#if TARGET_IPHONE_SIMULATOR
-#else
-- (void)initAnyOffice{
 
-    //设置SDK日志路径
-    NSArray* tmpPathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* tmpDocumentsDir = [tmpPathArray objectAtIndex:0];
-    [SDKContext setLogParam:tmpDocumentsDir logLevel:4];
-    //设置SDK工作路径
-    NSString *logpath = [NSString stringWithFormat:@"%@/%@",tmpDocumentsDir,@"AnyofficesdkLog"];
-    //初始化SDK
-    [[SDKContext getInstance] init:logpath];
-    
-    NSString *gatewayIP=@"mdm.bankalliance.com.cn";
-//    NSString *username=@"whh";
-//    NSString *password=@"Aa111111!@#";
-    //注册网络状态通知
-    [[NetStatusManager getInstance] initWithDelegate:self];
-
-    //设置登录验证参数
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    LoginParam *loginParam = [[LoginParam alloc] initWithServiceType:bundleIdentifier andUseSecTrans:YES];
-    //设置网关地址和用户信息
-    [loginParam setInternetAddress:gatewayIP];
-    
-//    __weak typeof(self) weakSelf = self;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        AnyOfficeUserInfo* userInfo = [[LoginAgent getInstance] getUserInfo];
-//        [weakSelf showMessageWithUserAndPassword:[NSString stringWithFormat:@"username:%@,password:%@",userInfo.userName,userInfo.password]];
-//    });
-    loginParam.userInfo =  [[LoginAgent getInstance] getUserInfo];
-    //设置前台登录
-    loginParam.loginBackgroud = YES;
-    //设置开启自动登录
-    loginParam.loginType = AUTO_LOGIN_ENABLE;
-    //关闭服务器校验
-    loginParam.authGateway = NO;
-    //登录验证
-    [[LoginAgent getInstance] loginAsync:loginParam delegate:self];
-
-}
-
-- (void)showMessageWithUserAndPassword:(NSString *)string{
-    UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"anyoffice账号密码" message:[NSString stringWithFormat:@"%@",string] preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [alertVC addAction:confrimAction];
-    UIViewController *controler = self.window.rootViewController;
-    [controler presentViewController:alertVC animated:YES completion:nil];
-}
-
-////实现隧道状态代理
--(void)onNetChangedWithOldStatus:(NET_STATUS_EN)oldStatus newStatus:(NET_STATUS_EN)newStatus errCode:(int)error
-{
-    YCLog(@"NetChanged old status:%d, new status:%d, errorcode:%d", oldStatus, newStatus, error);
-    switch (newStatus) {
-        case NET_STATUS_OFFLINE:
-
-            break;
-        case NET_STATUS_ONLINE:
-
-            break;
-        case NET_STATUS_CONNECTING:
-        {
-
-
-        }
-            break;
-
-    }
-}
-//
-- (void)onTunnelStatusChangedWithOldStatus:(NET_STATUS_EN)oldStatus newStatus:(NET_STATUS_EN)newStatus errCode:(int)error{
-    YCLog(@"TunnelStatusChanged old status:%d, new status:%d, errorcode:%d", oldStatus, newStatus, error);
-}
-
-//实现登录结果代理
--(void)receiveGatewayAuthenticationResult:(int)result
-{
-    if(result == SVN_OK)
-    {
-        //        [HAMLogOutputWindow printLog:@"登录VPN成功"];
-        //        [self showHudWithText:@"登录VPN成功"];
-        //        [self hideHudDelay:2.0];
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken , ^{
-            [NSURLProtocol registerClass:[SecBrowHttpProtocol class]];
-            
-        });
-    }
-    else{
-
-    }
-}
-#endif
 - (void)creatShortcutItem{
     CGFloat sysversion = [[[UIDevice currentDevice] systemVersion] floatValue];
     if (sysversion < 9.0) return;
@@ -697,8 +599,24 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
-    
+//    NSMutableDictionary *messageInfo = nil;
+//    if ([[EMMThirdPartyTools sharedThirdPartyTools] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation remoteNotification:&messageInfo]) {
+//        return YES;
+//    }
     return YES;
+}
+
+- (void)initialGateway{
+//    [[EMMProxyUtils sharedInstance] startProxyServerWithCompletion:^(NSError *error) {
+//        if (error) {
+//
+//        }else{
+//            _proxyServerPort = [[EMMProxyUtils sharedInstance] portForBusinessServerHost:@"172.24.180.66" port:8381];
+//            if (_proxyServerPort == 0) {
+//                return;
+//            }
+//        }
+//    }];
 }
 
 #pragma mark 显示拉APP未激活信息
@@ -953,7 +871,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 #if TARGET_IPHONE_SIMULATOR
 #else
-    [[SDKContext getInstance] applicationDidBecomeActive];
+//    [[SDKContext getInstance] applicationDidBecomeActive];
 #endif
 }
 

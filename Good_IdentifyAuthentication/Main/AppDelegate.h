@@ -18,5 +18,8 @@ static BOOL isProduction = NO;
 //@property (assign, nonatomic) BOOL isFirstLogin;//是否为第一次登陆,默认值为NO
 @property (assign, nonatomic) int thirdAwakeTokenStatus;//第三方唤起状态（token调用）
 @property (assign, nonatomic) BOOL isNeedPush;//登录控制界面是否需要push
+
+//@property (assign, nonatomic) BOOL gotOpenUrlQuery;
+//- (void)configRootBaseVCForApplication:(UIApplication *)application WithOptions:(NSDictionary *)launchOptions;
 @end
 
