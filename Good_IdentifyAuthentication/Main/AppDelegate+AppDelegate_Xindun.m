@@ -32,7 +32,7 @@
         kServerUrl = cimsurl;
     }else{
         //测试环境
-//        kServerUrl = @"http://192.168.1.99:8000/cims";
+        //kServerUrl = @"http://192.168.1.99:8000/cims";
         //kServerUrl = @"http://192.168.1.115:8000/cims";
         //生产环境 http://xd3.trusfort.com:8000/cims
         kServerUrl = @"http://xd3.trusfort.com:8000/cims";
