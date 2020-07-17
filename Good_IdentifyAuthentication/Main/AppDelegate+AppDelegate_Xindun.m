@@ -18,10 +18,10 @@
 #if TARGET_IPHONE_SIMULATOR
     //http://192.168.1.215:8100/cims
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://whxd1.trusfort.com:8100/cims" forKey:@"CIMSURL"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.97:8100/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://219.232.216.110:8004" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [TRUCompanyAPI getCompany];
-    companymodel.activation_mode = @"3";
+    companymodel.activation_mode = @"2";
     [TRUCompanyAPI saveCompany:companymodel];
 #endif
 

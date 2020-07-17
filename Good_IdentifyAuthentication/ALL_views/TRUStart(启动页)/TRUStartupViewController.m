@@ -39,7 +39,7 @@
     self.view.backgroundColor = DefaultGreenColor;
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"welcomeicon.png"];
+    imageview.image = [UIImage imageNamed:@"welcomeicon1.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
@@ -53,9 +53,9 @@
     }];
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
-        make.width.equalTo(@(120.5));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
+        make.height.equalTo(@(150));
+        make.width.equalTo(@(150));
+        make.bottom.equalTo(showLable.mas_top).with.offset(30);
     }];
     [self fetchData];
 }
