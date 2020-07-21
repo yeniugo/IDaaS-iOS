@@ -13,7 +13,7 @@
 #import "TRUNewFeatuerViewController.h"
 #import "AppDelegate.h"
 #import "AppDelegate+AppDelegate_Xindun.h"
-#import "TRUBaseTabBarController.h"
+//#import "TRUBaseTabBarController.h"
 #import "TRUBaseNavigationController.h"
 #import "gesAndFingerNVController.h"
 
@@ -1588,12 +1588,12 @@
     UIViewController *rootVC = self.window.rootViewController;
     if (flag == true) {
         //用户已激活 
-        if ([rootVC isKindOfClass:[TRUBaseTabBarController class]]) {
-            TRUBaseTabBarController *tabVC = (TRUBaseTabBarController *)rootVC;
-            if ([tabVC respondsToSelector:@selector(scanQRButtonClick)]) {
-                [tabVC performSelector:@selector(scanQRButtonClick) withObject:nil];
-            }
-        }
+//        if ([rootVC isKindOfClass:[TRUBaseTabBarController class]]) {
+//            TRUBaseTabBarController *tabVC = (TRUBaseTabBarController *)rootVC;
+//            if ([tabVC respondsToSelector:@selector(scanQRButtonClick)]) {
+//                [tabVC performSelector:@selector(scanQRButtonClick) withObject:nil];
+//            }
+//        }
     }else{
         //用户未激活
     }

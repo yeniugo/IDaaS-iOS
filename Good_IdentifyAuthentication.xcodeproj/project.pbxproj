@@ -70,7 +70,6 @@
 		12409F861F8F40DE000D342D /* NSString+Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F851F8F40DE000D342D /* NSString+Regular.m */; };
 		12409F891F8F40FF000D342D /* TRUTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F881F8F40FF000D342D /* TRUTextField.m */; };
 		12409F8C1F8F411C000D342D /* TRUTimerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F8B1F8F411C000D342D /* TRUTimerButton.m */; };
-		12409F911F8F43CA000D342D /* TRUApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F901F8F43CA000D342D /* TRUApplicationViewController.m */; };
 		12409F951F8F48A1000D342D /* TRUApplictionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F931F8F48A1000D342D /* TRUApplictionCell.m */; };
 		12409F961F8F48A1000D342D /* TRUApplictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12409F941F8F48A1000D342D /* TRUApplictionCell.xib */; };
 		12409F9A1F8F4B22000D342D /* TRULoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12409F981F8F4B22000D342D /* TRULoginViewController.m */; };
@@ -118,7 +117,6 @@
 		1251EA172087197000D4CB65 /* TRUCheckBingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1251EA152087197000D4CB65 /* TRUCheckBingController.m */; };
 		1251EA182087197000D4CB65 /* TRUCheckBingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1251EA162087197000D4CB65 /* TRUCheckBingController.xib */; };
 		1251EA1A208725C800D4CB65 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1251EA19208725C800D4CB65 /* AudioToolbox.framework */; };
-		125633181F79E0C5007FF392 /* TRUBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 125633171F79E0C5007FF392 /* TRUBaseTabBarController.m */; };
 		125633241F7A21BD007FF392 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633231F7A21BD007FF392 /* CFNetwork.framework */; };
 		125633261F7A21CD007FF392 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633251F7A21CD007FF392 /* CoreFoundation.framework */; };
 		125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125633271F7A21DA007FF392 /* CoreTelephony.framework */; };
@@ -142,7 +140,6 @@
 		12749EB61FC7E8FE00183EB4 /* TRUPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12749EB31FC7E8FD00183EB4 /* TRUPushViewController.xib */; };
 		12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EB51FC7E8FE00183EB4 /* TRUPushViewController.m */; };
 		12749EBD1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBC1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m */; };
-		12749EC01FC7EAB700183EB4 /* TRUAuthorizedWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EBF1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.m */; };
 		12749EC41FC7EAC100183EB4 /* TRUActiveAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12749EC21FC7EAC000183EB4 /* TRUActiveAppViewController.xib */; };
 		12749EC51FC7EAC100183EB4 /* TRUActiveAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12749EC31FC7EAC100183EB4 /* TRUActiveAppViewController.m */; };
 		128208761F98A341004DD5C6 /* HUIPatternLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 128208751F98A341004DD5C6 /* HUIPatternLockView.m */; };
@@ -198,7 +195,6 @@
 		12F45C7B1F7B353600C89C4D /* TRUBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C7A1F7B353600C89C4D /* TRUBaseModel.m */; };
 		12F45C7E1F7B355200C89C4D /* TRUUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C7D1F7B355200C89C4D /* TRUUserInfoModel.m */; };
 		12F45C811F7B3D9100C89C4D /* TRUMineMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C801F7B3D9100C89C4D /* TRUMineMenuView.m */; };
-		12F45C841F7B5E0000C89C4D /* TRUApplicationTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C831F7B5E0000C89C4D /* TRUApplicationTopView.m */; };
 		12F45C8D1F7B8B7D00C89C4D /* TRUHomeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F45C8C1F7B8B7D00C89C4D /* TRUHomeButton.m */; };
 		12F4D6342065108200D6B2E0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F4D6332065108200D6B2E0 /* AssetsLibrary.framework */; };
 		12F542C71F9059E9005AAEFC /* TRUDynamicCodeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F542C61F9059E9005AAEFC /* TRUDynamicCodeLabel.m */; };
@@ -224,10 +220,10 @@
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
 		2D32BB1622B1045A00BE3169 /* TRUSSHViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D32BB1422B1045A00BE3169 /* TRUSSHViewCell.xib */; };
-		2D32E997228AA95E0032A95A /* TRUPortalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E98D228AA95E0032A95A /* TRUPortalViewController.m */; };
 		2D32E998228AA95E0032A95A /* TRUPortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E98F228AA95E0032A95A /* TRUPortalModel.m */; };
 		2D32E999228AA95E0032A95A /* TRUPortalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E993228AA95E0032A95A /* TRUPortalHeaderView.m */; };
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
+		2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
 		2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */; };
@@ -236,7 +232,6 @@
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
-		2D65F5E42485F8B20020CB98 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
@@ -268,10 +263,10 @@
 		2D96CEB824333CF2009080DC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAE24333CF1009080DC /* ioapi.c */; };
 		2D96CEB924333CF2009080DC /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAF24333CF1009080DC /* mztools.c */; };
 		2D96CEBA24333CF2009080DC /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEB524333CF1009080DC /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2D96CECC24343109009080DC /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CECB24343109009080DC /* libxindunsdk.a */; };
 		2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
 		2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
+		2DA0388024A9984300AAD8A8 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */; };
 		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
 		2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */; };
@@ -423,8 +418,6 @@
 		12409F881F8F40FF000D342D /* TRUTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTextField.m; sourceTree = "<group>"; };
 		12409F8A1F8F411C000D342D /* TRUTimerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTimerButton.h; sourceTree = "<group>"; };
 		12409F8B1F8F411C000D342D /* TRUTimerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTimerButton.m; sourceTree = "<group>"; };
-		12409F8F1F8F43CA000D342D /* TRUApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUApplicationViewController.h; sourceTree = "<group>"; };
-		12409F901F8F43CA000D342D /* TRUApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUApplicationViewController.m; sourceTree = "<group>"; };
 		12409F921F8F48A1000D342D /* TRUApplictionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUApplictionCell.h; sourceTree = "<group>"; };
 		12409F931F8F48A1000D342D /* TRUApplictionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUApplictionCell.m; sourceTree = "<group>"; };
 		12409F941F8F48A1000D342D /* TRUApplictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRUApplictionCell.xib; sourceTree = "<group>"; };
@@ -505,8 +498,6 @@
 		1251EA152087197000D4CB65 /* TRUCheckBingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUCheckBingController.m; sourceTree = "<group>"; };
 		1251EA162087197000D4CB65 /* TRUCheckBingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUCheckBingController.xib; sourceTree = "<group>"; };
 		1251EA19208725C800D4CB65 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		125633161F79E0C5007FF392 /* TRUBaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUBaseTabBarController.h; sourceTree = "<group>"; };
-		125633171F79E0C5007FF392 /* TRUBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUBaseTabBarController.m; sourceTree = "<group>"; };
 		125633231F7A21BD007FF392 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		125633251F7A21CD007FF392 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		125633271F7A21DA007FF392 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -542,8 +533,6 @@
 		12749EB51FC7E8FE00183EB4 /* TRUPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPushViewController.m; sourceTree = "<group>"; };
 		12749EBB1FC7EAAC00183EB4 /* TRUSessionManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUSessionManagerViewController.h; sourceTree = "<group>"; };
 		12749EBC1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSessionManagerViewController.m; sourceTree = "<group>"; };
-		12749EBE1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUAuthorizedWebViewController.h; sourceTree = "<group>"; };
-		12749EBF1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUAuthorizedWebViewController.m; sourceTree = "<group>"; };
 		12749EC11FC7EAC000183EB4 /* TRUActiveAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUActiveAppViewController.h; sourceTree = "<group>"; };
 		12749EC21FC7EAC000183EB4 /* TRUActiveAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRUActiveAppViewController.xib; sourceTree = "<group>"; };
 		12749EC31FC7EAC100183EB4 /* TRUActiveAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUActiveAppViewController.m; sourceTree = "<group>"; };
@@ -643,8 +632,6 @@
 		12F45C7D1F7B355200C89C4D /* TRUUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUUserInfoModel.m; sourceTree = "<group>"; };
 		12F45C7F1F7B3D9100C89C4D /* TRUMineMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMineMenuView.h; sourceTree = "<group>"; };
 		12F45C801F7B3D9100C89C4D /* TRUMineMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMineMenuView.m; sourceTree = "<group>"; };
-		12F45C821F7B5E0000C89C4D /* TRUApplicationTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUApplicationTopView.h; sourceTree = "<group>"; };
-		12F45C831F7B5E0000C89C4D /* TRUApplicationTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUApplicationTopView.m; sourceTree = "<group>"; };
 		12F45C8B1F7B8B7D00C89C4D /* TRUHomeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUHomeButton.h; sourceTree = "<group>"; };
 		12F45C8C1F7B8B7D00C89C4D /* TRUHomeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUHomeButton.m; sourceTree = "<group>"; };
 		12F4D6332065108200D6B2E0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -691,10 +678,8 @@
 		2D32BB1222B1045A00BE3169 /* TRUSSHViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHViewCell.h; sourceTree = "<group>"; };
 		2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSHViewCell.m; sourceTree = "<group>"; };
 		2D32BB1422B1045A00BE3169 /* TRUSSHViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUSSHViewCell.xib; sourceTree = "<group>"; };
-		2D32E98D228AA95E0032A95A /* TRUPortalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPortalViewController.m; sourceTree = "<group>"; };
 		2D32E98F228AA95E0032A95A /* TRUPortalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPortalModel.m; sourceTree = "<group>"; };
 		2D32E990228AA95E0032A95A /* TRUPortalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPortalModel.h; sourceTree = "<group>"; };
-		2D32E991228AA95E0032A95A /* TRUPortalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPortalViewController.h; sourceTree = "<group>"; };
 		2D32E993228AA95E0032A95A /* TRUPortalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeaderView.m; sourceTree = "<group>"; };
 		2D32E994228AA95E0032A95A /* TRUPortalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPortalCell.m; sourceTree = "<group>"; };
 		2D32E995228AA95E0032A95A /* TRUPortalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPortalHeaderView.h; sourceTree = "<group>"; };
@@ -777,13 +762,13 @@
 		2D96CEB324333CF1009080DC /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
 		2D96CEB424333CF1009080DC /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
 		2D96CEB524333CF1009080DC /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
-		2D96CECB24343109009080DC /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D99779621CB97F200B5019E /* TRUSubUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSubUserModel.h; sourceTree = "<group>"; };
 		2D99779721CB97F200B5019E /* TRUSubUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserModel.m; sourceTree = "<group>"; };
 		2D99779921CB982100B5019E /* TRUSubUserAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSubUserAPI.h; sourceTree = "<group>"; };
 		2D99779A21CB982100B5019E /* TRUSubUserAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserAPI.m; sourceTree = "<group>"; };
 		2D9F5BCF21905819009B97EF /* TRUHightlightedBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUHightlightedBtn.h; sourceTree = "<group>"; };
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
+		2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2DA5B5B521A3DEE50091F2D7 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
 		2DAA2788230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAllInOneAuthViewController.h; sourceTree = "<group>"; };
@@ -862,12 +847,12 @@
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
-				2D65F5E42485F8B20020CB98 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
+				2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
-				2D96CECC24343109009080DC /* libxindunsdk.a in Frameworks */,
+				2DA0388024A9984300AAD8A8 /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
@@ -1094,7 +1079,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D96CECB24343109009080DC /* libxindunsdk.a */,
+				2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2DB18DF3232637CC00473824 /* TRUMTDTool.h */,
@@ -1591,8 +1576,6 @@
 			children = (
 				12F9001C1F9DD135001125A3 /* YCDownSlider.h */,
 				12F9001D1F9DD135001125A3 /* YCDownSlider.m */,
-				12F45C821F7B5E0000C89C4D /* TRUApplicationTopView.h */,
-				12F45C831F7B5E0000C89C4D /* TRUApplicationTopView.m */,
 				12409F921F8F48A1000D342D /* TRUApplictionCell.h */,
 				12409F931F8F48A1000D342D /* TRUApplictionCell.m */,
 				12409F941F8F48A1000D342D /* TRUApplictionCell.xib */,
@@ -1611,8 +1594,6 @@
 		12749EB21FC7E89600183EB4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				12409F8F1F8F43CA000D342D /* TRUApplicationViewController.h */,
-				12409F901F8F43CA000D342D /* TRUApplicationViewController.m */,
 				12749EBA1FC7EA8600183EB4 /* 应用详情 */,
 				12749EB91FC7EA7600183EB4 /* 登录控制 */,
 				12749EB81FC7EA6A00183EB4 /* 添加应用 */,
@@ -1643,8 +1624,6 @@
 		12749EBA1FC7EA8600183EB4 /* 应用详情 */ = {
 			isa = PBXGroup;
 			children = (
-				12749EBE1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.h */,
-				12749EBF1FC7EAB600183EB4 /* TRUAuthorizedWebViewController.m */,
 				2D45A94A2476184900624AC2 /* TRUAuthWKWebViewController.h */,
 				2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */,
 			);
@@ -1660,8 +1639,6 @@
 				12C0D3051F7908C800972218 /* TRUBaseNavigationController.m */,
 				12486CA320CE81260071ABC2 /* gesAndFingerNVController.h */,
 				12486CA420CE81260071ABC2 /* gesAndFingerNVController.m */,
-				125633161F79E0C5007FF392 /* TRUBaseTabBarController.h */,
-				125633171F79E0C5007FF392 /* TRUBaseTabBarController.m */,
 				2DA5B5B521A3DEE50091F2D7 /* HAMLogOutputWindow.h */,
 				2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */,
 				12C29FDA1F96067100087FB7 /* MyTabBar.h */,
@@ -1970,8 +1947,6 @@
 			children = (
 				2D32E992228AA95E0032A95A /* view */,
 				2D32E98E228AA95E0032A95A /* TRUPortalModel */,
-				2D32E991228AA95E0032A95A /* TRUPortalViewController.h */,
-				2D32E98D228AA95E0032A95A /* TRUPortalViewController.m */,
 			);
 			path = "TRUPortal(微门户)";
 			sourceTree = "<group>";
@@ -2443,7 +2418,6 @@
 				2D800C942154D3DD00A2D1C2 /* TRUhttpManager.m in Sources */,
 				2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */,
 				12476A0B1FA18B41000055CB /* MJRefreshGifHeader.m in Sources */,
-				2D32E997228AA95E0032A95A /* TRUPortalViewController.m in Sources */,
 				12476A091FA18B41000055CB /* MJRefreshBackNormalFooter.m in Sources */,
 				123756F22011A5FA00A33532 /* TRUCompanyModel.m in Sources */,
 				121645481F97347B00808730 /* TRUFaceInitViewController.m in Sources */,
@@ -2479,7 +2453,6 @@
 				2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */,
 				2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */,
 				2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */,
-				12749EC01FC7EAB700183EB4 /* TRUAuthorizedWebViewController.m in Sources */,
 				2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */,
 				12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */,
 				121C48D31F7CFF8F0077AE34 /* TRUMineCell.m in Sources */,
@@ -2536,7 +2509,6 @@
 				12476A001FA18B41000055CB /* MJRefreshAutoFooter.m in Sources */,
 				2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */,
 				12354C5E1FA81A6900B6B92E /* TRUSessionManagerCell.m in Sources */,
-				12F45C841F7B5E0000C89C4D /* TRUApplicationTopView.m in Sources */,
 				2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */,
 				121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
@@ -2549,12 +2521,10 @@
 				12409F861F8F40DE000D342D /* NSString+Regular.m in Sources */,
 				12409F791F8F40A1000D342D /* MBProgressHUD.m in Sources */,
 				128D5D0B1F7E430700753EE5 /* TRULogIdentifyCell.m in Sources */,
-				12409F911F8F43CA000D342D /* TRUApplicationViewController.m in Sources */,
 				12579DF21F99A95700422FBD /* TRUNormalButton.m in Sources */,
 				2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */,
 				2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */,
 				121645741F973C8400808730 /* TRUDigitBlockInputView.m in Sources */,
-				125633181F79E0C5007FF392 /* TRUBaseTabBarController.m in Sources */,
 				12749EBD1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m in Sources */,
 				12436A72210844710070F966 /* TRUGestureModify2ViewController.m in Sources */,
 				2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */,

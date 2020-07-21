@@ -17,7 +17,7 @@
 #import "TRUhttpManager.h"
 #import "TRUFingerGesUtil.h"
 #import "TRUAPPLogIdentifyController.h"
-#import "TRUAuthorizedWebViewController.h"
+//#import "TRUAuthorizedWebViewController.h"
 #import "TRUPushAuthModel.h"
 #import "AppDelegate.h"
 #import <Bugly/Bugly.h>
@@ -34,6 +34,8 @@
 #import "TRUTimeSyncUtil.h"
 #import "UIScrollView+UITouch.h"
 #import "TRUWebLoginManagerViewController.h"
+#import "TRUAuthWKWebViewController.h"
+
 @interface TRUAllInOneAuthViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) TRUBottomScanView *bottomScanView;
@@ -425,7 +427,7 @@ static double dytime = 0.0;
                         if([cellmodel.h5Url hasSuffix:@"?token="]){
                             urlstr = [NSString stringWithFormat:@"%@%@",cellmodel.h5Url,token];
                         }
-                        TRUAuthorizedWebViewController *webview = [[TRUAuthorizedWebViewController alloc] init];
+                        TRUAuthWKWebViewController *webview = [[TRUAuthWKWebViewController alloc] init];
                         webview.urlStr = urlstr;
                         [weakSelf.navigationController pushViewController:webview animated:YES];
                     }];
@@ -505,7 +507,7 @@ static double dytime = 0.0;
                         if([cellmodel.h5Url hasSuffix:@"?token="]){
                             urlstr = [NSString stringWithFormat:@"%@%@",cellmodel.h5Url,token];
                         }
-                        TRUAuthorizedWebViewController *webview = [[TRUAuthorizedWebViewController alloc] init];
+                        TRUAuthWKWebViewController *webview = [[TRUAuthWKWebViewController alloc] init];
                         webview.urlStr = urlstr;
                         [weakSelf.navigationController pushViewController:webview animated:YES];
                     }];

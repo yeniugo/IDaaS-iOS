@@ -8,7 +8,7 @@
 
 #import "TRUPortalView.h"
 #import "TRUPortalCell.h"
-#import "TRUAuthorizedWebViewController.h"
+//#import "TRUAuthorizedWebViewController.h"
 #import "TRUUserAPI.h"
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"

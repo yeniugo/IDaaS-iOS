@@ -15,7 +15,7 @@
 
 @implementation TRULicenseAgreementViewController
 {
-    UIWebView *webView;
+//    UIWebView *webView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,18 +26,18 @@
 //    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     NSString *str;
-    NSString *urlstr = [TRUCompanyAPI getCompany].user_agreement_url;
-    if (urlstr.length>0) {
+//    NSString *urlstr = [TRUCompanyAPI getCompany].user_agreement_url;
+    if (0) {
         
-        webView = [[UIWebView alloc]init];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
-        [webView loadRequest:request];
-        if (kDevice_Is_iPhoneX) {
-            webView.frame = CGRectMake(0, 83, SCREENW, SCREENH - 83);
-        }else{
-            webView.frame = CGRectMake(0, 64, SCREENW, SCREENH - 64);
-        }
-        [self.view addSubview:webView];
+//        webView = [[UIWebView alloc]init];
+//        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
+//        [webView loadRequest:request];
+//        if (kDevice_Is_iPhoneX) {
+//            webView.frame = CGRectMake(0, 83, SCREENW, SCREENH - 83);
+//        }else{
+//            webView.frame = CGRectMake(0, 64, SCREENW, SCREENH - 64);
+//        }
+//        [self.view addSubview:webView];
     }else{
         NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"Lisence" withExtension:@"txt"];
         str = [NSString stringWithContentsOfURL:fileUrl encoding:NSUTF8StringEncoding error:nil];
