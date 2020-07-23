@@ -84,8 +84,8 @@
         if (_isInfo) {
             self.borderLayer.fillColor = YZX_RGB_COLOR(16.0, 189.0, 77.0, 1.0).CGColor;
         }else{
-            self.borderLayer.fillColor = YZX_RGB_COLOR(0.0,150.0,255.0,0.2).CGColor;
-            self.centerLayer.fillColor = YZX_RGB_COLOR(0.0, 150.0, 255.0, 1.0).CGColor;
+            self.borderLayer.fillColor = YZX_RGB_COLOR(247.0, 96.0, 88.0, 0.2).CGColor;
+            self.centerLayer.fillColor = YZX_RGB_COLOR(247.0, 96.0, 88.0, 1.0).CGColor;
         }
         
     }else {
@@ -147,7 +147,7 @@
     if (!_borderLayer) {
         _borderLayer = [CAShapeLayer layer];
         UIBezierPath *borderPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(YZX_VIEW_WIDTH / 2.0, YZX_VIEW_HEIGHT / 2.0) radius:YZX_VIEW_WIDTH / 2.0 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-        _borderLayer.strokeColor = YZX_RGB_COLOR(0.0, 150.0, 255.0, 0.2).CGColor;
+        _borderLayer.strokeColor = YZX_RGB_COLOR(247.0, 96.0, 88.0, 0.2).CGColor;
         _borderLayer.strokeColor = [UIColor clearColor].CGColor;
         _borderLayer.fillColor = [UIColor clearColor].CGColor;
 //        _borderLayer.fillColor = YZX_RGB_COLOR(105.0, 108.0, 111.0, 1.0).CGColor;

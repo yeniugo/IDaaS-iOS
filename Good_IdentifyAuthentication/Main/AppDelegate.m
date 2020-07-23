@@ -64,6 +64,11 @@
 //    return YES;
     self.launchOptions = launchOptions;
     return [self application:application initWithOptions:launchOptions];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    TRUAllInOneAuthViewController *advc = [[TRUAllInOneAuthViewController alloc] init];
+//    self.window.rootViewController = advc;
+//    [self.window makeKeyAndVisible];
+//    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application initWithOptions:(NSDictionary *)launchOptions{

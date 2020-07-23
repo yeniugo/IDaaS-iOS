@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,39 +16,40 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon.png" highlightedImage="welcomeicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
-                                <rect key="frame" x="147" y="598" width="120.5" height="80.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80.5" id="DXz-YQ-j8p"/>
-                                    <constraint firstAttribute="width" constant="120.5" id="uzM-2u-EBA"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="移动安全认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3b-Nq-89T">
-                                <rect key="frame" x="155" y="750" width="104" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="统一身份认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3b-Nq-89T">
+                                <rect key="frame" x="135.66666666666666" y="463.66666666666669" width="104" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon1.png" highlightedImage="welcomeicon1.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
+                                <rect key="frame" x="30" y="148.66666666666663" width="315" height="315"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A1X-NF-nTo" secondAttribute="height" multiplier="1:1" id="toN-TE-ZKL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="D3b-Nq-89T" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" constant="71.5" id="7F7-Fv-J9F"/>
-                            <constraint firstAttribute="bottom" secondItem="D3b-Nq-89T" secondAttribute="bottom" constant="125" id="Bud-zU-dDQ"/>
+                            <constraint firstItem="A1X-NF-nTo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-100" id="0yb-aN-k3S"/>
+                            <constraint firstItem="A1X-NF-nTo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="4QM-Uu-gRV"/>
                             <constraint firstItem="D3b-Nq-89T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="D9D-Pt-daB"/>
+                            <constraint firstItem="D3b-Nq-89T" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" id="JKb-3i-14u"/>
+                            <constraint firstAttribute="trailing" secondItem="A1X-NF-nTo" secondAttribute="trailing" constant="30" id="WD9-zl-LFj"/>
                             <constraint firstItem="A1X-NF-nTo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XRu-pm-QxG"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2287" y="-36"/>
+            <point key="canvasLocation" x="-2288.4057971014495" y="-36.160714285714285"/>
         </scene>
     </scenes>
     <resources>
-        <image name="welcomeicon.png" width="362" height="242"/>
+        <image name="welcomeicon1.png" width="810" height="810"/>
     </resources>
 </document>

@@ -212,7 +212,7 @@ NSString *const YZX_KEYCHAIN_ACCOUNT = @"YZX_KEYCHAIN_SERVICE";
     
     self.lineLayer.path = self.linePath.CGPath;
     self.lineLayer.lineWidth = 4.0;
-    self.lineLayer.strokeColor = YZX_RGB_COLOR(0.0, 150.0, 255.0, 1.0).CGColor;
+    self.lineLayer.strokeColor = YZX_RGB_COLOR(247.0, 96.0, 88.0, 1.0).CGColor;
     self.lineLayer.fillColor = [UIColor clearColor].CGColor;
     
     [self.layer addSublayer:self.lineLayer];

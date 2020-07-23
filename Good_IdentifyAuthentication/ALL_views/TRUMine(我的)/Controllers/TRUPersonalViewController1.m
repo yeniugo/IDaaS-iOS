@@ -190,8 +190,8 @@
     }
     [tempArray addObject:[NSArray arrayWithObject:model3]];
     [tempArray addObject:[NSArray arrayWithObject:model4]];
-    [tempArray addObject:[NSArray arrayWithObject:model9]];
-    [tempArray addObject:[NSArray arrayWithObject:model5]];
+//    [tempArray addObject:[NSArray arrayWithObject:model9]];
+//    [tempArray addObject:[NSArray arrayWithObject:model5]];
     [tempArray addObject:[NSArray arrayWithObject:model6]];
     [tempArray addObject:[NSArray arrayWithObject:model7]];
     [tempArray addObject:[NSArray arrayWithObject:model8]];

@@ -36,26 +36,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
-    self.view.backgroundColor = DefaultGreenColor;
+//    self.view.backgroundColor = DefaultGreenColor;
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"welcomeicon.png"];
+    imageview.image = [UIImage imageNamed:@"welcomeicon1.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
     showLable.text = @"移动安全认证";
-    showLable.textColor = [UIColor whiteColor];
+    showLable.textColor = [UIColor grayColor];
     [self.view addSubview:showLable];
     [self.view addSubview:imageview];
-    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-125);
-    }];
+    
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
-        make.width.equalTo(@(120.5));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
+        make.left.equalTo(self.view).with.offset(30);
+        make.right.equalTo(self.view).with.offset(-30);
+        make.height.mas_equalTo(imageview.mas_width);
+        make.centerY.mas_equalTo(self.view.centerY).with.offset(-100);
+    }];
+    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageview.mas_bottom);
     }];
     [self fetchData];
 }
