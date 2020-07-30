@@ -101,6 +101,7 @@
 //    NSInteger *ii = [UIApplication sharedApplication].applicationIconBadgeNumber;
 //    
 //    YCLog(@"00------->%d",ii);
+    [UIView appearance].tintColor = DefaultGreenColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mybarStyle) name:@"TRUEnterAPPAuthViewSuccess" object:nil];
 }
 
