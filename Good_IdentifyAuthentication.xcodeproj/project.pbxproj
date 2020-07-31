@@ -2452,7 +2452,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = comshuilibu.lanzheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8f15133b-dde4-4193-b35c-ad3020f2a76e";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;

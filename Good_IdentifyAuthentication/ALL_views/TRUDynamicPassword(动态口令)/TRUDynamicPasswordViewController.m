@@ -140,12 +140,82 @@ extern long gs_time;
 - (void)startCountdown{
     
     if (!self.dislink) {
-        self.dislink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setProgressNumber)];
+        self.dislink = [CADisplayLink displayLinkWithTarget:self selector:@selector(runDisLink)];
         self.dislink.frameInterval = 60;
         [self.dislink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     }
     
 }
+
+- (void)runDisLink{
+    CGFloat time = [self getPersent];
+//    dytime = time*30;
+//    [_aniationView stop];
+//    [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
+//    int stoptime = 29 - time*30;
+//    if(stoptime<0){
+//        stoptime = 0;
+//    }
+//    [_timeView startCountWithTime:stoptime];
+//    [self startCountWithTime:stoptime];
+//    self.circleDynamicView.percent = time;
+//    self.rectView.percent = time;
+}
+
+- (CGFloat)getPersent{
+    NSDate *date = [NSDate date];
+    double time = [date timeIntervalSince1970];
+    double timeDifference = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] doubleValue];
+    long time1 = (long)(time-timeDifference)/30;
+    double time2 = [[NSUserDefaults standardUserDefaults] doubleForKey:@"password1"];
+    if (isFirstEnter) {
+        [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        isFirstEnter = NO;
+        //        [self requestData];
+        NSString *userid = [TRUUserAPI getUser].userId;
+        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+        [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:YES];
+        
+        dytime = (long long)((time-timeDifference)*100)%3000/3000.0;
+        [_aniationView stop];
+        [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
+        int stoptime = 30 - dytime*30;
+        if(stoptime<0){
+            stoptime = 0;
+        }
+        [_timeView startCountWithTime:stoptime];
+        [self startCountWithTime:stoptime];
+//        self.rectView.passwordStr = passwordStr;
+//        self.circleDynamicView.passwordStr = passwordStr;
+    }else{
+        if ((long)time2!=time1) {
+            YCLog(@"change------------");
+            //            [self requestData];
+            NSString *userid = [TRUUserAPI getUser].userId;
+            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+//            self.rectView.passwordStr = passwordStr;
+//            self.circleDynamicView.passwordStr = passwordStr;
+            [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:NO];
+            [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            dytime = (long long)((time-timeDifference)*100)%3000/3000.0;
+            [_aniationView stop];
+            [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
+            int stoptime = 30 - dytime*30;
+            if(stoptime<0){
+                stoptime = 0;
+            }
+            [_timeView startCountWithTime:stoptime];
+            [self startCountWithTime:stoptime];
+        }else{
+        }
+    }
+    return (long long)((time-timeDifference)*100)%3000/3000.0;
+}
+
+
 //int tempTest;
 - (void)setProgressNumber{//PERCENTKEY
 //    YCLog(@"dytime = %f",dytime);
@@ -209,6 +279,7 @@ extern long gs_time;
     if (dytime >= 1.0) {
         dytime = dytime - 1.0;
     }
+    dytime = [self getPersent];
     [self.numberView setNumberStr:[xindunsdk getCIMSDynamicCode:userId] isFirst:isFirst];
 //    YCLog(@"动态口令为 = %@",[xindunsdk getCIMSDynamicCode:userId]);
     [_aniationView playFromProgress:dytime toProgress:1.0 withCompletion:nil];
