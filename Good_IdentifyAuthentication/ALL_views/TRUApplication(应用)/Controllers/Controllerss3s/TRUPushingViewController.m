@@ -422,60 +422,16 @@
     
     //认证类型为 一键认证:1 声纹:7 人脸:6
     if ([authtype isEqualToString:@"1"] || [authtype isEqualToString:@"0"] || [authtype isEqualToString:@"10"]) {
-        [self.pushTimer invalidate];
-        self.pushTimer = nil;
         __weak typeof(self) weakSelf = self;
-        NSString *authtype = self.pushModel.authtype;
-        NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-//        [self showHudWithText:@""];
-        NSString *user = [TRUUserAPI getUser].userId;
-        NSString *userStr;
-        if (self.userNo.length) {
-            userStr = self.userNo;
+        if(self.pushModel.ssoLogin){
+            [self showConfrimCancelDialogAlertViewWithTitle:@"该用户已在线，是否强制登录？" msg:nil confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:NO confrimBolck:^{
+                [weakSelf getAuthPushWithAuthType];
+            } cancelBlock:nil];
         }else{
-            userStr = user;
+            [self getAuthPushWithAuthType];
         }
-        NSString *sign = [NSString stringWithFormat:@"%@%@%@", self.pushModel.token,@"1",userStr];
-        NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"1",@"userid",userStr];
-        NSString *userId = [TRUUserAPI getUser].userId;
-        NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:sign isDeviceType:NO];
-        NSDictionary *paramsDic = @{@"params" : para};
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
-//            [weakSelf hideHudDelay:0.0];
-            if (errorno == 0) {
-                //结束后调用动画
-                [weakSelf post3DataNoti];
-                [weakSelf performSelector:@selector(dismissVC:) withObject:@"1" afterDelay:0.5];
-            }else if (9002 == errorno){
-                [weakSelf showHudWithText:@"信息已失效"];
-                [weakSelf hideHudDelay:2.0];
-                [weakSelf performSelector:@selector(dismissVC:)  withObject:@"0" afterDelay:2.5];
-            }else if (9008 == errorno){
-                [weakSelf deal9008Error];
-            }else if (9010 == errorno){
-                
-                if ([authtype isEqualToString:@"10"]) {
-                    [weakSelf show9010Error];
-                }else{
-                    [weakSelf showHudWithText:@"登录失败，系统没有认证"];
-                    [weakSelf hideHudDelay:2.0];
-                    [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
-                }
-                
-            }else if (9019 == errorno){
-                [weakSelf deal9019Error];
-                
-            }else if (9033 == errorno){
-                [weakSelf showHudWithText:message];
-                [weakSelf hideHudDelay:2.0];
-                [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
-            }else{
-                NSString *err = [NSString stringWithFormat:@"获取验证请求失败，请稍后重试（%d）",errorno];
-                [weakSelf showHudWithText:err];
-                [weakSelf hideHudDelay:2.0];
-                [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
-            }
-        }];
+        
+        
         
     }else if ([self.pushModel.authtype isEqualToString:@"6"] || [self.pushModel.authtype isEqualToString:@"7"]){//人脸
         [self.pushTimer invalidate];
@@ -547,6 +503,63 @@
         }
         
     }
+}
+
+- (void)getAuthPushWithAuthType{
+    [self.pushTimer invalidate];
+    self.pushTimer = nil;
+    __weak typeof(self) weakSelf = self;
+    NSString *authtype = self.pushModel.authtype;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+//        [self showHudWithText:@""];
+    NSString *user = [TRUUserAPI getUser].userId;
+    NSString *userStr;
+    if (self.userNo.length) {
+        userStr = self.userNo;
+    }else{
+        userStr = user;
+    }
+    NSString *sign = [NSString stringWithFormat:@"%@%@%@", self.pushModel.token,@"1",userStr];
+    NSArray *ctxx = @[@"token",self.pushModel.token,@"confirm",@"1",@"userid",userStr];
+    NSString *userId = [TRUUserAPI getUser].userId;
+    NSString *para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/checktoken"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
+//            [weakSelf hideHudDelay:0.0];
+        if (errorno == 0) {
+            //结束后调用动画
+            [weakSelf post3DataNoti];
+            [weakSelf performSelector:@selector(dismissVC:) withObject:@"1" afterDelay:0.5];
+        }else if (9002 == errorno){
+            [weakSelf showHudWithText:@"信息已失效"];
+            [weakSelf hideHudDelay:2.0];
+            [weakSelf performSelector:@selector(dismissVC:)  withObject:@"0" afterDelay:2.5];
+        }else if (9008 == errorno){
+            [weakSelf deal9008Error];
+        }else if (9010 == errorno){
+            
+            if ([authtype isEqualToString:@"10"]) {
+                [weakSelf show9010Error];
+            }else{
+                [weakSelf showHudWithText:@"登录失败，系统没有认证"];
+                [weakSelf hideHudDelay:2.0];
+                [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
+            }
+            
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
+            
+        }else if (9033 == errorno){
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
+            [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
+        }else{
+            NSString *err = [NSString stringWithFormat:@"获取验证请求失败，请稍后重试（%d）",errorno];
+            [weakSelf showHudWithText:err];
+            [weakSelf hideHudDelay:2.0];
+            [weakSelf performSelector:@selector(dismissVC:) withObject:@"0" afterDelay:2.5];
+        }
+    }];
 }
 
 - (void)post3DataNoti{

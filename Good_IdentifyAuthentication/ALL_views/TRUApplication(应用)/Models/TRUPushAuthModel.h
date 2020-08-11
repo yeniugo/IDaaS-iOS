@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSArray *displayFields;
 
+@property (nonatomic, assign) BOOL ssoLogin;
+
 /** 验证类型
  0:二维码
  1:推送
