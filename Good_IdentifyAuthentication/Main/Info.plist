@@ -11,26 +11,7 @@
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>chengduyinhang</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>chengduyinhang</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>huonangaozhao</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>huonangaozhao</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-		</dict>
+		<dict/>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>

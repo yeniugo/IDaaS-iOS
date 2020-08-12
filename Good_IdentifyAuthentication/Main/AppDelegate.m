@@ -1881,7 +1881,7 @@
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     //http://itunes.apple.com/lookup?id=1095195364
-    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=1524423412"];//
+    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=1527206953"];//
     [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -2057,7 +2057,7 @@
         UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *url = @"https://itunes.apple.com/cn/app/id1524423412?mt=8";
+            NSString *url = @"https://itunes.apple.com/cn/app/id1527206953?mt=8";
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         }];
         
