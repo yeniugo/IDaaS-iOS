@@ -11,7 +11,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import <YYWebImage.h>
-#import "TRUPushViewController.h"
+//#import "TRUPushViewController.h"
 #import "TRUPushingViewController.h"
 #import "TRUBaseNavigationController.h"
 #import "TRUhttpManager.h"

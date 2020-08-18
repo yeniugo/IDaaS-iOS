@@ -10,7 +10,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-#import "TRUNewFeatuerViewController.h"
+//#import "TRUNewFeatuerViewController.h"
 #import "AppDelegate.h"
 #import "AppDelegate+AppDelegate_Xindun.h"
 //#import "TRUBaseTabBarController.h"
@@ -37,12 +37,12 @@
 #import "TRUCompanyAPI.h"
 #import <YYWebImage.h>
 #import "TRUAdViewController.h"
-#import "TRUPushViewController.h"
+//#import "TRUPushViewController.h"
 #import "TRUPushingViewController.h"
 #import "TRUMacros.h"
 #import "TRUhttpManager.h"
 #import "TRUSchemeTokenViewController.h"
-#import "TRUAuthenticateViewController.h"
+//#import "TRUAuthenticateViewController.h"
 #import "TRUTimeSyncUtil.h"
 #import "TRUAllInOneAuthViewController.h"
 #import "TRUAPPLogIdentifyController.h"
@@ -209,7 +209,7 @@
     __block UIViewController *rootVC;
     isNewFeature = NO;
     if (isNewFeature) {//有新版本
-        rootVC = [[TRUNewFeatuerViewController alloc] init];
+//        rootVC = [[TRUNewFeatuerViewController alloc] init];
     }else{//无新版本
         TRUStartupViewController *startVC = [[TRUStartupViewController alloc] init];
         __weak typeof(self) weakSelf = self;

@@ -11,7 +11,7 @@
 #import "TRUScanView.h"
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
-#import "TRUPushViewController.h"
+//#import "TRUPushViewController.h"
 #import "TRUPushingViewController.h"
 #import "TRUBaseNavigationController.h"
 #import "TRUPushAuthModel.h"
