@@ -80,6 +80,7 @@
     //        }
     //
     //    }
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
     YCLog(@"TRUBaseNavigationController viewDidLoad");
 //    [HAMLogOutputWindow printLog:@"TRUBaseNavigationController viewDidLoad"];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;

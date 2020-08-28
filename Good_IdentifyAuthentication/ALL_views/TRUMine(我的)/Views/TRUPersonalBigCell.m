@@ -48,6 +48,10 @@
                 self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].phone];
             }else if ([modeStr isEqualToString:@"3"]){
                 self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].employeenum];
+            }else if ([modeStr isEqualToString:@"4"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
+                self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].employeenum];
+            }else if ([modeStr isEqualToString:@"5"]){
+                self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].employeenum];
             }
         }
         

@@ -501,6 +501,7 @@
         if (error == 0) {
             [self showHudWithText:@"校准成功"];
             [self hideHudDelay:2.0];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"syncTimeSuccess" object:nil];
         }else if (error == -5004){
             [self showHudWithText:@"网络错误，稍后请重试"];
             [self hideHudDelay:2.0];

@@ -85,6 +85,7 @@ static double dytime = 0.0;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"webloginIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonClick)];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncTime) name:@"syncTimeSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushtoken) name:@"needpushToken" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
@@ -640,6 +641,7 @@ static double dytime = 0.0;
         if (error == 0) {
 //            [self showHudWithText:@"校准成功"];
 //            [self hideHudDelay:2.0];
+            [self runDisLink1];
         }else if (error == -5004){
             [self showHudWithText:@"网络错误，稍后请重试"];
             [self hideHudDelay:2.0];
@@ -956,6 +958,14 @@ static NSInteger pushCount = NSIntegerMax;
     CGFloat time = [self getPersent];
     self.circleDynamicView.percent = time;
     self.rectView.percent = time;
+}
+
+- (void)runDisLink1{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password1"];
+    CGFloat time = [self getPersent];
+    self.circleDynamicView.percent = time;
+    self.rectView.percent = time;
+    
 }
 
 - (CGFloat)getPersent{

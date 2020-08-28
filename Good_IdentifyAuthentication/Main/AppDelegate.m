@@ -1516,6 +1516,13 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         UIViewController *rootVC = self.window.rootViewController;
         if (rootVC.presentedViewController) {
+            [self getPushuseToke:token withModel:^(TRUPushAuthModel *model) {
+                TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
+                authVC.userNo = [TRUUserAPI getUser].userId;
+                authVC.pushModel = model;
+                self.tokenPushVC = authVC;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
+            }];
 //            [rootVC.presentedViewController dismissViewControllerAnimated:NO completion:^{
 //                TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
 //                authVC.userNo = [TRUUserAPI getUser].userId;
@@ -1523,32 +1530,29 @@
 //                TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
 //                [weakSelf.window.rootViewController presentViewController:nav animated:YES completion:nil];
 //            }];
-            TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
-            authVC.userNo = [TRUUserAPI getUser].userId;
-            authVC.token = token;
-            self.tokenPushVC = authVC;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
-        }else{
+            
 //            TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
 //            authVC.userNo = [TRUUserAPI getUser].userId;
 //            authVC.token = token;
-//            TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
-//            [weakSelf.window.rootViewController presentViewController:nav animated:YES completion:nil];
-            TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
-            authVC.userNo = [TRUUserAPI getUser].userId;
-            authVC.token = token;
-//            TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
-            self.tokenPushVC = authVC;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
-//            TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:authVC];
-//            [weakSelf.window.rootViewController presentViewController:nav animated:YES completion:nil];
-//            UINavigationController *vc = weakSelf.window.rootViewController;
-//            if ([weakSelf.window.rootViewController isKindOfClass:[UINavigationController class]]) {
-//                YCLog(@"rootViewController UINavigationController");
-//            }
-//            if (vc.viewControllers<2) {
-//                [vc pushViewController:authVC animated:YES];
-//            }
+//            self.tokenPushVC = authVC;
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
+        }else{
+            [self getPushuseToke:token withModel:^(TRUPushAuthModel *model) {
+                TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
+                authVC.userNo = [TRUUserAPI getUser].userId;
+                authVC.pushModel = model;
+                self.tokenPushVC = authVC;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
+            }];
+            
+            
+            
+//            TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
+//            authVC.userNo = [TRUUserAPI getUser].userId;
+//            authVC.token = token;
+//            self.tokenPushVC = authVC;
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"needpushToken" object:nil];
+
         }
 //        TRUPushingViewController *authVC = [[TRUPushingViewController alloc] init];
 //        authVC.userNo = [TRUUserAPI getUser].userId;
@@ -1561,6 +1565,37 @@
         
     });
 }
+
+- (void)getPushuseToke:(NSString *)stoken withModel:(void (^)(TRUPushAuthModel *model))pushModel{
+    [xindunsdk getCIMSUUID:[TRUUserAPI getUser].userId];
+        __weak typeof(self) weakSelf = self;
+        if ([TRUUserAPI getUser].userId) {
+            NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+            NSString *sign = stoken;
+            NSArray *ctxx = @[@"token",sign];
+            NSString *para = [xindunsdk encryptByUkey:[TRUUserAPI getUser].userId ctx:ctxx signdata:sign isDeviceType:YES];
+            NSDictionary *paramsDic = @{@"params" : para};
+            [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/push/fetch"] withParts:paramsDic onResult:^(int errorno, id responseBody){
+    //        [xindunsdk getCIMSPushFetchForUser:self.userNo stoken:stoken onResult:^(int errorno, id responseBody) {
+                
+                NSLog(@"-Push->%d-->%@",errorno,responseBody);
+                NSDictionary *dic = nil;
+                if (errorno == 0 && responseBody) {
+                    dic = [xindunsdk decodeServerResponse:responseBody];
+                    if ([dic[@"code"] intValue] == 0) {
+                        dic = dic[@"resp"];
+                        TRUPushAuthModel *model = [TRUPushAuthModel modelWithDic:dic];
+                        model.token = stoken;
+                        if (pushModel) {
+                            pushModel(model);
+                        }
+                    }
+                }
+            }];
+            
+        }
+}
+
 #pragma mark 3D Touch 回调
 //如果APP没被杀死，还存在后台，点开Touch会调用该代理方法
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
