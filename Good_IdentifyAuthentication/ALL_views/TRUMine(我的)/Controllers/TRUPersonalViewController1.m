@@ -212,7 +212,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.y<0) {
         self.topView.height = -scrollView.contentOffset.y + 10;
-//        YCLog(@"%f",self.topView.height);
+//    }
+        self.topView.hidden = NO;
+        YCLog(@"%f",self.topView.height);
+    }else if(scrollView.contentOffset.y>0){
+//        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 110);
+        self.topView.hidden = YES;
     }
 }
 

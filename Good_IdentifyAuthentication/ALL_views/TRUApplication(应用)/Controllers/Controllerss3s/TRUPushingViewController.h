@@ -26,4 +26,6 @@
 
 /** 声纹 */
 @property (nonatomic, copy) void (^popVoiceBlock)();
+
+- (void)refreshUI;
 @end

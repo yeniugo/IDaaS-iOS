@@ -275,6 +275,8 @@
 		2DAA2794230A8E8400B3A6C4 /* TRUAuthBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2793230A8E8400B3A6C4 /* TRUAuthBtn.m */; };
 		2DAA2797230A9A2E00B3A6C4 /* TRUPortalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */; };
 		2DAA279D230AA7BB00B3A6C4 /* TRUPortalTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */; };
+		2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DADD8872500EB3F008C3791 /* Contacts.framework */; };
+		2DADD88A2500EB62008C3791 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DADD8892500EB61008C3791 /* QuartzCore.framework */; };
 		2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB18DF2232637CC00473824 /* TRUMTDTool.m */; };
 		2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */; };
 		2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */; };
@@ -783,6 +785,8 @@
 		2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalView.m; sourceTree = "<group>"; };
 		2DAA279B230AA7BB00B3A6C4 /* TRUPortalTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPortalTitleView.h; sourceTree = "<group>"; };
 		2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalTitleView.m; sourceTree = "<group>"; };
+		2DADD8872500EB3F008C3791 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		2DADD8892500EB61008C3791 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2DB18DF2232637CC00473824 /* TRUMTDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMTDTool.m; sourceTree = "<group>"; };
 		2DB18DF3232637CC00473824 /* TRUMTDTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMTDTool.h; sourceTree = "<group>"; };
 		2DBE8A2F24346A9800A5DB7E /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
@@ -846,6 +850,7 @@
 				121C48CF1F7CE47F0077AE34 /* MapKit.framework in Frameworks */,
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
+				2DADD88A2500EB62008C3791 /* QuartzCore.framework in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
 				2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
@@ -856,6 +861,7 @@
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
+				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
 				1256332C1F7A21F7007FF392 /* CoreGraphics.framework in Frameworks */,
 				1256332A1F7A21E6007FF392 /* SystemConfiguration.framework in Frameworks */,
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
@@ -2155,6 +2161,8 @@
 		FE1A6AEE8111DDCC71A58834 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DADD8892500EB61008C3791 /* QuartzCore.framework */,
+				2DADD8872500EB3F008C3791 /* Contacts.framework */,
 				2DC1B028231FA20C00A8A8DF /* libproc.tbd */,
 				2DC1B026231FA1D700A8A8DF /* AdSupport.framework */,
 				2DC1B024231FA1A900A8A8DF /* libc++.tbd */,
@@ -2785,7 +2793,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2834,7 +2842,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

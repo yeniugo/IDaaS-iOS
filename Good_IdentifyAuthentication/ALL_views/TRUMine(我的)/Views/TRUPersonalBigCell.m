@@ -66,7 +66,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.lineView.frame = CGRectMake(0, self.bounds.size.height, self.bounds.size.width, -1);
+//    self.lineView.frame = CGRectMake(0, self.bounds.size.height, self.bounds.size.width, -1);
 }
 
 

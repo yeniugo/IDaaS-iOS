@@ -55,7 +55,38 @@
 
 @end
 
+static TRUPushingViewController *_singleInstance = nil;
+
 @implementation TRUPushingViewController
+
+//+(instancetype)shareInstance
+//{
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        if (_singleInstance == nil) {
+//            _singleInstance = [[self alloc]init];
+//        }
+//    });
+//    return _singleInstance;
+//}
+//
+//+(instancetype)allocWithZone:(struct _NSZone *)zone
+//{
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        _singleInstance = [super allocWithZone:zone];
+//    });
+//    return _singleInstance;
+//}
+//
+//-(id)copyWithZone:(NSZone *)zone
+//{
+//    return _singleInstance;
+//}
+//
+//-(id)mutableCopyWithZone:(NSZone *)zone {
+//    return _singleInstance;
+//}
 
 
 - (void)viewDidLoad {
@@ -68,6 +99,10 @@
     }
     YCLog(@"sdk 推送界面");
     [HAMLogOutputWindow printLog:@"推送界面启动"];
+}
+
+- (void)refreshUI{
+    [self commonInit];
 }
 
 
@@ -129,6 +164,7 @@
     switch (self.pushModel.displayFields.count) {
         case 0:
         {
+            [self startCounter];
             self.titleAuthLB.text = [NSString stringWithFormat:@"您正在登录【%@】",self.pushModel.appname];
             self.firstLeftLB.text = @"登录账号";
             self.accountLB.text = self.pushModel.username;
@@ -200,6 +236,7 @@
             break;
         case 5:
         {
+            [self startCounter];
             self.titleAuthLB.text = [NSString stringWithFormat:@"您正在登录【%@】",self.pushModel.appname];
             for (int i = 0; i<5; i++) {
                 if (1) {
@@ -896,6 +933,11 @@ static NSInteger pushCount = 0;
             break;
     }
     return comparisonResult;
+}
+
+-(void)dealloc{
+    
+    YCLog(@"aaa");
 }
 
 @end

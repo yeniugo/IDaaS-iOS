@@ -9,6 +9,7 @@
 
 #import "LSNavigationController.h"
 #import <objc/runtime.h>
+#import "TRUPushingViewController.h"
 
 @interface LSNavigationController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -35,8 +36,27 @@
     if (self.viewControllers.count>=1) {
         viewController.hidesBottomBarWhenPushed=YES;
     }
-    
+//    if ([self.viewControllers containsObject:viewController]){
+//        if ([viewController isKindOfClass:[TRUPushingViewController class]]){
+//            TRUPushingViewController *vc = viewController;
+//            [vc refreshUI];
+//        }
+//        return;
+//    }
 //    [HAMLogOutputWindow printLog:@"push11111"];
+    if ([viewController isKindOfClass:[TRUPushingViewController class]]) {
+        TRUPushingViewController *vc1 = viewController;
+        for (UIViewController* vc in self.viewControllers) {
+            if ([vc isKindOfClass:[TRUPushingViewController class]]){
+                TRUPushingViewController *vc2 = vc;
+                vc2.pushModel = vc1.pushModel;
+                [vc2 refreshUI];
+                return;
+            }
+            
+        }
+    }
+    
     [super pushViewController:viewController animated:animated];
 }
 -(void)setCancelGesture:(BOOL)cancelGesture

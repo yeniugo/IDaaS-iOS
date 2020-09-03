@@ -144,7 +144,7 @@
             if ([audioSession respondsToSelector:@selector(requestRecordPermission:)]) {
                 [audioSession performSelector:@selector(requestRecordPermission:) withObject:^(BOOL granted) {
                     if (granted) {
-                        [self startRecVoice];
+                        [weakSelf startRecVoice];
                         weakSelf.btnBGlotview.hidden = NO;
                         [weakSelf.vocieLotView play];
                         [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
@@ -165,7 +165,7 @@
             [self showConfrimCancelDialogAlertViewWithTitle:@"未开启录音功能" msg:@"请到设置中开启声纹设置" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
         } else{
             // 已授权
-            [self startRecVoice];
+            [weakSelf startRecVoice];
             weakSelf.btnBGlotview.hidden = NO;
             [weakSelf.vocieLotView play];
             [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
@@ -261,6 +261,7 @@
 
 //音量回调
 -(void)onVolumeChanged:(int)volume {
+    YCLog(@"%d",volume);
 }
 
 //识别中回调
