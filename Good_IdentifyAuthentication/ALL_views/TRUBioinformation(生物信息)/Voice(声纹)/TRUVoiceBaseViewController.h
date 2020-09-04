@@ -35,7 +35,6 @@
 - (void)startRecVoice;
 - (void)onResult:(NSDictionary *)dic;
 - (void)onError:(IFlySpeechError *) errorCode;
-- (void)onCompleted:(IFlySpeechError *)errorCode;
 - (void)setIsvParamWithAuthId:(NSString *) auth_id withPassword:(NSString *) password withSSType:(NSString*)sst;
 
 @end

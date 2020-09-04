@@ -6,9 +6,6 @@
 //  Copyright (c) 2013年 iflytek. All rights reserved.
 //
 
-#ifndef __IFlySpeechError__
-#define __IFlySpeechError__
-
 #import <Foundation/Foundation.h>
 
 /*!
@@ -22,7 +19,7 @@
 @property(nonatomic,assign) int errorCode;
 
 /*!
- *  错误码类型
+ *  错误码类
  */
 @property(nonatomic,assign) int errorType;
 
@@ -38,7 +35,7 @@
  *
  *  @return IFlySpeechError对象
  */
-+ (instancetype) initWithError:(int) errorCode;
++ (id) initWithError:(int) errorCode;
 
 /*!
  *  获取错误码
@@ -55,4 +52,3 @@
 - (NSString *) errorDesc;
 
 @end
-#endif

@@ -144,27 +144,19 @@
             if ([audioSession respondsToSelector:@selector(requestRecordPermission:)]) {
                 [audioSession performSelector:@selector(requestRecordPermission:) withObject:^(BOOL granted) {
                     if (granted) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            //回调或者说是通知主线程刷新，
-                            [weakSelf startRecVoice];
-                            weakSelf.btnBGlotview.hidden = NO;
-                            [weakSelf.vocieLotView play];
-                            [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
-                                weakSelf.pressBtn.size = CGSizeMake(70, 70);
-                                weakSelf.pressBtn.x = SCREENW/2.f - 35;
-                                if (animationFinished) {
-                                    weakSelf.pressBtn.size = CGSizeMake(80, 80);
-                                    weakSelf.pressBtn.x = SCREENW/2.f - 40;
-                                }
-                            }];
-                        });
-                        
+                        [weakSelf startRecVoice];
+                        weakSelf.btnBGlotview.hidden = NO;
+                        [weakSelf.vocieLotView play];
+                        [weakSelf.btnBGlotview playWithCompletion:^(BOOL animationFinished) {
+                            weakSelf.pressBtn.size = CGSizeMake(70, 70);
+                            weakSelf.pressBtn.x = SCREENW/2.f - 35;
+                            if (animationFinished) {
+                                weakSelf.pressBtn.size = CGSizeMake(80, 80);
+                                weakSelf.pressBtn.x = SCREENW/2.f - 40;
+                            }
+                        }];
                     } else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            //回调或者说是通知主线程刷新，
-                            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"未开启录音功能" msg:@"请到设置中开启声纹设置" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
-                        });
-                        
+                        [self showConfrimCancelDialogAlertViewWithTitle:@"未开启录音功能" msg:@"请到设置中开启声纹设置" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
                     }
                 }];
             }
@@ -252,18 +244,6 @@
 //    [self.animaImageView stopAnimating];
     [self stopWaveAnimation];
     
-}
-
-- (void)onCompleted:(IFlySpeechError *)errorCode{
-    YCLog(@"onError:%d", errorCode.errorCode);
-    [self stopWaveAnimation];
-    //超时
-    if (10114 == errorCode.errorCode) {
-        [self showHudWithText:@"初始化语音引擎超时，请稍后重试"];
-        [self hideHudDelay:2.0];
-        [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2.0];
-//        [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
-    }
 }
 
 //发生错误
