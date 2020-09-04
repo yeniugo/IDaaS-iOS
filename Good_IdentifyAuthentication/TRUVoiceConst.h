@@ -9,7 +9,7 @@
 #ifndef TRUVoiceConst_h
 #define TRUVoiceConst_h
 // MSC RELATED
-#define MSC_APP_ID @"5698c1f8"
+#define MSC_APP_ID @"586dbd53"
 #define PWDT_NUM_CODE    3     //数字密码
 #define  TRAIN_SST          @"train"
 #define  VERIFY_SST         @"verify"

@@ -16,7 +16,6 @@
 		1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */; };
 		1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216452E1F96F2C200808730 /* TRUNetworkStatus.m */; };
 		121645331F96F2DF00808730 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645321F96F2DF00808730 /* Reachability.m */; };
-		121645351F9727D700808730 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645341F9727D700808730 /* iflyMSC.framework */; };
 		121645371F972D0000808730 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645361F972D0000808730 /* AVFoundation.framework */; };
 		121645391F972D2100808730 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645381F972D2100808730 /* AddressBook.framework */; };
 		121645461F97347B00808730 /* TRUFaceBaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1216453D1F97347B00808730 /* TRUFaceBaseViewController.mm */; };
@@ -210,6 +209,7 @@
 		12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
 		2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A628230BCCEA00C2F326 /* UILabel+Alignment.m */; };
 		2D00A62D230C03EB00C2F326 /* TRUQRShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */; };
+		2D07927425020BB70037D758 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D07927325020BB70037D758 /* iflyMSC.framework */; };
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
@@ -334,7 +334,6 @@
 		1216452E1F96F2C200808730 /* TRUNetworkStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUNetworkStatus.m; sourceTree = "<group>"; };
 		121645311F96F2DF00808730 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		121645321F96F2DF00808730 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		121645341F9727D700808730 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		121645361F972D0000808730 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		121645381F972D2100808730 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1216453A1F9730D700808730 /* TRUVoiceConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUVoiceConst.h; sourceTree = "<group>"; };
@@ -661,6 +660,7 @@
 		2D00A629230BCCEA00C2F326 /* UILabel+Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Alignment.h"; sourceTree = "<group>"; };
 		2D00A62B230C03EB00C2F326 /* TRUQRShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUQRShowViewController.h; sourceTree = "<group>"; };
 		2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUQRShowViewController.m; sourceTree = "<group>"; };
+		2D07927325020BB70037D758 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
 		2D07D11E2421FB5900DE4996 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
 		2D0BED3421C8F25E002AB0C1 /* TRUMultipleAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsViewController.h; sourceTree = "<group>"; };
@@ -853,12 +853,12 @@
 				2DADD88A2500EB62008C3791 /* QuartzCore.framework in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
 				2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
-				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
 				2DA0388024A9984300AAD8A8 /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
+				2D07927425020BB70037D758 /* iflyMSC.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
@@ -1123,6 +1123,7 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2D07927325020BB70037D758 /* iflyMSC.framework */,
 				2D96CEA924333CF1009080DC /* zip */,
 				2D13E55F22FD55DF000112AC /* MYCircleView */,
 				2D89623D22F9634600782CCA /* GestureUnlock */,
@@ -1130,7 +1131,6 @@
 				12476A221FA18C47000055CB /* AuthenFace */,
 				124769CB1FA18B41000055CB /* MJRefresh */,
 				128208731F98A341004DD5C6 /* HUIPatternLockView */,
-				121645341F9727D700808730 /* iflyMSC.framework */,
 				121645301F96F2DF00808730 /* Reachability */,
 				12409F7A1F8F40A8000D342D /* QTVertificationCodeInputView */,
 				12409F761F8F40A1000D342D /* HUD */,

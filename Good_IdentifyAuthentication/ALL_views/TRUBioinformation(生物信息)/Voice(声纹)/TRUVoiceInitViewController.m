@@ -42,10 +42,16 @@
     [self.isvRecognizer startListening];//开始录音
 }
 
+
 -(void)onResult:(NSDictionary *)dic{
     [super onResult:dic];
     YCLog(@"init onResult");
     [self resultProcess:dic];
+}
+
+- (void)onCompleted:(IFlySpeechError *)errorCode{
+    YCLog(@"onError:%d", errorCode.errorCode);
+    [super onCompleted:errorCode];
 }
 
 -(void)onError:(IFlySpeechError *)errorCode{
@@ -54,6 +60,8 @@
    
     
 }
+
+
 
 //数字密码 把array里面的数字 串起来,ISV 固定规则
 -(NSString*)numArrayToString:(NSArray *)numArrayParam

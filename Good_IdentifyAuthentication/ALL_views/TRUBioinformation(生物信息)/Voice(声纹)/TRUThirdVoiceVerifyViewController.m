@@ -53,6 +53,29 @@
     [self resultProcess:dic];
 }
 
+- (void)onCompleted:(IFlySpeechError *)errorCode{
+    [super onCompleted:errorCode];
+    int err = errorCode.errorCode;
+    
+    if (err != 0) {
+        __weak typeof(self) weakSelf = self;
+        if (err == 10116) {
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"模型不存在，请先注册" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                [weakSelf back2LastVC];
+            } cancelBlock:^{
+                [weakSelf back2LastVC];
+            }];
+        }else{
+            [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"声纹验证失败，是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
+                
+            } cancelBlock:^{
+                [weakSelf back2LastVC];
+            }];
+        }
+        
+    }
+}
+
 -(void)onError:(IFlySpeechError *)errorCode{
     [super onError:errorCode];
     //    XDLog(@"init onError:%d", errorCode.errorCode);

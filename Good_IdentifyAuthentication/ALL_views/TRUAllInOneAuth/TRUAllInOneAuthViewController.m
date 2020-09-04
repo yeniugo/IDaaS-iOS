@@ -71,6 +71,7 @@ static double dytime = 0.0;
     [self getPushInfo];
     [self syncTime];
     [self showFinger];
+    [self syncUserInfo];
 //    [self dismisslock];
 //    self.isShowLock = YES;
 //    if (TRUEnterAPPAuthView.lockid==1) {
@@ -99,6 +100,33 @@ static double dytime = 0.0;
 - (void)leftBarButtonClick{
     TRUWebLoginManagerViewController *weblogin = [[TRUWebLoginManagerViewController alloc] init];
     [self.navigationController pushViewController:weblogin animated:YES];
+}
+
+- (void)syncUserInfo{
+//    [self showHudWithText:@"正在同步用户信息..."];
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    //同步用户信息
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
+        NSDictionary *dicc = nil;
+//        [weakSelf hideHudDelay:0.0];
+        if (errorno == 0 && responseBody) {
+            dicc = [xindunsdk decodeServerResponse:responseBody];
+            if ([dicc[@"code"] intValue] == 0) {
+                dicc = dicc[@"resp"];
+                //用户信息同步成功
+                TRUUserModel *model = [TRUUserModel modelWithDic:dicc];
+                model.userId = userid;
+                [TRUUserAPI saveUser:model];
+            }else if (9019 == errorno){
+                [weakSelf deal9019Error];
+            }
+        }
+    }];
+    
 }
 
 //- (void)viewWillAppear:(BOOL)animated{
