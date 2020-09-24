@@ -105,10 +105,10 @@ static double dytime = 0.0;
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
-                [TrusfortDfsSdk enableSensor:model2.hasMtd];
+//                [TrusfortDfsSdk enableSensor:model2.hasMtd];
             }else{
                 [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
-                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
+//                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
                     [delegate restUIForApp];
                 } cancelBlock:nil];
 //                self.updateStatus = 2;

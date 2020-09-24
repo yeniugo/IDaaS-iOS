@@ -13,7 +13,6 @@
 		12098A0720CFA4D20027D927 /* NSCameraOption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12098A0020CFA4D10027D927 /* NSCameraOption.mm */; };
 		12098A0820CFA4D20027D927 /* Audio.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0120CFA4D10027D927 /* Audio.bundle */; };
 		12098A0920CFA4D20027D927 /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0220CFA4D10027D927 /* Image.bundle */; };
-		12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */; };
 		1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */; };
 		1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216452E1F96F2C200808730 /* TRUNetworkStatus.m */; };
 		121645331F96F2DF00808730 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645321F96F2DF00808730 /* Reachability.m */; };
@@ -803,7 +802,6 @@
 				121645371F972D0000808730 /* AVFoundation.framework in Frameworks */,
 				121C48CF1F7CE47F0077AE34 /* MapKit.framework in Frameworks */,
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
-				12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
@@ -2669,7 +2667,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2678,7 +2676,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
 				PRODUCT_NAME = "健康云";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
@@ -2718,7 +2716,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
