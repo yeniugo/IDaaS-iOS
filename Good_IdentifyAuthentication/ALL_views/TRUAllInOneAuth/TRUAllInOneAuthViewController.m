@@ -91,9 +91,9 @@ static double dytime = 0.0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    if (delegate.thirdAwakeTokenStatus==0) {
-        [self checkUpdataWithPlist];
-    }
+//    if (delegate.thirdAwakeTokenStatus==0) {
+//        [self checkUpdataWithPlist];
+//    }
 }
 
 - (void)leftBarButtonClick{
