@@ -491,6 +491,7 @@
     }else{
 //        [HAMLogOutputWindow printLog:@"没有refreshtoken"];
 //        [TRUEnterAPPAuthView showAuthView];
+//        [HAMLogOutputWindow printLog:@"test5"];
         [TRULockSWindow showAuthView];
 //        [self getAppAuthToken];
     }
@@ -731,6 +732,7 @@
                     }else if(errorno ==90037){
 //                        [HAMLogOutputWindow printLog:@"show2"];
 //                        [TRUEnterAPPAuthView showAuthView];
+                        [HAMLogOutputWindow printLog:@"test6"];
                         [TRULockSWindow showAuthView];
                         //            [self getAppAuthToken];
                     }else if(errorno ==9024){

@@ -18,14 +18,16 @@
     //http://14.2.34.19:8100/cims
 #if TARGET_IPHONE_SIMULATOR
     //http://192.168.1.215:8100/cims
-    [[NSUserDefaults standardUserDefaults] setObject:@"https://ida.bsb.com.cn/cims" forKey:@"CIMSURL"];
+    // UAT  https://test1.bsb.com.cn:8100/cims
+    [[NSUserDefaults standardUserDefaults] setObject:@"https://tsida.msbank.com:8101/cims" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [[TRUCompanyModel alloc] init];
     companymodel.activation_mode = @"2";
     [TRUCompanyAPI saveCompany:companymodel];
 #else
-    [[NSUserDefaults standardUserDefaults] setObject:@"https://ida.bsb.com.cn/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"https://tsida.msbank.com:8101/cims" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
     TRUCompanyModel *companymodel = [[TRUCompanyModel alloc] init];
     companymodel.activation_mode = @"2";
     [TRUCompanyAPI saveCompany:companymodel];

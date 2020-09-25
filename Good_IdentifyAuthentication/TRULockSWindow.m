@@ -56,9 +56,9 @@ static id _instanceLockSWindow = nil;
     
     TRULockSWindow *win = [[self alloc] init];
     
-    if (win.hidden == NO) {
-        return;
-    }
+//    if (win.hidden == NO) {
+//        return;
+//    }
     win.frame = [UIScreen mainScreen].bounds;
     win.windowLevel = 2;
     [win makeKeyAndVisible];

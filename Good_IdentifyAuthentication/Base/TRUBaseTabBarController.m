@@ -291,6 +291,7 @@ const char* jailbreak_tool_pathes[] = {
 - (void)hideLocalAuth{
     self.isShowLocalAuth = YES;
 //    [TRUEnterAPPAuthView dismissAuthView];
+//    [HAMLogOutputWindow printLog:@"test17"];
     [TRULockSWindow dismissAuthView];
 }
 
@@ -312,6 +313,7 @@ const char* jailbreak_tool_pathes[] = {
         }
         if (!delegate.thirdAwakeTokenStatus) {
 //            [TRUEnterAPPAuthView showAuthView];
+//            [HAMLogOutputWindow printLog:@"test18"];
             [TRULockSWindow showAuthView];
         }
         
@@ -326,6 +328,7 @@ const char* jailbreak_tool_pathes[] = {
             if (!delegate.thirdAwakeTokenStatus) {
 //                [HAMLogOutputWindow printLog:@"show3"];
 //                [TRUEnterAPPAuthView showAuthView];
+//                [HAMLogOutputWindow printLog:@"test19"];
                 [TRULockSWindow showAuthView];
             }
         }

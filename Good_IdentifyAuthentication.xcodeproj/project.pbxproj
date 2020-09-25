@@ -2874,7 +2874,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -2976,7 +2976,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.0.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3066,7 +3066,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.0.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3180,7 +3180,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageffff;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Runxin Liu (WZ8S7XMP4A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -3203,7 +3203,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3237,7 +3237,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bsb.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
@@ -3275,7 +3275,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",

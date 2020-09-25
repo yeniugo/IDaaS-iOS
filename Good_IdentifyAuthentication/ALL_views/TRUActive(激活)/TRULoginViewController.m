@@ -78,6 +78,11 @@
     
 }
 -(void)customUI{
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:btn];
+//    btn.frame = CGRectMake(0, 0, 200, 200);
+//    [btn addTarget:self action:@selector(openSetting) forControlEvents:UIControlEventTouchUpInside];
     
     [_AgreementBtn setTitle:@"《使用协议》" forState:UIControlStateNormal];
     _AgreementBtn.hidden = YES;
@@ -96,6 +101,27 @@
     _ScanView.hidden = YES;
     
     //[self addScanViewMessage:@"http://192.168.1.214:8100/authn/download.html?spcode=8284f8b351c34cc0a9a68bd960fba8fc"];
+}
+
+- (void)openSetting{
+    if (@available(iOS 8.0,*)){
+        NSString *header;
+        if (@available(iOS 10.0,*)){
+            header = @"App-prefs";
+        }else{
+            header = @"Prefs";
+        }
+        NSString *bundleid = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
+        NSString *urlStr = [NSString stringWithFormat:@"%@:root=%@", UIApplicationOpenSettingsURLString,bundleid];
+        NSURL *url = [NSURL URLWithString:urlStr];
+        if([[UIApplication sharedApplication] canOpenURL:url]){
+            if (@available(iOS 10.0,*)){
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }else{
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+    }
 }
 
 - (void)addScanViewMessage:(NSString *)result{

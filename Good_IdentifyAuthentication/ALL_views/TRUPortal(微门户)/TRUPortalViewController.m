@@ -76,7 +76,15 @@
     showlabel.hidden = YES;
     self.showLB = showlabel;
     [self refreshData];
-    [self refreshtoken];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+//    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"app status = %d",delegate.thirdAwakeTokenStatus]];
+    __weak typeof(self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (delegate.thirdAwakeTokenStatus == 0) {
+            [weakSelf refreshtoken];
+        }
+    });
+//    [self refreshtoken];
     [self syncTime];
 }
 

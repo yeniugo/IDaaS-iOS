@@ -74,7 +74,7 @@ static HAMLogOutputWindow __strong * sharedHAMLogOutputWindow = nil;
     if (self) {
         // self
         self.rootViewController = [UIViewController new]; // suppress warning
-        self.windowLevel = UIWindowLevelAlert;
+        self.windowLevel = 5000;
         [self setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
         self.userInteractionEnabled = NO;
         

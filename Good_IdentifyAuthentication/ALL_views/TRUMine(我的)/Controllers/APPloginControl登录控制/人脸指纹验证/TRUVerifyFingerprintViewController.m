@@ -241,6 +241,7 @@
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
 //                                [TRUEnterAPPAuthView dismissAuthView];
+//                                [HAMLogOutputWindow printLog:@"test10"];
                                 [TRULockSWindow dismissAuthView];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
@@ -351,6 +352,7 @@
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
 //                                [TRUEnterAPPAuthView dismissAuthView];
+//                                [HAMLogOutputWindow printLog:@"test11"];
                                 [TRULockSWindow dismissAuthView];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
@@ -398,6 +400,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:@"refresh_token"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+//                    [HAMLogOutputWindow printLog:@"test12"];
                     [TRULockSWindow dismissAuthView];
                 }
             }

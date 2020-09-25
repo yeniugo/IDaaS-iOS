@@ -385,6 +385,8 @@
                 
         }
         
+    }else{
+        onResult(NO,NO);
     }
     
     if(ipAddress) {

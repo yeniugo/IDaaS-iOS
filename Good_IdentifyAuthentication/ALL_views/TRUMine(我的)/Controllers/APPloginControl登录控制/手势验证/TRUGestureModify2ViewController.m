@@ -201,6 +201,7 @@
     NSString *encryptedGesture = [self encryptGesture:gesture];
     if (_ISrebinding) {
         //            [TRUEnterAPPAuthView dismissAuthView];
+//        [HAMLogOutputWindow printLog:@"test7"];
         [TRULockSWindow dismissAuthView];
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
         [TRUFingerGesUtil saveGesturePwd:encryptedGesture];

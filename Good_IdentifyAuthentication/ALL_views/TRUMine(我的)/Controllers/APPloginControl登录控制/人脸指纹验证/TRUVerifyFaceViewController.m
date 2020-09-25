@@ -228,6 +228,7 @@
                                 [xindunsdk deactivateUser:userid];
                                 [TRUUserAPI deleteUser];
 //                                [TRUEnterAPPAuthView dismissAuthView];
+//                                [HAMLogOutputWindow printLog:@"test13"];
                                 [TRULockSWindow dismissAuthView];
                                 //                                [TRUFingerGesUtil ];
 #pragma clang diagnostic push
@@ -247,12 +248,36 @@
             }];
         } else {
             weskSelf.topLabel.text = @"该设备暂时不支持FaceID验证，请去设置开启";
+            [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"faceid关闭，请到设置中开启" msg:nil confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:NO confrimBolck:^{
+                [weskSelf openSetting];
+            } cancelBlock:^{
+                
+            }];
         }
     } else {
         self.topLabel.text = @"该系统不支持FaceID验证";
         return;
     }
     
+}
+
+- (void)openSetting{
+    if (@available(iOS 8.0,*)){
+        NSString *header;
+        if (@available(iOS 10.0,*)){
+            header = @"App-Prefs";
+        }else{
+            header = @"prefs";
+        }
+        NSString *bundleid = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
+        NSString *urlStr = [NSString stringWithFormat:@"%@:root=%@", UIApplicationOpenSettingsURLString,bundleid];
+        NSURL *url = [NSURL URLWithString:urlStr];
+        if (@available(iOS 10.0,*)){
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        }else{
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
 }
 
 - (void)refreshtoken{
@@ -274,6 +299,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:@"refresh_token"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+//                    [HAMLogOutputWindow printLog:@"test14"];
                     [TRULockSWindow dismissAuthView];
                 }
             }

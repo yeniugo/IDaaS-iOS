@@ -31,10 +31,12 @@
         }
         [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
 //        [TRUEnterAPPAuthView showAuthView];
+//        [HAMLogOutputWindow printLog:@"test15"];
         [TRULockSWindow showAuthView];
     }else{
         if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
 //            [TRUEnterAPPAuthView showAuthView];
+//            [HAMLogOutputWindow printLog:@"test16"];
             [TRULockSWindow showAuthView];
         }
     }

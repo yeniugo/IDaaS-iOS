@@ -311,6 +311,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:refreshToken forKey:@"refresh_token"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
+//                    [HAMLogOutputWindow printLog:@"test8"];
                     [TRULockSWindow dismissAuthView];
                 }
             }
