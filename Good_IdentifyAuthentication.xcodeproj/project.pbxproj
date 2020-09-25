@@ -1955,6 +1955,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 				);
+				MARKETING_VERSION = 1.1.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1963,7 +1964,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.otp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "08301222-69c3-41f1-8ea5-fb4e2f84d440";
 				PROVISIONING_PROFILE_SPECIFIER = CommonTestProfile;
@@ -1978,10 +1979,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = AG9SM32322;
+				DEVELOPMENT_TEAM = TPCFL2FZJS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2000,6 +2001,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 				);
+				MARKETING_VERSION = 1.1.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2008,10 +2010,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.xib.otp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "08301222-69c3-41f1-8ea5-fb4e2f84d440";
-				PROVISIONING_PROFILE_SPECIFIER = CommonTestProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "OTP PRO";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
