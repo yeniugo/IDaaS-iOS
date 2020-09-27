@@ -120,33 +120,121 @@ static double dytime = 0.0;
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
-    updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/ios/cims.html",baseUrl];
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            YCLog(@"dic = %@",responseObject);
-            TRUCompanyModel *model1 = [TRUCompanyAPI getCompany];
-            TRUCompanyModel *model2 = [TRUCompanyModel modelWithDic:responseObject];
-            [TRUCompanyAPI saveCompany:model2];
-//            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
-            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            
-            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
-//                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
-//                self.updateStatus = 1;
-//                [TrusfortDfsSdk enableSensor:model2.hasMtd];
-            }else{
-                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
-//                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
-                    [delegate restUIForApp];
-                } cancelBlock:nil];
-//                self.updateStatus = 2;
+            NSString *url = responseObject[@"url"];
+            if (url.length) {
+                if ([url hasPrefix:@"https://"]) {
+                    [weakSelf getPlistWithURL:url];
+                }else{
+                    url = [NSString stringWithFormat:@"%@%@",baseUrl,url];
+                    [weakSelf getPlistWithURL:url];
+                }
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YCLog(@"error");
     }];
+}
+
+- (void)getPlistWithURL:(NSString *)url{
+    __weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *bundleidStr = [weakSelf getPlistVersionWithPlist:responseObject];
+        NSString *updateStr = [weakSelf getPlistFouceWithPlist:responseObject];
+        if (updateStr.length) {
+            if ([updateStr isEqualToString:@"1"]) {
+                [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:YES];
+            }else{
+                [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:NO];
+            }
+        }else{
+            [weakSelf checkNewAppUpdate:bundleidStr updateURL:url withFouce:NO];
+        }
+        YCLog(@"bundleidStr = %@",bundleidStr);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"error");
+    }];
+}
+
+-(void)checkNewAppUpdate:(NSString *)appInfo updateURL:(NSString *)updateURL withFouce:(BOOL)fouce{
+    //版本
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    CGFloat dispatchTime;
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate.window.rootViewController isKindOfClass: [TRUBaseNavigationController class]]) {
+        dispatchTime = 0.1;
+    }else{
+        dispatchTime = 2;
+    }
+    
+    if ([self updeWithDicString:version andOldString:appInfo]) {
+        if (fouce) {
+            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                NSString *url = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",updateURL];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                [delegate.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+                
+            }];
+            
+            
+            [alertVC addAction:confrimAction];//
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [delegate.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+            });
+        }else{
+            UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"新版本 %@ 已发布!",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSString *url = [NSString stringWithFormat:@"itms-services:///?action=download-manifest&url=%@",updateURL];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+            }];
+            
+            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alertVC addAction:cancelAction];
+            [alertVC addAction:confrimAction];//
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dispatchTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [delegate.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+            });
+            
+        }
+    }else{
+        YCLog(@"不用更新");
+    }
+}
+
+- (NSString *)getPlistVersionWithPlist:(id)plist{
+    NSMutableDictionary *dataDictionary;
+    if ([plist isKindOfClass:[NSData class]]) {
+        NSMutableDictionary *result = [NSPropertyListSerialization propertyListWithData:plist options:0 format:NULL error:NULL];
+        NSArray *array = result[@"items"];
+        NSMutableDictionary *messageDic = [array firstObject];
+        NSMutableDictionary *metadata = messageDic[@"metadata"];
+        return metadata[@"bundle-version"];
+    }
+    return nil;
+
+}
+
+- (NSString *)getPlistFouceWithPlist:(id)plist{
+    if ([plist isKindOfClass:[NSData class]]) {
+        NSMutableDictionary *result = [NSPropertyListSerialization propertyListWithData:plist options:0 format:NULL error:NULL];
+        NSArray *array = result[@"items"];
+        NSMutableDictionary *messageDic = [array firstObject];
+        NSMutableDictionary *metadata = messageDic[@"metadata"];
+        return metadata[@"Forced-update"];
+    }
+    return nil;
 }
 
 - (void)showlock{
