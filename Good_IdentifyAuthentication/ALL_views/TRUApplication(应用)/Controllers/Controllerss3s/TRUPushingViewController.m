@@ -718,7 +718,7 @@ static NSInteger pushCount = 0;
 }
 - (void)showTimeoutTip{
     __weak typeof(self) weakSelf = self;
-    [self showConfrimCancelDialogAlertViewWithTitle:@"请求超时" msg:@"由于您的认证请求已超时，善认无法确认您的身份，请重新发起认证请求" confrimTitle:@"OK" cancelTitle:nil confirmRight:NO confrimBolck:^{
+    [self showConfrimCancelDialogAlertViewWithTitle:@"请求超时" msg:@"由于您的认证请求已超时，农科通行证无法确认您的身份，请重新发起认证请求" confrimTitle:@"OK" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [weakSelf authTimeOut];
         [weakSelf post3DataNoti];
         [weakSelf dismissVC:nil];

@@ -40,7 +40,7 @@
         [self.logImageView yy_setImageWithURL:[NSURL URLWithString:imgurlstr] placeholder:[UIImage imageNamed:@"shanreniIcon"]];
         [self addSubview:self.logImageView];
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENW, 15)];
-        self.titleLabel.text = @"“善认”您的身份安全守护者";
+        self.titleLabel.text = @"“农科通行证”您的身份安全守护者";
         self.titleLabel.textColor = [UIColor whiteColor];
 //        self.titleLabel.adjustsFontSizeToFitWidth=YES;
         self.titleLabel.font = [UIFont systemFontOfSize:15];

@@ -26,7 +26,7 @@
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
-    showLable.text = @"移动安全认证";
+    showLable.text = @"农 科 通 行 证";
     showLable.textColor = [UIColor whiteColor];
     [self.view addSubview:showLable];
     [self.view addSubview:imageview];
@@ -36,9 +36,9 @@
     }];
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
-        make.width.equalTo(@(120.5));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
+        make.height.equalTo(@(180));
+        make.width.equalTo(@(180));
+        make.bottom.equalTo(showLable.mas_top).with.offset(0);
     }];
 }
 

@@ -29,8 +29,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *bottomLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *scanBtn1;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scanLB;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnBottom;
 
@@ -68,19 +70,24 @@
     self.bingEmailBtn.hidden = NO;
     
 #endif
-    NSString *spname = [TRUCompanyAPI getCompany].spname;
-    if (spname.length >0) {
-        self.titleLabel.text = [NSString stringWithFormat:@"%@统一身份认证",spname];
-    }else{
-        self.titleLabel.text = [NSString stringWithFormat:@"芯盾统一身份认证"];
-    }
+//    NSString *spname = [TRUCompanyAPI getCompany].spname;
+//    if (spname.length >0) {
+//        self.titleLabel.text = [NSString stringWithFormat:@"%@统一身份认证",spname];
+//    }else{
+//        self.titleLabel.text = [NSString stringWithFormat:@"芯盾统一身份认证"];
+//    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartQRCodeScan) name:@"trurestartQRscan" object:nil];
+    
+    
 }
 
 - (void)restartQRCodeScan{
     [self scanViewTap];
 }
 
+- (IBAction)scanbtnClick:(id)sender {
+    [self scanViewTap];
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -89,26 +96,28 @@
     
 }
 -(void)customUI{
-    
+    self.scanBtn1.backgroundColor = DefaultGreenColor;
+    self.scanBtn1.layer.cornerRadius = 26.5;
+    self.scanBtn1.layer.masksToBounds = YES;
     self.bingEmailBtn.backgroundColor = DefaultGreenColor;
-    self.bingEmailBtn.layer.cornerRadius = 5;
+    self.bingEmailBtn.layer.cornerRadius = 26.5;
     self.bingEmailBtn.layer.masksToBounds = YES;
-    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:scanBtn];
-    scanBtn.frame = CGRectMake((SCREENW - 100)/2.0, (SCREENH - 100)*378.0/(378.0+334.0), 100, 100);
-    [scanBtn addTarget:self action:@selector(scanViewTap) forControlEvents:UIControlEventTouchUpInside];
-    scanBtn.backgroundColor = DefaultGreenColor;
-    scanBtn.layer.masksToBounds = YES; //没这句话它圆不起来
-    scanBtn.layer.cornerRadius = 50.0; //设置图片圆角的大小
-    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanlogin"]];
-    [scanBtn addSubview:icon];
-    icon.frame = CGRectMake(34, 34, 32, 32);
-    
-    UILabel *scanLB = [[UILabel alloc] init];
-    [self.view addSubview:scanLB];
-    scanLB.frame = CGRectMake(0, (SCREENH - 100)*378.0/(378.0+334.0) + 100 + 20, SCREENW, 14);
-    scanLB.textAlignment = NSTextAlignmentCenter;
-    scanLB.text = @"扫一扫绑定";
+//    UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:scanBtn];
+//    scanBtn.frame = CGRectMake((SCREENW - 100)/2.0, (SCREENH - 100)*378.0/(378.0+334.0), 100, 100);
+//    [scanBtn addTarget:self action:@selector(scanViewTap) forControlEvents:UIControlEventTouchUpInside];
+//    scanBtn.backgroundColor = DefaultGreenColor;
+//    scanBtn.layer.masksToBounds = YES; //没这句话它圆不起来
+//    scanBtn.layer.cornerRadius = 50.0; //设置图片圆角的大小
+//    UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scanlogin"]];
+//    [scanBtn addSubview:icon];
+//    icon.frame = CGRectMake(34, 34, 32, 32);
+//
+//    UILabel *scanLB = [[UILabel alloc] init];
+//    [self.view addSubview:scanLB];
+//    scanLB.frame = CGRectMake(0, (SCREENH - 100)*378.0/(378.0+334.0) + 100 + 20, SCREENW, 14);
+//    scanLB.textAlignment = NSTextAlignmentCenter;
+//    scanLB.text = @"扫码绑定";
     
     
     
