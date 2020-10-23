@@ -26,9 +26,9 @@ NSString *TipTextColorHex = @"0x777777";
 NSString *TextFieldLineColorHex = @"0x777777";
 
 
-NSString *kMicrophoneFailedTip = @"请在iPhone的“设置-隐私-麦克风”选项中，允许善认访问您的手机麦克风";
-NSString *kCameraFailedTip = @"请在iPhone的“设置-隐私-相机”选项中，允许善认访问您的相机";
-NSString *kPhotoAlbumFailedTip = @"请在iPhone的“设置-隐私-相册”选项中，允许善认访问您的手机相册";
+NSString *kMicrophoneFailedTip = @"请在iPhone的“设置-隐私-麦克风”选项中，允许国家医考中心访问您的手机麦克风";
+NSString *kCameraFailedTip = @"请在iPhone的“设置-隐私-相机”选项中，允许国家医考中心访问您的相机";
+NSString *kPhotoAlbumFailedTip = @"请在iPhone的“设置-隐私-相册”选项中，允许国家医考中心访问您的手机相册";
 NSString *kBadErrorTip = @"网络不给力，请检查网络设置";
 #ifdef ENV_DEBUG
 //测试环境

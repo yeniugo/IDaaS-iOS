@@ -53,7 +53,7 @@
     }];
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
+        make.height.equalTo(@(120.5));
         make.width.equalTo(@(120.5));
         make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
     }];
