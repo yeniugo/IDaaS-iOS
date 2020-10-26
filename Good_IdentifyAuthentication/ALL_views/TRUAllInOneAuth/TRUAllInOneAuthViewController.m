@@ -115,38 +115,10 @@ static double dytime = 0.0;
 }
 
 - (void)checkUpdataWithPlist{
-    __weak typeof(self) weakSelf = self;
-    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
-    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
-    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
-    updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
-    [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            YCLog(@"dic = %@",responseObject);
-            TRUCompanyModel *model1 = [TRUCompanyAPI getCompany];
-            TRUCompanyModel *model2 = [TRUCompanyModel modelWithDic:responseObject];
-            [TRUCompanyAPI saveCompany:model2];
-//            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
-            AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            
-            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
-//                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
-//                self.updateStatus = 1;
-//                [TrusfortDfsSdk enableSensor:model2.hasMtd];
-            }else{
-                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
-//                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
-                    [delegate restUIForApp];
-                } cancelBlock:nil];
-//                self.updateStatus = 2;
-            }
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YCLog(@"error");
-    }];
+    id delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate respondsToSelector:@selector(checkUpdataWithPlist)]) {
+        [delegate performSelector:@selector(checkUpdataWithPlist) withObject:nil];
+    }
 }
 
 - (void)showlock{

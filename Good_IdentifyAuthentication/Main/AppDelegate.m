@@ -106,7 +106,7 @@
     //更新公司信息
 //    [self requestSPinfo];
     //检查版本更新
-    [self checkVersion];
+//    [self checkVersion];
 //    [self checkNewVersion];
 //    [self checkNewVersion];
 //    [self checkUpdataWithPlist];
@@ -1934,7 +1934,7 @@
         YCLog(@"获取版本号失败！");
     }];
 }
-/*
+
 - (void)checkNewVersion{
     __weak typeof(self) weakSelf = self;
     AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
@@ -1961,12 +1961,7 @@
     //版本
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     CGFloat dispatchTime;
-    if ([self.window.rootViewController isKindOfClass: [TRUBaseTabBarController class]]) {
-        
-        dispatchTime = 0.1;
-    }else{
-        dispatchTime = 20;
-    }
+    dispatchTime = 0.1;
     
     if ([self updeWithDicString:version andOldString:appInfo]) {
         if (fouce) {
@@ -2014,7 +2009,7 @@
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/ios/cims.html",baseUrl];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *url = responseObject[@"url"];
@@ -2080,7 +2075,7 @@
     return nil;
 }
 
-*/
+
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本
