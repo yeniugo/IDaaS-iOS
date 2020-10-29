@@ -174,7 +174,7 @@
 //            [xindunsdk initEnv:@"com.example.demo" algoType:XDAlgoTypeOpenSSL baseUrl:@"https://dfs.trusfort.com/xdid/mapi"];
             NSString *para = [xindunsdk encryptByUkey:spcode];
             NSDictionary *dic = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-            [TRUhttpManager getCIMSRequestWithUrl:[currentCims stringByAppendingString:@"api/ios/cims.html"] withParts:dic onResult:^(int errorno, id responseBody) {
+            [TRUhttpManager getCIMSRequestWithUrl:[currentCims stringByAppendingString:@"/api/ios/cims.html"] withParts:dic onResult:^(int errorno, id responseBody) {
                 //[weakSelf hideHudDelay:0.0];
                 YCLog(@"--%d-->%@",errorno,responseBody);
                 if (errorno == 0 && responseBody) {

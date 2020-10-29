@@ -117,7 +117,7 @@ static double dytime = 0.0;
 - (void)checkUpdataWithPlist{
     id delegate = [UIApplication sharedApplication].delegate;
     if ([delegate respondsToSelector:@selector(checkUpdataWithPlist)]) {
-        [delegate performSelector:@selector(checkUpdataWithPlist)];
+//        [delegate performSelector:@selector(checkUpdataWithPlist)];
     }
 }
 

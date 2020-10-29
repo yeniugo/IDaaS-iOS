@@ -1941,7 +1941,7 @@
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/ios/cims.html",baseUrl];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         YCLog(@"update = %@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -2174,7 +2174,7 @@
         NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
         NSString *para = [xindunsdk encryptByUkey:spcode];
         NSDictionary *dict = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-        [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:dict onResult:^(int errorno, id responseBody) {
+        [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:nil onResult:^(int errorno, id responseBody) {
             //            NSLog(@"--%d-->%@",errorno,responseBody);
             if (errorno == 0 && responseBody) {
                 NSDictionary *dictionary = responseBody;
