@@ -2976,7 +2976,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.9;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3066,7 +3066,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/TCSafe-iOS-0616",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/xindunsdk",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.9;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-isystem",
@@ -3312,7 +3312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bsb.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = new_profile_19_11;
+				PROVISIONING_PROFILE_SPECIFIER = com.bsb_profile_2020.6.22;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

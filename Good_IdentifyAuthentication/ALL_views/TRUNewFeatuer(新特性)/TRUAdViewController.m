@@ -33,10 +33,10 @@
         CGFloat wid = rect.size.width;
         CGFloat hei = rect.size.height ;
         imageview.frame = CGRectMake(0, 0, wid, hei);
-        imageview.image = [UIImage imageNamed:@"applaunchx"];
+        imageview.image = [UIImage imageNamed:@"applaunch1111"];
     }else{
         imageview.frame = [UIScreen mainScreen].bounds;
-        imageview.image = [UIImage imageNamed:@"applaunch"];
+        imageview.image = [UIImage imageNamed:@"applaunch1111"];
     }
     
     [self.view addSubview:imageview];
