@@ -12,6 +12,6 @@ pod 'HMSegmentedControl'
 pod 'YYWebImage'
 #pod 'CocoaLumberjack'
 pod 'Bugly'
-pod 'CocoaLumberjack'
+#pod 'CocoaLumberjack'
 pod 'YYModel'
 end
