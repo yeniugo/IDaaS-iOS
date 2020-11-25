@@ -282,9 +282,9 @@
 		2DAA2797230A9A2E00B3A6C4 /* TRUPortalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */; };
 		2DAA279D230AA7BB00B3A6C4 /* TRUPortalTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */; };
 		2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB18DF2232637CC00473824 /* TRUMTDTool.m */; };
+		2DBAFFB8256DF5CA00EAE7FD /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DBAFFB7256DF5C900EAE7FD /* trusfort.lic */; };
 		2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */; };
 		2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */; };
-		2DC1527024C981BD003B359F /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1526F24C981BD003B359F /* trusfort.lic */; };
 		2DC1B025231FA1A900A8A8DF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B024231FA1A900A8A8DF /* libc++.tbd */; };
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
@@ -802,11 +802,11 @@
 		2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalTitleView.m; sourceTree = "<group>"; };
 		2DB18DF2232637CC00473824 /* TRUMTDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMTDTool.m; sourceTree = "<group>"; };
 		2DB18DF3232637CC00473824 /* TRUMTDTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMTDTool.h; sourceTree = "<group>"; };
+		2DBAFFB7256DF5C900EAE7FD /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DBE8A2F24346A9800A5DB7E /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		2DBE8A342435C98200A5DB7E /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
 		2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
-		2DC1526F24C981BD003B359F /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DC1B024231FA1A900A8A8DF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2DC1B026231FA1D700A8A8DF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
@@ -1096,7 +1096,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2DC1526F24C981BD003B359F /* trusfort.lic */,
+				2DBAFFB7256DF5C900EAE7FD /* trusfort.lic */,
 				2D96CECB24343109009080DC /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
@@ -2337,6 +2337,7 @@
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
 				12354C671FA84B8A00B6B92E /* topMenuClick.json in Resources */,
 				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
+				2DBAFFB8256DF5CA00EAE7FD /* trusfort.lic in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
 				12409F571F8F3E17000D342D /* tabbardata02.json in Resources */,
@@ -2351,7 +2352,6 @@
 				2D810EA62462A02A00791B24 /* welcomeicon.png in Resources */,
 				123D100A202AA0CB000CEB60 /* Scandata.json in Resources */,
 				12098A0920CFA4D20027D927 /* Image.bundle in Resources */,
-				2DC1527024C981BD003B359F /* trusfort.lic in Resources */,
 				12409F9B1F8F4B22000D342D /* TRULoginViewController.xib in Resources */,
 				121645771F97429700808730 /* Lisence.txt in Resources */,
 				12749EB61FC7E8FE00183EB4 /* TRUPushViewController.xib in Resources */,
@@ -2848,7 +2848,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 224;
-				DEVELOPMENT_TEAM = AG9SM32322;
+				DEVELOPMENT_TEAM = NCZM4397B2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2877,10 +2877,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
 				PRODUCT_NAME = IDA;
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSAd_Hot;
+				PROVISIONING_PROFILE_SPECIFIER = TrusfrotCIMSEnterprise;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

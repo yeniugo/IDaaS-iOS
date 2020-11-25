@@ -90,6 +90,15 @@ static double dytime = 0.0;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
+        [self checkPlist];
+    }
+}
+
+-(void)checkPlist{
+    id delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate respondsToSelector:@selector(checkUpdataWithPlist)]) {
+        [delegate performSelector:@selector(checkUpdataWithPlist) withObject:nil];
+        
     }
 }
 
