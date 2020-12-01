@@ -24,6 +24,13 @@
     companymodel.activation_mode = @"1";
     [TRUCompanyAPI saveCompany:companymodel];
 #endif
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"https://sso.caas.cn/cims" forKey:@"CIMSURL"];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.97:8100/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    TRUCompanyModel *companymodel1 = [TRUCompanyAPI getCompany];
+    companymodel1.activation_mode = @"3";
+    [TRUCompanyAPI saveCompany:companymodel1];
 
     NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     

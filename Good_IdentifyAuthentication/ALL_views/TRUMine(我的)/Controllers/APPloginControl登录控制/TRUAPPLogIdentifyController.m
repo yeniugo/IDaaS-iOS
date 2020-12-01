@@ -703,7 +703,6 @@
         TRUGestureSettingViewController *gesVC = [[TRUGestureSettingViewController alloc] init];
         gesVC.backBlocked =^(){
             [self requestData];
-            
         };
         [self.navigationController pushViewController:gesVC animated:YES];
         
