@@ -106,7 +106,7 @@
     //更新公司信息
 //    [self requestSPinfo];
     //检查版本更新
-    [self checkVersion];
+//    [self checkVersion];
 //    [self checkNewVersion];
 //    [self checkNewVersion];
 //    [self checkUpdataWithPlist];
@@ -1899,6 +1899,47 @@
         YCLog(@"获取版本号失败！");
     }];
 }
+
+- (void)checkABM{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/getNewAbmVersion",baseUrl];
+    [manager GET:updateUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = responseObject[@"version"];
+        NSString *version = dic[@"number"];
+        [self checkABMUpdateVersion:version];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+    }];
+}
+
+- (void)checkABMUpdateVersion:(NSString *)appInfo{
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+
+//    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
+    if ([self updeWithDicString:version andOldString:appInfo]) {
+        
+        UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"版本更新" message:[NSString stringWithFormat:@"新版本 %@ 已发布!请手动到AppStore更新app",appInfo] preferredStyle:UIAlertControllerStyleAlert];
+        
+//        UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//        }];
+        
+        UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertVC addAction:cancelAction];
+//        [alertVC addAction:confrimAction];//
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
+        });
+    }else{
+        YCLog(@"不用更新");
+    }
+}
+
 /*
 - (void)checkNewVersion{
     __weak typeof(self) weakSelf = self;

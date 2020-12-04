@@ -92,6 +92,15 @@ static double dytime = 0.0;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
+        [self checkABMVersion];
+    }
+}
+
+-(void)checkABMVersion{
+    id delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate respondsToSelector:@selector(checkABM)]) {
+        [delegate performSelector:@selector(checkABM) withObject:nil];
+        
     }
 }
 
