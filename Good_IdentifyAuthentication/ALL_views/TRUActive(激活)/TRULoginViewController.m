@@ -58,11 +58,12 @@
 //        }
 //    }];
     NSString *URLstr = [TRUCompanyAPI getCompany].cims_server_url;
-    if (URLstr.length>0) {//说明已经切换了
-        self.bingEmailBtn.hidden = NO;
-    }else{
-        self.bingEmailBtn.hidden = YES;
-    }
+//    if (URLstr.length>0) {//说明已经切换了
+//        self.bingEmailBtn.hidden = NO;
+//    }else{
+//        self.bingEmailBtn.hidden = YES;
+//    }
+    self.bingEmailBtn.hidden = NO;
     if (kDevice_Is_iPhoneX){
         self.loginBtnBottom.constant = 70 + 34;
     }
