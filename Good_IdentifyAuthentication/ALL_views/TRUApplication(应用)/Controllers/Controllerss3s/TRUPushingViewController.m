@@ -109,12 +109,12 @@
     self.titleAuthLB.text = [NSString stringWithFormat:@"您正在通过【%@】登录",self.pushModel.appname];
     if (!userName || userName.length == 0) {
         TRUUserModel *model = [TRUUserAPI getUser];
-        if (model.phone.length>0) {
+        if (model.employeenum.length>0){
+            userName = model.employeenum;
+        }else if (model.phone.length>0) {
             userName = model.phone;
         }else if (model.email.length>0){
             userName = model.email;
-        }else if (model.employeenum.length>0){
-            userName = model.employeenum;
         }
     }
     self.accountLB.text = userName;

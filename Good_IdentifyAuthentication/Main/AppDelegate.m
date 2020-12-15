@@ -119,7 +119,7 @@
     [self.window makeKeyAndVisible];
     NSString *imgUrlStr = [TRUCompanyAPI getCompany].start_up_img_url;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self configRootBaseVCForApplication:application WithOptions:launchOptions];
     });
     

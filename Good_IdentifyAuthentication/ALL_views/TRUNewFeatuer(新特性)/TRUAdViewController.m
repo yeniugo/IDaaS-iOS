@@ -36,6 +36,7 @@
     }else{
         imageview.frame = [UIScreen mainScreen].bounds;
     }
+    imageview.frame = [UIScreen mainScreen].bounds;
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationInitialFinishedNotification:) name:EMMThirdPartyApplicationInitialFinishedNotification object:nil];
 //    [self performSelector:@selector(doInitialization) withObject:nil afterDelay:1.f];
     [self.view addSubview:imageview];

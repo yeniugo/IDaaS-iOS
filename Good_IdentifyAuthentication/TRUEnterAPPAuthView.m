@@ -43,37 +43,37 @@ static id _instance = nil;
 }
 
 + (void)showAuthView{
-    TRUEnterAPPAuthView *win = [[self alloc] init];
-    win.frame = [UIScreen mainScreen].bounds;
-    win.windowLevel = UIWindowLevelNormal;
-    win.rootViewController = [self authVC];
-    win.hidden = NO;
+//    TRUEnterAPPAuthView *win = [[self alloc] init];
+//    win.frame = [UIScreen mainScreen].bounds;
+//    win.windowLevel = UIWindowLevelNormal;
+//    win.rootViewController = [self authVC];
+//    win.hidden = NO;
     
 }
 
 
 +(void)showAuthViewWithCompletionBlock:(void (^)(void))success{
-    TRUEnterAPPAuthView *win = [[self alloc] init];
-    win.frame = [UIScreen mainScreen].bounds;
-    win.windowLevel = UIWindowLevelNormal;
-    win.rootViewController = [self authVCWithCompletionBlock:^{
-        success();
-    }];
-    win.hidden = NO;
+//    TRUEnterAPPAuthView *win = [[self alloc] init];
+//    win.frame = [UIScreen mainScreen].bounds;
+//    win.windowLevel = UIWindowLevelNormal;
+//    win.rootViewController = [self authVCWithCompletionBlock:^{
+//        success();
+//    }];
+//    win.hidden = NO;
 }
 
 + (void)dismissAuthView{
-    TRUEnterAPPAuthView *win = [[self alloc] init];
-    win.hidden = YES;
-    win.rootViewController = nil;
+//    TRUEnterAPPAuthView *win = [[self alloc] init];
+//    win.hidden = YES;
+//    win.rootViewController = nil;
 }
 
 + (void)dismissAuthViewAndCleanStatus{
-    TRUEnterAPPAuthView *win = [[self alloc] init];
-    win.hidden = YES;
-    win.rootViewController = nil;
-    win.isShowPushAuth = NO;
-    YCLog(@"dismissAuthViewAndCleanStatus");
+//    TRUEnterAPPAuthView *win = [[self alloc] init];
+//    win.hidden = YES;
+//    win.rootViewController = nil;
+//    win.isShowPushAuth = NO;
+//    YCLog(@"dismissAuthViewAndCleanStatus");
 }
 
 + (TRUBaseNavigationController *)authVC{

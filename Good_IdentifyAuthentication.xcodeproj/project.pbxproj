@@ -13,7 +13,6 @@
 		12098A0720CFA4D20027D927 /* NSCameraOption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 12098A0020CFA4D10027D927 /* NSCameraOption.mm */; };
 		12098A0820CFA4D20027D927 /* Audio.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0120CFA4D10027D927 /* Audio.bundle */; };
 		12098A0920CFA4D20027D927 /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12098A0220CFA4D10027D927 /* Image.bundle */; };
-		12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */; };
 		1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1212B5F91FDE52C600A19444 /* TRUNewFeatuerViewController.m */; };
 		1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216452E1F96F2C200808730 /* TRUNetworkStatus.m */; };
 		121645331F96F2DF00808730 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645321F96F2DF00808730 /* Reachability.m */; };
@@ -236,6 +235,7 @@
 		2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8D2154D2C100A2D1C2 /* RadomMutableNumber.mm */; };
 		2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C8F2154D2C100A2D1C2 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D800C942154D3DD00A2D1C2 /* TRUhttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D800C922154D3DD00A2D1C2 /* TRUhttpManager.m */; };
+		2D8856992580AA660021DF09 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12098A0420CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2D9F5BD821905EE8009B97EF /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F5BD721905EE8009B97EF /* libxml2.tbd */; };
 		2D9F5BDA21905F03009B97EF /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F5BD921905F03009B97EF /* libiconv.tbd */; };
@@ -244,7 +244,6 @@
 		2D9F5BE021905F7C009B97EF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F5BDF21905F7B009B97EF /* QuartzCore.framework */; };
 		2D9F5BE221905F94009B97EF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F5BE121905F94009B97EF /* MediaPlayer.framework */; };
 		2D9F5BE421905FAC009B97EF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F5BE321905FAC009B97EF /* CoreMedia.framework */; };
-		2DCDAF25247779AF00507B30 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDAF24247779AF00507B30 /* HAMLogOutputWindow.m */; };
 		2DE294322170A24300EC1C4E /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE294312170A24200EC1C4E /* libxindunsdk.a */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
@@ -665,8 +664,6 @@
 		2D9F5BDF21905F7B009B97EF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2D9F5BE121905F94009B97EF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2D9F5BE321905FAC009B97EF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		2DCDAF23247779AF00507B30 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
-		2DCDAF24247779AF00507B30 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2DE294312170A24200EC1C4E /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		2DE40B09218BF48B002A37D1 /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
@@ -683,6 +680,7 @@
 				2D9F5BE421905FAC009B97EF /* CoreMedia.framework in Frameworks */,
 				2D9F5BE221905F94009B97EF /* MediaPlayer.framework in Frameworks */,
 				2D9F5BE021905F7C009B97EF /* QuartzCore.framework in Frameworks */,
+				2D8856992580AA660021DF09 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				2D9F5BDE21905F49009B97EF /* ImageIO.framework in Frameworks */,
 				2D9F5BDC21905F1A009B97EF /* libstdc++.tbd in Frameworks */,
 				2D9F5BDA21905F03009B97EF /* libiconv.tbd in Frameworks */,
@@ -693,7 +691,6 @@
 				121645371F972D0000808730 /* AVFoundation.framework in Frameworks */,
 				121C48CF1F7CE47F0077AE34 /* MapKit.framework in Frameworks */,
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
-				12098A0A20CFA4D20027D927 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
 				125633381F7A22B1007FF392 /* libresolv.tbd in Frameworks */,
@@ -1458,8 +1455,6 @@
 		12749EC61FC7EAE700183EB4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				2DCDAF23247779AF00507B30 /* HAMLogOutputWindow.h */,
-				2DCDAF24247779AF00507B30 /* HAMLogOutputWindow.m */,
 				12C0D3011F79088200972218 /* TRUBaseViewController.h */,
 				12C0D3021F79088200972218 /* TRUBaseViewController.m */,
 				12C0D3041F7908C800972218 /* TRUBaseNavigationController.h */,
@@ -1875,7 +1870,7 @@
 				TargetAttributes = {
 					12C0D2C91F7907DC00972218 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AG9SM32322;
+						DevelopmentTeam = 4GJK9H2JSG;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -2086,7 +2081,6 @@
 				1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */,
 				2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */,
 				2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */,
-				2DCDAF25247779AF00507B30 /* HAMLogOutputWindow.m in Sources */,
 				1256333B1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m in Sources */,
 				12C0D3231F790CDC00972218 /* TRUMineViewController.m in Sources */,
 				12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */,
@@ -2391,6 +2385,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2416,7 +2411,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = AG9SM32322;
+				DEVELOPMENT_TEAM = 4GJK9H2JSG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2437,6 +2432,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2445,10 +2441,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.com.sccba.lins-tyrz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "71b809dd-b0cd-4ca7-beac-55d9c6715859";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSAd_Hot;
+				PROVISIONING_PROFILE_SPECIFIER = "cn.com.sccba.lins-tyrz";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

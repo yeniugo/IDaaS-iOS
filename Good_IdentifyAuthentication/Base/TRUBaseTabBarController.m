@@ -55,7 +55,7 @@
         if (self.isShowLocalAuth) {
 //            [TRUEnterAPPAuthView dismissAuthView];
         }else{
-            [self showFinger];
+//            [self showFinger];
         }
     }
     
