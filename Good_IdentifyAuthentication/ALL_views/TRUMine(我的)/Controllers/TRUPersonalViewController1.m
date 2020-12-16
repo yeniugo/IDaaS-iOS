@@ -147,8 +147,14 @@
     model7.rightStr = [self getAppVersion];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     model7.canUpdate = delegate.hasUpdate;
+    __weak typeof(self) weakModel7 = model7;
     model7.cellClickBlock = ^{
-        [weakSelf checkUpdataWithPlist];
+        [weakSelf checkUpdataWithPlist:^(BOOL isupdate) {
+            if (isupdate != model7.canUpdate) {
+                [weakSelf.tableView reloadData];
+            }
+        }];
+//        [weakSelf checkUpdataWithPlist];
 //        [weakSelf checkVersion];
     };
     
@@ -517,7 +523,7 @@
     }];
 }
 
-- (void)checkUpdataWithPlist{
+- (void)checkUpdataWithPlist:(void (^)(BOOL isupdate))onResult{
     __weak typeof(self) weakSelf = self;
     AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
     manager.requestSerializer =[AFHTTPRequestSerializer serializer];
@@ -537,7 +543,16 @@
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
-                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                
+                [self checkABMonResult:^(BOOL isupdate, NSString *version) {
+                    if (isupdate) {
+                        [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"APP更新" msg:[NSString stringWithFormat:@"新版本 %@ 已发布!请手动到AppStore更新app",version] confrimTitle:@"知道了!" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                        onResult(isupdate);
+                    }else{
+                        [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                    }
+//                    [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                }];
             }else{
                 [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
 //                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
@@ -549,6 +564,28 @@
         YCLog(@"error");
     }];
 }
+
+- (void)checkABMonResult:(void (^)(BOOL isupdate,NSString *version))onResult{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/getNewAbmVersion",baseUrl];
+    [manager GET:updateUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = responseObject[@"version"];
+        NSString *version = dic[@"number"];
+        NSString *oldversion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"sys-clientVersion"];
+        BOOL update = [self updeWithDicString:oldversion andOldString:version];
+        onResult(update,version);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        onResult(NO,nil);
+    }];
+}
+
+
+
+
+
 
 - (void)unbindDevice{
     NSString *userid = [TRUUserAPI getUser].userId;

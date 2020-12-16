@@ -1916,11 +1916,11 @@
 }
 
 - (void)checkABMUpdateVersion:(NSString *)appInfo{
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"sys-clientVersion"];
 
 //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
     if ([self updeWithDicString:version andOldString:appInfo]) {
-        
+        self.hasUpdate = YES;
         UIAlertController *alertVC =  [UIAlertController alertControllerWithTitle:@"版本更新" message:[NSString stringWithFormat:@"新版本 %@ 已发布!请手动到AppStore更新app",appInfo] preferredStyle:UIAlertControllerStyleAlert];
         
 //        UIAlertAction *confrimAction = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

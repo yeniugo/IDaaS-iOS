@@ -237,7 +237,6 @@
 		2DAA2797230A9A2E00B3A6C4 /* TRUPortalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2796230A9A2E00B3A6C4 /* TRUPortalView.m */; };
 		2DAA279D230AA7BB00B3A6C4 /* TRUPortalTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA279C230AA7BB00B3A6C4 /* TRUPortalTitleView.m */; };
 		2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB18DF2232637CC00473824 /* TRUMTDTool.m */; };
-		2DB579AA24E696BF00D99930 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */; };
 		2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */; };
 		2DC1B025231FA1A900A8A8DF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B024231FA1A900A8A8DF /* libc++.tbd */; };
@@ -250,6 +249,7 @@
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
+		2DD0C9872589F278007AEE2A /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DDE96BF24E272710095B2E5 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DDE96BE24E272710095B2E5 /* trusfort.lic */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
@@ -751,7 +751,7 @@
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
-				2DB579AA24E696BF00D99930 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
+				2DD0C9872589F278007AEE2A /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
@@ -2483,7 +2483,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -2505,7 +2505,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2533,7 +2533,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2554,7 +2554,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
