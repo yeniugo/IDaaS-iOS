@@ -889,6 +889,15 @@
         }else if (90044 == errorno){
             [weakSelf showHudWithText:@"稍后再重试发送验证码"];
             [weakSelf hideHudDelay:2.0];
+        }else if (9004 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"邮箱重复"];
+                [weakSelf hideHudDelay:2.0];
+            }else if ([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"手机号重复"];
+                [weakSelf hideHudDelay:2.0];
+            }
+            
         }else if (9036 == errorno){
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                [self qrScan];
@@ -945,6 +954,9 @@
         }else if (9036 == errorno){
             [self.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
+        }else if (9004 == errorno){
+            [weakSelf showHudWithText:@"工号重复"];
+            [weakSelf hideHudDelay:2.0];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:@"激活失败"];
