@@ -124,6 +124,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>sys-clientVersion</key>
-	<string>2.3.3.4</string>
+	<string>1.0.1</string>
 </dict>
 </plist>

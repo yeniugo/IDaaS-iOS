@@ -2071,7 +2071,7 @@
         }];
         [alertVC addAction:cancelAction];
         [alertVC addAction:confrimAction];//
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
         });
     }else{

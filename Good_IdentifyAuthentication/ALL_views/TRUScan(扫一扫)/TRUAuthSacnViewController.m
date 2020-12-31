@@ -143,6 +143,10 @@
                                 [weakSelf showConfrimCancelDialogViewWithTitle:@"" msg:@"二维码过期，请刷新二维码重新扫描" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
                                     [weakSelf restartScan];
                                 } cancelBlock:nil];
+                            }else if (9025 == errorno){
+                                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                                } cancelBlock:^{
+                                }];
                             }else{
                                 NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
                                 [weakSelf showHudWithText:err];
