@@ -106,7 +106,7 @@
     //更新公司信息
 //    [self requestSPinfo];
     //检查版本更新
-    [self checkVersion];
+//    [self checkVersion];
 //    [self checkNewVersion];
 //    [self checkNewVersion];
 //    [self checkUpdataWithPlist];
@@ -1934,7 +1934,7 @@
         YCLog(@"获取版本号失败！");
     }];
 }
-/*
+
 - (void)checkNewVersion{
     __weak typeof(self) weakSelf = self;
     AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
@@ -1961,12 +1961,7 @@
     //版本
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     CGFloat dispatchTime;
-    if ([self.window.rootViewController isKindOfClass: [TRUBaseTabBarController class]]) {
-        
-        dispatchTime = 0.1;
-    }else{
-        dispatchTime = 20;
-    }
+    dispatchTime = 0.1;
     
     if ([self updeWithDicString:version andOldString:appInfo]) {
         if (fouce) {
@@ -2080,7 +2075,7 @@
     return nil;
 }
 
-*/
+
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本

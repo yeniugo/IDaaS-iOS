@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-static NSString *appKey = @"e556fd0e9afcaf1e5ddab8e9";
+static NSString *appKey = @"9c6697ae26bb2a1fd2133f3d";
 static NSString *channel = @"Publish channel";
 static BOOL isProduction = YES;
 static BOOL isShowPortal = YES;

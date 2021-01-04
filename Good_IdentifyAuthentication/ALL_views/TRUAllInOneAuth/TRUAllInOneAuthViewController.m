@@ -93,12 +93,20 @@ static double dytime = 0.0;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
+        [self appupdate];
     }
 }
 
 - (void)leftBarButtonClick{
     TRUWebLoginManagerViewController *weblogin = [[TRUWebLoginManagerViewController alloc] init];
     [self.navigationController pushViewController:weblogin animated:YES];
+}
+
+- (void)appupdate{
+    id delegate = [UIApplication sharedApplication].delegate;
+    if ([delegate respondsToSelector:@selector(checkUpdataWithPlist)]) {
+        [delegate performSelector:@selector(checkUpdataWithPlist) withObject:nil];
+    }
 }
 
 //- (void)viewWillAppear:(BOOL)animated{
