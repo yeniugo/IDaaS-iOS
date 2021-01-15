@@ -212,6 +212,7 @@
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
+		2D4CC91C25AEE5CB007E9EE5 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
 		2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */; };
@@ -248,7 +249,6 @@
 		2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
 		2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
-		2DA0388024A9984300AAD8A8 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */; };
 		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
 		2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */; };
@@ -661,6 +661,7 @@
 		2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTokenUtil.m; sourceTree = "<group>"; };
 		2D4B970F2181A59D00867797 /* TRUEnterAPPAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUEnterAPPAuthView.h; sourceTree = "<group>"; };
 		2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUEnterAPPAuthView.m; sourceTree = "<group>"; };
+		2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D55CB1F230CF61300C31F60 /* TRUPersonalSmailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalSmailModel.h; sourceTree = "<group>"; };
 		2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalSmailModel.m; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
@@ -734,7 +735,6 @@
 		2D99779A21CB982100B5019E /* TRUSubUserAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserAPI.m; sourceTree = "<group>"; };
 		2D9F5BCF21905819009B97EF /* TRUHightlightedBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUHightlightedBtn.h; sourceTree = "<group>"; };
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
-		2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2DA5B5B521A3DEE50091F2D7 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
 		2DAA2788230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAllInOneAuthViewController.h; sourceTree = "<group>"; };
@@ -821,7 +821,7 @@
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
-				2DA0388024A9984300AAD8A8 /* libxindunsdk.a in Frameworks */,
+				2D4CC91C25AEE5CB007E9EE5 /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
@@ -1019,7 +1019,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */,
+				2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2DFA6C97247E3F3500723BAB /* trusfort.lic */,
@@ -2675,7 +2675,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 225;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -2710,7 +2710,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSAd_Hot;
+				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

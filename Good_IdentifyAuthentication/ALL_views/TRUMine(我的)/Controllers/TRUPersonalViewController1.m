@@ -577,7 +577,7 @@
         NSDictionary *paramsDic = @{@"params" : params};
         [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
             [weakSelf hideHudDelay:0.0];
-            if (errorno == 0) {
+            if ((errorno == 0) || (-5004 == errorno)) {
                 [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
                 [TRUUserAPI deleteUser];
                 //清除APP解锁方式
@@ -592,8 +592,8 @@
                 }
 #pragma clang diagnostic pop
             }else if (-5004 == errorno){
-                [weakSelf showHudWithText:@"网络错误，请稍后重试"];
-                [weakSelf hideHudDelay:2.0];
+//                [weakSelf showHudWithText:@"网络错误，请稍后重试"];
+//                [weakSelf hideHudDelay:2.0];
             }else if (9008 == errorno){
                 [weakSelf deal9008Error];
             }else if (9019 == errorno){
