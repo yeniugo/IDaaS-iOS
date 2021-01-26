@@ -889,6 +889,9 @@
         }else if (90044 == errorno){
             [weakSelf showHudWithText:@"稍后再重试发送验证码"];
             [weakSelf hideHudDelay:2.0];
+        }else if (9043 == errorno){
+            [weakSelf showHudWithText:@"发送短信失败，使用短信次数超过限制"];
+            [weakSelf hideHudDelay:2.0];
         }else if (9036 == errorno){
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                [self qrScan];

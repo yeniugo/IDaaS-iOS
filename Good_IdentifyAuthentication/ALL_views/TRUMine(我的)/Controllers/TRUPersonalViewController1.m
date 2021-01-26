@@ -543,9 +543,19 @@
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
-                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+//                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                [weakSelf checkVersionwithresult:^(BOOL update) {
+                    if (update) {
+                        [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"有新版本" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+                            NSString *url = @"https://itunes.apple.com/cn/app/id1195763218?mt=8";
+                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                        } cancelBlock:nil];
+                    }else{
+                        [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                    }
+                }];
             }else{
-                [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+                [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
 //                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
                     [delegate restUIForApp];
                 } cancelBlock:nil];
@@ -554,6 +564,43 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YCLog(@"error");
     }];
+}
+
+-(void)checkVersionwithresult:(void (^)(BOOL update))onResult{
+    // 获取发布版本的version
+    AFHTTPSessionManager *manager  = [AFHTTPSessionManager manager];
+    manager.requestSerializer =[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
+    //http://itunes.apple.com/lookup?id=1095195364
+    NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=1195763218"];//
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSArray *array = responseObject[@"results"];
+        if ([array count] > 0) {
+            NSDictionary *dic = array[0];
+            NSString *appStoreVersion = dic[@"version"];
+            //打印版本号
+            [self checkAppUpdate:appStoreVersion withresult:onResult];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YCLog(@"获取版本号失败！");
+    }];
+}
+
+-(void)checkAppUpdate:(NSString *)appInfo withresult:(void (^)(BOOL update))onResult{
+    //版本
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"sys-clientVersion"];
+
+//    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
+    if ([self updeWithDicString:version andOldString:appInfo]) {
+        onResult(YES);
+    }else{
+        onResult(NO);
+    }
 }
 
 - (void)unbindDevice{
