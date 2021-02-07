@@ -2084,7 +2084,7 @@
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"sys-clientVersion"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"app-version"];
 
 //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
     if ([self updeWithDicString:version andOldString:appInfo]) {

@@ -442,15 +442,15 @@
         if (arr.count>0) {
             NSString *modeStr = arr[0];
             if ([modeStr isEqualToString:@"1"]) {//激活方式 激活方式(1:邮箱,2:手机,3:工号)
-                ssss = @"我们将通过邮箱登录之后，重新绘制手势。";
+                ssss = @"您需要通过邮箱验证身份，然后重新设置手势";
             }else if ([modeStr isEqualToString:@"2"]){
-                ssss = @"我们将通过短信登录之后，重新绘制手势。";
+                ssss = @"您需要通过短信验证身份，然后重新设置手势";
             }else if ([modeStr isEqualToString:@"3"]){
-                ssss = @"我们将通过用户名密码登录之后，重新绘制手势。";
+                ssss = @"您需要通过密码验证身份，然后重新设置手势";
             }else if ([modeStr isEqualToString:@"4"]){
-                ssss = @"我们将通过用户名密码登录加手机号之后，重新绘制手势。";
+                ssss = @"我们将通过用户名密码登录加手机号之后，然后重新设置手势";
             }else if ([modeStr isEqualToString:@"5"]){
-                ssss = @"我们将通过用户名密码登录加邮箱之后，重新绘制手势。";
+                ssss = @"我们将通过用户名密码登录加邮箱之后，然后重新设置手势";
             }
         }
         

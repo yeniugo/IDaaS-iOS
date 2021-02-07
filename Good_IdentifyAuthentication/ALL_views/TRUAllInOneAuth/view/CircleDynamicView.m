@@ -105,7 +105,7 @@
     _passwordStr = passwordStr;
     self.passwordLB.text = passwordStr;
     self.passwordLB.adjustsFontSizeToFitWidth = YES;
-    [self.passwordLB textAlignmentLeftAndRight];
+//    [self.passwordLB textAlignmentLeftAndRight];
 }
 
 @end

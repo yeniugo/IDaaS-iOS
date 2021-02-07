@@ -336,7 +336,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"sys-clientVersion"];
+    NSString *version =  dic[@"app-version"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }

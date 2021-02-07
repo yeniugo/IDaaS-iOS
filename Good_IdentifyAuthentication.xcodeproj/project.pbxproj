@@ -205,7 +205,7 @@
 		2D32E998228AA95E0032A95A /* TRUPortalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E98F228AA95E0032A95A /* TRUPortalModel.m */; };
 		2D32E999228AA95E0032A95A /* TRUPortalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E993228AA95E0032A95A /* TRUPortalHeaderView.m */; };
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
-		2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
+		2D3EB7EE25CF7F7B00F552D1 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
 		2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */; };
@@ -816,9 +816,9 @@
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				2DADD88A2500EB62008C3791 /* QuartzCore.framework in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
-				2D34648F24AC8C1400C0E45F /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
+				2D3EB7EE25CF7F7B00F552D1 /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
 				2D4CC91C25AEE5CB007E9EE5 /* libxindunsdk.a in Frameworks */,
@@ -2627,7 +2627,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 225;
+				CURRENT_PROJECT_VERSION = 227;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -2649,7 +2649,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 3.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2674,10 +2674,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 225;
+				CURRENT_PROJECT_VERSION = 227;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2698,7 +2698,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 3.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2710,7 +2710,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = appstore_cims;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

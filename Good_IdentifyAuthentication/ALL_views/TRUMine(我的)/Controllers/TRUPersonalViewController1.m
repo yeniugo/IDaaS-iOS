@@ -365,7 +365,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"sys-clientVersion"];
+    NSString *version =  dic[@"app-version"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }
@@ -584,6 +584,8 @@
                 [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
                 [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
                 [TRUTokenUtil cleanLocalToken];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password1"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GS_DETAL_KEY"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                 id delegate = [UIApplication sharedApplication].delegate;
