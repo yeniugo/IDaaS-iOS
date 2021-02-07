@@ -825,6 +825,8 @@
             [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
             [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
             [TRUTokenUtil cleanLocalToken];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password1"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GS_DETAL_KEY"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
             id delegate = [UIApplication sharedApplication].delegate;
@@ -891,6 +893,8 @@
             [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
             [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
             [TRUTokenUtil cleanLocalToken];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password1"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GS_DETAL_KEY"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
             id delegate = [UIApplication sharedApplication].delegate;

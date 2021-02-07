@@ -49,8 +49,14 @@
         }
         YCLog(@"filename:%@",fileName);
     }
+    NSString *basePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName1 = [basePath1 stringByAppendingString:@"/image_best.jpg"];
+    
     UIImage *bestimg = [images firstObject];
     NSData *imgData = UIImageJPEGRepresentation(bestimg, 0.8);
+    [[NSFileManager defaultManager] createFileAtPath:fileName1 contents:imgData attributes:nil];
+    NSURL *fileURL = [NSURL fileURLWithPath:fileName1];
+    [UIImageJPEGRepresentation(bestimg, 0.8) writeToURL:fileURL atomically:YES];
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *para = [xindunsdk requestOrverifyCIMSFaceForUser:userid faceData:imgData ctx:nil signdata:nil isType:YES];

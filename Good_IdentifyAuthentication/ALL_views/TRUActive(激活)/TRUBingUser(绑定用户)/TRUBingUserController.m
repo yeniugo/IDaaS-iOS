@@ -585,12 +585,27 @@
             [self hideHudDelay:1.5f];
             return;
         }
+        if (![self.phone isPhone]) {
+            self.showPhoneOrEmailLB.hidden = NO;
+            self.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"手机号： %@",self.phone];
+            [self showHudWithText:@"手机号格式不正确，请联系管理员"];
+            [self hideHudDelay:1.5f];
+            
+            return;
+        }
         [self requestCodeForUser:self.phone type:@"employeenumPhone"];
         return;
     }
     if (self.activeModel==5) {
         if (self.email.length == 0) {
             [self showHudWithText:@"邮箱不存在"];
+            [self hideHudDelay:1.5f];
+            return;
+        }
+        if (![self.email isEmail]) {
+            self.showPhoneOrEmailLB.hidden = NO;
+            self.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"邮箱： %@",self.email];
+            [self showHudWithText:@"邮箱格式不正确，请联系管理员"];
             [self hideHudDelay:1.5f];
             return;
         }
@@ -631,6 +646,24 @@
         {
             if (![self.inputoneTF.text isPhone]) {
                 [self showHudWithText:@"请输入正确的账号"];
+                [self hideHudDelay:1.5f];
+                return;
+            }
+        }
+            break;
+        case 4:
+        {
+            if (![self.phone isPhone]) {
+                [self showHudWithText:@"手机号格式不正确，请联系管理员"];
+                [self hideHudDelay:1.5f];
+                return;
+            }
+        }
+            break;
+        case 5:
+        {
+            if (![self.email isEmail]) {
+                [self showHudWithText:@"邮箱格式不正确，请联系管理员"];
                 [self hideHudDelay:1.5f];
                 return;
             }
@@ -807,9 +840,19 @@
     NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\"}", self.inputoneTF.text, [type UTF8String]];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text ctx:signStr isType:NO];
     if (self.activeModel == 4) {
+//        if (![self.phone isPhone]) {
+//            [self showHudWithText:@"手机号不正确，请联系管理员"];
+//            [self hideHudDelay:2.0];
+//            return;
+//        }
         signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\",\"token\":\"%s\"}", self.phone, [type UTF8String],[self.token UTF8String]];
         para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:signStr isType:NO];
     }else if (self.activeModel ==5){
+//        if (![self.email isEmail]) {
+//            [self showHudWithText:@"邮箱不正确，请联系管理员"];
+//            [self hideHudDelay:2.0];
+//            return;
+//        }
         signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\",\"token\":\"%s\"}", self.email, [type UTF8String],[self.token UTF8String]];
         para = [xindunsdk encryptBySkey:self.email ctx:signStr isType:NO];
     }
@@ -825,7 +868,11 @@
             [weakSelf hideHudDelay:2.0];
             weakSelf.sendBtn.enabled = NO;
             [weakSelf startTimer];
-            
+            if(weakSelf.activeModel == 4){
+                self.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"验证码已发送到手机号%@",self.phone];
+            }else if(weakSelf.activeModel == 5){
+                self.showPhoneOrEmailLB.text = [NSString stringWithFormat:@"验证码已发送到邮箱%@",self.email];
+            }
         }else if (-5004 == errorno){
             if ([type isEqualToString:@"email"]) {
                 [weakSelf showHudWithText:@"邮箱错误"];
@@ -892,6 +939,14 @@
         }else if (9043 == errorno){
             [weakSelf showHudWithText:@"发送短信失败，使用短信次数超过限制"];
             [weakSelf hideHudDelay:2.0];
+        }else if (9004 == errorno){
+            if ([type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"邮箱重复"];
+                [weakSelf hideHudDelay:2.0];
+            }else if ([type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"手机号重复"];
+                [weakSelf hideHudDelay:2.0];
+            }
         }else if (9036 == errorno){
 //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                [self qrScan];
@@ -948,6 +1003,9 @@
         }else if (9036 == errorno){
             [self.navigationController popViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"trurestartQRscan" object:nil];
+        }else if (9004 == errorno){
+            [weakSelf showHudWithText:@"工号重复"];
+            [weakSelf hideHudDelay:2.0];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
             [weakSelf showHudWithText:@"激活失败"];

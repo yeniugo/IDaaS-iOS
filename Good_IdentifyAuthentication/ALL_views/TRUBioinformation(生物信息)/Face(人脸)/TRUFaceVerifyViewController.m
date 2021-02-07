@@ -62,6 +62,9 @@
 //    } cancelBlock:^{
 //        [weakSelf dismissVC];
 //    }];
+    NSString *basePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName1 = [basePath1 stringByAppendingString:@"/verify.jpg"];
+    [[NSFileManager defaultManager] createFileAtPath:fileName1 contents:imgData attributes:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/verify/face"] withParts:dic onResultWithMessage:^(int errorno, id responseBody, NSString *message){
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {

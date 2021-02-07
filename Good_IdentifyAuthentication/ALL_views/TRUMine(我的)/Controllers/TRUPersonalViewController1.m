@@ -365,7 +365,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"sys-clientVersion"];
+    NSString *version =  dic[@"app-version"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }
@@ -624,13 +624,15 @@
         NSDictionary *paramsDic = @{@"params" : params};
         [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/device/delete"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
             [weakSelf hideHudDelay:0.0];
-            if (errorno == 0) {
+            if ((errorno == 0) || (-5004 == errorno)) {
                 [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
                 [TRUUserAPI deleteUser];
                 //清除APP解锁方式
                 [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
                 [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
                 [TRUTokenUtil cleanLocalToken];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password1"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GS_DETAL_KEY"];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
                 id delegate = [UIApplication sharedApplication].delegate;
@@ -639,8 +641,8 @@
                 }
 #pragma clang diagnostic pop
             }else if (-5004 == errorno){
-                [weakSelf showHudWithText:@"网络错误，请稍后重试"];
-                [weakSelf hideHudDelay:2.0];
+//                [weakSelf showHudWithText:@"网络错误，请稍后重试"];
+//                [weakSelf hideHudDelay:2.0];
             }else if (9008 == errorno){
                 [weakSelf deal9008Error];
             }else if (9019 == errorno){
