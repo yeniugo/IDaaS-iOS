@@ -140,17 +140,20 @@
         [TRUMTDTool uploadDevInfo];
     };
     
-    TRUPersonalSmailModel *model7 = [[TRUPersonalSmailModel alloc] init];
+    __block TRUPersonalSmailModel *model7 = [[TRUPersonalSmailModel alloc] init];
     model7.cellType = PersonalSmaillCellRightLBwithIcon;
     model7.leftIcon = @"PersonalAboutUS";
     model7.leftStr = @"检查更新";
     model7.rightStr = [self getAppVersion];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     model7.canUpdate = delegate.hasUpdate;
-    __weak typeof(self) weakModel7 = model7;
+    model7.canUpdate = YES;
+    __weak typeof(TRUPersonalSmailModel) *weakModel7 = model7;
+    
     model7.cellClickBlock = ^{
         [weakSelf checkUpdataWithPlist:^(BOOL isupdate) {
-            if (isupdate != model7.canUpdate) {
+            if (isupdate != weakModel7.canUpdate) {
+                weakModel7.canUpdate = delegate.hasUpdate;
                 [weakSelf.tableView reloadData];
             }
         }];
@@ -546,10 +549,15 @@
                 
                 [self checkABMonResult:^(BOOL isupdate, NSString *version) {
                     if (isupdate) {
+                        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+                        delegate.hasUpdate = YES;
                         [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"APP更新" msg:[NSString stringWithFormat:@"新版本 %@ 已发布!请手动到AppStore更新app",version] confrimTitle:@"知道了!" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
                         onResult(isupdate);
                     }else{
+                        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+                        delegate.hasUpdate = NO;
                         [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
+                        onResult(isupdate);
                     }
 //                    [weakSelf showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
                 }];

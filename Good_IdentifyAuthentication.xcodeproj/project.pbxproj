@@ -183,6 +183,7 @@
 		2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56122FD55DF000112AC /* MYCircleView.m */; };
 		2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56522FD589B000112AC /* CircleDynamicView.m */; };
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
+		2D2A3B8B25ECDA54009E534B /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
@@ -249,7 +250,6 @@
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
-		2DD0C9872589F278007AEE2A /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
 		2DDE96BF24E272710095B2E5 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DDE96BE24E272710095B2E5 /* trusfort.lic */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
@@ -751,7 +751,7 @@
 				121C48CD1F7CE4720077AE34 /* CoreLocation.framework in Frameworks */,
 				123ECF1B1FE3728E008D66DD /* jpush-ios-3.0.7.a in Frameworks */,
 				121C48CB1F7CE45D0077AE34 /* MobileCoreServices.framework in Frameworks */,
-				2DD0C9872589F278007AEE2A /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
+				2D2A3B8B25ECDA54009E534B /* AuthenAnti_SpoofingSDK.framework in Frameworks */,
 				121645351F9727D700808730 /* iflyMSC.framework in Frameworks */,
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
@@ -2531,7 +2531,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -2566,7 +2566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.redeem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = "redeem appstore";
+				PROVISIONING_PROFILE_SPECIFIER = "redeem dev";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

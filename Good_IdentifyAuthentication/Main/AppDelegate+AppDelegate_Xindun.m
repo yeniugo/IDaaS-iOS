@@ -21,7 +21,7 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.97:8004" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [TRUCompanyAPI getCompany];
-    companymodel.activation_mode = @"4";
+    companymodel.activation_mode = @"3";
     [TRUCompanyAPI saveCompany:companymodel];
 #endif
 
