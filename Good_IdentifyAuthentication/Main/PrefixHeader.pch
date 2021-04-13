@@ -20,5 +20,7 @@
     #import "TRUMacros.h"
     #import "HAMLogOutputWindow.h"
     #import <YYModel.h>
+//appchannel 0 为主线，1为企业包，2为ABM版本
+    #define APPChannel 1
 #endif
 #endif

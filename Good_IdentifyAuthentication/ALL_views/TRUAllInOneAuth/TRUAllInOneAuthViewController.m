@@ -121,7 +121,7 @@ static double dytime = 0.0;
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
-    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
+    NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -136,6 +136,11 @@ static double dytime = 0.0;
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
 //                [TrusfortDfsSdk enableSensor:model2.hasMtd];
+#if APPChannel == 1
+                if ([delegate respondsToSelector:@selector(checkUpdataWithPlist)]) {
+                    [delegate performSelector:@selector(checkUpdataWithPlist) withObject:nil];
+                }
+#endif
             }else{
                 [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
 //                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
