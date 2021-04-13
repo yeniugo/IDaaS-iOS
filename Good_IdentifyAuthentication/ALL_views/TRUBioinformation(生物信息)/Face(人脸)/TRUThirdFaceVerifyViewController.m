@@ -13,24 +13,40 @@
 #import "TRUIflyMSCUtil.h"
 #import "TRUhttpManager.h"
 #import "TRUMTDTool.h"
+#import "IDLFaceSDK/IDLFaceSDK.h"
+#import "RadomMutableNumber.h"
 @interface TRUThirdFaceVerifyViewController ()
 
 @end
 
 @implementation TRUThirdFaceVerifyViewController
 
+- (instancetype)init{
+    self.maxDetectionTimes = 3;
+    self = [super init];
+    if(self){
+        
+    }
+    return self;
+}
 
 - (NSMutableArray *)getActionSequence{
     // 1 2 4 8 16 32
-    NSArray *actions = @[@"1", @"4", @"8", @"16"];
-    int index = arc4random() % 4;
-    NSString *action = actions[index];
-    return [NSMutableArray arrayWithObjects:@"0", action, nil];
+    NSArray *actionArray = @[@(FaceLivenessActionTypeLiveEye),@(FaceLivenessActionTypeLiveMouth),@(FaceLivenessActionTypeLiveYawRight),@(FaceLivenessActionTypeLiveYawLeft),@(FaceLivenessActionTypeLivePitchUp)];
+    NSArray *radomArray = [RadomMutableNumber randperm:5 getLength:5];
+    NSMutableArray *mactionArray = [[NSMutableArray alloc] init];
+//    [mactionArray addObject:@"0"];
+    for (int i=0; i<1; i++) {
+        [mactionArray addObject:radomArray[i]];
+    }
+    //YCLog(@"mactionArray = %@",mactionArray);
+    //mactionArray = [[NSMutableArray alloc] initWithArray:@[@"0",@"1",@"1",@"1"]];
+    return mactionArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.maxDetectionTimes = 1;
+//    self.maxDetectionTimes = 1;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -48,19 +64,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)onDetectSuccessWithImages:(NSMutableArray *)images {
-    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    //    NSMutableArray *imageList = [[NSMutableArray alloc] init];
-    for (int i = 0; i < images.count; i++) {
-        NSString *fileName;
-        if (i == 0) {
-            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
-        } else {
-            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
-        }
-        YCLog(@"filename:%@",fileName);
-    }
-    UIImage *bestimg = [images firstObject];
+- (void)onDetectSuccessWithImages:(UIImage *)images {
+//    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+//    //    NSMutableArray *imageList = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < images.count; i++) {
+//        NSString *fileName;
+//        if (i == 0) {
+//            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
+//        } else {
+//            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
+//        }
+//        YCLog(@"filename:%@",fileName);
+//    }
+    UIImage *bestimg = images;
     NSData *imgData = UIImageJPEGRepresentation(bestimg, 0.8);
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;

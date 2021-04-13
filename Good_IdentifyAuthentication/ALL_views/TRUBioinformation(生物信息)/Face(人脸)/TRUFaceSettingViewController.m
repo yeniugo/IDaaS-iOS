@@ -115,15 +115,7 @@
 
 -(void)isTimeOut{
     
-    NSString *currentTimeStr = [self getCurrentTimes];
-    //    NSLog(@"----->%@",currentTimeStr);
-    int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
-    //    NSLog(@"----->%d",dd);
-    if (dd >= 0) {
-        [self verifyFace];
-    }else{
-        [self alertWithStr:@"您所使用的人脸认证服务已到期，即将更新，请耐心等待。"];
-    }
+    [self verifyFace];
 }
 
 

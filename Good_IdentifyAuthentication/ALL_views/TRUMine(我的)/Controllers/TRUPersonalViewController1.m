@@ -26,6 +26,10 @@
 //#import "TrusfortDevId.h"
 #import "TRUAPPLogIdentifyController.h"
 #import "TRUMailManagerViewController.h"
+
+#import "IDLFaceSDK/IDLFaceSDK.h"
+#import "BDFaceLivenessViewController.h"
+#import "BDFaceLivingConfigModel.h"
 @interface TRUPersonalViewController1 ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//图标
@@ -92,6 +96,17 @@
             pushVCStr = @"TRUFaceGuideViewController";
         }
         [weakSelf pushVC:pushVCStr];
+        
+        
+        
+//        [weakSelf initLivenesswithList];
+//        BDFaceLivenessViewController* lvc = [[BDFaceLivenessViewController alloc] init];
+//        BDFaceLivingConfigModel* model = [BDFaceLivingConfigModel sharedInstance];
+//        [lvc livenesswithList:model.liveActionArray order:model.isByOrder numberOfLiveness:model.numOfLiveness];
+//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:lvc];
+//        navi.navigationBarHidden = true;
+//        navi.modalPresentationStyle = UIModalPresentationFullScreen;
+//        [weakSelf presentViewController:navi animated:YES completion:nil];
     };
     
     TRUPersonalSmailModel *model2 = [[TRUPersonalSmailModel alloc] init];
@@ -196,6 +211,22 @@
     [tempArray addObject:[NSArray arrayWithObject:model7]];
     [tempArray addObject:[NSArray arrayWithObject:model8]];
     self.dataArray = tempArray;
+}
+
+- (void)initLivenesswithList {
+    // 默认活体检测打开，顺序执行
+    /*
+     添加当前默认的动作，是否需要按照顺序，动作活体的数量（设置页面会根据这个numOfLiveness来判断选择了几个动作）
+     */
+    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveEye)];
+    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveMouth)];
+    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveYawRight)];
+//    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveYawLeft)];
+//    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLivePitchUp)];
+//    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLivePitchDown)];
+//    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveYaw)];
+    BDFaceLivingConfigModel.sharedInstance.isByOrder = NO;
+    BDFaceLivingConfigModel.sharedInstance.numOfLiveness = 3;
 }
 
 - (void)pushVC:(NSString *)VCName{

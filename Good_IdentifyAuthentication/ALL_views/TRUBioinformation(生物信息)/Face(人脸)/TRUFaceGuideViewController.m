@@ -100,6 +100,7 @@
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusAuthorized) {
         TRUFaceInitViewController *faceInitVC = [[TRUFaceInitViewController alloc] init];
+        faceInitVC.modalPresentationStyle = UIModalPresentationFullScreen;
         [self.navigationController presentViewController:faceInitVC animated:YES completion:^{
             [self.navigationController popViewControllerAnimated:NO];
 //            [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
@@ -108,6 +109,7 @@
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
                 TRUFaceInitViewController *faceInitVC = [[TRUFaceInitViewController alloc] init];
+                faceInitVC.modalPresentationStyle = UIModalPresentationFullScreen;
                 //            [self.navigationController pushViewController:faceInitVC animated:YES];
                 [self.navigationController presentViewController:faceInitVC animated:YES completion:^{
                     [self.navigationController popViewControllerAnimated:NO];

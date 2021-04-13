@@ -87,7 +87,7 @@
 {
     [self removeNavigationBar];
     CGSize size = [UIApplication sharedApplication].statusBarFrame.size;
-    LSNavigationBar *navigationBar=[[LSNavigationBar alloc]init];
+    LSNavigationBar *navigationBar=[[LSNavigationBar alloc] init];
 
     self.edgesForExtendedLayout=UIRectEdgeTop;
     navigationBar.frame=CGRectMake(0, size.height, size.width, 44);

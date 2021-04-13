@@ -12,51 +12,62 @@
 #import "RadomMutableNumber.h"
 #import "TRUhttpManager.h"
 #import "TRUMTDTool.h"
+#import "IDLFaceSDK/IDLFaceSDK.h"
 @interface TRUFaceInitViewController ()
 
 @end
 
 @implementation TRUFaceInitViewController
 
+- (instancetype)init{
+    self.maxDetectionTimes = 3;
+    self = [super init];
+    if(self){
+        
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置人脸信息";
-    self.maxDetectionTimes = 3;
+//    self.maxDetectionTimes = 3;
 }
 
 - (NSMutableArray *)getActionSequence {
-    NSArray *actionArray = @[@"1",@"4",@"8",@"16"];
-    NSArray *radomArray = [RadomMutableNumber randperm:4 getLength:4];
+    NSArray *actionArray = @[@(FaceLivenessActionTypeLiveEye),@(FaceLivenessActionTypeLiveMouth),@(FaceLivenessActionTypeLiveYawRight),@(FaceLivenessActionTypeLiveYawLeft),@(FaceLivenessActionTypeLivePitchUp)];
+    NSArray *radomArray = [RadomMutableNumber randperm:5 getLength:5];
     NSMutableArray *mactionArray = [[NSMutableArray alloc] init];
-    [mactionArray addObject:@"0"];
-    for (int i=0; i<4; i++) {
-        [mactionArray addObject:actionArray[[radomArray[i] integerValue]]];
+//    [mactionArray addObject:@"0"];
+    for (int i=0; i<3; i++) {
+        [mactionArray addObject:radomArray[i]];
     }
     //YCLog(@"mactionArray = %@",mactionArray);
     //mactionArray = [[NSMutableArray alloc] initWithArray:@[@"0",@"1",@"1",@"1"]];
     return mactionArray;
 }
 
-- (void)onDetectSuccessWithImages:(NSMutableArray *)images {
-    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-//    NSMutableArray *imageList = [[NSMutableArray alloc] init];
-    for (int i = 0; i < images.count; i++) {
-        NSString *fileName;
-        if (i == 0) {
-            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
-        } else {
-            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
-        }
-        YCLog(@"filename:%@",fileName);
-    }
-    NSString *basePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *fileName1 = [basePath1 stringByAppendingString:@"/image_best.jpg"];
+- (void)onDetectSuccessWithImages:(UIImage *)images {
+//    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+////    NSMutableArray *imageList = [[NSMutableArray alloc] init];
+//    for (int i = 0; i < images.count; i++) {
+//        NSString *fileName;
+//        if (i == 0) {
+//            fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
+//        } else {
+//            fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
+//        }
+//        YCLog(@"filename:%@",fileName);
+//    }
+//    NSString *basePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *fileName1 = [basePath1 stringByAppendingString:@"/image_best.jpg"];
     
-    UIImage *bestimg = [images firstObject];
+    UIImage *bestimg = images;
     NSData *imgData = UIImageJPEGRepresentation(bestimg, 0.8);
-    [[NSFileManager defaultManager] createFileAtPath:fileName1 contents:imgData attributes:nil];
-    NSURL *fileURL = [NSURL fileURLWithPath:fileName1];
-    [UIImageJPEGRepresentation(bestimg, 0.8) writeToURL:fileURL atomically:YES];
+//    [[NSFileManager defaultManager] createFileAtPath:fileName1 contents:imgData attributes:nil];
+//    NSURL *fileURL = [NSURL fileURLWithPath:fileName1];
+//    [UIImageJPEGRepresentation(bestimg, 0.8) writeToURL:fileURL atomically:YES];
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *para = [xindunsdk requestOrverifyCIMSFaceForUser:userid faceData:imgData ctx:nil signdata:nil isType:YES];
