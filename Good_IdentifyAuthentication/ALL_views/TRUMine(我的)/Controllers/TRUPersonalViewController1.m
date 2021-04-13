@@ -365,7 +365,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"app-version"];
+    NSString *version =  dic[@"CFBundleShortVersionString"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }
@@ -582,6 +582,7 @@
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *url = responseObject[@"url"];
+//            url = @"https://idportal.mwr.cn/authn/appUdapte/ios.plist";
             if (url.length) {
                 if ([url hasPrefix:@"https://"]) {
                     [weakSelf getPlistWithURL:url];

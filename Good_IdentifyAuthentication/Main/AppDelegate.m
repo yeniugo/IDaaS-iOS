@@ -2022,6 +2022,7 @@
     [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSString *url = responseObject[@"url"];
+//            url = @"https://idportal.mwr.cn/authn/appUdapte/ios.plist";
             if (url.length) {
                 if ([url hasPrefix:@"https://"]) {
                     [weakSelf getPlistWithURL:url];
@@ -2089,7 +2090,7 @@
 
 -(void)checkAppUpdate:(NSString *)appInfo{
     //版本
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"app-version"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 
 //    YCLog(@"商店版本：%@ ,当前版本:%@",appInfo,version);
     if ([self updeWithDicString:version andOldString:appInfo]) {
