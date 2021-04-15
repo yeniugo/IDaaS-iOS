@@ -700,7 +700,7 @@
                 [[IDLFaceLivenessManager sharedInstance] livenessProcessHandler:^(float numberOfLiveness, float numberOfSuccess, LivenessActionType currenActionType) {
                     NSLog(@"Finished 非常好 %d %d %d", (int)numberOfLiveness, (int)numberOfSuccess, (int)currenActionType);
                    dispatch_async(dispatch_get_main_queue(), ^{
-                       [self.circleProgressView setPercent:(CGFloat)(numberOfSuccess / numberOfLiveness)];
+                       [weakSelf.circleProgressView setPercent:(CGFloat)(numberOfSuccess / numberOfLiveness)];
                    });
                 }];
                 [weakSelf warningStatus:CommonStatus warning:@"非常好" conditionMeet:true];
