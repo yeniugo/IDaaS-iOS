@@ -20,6 +20,6 @@
 
 // （您申请的应用名称(appname)+「-face-ios」后缀，如申请的应用名称(appname)为test123，则此处填写test123-face-ios）
 // 在后台 -> 产品服务 -> 人脸识别 -> 客户端SDK管理查看，如果没有的话就新建一个
-#define FACE_LICENSE_ID        @"trusfrot-test-face-face-ios"
+#define FACE_LICENSE_ID        @"trusfort-face-face-ios"
 
 #endif /* FaceParameterConfig_h */

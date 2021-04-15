@@ -225,7 +225,7 @@
 //    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLivePitchUp)];
 //    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLivePitchDown)];
 //    [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:@(FaceLivenessActionTypeLiveYaw)];
-    BDFaceLivingConfigModel.sharedInstance.isByOrder = NO;
+    BDFaceLivingConfigModel.sharedInstance.isByOrder = YES;
     BDFaceLivingConfigModel.sharedInstance.numOfLiveness = 3;
 }
 
@@ -396,7 +396,7 @@
 
 - (NSString *)getAppVersion{
     NSDictionary *dic = [[NSBundle mainBundle]infoDictionary];
-    NSString *version =  dic[@"app-version"];
+    NSString *version =  dic[@"CFBundleShortVersionString"];
 //    NSString *bundleVersion = dic[@"CFBundleVersion"];
     return version;
 }

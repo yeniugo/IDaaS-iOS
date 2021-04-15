@@ -113,10 +113,11 @@
     self = [super init];
     if (self) {
         NSArray *tempArr = [self getActionSequence];
+        [BDFaceLivingConfigModel.sharedInstance resetState];
         for (int i = 0; i < self.maxDetectionTimes; i++) {
             [BDFaceLivingConfigModel.sharedInstance.liveActionArray addObject:tempArr[i]];
         }
-        BDFaceLivingConfigModel.sharedInstance.isByOrder = NO;
+        BDFaceLivingConfigModel.sharedInstance.isByOrder = YES;
         BDFaceLivingConfigModel.sharedInstance.numOfLiveness = self.maxDetectionTimes;
         BDFaceLivingConfigModel* model = [BDFaceLivingConfigModel sharedInstance];
         [self livenesswithList:model.liveActionArray order:model.isByOrder numberOfLiveness:model.numOfLiveness];
@@ -177,7 +178,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    __weak typeof(self) weakSelf = self;
     self.navigationBar.hidden = YES;
     // 用于播放视频流
     if (IS_IPHONE_X || IS_IPHONE_Xr || IS_IPHONE_Xs || IS_IPHONE_Xs_Max) {
@@ -277,7 +278,7 @@
     
     maskView.hidden = YES;
     
-    UIImageView *faceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-SCREENW*0.2, SCREENH*0.2, SCREENW*1.4, SCREENH*0.5)];
+    UIImageView *faceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-SCREENW*0.2, SCREENH*0.3, SCREENW*1.4, SCREENH*0.5)];
     [self.view addSubview:faceImageView];
     faceImageView.image = [UIImage imageNamed:@"Image.bundle/FaceFrame.png"];
     
@@ -355,7 +356,7 @@
     // 提示动画设置
     [self.view addSubview:self.remindAnimationView];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.remindAnimationView setActionImages];
+        [weakSelf.remindAnimationView setActionImages];
     });
     
     /*
@@ -488,8 +489,9 @@
 #pragma mark - ButtonFunction
 - (IBAction)reStart:(UIButton *)sender{
     // 对应页面去补充
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self outTimeViewUnload];
+        [weakSelf outTimeViewUnload];
     });
     // 调用相应的部分设置
     [self selfReplayFunction];
@@ -524,9 +526,9 @@
     if (self.hasFinished) {
         return;
     }
-    
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.isAnimating = [self.remindAnimationView isActionAnimating];
+        weakSelf.isAnimating = [weakSelf.remindAnimationView isActionAnimating];
     });
     /*
      显示提示动画的过程中还可以做动作
@@ -535,7 +537,7 @@
 //        return;
 //    }
     
-    __weak typeof(self) weakSelf = self;
+    
     [[IDLFaceLivenessManager sharedInstance] livenessNormalWithImage:image previewRect:self.previewRect detectRect:self.detectRect completionHandler:^(NSDictionary *images, FaceInfo *faceInfo, LivenessRemindCode remindCode) {
 //        NSLog(@"remindCode = %lu", (unsigned long)remindCode);
 /*
@@ -557,7 +559,7 @@
         switch (remindCode) {
             case LivenessRemindCodeOK: {
                 weakSelf.hasFinished = YES;
-                [self warningStatus:CommonStatus warning:@"非常好"];
+                [weakSelf warningStatus:CommonStatus warning:@"非常好"];
                 if (images[@"image"] != nil && [images[@"image"] count] != 0) {
                     
                     NSArray *imageArr = images[@"image"];
@@ -582,112 +584,112 @@
                     });
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.remindAnimationView stopActionAnimating];
+                    [weakSelf.remindAnimationView stopActionAnimating];
                 });
                 
-                [self singleActionSuccess:true];
+                [weakSelf singleActionSuccess:true];
                 [BDFaceLog makeLogAfterFinishRecognizeAction:YES];
                 break;
             }
             case LivenessRemindCodePitchOutofDownRange:
-                [self warningStatus:PoseStatus warning:@"请略微抬头" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:PoseStatus warning:@"请略微抬头" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodePitchOutofUpRange:
-                [self warningStatus:PoseStatus warning:@"请略微低头" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:PoseStatus warning:@"请略微低头" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeYawOutofRightRange:
-                [self warningStatus:PoseStatus warning:@"请略微向右转头" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:PoseStatus warning:@"请略微向右转头" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeYawOutofLeftRange:
-                [self warningStatus:PoseStatus warning:@"请略微向左转头" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:PoseStatus warning:@"请略微向左转头" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodePoorIllumination:
-                [self warningStatus:CommonStatus warning:@"请使环境光线再亮些" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"请使环境光线再亮些" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeNoFaceDetected:
-                [self warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeImageBlured:
-                [self warningStatus:PoseStatus warning:@"请握稳手机" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:PoseStatus warning:@"请握稳手机" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionLeftEye:
-                [self warningStatus:occlusionStatus warning:@"左眼有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"左眼有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionRightEye:
-                [self warningStatus:occlusionStatus warning:@"右眼有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"右眼有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionNose:
-                [self warningStatus:occlusionStatus warning:@"鼻子有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"鼻子有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionMouth:
-                [self warningStatus:occlusionStatus warning:@"嘴巴有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"嘴巴有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionLeftContour:
-                [self warningStatus:occlusionStatus warning:@"左脸颊有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"左脸颊有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionRightContour:
-                [self warningStatus:occlusionStatus warning:@"右脸颊有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"右脸颊有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeOcclusionChinCoutour:
-                [self warningStatus:occlusionStatus warning:@"下颚有遮挡" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"下颚有遮挡" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLeftEyeClosed:
-                [self warningStatus:occlusionStatus warning:@"左眼未睁开" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"左眼未睁开" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeRightEyeClosed:
-                [self warningStatus:occlusionStatus warning:@"右眼未睁开" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:occlusionStatus warning:@"右眼未睁开" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeTooClose:
-                [self warningStatus:CommonStatus warning:@"请将脸部离远一点" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"请将脸部离远一点" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeTooFar:
-                [self warningStatus:CommonStatus warning:@"请将脸部靠近一点" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"请将脸部靠近一点" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeBeyondPreviewFrame:
-                [self warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:false];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:false];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLiveEye:
-                [self warningStatus:CommonStatus warning:@"眨眨眼" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"眨眨眼" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLiveMouth:
-                [self warningStatus:CommonStatus warning:@"张张嘴" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"张张嘴" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLiveYawRight:
-                [self warningStatus:CommonStatus warning:@"向右缓慢转头" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"向右缓慢转头" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLiveYawLeft:
-                [self warningStatus:CommonStatus warning:@"向左缓慢转头" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"向左缓慢转头" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLivePitchUp:
-                [self warningStatus:CommonStatus warning:@"缓慢抬头" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"缓慢抬头" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
             case LivenessRemindCodeLivePitchDown:
-                [self warningStatus:CommonStatus warning:@"缓慢低头" conditionMeet:true];
-                [self singleActionSuccess:false];
+                [weakSelf warningStatus:CommonStatus warning:@"缓慢低头" conditionMeet:true];
+                [weakSelf singleActionSuccess:false];
                 break;
 //            case LivenessRemindCodeLiveYaw:
 //                [self warningStatus:CommonStatus warning:@"左右摇头" conditionMeet:true];
@@ -701,10 +703,10 @@
                        [self.circleProgressView setPercent:(CGFloat)(numberOfSuccess / numberOfLiveness)];
                    });
                 }];
-                [self warningStatus:CommonStatus warning:@"非常好" conditionMeet:true];
-                [self singleActionSuccess:true];
+                [weakSelf warningStatus:CommonStatus warning:@"非常好" conditionMeet:true];
+                [weakSelf singleActionSuccess:true];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.remindAnimationView stopActionAnimating];
+                    [weakSelf.remindAnimationView stopActionAnimating];
                 });
             }
                 break;
@@ -713,14 +715,14 @@
                 [[IDLFaceLivenessManager sharedInstance] livenessProcessHandler:^(float numberOfLiveness, float numberOfSuccess, LivenessActionType currenActionType) {
                     NSLog(@"face id changed %d %d %d", (int)numberOfLiveness, (int)numberOfSuccess, (int)currenActionType);
                    dispatch_async(dispatch_get_main_queue(), ^{
-                       [self.circleProgressView setPercent:0];
+                       [weakSelf.circleProgressView setPercent:0];
                    });
                 }];
-                [self warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:true];
+                [weakSelf warningStatus:CommonStatus warning:@"把脸移入框内" conditionMeet:true];
             }
                 break;
             case LivenessRemindCodeVerifyInitError:
-                [self warningStatus:CommonStatus warning:@"验证失败"];
+                [weakSelf warningStatus:CommonStatus warning:@"验证失败"];
                 break;
 //            case LivenessRemindCodeVerifyDecryptError:
 //                [self warningStatus:CommonStatus warning:@"验证失败"];
@@ -748,8 +750,8 @@
                  [[IDLFaceLivenessManager sharedInstance] reset];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // 时间超时，ui进度重置0
-                    [self.circleProgressView setPercent:0];
-                    [self isTimeOut:YES];
+                    [weakSelf.circleProgressView setPercent:0];
+                    [weakSelf isTimeOut:YES];
                 });
                 [BDFaceLog makeLogAfterFinishRecognizeAction:NO];
                 break;
@@ -758,7 +760,7 @@
                 [[IDLFaceLivenessManager sharedInstance] livenessProcessHandler:^(float numberOfLiveness, float numberOfSuccess, LivenessActionType currenActionType) {
                     NSLog(@"动作超时 %d %d %d", (int)numberOfLiveness, (int)numberOfSuccess, (int)currenActionType);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.remindAnimationView startActionAnimating:(int)currenActionType];
+                        [weakSelf.remindAnimationView startActionAnimating:(int)currenActionType];
                     });
                 }];
                 [BDFaceLog makeLogAfterFinishRecognizeAction:NO];
@@ -859,9 +861,14 @@
 }
 
 - (void)restartGroupDetection{
+    _hasFinished = NO;
+    self.videoCapture.runningStatus = YES;
+    self.videoCapture.delegate = self;
+    [self.videoCapture startSession];
     [[IDLFaceLivenessManager sharedInstance] reset];
     BDFaceLivingConfigModel* model = [BDFaceLivingConfigModel sharedInstance];
     [[IDLFaceLivenessManager sharedInstance] livenesswithList:model.liveActionArray order:model.isByOrder numberOfLiveness:model.numOfLiveness];
+    
 }
 
 #endif

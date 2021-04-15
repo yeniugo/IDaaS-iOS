@@ -98,7 +98,7 @@
             }];
         }else{//其他
             [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"初始化人脸失败，是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                [weakSelf restartDetection];
+                [weakSelf restartGroupDetection];
             } cancelBlock:^{
                 [weakSelf dismissVC];
             }];

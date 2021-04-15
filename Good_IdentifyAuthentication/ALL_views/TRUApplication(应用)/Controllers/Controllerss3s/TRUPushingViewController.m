@@ -562,9 +562,9 @@ static TRUPushingViewController *_singleInstance = nil;
                 [self.pushTimer invalidate];
                 self.pushTimer = nil;
                 NSString *currentTimeStr = [self getCurrentTimes];
-                int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
+//                int dd = [self compareDate:currentTimeStr withDate:@"2021-04-10"];
                 
-                if (dd >= 0) {
+                if (1) {
                     [self setDismissBlock:^(BOOL confirm){
                         if (confirm) {
                             [weakSelf popFaceAuthViewToken:token];
@@ -573,9 +573,9 @@ static TRUPushingViewController *_singleInstance = nil;
                     [self performSelector:@selector(dismissVC:) withObject:@"1" afterDelay:0.4];
                     
                 }else{
-                    [self showHudWithText:@"您所使用的人脸认证服务已到期，即将更新，请耐心等待。"];
-                    [self hideHudDelay:2.0];
-                    [self performSelector:@selector(dismissVC:) withObject:@"1" afterDelay:2.5];
+//                    [self showHudWithText:@"您所使用的人脸认证服务已到期，即将更新，请耐心等待。"];
+//                    [self hideHudDelay:2.0];
+//                    [self performSelector:@selector(dismissVC:) withObject:@"1" afterDelay:2.5];
                 }
             }
             if ([self.pushModel.authtype isEqualToString:@"7"]) {//声纹
