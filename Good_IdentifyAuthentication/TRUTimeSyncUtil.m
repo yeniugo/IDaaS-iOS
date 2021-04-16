@@ -44,7 +44,7 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
         para = [xindunsdk encryptByUkey:userId ctx:ctxx signdata:seed isDeviceType:NO];
     }
     NSDictionary *paramsDic = @{@"params" : para};
-    long seconds_cli = (long)time((time_t *)NULL);
+//    long seconds_cli = (long)time((time_t *)NULL);
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/totp/sync"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
         if (errorno!=0) {
             return;
@@ -54,14 +54,14 @@ static NSString *TIMEKEY = @"61cef4db2a378bc1b5983f84fbd00768";
         if ([dic[@"code"] intValue] == 0) {
             dic = dic[@"resp"];
             NSString *shmac = dic[@"hmac"];
-            NSString *timestamp = [shmac substringToIndex:(shmac.length - 44 - 3)];
-            long time = [timestamp longLongValue];
-            //hmac=timestamp+hmac（userkey，randa+timestamp）;
+            NSString *timestamp = [shmac substringToIndex:(shmac.length - 44)];
+            long long time = [timestamp longLongValue];
+            long long seconds_cli = [[NSDate date] timeIntervalSince1970]*1000;
             if( [xindunsdk checkCIMSHmac:userId randa:seed shmac:shmac]){
-                long timedetal = seconds_cli - time;
+                long timedetal = (seconds_cli - time)/1000;
                 long oldtime = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] longValue];
-                DDLogWarn(@"本地时间 = %ld，服务器时间 = %ld，旧的时间差 = %ld，新时间差 = %ld",seconds_cli,time,oldtime,timedetal);
-                NSLog(@"时间差 seconds_cli = %ld,time = %ld,dic= %@",seconds_cli,time,dic);
+                DDLogWarn(@"本地时间 = %llu，服务器时间 = %llu，旧的时间差 = %ld，新时间差 = %ld",seconds_cli,time,oldtime,timedetal);
+                NSLog(@"时间差 seconds_cli = %llu,time = %llu,dic= %@",seconds_cli,time,dic);
                 [[NSUserDefaults standardUserDefaults] setObject:@(timedetal) forKey:@"GS_DETAL_KEY"];
 // 添加了一个数据保存
                 [[NSUserDefaults standardUserDefaults] synchronize];

@@ -259,10 +259,10 @@
 		2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DADD8872500EB3F008C3791 /* Contacts.framework */; };
 		2DADD88A2500EB62008C3791 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DADD8892500EB61008C3791 /* QuartzCore.framework */; };
 		2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB18DF2232637CC00473824 /* TRUMTDTool.m */; };
-		2DB6C2DB25467089005FBD53 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DB6C2DA25467089005FBD53 /* trusfort.lic */; };
 		2DB6C2E525467DE7005FBD53 /* AuthenAnti_SpoofingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D96CE542432F301009080DC /* AuthenAnti_SpoofingSDK.framework */; };
 		2DBE8A3124346A9800A5DB7E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */; };
 		2DBE8A362435C98200A5DB7E /* UIScrollView+UITouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */; };
+		2DC18F732629B33F002A8859 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DC18F722629B33F002A8859 /* trusfort.lic */; };
 		2DC1B025231FA1A900A8A8DF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B024231FA1A900A8A8DF /* libc++.tbd */; };
 		2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B026231FA1D700A8A8DF /* AdSupport.framework */; };
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
@@ -753,11 +753,11 @@
 		2DADD8892500EB61008C3791 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2DB18DF2232637CC00473824 /* TRUMTDTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMTDTool.m; sourceTree = "<group>"; };
 		2DB18DF3232637CC00473824 /* TRUMTDTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMTDTool.h; sourceTree = "<group>"; };
-		2DB6C2DA25467089005FBD53 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DBE8A2F24346A9800A5DB7E /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		2DBE8A3024346A9800A5DB7E /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		2DBE8A342435C98200A5DB7E /* UIScrollView+UITouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouch.h"; sourceTree = "<group>"; };
 		2DBE8A352435C98200A5DB7E /* UIScrollView+UITouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouch.m"; sourceTree = "<group>"; };
+		2DC18F722629B33F002A8859 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DC1B024231FA1A900A8A8DF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2DC1B026231FA1D700A8A8DF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2DC1B028231FA20C00A8A8DF /* libproc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libproc.tbd; path = usr/lib/libproc.tbd; sourceTree = SDKROOT; };
@@ -1022,7 +1022,7 @@
 				2DA0387F24A9984300AAD8A8 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
-				2DB6C2DA25467089005FBD53 /* trusfort.lic */,
+				2DC18F722629B33F002A8859 /* trusfort.lic */,
 			);
 			name = Xindun;
 			path = ..;
@@ -2190,7 +2190,7 @@
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
 				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
-				2DB6C2DB25467089005FBD53 /* trusfort.lic in Resources */,
+				2DC18F732629B33F002A8859 /* trusfort.lic in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
 				2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */,
 				12354C5F1FA81A6900B6B92E /* TRUSessionManagerCell.xib in Resources */,
@@ -2649,7 +2649,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2658,7 +2658,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
@@ -2698,7 +2698,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

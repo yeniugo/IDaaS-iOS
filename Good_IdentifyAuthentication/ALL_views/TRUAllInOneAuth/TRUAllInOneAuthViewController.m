@@ -953,25 +953,25 @@ static NSInteger pushCount = NSIntegerMax;
         [[NSUserDefaults standardUserDefaults] synchronize];
         self.firstRun = NO;
         //        [self requestData];
-        NSString *userid = [TRUUserAPI getUser].userId;
+        //NSString *userid = [TRUUserAPI getUser].userId;
         NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid0];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
-        NSString *uuid = [xindunsdk getCIMSUUID:userid];
+        NSString *uuid = [xindunsdk getCIMSUUID:userid0];
         NSString *deviceid = [xindunsdk getDeviceId];
         DDLogWarn(@"时间差 = %f,UUID = %@,设备指纹 = %@",timeDifference,uuid,deviceid);
     }else{
         if ((long)time2!=time1) {
             YCLog(@"change------------");
             //            [self requestData];
-            NSString *userid = [TRUUserAPI getUser].userId;
+            //NSString *userid = [TRUUserAPI getUser].userId;
             NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid0];
             self.rectView.passwordStr = passwordStr;
             self.circleDynamicView.passwordStr = passwordStr;
             [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 //            NSString *uuid = [xindunsdk getCIMSUUID:userid];
-            NSString *uuid = [xindunsdk getCIMSUUID:userid];
+            NSString *uuid = [xindunsdk getCIMSUUID:userid0];
             NSString *deviceid = [xindunsdk getDeviceId];
             DDLogWarn(@"时间差 = %f,UUID = %@,设备指纹 = %@",timeDifference,uuid,deviceid);
         }else{
