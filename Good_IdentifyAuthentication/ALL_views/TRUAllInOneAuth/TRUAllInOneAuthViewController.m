@@ -62,8 +62,10 @@
 
 @implementation TRUAllInOneAuthViewController
 static double dytime = 0.0;
+static NSString *userid0 ;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    userid0 = [TRUUserAPI getUser].userId;
     // Do any additional setup after loading the view.
 //    [TRUMTDTool uploadDevInfo];
     [self setCustomUI];
@@ -952,7 +954,7 @@ static NSInteger pushCount = NSIntegerMax;
         self.firstRun = NO;
         //        [self requestData];
         NSString *userid = [TRUUserAPI getUser].userId;
-        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid0];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
         NSString *uuid = [xindunsdk getCIMSUUID:userid];
@@ -963,7 +965,7 @@ static NSInteger pushCount = NSIntegerMax;
             YCLog(@"change------------");
             //            [self requestData];
             NSString *userid = [TRUUserAPI getUser].userId;
-            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid0];
             self.rectView.passwordStr = passwordStr;
             self.circleDynamicView.passwordStr = passwordStr;
             [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
