@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -198,6 +198,7 @@
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
 		2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E782522CE5000604CC4 /* voicebtnbg.json */; };
 		2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E7A2522CE6F00604CC4 /* voicebg.json */; };
+		2D1FA389262EB4E8009EE141 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D1FA388262EB4E8009EE141 /* trusfort.lic */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
@@ -273,7 +274,6 @@
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
-		2DDB54102625950E0056F5AC /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB540F2625950E0056F5AC /* trusfort.lic */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
 		2DF3915421AE82060091A764 /* TRUAuthenticateCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3915321AE82060091A764 /* TRUAuthenticateCollectionCell.m */; };
@@ -637,6 +637,7 @@
 		2D13E56522FD589B000112AC /* CircleDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleDynamicView.m; sourceTree = "<group>"; };
 		2D1B1E782522CE5000604CC4 /* voicebtnbg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebtnbg.json; path = Good_IdentifyAuthentication/voicebtnbg.json; sourceTree = SOURCE_ROOT; };
 		2D1B1E7A2522CE6F00604CC4 /* voicebg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebg.json; path = Good_IdentifyAuthentication/voicebg.json; sourceTree = SOURCE_ROOT; };
+		2D1FA388262EB4E8009EE141 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsSchemeViewController.m; sourceTree = "<group>"; };
 		2D31F8F5228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
 		2D32BB0D22B102FC00BE3169 /* TRUSSHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHViewController.h; sourceTree = "<group>"; };
@@ -778,7 +779,6 @@
 		2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLoginTableViewBackImage.m; sourceTree = "<group>"; };
 		2DD459E621D2290B00237161 /* TRUSelectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSelectModel.h; sourceTree = "<group>"; };
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
-		2DDB540F2625950E0056F5AC /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		2DE40B09218BF48B002A37D1 /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		2DEA329021A159170055F719 /* TRULoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoadingViewController.h; sourceTree = "<group>"; };
@@ -1022,7 +1022,7 @@
 				2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
-				2DDB540F2625950E0056F5AC /* trusfort.lic */,
+				2D1FA388262EB4E8009EE141 /* trusfort.lic */,
 			);
 			name = Xindun;
 			path = ..;
@@ -2158,7 +2158,7 @@
 				};
 			};
 			buildConfigurationList = 12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "Good_IdentifyAuthentication" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -2190,7 +2190,7 @@
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
 				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
-				2DDB54102625950E0056F5AC /* trusfort.lic in Resources */,
+				2D1FA389262EB4E8009EE141 /* trusfort.lic in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
 				2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */,
 				12354C5F1FA81A6900B6B92E /* TRUSessionManagerCell.xib in Resources */,
@@ -2678,7 +2678,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L2ZTPCH4TY;
+				DEVELOPMENT_TEAM = PK4BRA55J4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2707,10 +2707,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chinaCoal.portal;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.hwcc.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = "Portal In house 2021";
+				PROVISIONING_PROFILE_SPECIFIER = MwrHwcccims;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";

@@ -55,9 +55,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>trusfortcims</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -124,6 +122,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>app-version</key>
-	<string>3.0.0</string>
+	<string>1.0.0</string>
 </dict>
 </plist>
