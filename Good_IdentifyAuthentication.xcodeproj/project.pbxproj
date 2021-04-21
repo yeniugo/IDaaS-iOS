@@ -251,7 +251,6 @@
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
-		2D4CC91C25AEE5CB007E9EE5 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */; };
 		2D55CB21230CF61300C31F60 /* TRUPersonalSmailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
 		2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */; };
@@ -280,6 +279,7 @@
 		2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
 		2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */; };
 		2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731421D36F0C006D8281 /* UIButton+Touch.m */; };
+		2D946D68262FD84B0013E02A /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D946D67262FD84A0013E02A /* libxindunsdk.a */; };
 		2D96CEB624333CF2009080DC /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAC24333CF1009080DC /* unzip.c */; };
 		2D96CEB724333CF2009080DC /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAD24333CF1009080DC /* zip.c */; };
 		2D96CEB824333CF2009080DC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAE24333CF1009080DC /* ioapi.c */; };
@@ -789,7 +789,6 @@
 		2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTokenUtil.m; sourceTree = "<group>"; };
 		2D4B970F2181A59D00867797 /* TRUEnterAPPAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUEnterAPPAuthView.h; sourceTree = "<group>"; };
 		2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUEnterAPPAuthView.m; sourceTree = "<group>"; };
-		2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D55CB1F230CF61300C31F60 /* TRUPersonalSmailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalSmailModel.h; sourceTree = "<group>"; };
 		2D55CB20230CF61300C31F60 /* TRUPersonalSmailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalSmailModel.m; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
@@ -845,6 +844,7 @@
 		2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LSNavigationController.m"; sourceTree = "<group>"; };
 		2D8B731321D36F0C006D8281 /* UIButton+Touch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Touch.h"; sourceTree = "<group>"; };
 		2D8B731421D36F0C006D8281 /* UIButton+Touch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Touch.m"; sourceTree = "<group>"; };
+		2D946D67262FD84A0013E02A /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D96CEAA24333CF1009080DC /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		2D96CEAC24333CF1009080DC /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		2D96CEAD24333CF1009080DC /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
@@ -947,8 +947,8 @@
 				125633361F7A22A4007FF392 /* UserNotifications.framework in Frameworks */,
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
-				2D4CC91C25AEE5CB007E9EE5 /* libxindunsdk.a in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
+				2D946D68262FD84B0013E02A /* libxindunsdk.a in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
@@ -1132,10 +1132,10 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2D0DA2DB2627DD910044F700 /* trusfort.lic */,
+				2D946D67262FD84A0013E02A /* libxindunsdk.a */,
 			);
 			name = Xindun;
 			path = ..;
