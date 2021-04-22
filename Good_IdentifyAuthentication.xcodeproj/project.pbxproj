@@ -198,7 +198,6 @@
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
 		2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E782522CE5000604CC4 /* voicebtnbg.json */; };
 		2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E7A2522CE6F00604CC4 /* voicebg.json */; };
-		2D1FA389262EB4E8009EE141 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D1FA388262EB4E8009EE141 /* trusfort.lic */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
@@ -270,6 +269,7 @@
 		2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */; };
 		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
 		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
+		2DCADC8726311CCF0041BCDD /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DCADC8626311CCF0041BCDD /* trusfort.lic */; };
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
@@ -637,7 +637,6 @@
 		2D13E56522FD589B000112AC /* CircleDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleDynamicView.m; sourceTree = "<group>"; };
 		2D1B1E782522CE5000604CC4 /* voicebtnbg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebtnbg.json; path = Good_IdentifyAuthentication/voicebtnbg.json; sourceTree = SOURCE_ROOT; };
 		2D1B1E7A2522CE6F00604CC4 /* voicebg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebg.json; path = Good_IdentifyAuthentication/voicebg.json; sourceTree = SOURCE_ROOT; };
-		2D1FA388262EB4E8009EE141 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsSchemeViewController.m; sourceTree = "<group>"; };
 		2D31F8F5228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
 		2D32BB0D22B102FC00BE3169 /* TRUSSHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHViewController.h; sourceTree = "<group>"; };
@@ -769,6 +768,7 @@
 		2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerViewController.m; sourceTree = "<group>"; };
 		2DC8E3A92451A25800FD125A /* TRUMailManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerCell.h; sourceTree = "<group>"; };
 		2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerCell.m; sourceTree = "<group>"; };
+		2DCADC8626311CCF0041BCDD /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DCF84DD24502495009697A0 /* TRUWebLoginManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUWebLoginManagerViewController.h; sourceTree = "<group>"; };
 		2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUWebLoginManagerViewController.m; sourceTree = "<group>"; };
 		2DCF84E0245024E6009697A0 /* TRUWebLoginManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUWebLoginManagerCell.h; sourceTree = "<group>"; };
@@ -1022,7 +1022,7 @@
 				2D4CC91B25AEE5CB007E9EE5 /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
-				2D1FA388262EB4E8009EE141 /* trusfort.lic */,
+				2DCADC8626311CCF0041BCDD /* trusfort.lic */,
 			);
 			name = Xindun;
 			path = ..;
@@ -2190,7 +2190,7 @@
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
 				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
-				2D1FA389262EB4E8009EE141 /* trusfort.lic in Resources */,
+				2DCADC8726311CCF0041BCDD /* trusfort.lic in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
 				2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */,
 				12354C5F1FA81A6900B6B92E /* TRUSessionManagerCell.xib in Resources */,
@@ -2658,7 +2658,7 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims.enterprise;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.hwcc.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
 				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
