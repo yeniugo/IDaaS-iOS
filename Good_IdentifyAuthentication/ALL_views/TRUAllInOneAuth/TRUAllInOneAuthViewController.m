@@ -953,7 +953,7 @@ static NSInteger pushCount = NSIntegerMax;
         [[NSUserDefaults standardUserDefaults] synchronize];
         self.firstRun = NO;
         //        [self requestData];
-        //NSString *userid = [TRUUserAPI getUser].userId;
+//        NSString *userid = [TRUUserAPI getUser].userId;
         NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid0];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
