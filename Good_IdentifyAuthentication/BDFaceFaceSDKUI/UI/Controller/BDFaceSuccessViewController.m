@@ -6,6 +6,8 @@
 //  Copyright © 2020 Baidu. All rights reserved.
 //
 
+#if !TARGET_IPHONE_SIMULATOR
+
 #import "BDFaceSuccessViewController.h"
 #import "BDFaceLivingConfigViewController.h"
 #import "BDFaceDetectionViewController.h"
@@ -154,3 +156,5 @@
 
 
 @end
+
+#endif

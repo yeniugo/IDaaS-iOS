@@ -5,7 +5,7 @@
 //  Created by 阿凡树 on 2017/5/23.
 //  Copyright © 2017年 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import <UIKit/UIKit.h>
 #import "BDFaceCircleView.h"
 #import "BDFaceCycleProgressView.h"
@@ -70,3 +70,4 @@ typedef enum : NSUInteger {
 - (UIImageView *)creatRectangle:(UIImageView *)imageView withRect:(CGRect) rect withcolor:(UIColor *)color;
 
 @end
+#endif

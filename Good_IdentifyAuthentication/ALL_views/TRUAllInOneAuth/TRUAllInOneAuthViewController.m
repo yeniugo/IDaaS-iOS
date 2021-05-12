@@ -35,6 +35,7 @@
 #import "UIScrollView+UITouch.h"
 #import "TRUWebLoginManagerViewController.h"
 #import "TRUAuthWKWebViewController.h"
+#import <Masonry.h>
 
 @interface TRUAllInOneAuthViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -137,11 +138,11 @@ static double dytime = 0.0;
 //                self.updateStatus = 1;
 //                [TrusfortDfsSdk enableSensor:model2.hasMtd];
             }else{
-                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
-//                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
-                    [delegate restUIForApp];
-                } cancelBlock:nil];
-//                self.updateStatus = 2;
+//                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
+//
+//                    [delegate restUIForApp];
+//                } cancelBlock:nil];
+
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -299,7 +300,7 @@ static double dytime = 0.0;
     [self.navigationBar setBackgroundImage:[self ls_imageWithColor:DefaultGreenColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:NavTitleFont]}];
     self.title = @"认证";
-    self.linelabel.hidden = YES;
+//    self.linelabel.hidden = YES;
     int type ;
     TRUCompanyModel *companyModel = [TRUCompanyAPI getCompany];
     if (companyModel.hasProtal) {
@@ -333,8 +334,13 @@ static double dytime = 0.0;
     header.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
     scrollView.mj_header = header;
 //    scrollView.backgroundColor = [UIColor clearColor];
-    scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH - kNavBarAndStatusBarHeight);
-    scrollView.contentSize = CGSizeMake(SCREENW, SCREENH - kNavBarAndStatusBarHeight);
+//    scrollView.frame = CGRectMake(0, kNavBarAndStatusBarHeight, SCREENW, SCREENH - kNavBarAndStatusBarHeight);
+//    scrollView.contentSize = CGSizeMake(SCREENW, SCREENH - kNavBarAndStatusBarHeight);
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view.mas_topMargin);
+        make.bottom.equalTo(self.view);
+    }];
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO; 
     switch (type) {
@@ -443,8 +449,8 @@ static double dytime = 0.0;
                             if (!success) {
                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:downloadStr] options:nil completionHandler:^(BOOL success) {
                                     if (!success) {
-                                        [weakSelf showHudWithText:@"下载地址错误"];
-                                        [weakSelf hideHudDelay:2];
+//                                        [weakSelf showHudWithText:@"下载地址错误"];
+//                                        [weakSelf hideHudDelay:2];
                                     }
                                 }];
                             }
@@ -454,8 +460,8 @@ static double dytime = 0.0;
                         if (!canopen) {
                             canopen = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:downloadStr]];
                             if (!canopen) {
-                                [weakSelf showHudWithText:@"下载地址错误"];
-                                [weakSelf hideHudDelay:2];
+//                                [weakSelf showHudWithText:@"下载地址错误"];
+//                                [weakSelf hideHudDelay:2];
                             }
                         }
                     }
@@ -523,8 +529,8 @@ static double dytime = 0.0;
                             if (!success) {
                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:downloadStr] options:nil completionHandler:^(BOOL success) {
                                     if (!success) {
-                                        [weakSelf showHudWithText:@"下载地址错误"];
-                                        [weakSelf hideHudDelay:2];
+//                                        [weakSelf showHudWithText:@"下载地址错误"];
+//                                        [weakSelf hideHudDelay:2];
                                     }
                                 }];
                             }
@@ -534,8 +540,8 @@ static double dytime = 0.0;
                         if (!canopen) {
                             canopen = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:downloadStr]];
                             if (!canopen) {
-                                [weakSelf showHudWithText:@"下载地址错误"];
-                                [weakSelf hideHudDelay:2];
+//                                [weakSelf showHudWithText:@"下载地址错误"];
+//                                [weakSelf hideHudDelay:2];
                             }
                         }
                     }
@@ -577,24 +583,16 @@ static double dytime = 0.0;
                     [weakSelf.navigationController pushViewController:scanVC animated:YES];
                 });
             }else{
-                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                    //                    [self dismissViewControllerAnimated:YES completion:nil];
-                    //                    [self.navigationController popViewControllerAnimated:YES];
-                    //                    if([TRUUserAPI haveSubUser]){
-                    //                        [self.navigationController popViewControllerAnimated:YES];
-                    //                    }else{
-                    //                        [self dismissViewControllerAnimated:YES completion:nil];
-                    //                    }
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                    //                    [HAMLogOutputWindow printLog:@"popViewControllerAnimated"];
-                } cancelBlock:nil];
+//                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//                    [weakSelf.navigationController popViewControllerAnimated:YES];
+//                } cancelBlock:nil];
             }
         }];
         //
     }else if (authStatus ==AVAuthorizationStatusDenied || authStatus == AVAuthorizationStatusRestricted){
-        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        } cancelBlock:nil];
+//        [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:kCameraFailedTip confrimTitle:@"好" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        } cancelBlock:nil];
     }
 }
 
@@ -628,29 +626,29 @@ static double dytime = 0.0;
 - (void)checkLoginAuth{
     //既没有手势又没有指纹
     if ([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone) {
-        [self showConfrimCancelDialogViewWithTitle:@"" msg:@"请设置您的APP登录方式" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-            TRUAPPLogIdentifyController *settingVC = [[TRUAPPLogIdentifyController alloc] init];
-            [self.navigationController pushViewController:settingVC animated:YES];
-        } cancelBlock:nil];
+//        [self showConfrimCancelDialogViewWithTitle:@"" msg:@"请设置您的APP登录方式" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//            TRUAPPLogIdentifyController *settingVC = [[TRUAPPLogIdentifyController alloc] init];
+//            [self.navigationController pushViewController:settingVC animated:YES];
+//        } cancelBlock:nil];
     }
 }
 
 - (void)syncTime{
     [TRUTimeSyncUtil syncTimeWithResult:^(int error) {
-        [self hideHudDelay:0.0];
+//        [self hideHudDelay:0.0];
         if (error == 0) {
 //            [self showHudWithText:@"校准成功"];
 //            [self hideHudDelay:2.0];
             [self runDisLink1];
         }else if (error == -5004){
-            [self showHudWithText:@"网络错误，稍后请重试"];
-            [self hideHudDelay:2.0];
+//            [self showHudWithText:@"网络错误，稍后请重试"];
+//            [self hideHudDelay:2.0];
         }else if (9008 == error){
-            [self deal9008Error];
+//            [self deal9008Error];
         }else{
             NSString *err = [NSString stringWithFormat:@"其他错误（%d）",error];
-            [self showHudWithText:err];
-            [self hideHudDelay:2.0];
+//            [self showHudWithText:err];
+//            [self hideHudDelay:2.0];
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
@@ -666,7 +664,7 @@ static double dytime = 0.0;
         NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
         NSDictionary *paramsDic = @{@"params" : paras};
         [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getAppList"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-            [weakSelf hideHudDelay:0.0];
+//            [weakSelf hideHudDelay:0.0];
             weakSelf.dataArray = [NSMutableArray array];
             if (errorno == 0) {
                 if (responseBody) {
@@ -724,21 +722,21 @@ static double dytime = 0.0;
                 //                _topView.requestImgview.hidden = YES;
                 //                [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
             }else if (-5004 == errorno){
-                [weakSelf showHudWithText:@"网络错误，稍后请重试"];
-                [weakSelf hideHudDelay:2.0];
+//                [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+//                [weakSelf hideHudDelay:2.0];
             }else if (9008 == errorno){
-                [weakSelf deal9008Error];
+//                [weakSelf deal9008Error];
             }else if (9019 == errorno){
-                [weakSelf deal9019Error];
+//                [weakSelf deal9019Error];
             }else if (9025 == errorno){
-                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                } cancelBlock:^{
-                }];
+//                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//                } cancelBlock:^{
+//                }];
             }else{
-                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
-                //[NSString stringWithFormat:@"其他错误 %d", error];
-                [weakSelf showHudWithText:err];
-                [weakSelf hideHudDelay:2.0];
+//                NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];
+//                //[NSString stringWithFormat:@"其他错误 %d", error];
+//                [weakSelf showHudWithText:err];
+//                [weakSelf hideHudDelay:2.0];
             }
         }];
     }
@@ -777,8 +775,8 @@ static double dytime = 0.0;
                                 }
                             }
                         }else{
-                            [weakSelf showHudWithText:[NSString stringWithFormat:@"%d错误",errorno]];
-                            [weakSelf hideHudDelay:2.0];
+//                            [weakSelf showHudWithText:[NSString stringWithFormat:@"%d错误",errorno]];
+//                            [weakSelf hideHudDelay:2.0];
                         }
                     }];
                 }
@@ -800,7 +798,7 @@ static double dytime = 0.0;
         NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:YES];
         NSDictionary *paramsDic = @{@"params" : paras};
         [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/push/getlist"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
-            [weakSelf hideHudDelay:0.0];
+//            [weakSelf hideHudDelay:0.0];
             [weakSelf.pushModelList removeAllObjects];
             if (errorno == 0) {
                 if (responseBody) {
@@ -839,16 +837,16 @@ static double dytime = 0.0;
                 //                _topView.requestImgview.hidden = YES;
                 [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
             }else if (-5004 == errorno){
-                [weakSelf showHudWithText:@"网络错误，稍后请重试"];
-                [weakSelf hideHudDelay:2.0];
+//                [weakSelf showHudWithText:@"网络错误，稍后请重试"];
+//                [weakSelf hideHudDelay:2.0];
             }else if (9008 == errorno){
-                [weakSelf deal9008Error];
+//                [weakSelf deal9008Error];
             }else if (9019 == errorno){
-                [weakSelf deal9019Error];
+//                [weakSelf deal9019Error];
             }else if (9025 == errorno){
-                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                } cancelBlock:^{
-                }];
+//                [weakSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
+//                } cancelBlock:^{
+//                }];
             }else{
                 if (userid && userid.length > 0) {
                     NSDictionary *dic = [xindunsdk userInitializedInfo:userid];
@@ -858,8 +856,8 @@ static double dytime = 0.0;
                 }
                 [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
                 NSString *err = [NSString stringWithFormat:@"其他错误（%d）",errorno];//[NSString stringWithFormat:@"其他错误 %d", error];
-                [weakSelf showHudWithText:err];
-                [weakSelf hideHudDelay:2.0];
+//                [weakSelf showHudWithText:err];
+//                [weakSelf hideHudDelay:2.0];
             }
         }];
     }

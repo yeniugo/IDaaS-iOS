@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/1.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAdjustParamsRootController.h"
 #import "BDFaceAdjustParamsRootCell.h"
 #import "BDFaceCalculateTool.h"
@@ -140,3 +140,4 @@ static float const BDFaceAdjustParamsNavigationBarBackButtonWidth = 60.0f;
 
 
 @end
+#endif

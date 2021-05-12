@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/1.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAdjustParamsController.h"
 #import "BDFaceAdjustParamsCell.h"
 #import "BDFaceAdjustParamsItem.h"
@@ -352,3 +352,4 @@ static NSString *const BDFaceAdjustParamsSection2Tip = @"姿态阀值（绝对�
 
 
 @end
+#endif

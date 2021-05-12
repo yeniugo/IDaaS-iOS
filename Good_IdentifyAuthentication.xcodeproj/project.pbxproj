@@ -234,8 +234,6 @@
 		2D2E53802623EE9F00940042 /* BDFaceVideoCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53572623EE9F00940042 /* BDFaceVideoCaptureDevice.m */; };
 		2D2E53812623EE9F00940042 /* BDFaceLivingConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E535B2623EE9F00940042 /* BDFaceLivingConfigModel.m */; };
 		2D2E53822623EE9F00940042 /* BDFaceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E535D2623EE9F00940042 /* BDFaceLog.m */; };
-		2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; };
-		2D2E538D2624278600940042 /* IDLFaceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D2E53AA26242CF000940042 /* BDFaceParamsConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */; };
 		2D2E53B226242D6E00940042 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53B126242D6E00940042 /* idl-license.face-ios */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
@@ -247,6 +245,8 @@
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
 		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
+		2D44BFF7264BAAD7003B476A /* IDLFaceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; };
+		2D44BFF8264BAAD7003B476A /* IDLFaceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */; };
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
@@ -341,13 +341,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2D2E538E2624278600940042 /* Embed Frameworks */ = {
+		2D44BFF9264BAAD7003B476A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D2E538D2624278600940042 /* IDLFaceSDK.framework in Embed Frameworks */,
+				2D44BFF8264BAAD7003B476A /* IDLFaceSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -957,7 +957,7 @@
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
 				125633261F7A21CD007FF392 /* CoreFoundation.framework in Frameworks */,
 				125633241F7A21BD007FF392 /* CFNetwork.framework in Frameworks */,
-				2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */,
+				2D44BFF7264BAAD7003B476A /* IDLFaceSDK.framework in Frameworks */,
 				91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2395,7 +2395,7 @@
 				12C0D2C61F7907DC00972218 /* Sources */,
 				12C0D2C71F7907DC00972218 /* Frameworks */,
 				12C0D2C81F7907DC00972218 /* Resources */,
-				2D2E538E2624278600940042 /* Embed Frameworks */,
+				2D44BFF9264BAAD7003B476A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2927,7 +2927,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2970,7 +2970,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3000,7 +3000,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Good_IdentifyAuthentication/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3050,7 +3050,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Good_IdentifyAuthentication/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

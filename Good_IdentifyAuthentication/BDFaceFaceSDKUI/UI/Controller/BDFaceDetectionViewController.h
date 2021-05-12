@@ -5,9 +5,10 @@
 //  Created by 阿凡树 on 2017/5/23.
 //  Copyright © 2017年 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceBaseViewController.h"
 
 @interface BDFaceDetectionViewController : BDFaceBaseViewController
 
 @end
+#endif

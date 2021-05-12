@@ -5,7 +5,7 @@
 //  Created by 孙明喆 on 2020/3/12.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAgreementViewController.h"
 #import "BDFaceLogoView.h"
 
@@ -126,3 +126,4 @@
 
 
 @end
+#endif

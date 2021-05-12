@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/1.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceSelectConfigController.h"
 #import "BDFaceSelectItem.h"
 #import "BDFaceSelectConfigCell.h"
@@ -126,3 +126,4 @@ static NSString *const BDFaceSelectConfigControllerTip2 = @"人脸对比场景�
 }
 
 @end
+#endif

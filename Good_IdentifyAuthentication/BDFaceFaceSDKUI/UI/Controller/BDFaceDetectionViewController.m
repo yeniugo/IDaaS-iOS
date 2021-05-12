@@ -5,7 +5,7 @@
 //  Created by 阿凡树 on 2017/5/23.
 //  Copyright © 2017年 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceDetectionViewController.h"
 #import <IDLFaceSDK/IDLFaceSDK.h>
 #import <AVFoundation/AVFoundation.h>
@@ -291,3 +291,4 @@ int remindCode = -1;
     [[IDLFaceDetectionManager sharedInstance] reset];
 }
 @end
+#endif

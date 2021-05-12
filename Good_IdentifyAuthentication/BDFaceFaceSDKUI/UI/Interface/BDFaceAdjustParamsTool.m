@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/8.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAdjustParamsTool.h"
 #import "BDFaceAdjustParamsFileManager.h"
 #import "BDFaceAdjustParamsConstants.h"
@@ -42,3 +42,4 @@
 }
 
 @end
+#endif

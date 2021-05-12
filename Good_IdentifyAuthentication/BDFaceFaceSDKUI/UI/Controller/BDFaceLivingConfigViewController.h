@@ -8,9 +8,10 @@
 //  此类为了方便选择活体检测命令选项
 //
 
-
+#if !TARGET_IPHONE_SIMULATOR
 #import <UIKit/UIKit.h>
 
 @interface BDFaceLivingConfigViewController : UIViewController
 
 @end
+#endif

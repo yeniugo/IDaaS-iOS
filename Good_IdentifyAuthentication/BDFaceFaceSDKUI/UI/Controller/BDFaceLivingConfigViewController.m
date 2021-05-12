@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Baidu. All rights reserved.
 //
 
+#if !TARGET_IPHONE_SIMULATOR
+
 #import "BDFaceLivingConfigViewController.h"
 #import "BDFaceLivingConfigModel.h"
 #import "IDLFaceSDK/IDLFaceSDK.h"
@@ -480,3 +482,5 @@
     }
 }
 @end
+
+#endif

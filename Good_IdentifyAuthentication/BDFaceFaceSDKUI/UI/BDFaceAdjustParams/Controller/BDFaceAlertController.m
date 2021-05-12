@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/7.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAlertController.h"
 
 @interface BDFaceAlertController()
@@ -53,3 +53,4 @@
 
 
 @end
+#endif

@@ -5,7 +5,7 @@
 //  Created by Zhang,Jian(MBD) on 2020/12/1.
 //  Copyright © 2020 Baidu. All rights reserved.
 //
-
+#if !TARGET_IPHONE_SIMULATOR
 #import "BDFaceAdjustParamsRootController.h"
 #import "BDFaceAdjustParamsConstants.h"
 
@@ -22,3 +22,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+#endif

@@ -154,6 +154,7 @@
 }
 
 - (void) initFace {
+#if !TARGET_IPHONE_SIMULATOR
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"SoundMode"];
     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"LiveMode"];
     [[NSUserDefaults standardUserDefaults] setObject:@(NO) forKey:@"ByOrder"];
@@ -207,6 +208,7 @@
     
 //    /// 设置用户设置的配置参数
     [BDFaceAdjustParamsTool setDefaultConfig];
+#endif
 }
 
 - (void)initBugly{
