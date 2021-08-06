@@ -289,7 +289,6 @@
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
-		2DA65A46268325AD00353231 /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA65A45268325AD00353231 /* libxindunsdk.a */; };
 		2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */; };
 		2DAA278E230A700100B3A6C4 /* TRUBottomScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA278D230A700100B3A6C4 /* TRUBottomScanView.m */; };
 		2DAA2791230A83EE00B3A6C4 /* TRURectDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2790230A83EE00B3A6C4 /* TRURectDynamicView.m */; };
@@ -306,6 +305,7 @@
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
 		2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC21981230FD87300459748 /* TRUPortalHeader.m */; };
 		2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */; };
+		2DC4291726B3E26A00A5C38D /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC4291626B3E26A00A5C38D /* libxindunsdk.a */; };
 		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
 		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
@@ -863,7 +863,6 @@
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2DA5B5B521A3DEE50091F2D7 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
-		2DA65A45268325AD00353231 /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DAA2788230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAllInOneAuthViewController.h; sourceTree = "<group>"; };
 		2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUAllInOneAuthViewController.m; sourceTree = "<group>"; };
 		2DAA278C230A700100B3A6C4 /* TRUBottomScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBottomScanView.h; sourceTree = "<group>"; };
@@ -891,6 +890,7 @@
 		2DC21981230FD87300459748 /* TRUPortalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeader.m; sourceTree = "<group>"; };
 		2DC23ABD2469449000F8081D /* NSString+URLEncodedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncodedString.h"; sourceTree = "<group>"; };
 		2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncodedString.m"; sourceTree = "<group>"; };
+		2DC4291626B3E26A00A5C38D /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DC8E3A62451A22D00FD125A /* TRUMailManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerViewController.h; sourceTree = "<group>"; };
 		2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerViewController.m; sourceTree = "<group>"; };
 		2DC8E3A92451A25800FD125A /* TRUMailManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerCell.h; sourceTree = "<group>"; };
@@ -948,7 +948,7 @@
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
-				2DA65A46268325AD00353231 /* libxindunsdk.a in Frameworks */,
+				2DC4291726B3E26A00A5C38D /* libxindunsdk.a in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
@@ -1135,7 +1135,7 @@
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2D0DA2DB2627DD910044F700 /* trusfort.lic */,
-				2DA65A45268325AD00353231 /* libxindunsdk.a */,
+				2DC4291626B3E26A00A5C38D /* libxindunsdk.a */,
 			);
 			name = Xindun;
 			path = ..;
@@ -2453,8 +2453,7 @@
 				TargetAttributes = {
 					12C0D2C91F7907DC00972218 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AG9SM32322;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2984,9 +2983,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 228;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
@@ -3010,7 +3009,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3022,7 +3021,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c39d827c-2c53-4f77-95ab-b5a4865d1a28";
-				PROVISIONING_PROFILE_SPECIFIER = CIMSDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";
@@ -3035,7 +3034,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 228;
@@ -3060,7 +3059,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

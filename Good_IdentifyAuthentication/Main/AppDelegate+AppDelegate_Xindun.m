@@ -18,7 +18,7 @@
 #if TARGET_IPHONE_SIMULATOR
     //http://192.168.1.215:8100/cims
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://whxd1.trusfort.com:8100/cims" forKey:@"CIMSURL"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.1.215:8100/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://dev.trusfort.com:8101/cims" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [TRUCompanyAPI getCompany];
     companymodel.activation_mode = @"3";
@@ -35,7 +35,7 @@
         //kServerUrl = @"http://192.168.1.99:8000/cims";
         //kServerUrl = @"http://192.168.1.115:8000/cims";
         //生产环境 http://xd3.trusfort.com:8000/cims
-        kServerUrl = @"http://xd3.trusfort.com:8000/cims";
+        kServerUrl = @"http://dev.trusfort.com:8101/cims";
     }
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal.mwr.gov.cn:8100/authn" forKey:@"CIMSURL"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
