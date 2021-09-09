@@ -71,6 +71,13 @@
 //        }
         passwordLB.font = [UIFont systemFontOfSize:60*PointHeightRatioX3];
         passwordLB.minimumScaleFactor = 0.5;
+        passwordLB.font = [UIFont systemFontOfSize:40*PointHeightRatioX3];
+//        if (([UIScreen mainScreen].scale < 2.1)&&kDevice_Is_iPhoneX) {
+//            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
+//        }
+//        if ([UIScreen mainScreen].scale > 2.1) {
+//            passwordLB.font = [UIFont systemFontOfSize:50*PointHeightRatioX3];
+//        }
         passwordLB.textAlignment = NSTextAlignmentCenter;
         passwordLB.textColor = [UIColor whiteColor];
         [self addSubview:passwordLB];

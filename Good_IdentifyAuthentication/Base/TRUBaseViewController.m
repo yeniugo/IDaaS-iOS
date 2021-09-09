@@ -19,6 +19,8 @@
 #import "ZipArchive.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import "TRUhttpManager.h"
+
+
 //#import "UIViewController+LSNavigationController.h"
 @interface TRUBaseViewController ()<UIAlertViewDelegate,MFMailComposeViewControllerDelegate>
 @property (nonatomic, assign) __block BOOL showed9019Error;
@@ -336,6 +338,8 @@
     [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"密钥失效，请重新发起初始化" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         
+        [xindunsdk deactivateUser:[TRUUserAPI getUser].userId];
+        [TRUUserAPI deleteUser];
         [TRUEnterAPPAuthView dismissAuthViewAndCleanStatus];
         [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
         [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];

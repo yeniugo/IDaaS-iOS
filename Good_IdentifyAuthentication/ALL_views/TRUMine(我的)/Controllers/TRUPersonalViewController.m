@@ -511,8 +511,15 @@
             [TRUCompanyAPI saveCompany:model2];
             TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
+
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+//            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
+
                 [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
             }else{
                 [self showConfrimCancelDialogAlertViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{

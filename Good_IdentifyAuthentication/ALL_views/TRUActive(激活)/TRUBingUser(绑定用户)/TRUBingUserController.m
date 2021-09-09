@@ -129,9 +129,13 @@
                 self.activeModel = 5;
             }
         }
-        
+        [_inputoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
+        [_inputpasswordTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
+        [_inputphonemailTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     }else{
         [_inputoneTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
+        [_inputpasswordTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
+        [_inputphonemailTF addTarget:self action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     }
     _inputpasswordTF.secureTextEntry = YES;
     [_sendBtn setBackgroundColor:DefaultGreenColor];
@@ -142,6 +146,7 @@
 //    self.inputpasswordTF.text = @"qwer1234";
 #endif
     
+
 }
 
 - (void)resetUI{
@@ -171,6 +176,25 @@
 //- (void)qrScan{
 //    if ([self.delegate respondsToSelector:@selector(restartQRScan)]) {
 //        [self.delegate restartQRScan];
+//    self.inputoneTF.delegate = self;
+//    self.inputphonemailTF.delegate = self;
+//    self.inputpasswordTF.delegate = self;
+    //用户协议
+//    UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];
+//    [self.view addSubview:txtLabel];
+//    txtLabel.text = @"使用此App,即表示同意该";
+//    txtLabel.font = [UIFont systemFontOfSize:14];
+//    UIButton *agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:agreementBtn];
+//    agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 40, 90, 20);
+//    [agreementBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
+//    [agreementBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//    agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [agreementBtn addTarget:self action:@selector(lookUserAgreement) forControlEvents:UIControlEventTouchUpInside];
+//
+//    if (kDevice_Is_iPhoneX) {
+//        txtLabel.frame =CGRectMake(SCREENW/2.f - 122, SCREENH - 80, 165, 20);
+//        agreementBtn.frame = CGRectMake(SCREENW/2.f +35, SCREENH - 80, 90, 20);
 //    }
 //}
 
@@ -234,6 +258,23 @@
     return YES;
 }
 
+//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//    if ([string isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+//        //[textView endEditing:YES];
+//        //在这里做你响应return键的代码
+//        if (textField == self.inputoneTF) {
+//            [self.inputpasswordTF becomeFirstResponder];
+//        }else if(textField == self.inputpasswordTF){
+////            [self.inputphonemailTF becomeFirstResponder];
+//            [self VerifyBtnClick:nil];
+//        }else if(textField == self.inputphonemailTF){
+//            [self VerifyBtnClick:nil];
+//        }
+//        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+//    }
+//
+//    return YES;
+//}
 
 -(void)valueChanged:(UITextField *)field{
     NSString *str = field.text;
@@ -294,6 +335,39 @@
         }
         
     }
+    if (field.text.length>20) {
+        field.text = [field.text substringToIndex:20];
+    }
+    if (field == _inputoneTF) {
+        NSArray *arr = [[TRUCompanyAPI getCompany].activation_mode componentsSeparatedByString:@","];
+        if(arr.count){
+            
+        }else{
+            if ([str isPhone]) {
+                isPhone = YES;
+                isEmployee = NO;
+                isEmail = NO;
+                [self hiddenWithfalsh:1];
+                //        [self stopTimer];
+                //        [self.sendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                //        self.sendBtn.enabled = YES;
+            }else if ([str isEmail]){
+                isPhone = NO;
+                isEmployee = NO;
+                isEmail = YES;
+                [self hiddenWithfalsh:1];
+                //        [self stopTimer];
+                //        [self.sendBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                //        self.sendBtn.enabled = YES;
+            }else{
+                isPhone = NO;
+                isEmployee = YES;
+                isEmail = NO;
+                [self hiddenWithfalsh:2];
+            }
+        }
+    }
+    
 }
 
 - (IBAction)eyeBtnClick:(UIButton *)sender {
@@ -675,8 +749,10 @@
     NSString *str = _inputoneTF.text.trim;
     if ([str isPhone]) {//是手机号
         [self requestCodeForUser:str type:@"phone"];
+        [self.inputphonemailTF becomeFirstResponder];
     }else if ([str isEmail]){//是邮箱
         [self requestCodeForUser:str type:@"email"];
+        [self.inputphonemailTF becomeFirstResponder];
     }else{
         [self showHudWithText:@"请输入正确的账号"];
         [self hideHudDelay:1.5f];

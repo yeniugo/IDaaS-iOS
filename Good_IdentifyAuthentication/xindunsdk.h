@@ -1034,6 +1034,8 @@ static XDDeviceFilter none_filter = XDDeviceFilterNone;
  */
 + (NSString *)getCIMSDynamicCode:(NSString *)userNo;
 
+
++ (NSString *)getCIMSDynamicCodeByCustom:(NSString *)userNo timeSecond:(int)xsecond xdstrlong:(int)xdlen;
 /**
  获取UUID
  

@@ -110,6 +110,7 @@ static NSString *CrashReportURL = @"CrashReportURL";
 + (NSString *)getDeviceIdOnline:(NSString*)appId withServer:(NSString *)URL withExtInfo:(NSString *)extInfo OnResult:(void (^)(int error, id dicResult))onresult;
 
 + (NSString *)getDeviceIdOnlineIMP:(NSString*)appId withServer:(NSString *)URL withExtInfo:(NSString *)extInfo useWB:(BOOL)useWB OnResult:(void (^)(int error, id dicResult))onresult;
+//+ (void)getDeviceIdOnlineIMP:(NSString*)appId withServer:(NSString *)URL withExtInfo:(NSString *)extInfo useWB:(BOOL)useWB OnResult:(void (^)(int error, id dicResult))onresult;
 
 /**
  *  上报设备环境信息
@@ -135,6 +136,8 @@ static NSString *CrashReportURL = @"CrashReportURL";
  */
 + (NSDictionary *)getEncryptedDeviceInfo: (NSString *)appId;
 
+
+
 /**
  *  获取加密设备信息，用来上报风控
  *  @param appId        芯盾设备指纹云平台服务端为客户分配的ID
@@ -142,6 +145,7 @@ static NSString *CrashReportURL = @"CrashReportURL";
  *  @return             @{"error" : @"错误码", @"devinfo" : @"设备信息密文"}
  
  */
+
 + (NSDictionary *)getEncryptedDeviceInfo: (NSString *)appId deviceType:(int)deviceType;
 
 /**
@@ -166,6 +170,9 @@ static NSString *CrashReportURL = @"CrashReportURL";
  *  获取明文设备信息
  *  @param APPID        芯盾设备指纹云平台服务端为客户分配的ID
  *  @return             @{"error" : @(错误码), @"devinfo" : @{设备信息项}}
+ *  获取明文设备信息
+ *  @param APPID        芯盾设备指纹云平台服务端为客户分配的ID
+ *  @return             @{"error" : @"错误码", @"devinfo" : @"设备信息密文"}
  
  */
 + (NSDictionary *)getPlainDeviceInfo: (NSString *)appId;

@@ -70,6 +70,8 @@ static double dytime = 0.0;
     [self refreshData];
     [self getPushInfo];
     [self syncTime];
+//    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    
     [self showFinger];
 //    [self dismisslock];
 //    self.isShowLock = YES;
@@ -94,6 +96,7 @@ static double dytime = 0.0;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
     }
+//    [delegate checkUpdataWithPlist];
 }
 
 - (void)leftBarButtonClick{
@@ -133,6 +136,10 @@ static double dytime = 0.0;
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
 //                [TrusfortDfsSdk enableSensor:model2.hasMtd];
@@ -319,7 +326,11 @@ static double dytime = 0.0;
             type = 0;
         }
     }
+
 //    type = 0;
+
+//    type = 3;
+
     __weak typeof(self) weakSelf = self;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -714,8 +725,23 @@ static double dytime = 0.0;
                             }
                             
                         }else{
-                            
+                            int number = 16;
+                            for (int i = 0; i<16; i++) {
+                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
+                                model.appName = @"aaa";
+                                [weakSelf.dataArray addObject:model];
+                            }
+                            if(number%3==1){
+                                TRUPortalModel *model1 = [[TRUPortalModel alloc] init];
+                                [weakSelf.dataArray addObject:model1];
+                                TRUPortalModel *model2 = [[TRUPortalModel alloc] init];
+                                [weakSelf.dataArray addObject:model2];
+                            }else if(number%3==2){
+                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
+                                [weakSelf.dataArray addObject:model];
+                            }
                         }
+                        
                         [weakSelf.portalView stopRefresh];
                         weakSelf.portalView.dataArray = weakSelf.dataArray;
                         
@@ -976,7 +1002,10 @@ static NSInteger pushCount = NSIntegerMax;
     NSDate *date = [NSDate date];
     double time = [date timeIntervalSince1970];
     double timeDifference = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] doubleValue];
-    long time1 = (long)(time-timeDifference)/30;
+    NSString *codeDigits = [[NSUserDefaults standardUserDefaults] objectForKey:@"codeDigits"];
+    NSString *duration = [[NSUserDefaults standardUserDefaults] objectForKey:@"duration"];
+    
+    long time1 = (long)(time-timeDifference)/[duration intValue];
     double time2 = [[NSUserDefaults standardUserDefaults] doubleForKey:@"password1"];
     if (self.firstRun) {
         [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
@@ -984,7 +1013,7 @@ static NSInteger pushCount = NSIntegerMax;
         self.firstRun = NO;
         //        [self requestData];
         NSString *userid = [TRUUserAPI getUser].userId;
-        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+        NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
     }else{
@@ -992,7 +1021,8 @@ static NSInteger pushCount = NSIntegerMax;
             YCLog(@"change------------");
             //            [self requestData];
             NSString *userid = [TRUUserAPI getUser].userId;
-            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid];
+            NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
+            YCLog(@"动态口令 = %@",passwordStr);
             self.rectView.passwordStr = passwordStr;
             self.circleDynamicView.passwordStr = passwordStr;
             [[NSUserDefaults standardUserDefaults] setDouble:(double)(time1) forKey:@"password1"];
@@ -1000,7 +1030,7 @@ static NSInteger pushCount = NSIntegerMax;
         }else{
         }
     }
-    return (long long)((time-timeDifference)*100)%3000/3000.0;
+    return (long long)((time-timeDifference)*100)%([duration intValue]*100)/([duration intValue]*100.0);
 }
 
 #pragma mark - 检查更新
