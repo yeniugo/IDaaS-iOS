@@ -136,6 +136,10 @@ static double dytime = 0.0;
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;
 //                [TrusfortDfsSdk enableSensor:model2.hasMtd];
+                if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(checkUpdataWithPlist)]){
+                    [[UIApplication sharedApplication].delegate performSelector:@selector(checkUpdataWithPlist) withObject:nil];
+                }
+                
             }else{
                 [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已经更新，重启App" confrimTitle:@"确定" cancelTitle:nil confirmRight:NO confrimBolck:^{
 //                    [TrusfortDfsSdk enableSensor:model2.hasMtd];
