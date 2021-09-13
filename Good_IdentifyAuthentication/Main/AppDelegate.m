@@ -695,9 +695,9 @@
         NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
         NSString *phone = [TRUUserAPI getUser].phone;
         if ([weakSelf.soureSchme containsString:@"://"]) {
-            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortgoldenwater&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }else{
-            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+            urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortgoldenwater&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
         }
         urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         weakSelf.soureSchme = nil;
@@ -751,9 +751,9 @@
             NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
             NSString *phone = [TRUUserAPI getUser].phone;
             if ([weakSelf.soureSchme containsString:@"://"]) {
-                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=logout&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortgoldenwater&type=logout&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }else{
-                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=logout&phone=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortgoldenwater&type=logout&phone=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakSelf.soureSchme,phone,[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
             }
             weakSelf.soureSchme = nil;
             weakSelf.thirdAwakeTokenStatus = 0;
@@ -1072,16 +1072,16 @@
                 NSString *urlStr;
                 if([tokenDic[@"status"] intValue]==0){
                     if ([tokenDic[@"phone"] length]) {
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&token=%@&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&token=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
                     }
                     
                 }else{
                     if ([tokenDic[@"phone"] length]) {
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                     }
                     
                 }
@@ -1124,15 +1124,15 @@
                 NSString *urlStr;
                 if([tokenDic[@"status"] intValue]==0){
                     if ([tokenDic[@"phone"] length]) {
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&token=%@&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&token=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
                     }
                 }else{
                     if ([tokenDic[@"phone"] length]) {
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                     }
                 }
 //                [HAMLogOutputWindow printLog:@"1111"];
@@ -1194,9 +1194,9 @@
             tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
                 NSString *urlStr;
                 if([tokenDic[@"phone"] length]){
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=logout&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                 }else{
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=logout&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                 }
                 [weakSelf.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
                 weakSelf.soureSchme = nil;
@@ -1228,9 +1228,9 @@
             tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
                 NSString *urlStr;
                 if ([tokenDic[@"phone"] length]) {
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=unBind&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                 }else{
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=unBind&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                 }
                 
                 weakSelf.soureSchme = nil;
@@ -1263,9 +1263,9 @@
             self.tokenCompletionBlock = ^(NSDictionary *tokenDic) {
                 NSString *urlStr;
                 if ([tokenDic[@"phone"] length]) {
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=qrcode&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=qrcode&status=%d&phone=%@",weakSelf.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                 }else{
-                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=qrcode&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
+                    urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=qrcode&status=%d",weakSelf.soureSchme,[tokenDic[@"status"] intValue]];
                 }
                 weakSelf.soureSchme = nil;
                 //weakSelf.fromThirdAwake = NO;

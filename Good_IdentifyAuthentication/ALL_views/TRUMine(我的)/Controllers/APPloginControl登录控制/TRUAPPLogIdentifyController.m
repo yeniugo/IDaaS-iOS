@@ -164,16 +164,16 @@
                         NSString *urlStr;
                         if([tokenDic[@"status"] intValue]==0){
                             if ([tokenDic[@"phone"] length]) {
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
                             }else{
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
                             }
                             
                         }else{
                             if ([tokenDic[@"phone"] length]) {
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                             }else{
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getLocalToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getLocalToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
                             }
                             
                         }
@@ -221,16 +221,16 @@
                         NSString *urlStr;
                         if([tokenDic[@"status"] intValue]==0){
                             if ([tokenDic[@"phone"] length]) {
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&token=%@&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"],tokenDic[@"phone"]];
                             }else{
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&token=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"token"]];
                             }
                             
                         }else{
                             if ([tokenDic[@"phone"] length]) {
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                             }else{
-                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=getNetToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                                urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=getNetToken&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
                             }
                         }
                         [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
@@ -273,9 +273,9 @@
                     tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
                         NSString *urlStr;
                         if([tokenDic[@"phone"] length]){
-                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=logout&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                         }else{
-                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=logout&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                            urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=logout&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
                         }
                         [weakDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
                         weakDelegate.soureSchme = nil;
@@ -306,9 +306,9 @@
                 tokenVC.completionBlock= ^(NSDictionary *tokenDic) {
                     NSString *urlStr;
                     if ([tokenDic[@"phone"] length]) {
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=unBind&status=%d&phone=%@",weakDelegate.soureSchme,[tokenDic[@"status"] intValue],tokenDic[@"phone"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortcims&type=unBind&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
+                        urlStr = [NSString stringWithFormat:@"%@://back?scheme=trusfortgoldenwater&type=unBind&status=%d",weakDelegate.soureSchme,[tokenDic[@"status"] intValue]];
                     }
                     weakDelegate.soureSchme = nil;
                     weakDelegate.thirdAwakeTokenStatus = 0;
@@ -341,9 +341,9 @@
                     NSString *cimsurl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
                     NSString *phone = [TRUUserAPI getUser].phone;
                     if ([weakDelegate.soureSchme containsString:@"://"]) {
-                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                        urlStr = [NSString stringWithFormat:@"%@auth1?scheme=trusfortgoldenwater&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
                     }else{
-                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortcims&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
+                        urlStr = [NSString stringWithFormat:@"%@://auth1?scheme=trusfortgoldenwater&type=auth1&phone=%@&code=%@&status=%ld&cimsurl=%@&statusmessage=%@",weakDelegate.soureSchme,phone,tokenDic[@"code"],[tokenDic[@"codeerror"] integerValue],cimsurl,tokenDic[@"message"]];
                     }
                     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     if (@available(iOS 10.0,*)) {

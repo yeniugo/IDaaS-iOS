@@ -13,6 +13,7 @@
 
 - (void)initXdSDK{
     //水利部正式服务器地址 http://idportal.mwr.gov.cn:8100/authn
+    //水利部水利蓝证地址 http://idportal_test.mwr.cn:8100/authn
     //http://192.168.1.115:8080/cims
     //测试环境http://36.110.121.56:8100/authn
 #if TARGET_IPHONE_SIMULATOR
@@ -22,7 +23,7 @@
 //    companymodel.activation_mode = @"1";
     [TRUCompanyAPI saveCompany:companymodel];
 #else
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal.mwr.gov.cn:8100/authn" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://idportal_test.mwr.cn:8100/authn" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel2 = [[TRUCompanyModel alloc] init];
     companymodel2.activation_mode = @"2";
