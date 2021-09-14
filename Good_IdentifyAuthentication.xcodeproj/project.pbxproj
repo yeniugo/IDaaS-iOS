@@ -223,11 +223,11 @@
 		2D1886352277FD0300826ACF /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1886322277FD0200826ACF /* TRUMultipleAccountsCell.xib */; };
 		2D32E98B228AA2CF0032A95A /* dongtaikouling.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D32E98A228AA2CF0032A95A /* dongtaikouling.json */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
-		2D47FC92244D821200862196 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D47FC91244D821200862196 /* trusfort.lic */; };
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
 		2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */; };
+		2D6CBFBE26F0ABEB003FED0B /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D6CBFBD26F0ABEB003FED0B /* trusfort.lic */; };
 		2D6E3E8D22D3275800538819 /* xxxx11111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D6E3E8C22D3275800538819 /* xxxx11111.jpg */; };
 		2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76956821886B24009648B7 /* TRUPersonalBigCell.m */; };
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
@@ -649,7 +649,6 @@
 		2D41270E219569AC005369FB /* TRUSSOBlankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSOBlankView.m; sourceTree = "<group>"; };
 		2D45EA7824188B7800D85013 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
 		2D45EA7B24188B7800D85013 /* TrusfortBigdataSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortBigdataSDK.h; sourceTree = "<group>"; };
-		2D47FC91244D821200862196 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSchemeTokenViewController.m; sourceTree = "<group>"; };
 		2D4B970A2181A23800867797 /* TRUSchemeTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUSchemeTokenViewController.h; sourceTree = "<group>"; };
 		2D4B970C2181A4DB00867797 /* TRUTokenUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTokenUtil.h; sourceTree = "<group>"; };
@@ -658,6 +657,7 @@
 		2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUEnterAPPAuthView.m; sourceTree = "<group>"; };
 		2D6026BA218B153F00AACB4A /* TRURoundNumberBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRURoundNumberBtn.h; sourceTree = "<group>"; };
 		2D6026BB218B153F00AACB4A /* TRURoundNumberBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRURoundNumberBtn.m; sourceTree = "<group>"; };
+		2D6CBFBD26F0ABEB003FED0B /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D6E3E8C22D3275800538819 /* xxxx11111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xxxx11111.jpg; sourceTree = "<group>"; };
 		2D76956721886B24009648B7 /* TRUPersonalBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPersonalBigCell.h; sourceTree = "<group>"; };
 		2D76956821886B24009648B7 /* TRUPersonalBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalBigCell.m; sourceTree = "<group>"; };
@@ -965,7 +965,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D47FC91244D821200862196 /* trusfort.lic */,
+				2D6CBFBD26F0ABEB003FED0B /* trusfort.lic */,
 				2D0663A12442E0C200834FF0 /* libxindunsdk.a */,
 				2DBE8A632437048A00A5DB7E /* xindunsdk.h */,
 				2D45EA7B24188B7800D85013 /* TrusfortBigdataSDK.h */,
@@ -2055,7 +2055,7 @@
 				12202D9B2019E5D10084FB7C /* defalticon@3x.png in Resources */,
 				1247446B2029A0EC00639F18 /* huonangaozhao@3x.png in Resources */,
 				1242D81A20B421C0008EDF07 /* chengduyinhang@2x.png in Resources */,
-				2D47FC92244D821200862196 /* trusfort.lic in Resources */,
+				2D6CBFBE26F0ABEB003FED0B /* trusfort.lic in Resources */,
 				124161911FE8BBE000A680E0 /* img_0.png in Resources */,
 				124AE61C1FE0DDAB00D915FF /* pwddata.json in Resources */,
 				126D106520BBA6D100751234 /* applaunch11111.png in Resources */,
@@ -2500,10 +2500,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = comshuilibu.lanzheng;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuilibu.lanzheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8f15133b-dde4-4193-b35c-ad3020f2a76e";
-				PROVISIONING_PROFILE_SPECIFIER = MwrXindunLanzheng2020;
+				PROVISIONING_PROFILE_SPECIFIER = MwrXindunLanzheng22021;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
