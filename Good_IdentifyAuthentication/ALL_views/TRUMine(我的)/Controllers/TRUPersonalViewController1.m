@@ -139,11 +139,11 @@
     model4.leftStr = @"设备管理";
     model4.disVC = @"TRUDevicesManagerController";
     
-    TRUPersonalSmailModel *model5 = [[TRUPersonalSmailModel alloc] init];
-    model5.cellType = PersonalSmaillCellNormal;
-    model5.leftIcon = @"linuxSSH";
-    model5.leftStr = @"运维账号";
-    model5.disVC = @"TRUSSHViewController";
+//    TRUPersonalSmailModel *model5 = [[TRUPersonalSmailModel alloc] init];
+//    model5.cellType = PersonalSmaillCellNormal;
+//    model5.leftIcon = @"linuxSSH";
+//    model5.leftStr = @"运维账号";
+//    model5.disVC = @"TRUSSHViewController";
     
     TRUPersonalSmailModel *model6 = [[TRUPersonalSmailModel alloc] init];
     model6.cellType = PersonalSmaillCellRightIcon;
@@ -174,11 +174,11 @@
         [weakSelf unbindDevice];
     };
     
-    TRUPersonalSmailModel *model9 = [[TRUPersonalSmailModel alloc] init];
-    model9.cellType = PersonalSmaillCellNormal;
-    model9.leftIcon = @"PersonalEmail";
-    model9.leftStr = @"邮箱设备";
-    model9.disVC = @"TRUMailManagerViewController";
+//    TRUPersonalSmailModel *model9 = [[TRUPersonalSmailModel alloc] init];
+//    model9.cellType = PersonalSmaillCellNormal;
+//    model9.leftIcon = @"PersonalEmail";
+//    model9.leftStr = @"邮箱设备";
+//    model9.disVC = @"TRUMailManagerViewController";
     
     TRUCompanyModel *model = [TRUCompanyAPI getCompany];
 //    model.hasFace = NO;
@@ -205,8 +205,8 @@
     }
     [tempArray addObject:[NSArray arrayWithObject:model3]];
     [tempArray addObject:[NSArray arrayWithObject:model4]];
-    [tempArray addObject:[NSArray arrayWithObject:model9]];
-    [tempArray addObject:[NSArray arrayWithObject:model5]];
+//    [tempArray addObject:[NSArray arrayWithObject:model9]];
+//    [tempArray addObject:[NSArray arrayWithObject:model5]];
     [tempArray addObject:[NSArray arrayWithObject:model6]];
     [tempArray addObject:[NSArray arrayWithObject:model7]];
     [tempArray addObject:[NSArray arrayWithObject:model8]];

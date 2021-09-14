@@ -188,7 +188,6 @@
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
-		2D0DA2DC2627DD910044F700 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D0DA2DB2627DD910044F700 /* trusfort.lic */; };
 		2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56122FD55DF000112AC /* MYCircleView.m */; };
 		2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56522FD589B000112AC /* CircleDynamicView.m */; };
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
@@ -247,6 +246,7 @@
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
 		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
+		2D4307D826EF4D4B0024DA95 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D4307D726EF4D4B0024DA95 /* trusfort.lic */; };
 		2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */; };
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
@@ -677,7 +677,6 @@
 		2D0BED3A21C8F75C002AB0C1 /* TRUMultipleAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsCell.h; sourceTree = "<group>"; };
 		2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsCell.m; sourceTree = "<group>"; };
 		2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUMultipleAccountsCell.xib; sourceTree = "<group>"; };
-		2D0DA2DB2627DD910044F700 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D13E56022FD55DF000112AC /* MYCircleDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCircleDefine.h; sourceTree = "<group>"; };
 		2D13E56122FD55DF000112AC /* MYCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCircleView.m; sourceTree = "<group>"; };
 		2D13E56222FD55DF000112AC /* MYCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCircleView.h; sourceTree = "<group>"; };
@@ -781,6 +780,7 @@
 		2D40D4ED23226A2300EC0C3F /* applauchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applauchIcon.png; sourceTree = "<group>"; };
 		2D41270D219569AC005369FB /* TRUSSOBlankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSOBlankView.h; sourceTree = "<group>"; };
 		2D41270E219569AC005369FB /* TRUSSOBlankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSOBlankView.m; sourceTree = "<group>"; };
+		2D4307D726EF4D4B0024DA95 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D45A94A2476184900624AC2 /* TRUAuthWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAuthWKWebViewController.h; sourceTree = "<group>"; };
 		2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUAuthWKWebViewController.m; sourceTree = "<group>"; };
 		2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSchemeTokenViewController.m; sourceTree = "<group>"; };
@@ -1132,9 +1132,9 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
+				2D4307D726EF4D4B0024DA95 /* trusfort.lic */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
-				2D0DA2DB2627DD910044F700 /* trusfort.lic */,
 				2DC4291626B3E26A00A5C38D /* libxindunsdk.a */,
 			);
 			name = Xindun;
@@ -2525,7 +2525,7 @@
 				12749EB61FC7E8FE00183EB4 /* TRUPushViewController.xib in Resources */,
 				128D5CF31F7DE3A500753EE5 /* TRUDevicesManagerCell.xib in Resources */,
 				2D2E52FE2623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle in Resources */,
-				2D0DA2DC2627DD910044F700 /* trusfort.lic in Resources */,
+				2D4307D826EF4D4B0024DA95 /* trusfort.lic in Resources */,
 				2DDB53B7262569060056F5AC /* Image.bundle in Resources */,
 				128D5D031F7E3A4D00753EE5 /* TRUAboutUSCell.xib in Resources */,
 				2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */,
@@ -2986,7 +2986,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 228;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = AG9SM32322;
 				ENABLE_BITCODE = NO;
@@ -3009,7 +3009,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3037,8 +3037,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 228;
-				DEVELOPMENT_TEAM = AG9SM32322;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LP5QTE27PH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3059,7 +3059,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3068,10 +3068,10 @@
 					"\"UIKit\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uusafe.cqcbank.portal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "db01385c-0ddf-411d-8737-d5dbed115991";
-				PROVISIONING_PROFILE_SPECIFIER = appstore_cims;
+				PROVISIONING_PROFILE_SPECIFIER = yidongsecurity;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wundeclared-selector";
 				WARNING_LDFLAGS = "";
