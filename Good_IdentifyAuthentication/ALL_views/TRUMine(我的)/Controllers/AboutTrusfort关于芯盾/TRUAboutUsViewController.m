@@ -48,7 +48,7 @@
             NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
             NSString *para = [xindunsdk encryptByUkey:spcode];
             NSDictionary *dict = @{@"params" : [NSString stringWithFormat:@"%@",para]};
-            [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:dict onResult:^(int errorno, id responseBody) {
+            [TRUhttpManager getCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/api/ios/cims.html"] withParts:nil onResult:^(int errorno, id responseBody) {
                 [weakSelf hideHudDelay:0.0];
 //                NSLog(@"--%d-->%@",errorno,responseBody);
                 if (errorno == 0 && responseBody) {
