@@ -136,8 +136,8 @@ static double dytime = 0.0;
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
+//            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
+//            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
@@ -1003,7 +1003,9 @@ static NSInteger pushCount = NSIntegerMax;
     double time = [date timeIntervalSince1970];
     double timeDifference = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GS_DETAL_KEY"] doubleValue];
     NSString *codeDigits = [[NSUserDefaults standardUserDefaults] objectForKey:@"codeDigits"];
+    codeDigits = @"6";
     NSString *duration = [[NSUserDefaults standardUserDefaults] objectForKey:@"duration"];
+    duration = @"30";
     
     long time1 = (long)(time-timeDifference)/[duration intValue];
     double time2 = [[NSUserDefaults standardUserDefaults] doubleForKey:@"password1"];
@@ -1013,7 +1015,8 @@ static NSInteger pushCount = NSIntegerMax;
         self.firstRun = NO;
         //        [self requestData];
         NSString *userid = [TRUUserAPI getUser].userId;
-        NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
+//        NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
+        NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid capacity:6 interval:30];
         self.rectView.passwordStr = passwordStr;
         self.circleDynamicView.passwordStr = passwordStr;
     }else{
@@ -1021,7 +1024,8 @@ static NSInteger pushCount = NSIntegerMax;
             YCLog(@"change------------");
             //            [self requestData];
             NSString *userid = [TRUUserAPI getUser].userId;
-            NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
+//            NSString *passwordStr = [xindunsdk getCIMSDynamicCodeByCustom:userid timeSecond:[duration intValue] xdstrlong:[codeDigits intValue]];
+            NSString *passwordStr = [xindunsdk getCIMSDynamicCode:userid capacity:6 interval:30];
             YCLog(@"动态口令 = %@",passwordStr);
             self.rectView.passwordStr = passwordStr;
             self.circleDynamicView.passwordStr = passwordStr;

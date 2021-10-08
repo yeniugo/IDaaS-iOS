@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Good_IdentifyAuthentication.xcodeproj">
+      location = "group:/Users/hukai/Documents/code/work/IDaaS-iOS/Good_IdentifyAuthentication.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

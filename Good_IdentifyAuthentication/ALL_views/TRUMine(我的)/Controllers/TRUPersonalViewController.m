@@ -515,8 +515,8 @@
             
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
 
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
-            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
+//            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"codeDigits"] forKey:@"codeDigits"];
+//            [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"duration"] forKey:@"duration"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 //            if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd) {
 
