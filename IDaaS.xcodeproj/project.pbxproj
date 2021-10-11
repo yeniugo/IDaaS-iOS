@@ -320,7 +320,7 @@
 		2DFBC830246CD4160018C701 /* NSDictionary+NULL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBC82F246CD4160018C701 /* NSDictionary+NULL.m */; };
 		2DFF36AA22B3A0CF00E300B9 /* TRUSSHViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF36A922B3A0CF00E300B9 /* TRUSSHViewModel.m */; };
 		2DFF36AD22B3AC2E00E300B9 /* TRUSSHAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF36AC22B3AC2E00E300B9 /* TRUSSHAddViewController.m */; };
-		91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */; };
+		DF794775BF0636E4441C1E24 /* libPods-IDaaS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF42FF26DEDCBA6CF82584C /* libPods-IDaaS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -584,7 +584,7 @@
 		12B6B2321F8DE7C900A3B7A6 /* TRUScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUScanView.m; sourceTree = "<group>"; };
 		12B6B2351F8DE91300A3B7A6 /* TRUTimeSyncUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUTimeSyncUtil.h; sourceTree = "<group>"; };
 		12B6B2361F8DE91300A3B7A6 /* TRUTimeSyncUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTimeSyncUtil.m; sourceTree = "<group>"; };
-		12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Good_IdentifyAuthentication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C0D2CA1F7907DC00972218 /* IDaaS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDaaS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0D2CE1F7907DC00972218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		12C0D2D01F7907DC00972218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		12C0D2D11F7907DC00972218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -592,10 +592,10 @@
 		12C0D2D91F7907DC00972218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12C0D2DC1F7907DC00972218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12C0D2DE1F7907DC00972218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Good_IdentifyAuthenticationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C0D2E31F7907DC00972218 /* IDaaSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDaaSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0D2E71F7907DC00972218 /* Good_IdentifyAuthenticationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Good_IdentifyAuthenticationTests.m; sourceTree = "<group>"; };
 		12C0D2E91F7907DC00972218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Good_IdentifyAuthenticationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C0D2EE1F7907DC00972218 /* IDaaSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDaaSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0D2F21F7907DC00972218 /* Good_IdentifyAuthenticationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Good_IdentifyAuthenticationUITests.m; sourceTree = "<group>"; };
 		12C0D2F41F7907DD00972218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12C0D3011F79088200972218 /* TRUBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUBaseViewController.h; sourceTree = "<group>"; };
@@ -921,8 +921,10 @@
 		2DFF36AB22B3AC2E00E300B9 /* TRUSSHAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHAddViewController.h; sourceTree = "<group>"; };
 		2DFF36AC22B3AC2E00E300B9 /* TRUSSHAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSHAddViewController.m; sourceTree = "<group>"; };
 		35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.release.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.release.xcconfig"; sourceTree = "<group>"; };
+		3BF33616AC7DA3160A9D284D /* Pods-IDaaS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDaaS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDaaS/Pods-IDaaS.debug.xcconfig"; sourceTree = "<group>"; };
 		4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Good_IdentifyAuthentication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Good_IdentifyAuthentication/Pods-Good_IdentifyAuthentication.debug.xcconfig"; sourceTree = "<group>"; };
-		D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Good_IdentifyAuthentication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B01C1C88C6374C809F9357E /* Pods-IDaaS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDaaS.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDaaS/Pods-IDaaS.release.xcconfig"; sourceTree = "<group>"; };
+		FFF42FF26DEDCBA6CF82584C /* libPods-IDaaS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDaaS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -958,7 +960,7 @@
 				125633241F7A21BD007FF392 /* CFNetwork.framework in Frameworks */,
 				2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */,
 				2DE8138F23A38FF000A8B5FC /* libxindunsdk.a in Frameworks */,
-				91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */,
+				DF794775BF0636E4441C1E24 /* libPods-IDaaS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1750,9 +1752,9 @@
 		12C0D2CB1F7907DC00972218 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */,
-				12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */,
-				12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */,
+				12C0D2CA1F7907DC00972218 /* IDaaS.app */,
+				12C0D2E31F7907DC00972218 /* IDaaSTests.xctest */,
+				12C0D2EE1F7907DC00972218 /* IDaaSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2349,6 +2351,8 @@
 			children = (
 				4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */,
 				35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */,
+				3BF33616AC7DA3160A9D284D /* Pods-IDaaS.debug.xcconfig */,
+				6B01C1C88C6374C809F9357E /* Pods-IDaaS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2379,7 +2383,7 @@
 				125633271F7A21DA007FF392 /* CoreTelephony.framework */,
 				125633251F7A21CD007FF392 /* CoreFoundation.framework */,
 				125633231F7A21BD007FF392 /* CFNetwork.framework */,
-				D0B6735DF3A647AAEE4ED8D6 /* libPods-Good_IdentifyAuthentication.a */,
+				FFF42FF26DEDCBA6CF82584C /* libPods-IDaaS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2387,9 +2391,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		12C0D2C91F7907DC00972218 /* Good_IdentifyAuthentication */ = {
+		12C0D2C91F7907DC00972218 /* IDaaS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12C0D2F71F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthentication" */;
+			buildConfigurationList = 12C0D2F71F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaS" */;
 			buildPhases = (
 				125EDA1EC16029CA3701A0D5 /* [CP] Check Pods Manifest.lock */,
 				12C0D2C61F7907DC00972218 /* Sources */,
@@ -2401,14 +2405,14 @@
 			);
 			dependencies = (
 			);
-			name = Good_IdentifyAuthentication;
+			name = IDaaS;
 			productName = Good_IdentifyAuthentication;
-			productReference = 12C0D2CA1F7907DC00972218 /* Good_IdentifyAuthentication.app */;
+			productReference = 12C0D2CA1F7907DC00972218 /* IDaaS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		12C0D2E21F7907DC00972218 /* Good_IdentifyAuthenticationTests */ = {
+		12C0D2E21F7907DC00972218 /* IDaaSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12C0D2FA1F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthenticationTests" */;
+			buildConfigurationList = 12C0D2FA1F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaSTests" */;
 			buildPhases = (
 				12C0D2DF1F7907DC00972218 /* Sources */,
 				12C0D2E01F7907DC00972218 /* Frameworks */,
@@ -2419,14 +2423,14 @@
 			dependencies = (
 				12C0D2E51F7907DC00972218 /* PBXTargetDependency */,
 			);
-			name = Good_IdentifyAuthenticationTests;
+			name = IDaaSTests;
 			productName = Good_IdentifyAuthenticationTests;
-			productReference = 12C0D2E31F7907DC00972218 /* Good_IdentifyAuthenticationTests.xctest */;
+			productReference = 12C0D2E31F7907DC00972218 /* IDaaSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		12C0D2ED1F7907DC00972218 /* Good_IdentifyAuthenticationUITests */ = {
+		12C0D2ED1F7907DC00972218 /* IDaaSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 12C0D2FD1F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthenticationUITests" */;
+			buildConfigurationList = 12C0D2FD1F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaSUITests" */;
 			buildPhases = (
 				12C0D2EA1F7907DC00972218 /* Sources */,
 				12C0D2EB1F7907DC00972218 /* Frameworks */,
@@ -2437,9 +2441,9 @@
 			dependencies = (
 				12C0D2F01F7907DC00972218 /* PBXTargetDependency */,
 			);
-			name = Good_IdentifyAuthenticationUITests;
+			name = IDaaSUITests;
 			productName = Good_IdentifyAuthenticationUITests;
-			productReference = 12C0D2EE1F7907DC00972218 /* Good_IdentifyAuthenticationUITests.xctest */;
+			productReference = 12C0D2EE1F7907DC00972218 /* IDaaSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -2478,7 +2482,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "Good_IdentifyAuthentication" */;
+			buildConfigurationList = 12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "IDaaS" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2492,9 +2496,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				12C0D2C91F7907DC00972218 /* Good_IdentifyAuthentication */,
-				12C0D2E21F7907DC00972218 /* Good_IdentifyAuthenticationTests */,
-				12C0D2ED1F7907DC00972218 /* Good_IdentifyAuthenticationUITests */,
+				12C0D2C91F7907DC00972218 /* IDaaS */,
+				12C0D2E21F7907DC00972218 /* IDaaSTests */,
+				12C0D2ED1F7907DC00972218 /* IDaaSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -2582,7 +2586,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Good_IdentifyAuthentication-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-IDaaS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2855,12 +2859,12 @@
 /* Begin PBXTargetDependency section */
 		12C0D2E51F7907DC00972218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 12C0D2C91F7907DC00972218 /* Good_IdentifyAuthentication */;
+			target = 12C0D2C91F7907DC00972218 /* IDaaS */;
 			targetProxy = 12C0D2E41F7907DC00972218 /* PBXContainerItemProxy */;
 		};
 		12C0D2F01F7907DC00972218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 12C0D2C91F7907DC00972218 /* Good_IdentifyAuthentication */;
+			target = 12C0D2C91F7907DC00972218 /* IDaaS */;
 			targetProxy = 12C0D2EF1F7907DC00972218 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2979,7 +2983,7 @@
 		};
 		12C0D2F81F7907DD00972218 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C8D14A6F0F657FB229F9694 /* Pods-Good_IdentifyAuthentication.debug.xcconfig */;
+			baseConfigurationReference = 3BF33616AC7DA3160A9D284D /* Pods-IDaaS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
@@ -3030,7 +3034,7 @@
 		};
 		12C0D2F91F7907DD00972218 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35D7A04AC09F5535A51AFA1B /* Pods-Good_IdentifyAuthentication.release.xcconfig */;
+			baseConfigurationReference = 6B01C1C88C6374C809F9357E /* Pods-IDaaS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Good_IdentifyAuthentication/Good_IdentifyAuthentication.entitlements;
@@ -3086,7 +3090,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "trusfort.com.Good-IdentifyAuthenticationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Good_IdentifyAuthentication.app/Good_IdentifyAuthentication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IDaaS.app/IDaaS";
 			};
 			name = Debug;
 		};
@@ -3098,7 +3102,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "trusfort.com.Good-IdentifyAuthenticationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Good_IdentifyAuthentication.app/Good_IdentifyAuthentication";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IDaaS.app/IDaaS";
 			};
 			name = Release;
 		};
@@ -3127,7 +3131,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "Good_IdentifyAuthentication" */ = {
+		12C0D2C51F7907DC00972218 /* Build configuration list for PBXProject "IDaaS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12C0D2F51F7907DD00972218 /* Debug */,
@@ -3136,7 +3140,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12C0D2F71F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthentication" */ = {
+		12C0D2F71F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12C0D2F81F7907DD00972218 /* Debug */,
@@ -3145,7 +3149,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12C0D2FA1F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthenticationTests" */ = {
+		12C0D2FA1F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12C0D2FB1F7907DD00972218 /* Debug */,
@@ -3154,7 +3158,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		12C0D2FD1F7907DD00972218 /* Build configuration list for PBXNativeTarget "Good_IdentifyAuthenticationUITests" */ = {
+		12C0D2FD1F7907DD00972218 /* Build configuration list for PBXNativeTarget "IDaaSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12C0D2FE1F7907DD00972218 /* Debug */,

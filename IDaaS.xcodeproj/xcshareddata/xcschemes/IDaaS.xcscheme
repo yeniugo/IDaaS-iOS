@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "12C0D2C91F7907DC00972218"
-               BuildableName = "Good_IdentifyAuthentication.app"
-               BlueprintName = "Good_IdentifyAuthentication"
-               ReferencedContainer = "container:Good_IdentifyAuthentication.xcodeproj">
+               BuildableName = "IDaaS.app"
+               BlueprintName = "IDaaS"
+               ReferencedContainer = "container:IDaaS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "12C0D2E21F7907DC00972218"
-               BuildableName = "Good_IdentifyAuthenticationTests.xctest"
-               BlueprintName = "Good_IdentifyAuthenticationTests"
-               ReferencedContainer = "container:Good_IdentifyAuthentication.xcodeproj">
+               BuildableName = "IDaaSTests.xctest"
+               BlueprintName = "IDaaSTests"
+               ReferencedContainer = "container:IDaaS.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "12C0D2ED1F7907DC00972218"
-               BuildableName = "Good_IdentifyAuthenticationUITests.xctest"
-               BlueprintName = "Good_IdentifyAuthenticationUITests"
-               ReferencedContainer = "container:Good_IdentifyAuthentication.xcodeproj">
+               BuildableName = "IDaaSUITests.xctest"
+               BlueprintName = "IDaaSUITests"
+               ReferencedContainer = "container:IDaaS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12C0D2C91F7907DC00972218"
-            BuildableName = "Good_IdentifyAuthentication.app"
-            BlueprintName = "Good_IdentifyAuthentication"
-            ReferencedContainer = "container:Good_IdentifyAuthentication.xcodeproj">
+            BuildableName = "IDaaS.app"
+            BlueprintName = "IDaaS"
+            ReferencedContainer = "container:IDaaS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -89,9 +89,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "12C0D2C91F7907DC00972218"
-            BuildableName = "Good_IdentifyAuthentication.app"
-            BlueprintName = "Good_IdentifyAuthentication"
-            ReferencedContainer = "container:Good_IdentifyAuthentication.xcodeproj">
+            BuildableName = "IDaaS.app"
+            BlueprintName = "IDaaS"
+            ReferencedContainer = "container:IDaaS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
