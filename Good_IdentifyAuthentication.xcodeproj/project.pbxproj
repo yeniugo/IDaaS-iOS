@@ -237,7 +237,6 @@
 		2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; };
 		2D2E538D2624278600940042 /* IDLFaceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D2E53AA26242CF000940042 /* BDFaceParamsConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */; };
-		2D2E53B226242D6E00940042 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53B126242D6E00940042 /* idl-license.face-ios */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
@@ -258,6 +257,7 @@
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
 		2D76957521886E07009648B7 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
 		2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */; };
+		2D7B0C6F2713D57D0099E815 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B0C6E2713D57C0099E815 /* idl-license.face-ios */; };
 		2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D92AE2188016A00163645 /* TRUPushingViewController.m */; };
 		2D7D92B12188016A00163645 /* TRUPushingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */; };
 		2D7FFF532189443800FCA1ED /* TRUPersonalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF512189443800FCA1ED /* TRUPersonalDetailsViewController.m */; };
@@ -764,7 +764,6 @@
 		2D2E535D2623EE9F00940042 /* BDFaceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLog.m; sourceTree = "<group>"; };
 		2D2E535E2623EE9F00940042 /* BDFaceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLog.h; sourceTree = "<group>"; };
 		2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BDFaceParamsConfig.json; sourceTree = "<group>"; };
-		2D2E53B126242D6E00940042 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
 		2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsSchemeViewController.m; sourceTree = "<group>"; };
 		2D31F8F5228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
 		2D32BB0D22B102FC00BE3169 /* TRUSSHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHViewController.h; sourceTree = "<group>"; };
@@ -803,6 +802,7 @@
 		2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPersonalSmaillCell.xib; sourceTree = "<group>"; };
 		2D76957A21887238009648B7 /* TRUPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPersonalViewController.h; sourceTree = "<group>"; };
 		2D76957B21887239009648B7 /* TRUPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalViewController.m; sourceTree = "<group>"; };
+		2D7B0C6E2713D57C0099E815 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
 		2D7D92AD2188016A00163645 /* TRUPushingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPushingViewController.h; sourceTree = "<group>"; };
 		2D7D92AE2188016A00163645 /* TRUPushingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPushingViewController.m; sourceTree = "<group>"; };
 		2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPushingViewController.xib; sourceTree = "<group>"; };
@@ -1919,7 +1919,7 @@
 				2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */,
 				2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */,
 				2D2E52FA2623ECCE00940042 /* idl-key.face-ios */,
-				2D2E53B126242D6E00940042 /* idl-license.face-ios */,
+				2D7B0C6E2713D57C0099E815 /* idl-license.face-ios */,
 				2D2E52FC2623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle */,
 				2D2E52FD2623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle */,
 			);
@@ -2535,6 +2535,7 @@
 				12C0D2DD1F7907DC00972218 /* LaunchScreen.storyboard in Resources */,
 				12C0D2DA1F7907DC00972218 /* Assets.xcassets in Resources */,
 				122C1F7C1F94AE8E00E118D2 /* TRUFeedbackViewController.xib in Resources */,
+				2D7B0C6F2713D57D0099E815 /* idl-license.face-ios in Resources */,
 				2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */,
 				12476A0E1FA18B41000055CB /* MJRefresh.bundle in Resources */,
 				12749EC41FC7EAC100183EB4 /* TRUActiveAppViewController.xib in Resources */,
@@ -2544,7 +2545,6 @@
 				12354C641FA81A8700B6B92E /* TRUSessionManagerImageCell.xib in Resources */,
 				2D7FFF5B21894B6D00FCA1ED /* TRUPersonalDetailsCell.xib in Resources */,
 				121C48D41F7CFF8F0077AE34 /* TRUMineCell.xib in Resources */,
-				2D2E53B226242D6E00940042 /* idl-license.face-ios in Resources */,
 				12C0D2D81F7907DC00972218 /* Main.storyboard in Resources */,
 				128D5CEE1F7DDB4800753EE5 /* TRUDevicesManagerController.xib in Resources */,
 				12202D9B2019E5D10084FB7C /* defalticon@3x.png in Resources */,
@@ -3009,7 +3009,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3059,7 +3059,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

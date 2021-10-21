@@ -159,7 +159,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(NO) forKey:@"ByOrder"];
     
     NSString* licensePath = [NSString stringWithFormat:@"%@.%@", FACE_LICENSE_NAME, FACE_LICENSE_SUFFIX ];
-    [[FaceSDKManager sharedInstance] setLicenseID:FACE_LICENSE_ID andLocalLicenceFile:licensePath andRemoteAuthorize:false];
+    [[FaceSDKManager sharedInstance] setLicenseID:FACE_LICENSE_ID andLocalLicenceFile:licensePath andRemoteAuthorize:true];
     NSLog(@"canWork = %d",[[FaceSDKManager sharedInstance] canWork]);
     NSLog(@"version = %@",[[FaceSDKManager sharedInstance] getVersion]);
     
