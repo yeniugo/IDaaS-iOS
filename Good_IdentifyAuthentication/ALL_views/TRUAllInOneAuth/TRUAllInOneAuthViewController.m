@@ -725,21 +725,21 @@ static double dytime = 0.0;
                             }
                             
                         }else{
-                            int number = 16;
-                            for (int i = 0; i<16; i++) {
-                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
-                                model.appName = @"aaa";
-                                [weakSelf.dataArray addObject:model];
-                            }
-                            if(number%3==1){
-                                TRUPortalModel *model1 = [[TRUPortalModel alloc] init];
-                                [weakSelf.dataArray addObject:model1];
-                                TRUPortalModel *model2 = [[TRUPortalModel alloc] init];
-                                [weakSelf.dataArray addObject:model2];
-                            }else if(number%3==2){
-                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
-                                [weakSelf.dataArray addObject:model];
-                            }
+//                            int number = 16;
+//                            for (int i = 0; i<16; i++) {
+//                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
+//                                model.appName = @"aaa";
+//                                [weakSelf.dataArray addObject:model];
+//                            }
+//                            if(number%3==1){
+//                                TRUPortalModel *model1 = [[TRUPortalModel alloc] init];
+//                                [weakSelf.dataArray addObject:model1];
+//                                TRUPortalModel *model2 = [[TRUPortalModel alloc] init];
+//                                [weakSelf.dataArray addObject:model2];
+//                            }else if(number%3==2){
+//                                TRUPortalModel *model = [[TRUPortalModel alloc] init];
+//                                [weakSelf.dataArray addObject:model];
+//                            }
                         }
                         
                         [weakSelf.portalView stopRefresh];
