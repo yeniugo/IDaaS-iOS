@@ -90,10 +90,18 @@ static double dytime = 0.0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAppAuth) name:@"pushAuthVC" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshList) name:@"needRefreshPush" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"needRefreshPush" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSceenShot) name:UIApplicationUserDidTakeScreenshotNotification object:nil];
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     if (delegate.thirdAwakeTokenStatus==0) {
         [self checkUpdataWithPlist];
     }
+}
+
+-(void)handleSceenShot {
+    UIAlertController * alertVc =[UIAlertController alertControllerWithTitle:@"信息提示" message:@"为保证安全,请不要截屏或录屏!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * knowAction =[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [alertVc addAction:knowAction];
+    [self presentViewController:alertVc animated:YES completion:nil];
 }
 
 - (void)leftBarButtonClick{

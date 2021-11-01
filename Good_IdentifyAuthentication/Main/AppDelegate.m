@@ -55,6 +55,7 @@
 @property (nonatomic, copy) NSString *RemoteTokenStr;//远程token字符串
 @property (nonatomic, copy) NSDictionary *launchOptions;
 @property (nonatomic,assign) UIBackgroundTaskIdentifier backIden;
+@property (nonatomic,strong) UIVisualEffectView *effectView;
 @end
 
 @implementation AppDelegate
@@ -150,7 +151,45 @@
             return NO;
         }
     }
+    
     return YES;
+}
+
+- (BOOL)isRoot {
+    static BOOL isRoot = NO;
+    if (isRoot) {
+        return isRoot;
+    }
+    @try {
+        NSArray *paths = [NSArray arrayWithObjects:
+                          @"/User/Applications/",
+                          @"/Applications/Cydia.app",
+                          @"/Library/MobileSubstrate/MobileSubstrate.dylib",
+                          @"/bin/bash",
+                          @"/usr/sbin/sshd",
+                          @"/etc/apt",
+                          nil];
+        
+        for (NSString *one in paths) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:one]) {
+                isRoot = YES;
+            }
+        }
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]]) {
+            isRoot = YES;
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"Jailbroken exception:%@",exception);
+    }
+    return isRoot;
+}
+
+-(void)handleSceenShot {
+    UIAlertController * alertVc =[UIAlertController alertControllerWithTitle:@"信息提示" message:@"此app已经root" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * knowAction =[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+    [alertVc addAction:knowAction];
+    [self.window.rootViewController presentViewController:alertVc animated:YES completion:nil];
 }
 
 - (void) initFace {
@@ -1699,6 +1738,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    [self addEffectView];
     if (application.applicationState == UIApplicationStateBackground){
 //        [HAMLogOutputWindow printLog:@"applicationWillResignActive1"];
         self.thirdAwakeTokenStatus == 0;
@@ -1963,6 +2003,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self removeEffectView];
 }
 
 
@@ -2271,6 +2312,29 @@
             NSURL *url = [NSURL URLWithString:urlstr];
             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
         }
+    }];
+}
+
+- (UIVisualEffectView *)effectView {
+    if (!_effectView) {
+        // 初始毛玻璃view
+        _effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        // 模糊透明度
+        _effectView.alpha = 0.9;
+        _effectView.frame = [UIScreen mainScreen].bounds;
+    }
+    return _effectView;
+}
+
+//添加 UIVisualEffectView
+-(void)addEffectView {
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.effectView];
+}
+
+//移除 UIVisualEffectView
+-(void) removeEffectView {
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.effectView removeFromSuperview];
     }];
 }
 
