@@ -25,7 +25,9 @@
         sharedInstance.manager.responseSerializer = [AFJSONResponseSerializer serializer];//返回格式
         // 超时时间
         sharedInstance.manager.requestSerializer.timeoutInterval = 30.0f;
-        
+        sharedInstance.manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        sharedInstance.manager.securityPolicy.allowInvalidCertificates = YES;
+        [sharedInstance.manager.securityPolicy setValidatesDomainName:NO];
         // 设置接收的Content-Type
         sharedInstance.manager.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/xml", @"text/xml",@"text/html", @"application/json",@"text/plain",nil];
         
