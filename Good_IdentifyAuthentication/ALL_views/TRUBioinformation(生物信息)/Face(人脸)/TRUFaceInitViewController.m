@@ -12,7 +12,7 @@
 #import "RadomMutableNumber.h"
 #import "TRUhttpManager.h"
 #import "TRUMTDTool.h"
-#import "IDLFaceSDK/IDLFaceSDK.h"
+//#import "IDLFaceSDK/IDLFaceSDK.h"
 @interface TRUFaceInitViewController ()
 
 @end
@@ -36,16 +36,8 @@
 }
 
 - (NSMutableArray *)getActionSequence {
-    NSArray *actionArray = @[@(FaceLivenessActionTypeLiveEye),@(FaceLivenessActionTypeLiveMouth),@(FaceLivenessActionTypeLiveYawRight),@(FaceLivenessActionTypeLiveYawLeft),@(FaceLivenessActionTypeLivePitchUp)];
-    NSArray *radomArray = [RadomMutableNumber randperm:5 getLength:5];
-    NSMutableArray *mactionArray = [[NSMutableArray alloc] init];
-//    [mactionArray addObject:@"0"];
-    for (int i=0; i<3; i++) {
-        [mactionArray addObject:radomArray[i]];
-    }
-    //YCLog(@"mactionArray = %@",mactionArray);
-    //mactionArray = [[NSMutableArray alloc] initWithArray:@[@"0",@"1",@"1",@"1"]];
-    return mactionArray;
+    
+    return nil;
 }
 
 - (void)onDetectSuccessWithImages:(UIImage *)images {
@@ -105,76 +97,7 @@
         }
         
     }];
-//    [xindunsdk requestCIMSFaceInfoSyncForUser:userid faceData:imgData onResult:^(int error) {
-//        if (error == 0) {
-////            [self dismissViewControllerAnimated:YES completion:nil];
-//            TRUUserModel *model = [TRUUserAPI getUser];
-//            model.faceinfo = @"1";
-//            [TRUUserAPI saveUser:model];
-//            [self performSelector:@selector(dismissVC) withObject:nil afterDelay:2.0];
-//        }else if (-5004 == error){//网络错误
-//            [self showHudWithText:@"网络错误，请稍后重试"];
-//            [self hideHudDelay:2.0];
-//            [self performSelector:@selector(dismissVC) withObject:nil afterDelay:2.0];
-//        }else if (9008 == error){//秘钥失效
-//            [self deal9008Error];
-//        }else if (9019 == error){
-//            [self deal9019Error];
-//        }else if (9025 == error){
-//            [self showConfrimCancelDialogViewWithTitle:@"" msg:@"您的设备已被锁定，请联系管理员！" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-//                [self dismissVC];
-//            } cancelBlock:^{
-//                
-//            }];
-//        }else{//其他
-//            [self showConfrimCancelDialogViewWithTitle:@"" msg:@"初始化人脸失败，是否重试？" confrimTitle:@"重试" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-//                [self restartDetection];
-//            } cancelBlock:^{
-//                [self dismissVC];
-//            }];
-//        }
-//        
-//    }];
     
-    
-    /*
-     NSString *hmac = [xindunsdk getRequestParamsSignature:[NSString stringWithFormat:@"%@%@", delta, imagenum] forUser:[TFUserProfile getCurrentUserId]];
-     NSDictionary *params = @{@"uuid" : uuid,
-     @"delta" : delta,
-     @"hmac" : hmac,
-     @"imagenum" : imagenum};
-     NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-     NSMutableArray *imageList = [[NSMutableArray alloc] init];
-     for (int i = 0; i < images.count; i++) {
-     NSString *fileName;
-     if (i == 0) {
-     fileName = [basePath stringByAppendingString:@"/image_best.jpg"];
-     } else {
-     fileName = [basePath stringByAppendingString:[NSString stringWithFormat:@"/image_action%d.jpg", i]];
-     }
-     [TFDeviceUtils saveFile:fileName withData:UIImageJPEGRepresentation(images[i], 0.8)];
-     [imageList addObject:fileName];
-     }
-     
-     [SVProgressHUD show];
-     
-     [xindunsdk sendRequestWithUrl:URL_FACE_SET_INFO WithParameters:params WithFileName:@"faceimages" WithFilePathList:imageList OnResult:^(int errorno, id responseBody) {
-     if (errorno == 0){
-     [TFUserProfile updateWithCompletion:^(BOOL success){
-     if (success) {
-     [SVProgressHUD showInfoWithStatus:@"设置人脸成功"];
-     [self.navigationController popViewControllerAnimated:YES];
-     } else {
-     [SVProgressHUD dismiss];
-     [self onDetectFailWithMessage:@"设置人脸失败，请重试！"];
-     }
-     }];
-     } else {
-     [SVProgressHUD dismiss];
-     [self onDetectFailWithMessage:@"设置人脸失败，请重试！"];
-     }
-     }];
-     */
 }
 - (void)dismissVC{
     [self dismissViewControllerAnimated:YES completion:nil];

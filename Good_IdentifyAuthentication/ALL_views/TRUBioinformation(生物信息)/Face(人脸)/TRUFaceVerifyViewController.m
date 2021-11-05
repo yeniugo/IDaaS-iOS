@@ -12,7 +12,7 @@
 #import "TRUhttpManager.h"
 #import "GTMBase64.h"
 #import "TRUMTDTool.h"
-#import "IDLFaceSDK/IDLFaceSDK.h"
+//#import "IDLFaceSDK/IDLFaceSDK.h"
 #import "RadomMutableNumber.h"
 @interface TRUFaceVerifyViewController ()
 
@@ -31,17 +31,8 @@
 
 
 - (NSMutableArray *)getActionSequence{
-    // 1 2 4 8 16 32
-    NSArray *actionArray = @[@(FaceLivenessActionTypeLiveEye),@(FaceLivenessActionTypeLiveMouth),@(FaceLivenessActionTypeLiveYawRight),@(FaceLivenessActionTypeLiveYawLeft),@(FaceLivenessActionTypeLivePitchUp)];
-    NSArray *radomArray = [RadomMutableNumber randperm:5 getLength:5];
-    NSMutableArray *mactionArray = [[NSMutableArray alloc] init];
-//    [mactionArray addObject:@"0"];
-    for (int i=0; i<1; i++) {
-        [mactionArray addObject:radomArray[i]];
-    }
-    //YCLog(@"mactionArray = %@",mactionArray);
-    //mactionArray = [[NSMutableArray alloc] initWithArray:@[@"0",@"1",@"1",@"1"]];
-    return mactionArray;
+    
+    return nil;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

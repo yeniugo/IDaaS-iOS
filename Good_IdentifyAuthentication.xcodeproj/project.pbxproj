@@ -14,7 +14,7 @@
 		121645351F9727D700808730 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645341F9727D700808730 /* iflyMSC.framework */; };
 		121645371F972D0000808730 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645361F972D0000808730 /* AVFoundation.framework */; };
 		121645391F972D2100808730 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121645381F972D2100808730 /* AddressBook.framework */; };
-		121645461F97347B00808730 /* TRUFaceBaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1216453D1F97347B00808730 /* TRUFaceBaseViewController.mm */; };
+		121645461F97347B00808730 /* TRUFaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216453D1F97347B00808730 /* TRUFaceBaseViewController.m */; };
 		121645471F97347B00808730 /* TRUFaceGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216453F1F97347B00808730 /* TRUFaceGuideViewController.m */; };
 		121645481F97347B00808730 /* TRUFaceInitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645411F97347B00808730 /* TRUFaceInitViewController.m */; };
 		121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 121645431F97347B00808730 /* TRUFaceSettingViewController.m */; };
@@ -185,6 +185,11 @@
 		12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FAC8C31F8CCF85001BB1A9 /* TRUVersionUtil.m */; };
 		2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A628230BCCEA00C2F326 /* UILabel+Alignment.m */; };
 		2D00A62D230C03EB00C2F326 /* TRUQRShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */; };
+		2D0925A0273388F900B8754E /* CWResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D092582273388F900B8754E /* CWResource.bundle */; };
+		2D0925A1273388F900B8754E /* libFaceAntiSpoofing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D092584273388F900B8754E /* libFaceAntiSpoofing.a */; };
+		2D0925A2273388F900B8754E /* libDeepNetV2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D09259F273388F900B8754E /* libDeepNetV2.a */; };
+		2D0925F52733C78B00B8754E /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D0925F42733C78B00B8754E /* Image.bundle */; };
+		2D0925F72733DD6A00B8754E /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D0925F62733DD6A00B8754E /* trusfort.lic */; };
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
@@ -193,50 +198,6 @@
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
 		2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E782522CE5000604CC4 /* voicebtnbg.json */; };
 		2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E7A2522CE6F00604CC4 /* voicebg.json */; };
-		2D2E52FE2623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */; };
-		2D2E53002623ECCE00940042 /* idl-key.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E52FA2623ECCE00940042 /* idl-key.face-ios */; };
-		2D2E53022623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E52FC2623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle */; };
-		2D2E53032623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E52FD2623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle */; };
-		2D2E535F2623EE9F00940042 /* BDFaceToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E530A2623EE9F00940042 /* BDFaceToastView.m */; };
-		2D2E53602623EE9F00940042 /* UIColor+BDFaceColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E530B2623EE9F00940042 /* UIColor+BDFaceColorUtils.m */; };
-		2D2E53612623EE9F00940042 /* BDFaceCalculateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E530F2623EE9F00940042 /* BDFaceCalculateTool.m */; };
-		2D2E53622623EE9F00940042 /* BDFaceAdjustParamsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53122623EE9F00940042 /* BDFaceAdjustParamsController.m */; };
-		2D2E53632623EE9F00940042 /* BDFaceAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53132623EE9F00940042 /* BDFaceAlertController.m */; };
-		2D2E53642623EE9F00940042 /* BDFaceAdjustParamsRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53142623EE9F00940042 /* BDFaceAdjustParamsRootController.m */; };
-		2D2E53652623EE9F00940042 /* BDFaceSelectConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53152623EE9F00940042 /* BDFaceSelectConfigController.m */; };
-		2D2E53662623EE9F00940042 /* BDFaceSelectConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E531C2623EE9F00940042 /* BDFaceSelectConfigModel.m */; };
-		2D2E53672623EE9F00940042 /* BDFaceAdjustParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E531D2623EE9F00940042 /* BDFaceAdjustParamsModel.m */; };
-		2D2E53682623EE9F00940042 /* BDFaceAdjustParamsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E531E2623EE9F00940042 /* BDFaceAdjustParamsItem.m */; };
-		2D2E53692623EE9F00940042 /* BDFaceAdjustParamsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E531F2623EE9F00940042 /* BDFaceAdjustParamsConstants.m */; };
-		2D2E536A2623EE9F00940042 /* BDFaceAdjustParamsFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53202623EE9F00940042 /* BDFaceAdjustParamsFileManager.m */; };
-		2D2E536B2623EE9F00940042 /* BDFaceSelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53212623EE9F00940042 /* BDFaceSelectItem.m */; };
-		2D2E536C2623EE9F00940042 /* BDFaceAdjustParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53222623EE9F00940042 /* BDFaceAdjustParams.m */; };
-		2D2E536D2623EE9F00940042 /* BDFaceAdjustParamsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E532C2623EE9F00940042 /* BDFaceAdjustParamsCell.m */; };
-		2D2E536E2623EE9F00940042 /* BDFaceAdjustParamsRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E532D2623EE9F00940042 /* BDFaceAdjustParamsRootCell.m */; };
-		2D2E536F2623EE9F00940042 /* BDFaceSelectConfigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E532F2623EE9F00940042 /* BDFaceSelectConfigCell.m */; };
-		2D2E53702623EE9F00940042 /* BDFaceSelectRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53302623EE9F00940042 /* BDFaceSelectRadio.m */; };
-		2D2E53712623EE9F00940042 /* BDFaceAdjustParamsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53342623EE9F00940042 /* BDFaceAdjustParamsTool.m */; };
-		2D2E53722623EE9F00940042 /* BDFaceLivingConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53362623EE9F00940042 /* BDFaceLivingConfigViewController.m */; };
-		2D2E53732623EE9F00940042 /* BDFaceSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53372623EE9F00940042 /* BDFaceSuccessViewController.m */; };
-		2D2E53742623EE9F00940042 /* BDFaceLivenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E533A2623EE9F00940042 /* BDFaceLivenessViewController.m */; };
-		2D2E53752623EE9F00940042 /* BDFaceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E533D2623EE9F00940042 /* BDFaceAgreementViewController.m */; };
-		2D2E53762623EE9F00940042 /* BDFaceDetectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E533E2623EE9F00940042 /* BDFaceDetectionViewController.m */; };
-		2D2E53772623EE9F00940042 /* BDFaceBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53412623EE9F00940042 /* BDFaceBaseViewController.m */; };
-		2D2E53782623EE9F00940042 /* BDFaceCycleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53432623EE9F00940042 /* BDFaceCycleProgressView.m */; };
-		2D2E53792623EE9F00940042 /* BDFaceRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53442623EE9F00940042 /* BDFaceRemindView.m */; };
-		2D2E537A2623EE9F00940042 /* BDFaceCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53452623EE9F00940042 /* BDFaceCircleView.m */; };
-		2D2E537B2623EE9F00940042 /* BDFaceImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53482623EE9F00940042 /* BDFaceImageShow.m */; };
-		2D2E537C2623EE9F00940042 /* BDFaceRemindAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E534C2623EE9F00940042 /* BDFaceRemindAnimationView.m */; };
-		2D2E537D2623EE9F00940042 /* BDFaceLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E534D2623EE9F00940042 /* BDFaceLogoView.m */; };
-		2D2E537E2623EE9F00940042 /* BDFaceDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53522623EE9F00940042 /* BDFaceDevice.m */; };
-		2D2E537F2623EE9F00940042 /* BDFaceImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53532623EE9F00940042 /* BDFaceImageUtils.m */; };
-		2D2E53802623EE9F00940042 /* BDFaceVideoCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E53572623EE9F00940042 /* BDFaceVideoCaptureDevice.m */; };
-		2D2E53812623EE9F00940042 /* BDFaceLivingConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E535B2623EE9F00940042 /* BDFaceLivingConfigModel.m */; };
-		2D2E53822623EE9F00940042 /* BDFaceLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2E535D2623EE9F00940042 /* BDFaceLog.m */; };
-		2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; };
-		2D2E538D2624278600940042 /* IDLFaceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2D2E53AA26242CF000940042 /* BDFaceParamsConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */; };
-		2D2E53B226242D6E00940042 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E53B126242D6E00940042 /* idl-license.face-ios */; };
 		2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */; };
 		2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB0E22B102FC00BE3169 /* TRUSSHViewController.m */; };
 		2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32BB1322B1045A00BE3169 /* TRUSSHViewCell.m */; };
@@ -246,7 +207,6 @@
 		2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D32E994228AA95E0032A95A /* TRUPortalCell.m */; };
 		2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40D4ED23226A2300EC0C3F /* applauchIcon.png */; };
 		2D41270F219569AC005369FB /* TRUSSOBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D41270E219569AC005369FB /* TRUSSOBlankView.m */; };
-		2D4307D826EF4D4B0024DA95 /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D4307D726EF4D4B0024DA95 /* trusfort.lic */; };
 		2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */; };
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
@@ -312,7 +272,6 @@
 		2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E4245034E8009697A0 /* TRUWebLoginTopView.m */; };
 		2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */; };
 		2DD459E821D2290B00237161 /* TRUSelectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD459E721D2290B00237161 /* TRUSelectModel.m */; };
-		2DDB53B7262569060056F5AC /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB53B6262569060056F5AC /* Image.bundle */; };
 		2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE40B09218BF48B002A37D1 /* UIImage+Color.m */; };
 		2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEA329121A159170055F719 /* TRULoadingViewController.m */; };
 		2DF3915421AE82060091A764 /* TRUAuthenticateCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3915321AE82060091A764 /* TRUAuthenticateCollectionCell.m */; };
@@ -347,7 +306,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D2E538D2624278600940042 /* IDLFaceSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +326,7 @@
 		121645381F972D2100808730 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1216453A1F9730D700808730 /* TRUVoiceConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUVoiceConst.h; sourceTree = "<group>"; };
 		1216453C1F97347B00808730 /* TRUFaceBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceBaseViewController.h; sourceTree = "<group>"; };
-		1216453D1F97347B00808730 /* TRUFaceBaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TRUFaceBaseViewController.mm; sourceTree = "<group>"; };
+		1216453D1F97347B00808730 /* TRUFaceBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceBaseViewController.m; sourceTree = "<group>"; };
 		1216453E1F97347B00808730 /* TRUFaceGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceGuideViewController.h; sourceTree = "<group>"; };
 		1216453F1F97347B00808730 /* TRUFaceGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUFaceGuideViewController.m; sourceTree = "<group>"; };
 		121645401F97347B00808730 /* TRUFaceInitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUFaceInitViewController.h; sourceTree = "<group>"; };
@@ -672,6 +630,36 @@
 		2D00A62C230C03EB00C2F326 /* TRUQRShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUQRShowViewController.m; sourceTree = "<group>"; };
 		2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrusfortDevId.h; sourceTree = "<group>"; };
 		2D07D11E2421FB5900DE4996 /* xindunsdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xindunsdk.h; sourceTree = "<group>"; };
+		2D092582273388F900B8754E /* CWResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CWResource.bundle; sourceTree = "<group>"; };
+		2D092584273388F900B8754E /* libFaceAntiSpoofing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFaceAntiSpoofing.a; sourceTree = "<group>"; };
+		2D092586273388F900B8754E /* CWLivessFinishedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessFinishedView.h; sourceTree = "<group>"; };
+		2D092587273388F900B8754E /* CWProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWProgressView.h; sourceTree = "<group>"; };
+		2D092588273388F900B8754E /* CloudwalkSampleFaceDetectResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudwalkSampleFaceDetectResultModel.h; sourceTree = "<group>"; };
+		2D092589273388F900B8754E /* CloudwalkFaceSDKDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudwalkFaceSDKDef.h; sourceTree = "<group>"; };
+		2D09258A273388F900B8754E /* CWNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWNavigationBar.h; sourceTree = "<group>"; };
+		2D09258B273388F900B8754E /* CWLivessActionAnimationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessActionAnimationViewCell.h; sourceTree = "<group>"; };
+		2D09258C273388F900B8754E /* CWLivessCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessCameraView.h; sourceTree = "<group>"; };
+		2D09258D273388F900B8754E /* CWAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWAudioPlayer.h; sourceTree = "<group>"; };
+		2D09258E273388F900B8754E /* CWLivessViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessViewControllerDelegate.h; sourceTree = "<group>"; };
+		2D09258F273388F900B8754E /* CWLivessSubViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessSubViewManager.h; sourceTree = "<group>"; };
+		2D092590273388F900B8754E /* CWLanguageConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLanguageConfig.h; sourceTree = "<group>"; };
+		2D092591273388F900B8754E /* CloudwalkFaceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudwalkFaceSDK.h; sourceTree = "<group>"; };
+		2D092592273388F900B8754E /* CWNormalMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWNormalMacroDefine.h; sourceTree = "<group>"; };
+		2D092593273388F900B8754E /* CWLivessViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessViewManager.h; sourceTree = "<group>"; };
+		2D092594273388F900B8754E /* CWHackerCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWHackerCheckView.h; sourceTree = "<group>"; };
+		2D092595273388F900B8754E /* CWMBProgressHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMBProgressHud.h; sourceTree = "<group>"; };
+		2D092596273388F900B8754E /* NSBundle+CWLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+CWLocalization.h"; sourceTree = "<group>"; };
+		2D092597273388F900B8754E /* UIImage+CWUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CWUtil.h"; sourceTree = "<group>"; };
+		2D092598273388F900B8754E /* CWGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGuideView.h; sourceTree = "<group>"; };
+		2D092599273388F900B8754E /* CWGradientLayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWGradientLayerUtil.h; sourceTree = "<group>"; };
+		2D09259A273388F900B8754E /* CWCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWCamera.h; sourceTree = "<group>"; };
+		2D09259B273388F900B8754E /* CWDeviceStatusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDeviceStatusManager.h; sourceTree = "<group>"; };
+		2D09259C273388F900B8754E /* CWLivessTimeoutAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessTimeoutAlert.h; sourceTree = "<group>"; };
+		2D09259D273388F900B8754E /* CWLivessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessViewController.h; sourceTree = "<group>"; };
+		2D09259E273388F900B8754E /* CWLivessActionAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessActionAnimationView.h; sourceTree = "<group>"; };
+		2D09259F273388F900B8754E /* libDeepNetV2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDeepNetV2.a; sourceTree = "<group>"; };
+		2D0925F42733C78B00B8754E /* Image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Image.bundle; sourceTree = "<group>"; };
+		2D0925F62733DD6A00B8754E /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D0BED3421C8F25E002AB0C1 /* TRUMultipleAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsViewController.h; sourceTree = "<group>"; };
 		2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsViewController.m; sourceTree = "<group>"; };
 		2D0BED3A21C8F75C002AB0C1 /* TRUMultipleAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsCell.h; sourceTree = "<group>"; };
@@ -684,86 +672,6 @@
 		2D13E56522FD589B000112AC /* CircleDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleDynamicView.m; sourceTree = "<group>"; };
 		2D1B1E782522CE5000604CC4 /* voicebtnbg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebtnbg.json; path = Good_IdentifyAuthentication/voicebtnbg.json; sourceTree = SOURCE_ROOT; };
 		2D1B1E7A2522CE6F00604CC4 /* voicebg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebg.json; path = Good_IdentifyAuthentication/voicebg.json; sourceTree = SOURCE_ROOT; };
-		2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.live.action.image.bundle; sourceTree = "<group>"; };
-		2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDLFaceSDK.framework; sourceTree = "<group>"; };
-		2D2E52FA2623ECCE00940042 /* idl-key.face-ios */ = {isa = PBXFileReference; lastKnownFileType = file; path = "idl-key.face-ios"; sourceTree = "<group>"; };
-		2D2E52FC2623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.model.faceSDK.bundle; sourceTree = "<group>"; };
-		2D2E52FD2623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.faceSDK.bundle; sourceTree = "<group>"; };
-		2D2E530A2623EE9F00940042 /* BDFaceToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceToastView.m; sourceTree = "<group>"; };
-		2D2E530B2623EE9F00940042 /* UIColor+BDFaceColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BDFaceColorUtils.m"; sourceTree = "<group>"; };
-		2D2E530C2623EE9F00940042 /* BDFaceCalculateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCalculateTool.h; sourceTree = "<group>"; };
-		2D2E530D2623EE9F00940042 /* UIColor+BDFaceColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BDFaceColorUtils.h"; sourceTree = "<group>"; };
-		2D2E530E2623EE9F00940042 /* BDFaceToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceToastView.h; sourceTree = "<group>"; };
-		2D2E530F2623EE9F00940042 /* BDFaceCalculateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCalculateTool.m; sourceTree = "<group>"; };
-		2D2E53122623EE9F00940042 /* BDFaceAdjustParamsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsController.m; sourceTree = "<group>"; };
-		2D2E53132623EE9F00940042 /* BDFaceAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAlertController.m; sourceTree = "<group>"; };
-		2D2E53142623EE9F00940042 /* BDFaceAdjustParamsRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsRootController.m; sourceTree = "<group>"; };
-		2D2E53152623EE9F00940042 /* BDFaceSelectConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigController.m; sourceTree = "<group>"; };
-		2D2E53162623EE9F00940042 /* BDFaceAdjustParamsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsController.h; sourceTree = "<group>"; };
-		2D2E53172623EE9F00940042 /* BDFaceAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAlertController.h; sourceTree = "<group>"; };
-		2D2E53182623EE9F00940042 /* BDFaceAdjustParamsRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsRootController.h; sourceTree = "<group>"; };
-		2D2E53192623EE9F00940042 /* BDFaceSelectConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigController.h; sourceTree = "<group>"; };
-		2D2E531B2623EE9F00940042 /* BDFaceAdjustParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParams.h; sourceTree = "<group>"; };
-		2D2E531C2623EE9F00940042 /* BDFaceSelectConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigModel.m; sourceTree = "<group>"; };
-		2D2E531D2623EE9F00940042 /* BDFaceAdjustParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsModel.m; sourceTree = "<group>"; };
-		2D2E531E2623EE9F00940042 /* BDFaceAdjustParamsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsItem.m; sourceTree = "<group>"; };
-		2D2E531F2623EE9F00940042 /* BDFaceAdjustParamsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsConstants.m; sourceTree = "<group>"; };
-		2D2E53202623EE9F00940042 /* BDFaceAdjustParamsFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsFileManager.m; sourceTree = "<group>"; };
-		2D2E53212623EE9F00940042 /* BDFaceSelectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectItem.m; sourceTree = "<group>"; };
-		2D2E53222623EE9F00940042 /* BDFaceAdjustParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParams.m; sourceTree = "<group>"; };
-		2D2E53232623EE9F00940042 /* BDFaceSelectConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigModel.h; sourceTree = "<group>"; };
-		2D2E53242623EE9F00940042 /* BDFaceAdjustParamsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsItem.h; sourceTree = "<group>"; };
-		2D2E53252623EE9F00940042 /* BDFaceAdjustParamsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsModel.h; sourceTree = "<group>"; };
-		2D2E53262623EE9F00940042 /* BDFaceSelectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectItem.h; sourceTree = "<group>"; };
-		2D2E53272623EE9F00940042 /* BDFaceAdjustParamsFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsFileManager.h; sourceTree = "<group>"; };
-		2D2E53282623EE9F00940042 /* BDFaceAdjustParamsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsConstants.h; sourceTree = "<group>"; };
-		2D2E532A2623EE9F00940042 /* BDFaceSelectRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectRadio.h; sourceTree = "<group>"; };
-		2D2E532B2623EE9F00940042 /* BDFaceSelectConfigCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSelectConfigCell.h; sourceTree = "<group>"; };
-		2D2E532C2623EE9F00940042 /* BDFaceAdjustParamsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsCell.m; sourceTree = "<group>"; };
-		2D2E532D2623EE9F00940042 /* BDFaceAdjustParamsRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsRootCell.m; sourceTree = "<group>"; };
-		2D2E532E2623EE9F00940042 /* BDFaceAdjustParamsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsCell.h; sourceTree = "<group>"; };
-		2D2E532F2623EE9F00940042 /* BDFaceSelectConfigCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectConfigCell.m; sourceTree = "<group>"; };
-		2D2E53302623EE9F00940042 /* BDFaceSelectRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSelectRadio.m; sourceTree = "<group>"; };
-		2D2E53312623EE9F00940042 /* BDFaceAdjustParamsRootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsRootCell.h; sourceTree = "<group>"; };
-		2D2E53332623EE9F00940042 /* BDFaceAdjustParamsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAdjustParamsTool.h; sourceTree = "<group>"; };
-		2D2E53342623EE9F00940042 /* BDFaceAdjustParamsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAdjustParamsTool.m; sourceTree = "<group>"; };
-		2D2E53362623EE9F00940042 /* BDFaceLivingConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivingConfigViewController.m; sourceTree = "<group>"; };
-		2D2E53372623EE9F00940042 /* BDFaceSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceSuccessViewController.m; sourceTree = "<group>"; };
-		2D2E53382623EE9F00940042 /* BDFaceDetectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceDetectionViewController.h; sourceTree = "<group>"; };
-		2D2E53392623EE9F00940042 /* BDFaceAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceAgreementViewController.h; sourceTree = "<group>"; };
-		2D2E533A2623EE9F00940042 /* BDFaceLivenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivenessViewController.m; sourceTree = "<group>"; };
-		2D2E533B2623EE9F00940042 /* BDFaceBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceBaseViewController.h; sourceTree = "<group>"; };
-		2D2E533C2623EE9F00940042 /* BDFaceLivingConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivingConfigViewController.h; sourceTree = "<group>"; };
-		2D2E533D2623EE9F00940042 /* BDFaceAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceAgreementViewController.m; sourceTree = "<group>"; };
-		2D2E533E2623EE9F00940042 /* BDFaceDetectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceDetectionViewController.m; sourceTree = "<group>"; };
-		2D2E533F2623EE9F00940042 /* BDFaceSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceSuccessViewController.h; sourceTree = "<group>"; };
-		2D2E53402623EE9F00940042 /* BDFaceLivenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivenessViewController.h; sourceTree = "<group>"; };
-		2D2E53412623EE9F00940042 /* BDFaceBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceBaseViewController.m; sourceTree = "<group>"; };
-		2D2E53432623EE9F00940042 /* BDFaceCycleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCycleProgressView.m; sourceTree = "<group>"; };
-		2D2E53442623EE9F00940042 /* BDFaceRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceRemindView.m; sourceTree = "<group>"; };
-		2D2E53452623EE9F00940042 /* BDFaceCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceCircleView.m; sourceTree = "<group>"; };
-		2D2E53462623EE9F00940042 /* BDFaceLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLogoView.h; sourceTree = "<group>"; };
-		2D2E53472623EE9F00940042 /* BDFaceRemindAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceRemindAnimationView.h; sourceTree = "<group>"; };
-		2D2E53482623EE9F00940042 /* BDFaceImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceImageShow.m; sourceTree = "<group>"; };
-		2D2E53492623EE9F00940042 /* BDFaceCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCircleView.h; sourceTree = "<group>"; };
-		2D2E534A2623EE9F00940042 /* BDFaceRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceRemindView.h; sourceTree = "<group>"; };
-		2D2E534B2623EE9F00940042 /* BDFaceCycleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceCycleProgressView.h; sourceTree = "<group>"; };
-		2D2E534C2623EE9F00940042 /* BDFaceRemindAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceRemindAnimationView.m; sourceTree = "<group>"; };
-		2D2E534D2623EE9F00940042 /* BDFaceLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLogoView.m; sourceTree = "<group>"; };
-		2D2E534E2623EE9F00940042 /* BDFaceImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceImageShow.h; sourceTree = "<group>"; };
-		2D2E534F2623EE9F00940042 /* FaceParameterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceParameterConfig.h; sourceTree = "<group>"; };
-		2D2E53522623EE9F00940042 /* BDFaceDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceDevice.m; sourceTree = "<group>"; };
-		2D2E53532623EE9F00940042 /* BDFaceImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceImageUtils.m; sourceTree = "<group>"; };
-		2D2E53542623EE9F00940042 /* BDFaceDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceDevice.h; sourceTree = "<group>"; };
-		2D2E53552623EE9F00940042 /* BDFaceImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceImageUtils.h; sourceTree = "<group>"; };
-		2D2E53572623EE9F00940042 /* BDFaceVideoCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceVideoCaptureDevice.m; sourceTree = "<group>"; };
-		2D2E53582623EE9F00940042 /* BDFaceVideoCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceVideoCaptureDevice.h; sourceTree = "<group>"; };
-		2D2E535A2623EE9F00940042 /* BDFaceLivingConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLivingConfigModel.h; sourceTree = "<group>"; };
-		2D2E535B2623EE9F00940042 /* BDFaceLivingConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLivingConfigModel.m; sourceTree = "<group>"; };
-		2D2E535D2623EE9F00940042 /* BDFaceLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDFaceLog.m; sourceTree = "<group>"; };
-		2D2E535E2623EE9F00940042 /* BDFaceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDFaceLog.h; sourceTree = "<group>"; };
-		2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BDFaceParamsConfig.json; sourceTree = "<group>"; };
-		2D2E53B126242D6E00940042 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
 		2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsSchemeViewController.m; sourceTree = "<group>"; };
 		2D31F8F5228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsSchemeViewController.h; sourceTree = "<group>"; };
 		2D32BB0D22B102FC00BE3169 /* TRUSSHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSHViewController.h; sourceTree = "<group>"; };
@@ -780,7 +688,6 @@
 		2D40D4ED23226A2300EC0C3F /* applauchIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applauchIcon.png; sourceTree = "<group>"; };
 		2D41270D219569AC005369FB /* TRUSSOBlankView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSSOBlankView.h; sourceTree = "<group>"; };
 		2D41270E219569AC005369FB /* TRUSSOBlankView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSSOBlankView.m; sourceTree = "<group>"; };
-		2D4307D726EF4D4B0024DA95 /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D45A94A2476184900624AC2 /* TRUAuthWKWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAuthWKWebViewController.h; sourceTree = "<group>"; };
 		2D45A94B2476184900624AC2 /* TRUAuthWKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUAuthWKWebViewController.m; sourceTree = "<group>"; };
 		2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUSchemeTokenViewController.m; sourceTree = "<group>"; };
@@ -905,7 +812,6 @@
 		2DCF84E7245040CE009697A0 /* WebLoginTableViewBackImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLoginTableViewBackImage.m; sourceTree = "<group>"; };
 		2DD459E621D2290B00237161 /* TRUSelectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSelectModel.h; sourceTree = "<group>"; };
 		2DD459E721D2290B00237161 /* TRUSelectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSelectModel.m; sourceTree = "<group>"; };
-		2DDB53B6262569060056F5AC /* Image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Image.bundle; sourceTree = "<group>"; };
 		2DE40B08218BF48B002A37D1 /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		2DE40B09218BF48B002A37D1 /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		2DEA329021A159170055F719 /* TRULoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoadingViewController.h; sourceTree = "<group>"; };
@@ -932,6 +838,7 @@
 			files = (
 				125633381F7A22B1007FF392 /* libresolv.tbd in Frameworks */,
 				2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */,
+				2D0925A1273388F900B8754E /* libFaceAntiSpoofing.a in Frameworks */,
 				2DC1B027231FA1D700A8A8DF /* AdSupport.framework in Frameworks */,
 				2DC1B025231FA1A900A8A8DF /* libc++.tbd in Frameworks */,
 				1251EA1A208725C800D4CB65 /* AudioToolbox.framework in Frameworks */,
@@ -952,12 +859,12 @@
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
+				2D0925A2273388F900B8754E /* libDeepNetV2.a in Frameworks */,
 				1256332C1F7A21F7007FF392 /* CoreGraphics.framework in Frameworks */,
 				1256332A1F7A21E6007FF392 /* SystemConfiguration.framework in Frameworks */,
 				125633281F7A21DA007FF392 /* CoreTelephony.framework in Frameworks */,
 				125633261F7A21CD007FF392 /* CoreFoundation.framework in Frameworks */,
 				125633241F7A21BD007FF392 /* CFNetwork.framework in Frameworks */,
-				2D2E538C2624278600940042 /* IDLFaceSDK.framework in Frameworks */,
 				91C31DD1FBDF43CE016C686F /* libPods-Good_IdentifyAuthentication.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1132,7 +1039,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D4307D726EF4D4B0024DA95 /* trusfort.lic */,
+				2D0925F62733DD6A00B8754E /* trusfort.lic */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2DC4291626B3E26A00A5C38D /* libxindunsdk.a */,
@@ -1168,8 +1075,6 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				2D2E53072623EE9F00940042 /* BDFaceFaceSDKUI */,
-				2D2E52F72623ECCE00940042 /* BDFaceSDK */,
 				2D96CEA924333CF1009080DC /* zip */,
 				2D13E55F22FD55DF000112AC /* MYCircleView */,
 				2D89623D22F9634600782CCA /* GestureUnlock */,
@@ -1528,7 +1433,7 @@
 			isa = PBXGroup;
 			children = (
 				1216453C1F97347B00808730 /* TRUFaceBaseViewController.h */,
-				1216453D1F97347B00808730 /* TRUFaceBaseViewController.mm */,
+				1216453D1F97347B00808730 /* TRUFaceBaseViewController.m */,
 				1216453E1F97347B00808730 /* TRUFaceGuideViewController.h */,
 				1216453F1F97347B00808730 /* TRUFaceGuideViewController.m */,
 				121645401F97347B00808730 /* TRUFaceInitViewController.h */,
@@ -1691,6 +1596,8 @@
 		12749EC71FC7EB0900183EB4 /* Helper_Category */ = {
 			isa = PBXGroup;
 			children = (
+				2D0925F42733C78B00B8754E /* Image.bundle */,
+				2D092580273388F900B8754E /* CWFaceAntiSpoofing */,
 				2D1B1E7C2522CED000604CC4 /* MTD */,
 				2D800C8A2154D2C100A2D1C2 /* other */,
 				1256331C1F7A1FE2007FF392 /* Vender */,
@@ -1883,6 +1790,65 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		2D092580273388F900B8754E /* CWFaceAntiSpoofing */ = {
+			isa = PBXGroup;
+			children = (
+				2D092581273388F900B8754E /* CWResources */,
+				2D092583273388F900B8754E /* libs */,
+			);
+			path = CWFaceAntiSpoofing;
+			sourceTree = "<group>";
+		};
+		2D092581273388F900B8754E /* CWResources */ = {
+			isa = PBXGroup;
+			children = (
+				2D092582273388F900B8754E /* CWResource.bundle */,
+			);
+			path = CWResources;
+			sourceTree = "<group>";
+		};
+		2D092583273388F900B8754E /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				2D092584273388F900B8754E /* libFaceAntiSpoofing.a */,
+				2D092585273388F900B8754E /* include */,
+				2D09259F273388F900B8754E /* libDeepNetV2.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		2D092585273388F900B8754E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				2D092586273388F900B8754E /* CWLivessFinishedView.h */,
+				2D092587273388F900B8754E /* CWProgressView.h */,
+				2D092588273388F900B8754E /* CloudwalkSampleFaceDetectResultModel.h */,
+				2D092589273388F900B8754E /* CloudwalkFaceSDKDef.h */,
+				2D09258A273388F900B8754E /* CWNavigationBar.h */,
+				2D09258B273388F900B8754E /* CWLivessActionAnimationViewCell.h */,
+				2D09258C273388F900B8754E /* CWLivessCameraView.h */,
+				2D09258D273388F900B8754E /* CWAudioPlayer.h */,
+				2D09258E273388F900B8754E /* CWLivessViewControllerDelegate.h */,
+				2D09258F273388F900B8754E /* CWLivessSubViewManager.h */,
+				2D092590273388F900B8754E /* CWLanguageConfig.h */,
+				2D092591273388F900B8754E /* CloudwalkFaceSDK.h */,
+				2D092592273388F900B8754E /* CWNormalMacroDefine.h */,
+				2D092593273388F900B8754E /* CWLivessViewManager.h */,
+				2D092594273388F900B8754E /* CWHackerCheckView.h */,
+				2D092595273388F900B8754E /* CWMBProgressHud.h */,
+				2D092596273388F900B8754E /* NSBundle+CWLocalization.h */,
+				2D092597273388F900B8754E /* UIImage+CWUtil.h */,
+				2D092598273388F900B8754E /* CWGuideView.h */,
+				2D092599273388F900B8754E /* CWGradientLayerUtil.h */,
+				2D09259A273388F900B8754E /* CWCamera.h */,
+				2D09259B273388F900B8754E /* CWDeviceStatusManager.h */,
+				2D09259C273388F900B8754E /* CWLivessTimeoutAlert.h */,
+				2D09259D273388F900B8754E /* CWLivessViewController.h */,
+				2D09259E273388F900B8754E /* CWLivessActionAnimationView.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		2D13E55F22FD55DF000112AC /* MYCircleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1909,213 +1875,6 @@
 				2DB18DF2232637CC00473824 /* TRUMTDTool.m */,
 			);
 			path = MTD;
-			sourceTree = "<group>";
-		};
-		2D2E52F72623ECCE00940042 /* BDFaceSDK */ = {
-			isa = PBXGroup;
-			children = (
-				2DDB53B6262569060056F5AC /* Image.bundle */,
-				2D2E53A926242CF000940042 /* BDFaceParamsConfig.json */,
-				2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */,
-				2D2E52F92623ECCE00940042 /* IDLFaceSDK.framework */,
-				2D2E52FA2623ECCE00940042 /* idl-key.face-ios */,
-				2D2E53B126242D6E00940042 /* idl-license.face-ios */,
-				2D2E52FC2623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle */,
-				2D2E52FD2623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle */,
-			);
-			path = BDFaceSDK;
-			sourceTree = "<group>";
-		};
-		2D2E53072623EE9F00940042 /* BDFaceFaceSDKUI */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53082623EE9F00940042 /* UI */,
-				2D2E534F2623EE9F00940042 /* FaceParameterConfig.h */,
-				2D2E53502623EE9F00940042 /* Public */,
-				2D2E535C2623EE9F00940042 /* Log */,
-			);
-			path = BDFaceFaceSDKUI;
-			sourceTree = "<group>";
-		};
-		2D2E53082623EE9F00940042 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53092623EE9F00940042 /* BDFaceTools */,
-				2D2E53102623EE9F00940042 /* BDFaceAdjustParams */,
-				2D2E53322623EE9F00940042 /* Interface */,
-				2D2E53352623EE9F00940042 /* Controller */,
-				2D2E53422623EE9F00940042 /* View */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		2D2E53092623EE9F00940042 /* BDFaceTools */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E530A2623EE9F00940042 /* BDFaceToastView.m */,
-				2D2E530B2623EE9F00940042 /* UIColor+BDFaceColorUtils.m */,
-				2D2E530C2623EE9F00940042 /* BDFaceCalculateTool.h */,
-				2D2E530D2623EE9F00940042 /* UIColor+BDFaceColorUtils.h */,
-				2D2E530E2623EE9F00940042 /* BDFaceToastView.h */,
-				2D2E530F2623EE9F00940042 /* BDFaceCalculateTool.m */,
-			);
-			path = BDFaceTools;
-			sourceTree = "<group>";
-		};
-		2D2E53102623EE9F00940042 /* BDFaceAdjustParams */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53112623EE9F00940042 /* Controller */,
-				2D2E531A2623EE9F00940042 /* Model */,
-				2D2E53292623EE9F00940042 /* View */,
-			);
-			path = BDFaceAdjustParams;
-			sourceTree = "<group>";
-		};
-		2D2E53112623EE9F00940042 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53122623EE9F00940042 /* BDFaceAdjustParamsController.m */,
-				2D2E53132623EE9F00940042 /* BDFaceAlertController.m */,
-				2D2E53142623EE9F00940042 /* BDFaceAdjustParamsRootController.m */,
-				2D2E53152623EE9F00940042 /* BDFaceSelectConfigController.m */,
-				2D2E53162623EE9F00940042 /* BDFaceAdjustParamsController.h */,
-				2D2E53172623EE9F00940042 /* BDFaceAlertController.h */,
-				2D2E53182623EE9F00940042 /* BDFaceAdjustParamsRootController.h */,
-				2D2E53192623EE9F00940042 /* BDFaceSelectConfigController.h */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2D2E531A2623EE9F00940042 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E531B2623EE9F00940042 /* BDFaceAdjustParams.h */,
-				2D2E531C2623EE9F00940042 /* BDFaceSelectConfigModel.m */,
-				2D2E531D2623EE9F00940042 /* BDFaceAdjustParamsModel.m */,
-				2D2E531E2623EE9F00940042 /* BDFaceAdjustParamsItem.m */,
-				2D2E531F2623EE9F00940042 /* BDFaceAdjustParamsConstants.m */,
-				2D2E53202623EE9F00940042 /* BDFaceAdjustParamsFileManager.m */,
-				2D2E53212623EE9F00940042 /* BDFaceSelectItem.m */,
-				2D2E53222623EE9F00940042 /* BDFaceAdjustParams.m */,
-				2D2E53232623EE9F00940042 /* BDFaceSelectConfigModel.h */,
-				2D2E53242623EE9F00940042 /* BDFaceAdjustParamsItem.h */,
-				2D2E53252623EE9F00940042 /* BDFaceAdjustParamsModel.h */,
-				2D2E53262623EE9F00940042 /* BDFaceSelectItem.h */,
-				2D2E53272623EE9F00940042 /* BDFaceAdjustParamsFileManager.h */,
-				2D2E53282623EE9F00940042 /* BDFaceAdjustParamsConstants.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2D2E53292623EE9F00940042 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E532A2623EE9F00940042 /* BDFaceSelectRadio.h */,
-				2D2E532B2623EE9F00940042 /* BDFaceSelectConfigCell.h */,
-				2D2E532C2623EE9F00940042 /* BDFaceAdjustParamsCell.m */,
-				2D2E532D2623EE9F00940042 /* BDFaceAdjustParamsRootCell.m */,
-				2D2E532E2623EE9F00940042 /* BDFaceAdjustParamsCell.h */,
-				2D2E532F2623EE9F00940042 /* BDFaceSelectConfigCell.m */,
-				2D2E53302623EE9F00940042 /* BDFaceSelectRadio.m */,
-				2D2E53312623EE9F00940042 /* BDFaceAdjustParamsRootCell.h */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2D2E53322623EE9F00940042 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53332623EE9F00940042 /* BDFaceAdjustParamsTool.h */,
-				2D2E53342623EE9F00940042 /* BDFaceAdjustParamsTool.m */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		2D2E53352623EE9F00940042 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53362623EE9F00940042 /* BDFaceLivingConfigViewController.m */,
-				2D2E53372623EE9F00940042 /* BDFaceSuccessViewController.m */,
-				2D2E53382623EE9F00940042 /* BDFaceDetectionViewController.h */,
-				2D2E53392623EE9F00940042 /* BDFaceAgreementViewController.h */,
-				2D2E533A2623EE9F00940042 /* BDFaceLivenessViewController.m */,
-				2D2E533B2623EE9F00940042 /* BDFaceBaseViewController.h */,
-				2D2E533C2623EE9F00940042 /* BDFaceLivingConfigViewController.h */,
-				2D2E533D2623EE9F00940042 /* BDFaceAgreementViewController.m */,
-				2D2E533E2623EE9F00940042 /* BDFaceDetectionViewController.m */,
-				2D2E533F2623EE9F00940042 /* BDFaceSuccessViewController.h */,
-				2D2E53402623EE9F00940042 /* BDFaceLivenessViewController.h */,
-				2D2E53412623EE9F00940042 /* BDFaceBaseViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2D2E53422623EE9F00940042 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53432623EE9F00940042 /* BDFaceCycleProgressView.m */,
-				2D2E53442623EE9F00940042 /* BDFaceRemindView.m */,
-				2D2E53452623EE9F00940042 /* BDFaceCircleView.m */,
-				2D2E53462623EE9F00940042 /* BDFaceLogoView.h */,
-				2D2E53472623EE9F00940042 /* BDFaceRemindAnimationView.h */,
-				2D2E53482623EE9F00940042 /* BDFaceImageShow.m */,
-				2D2E53492623EE9F00940042 /* BDFaceCircleView.h */,
-				2D2E534A2623EE9F00940042 /* BDFaceRemindView.h */,
-				2D2E534B2623EE9F00940042 /* BDFaceCycleProgressView.h */,
-				2D2E534C2623EE9F00940042 /* BDFaceRemindAnimationView.m */,
-				2D2E534D2623EE9F00940042 /* BDFaceLogoView.m */,
-				2D2E534E2623EE9F00940042 /* BDFaceImageShow.h */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		2D2E53502623EE9F00940042 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53512623EE9F00940042 /* Util */,
-				2D2E53562623EE9F00940042 /* Common */,
-				2D2E53592623EE9F00940042 /* Model */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		2D2E53512623EE9F00940042 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53522623EE9F00940042 /* BDFaceDevice.m */,
-				2D2E53532623EE9F00940042 /* BDFaceImageUtils.m */,
-				2D2E53542623EE9F00940042 /* BDFaceDevice.h */,
-				2D2E53552623EE9F00940042 /* BDFaceImageUtils.h */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
-		2D2E53562623EE9F00940042 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E53572623EE9F00940042 /* BDFaceVideoCaptureDevice.m */,
-				2D2E53582623EE9F00940042 /* BDFaceVideoCaptureDevice.h */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		2D2E53592623EE9F00940042 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E535A2623EE9F00940042 /* BDFaceLivingConfigModel.h */,
-				2D2E535B2623EE9F00940042 /* BDFaceLivingConfigModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2D2E535C2623EE9F00940042 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				2D2E535D2623EE9F00940042 /* BDFaceLog.m */,
-				2D2E535E2623EE9F00940042 /* BDFaceLog.h */,
-			);
-			path = Log;
 			sourceTree = "<group>";
 		};
 		2D32BB0C22B102AF00BE3169 /* linux账号管理 */ = {
@@ -2504,12 +2263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D2E53AA26242CF000940042 /* BDFaceParamsConfig.json in Resources */,
 				1242D81620B4213E008EDF07 /* CDYHlogo.png in Resources */,
 				12409F961F8F48A1000D342D /* TRUApplictionCell.xib in Resources */,
-				2D2E53022623ECCE00940042 /* com.baidu.idl.face.model.faceSDK.bundle in Resources */,
 				2D7D92B12188016A00163645 /* TRUPushingViewController.xib in Resources */,
 				1242014C1FB5568000F892B1 /* TRUBingUserController.xib in Resources */,
+				2D0925A0273388F900B8754E /* CWResource.bundle in Resources */,
 				2D40D4EE23226A2300EC0C3F /* applauchIcon.png in Resources */,
 				1242D81920B421C0008EDF07 /* chengduyinhang@3x.png in Resources */,
 				2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */,
@@ -2519,32 +2277,28 @@
 				1247446C2029A0EC00639F18 /* huonangaozhao@2x.png in Resources */,
 				128D5D0C1F7E430700753EE5 /* TRULogIdentifyCell.xib in Resources */,
 				2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */,
+				2D0925F52733C78B00B8754E /* Image.bundle in Resources */,
 				2D810EA62462A02A00791B24 /* welcomeicon.png in Resources */,
 				12409F9B1F8F4B22000D342D /* TRULoginViewController.xib in Resources */,
 				121645771F97429700808730 /* Lisence.txt in Resources */,
 				12749EB61FC7E8FE00183EB4 /* TRUPushViewController.xib in Resources */,
 				128D5CF31F7DE3A500753EE5 /* TRUDevicesManagerCell.xib in Resources */,
-				2D2E52FE2623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle in Resources */,
-				2D4307D826EF4D4B0024DA95 /* trusfort.lic in Resources */,
-				2DDB53B7262569060056F5AC /* Image.bundle in Resources */,
 				128D5D031F7E3A4D00753EE5 /* TRUAboutUSCell.xib in Resources */,
 				2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */,
 				12F443601FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.xib in Resources */,
-				2D2E53002623ECCE00940042 /* idl-key.face-ios in Resources */,
 				12662C5A1FCD06080058140F /* TRUAddPhoneViewController.xib in Resources */,
 				12C0D2DD1F7907DC00972218 /* LaunchScreen.storyboard in Resources */,
 				12C0D2DA1F7907DC00972218 /* Assets.xcassets in Resources */,
 				122C1F7C1F94AE8E00E118D2 /* TRUFeedbackViewController.xib in Resources */,
 				2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */,
 				12476A0E1FA18B41000055CB /* MJRefresh.bundle in Resources */,
+				2D0925F72733DD6A00B8754E /* trusfort.lic in Resources */,
 				12749EC41FC7EAC100183EB4 /* TRUActiveAppViewController.xib in Resources */,
 				12202D9A2019E5D10084FB7C /* defalticon@2x.png in Resources */,
 				124B8544206B2B690072DB6E /* HNGZlogo.png in Resources */,
-				2D2E53032623ECCE00940042 /* com.baidu.idl.face.faceSDK.bundle in Resources */,
 				12354C641FA81A8700B6B92E /* TRUSessionManagerImageCell.xib in Resources */,
 				2D7FFF5B21894B6D00FCA1ED /* TRUPersonalDetailsCell.xib in Resources */,
 				121C48D41F7CFF8F0077AE34 /* TRUMineCell.xib in Resources */,
-				2D2E53B226242D6E00940042 /* idl-license.face-ios in Resources */,
 				12C0D2D81F7907DC00972218 /* Main.storyboard in Resources */,
 				128D5CEE1F7DDB4800753EE5 /* TRUDevicesManagerController.xib in Resources */,
 				12202D9B2019E5D10084FB7C /* defalticon@3x.png in Resources */,
@@ -2617,26 +2371,18 @@
 				128D5CF21F7DE3A500753EE5 /* TRUDevicesManagerCell.m in Sources */,
 				2DFF36AA22B3A0CF00E300B9 /* TRUSSHViewModel.m in Sources */,
 				2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */,
-				2D2E53632623EE9F00940042 /* BDFaceAlertController.m in Sources */,
 				12476A021FA18B41000055CB /* MJRefreshComponent.m in Sources */,
-				2D2E53602623EE9F00940042 /* UIColor+BDFaceColorUtils.m in Sources */,
-				2D2E53792623EE9F00940042 /* BDFaceRemindView.m in Sources */,
 				125633441F7A2602007FF392 /* TRUConst.m in Sources */,
-				2D2E537D2623EE9F00940042 /* BDFaceLogoView.m in Sources */,
 				121645471F97347B00808730 /* TRUFaceGuideViewController.m in Sources */,
 				12FAC8BF1F8CC72E001BB1A9 /* TRUUserModel.m in Sources */,
-				2D2E53612623EE9F00940042 /* BDFaceCalculateTool.m in Sources */,
 				12F9001E1F9DD135001125A3 /* YCDownSlider.m in Sources */,
 				1216452F1F96F2C200808730 /* TRUNetworkStatus.m in Sources */,
 				2D76956A21886B24009648B7 /* TRUPersonalBigCell.m in Sources */,
 				2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */,
-				2D2E53662623EE9F00940042 /* BDFaceSelectConfigModel.m in Sources */,
 				1256333B1F7A2440007FF392 /* AppDelegate+AppDelegate_Xindun.m in Sources */,
 				12C0D3231F790CDC00972218 /* TRUMineViewController.m in Sources */,
-				2D2E53622623EE9F00940042 /* BDFaceAdjustParamsController.m in Sources */,
-				2D2E53722623EE9F00940042 /* BDFaceLivingConfigViewController.m in Sources */,
 				12FAC8BE1F8CC72E001BB1A9 /* TRUUserAPI.m in Sources */,
-				121645461F97347B00808730 /* TRUFaceBaseViewController.mm in Sources */,
+				121645461F97347B00808730 /* TRUFaceBaseViewController.m in Sources */,
 				12F4435F1FC54B4F001A76F3 /* TRUAddPersonalInfoViewController.m in Sources */,
 				12409F9A1F8F4B22000D342D /* TRULoginViewController.m in Sources */,
 				2D96CEBA24333CF2009080DC /* ZipArchive.m in Sources */,
@@ -2653,8 +2399,6 @@
 				12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */,
 				121C48D31F7CFF8F0077AE34 /* TRUMineCell.m in Sources */,
 				2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */,
-				2D2E53652623EE9F00940042 /* BDFaceSelectConfigController.m in Sources */,
-				2D2E536B2623EE9F00940042 /* BDFaceSelectItem.m in Sources */,
 				2D67C6C423C4709A0012B596 /* TRUMutableLoginModel.m in Sources */,
 				12C0D32C1F790D1600972218 /* TRUDynamicPasswordViewController.m in Sources */,
 				2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */,
@@ -2666,13 +2410,11 @@
 				1212B5FA1FDE52C600A19444 /* TRUNewFeatuerViewController.m in Sources */,
 				1256334F1F7A4471007FF392 /* UINavigationBar+BackgroundColor.m in Sources */,
 				12C0D3031F79088200972218 /* TRUBaseViewController.m in Sources */,
-				2D2E537B2623EE9F00940042 /* BDFaceImageShow.m in Sources */,
 				128D5D071F7E405A00753EE5 /* TRUAPPLogIdentifyController.m in Sources */,
 				12F41CE61FA030540038C713 /* TRUVoiceBaseViewController.m in Sources */,
 				12409F751F8F3FCE000D342D /* TRUFingerGesUtil.m in Sources */,
 				2D89624622F9634700782CCA /* YZXPointView.m in Sources */,
 				12409F951F8F48A1000D342D /* TRUApplictionCell.m in Sources */,
-				2D2E535F2623EE9F00940042 /* BDFaceToastView.m in Sources */,
 				2D96CEB724333CF2009080DC /* zip.c in Sources */,
 				12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */,
 				2DAA2791230A83EE00B3A6C4 /* TRURectDynamicView.m in Sources */,
@@ -2681,9 +2423,7 @@
 				12F542D11F90A183005AAEFC /* TRUDeviceModel.m in Sources */,
 				12CC27ED1FE129BE00FE919D /* TRUOtherButton.m in Sources */,
 				2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */,
-				2D2E536F2623EE9F00940042 /* BDFaceSelectConfigCell.m in Sources */,
 				2D32E999228AA95E0032A95A /* TRUPortalHeaderView.m in Sources */,
-				2D2E53672623EE9F00940042 /* BDFaceAdjustParamsModel.m in Sources */,
 				1251EA172087197000D4CB65 /* TRUCheckBingController.m in Sources */,
 				12476A011FA18B41000055CB /* MJRefreshBackFooter.m in Sources */,
 				12C0D2D21F7907DC00972218 /* AppDelegate.m in Sources */,
@@ -2695,8 +2435,6 @@
 				12476A061FA18B41000055CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				2DFBC830246CD4160018C701 /* NSDictionary+NULL.m in Sources */,
 				12F45C7E1F7B355200C89C4D /* TRUUserInfoModel.m in Sources */,
-				2D2E53752623EE9F00940042 /* BDFaceAgreementViewController.m in Sources */,
-				2D2E53692623EE9F00940042 /* BDFaceAdjustParamsConstants.m in Sources */,
 				2D32E998228AA95E0032A95A /* TRUPortalModel.m in Sources */,
 				12F45C7B1F7B353600C89C4D /* TRUBaseModel.m in Sources */,
 				2D7FFF5A21894B6D00FCA1ED /* TRUPersonalDetailsCell.m in Sources */,
@@ -2707,7 +2445,6 @@
 				2DAA278E230A700100B3A6C4 /* TRUBottomScanView.m in Sources */,
 				2D7FFF662189959100FCA1ED /* TRUAuthenticateTopImageView.m in Sources */,
 				12354C6B1FA86B1B00B6B92E /* TRUModifyInfoViewController.m in Sources */,
-				2D2E53762623EE9F00940042 /* BDFaceDetectionViewController.m in Sources */,
 				1242014B1FB5568000F892B1 /* TRUBingUserController.m in Sources */,
 				2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */,
 				12476A001FA18B41000055CB /* MJRefreshAutoFooter.m in Sources */,
@@ -2725,24 +2462,19 @@
 				12409F861F8F40DE000D342D /* NSString+Regular.m in Sources */,
 				12409F791F8F40A1000D342D /* MBProgressHUD.m in Sources */,
 				128D5D0B1F7E430700753EE5 /* TRULogIdentifyCell.m in Sources */,
-				2D2E53702623EE9F00940042 /* BDFaceSelectRadio.m in Sources */,
 				12579DF21F99A95700422FBD /* TRUNormalButton.m in Sources */,
-				2D2E53682623EE9F00940042 /* BDFaceAdjustParamsItem.m in Sources */,
-				2D2E537A2623EE9F00940042 /* BDFaceCircleView.m in Sources */,
 				2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */,
 				2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */,
 				121645741F973C8400808730 /* TRUDigitBlockInputView.m in Sources */,
 				12749EBD1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m in Sources */,
 				12436A72210844710070F966 /* TRUGestureModify2ViewController.m in Sources */,
 				2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */,
-				2D2E536C2623EE9F00940042 /* BDFaceAdjustParams.m in Sources */,
 				12662C591FCD06080058140F /* TRUAddPhoneViewController.m in Sources */,
 				2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */,
 				12C0D3061F7908C800972218 /* TRUBaseNavigationController.m in Sources */,
 				121645751F973C8400808730 /* TRUVoiceNumberLabel.m in Sources */,
 				12A662B11FC2C2A600C20D81 /* YCAnimationNumberView.m in Sources */,
 				2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */,
-				2D2E53802623EE9F00940042 /* BDFaceVideoCaptureDevice.m in Sources */,
 				2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
 				2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */,
@@ -2753,7 +2485,6 @@
 				12409F891F8F40FF000D342D /* TRUTextField.m in Sources */,
 				12476A101FA18B41000055CB /* NSBundle+MJRefresh.m in Sources */,
 				2DF3915421AE82060091A764 /* TRUAuthenticateCollectionCell.m in Sources */,
-				2D2E53772623EE9F00940042 /* BDFaceBaseViewController.m in Sources */,
 				2DB18DF4232637CC00473824 /* TRUMTDTool.m in Sources */,
 				2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */,
 				2D8B731021D32BFB006D8281 /* UINavigationBar+LSNavigationController.m in Sources */,
@@ -2764,14 +2495,10 @@
 				121645331F96F2DF00808730 /* Reachability.m in Sources */,
 				2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */,
 				12C0D3401F790EA000972218 /* UIView+FrameExt.m in Sources */,
-				2D2E53642623EE9F00940042 /* BDFaceAdjustParamsRootController.m in Sources */,
 				12354C631FA81A8700B6B92E /* TRUSessionManagerImageCell.m in Sources */,
 				2D6026BC218B153F00AACB4A /* TRURoundNumberBtn.m in Sources */,
 				12749EC51FC7EAC100183EB4 /* TRUActiveAppViewController.m in Sources */,
-				2D2E537C2623EE9F00940042 /* BDFaceRemindAnimationView.m in Sources */,
-				2D2E53812623EE9F00940042 /* BDFaceLivingConfigModel.m in Sources */,
 				2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */,
-				2D2E536A2623EE9F00940042 /* BDFaceAdjustParamsFileManager.m in Sources */,
 				12C0D33E1F790EA000972218 /* UIColor+HEX.m in Sources */,
 				12409F801F8F40A8000D342D /* QTVertificationCodeLabel.m in Sources */,
 				2D7FFF6921899E5F00FCA1ED /* TRUAuthenticateBtn.m in Sources */,
@@ -2789,7 +2516,6 @@
 				2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */,
 				12436A71210844710070F966 /* TRUGestureModify1ViewController.m in Sources */,
 				2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */,
-				2D2E536D2623EE9F00940042 /* BDFaceAdjustParamsCell.m in Sources */,
 				122C1F7B1F94AE8E00E118D2 /* TRUFeedbackViewController.m in Sources */,
 				1202F34B201ACEC0001743B2 /* FireflyAlertView.m in Sources */,
 				12409F831F8F40C6000D342D /* NSString+Trim.m in Sources */,
@@ -2798,31 +2524,23 @@
 				12F45C8D1F7B8B7D00C89C4D /* TRUHomeButton.m in Sources */,
 				122AD7A21FA9A9E000E5963F /* YCAlertView.m in Sources */,
 				125633551F7A4B40007FF392 /* TRUMineUserInfoView.m in Sources */,
-				2D2E53732623EE9F00940042 /* BDFaceSuccessViewController.m in Sources */,
 				2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */,
-				2D2E53822623EE9F00940042 /* BDFaceLog.m in Sources */,
 				12436A74210844710070F966 /* TRUGestureVerify2ViewController.m in Sources */,
 				12F037261F9F34B3007F4C19 /* TRUAuthSacnViewController.m in Sources */,
 				2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */,
 				12B6B2371F8DE91300A3B7A6 /* TRUTimeSyncUtil.m in Sources */,
 				12F542C71F9059E9005AAEFC /* TRUDynamicCodeLabel.m in Sources */,
 				1216454A1F97347B00808730 /* TRUFaceVerifyViewController.m in Sources */,
-				2D2E537F2623EE9F00940042 /* BDFaceImageUtils.m in Sources */,
 				12409F7F1F8F40A8000D342D /* QTVertificationCodeInputView.m in Sources */,
 				2DAA2794230A8E8400B3A6C4 /* TRUAuthBtn.m in Sources */,
 				2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */,
-				2D2E53742623EE9F00940042 /* BDFaceLivenessViewController.m in Sources */,
 				12354C5A1FA81A5300B6B92E /* TRUSessionManagerModel.m in Sources */,
-				2D2E537E2623EE9F00940042 /* BDFaceDevice.m in Sources */,
 				2D00A62D230C03EB00C2F326 /* TRUQRShowViewController.m in Sources */,
 				2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */,
-				2D2E53712623EE9F00940042 /* BDFaceAdjustParamsTool.m in Sources */,
 				12409F721F8F3F14000D342D /* TRUAuthModel.m in Sources */,
 				122C1F6F1F94581B00E118D2 /* TRUPushAuthModel.m in Sources */,
 				1220944C200E0C5D0070FFCA /* TRUThirdFaceVerifyViewController.m in Sources */,
-				2D2E53782623EE9F00940042 /* BDFaceCycleProgressView.m in Sources */,
 				2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */,
-				2D2E536E2623EE9F00940042 /* BDFaceAdjustParamsRootCell.m in Sources */,
 				12F41CE71FA030540038C713 /* TRUVoiceInitViewController.m in Sources */,
 				128D5CFE1F7E2C0D00753EE5 /* TRUHomeSizeLabel.m in Sources */,
 				2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */,
@@ -3008,6 +2726,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/CWFaceAntiSpoofing/libs",
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -3016,6 +2735,8 @@
 					"-l\"lottie-ios\"",
 					"-framework",
 					"\"UIKit\"",
+					"-force_load",
+					"\"$(SRCROOT)/Good_IdentifyAuthentication/Helper_Category/CWFaceAntiSpoofing/libs/libDeepNetV2.a\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trusfort.cims;
@@ -3058,6 +2779,7 @@
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
+					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/CWFaceAntiSpoofing/libs",
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -3066,6 +2788,8 @@
 					"-l\"lottie-ios\"",
 					"-framework",
 					"\"UIKit\"",
+					"-force_load",
+					"\"$(SRCROOT)/Good_IdentifyAuthentication/Helper_Category/CWFaceAntiSpoofing/libs/libDeepNetV2.a\"",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited) -ObjC -l\"lottie-ios\" \"UIKit\" -framework";
 				PRODUCT_BUNDLE_IDENTIFIER = com.uusafe.cqcbank.portal;
