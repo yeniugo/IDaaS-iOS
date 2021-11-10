@@ -189,7 +189,6 @@
 		2D0925A1273388F900B8754E /* libFaceAntiSpoofing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D092584273388F900B8754E /* libFaceAntiSpoofing.a */; };
 		2D0925A2273388F900B8754E /* libDeepNetV2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D09259F273388F900B8754E /* libDeepNetV2.a */; };
 		2D0925F52733C78B00B8754E /* Image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D0925F42733C78B00B8754E /* Image.bundle */; };
-		2D0925F72733DD6A00B8754E /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D0925F62733DD6A00B8754E /* trusfort.lic */; };
 		2D0BED3621C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */; };
 		2D0BED3D21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0BED3B21C8F75C002AB0C1 /* TRUMultipleAccountsCell.m */; };
 		2D0BED3E21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0BED3C21C8F75C002AB0C1 /* TRUMultipleAccountsCell.xib */; };
@@ -249,6 +248,7 @@
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
+		2DA71B2B273B573F00ECBFCE /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2DA71B2A273B573F00ECBFCE /* trusfort.lic */; };
 		2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */; };
 		2DAA278E230A700100B3A6C4 /* TRUBottomScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA278D230A700100B3A6C4 /* TRUBottomScanView.m */; };
 		2DAA2791230A83EE00B3A6C4 /* TRURectDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA2790230A83EE00B3A6C4 /* TRURectDynamicView.m */; };
@@ -659,7 +659,6 @@
 		2D09259E273388F900B8754E /* CWLivessActionAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLivessActionAnimationView.h; sourceTree = "<group>"; };
 		2D09259F273388F900B8754E /* libDeepNetV2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDeepNetV2.a; sourceTree = "<group>"; };
 		2D0925F42733C78B00B8754E /* Image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Image.bundle; sourceTree = "<group>"; };
-		2D0925F62733DD6A00B8754E /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D0BED3421C8F25E002AB0C1 /* TRUMultipleAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsViewController.h; sourceTree = "<group>"; };
 		2D0BED3521C8F25E002AB0C1 /* TRUMultipleAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMultipleAccountsViewController.m; sourceTree = "<group>"; };
 		2D0BED3A21C8F75C002AB0C1 /* TRUMultipleAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMultipleAccountsCell.h; sourceTree = "<group>"; };
@@ -770,6 +769,7 @@
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
 		2DA5B5B521A3DEE50091F2D7 /* HAMLogOutputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAMLogOutputWindow.h; sourceTree = "<group>"; };
+		2DA71B2A273B573F00ECBFCE /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2DAA2788230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUAllInOneAuthViewController.h; sourceTree = "<group>"; };
 		2DAA2789230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUAllInOneAuthViewController.m; sourceTree = "<group>"; };
 		2DAA278C230A700100B3A6C4 /* TRUBottomScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBottomScanView.h; sourceTree = "<group>"; };
@@ -1039,7 +1039,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D0925F62733DD6A00B8754E /* trusfort.lic */,
+				2DA71B2A273B573F00ECBFCE /* trusfort.lic */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2DC4291626B3E26A00A5C38D /* libxindunsdk.a */,
@@ -2292,7 +2292,7 @@
 				122C1F7C1F94AE8E00E118D2 /* TRUFeedbackViewController.xib in Resources */,
 				2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */,
 				12476A0E1FA18B41000055CB /* MJRefresh.bundle in Resources */,
-				2D0925F72733DD6A00B8754E /* trusfort.lic in Resources */,
+				2DA71B2B273B573F00ECBFCE /* trusfort.lic in Resources */,
 				12749EC41FC7EAC100183EB4 /* TRUActiveAppViewController.xib in Resources */,
 				12202D9A2019E5D10084FB7C /* defalticon@2x.png in Resources */,
 				124B8544206B2B690072DB6E /* HNGZlogo.png in Resources */,

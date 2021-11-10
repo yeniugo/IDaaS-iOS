@@ -10,7 +10,7 @@
 #import "CWLivessViewController.h"
 #import "NSBundle+CWLocalization.h"
 #import "CWMBProgressHud.h"
-
+#import "Masonry.h"
 
 
 #if TARGET_IPHONE_SIMULATOR
@@ -75,8 +75,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationBar.hidden = YES;
+//    [self.navigationBar setBackgroundImage:[self ls_imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"PushCancel"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonClick)];
+//    self.navigationController.edgeForExtendedLayout = UIRectEdgeNone;
     [self addFace];
+}
+
+- (void)rightBarButtonClick{
+    [self closeActionX];
 }
 
 - (void)addFace{
@@ -87,8 +94,9 @@
     
     /* 授权码(必设置项), 授权码向云从科技申请，由云从科技授发*/
     lvctl.authCodeString = @"MTk0MDA5bm9kZXZpY2Vjd2F1dGhvcml6Zbfm4ubm5+bq/+bg5efm4+f75ubm4Obg5Yjm5uvl5ubrkeXm5uvl5uai6+Xm5uvl5uTm6+Xm5uDm1efr5+vn6+er4Ofr5+vn69/n5+bn4ufn";
-    lvctl.encryptPackageName = @"214426d69fb47454825930720ad0311c";
-    
+    lvctl.encryptPackageName = @"dc23dabc3959072a61aa6b1de52889b4";
+    // com.trusfort.cims packagename = 214426d69fb47454825930720ad0311c
+    //com.uusafe.cqcbank.portal      dc23dabc3959072a61aa6b1de52889b4
     /* 动作数组(可选设置项), 默认为4个动作集合(最多支持且只支持这四个动作,[眨眼,张嘴,左转头,右转头])*/
     lvctl.allActionArry = @[CWLiveActionBlink,CWLiveActionOpenMouth,CWLiveActionHeadLeft,CWLiveActionHeadRight];
 
@@ -130,6 +138,10 @@
     self.facevc = lvctl;
     [self addChildViewController:lvctl];
     [self.view addSubview:lvctl.view];
+//    [lvctl.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view.mas_top).offset(44);
+//
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
