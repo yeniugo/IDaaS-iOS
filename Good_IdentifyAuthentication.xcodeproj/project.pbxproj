@@ -279,6 +279,7 @@
 		2D8B731121D32BFB006D8281 /* UIScrollView+LSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730B21D32BFB006D8281 /* UIScrollView+LSCategory.m */; };
 		2D8B731221D32BFB006D8281 /* UIViewController+LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */; };
 		2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B731421D36F0C006D8281 /* UIButton+Touch.m */; };
+		2D8E382A273CF97000F5FE8E /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8E3829273CF97000F5FE8E /* libxindunsdk.a */; };
 		2D96CEB624333CF2009080DC /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAC24333CF1009080DC /* unzip.c */; };
 		2D96CEB724333CF2009080DC /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAD24333CF1009080DC /* zip.c */; };
 		2D96CEB824333CF2009080DC /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEAE24333CF1009080DC /* ioapi.c */; };
@@ -305,7 +306,6 @@
 		2DC1B029231FA20C00A8A8DF /* libproc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1B028231FA20C00A8A8DF /* libproc.tbd */; };
 		2DC21982230FD87300459748 /* TRUPortalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC21981230FD87300459748 /* TRUPortalHeader.m */; };
 		2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */; };
-		2DC4291726B3E26A00A5C38D /* libxindunsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC4291626B3E26A00A5C38D /* libxindunsdk.a */; };
 		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
 		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
 		2DCF84E2245024E6009697A0 /* TRUWebLoginManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84E1245024E6009697A0 /* TRUWebLoginManagerCell.m */; };
@@ -844,6 +844,7 @@
 		2D8B730E21D32BFB006D8281 /* UIViewController+LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LSNavigationController.m"; sourceTree = "<group>"; };
 		2D8B731321D36F0C006D8281 /* UIButton+Touch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Touch.h"; sourceTree = "<group>"; };
 		2D8B731421D36F0C006D8281 /* UIButton+Touch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Touch.m"; sourceTree = "<group>"; };
+		2D8E3829273CF97000F5FE8E /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2D96CEAA24333CF1009080DC /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		2D96CEAC24333CF1009080DC /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		2D96CEAD24333CF1009080DC /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
@@ -890,7 +891,6 @@
 		2DC21981230FD87300459748 /* TRUPortalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPortalHeader.m; sourceTree = "<group>"; };
 		2DC23ABD2469449000F8081D /* NSString+URLEncodedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncodedString.h"; sourceTree = "<group>"; };
 		2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncodedString.m"; sourceTree = "<group>"; };
-		2DC4291626B3E26A00A5C38D /* libxindunsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libxindunsdk.a; sourceTree = "<group>"; };
 		2DC8E3A62451A22D00FD125A /* TRUMailManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerViewController.h; sourceTree = "<group>"; };
 		2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMailManagerViewController.m; sourceTree = "<group>"; };
 		2DC8E3A92451A25800FD125A /* TRUMailManagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerCell.h; sourceTree = "<group>"; };
@@ -948,7 +948,7 @@
 				125633341F7A224E007FF392 /* libz.tbd in Frameworks */,
 				125633321F7A223D007FF392 /* Security.framework in Frameworks */,
 				125633301F7A222D007FF392 /* UIKit.framework in Frameworks */,
-				2DC4291726B3E26A00A5C38D /* libxindunsdk.a in Frameworks */,
+				2D8E382A273CF97000F5FE8E /* libxindunsdk.a in Frameworks */,
 				123ECF1C1FE3728E008D66DD /* jcore-ios-1.1.6.a in Frameworks */,
 				1256332E1F7A2220007FF392 /* Foundation.framework in Frameworks */,
 				2DADD8882500EB3F008C3791 /* Contacts.framework in Frameworks */,
@@ -1132,10 +1132,10 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
+				2D8E3829273CF97000F5FE8E /* libxindunsdk.a */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2D0DA2DB2627DD910044F700 /* trusfort.lic */,
-				2DC4291626B3E26A00A5C38D /* libxindunsdk.a */,
 			);
 			name = Xindun;
 			path = ..;
@@ -3009,7 +3009,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3059,7 +3059,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Good_IdentifyAuthentication/Helper_Category/MTD",
 				);
-				MARKETING_VERSION = 3.1.3;
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
