@@ -94,7 +94,7 @@
     
     /* 授权码(必设置项), 授权码向云从科技申请，由云从科技授发*/
     lvctl.authCodeString = @"MTk0MDA5bm9kZXZpY2Vjd2F1dGhvcml6Zbfm4ubm5+bq/+bg5efm4+f75ubm4Obg5Yjm5uvl5ubrkeXm5uvl5uai6+Xm5uvl5uTm6+Xm5uDm1efr5+vn6+er4Ofr5+vn69/n5+bn4ufn";
-    lvctl.encryptPackageName = @"dc23dabc3959072a61aa6b1de52889b4";
+    lvctl.encryptPackageName = @"72d8364b4063d2ef5151d49b481de897";
     // com.trusfort.cims packagename = 214426d69fb47454825930720ad0311c
     //com.uusafe.cqcbank.portal      dc23dabc3959072a61aa6b1de52889b4
     /* 动作数组(可选设置项), 默认为4个动作集合(最多支持且只支持这四个动作,[眨眼,张嘴,左转头,右转头])*/
