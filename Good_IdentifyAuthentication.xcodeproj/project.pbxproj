@@ -286,6 +286,7 @@
 		2D96CEBA24333CF2009080DC /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D96CEB524333CF1009080DC /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D99779821CB97F200B5019E /* TRUSubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779721CB97F200B5019E /* TRUSubUserModel.m */; };
 		2D99779B21CB982100B5019E /* TRUSubUserAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99779A21CB982100B5019E /* TRUSubUserAPI.m */; };
+		2D99C6CF275618FB00E9067C /* TRUBingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99C6CE275618FB00E9067C /* TRUBingViewController.m */; };
 		2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */; };
 		2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF84DE24502495009697A0 /* TRUWebLoginManagerViewController.m */; };
 		2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */; };
@@ -859,6 +860,8 @@
 		2D99779721CB97F200B5019E /* TRUSubUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserModel.m; sourceTree = "<group>"; };
 		2D99779921CB982100B5019E /* TRUSubUserAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSubUserAPI.h; sourceTree = "<group>"; };
 		2D99779A21CB982100B5019E /* TRUSubUserAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSubUserAPI.m; sourceTree = "<group>"; };
+		2D99C6CD275618FB00E9067C /* TRUBingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUBingViewController.h; sourceTree = "<group>"; };
+		2D99C6CE275618FB00E9067C /* TRUBingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUBingViewController.m; sourceTree = "<group>"; };
 		2D9F5BCF21905819009B97EF /* TRUHightlightedBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUHightlightedBtn.h; sourceTree = "<group>"; };
 		2D9F5BD021905819009B97EF /* TRUHightlightedBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUHightlightedBtn.m; sourceTree = "<group>"; };
 		2DA5B5B421A3DEE50091F2D7 /* HAMLogOutputWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAMLogOutputWindow.m; sourceTree = "<group>"; };
@@ -1289,6 +1292,8 @@
 				2DD459E721D2290B00237161 /* TRUSelectModel.m */,
 				2D67C6C223C4709A0012B596 /* TRUMutableLoginModel.h */,
 				2D67C6C323C4709A0012B596 /* TRUMutableLoginModel.m */,
+				2D99C6CD275618FB00E9067C /* TRUBingViewController.h */,
+				2D99C6CE275618FB00E9067C /* TRUBingViewController.m */,
 			);
 			path = "TRUBingUser(绑定用户)";
 			sourceTree = "<group>";
@@ -2745,6 +2750,7 @@
 				2DE40B0A218BF48B002A37D1 /* UIImage+Color.m in Sources */,
 				2D2E53802623EE9F00940042 /* BDFaceVideoCaptureDevice.m in Sources */,
 				2D8B731521D36F0C006D8281 /* UIButton+Touch.m in Sources */,
+				2D99C6CF275618FB00E9067C /* TRUBingViewController.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
 				2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */,
 				128D5CED1F7DDB4800753EE5 /* TRUDevicesManagerController.m in Sources */,
