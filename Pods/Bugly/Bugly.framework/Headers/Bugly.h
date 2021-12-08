@@ -1,10 +1,9 @@
 //
 //  Bugly.h
-//  Bugly
 //
-//  Version: 2.4(8)
+//  Version: 2.5(9)
 //
-//  Copyright (c) 2016年 Bugly. All rights reserved.
+//  Copyright (c) 2017年 Tencent. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,7 +16,7 @@ BLY_START_NONNULL
 @interface Bugly : NSObject
 
 /**
- *  初始化Bugly,使用默认BuglyConfig
+ *  初始化Bugly,使用默认BuglyConfigs
  *
  *  @param appId 注册Bugly分配的应用唯一标识
  */
@@ -65,6 +64,13 @@ BLY_START_NONNULL
  */
 + (void)setUserValue:(NSString *)value
               forKey:(NSString *)key;
+
+/**
+ *  获取USER ID
+ *
+ *  @return USER ID
+ */
++ (NSString *)buglyUserIdentifier;
 
 /**
  *  获取关键数据
@@ -118,7 +124,12 @@ BLY_START_NONNULL
  *    @param info        附加数据
  *    @param terminate   上报后是否退出应用进程
  */
-+ (void)reportExceptionWithCategory:(NSUInteger)category name:(NSString *)aName reason:(NSString *)aReason callStack:(NSArray *)aStackArray extraInfo:(NSDictionary *)info terminateApp:(BOOL)terminate;
++ (void)reportExceptionWithCategory:(NSUInteger)category
+                               name:(NSString *)aName
+                             reason:(NSString *)aReason
+                          callStack:(NSArray *)aStackArray
+                          extraInfo:(NSDictionary *)info
+                       terminateApp:(BOOL)terminate;
 
 /**
  *  SDK 版本信息
@@ -128,14 +139,24 @@ BLY_START_NONNULL
 + (NSString *)sdkVersion;
 
 /**
+ *  APP 版本信息
+ *
+ *  @return SDK版本号
+ */
++ (NSString *)appVersion;
+
+/**
  *  App 是否发生了连续闪退
- *  如果启动SDK 且 5秒内 闪退，且次数达到 3次 则判定为连续闪退
+ *  如果 启动SDK 且 5秒内 闪退，且次数达到 3次 则判定为连续闪退
  *
  *  @return 是否连续闪退
  */
 + (BOOL)isAppCrashedOnStartUpExceedTheLimit;
 
-+ (void)setComponentIdentifier:(NSString *)componentId version:(NSString *)version;
+/**
+ *  关闭bugly监控
+ */
++ (void)closeCrashReport;
 
 BLY_END_NONNULL
 

@@ -1,6 +1,6 @@
 //
 //  BuglyConfig.h
-//
+//  Bugly
 //
 //  Copyright (c) 2016年 Tencent. All rights reserved.
 //
@@ -22,6 +22,7 @@
 #endif
 
 #import <Foundation/Foundation.h>
+
 #import "BuglyLog.h"
 
 BLY_START_NONNULL
@@ -37,6 +38,16 @@ BLY_START_NONNULL
  *  @return 返回需上报记录，随异常上报一起上报
  */
 - (NSString * BLY_NULLABLE)attachmentForException:(NSException * BLY_NULLABLE)exception;
+
+
+/**
+ *  策略激活时回调
+ *
+ *  @param tacticInfo
+ *
+ *  @return app是否弹框展示
+ */
+- (BOOL) h5AlertForTactic:(NSDictionary *)tacticInfo;
 
 @end
 
@@ -113,6 +124,18 @@ BLY_START_NONNULL
  * 控制台日志上报开关，默认开启
  */
 @property (nonatomic, assign) BOOL consolelogEnable;
+
+/**
+ * 崩溃退出超时，如果监听到崩溃后，App一直没有退出，则到达超时时间后会自动abort进程退出
+ * 默认值 5s， 单位 秒
+ * 当赋值为0时，则不会自动abort进程退出
+ */
+@property (nonatomic, assign) NSUInteger crashAbortTimeout;
+
+/**
+ *  设置自定义联网、crash上报域名
+ */
+@property (nonatomic, copy) NSString *crashServerUrl;
 
 @end
 BLY_END_NONNULL

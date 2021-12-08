@@ -1,13 +1,14 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 inhibit_all_warnings!
 target 'Good_IdentifyAuthentication' do
 
 
 pod 'Masonry'
-pod 'AFNetworking'
-pod 'lottie-ios'
+pod 'YTKNetwork'
+pod 'AFNetworking','~> 4.0'
+pod 'lottie-ios', '~> 2.0'
 #pod 'FLEX', '~> 2.0', :configurations => ['Debug']
-pod 'HMSegmentedControl'
+#pod 'HMSegmentedControl'
 #pod 'JVFloatLabeledTextField'
 pod 'YYWebImage'
 #pod 'CocoaLumberjack'

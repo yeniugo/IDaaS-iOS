@@ -192,6 +192,10 @@
 		2D13E56322FD55DF000112AC /* MYCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56122FD55DF000112AC /* MYCircleView.m */; };
 		2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E56522FD589B000112AC /* CircleDynamicView.m */; };
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
+		2D172CC42758C7CE00854FC2 /* TRUMFARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D172CC32758C7CE00854FC2 /* TRUMFARequest.m */; };
+		2D172CC92758CAC000854FC2 /* SecondVerifyApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D172CC82758CAC000854FC2 /* SecondVerifyApi.m */; };
+		2D172CCC2758CB2700854FC2 /* AccountVerifyApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D172CCB2758CB2700854FC2 /* AccountVerifyApi.m */; };
+		2D172CCF2758CB8600854FC2 /* ActiveApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D172CCE2758CB8600854FC2 /* ActiveApi.m */; };
 		2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E782522CE5000604CC4 /* voicebtnbg.json */; };
 		2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E7A2522CE6F00604CC4 /* voicebg.json */; };
 		2D2E52FE2623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */; };
@@ -257,6 +261,7 @@
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
 		2D76957521886E07009648B7 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
 		2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */; };
+		2D7ABF6C2757577000C4B579 /* YTKUrlArgumentsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7ABF6B2757577000C4B579 /* YTKUrlArgumentsFilter.m */; };
 		2D7B0C6F2713D57D0099E815 /* idl-license.face-ios in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B0C6E2713D57C0099E815 /* idl-license.face-ios */; };
 		2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D92AE2188016A00163645 /* TRUPushingViewController.m */; };
 		2D7D92B12188016A00163645 /* TRUPushingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */; };
@@ -683,6 +688,14 @@
 		2D13E56222FD55DF000112AC /* MYCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCircleView.h; sourceTree = "<group>"; };
 		2D13E56422FD589B000112AC /* CircleDynamicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleDynamicView.h; sourceTree = "<group>"; };
 		2D13E56522FD589B000112AC /* CircleDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleDynamicView.m; sourceTree = "<group>"; };
+		2D172CC22758C7CE00854FC2 /* TRUMFARequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMFARequest.h; sourceTree = "<group>"; };
+		2D172CC32758C7CE00854FC2 /* TRUMFARequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUMFARequest.m; sourceTree = "<group>"; };
+		2D172CC72758CAC000854FC2 /* SecondVerifyApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondVerifyApi.h; sourceTree = "<group>"; };
+		2D172CC82758CAC000854FC2 /* SecondVerifyApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondVerifyApi.m; sourceTree = "<group>"; };
+		2D172CCA2758CB2700854FC2 /* AccountVerifyApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountVerifyApi.h; sourceTree = "<group>"; };
+		2D172CCB2758CB2700854FC2 /* AccountVerifyApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountVerifyApi.m; sourceTree = "<group>"; };
+		2D172CCD2758CB8600854FC2 /* ActiveApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveApi.h; sourceTree = "<group>"; };
+		2D172CCE2758CB8600854FC2 /* ActiveApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveApi.m; sourceTree = "<group>"; };
 		2D1B1E782522CE5000604CC4 /* voicebtnbg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebtnbg.json; path = Good_IdentifyAuthentication/voicebtnbg.json; sourceTree = SOURCE_ROOT; };
 		2D1B1E7A2522CE6F00604CC4 /* voicebg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebg.json; path = Good_IdentifyAuthentication/voicebg.json; sourceTree = SOURCE_ROOT; };
 		2D2E52F82623ECCE00940042 /* com.baidu.idl.face.live.action.image.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = com.baidu.idl.face.live.action.image.bundle; sourceTree = "<group>"; };
@@ -802,6 +815,8 @@
 		2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPersonalSmaillCell.xib; sourceTree = "<group>"; };
 		2D76957A21887238009648B7 /* TRUPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPersonalViewController.h; sourceTree = "<group>"; };
 		2D76957B21887239009648B7 /* TRUPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalViewController.m; sourceTree = "<group>"; };
+		2D7ABF6A2757577000C4B579 /* YTKUrlArgumentsFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTKUrlArgumentsFilter.h; sourceTree = "<group>"; };
+		2D7ABF6B2757577000C4B579 /* YTKUrlArgumentsFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTKUrlArgumentsFilter.m; sourceTree = "<group>"; };
 		2D7B0C6E2713D57C0099E815 /* idl-license.face-ios */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "idl-license.face-ios"; sourceTree = "<group>"; };
 		2D7D92AD2188016A00163645 /* TRUPushingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPushingViewController.h; sourceTree = "<group>"; };
 		2D7D92AE2188016A00163645 /* TRUPushingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPushingViewController.m; sourceTree = "<group>"; };
@@ -1237,6 +1252,7 @@
 		12749E8D1FC7C9FE00183EB4 /* ALL_views */ = {
 			isa = PBXGroup;
 			children = (
+				2D7ABF692757560D00C4B579 /* networking */,
 				2DAA2787230A4EE000B3A6C4 /* TRUAllInOneAuth */,
 				2D32E98C228AA95E0032A95A /* TRUPortal(微门户) */,
 				2D7FFF5F2189920100FCA1ED /* TRUAuthenticate(认证) */,
@@ -1893,6 +1909,26 @@
 			path = MYCircleView;
 			sourceTree = "<group>";
 		};
+		2D172CC52758C9F800854FC2 /* 未激活 */ = {
+			isa = PBXGroup;
+			children = (
+				2D172CC72758CAC000854FC2 /* SecondVerifyApi.h */,
+				2D172CC82758CAC000854FC2 /* SecondVerifyApi.m */,
+				2D172CCA2758CB2700854FC2 /* AccountVerifyApi.h */,
+				2D172CCB2758CB2700854FC2 /* AccountVerifyApi.m */,
+				2D172CCD2758CB8600854FC2 /* ActiveApi.h */,
+				2D172CCE2758CB8600854FC2 /* ActiveApi.m */,
+			);
+			path = "未激活";
+			sourceTree = "<group>";
+		};
+		2D172CC62758CA0500854FC2 /* 已激活 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "已激活";
+			sourceTree = "<group>";
+		};
 		2D1B1E772522CE3D00604CC4 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -2194,6 +2230,19 @@
 				2D31F8F4228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m */,
 			);
 			path = "TRUScheme(scheme唤起)";
+			sourceTree = "<group>";
+		};
+		2D7ABF692757560D00C4B579 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				2D172CC52758C9F800854FC2 /* 未激活 */,
+				2D172CC62758CA0500854FC2 /* 已激活 */,
+				2D7ABF6A2757577000C4B579 /* YTKUrlArgumentsFilter.h */,
+				2D7ABF6B2757577000C4B579 /* YTKUrlArgumentsFilter.m */,
+				2D172CC22758C7CE00854FC2 /* TRUMFARequest.h */,
+				2D172CC32758C7CE00854FC2 /* TRUMFARequest.m */,
+			);
+			path = networking;
 			sourceTree = "<group>";
 		};
 		2D7FFF5F2189920100FCA1ED /* TRUAuthenticate(认证) */ = {
@@ -2617,6 +2666,7 @@
 				128D5CF21F7DE3A500753EE5 /* TRUDevicesManagerCell.m in Sources */,
 				2DFF36AA22B3A0CF00E300B9 /* TRUSSHViewModel.m in Sources */,
 				2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */,
+				2D172CC92758CAC000854FC2 /* SecondVerifyApi.m in Sources */,
 				2D2E53632623EE9F00940042 /* BDFaceAlertController.m in Sources */,
 				12476A021FA18B41000055CB /* MJRefreshComponent.m in Sources */,
 				2D2E53602623EE9F00940042 /* UIColor+BDFaceColorUtils.m in Sources */,
@@ -2691,6 +2741,7 @@
 				2D32BB0F22B102FC00BE3169 /* TRUSSHViewController.m in Sources */,
 				124419B11FF64364007C9C70 /* YCVoiceButton.m in Sources */,
 				12FAC8B81F8CC6B5001BB1A9 /* TRUStartupViewController.m in Sources */,
+				2D172CC42758C7CE00854FC2 /* TRUMFARequest.m in Sources */,
 				2D7FFF532189443800FCA1ED /* TRUPersonalDetailsViewController.m in Sources */,
 				12476A061FA18B41000055CB /* MJRefreshAutoNormalFooter.m in Sources */,
 				2DFBC830246CD4160018C701 /* NSDictionary+NULL.m in Sources */,
@@ -2717,6 +2768,8 @@
 				121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
 				2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */,
+				2D7ABF6C2757577000C4B579 /* YTKUrlArgumentsFilter.m in Sources */,
+				2D172CCF2758CB8600854FC2 /* ActiveApi.m in Sources */,
 				2D96CEB624333CF2009080DC /* unzip.c in Sources */,
 				2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */,
 				12436A64210844590070F966 /* TRUVerifyFaceViewController.m in Sources */,
@@ -2778,6 +2831,7 @@
 				12436A65210844590070F966 /* TRUVerifyFingerprintViewController.m in Sources */,
 				12476A131FA18B41000055CB /* UIView+MJExtension.m in Sources */,
 				128208761F98A341004DD5C6 /* HUIPatternLockView.m in Sources */,
+				2D172CCC2758CB2700854FC2 /* AccountVerifyApi.m in Sources */,
 				2DA5B5B621A3DEE50091F2D7 /* HAMLogOutputWindow.m in Sources */,
 				2D96CEB824333CF2009080DC /* ioapi.c in Sources */,
 				12436A70210844710070F966 /* TRUGestureVerifyViewController.m in Sources */,
@@ -2999,7 +3053,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Good_IdentifyAuthentication/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3049,7 +3103,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Good_IdentifyAuthentication/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Good_IdentifyAuthentication/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

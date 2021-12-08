@@ -123,7 +123,8 @@ static double dytime = 0.0;
     NSString *spcode = [[NSUserDefaults standardUserDefaults] objectForKey:@"spcode"];
     NSString *updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html?spcode=%@",baseUrl,spcode];
     updateUrl = [NSString stringWithFormat:@"%@/api/ios/cims.html",baseUrl];
-    [manager GET:updateUrl parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    [manager GET:updateUrl parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             YCLog(@"dic = %@",responseObject);
             TRUCompanyModel *model1 = [TRUCompanyAPI getCompany];
@@ -1007,7 +1008,8 @@ static NSInteger pushCount = NSIntegerMax;
     manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",@"text/javascript",nil];
     //http://itunes.apple.com/lookup?id=1095195364
     NSString *urlStr = [NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=1195763218"];//
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    
+    [manager POST:urlStr parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

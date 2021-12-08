@@ -21,6 +21,8 @@
 #import "TRUTokenUtil.h"
 #import "UIButton+Touch.h"
 #import "TRUMTDTool.h"
+#import "SecondVerifyApi.h"
+
 @interface TRUBingUserController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *numView;
@@ -422,6 +424,7 @@
         default:
             break;
     }
+    
     NSString *singStr = [NSString stringWithFormat:@",\"userno\":\"%s\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\"", [self.inputoneTF.text.trim UTF8String],pushID, type,self.inputpasswordTF.text];
     NSString *para = [xindunsdk encryptBySkey:self.inputoneTF.text.trim ctx:singStr isType:YES];
     NSDictionary *paramsDic = @{@"params" : para};

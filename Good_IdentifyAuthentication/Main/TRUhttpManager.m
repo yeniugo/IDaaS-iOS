@@ -40,18 +40,12 @@
 //    if (!trumanager.canRequest) {
 //        return;
 //    }
-    
-    [manager GET:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        if (!trumanager.canRequest) {
-//            return;
-//        }
+    [manager GET:url parameters:parts headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         onResult(0,responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        if (!trumanager.canRequest) {
-//            return;
-//        }
         onResult(-5004, nil);
     }];
+    
 }
 
 
@@ -66,7 +60,8 @@
 //        return;
 //    }
     YCLog(@"url = %@",url);
-    [manager POST:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    [manager POST:url parameters:parts headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        if (!trumanager.canRequest) {
 //            return;
 //        }
@@ -107,7 +102,7 @@
 //        return;
 //    }
     YCLog(@"url = %@",url);
-    [manager POST:url parameters:parts progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:url parameters:parts headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        if (!trumanager.canRequest) {
 //            return;
 //        }
