@@ -20,25 +20,42 @@
     [super viewDidLoad];
 //    self.navigationBar.hidden = YES;
     self.view.backgroundColor = DefaultGreenColor;
+//    self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"welcomeicon.png"];
+    imageview.image = [UIImage imageNamed:@"welcome1icon.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
-    showLable.text = @"移动安全认证";
+    showLable.text = @"银  联  身  份  验  证  器";
     showLable.textColor = [UIColor whiteColor];
-    [self.view addSubview:showLable];
+    
+    UIImageView *bottomView = [[UIImageView alloc] init];
+    bottomView.backgroundColor = [UIColor clearColor];
+    bottomView.image = [UIImage imageNamed:@"welcome1.png"];
+    
     [self.view addSubview:imageview];
-    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-125);
-    }];
+    [self.view addSubview:showLable];
+    [self.view addSubview:bottomView];
+    
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
-        make.width.equalTo(@(120.5));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
+        make.centerY.mas_equalTo(self.view).multipliedBy(3/5.0);
+        make.width.mas_equalTo(self.view).multipliedBy(210.0/375.0);
+//        make.height.mas_equalTo(imageview.width).multipliedBy(1);
+//        make.width.equalTo(@(100));
+        make.height.equalTo(imageview.mas_width);
+    }];
+    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(imageview.mas_bottom).offset(50);
+    }];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+//        make.height.equalTo(@(100));
+        make.height.mas_equalTo(bottomView.mas_width).multipliedBy(865/1225.0);
     }];
 }
 

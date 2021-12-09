@@ -35,9 +35,9 @@
     self.userDepartmentLB.textColor = [UIColor whiteColor];
     self.userDepartmentLB.layer.cornerRadius = 12;
     self.userDepartmentLB.layer.borderWidth = 1;
-    self.userDepartmentLB.layer.borderColor = RGBCOLOR(102, 182, 255).CGColor;
+    self.userDepartmentLB.layer.borderColor = RGBACOLOR(255.0, 255.0, 255.0, 0.4).CGColor;
     self.userDepartmentLB.layer.masksToBounds = YES;
-    self.userDepartmentLB.backgroundColor = RGBACOLOR(20, 158, 255, 1.0);
+    self.userDepartmentLB.backgroundColor = RGBACOLOR(255.0, 255.0, 255.0, 0.2);
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {

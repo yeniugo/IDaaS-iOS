@@ -315,7 +315,7 @@ static double dytime = 0.0;
             type = 0;
         }
     }
-//    type = 0;
+    type = 2;
     __weak typeof(self) weakSelf = self;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
