@@ -1,0 +1,6 @@
+framework module Pods_Good_IdentifyAuthentication {
+  umbrella header "Pods-Good_IdentifyAuthentication-umbrella.h"
+
+  export *
+  module * { export * }
+}

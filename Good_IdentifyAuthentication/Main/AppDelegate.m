@@ -49,6 +49,7 @@
 #import "IDLFaceSDK/IDLFaceSDK.h"
 #import "BDFaceAdjustParamsTool.h"
 #import "FaceParameterConfig.h"
+#import "TRUBingViewController.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 //@property (nonatomic, copy) NSString *soureSchme;
 @property (nonatomic, copy) NSString *phone;
@@ -305,7 +306,7 @@
 //                    rootVC = nav;
                 }
             }else{
-                TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
+                TRUBingViewController *loginVC = [[TRUBingViewController alloc] init];
                 
                 rootVC = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
             }
@@ -358,7 +359,7 @@
             //                    rootVC = nav;
         }
     }else{
-        TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
+        TRUBingViewController *loginVC = [[TRUBingViewController alloc] init];
         
         rootVC = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     }
@@ -562,7 +563,7 @@
     //只要跳转到激活页面，就把手势/指纹清空
     [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
     [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-    TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
+    TRUBingViewController *loginVC = [[TRUBingViewController alloc] init];
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
     [nav setNavBarColor:DefaultNavColor];
 //    [TRUhttpManager startALLHttp];
@@ -604,7 +605,7 @@
     //只要跳转到激活页面，就把手势/指纹清空
     [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeNone];
     [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeNone];
-    TRULoginViewController *loginVC = [[TRULoginViewController alloc] init];
+    TRUBingViewController *loginVC = [[TRUBingViewController alloc] init];
 //    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
 //    self.window.rootViewController = nav;
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
@@ -1820,7 +1821,7 @@
         if (rootnav.viewControllers>1) {
             
             UIViewController *vc = [rootnav.viewControllers lastObject];
-            if ([rootnav.viewControllers.firstObject isKindOfClass:[TRULoginViewController class]]) {
+            if ([rootnav.viewControllers.firstObject isKindOfClass:[TRUBingViewController class]]) {
                 return;
             }
             [rootnav popToRootViewControllerAnimated:YES];

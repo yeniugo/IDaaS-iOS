@@ -30,7 +30,7 @@
 
 #define DefaultColor  [UIColor colorWithRed:32.0 / 255 green:144.0 / 255 blue:54.0 / 255 alpha:1.0]
 
-#define DefaultGreenColor  [UIColor colorWithRed:0.0 / 255 green:150.0 / 255 blue:255.0 / 255 alpha:1.0]
+#define DefaultGreenColor  [UIColor colorWithRed:0.0 / 255 green:130.0 / 255 blue:197.0 / 255 alpha:1.0]
 
 #define DefaultNavColor   [UIColor colorWithRed:255.0 / 255 green:255.0 / 255 blue:255.0 / 255 alpha:1.0]
 

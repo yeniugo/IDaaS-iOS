@@ -9,7 +9,7 @@
 #import "CircleDynamicView.h"
 #import "MYCircleView.h"
 #import "UILabel+Alignment.h"
-#import <Masonry.h>
+//#import "Masonry/Masonry.h"
 @interface CircleDynamicView ()
 @property (nonatomic,strong) MYCircleView *myCicleView;
 
