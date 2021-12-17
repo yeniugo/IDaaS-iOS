@@ -44,7 +44,7 @@ DEPENDENCIES:
   - YYWebImage
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com.cnpmjs.org/CocoaPods/Specs.git:
     - AFNetworking
     - Bugly
     - CocoaLumberjack
@@ -68,6 +68,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 2b47c808962ec28c8990af425483a5ee5859cb68
+PODFILE CHECKSUM: f5aaad2338e36425f3ea190cda4a1cbd63126931
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.11.2
