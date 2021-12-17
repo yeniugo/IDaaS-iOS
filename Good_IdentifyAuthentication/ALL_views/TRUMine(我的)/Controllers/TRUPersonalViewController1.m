@@ -180,6 +180,18 @@
     model9.leftStr = @"邮箱设备";
     model9.disVC = @"TRUMailManagerViewController";
     
+    TRUPersonalSmailModel *model10 = [[TRUPersonalSmailModel alloc] init];
+    model10.cellType = PersonalSmaillCellNormal;
+    model10.leftIcon = @"PersonalEmail";
+    model10.leftStr = @"密码修改";
+    model10.disVC = @"TRUChangePasswordViewController";
+    
+    TRUPersonalSmailModel *model11 = [[TRUPersonalSmailModel alloc] init];
+    model11.cellType = PersonalSmaillCellNormal;
+    model11.leftIcon = @"PersonalEmail";
+    model11.leftStr = @"手机号修改";
+    model11.disVC = @"TRUChangePhoneViewController";
+    
     TRUCompanyModel *model = [TRUCompanyAPI getCompany];
 //    model.hasFace = NO;
 //    model.hasVoice = YES;
@@ -200,16 +212,26 @@
     if (model.hasVoice) {
         [temp1Array addObject:model2];
     }
-    if (temp1Array.count) {
-        [tempArray addObject:temp1Array];
-    }
-    [tempArray addObject:[NSArray arrayWithObject:model3]];
-    [tempArray addObject:[NSArray arrayWithObject:model4]];
-    [tempArray addObject:[NSArray arrayWithObject:model9]];
-    [tempArray addObject:[NSArray arrayWithObject:model5]];
-    [tempArray addObject:[NSArray arrayWithObject:model6]];
-    [tempArray addObject:[NSArray arrayWithObject:model7]];
-    [tempArray addObject:[NSArray arrayWithObject:model8]];
+//    if (temp1Array.count) {
+//        [tempArray addObject:temp1Array];
+//    }
+    [temp1Array addObject:model3];
+    [temp1Array addObject:model4];
+    [temp1Array addObject:model9];
+    [temp1Array addObject:model5];
+    [temp1Array addObject:model6];
+    [temp1Array addObject:model7];
+    [temp1Array addObject:model8];
+    [temp1Array addObject:model10];
+    [temp1Array addObject:model11];
+    [tempArray addObject:temp1Array];
+//    [tempArray addObject:[NSArray arrayWithObject:model3]];
+//    [tempArray addObject:[NSArray arrayWithObject:model4]];
+//    [tempArray addObject:[NSArray arrayWithObject:model9]];
+//    [tempArray addObject:[NSArray arrayWithObject:model5]];
+//    [tempArray addObject:[NSArray arrayWithObject:model6]];
+//    [tempArray addObject:[NSArray arrayWithObject:model7]];
+//    [tempArray addObject:[NSArray arrayWithObject:model8]];
     self.dataArray = tempArray;
 }
 
