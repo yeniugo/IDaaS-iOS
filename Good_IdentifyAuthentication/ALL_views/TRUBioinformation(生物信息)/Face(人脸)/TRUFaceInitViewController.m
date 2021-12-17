@@ -77,6 +77,8 @@
         [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             //            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf showHudWithText:@"注册成功"];
+            [weakSelf hideHudDelay:2.0];
             TRUUserModel *model = [TRUUserAPI getUser];
             model.faceinfo = @"1";
             [TRUUserAPI saveUser:model];

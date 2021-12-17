@@ -19,6 +19,8 @@
 @property (nonatomic, copy) NSString *department;
 /** 工号 */
 @property (nonatomic, copy) NSString *employeenum;
+/** 显示账号 */
+@property (nonatomic,copy) NSString *account;
 /** 邮箱 */
 @property (nonatomic, copy) NSString *email;
 /** 公司id */

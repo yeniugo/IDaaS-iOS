@@ -48,7 +48,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.imageview.frame = CGRectMake(42/125.0*self.bounds.size.width, 31/125.0*self.bounds.size.width, 44/125.0*self.bounds.size.width, 44/125.0*self.bounds.size.width);
-    self.textlabel.frame = CGRectMake(0, 94/125.0*self.bounds.size.width, self.bounds.size.width, 94/125.0*13);
+    self.textlabel.frame = CGRectMake(0, 94/125.0*self.bounds.size.width, self.bounds.size.width, 94/125.0*13+10);
 //    self.textlabel.text = @"fafafa";
 //    [self.textlabel sizeToFit];
     [self resetUI];

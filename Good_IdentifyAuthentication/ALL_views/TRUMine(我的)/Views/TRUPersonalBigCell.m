@@ -38,6 +38,7 @@
     self.userDepartmentLB.layer.borderColor = RGBCOLOR(102, 182, 255).CGColor;
     self.userDepartmentLB.layer.masksToBounds = YES;
     self.userDepartmentLB.backgroundColor = RGBACOLOR(20, 158, 255, 1.0);
+    
     if (activeStr.length>0) {
         NSArray *arr = [activeStr componentsSeparatedByString:@","];
         if (arr.count>0) {
@@ -55,6 +56,12 @@
             }
         }
         
+    }
+    if ([TRUUserAPI getUser].account.length) {
+        self.userDepartmentLB.text = [NSString stringWithFormat:@"  %@  ",[TRUUserAPI getUser].account];
+//        attrText = [[NSAttributedString alloc] initWithString:self.userDepartmentLB.text attributes:@{ NSParagraphStyleAttributeName : style}];
+//        self.userDepartmentLB.attributedText = attrText;
+//        self.userDepartmentLB.text = nil;
     }
     self.contentView.backgroundColor = DefaultGreenColor;
     self.lineView = [[UIView alloc] init];
