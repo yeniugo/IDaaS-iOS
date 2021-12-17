@@ -255,6 +255,18 @@
 		2D76956B21886B24009648B7 /* TRUPersonalBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76956921886B24009648B7 /* TRUPersonalBigCell.xib */; };
 		2D76957521886E07009648B7 /* TRUPersonalSmaillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957321886E07009648B7 /* TRUPersonalSmaillCell.m */; };
 		2D76957621886E07009648B7 /* TRUPersonalSmaillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */; };
+		2D79FEBB276ADB7A009DDBE9 /* TRUForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEBA276ADB7A009DDBE9 /* TRUForgetPasswordViewController.m */; };
+		2D79FEBE276AEE52009DDBE9 /* TRUForgetPassword1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEBD276AEE52009DDBE9 /* TRUForgetPassword1ViewController.m */; };
+		2D79FEC1276AEE69009DDBE9 /* TRUForgetPassword2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEC0276AEE69009DDBE9 /* TRUForgetPassword2ViewController.m */; };
+		2D79FED1276B0ECB009DDBE9 /* CRSecrectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEC6276B0ECA009DDBE9 /* CRSecrectImageView.m */; };
+		2D79FED2276B0ECB009DDBE9 /* CRLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEC7276B0ECA009DDBE9 /* CRLineView.m */; };
+		2D79FED3276B0ECB009DDBE9 /* CRBoxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEC8276B0ECA009DDBE9 /* CRBoxTextView.m */; };
+		2D79FED4276B0ECB009DDBE9 /* CRBoxFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEC9276B0ECA009DDBE9 /* CRBoxFlowLayout.m */; };
+		2D79FED5276B0ECB009DDBE9 /* CRBoxInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FECB276B0ECA009DDBE9 /* CRBoxInputView.m */; };
+		2D79FED6276B0ECB009DDBE9 /* CRBoxInputCellProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FECE276B0ECB009DDBE9 /* CRBoxInputCellProperty.m */; };
+		2D79FED7276B0ECB009DDBE9 /* CRBoxInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FECF276B0ECB009DDBE9 /* CRBoxInputCell.m */; };
+		2D79FEDA276B1C94009DDBE9 /* TRUChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FED9276B1C94009DDBE9 /* TRUChangePasswordViewController.m */; };
+		2D79FEDF276B1CE0009DDBE9 /* TRUChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D79FEDE276B1CE0009DDBE9 /* TRUChangePhoneViewController.m */; };
 		2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D92AE2188016A00163645 /* TRUPushingViewController.m */; };
 		2D7D92B12188016A00163645 /* TRUPushingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */; };
 		2D7FFF532189443800FCA1ED /* TRUPersonalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7FFF512189443800FCA1ED /* TRUPersonalDetailsViewController.m */; };
@@ -314,6 +326,7 @@
 		2DC22AAD27698CB0009032A8 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC22AA227698CB0009032A8 /* MASConstraint.m */; };
 		2DC22AAE27698CB0009032A8 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC22AA427698CB0009032A8 /* MASViewConstraint.m */; };
 		2DC22AAF27698CB0009032A8 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC22AA527698CB0009032A8 /* MASViewAttribute.m */; };
+		2DC22AB22769F8FB009032A8 /* TRUSettingPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC22AB12769F8FB009032A8 /* TRUSettingPasswordViewController.m */; };
 		2DC23ABF2469449000F8081D /* NSString+URLEncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */; };
 		2DC8E3A82451A22D00FD125A /* TRUMailManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3A72451A22D00FD125A /* TRUMailManagerViewController.m */; };
 		2DC8E3AB2451A25800FD125A /* TRUMailManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8E3AA2451A25800FD125A /* TRUMailManagerCell.m */; };
@@ -814,6 +827,30 @@
 		2D76957421886E07009648B7 /* TRUPersonalSmaillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPersonalSmaillCell.xib; sourceTree = "<group>"; };
 		2D76957A21887238009648B7 /* TRUPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUPersonalViewController.h; sourceTree = "<group>"; };
 		2D76957B21887239009648B7 /* TRUPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUPersonalViewController.m; sourceTree = "<group>"; };
+		2D79FEB9276ADB7A009DDBE9 /* TRUForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUForgetPasswordViewController.h; sourceTree = "<group>"; };
+		2D79FEBA276ADB7A009DDBE9 /* TRUForgetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUForgetPasswordViewController.m; sourceTree = "<group>"; };
+		2D79FEBC276AEE52009DDBE9 /* TRUForgetPassword1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUForgetPassword1ViewController.h; sourceTree = "<group>"; };
+		2D79FEBD276AEE52009DDBE9 /* TRUForgetPassword1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUForgetPassword1ViewController.m; sourceTree = "<group>"; };
+		2D79FEBF276AEE69009DDBE9 /* TRUForgetPassword2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUForgetPassword2ViewController.h; sourceTree = "<group>"; };
+		2D79FEC0276AEE69009DDBE9 /* TRUForgetPassword2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUForgetPassword2ViewController.m; sourceTree = "<group>"; };
+		2D79FEC3276B0ECA009DDBE9 /* CRBoxInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputView.h; sourceTree = "<group>"; };
+		2D79FEC4276B0ECA009DDBE9 /* CRSecrectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSecrectImageView.h; sourceTree = "<group>"; };
+		2D79FEC5276B0ECA009DDBE9 /* CRBoxTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxTextView.h; sourceTree = "<group>"; };
+		2D79FEC6276B0ECA009DDBE9 /* CRSecrectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSecrectImageView.m; sourceTree = "<group>"; };
+		2D79FEC7276B0ECA009DDBE9 /* CRLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLineView.m; sourceTree = "<group>"; };
+		2D79FEC8276B0ECA009DDBE9 /* CRBoxTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxTextView.m; sourceTree = "<group>"; };
+		2D79FEC9276B0ECA009DDBE9 /* CRBoxFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxFlowLayout.m; sourceTree = "<group>"; };
+		2D79FECA276B0ECA009DDBE9 /* CRBoxInputCellProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputCellProperty.h; sourceTree = "<group>"; };
+		2D79FECB276B0ECA009DDBE9 /* CRBoxInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputView.m; sourceTree = "<group>"; };
+		2D79FECC276B0ECA009DDBE9 /* CRLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLineView.h; sourceTree = "<group>"; };
+		2D79FECD276B0ECA009DDBE9 /* CRBoxInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputCell.h; sourceTree = "<group>"; };
+		2D79FECE276B0ECB009DDBE9 /* CRBoxInputCellProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputCellProperty.m; sourceTree = "<group>"; };
+		2D79FECF276B0ECB009DDBE9 /* CRBoxInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputCell.m; sourceTree = "<group>"; };
+		2D79FED0276B0ECB009DDBE9 /* CRBoxFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxFlowLayout.h; sourceTree = "<group>"; };
+		2D79FED8276B1C94009DDBE9 /* TRUChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUChangePasswordViewController.h; sourceTree = "<group>"; };
+		2D79FED9276B1C94009DDBE9 /* TRUChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUChangePasswordViewController.m; sourceTree = "<group>"; };
+		2D79FEDD276B1CE0009DDBE9 /* TRUChangePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUChangePhoneViewController.h; sourceTree = "<group>"; };
+		2D79FEDE276B1CE0009DDBE9 /* TRUChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUChangePhoneViewController.m; sourceTree = "<group>"; };
 		2D7D92AD2188016A00163645 /* TRUPushingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUPushingViewController.h; sourceTree = "<group>"; };
 		2D7D92AE2188016A00163645 /* TRUPushingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUPushingViewController.m; sourceTree = "<group>"; };
 		2D7D92AF2188016A00163645 /* TRUPushingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TRUPushingViewController.xib; sourceTree = "<group>"; };
@@ -929,6 +966,8 @@
 		2DC22AA327698CB0009032A8 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		2DC22AA427698CB0009032A8 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		2DC22AA527698CB0009032A8 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		2DC22AB02769F8FB009032A8 /* TRUSettingPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUSettingPasswordViewController.h; sourceTree = "<group>"; };
+		2DC22AB12769F8FB009032A8 /* TRUSettingPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRUSettingPasswordViewController.m; sourceTree = "<group>"; };
 		2DC23ABD2469449000F8081D /* NSString+URLEncodedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncodedString.h"; sourceTree = "<group>"; };
 		2DC23ABE2469449000F8081D /* NSString+URLEncodedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncodedString.m"; sourceTree = "<group>"; };
 		2DC8E3A62451A22D00FD125A /* TRUMailManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRUMailManagerViewController.h; sourceTree = "<group>"; };
@@ -1209,6 +1248,7 @@
 		1256331C1F7A1FE2007FF392 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2D79FEC2276B0EAA009DDBE9 /* CRBoxInputView */,
 				2DC22A8C27698CB0009032A8 /* Masonry */,
 				2D2E53072623EE9F00940042 /* BDFaceFaceSDKUI */,
 				2D2E52F72623ECCE00940042 /* BDFaceSDK */,
@@ -1335,6 +1375,14 @@
 				2D99C6CE275618FB00E9067C /* TRUBingViewController.m */,
 				2D94C69527686E650058700C /* TRURegisterViewController.h */,
 				2D94C69627686E650058700C /* TRURegisterViewController.m */,
+				2DC22AB02769F8FB009032A8 /* TRUSettingPasswordViewController.h */,
+				2DC22AB12769F8FB009032A8 /* TRUSettingPasswordViewController.m */,
+				2D79FEB9276ADB7A009DDBE9 /* TRUForgetPasswordViewController.h */,
+				2D79FEBA276ADB7A009DDBE9 /* TRUForgetPasswordViewController.m */,
+				2D79FEBC276AEE52009DDBE9 /* TRUForgetPassword1ViewController.h */,
+				2D79FEBD276AEE52009DDBE9 /* TRUForgetPassword1ViewController.m */,
+				2D79FEBF276AEE69009DDBE9 /* TRUForgetPassword2ViewController.h */,
+				2D79FEC0276AEE69009DDBE9 /* TRUForgetPassword2ViewController.m */,
 			);
 			path = "TRUBingUser(绑定用户)";
 			sourceTree = "<group>";
@@ -1437,6 +1485,10 @@
 				2DFA6C99247E415000723BAB /* TRUPersonalViewController1.m */,
 				2D7FFF522189443800FCA1ED /* TRUPersonalDetailsViewController.h */,
 				2D7FFF512189443800FCA1ED /* TRUPersonalDetailsViewController.m */,
+				2D79FED8276B1C94009DDBE9 /* TRUChangePasswordViewController.h */,
+				2D79FED9276B1C94009DDBE9 /* TRUChangePasswordViewController.m */,
+				2D79FEDD276B1CE0009DDBE9 /* TRUChangePhoneViewController.h */,
+				2D79FEDE276B1CE0009DDBE9 /* TRUChangePhoneViewController.m */,
 				12749EA61FC7CF9F00183EB4 /* TRUDevicesManager设备管理 */,
 				12749EA51FC7CF8400183EB4 /* AboutTrusfort关于芯盾 */,
 				12749EA41FC7CEFF00183EB4 /* AddOrChangePhone换绑手机 */,
@@ -2242,6 +2294,27 @@
 			path = "TRUScheme(scheme唤起)";
 			sourceTree = "<group>";
 		};
+		2D79FEC2276B0EAA009DDBE9 /* CRBoxInputView */ = {
+			isa = PBXGroup;
+			children = (
+				2D79FED0276B0ECB009DDBE9 /* CRBoxFlowLayout.h */,
+				2D79FEC9276B0ECA009DDBE9 /* CRBoxFlowLayout.m */,
+				2D79FECD276B0ECA009DDBE9 /* CRBoxInputCell.h */,
+				2D79FECF276B0ECB009DDBE9 /* CRBoxInputCell.m */,
+				2D79FECA276B0ECA009DDBE9 /* CRBoxInputCellProperty.h */,
+				2D79FECE276B0ECB009DDBE9 /* CRBoxInputCellProperty.m */,
+				2D79FEC3276B0ECA009DDBE9 /* CRBoxInputView.h */,
+				2D79FECB276B0ECA009DDBE9 /* CRBoxInputView.m */,
+				2D79FEC5276B0ECA009DDBE9 /* CRBoxTextView.h */,
+				2D79FEC8276B0ECA009DDBE9 /* CRBoxTextView.m */,
+				2D79FECC276B0ECA009DDBE9 /* CRLineView.h */,
+				2D79FEC7276B0ECA009DDBE9 /* CRLineView.m */,
+				2D79FEC4276B0ECA009DDBE9 /* CRSecrectImageView.h */,
+				2D79FEC6276B0ECA009DDBE9 /* CRSecrectImageView.m */,
+			);
+			path = CRBoxInputView;
+			sourceTree = "<group>";
+		};
 		2D7FFF5F2189920100FCA1ED /* TRUAuthenticate(认证) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2695,6 +2768,7 @@
 				12C0D3341F790E7F00972218 /* TRUButton.m in Sources */,
 				12F45C811F7B3D9100C89C4D /* TRUMineMenuView.m in Sources */,
 				128D5CF21F7DE3A500753EE5 /* TRUDevicesManagerCell.m in Sources */,
+				2D79FED5276B0ECB009DDBE9 /* CRBoxInputView.m in Sources */,
 				2DFF36AA22B3A0CF00E300B9 /* TRUSSHViewModel.m in Sources */,
 				2DAA278A230A4F2900B3A6C4 /* TRUAllInOneAuthViewController.m in Sources */,
 				2D2E53632623EE9F00940042 /* BDFaceAlertController.m in Sources */,
@@ -2735,6 +2809,7 @@
 				2D9F5BD121905819009B97EF /* TRUHightlightedBtn.m in Sources */,
 				12749EB71FC7E8FE00183EB4 /* TRUPushViewController.m in Sources */,
 				121C48D31F7CFF8F0077AE34 /* TRUMineCell.m in Sources */,
+				2D79FED6276B0ECB009DDBE9 /* CRBoxInputCellProperty.m in Sources */,
 				2D32BB1522B1045A00BE3169 /* TRUSSHViewCell.m in Sources */,
 				2D2E53652623EE9F00940042 /* BDFaceSelectConfigController.m in Sources */,
 				2D2E536B2623EE9F00940042 /* BDFaceSelectItem.m in Sources */,
@@ -2755,6 +2830,7 @@
 				12409F751F8F3FCE000D342D /* TRUFingerGesUtil.m in Sources */,
 				2D89624622F9634700782CCA /* YZXPointView.m in Sources */,
 				12409F951F8F48A1000D342D /* TRUApplictionCell.m in Sources */,
+				2DC22AB22769F8FB009032A8 /* TRUSettingPasswordViewController.m in Sources */,
 				2D2E535F2623EE9F00940042 /* BDFaceToastView.m in Sources */,
 				2D96CEB724333CF2009080DC /* zip.c in Sources */,
 				12FAC8C41F8CCF85001BB1A9 /* TRUVersionUtil.m in Sources */,
@@ -2764,6 +2840,7 @@
 				12F542D11F90A183005AAEFC /* TRUDeviceModel.m in Sources */,
 				12CC27ED1FE129BE00FE919D /* TRUOtherButton.m in Sources */,
 				2D32E99A228AA95E0032A95A /* TRUPortalCell.m in Sources */,
+				2D79FEC1276AEE69009DDBE9 /* TRUForgetPassword2ViewController.m in Sources */,
 				2D2E536F2623EE9F00940042 /* BDFaceSelectConfigCell.m in Sources */,
 				2D32E999228AA95E0032A95A /* TRUPortalHeaderView.m in Sources */,
 				2D2E53672623EE9F00940042 /* BDFaceAdjustParamsModel.m in Sources */,
@@ -2800,6 +2877,7 @@
 				2DCF84E8245040CE009697A0 /* WebLoginTableViewBackImage.m in Sources */,
 				121645491F97347B00808730 /* TRUFaceSettingViewController.m in Sources */,
 				12409F6F1F8F3EA4000D342D /* TRULicenseAgreementViewController.m in Sources */,
+				2D79FED1276B0ECB009DDBE9 /* CRSecrectImageView.m in Sources */,
 				2D00A62A230BCCEA00C2F326 /* UILabel+Alignment.m in Sources */,
 				2D96CEB624333CF2009080DC /* unzip.c in Sources */,
 				2DCF84E5245034E8009697A0 /* TRUWebLoginTopView.m in Sources */,
@@ -2815,12 +2893,15 @@
 				2D2E53682623EE9F00940042 /* BDFaceAdjustParamsItem.m in Sources */,
 				2D2E537A2623EE9F00940042 /* BDFaceCircleView.m in Sources */,
 				2DEA329221A159170055F719 /* TRULoadingViewController.m in Sources */,
+				2D79FED7276B0ECB009DDBE9 /* CRBoxInputCell.m in Sources */,
 				2D7D92B02188016A00163645 /* TRUPushingViewController.m in Sources */,
 				121645741F973C8400808730 /* TRUDigitBlockInputView.m in Sources */,
 				2DC22AAF27698CB0009032A8 /* MASViewAttribute.m in Sources */,
+				2D79FED2276B0ECB009DDBE9 /* CRLineView.m in Sources */,
 				12749EBD1FC7EAAC00183EB4 /* TRUSessionManagerViewController.m in Sources */,
 				12436A72210844710070F966 /* TRUGestureModify2ViewController.m in Sources */,
 				2D800C912154D2C100A2D1C2 /* GTMBase64.m in Sources */,
+				2D79FED3276B0ECB009DDBE9 /* CRBoxTextView.m in Sources */,
 				2D2E536C2623EE9F00940042 /* BDFaceAdjustParams.m in Sources */,
 				12662C591FCD06080058140F /* TRUAddPhoneViewController.m in Sources */,
 				2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */,
@@ -2835,6 +2916,7 @@
 				2D99C6CF275618FB00E9067C /* TRUBingViewController.m in Sources */,
 				12476A0C1FA18B41000055CB /* MJRefreshNormalHeader.m in Sources */,
 				2DA575872484EC1100E58E36 /* TRUWebLoginManagerViewController.m in Sources */,
+				2D79FEBB276ADB7A009DDBE9 /* TRUForgetPasswordViewController.m in Sources */,
 				128D5CED1F7DDB4800753EE5 /* TRUDevicesManagerController.m in Sources */,
 				2DC22AAD27698CB0009032A8 /* MASConstraint.m in Sources */,
 				12613ACB20171355006EB314 /* TRUCompanyAPI.m in Sources */,
@@ -2854,6 +2936,7 @@
 				1216454E1F97348F00808730 /* TRUFaceGifView.m in Sources */,
 				121645331F96F2DF00808730 /* Reachability.m in Sources */,
 				2D45A94C2476184900624AC2 /* TRUAuthWKWebViewController.m in Sources */,
+				2D79FEDA276B1C94009DDBE9 /* TRUChangePasswordViewController.m in Sources */,
 				12C0D3401F790EA000972218 /* UIView+FrameExt.m in Sources */,
 				2D2E53642623EE9F00940042 /* BDFaceAdjustParamsRootController.m in Sources */,
 				12354C631FA81A8700B6B92E /* TRUSessionManagerImageCell.m in Sources */,
@@ -2864,6 +2947,7 @@
 				2D31F8F6228121CE000CBBAA /* TRUMultipleAccountsSchemeViewController.m in Sources */,
 				2D2E536A2623EE9F00940042 /* BDFaceAdjustParamsFileManager.m in Sources */,
 				12C0D33E1F790EA000972218 /* UIColor+HEX.m in Sources */,
+				2D79FEDF276B1CE0009DDBE9 /* TRUChangePhoneViewController.m in Sources */,
 				12409F801F8F40A8000D342D /* QTVertificationCodeLabel.m in Sources */,
 				2D7FFF6921899E5F00FCA1ED /* TRUAuthenticateBtn.m in Sources */,
 				12436A65210844590070F966 /* TRUVerifyFingerprintViewController.m in Sources */,
@@ -2880,7 +2964,9 @@
 				2D13E56622FD589B000112AC /* CircleDynamicView.m in Sources */,
 				12436A71210844710070F966 /* TRUGestureModify1ViewController.m in Sources */,
 				2D800C902154D2C100A2D1C2 /* RadomMutableNumber.mm in Sources */,
+				2D79FED4276B0ECB009DDBE9 /* CRBoxFlowLayout.m in Sources */,
 				2D2E536D2623EE9F00940042 /* BDFaceAdjustParamsCell.m in Sources */,
+				2D79FEBE276AEE52009DDBE9 /* TRUForgetPassword1ViewController.m in Sources */,
 				122C1F7B1F94AE8E00E118D2 /* TRUFeedbackViewController.m in Sources */,
 				1202F34B201ACEC0001743B2 /* FireflyAlertView.m in Sources */,
 				12409F831F8F40C6000D342D /* NSString+Trim.m in Sources */,

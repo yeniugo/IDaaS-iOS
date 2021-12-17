@@ -9,6 +9,7 @@
 #import "TRUBingViewController.h"
 //#import "Masonry/Masonry.h"
 #import "TRURegisterViewController.h"
+#import "TRUForgetPasswordViewController.h"
 @interface TRUBingViewController ()
 @property (nonatomic,weak) UIView *accountBGView;
 @property (nonatomic,weak) UIView *phoneBGView;
@@ -328,7 +329,8 @@
 }
 
 - (void)forgetBtnClick:(UIButton *)btn{
-    
+    TRUForgetPasswordViewController *vc = [[TRUForgetPasswordViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

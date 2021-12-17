@@ -14,6 +14,7 @@ pod 'YYWebImage'
 pod 'Bugly'
 pod 'CocoaLumberjack'
 pod 'YYModel'
+#pod 'CRBoxInputView'
 #use_frameworks!
 #pod 'Masonry'
 end

@@ -55,7 +55,8 @@
     [phoneBtn setTitle:@"手机号" forState:UIControlStateSelected];
     [phoneBtn setTitleColor:RGBCOLOR(159, 159, 159) forState:UIControlStateNormal];
     [phoneBtn setTitleColor:RGBCOLOR(58, 58, 58) forState:UIControlStateSelected];
-    [phoneBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)];
+    [phoneBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+//    [phoneBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     
     UIButton *emailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [emailBtn addTarget:self action:@selector(emailBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -65,7 +66,11 @@
     [emailBtn setTitle:@"邮箱" forState:UIControlStateSelected];
     [emailBtn setTitleColor:RGBCOLOR(159, 159, 159) forState:UIControlStateNormal];
     [emailBtn setTitleColor:RGBCOLOR(58, 58, 58) forState:UIControlStateSelected];
-    [emailBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)];
+    [emailBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+//    [emailBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    
+    self.phoneBtn = phoneBtn;
+    self.emailBtn = emailBtn;
     
     [self.view addSubview:phoneBtn];
     [self.view addSubview:emailBtn];
@@ -75,11 +80,12 @@
     [self.view addSubview:phoneBGView];
     
     UILabel *countryLB = [[UILabel alloc] init];
+    countryLB.numberOfLines = 0;
     countryLB.text = @"+86";
     countryLB.textColor = RGBCOLOR(58, 58, 58);
     UIImageView *phoneIcon = [[UIImageView alloc] init];
     UITextField *phoneTF = [[UITextField alloc] init];
-    phoneTF.placeholder = @"请输入手机号";
+    phoneTF.placeholder = @"请输入手机号                                                          ";
     phoneTF.backgroundColor = [UIColor blueColor];
     UIView *phoneLine = [[UIView alloc] init];
     phoneLine.backgroundColor = RGBCOLOR(224, 224, 224);
@@ -178,56 +184,85 @@
     [phoneBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(phoneBtn.mas_bottom);
-        make.height.equalTo(@(100));
+//        make.height.equalTo(@(100));
+    }];
+    [emailBGView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(phoneBGView);
     }];
     [countryLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(phoneBGView).offset(50);
+//        make.leading.equalTo(@50);
         make.top.equalTo(phoneBGView).offset(30);
+//        make.top.mas_equalTo(30);
     }];
     [phoneTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(countryLB.mas_right).offset(10);
-        make.right.equalTo(phoneBGView).offset(-40);
+        make.leading.equalTo(countryLB.mas_trailing).mas_offset(10);
+        make.trailing.equalTo(@-40);
         make.top.equalTo(phoneBGView).offset(30);
     }];
-//    [phoneLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(phoneBGView).offset(50);
-//        make.right.equalTo(phoneBGView).offset(-50);
-//        make.top.equalTo(phoneTF.mas_bottom).offset(15);
-//        make.height.equalTo(@(1));
-//    }];
-//    [verifyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(@(100));
-//        make.height.equalTo(@(40));
-//        make.right.equalTo(self.view).offset(-40);
-//        make.top.equalTo(phoneTF.mas_bottom).offset(30);
-//    }];
-//    [verifyTF mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view).offset(50);
-//        make.right.equalTo(verifyBtn.mas_left).offset(-10);
-//        make.centerY.equalTo(verifyBtn);
-//    }];
-//    [verifyLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.height.equalTo(phoneLine);
-//        make.top.equalTo(verifyBtn.mas_bottom).offset(10);
-//    }];
-//    [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(@(40));
-//        make.right.equalTo(@(-40));
-//        make.top.equalTo(verifyLine.mas_bottom).offset(40);
-//        make.height.equalTo(@(50));
-//    }];
+    [phoneLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(phoneBGView).offset(50);
+        make.right.equalTo(phoneBGView).offset(-50);
+        make.top.equalTo(phoneTF.mas_bottom).offset(15);
+        make.height.equalTo(@(1));
+        make.bottom.equalTo(phoneBGView.mas_bottom).offset(-5);
+    }];
+    [emailHost mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(emailBGView).offset(-40);
+        make.centerY.equalTo(countryLB);
+    }];
+    [emailLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(phoneLine);
+    }];
+    [emailTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(emailBGView).offset(50);
+        make.right.equalTo(emailHost.mas_left).offset(-10);
+        make.centerY.equalTo(countryLB);
+    }];
+    [verifyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(100));
+        make.height.equalTo(@(40));
+        make.right.equalTo(self.view).offset(-40);
+        make.top.equalTo(phoneTF.mas_bottom).offset(30);
+    }];
+    [verifyTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(50);
+        make.right.equalTo(verifyBtn.mas_left).offset(-10);
+        make.centerY.equalTo(verifyBtn);
+    }];
+    [verifyLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.height.equalTo(phoneLine);
+        make.top.equalTo(verifyBtn.mas_bottom).offset(10);
+    }];
+    [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@(40));
+        make.right.equalTo(@(-40));
+        make.top.equalTo(verifyLine.mas_bottom).offset(40);
+        make.height.equalTo(@(50));
+    }];
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
-    
+    // 手机号
+    if (self.phoneBtn.selected) {
+        
+    }else{ // 邮箱
+        
+    }
 }
 
 - (void)phoneBtnClick:(UIButton *)btn{
-    
+    self.phoneBGView.hidden = NO;
+    self.emailBGView.hidden = YES;
+    self.phoneBtn.selected = YES;
+    self.emailBtn.selected = NO;
 }
 
 - (void)emailBtnClick:(UIButton *)btn{
-    
+    self.phoneBGView.hidden = YES;
+    self.emailBGView.hidden = NO;
+    self.phoneBtn.selected = NO;
+    self.emailBtn.selected = YES;
 }
 
 /*
