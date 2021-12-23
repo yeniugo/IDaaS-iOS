@@ -309,24 +309,7 @@
                     } else if ([@"指纹验证失败" isEqualToString:info]){
                         weskSelf.topLabel.text = @"指纹登录失败";
                         if (weskSelf.isDoingAuth) {
-                            [weskSelf showConfrimCancelDialogAlertViewWithTitle:@"" msg:@"验证次数过多，我们将通过重新初始化验证您的身份，点击确认将开始进行初始化" confrimTitle:@"确定" cancelTitle:@"取消" confirmRight:YES confrimBolck:^{
-                                _fingerLotView.userInteractionEnabled = YES;
-                                NSString *userid = [TRUUserAPI getUser].userId;
-                                [xindunsdk deactivateUser:userid];
-                                [TRUUserAPI deleteUser];
-                                [TRUEnterAPPAuthView dismissAuthView];
-//                                [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
-                                //                                [TRUFingerGesUtil ];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-                                id delegate = [UIApplication sharedApplication].delegate;
-                                if ([delegate respondsToSelector:@selector(changeRootVCForLogin)]) {
-                                    [delegate performSelector:@selector(changeRootVCForLogin) withObject:nil];
-                                }
-#pragma clang diagnostic pop
-                            } cancelBlock:^{
-                                _fingerLotView.userInteractionEnabled = YES;
-                            }];
+                            [weskSelf.navigationController popToRootViewControllerAnimated:YES];
                             
                         }
                     }

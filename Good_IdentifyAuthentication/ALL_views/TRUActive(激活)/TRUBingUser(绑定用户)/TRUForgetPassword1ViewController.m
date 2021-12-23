@@ -10,7 +10,13 @@
 #import "CRBoxInputView.h"
 #import "CRLineView.h"
 #import "TRUForgetPassword2ViewController.h"
+#import "ZKVerifyAlertView.h"
+#import "xindunsdk.h"
+#import "TRUhttpManager.h"
 @interface TRUForgetPassword1ViewController ()
+@property (nonatomic,weak) NSTimer *timer;
+@property (nonatomic,weak) UIButton *verifyBtn;
+@property (nonatomic, weak) CRBoxInputView *boxInputView;
 
 @end
 
@@ -114,7 +120,7 @@
     _boxInputView.boxFlowLayout.itemSize = CGSizeMake(w, 52);
     _boxInputView.customCellProperty = cellProperty;
     [_boxInputView loadAndPrepareViewWithBeginEdit:YES];
-    
+    self.boxInputView = _boxInputView;
     [self.view addSubview:_boxInputView];
     [_boxInputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(lable1.mas_left).offset(-10);
@@ -123,8 +129,12 @@
         make.height.equalTo(@(50));
     }];
     UIButton *verifyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [verifyBtn setTitle:@"重新获取验证码" forState:UIControlStateNormal];
+    [verifyBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+    [verifyBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [verifyBtn addTarget:self action:@selector(verifyBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:verifyBtn];
+    self.verifyBtn = verifyBtn;
     [verifyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view).offset(-40);
         make.top.equalTo(_boxInputView.mas_bottom).offset(20);
@@ -142,15 +152,88 @@
         make.top.equalTo(verifyBtn.mas_bottom).offset(40);
         make.height.equalTo(@(50));
     }];
+    self.verifyBtn.enabled = NO;
+    [self startTimer];
+    
+    [self verifyBtnClick:nil];
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
-    
+    __weak typeof(self) weakSelf = self;
+    ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
+        [weakSelf sendMessage];
+    }];
+    [verifyView show];
+}
+
+- (void)sendMessage{
+    __weak typeof(self) weakSelf = self;
+    NSString *signStr;
+    NSString *para;
+//    signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\"}", self.accountStr, [self.type UTF8String]];
+    signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%@\"}", self.accountStr, @"phone"];
+    para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            [weakSelf showHudWithText:@"发送验证码成功"];
+            [weakSelf hideHudDelay:2.0];
+        }else{
+            
+        }
+    }];
 }
 
 - (void)nextBtnClick:(UIButton *)btn{
-    TRUForgetPassword2ViewController *vc = [[TRUForgetPassword2ViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    __weak typeof(self) weakSelf = self;
+    NSString *signStr;
+    NSString *para;
+    signStr = [NSString stringWithFormat:@",\"authcode\":\"%@\",\"phone\":\"%@\"}", self.boxInputView.textValue, self.accountStr];
+    para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/verifyAuthCode"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            TRUForgetPassword2ViewController *vc = [[TRUForgetPassword2ViewController alloc] init];
+            vc.accountStr = weakSelf.accountStr;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }else{
+            
+        }
+    }];
+    
+}
+
+- (void)startTimer{
+    __weak typeof(self) weakSelf = self;
+    [weakSelf stopTimer];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    self.timer = timer;
+    [timer fire];
+    
+}
+- (void)stopTimer{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+        totalTime = 60;
+    }
+}
+static int totalTime = 60;
+- (void)startButtonCount{
+    
+    if (totalTime >= 1) {
+        totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+        [self.verifyBtn setTitle:leftTitle forState:UIControlStateNormal];
+    }else{
+        totalTime = 60;
+        [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+        self.verifyBtn.enabled = YES;
+        [self stopTimer];
+    }
 }
 
 /*

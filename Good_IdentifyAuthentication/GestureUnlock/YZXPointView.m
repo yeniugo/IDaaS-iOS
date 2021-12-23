@@ -68,8 +68,9 @@
         if (_isInfo) {
             self.borderLayer.fillColor = [UIColor lightGrayColor].CGColor;
         }else{
-            self.borderLayer.fillColor = YZX_RGB_COLOR(255.0, 0.0, 0.0, 0.5).CGColor;
-            self.centerLayer.fillColor = YZX_RGB_COLOR(255.0, 0.0, 0.0, 1.0).CGColor;
+            self.borderLayer.fillColor = YZX_RGB_COLOR(0.0, 130.0, 197.0, 0.5).CGColor;
+            self.borderLayer.borderColor = YZX_RGB_COLOR(245.0, 106.0, 113.0, 1.0).CGColor;
+            self.centerLayer.fillColor = YZX_RGB_COLOR(245.0, 106.0, 113.0, 1.0).CGColor;
         }
 //        self.centerLayer.fillColor = YZX_RGB_COLOR(30.0, 180.0, 244.0, 1.0).CGColor;
         
@@ -84,8 +85,9 @@
         if (_isInfo) {
             self.borderLayer.fillColor = YZX_RGB_COLOR(16.0, 189.0, 77.0, 1.0).CGColor;
         }else{
-            self.borderLayer.fillColor = YZX_RGB_COLOR(0.0,150.0,255.0,0.2).CGColor;
-            self.centerLayer.fillColor = YZX_RGB_COLOR(0.0, 150.0, 255.0, 1.0).CGColor;
+            self.borderLayer.fillColor = YZX_RGB_COLOR(0.0, 130.0, 197.0, 0.5).CGColor;
+            self.borderLayer.borderColor = YZX_RGB_COLOR(0.0, 130.0, 197.0, 1.0).CGColor;
+            self.centerLayer.fillColor = YZX_RGB_COLOR(0.0, 130.0, 197.0, 1.0).CGColor;
         }
         
     }else {

@@ -202,6 +202,8 @@
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                             [TRUEnterAPPAuthView dismissAuthView];
                             [TRUMTDTool uploadDevInfo];
+                            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"applogout"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
                         }else{
                             [self.navigationController popViewControllerAnimated:YES];
                             [TRUMTDTool uploadDevInfo];

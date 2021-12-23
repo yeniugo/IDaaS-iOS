@@ -321,6 +321,7 @@
         NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
         NSNumber *printNum = [[NSNumber alloc] initWithInt:0];
         [def setObject:printNum forKey:@"VerifyFingerNumber"];
+        [def setObject:printNum forKey:@"VerifyFingerNumber2"];
         //        _identifylotView.hidden = NO;
         if (self.completionBlock) {
             self.completionBlock();
@@ -332,6 +333,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                 [TRUEnterAPPAuthView dismissAuthView];
                 [TRUMTDTool uploadDevInfo];
+                
             }else{
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 //                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
@@ -344,6 +346,9 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TRUEnterAPPAuthViewSuccess" object:nil];
                 [TRUEnterAPPAuthView dismissAuthView];
                 [TRUMTDTool uploadDevInfo];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"applogout"];
+                [[NSUserDefaults standardUserDefaults] setValue:@(0) forKey:@"VerifyFingerNumber"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }else{
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 //                        [HAMLogOutputWindow printLog:@"popToRootViewControllerAnimated"];
@@ -372,15 +377,7 @@
         NSNumber *printNum = [[NSNumber alloc] initWithInt:iunmber];
         [def setObject:printNum forKey:@"VerifyFingerNumber"];
         if (iunmber == 5) {
-            [self showConfrimCancelDialogAlertViewWithTitle:@"" msg:msgstr confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:^{
-                //不删除本地文件，只是跳转绑定页面，初始化成功后，重新画手势
-                TRUCheckBingController *vc = [[TRUCheckBingController alloc] init];
-                
-                [self.navigationController pushViewController:vc animated:YES];
-                
-            } cancelBlock:^{
-                
-            }];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
     

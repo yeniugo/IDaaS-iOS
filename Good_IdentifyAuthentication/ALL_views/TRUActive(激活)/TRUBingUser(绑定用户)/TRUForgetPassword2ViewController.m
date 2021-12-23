@@ -7,8 +7,11 @@
 //
 
 #import "TRUForgetPassword2ViewController.h"
-
+#import "xindunsdk.h"
+#import "TRUhttpManager.h"
 @interface TRUForgetPassword2ViewController ()
+@property (nonatomic,weak) UITextField *firstPasswordTF;
+@property (nonatomic,weak) UITextField *secondPasswordTF;
 
 @end
 
@@ -67,17 +70,34 @@
     showLB.text = @"请为账号设置新密码";
     showLB.font = [UIFont boldSystemFontOfSize:14.0];
     UITextField *firstPasswordTF = [[UITextField alloc] init];
+    firstPasswordTF.secureTextEntry = YES;
     firstPasswordTF.placeholder = @"请输入密码";
     UIButton *firstBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [firstBtn addTarget:self action:@selector(firstBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIView *firstLine = [[UIView alloc] init];
+    firstLine.backgroundColor = RGBCOLOR(224, 224, 224);
     UITextField *secondPasswordTF = [[UITextField alloc] init];
+    secondPasswordTF.secureTextEntry = YES;
     secondPasswordTF.placeholder = @"请再次确认密码";
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [secondBtn addTarget:self action:@selector(secondBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIView *secondLine = [[UIView alloc] init];
+    secondLine.backgroundColor = RGBCOLOR(224, 224, 224);
+    self.firstPasswordTF = firstPasswordTF;
+    self.secondPasswordTF = secondPasswordTF;
+    [firstBtn setImage:[UIImage imageNamed:@"addappeyeclose"] forState:UIControlStateNormal];
+    [firstBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
+    [secondBtn setImage:[UIImage imageNamed:@"addappeyeclose"] forState:UIControlStateNormal];
+    [secondBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
+    
     UILabel *messageLB = [[UILabel alloc] init];
     messageLB.text = @"密码由6-16位数字、字母或符号组成，至少包含两种字符。";
+    messageLB.numberOfLines = 0;
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [okBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [okBtn.layer setMasksToBounds:YES];
+    [okBtn.layer setCornerRadius:5.0];
+    okBtn.backgroundColor = DefaultGreenColor;
     [okBtn addTarget:self action:@selector(okBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showLB];
     [self.view addSubview:firstPasswordTF];
@@ -131,10 +151,43 @@
         make.top.equalTo(messageLB.mas_bottom).offset(50);
         make.height.equalTo(@(50));
     }];
+    self.firstPasswordTF.text = @"11111";
+    self.secondPasswordTF.text = @"11111";
+}
+
+- (void)firstBtnClick:(UIButton *)btn{
+    btn.selected = !btn.isSelected;
+    self.firstPasswordTF.secureTextEntry = !btn.isSelected;
+}
+
+- (void)secondBtnClick:(UIButton *)btn{
+    btn.selected = !btn.isSelected;
+    self.secondPasswordTF.secureTextEntry = !btn.isSelected;
 }
 
 - (void)okBtnClick:(UIButton *)btn{
-    
+    if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length && [self.firstPasswordTF.text isEqualToString:self.secondPasswordTF.text]) {
+        
+    }else{
+        [self showHudWithText:@"请输入密码"];
+        [self hideHudDelay:2.0];
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    NSString *signStr;
+    NSString *para;
+    signStr = [NSString stringWithFormat:@",\"account\":\"%@\",\"password\":\"%@\"}", self.accountStr, self.firstPasswordTF.text];
+    para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/resetPassword"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            [weakSelf showHudWithText:@"修改密码成功"];
+            [weakSelf hideHudDelay:2.0];
+        }else{
+            
+        }
+    }];
 }
 
 /*

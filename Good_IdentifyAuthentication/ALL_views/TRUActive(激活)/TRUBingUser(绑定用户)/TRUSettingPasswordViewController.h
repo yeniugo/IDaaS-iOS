@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TRUSettingPasswordViewController : TRUBaseViewController
+@property (nonatomic, copy) NSDictionary *verifyDic;
 
 @end
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,36 +19,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon.png" highlightedImage="welcomeicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1X-NF-nTo">
-                                <rect key="frame" x="147" y="598" width="120.5" height="80.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80.5" id="DXz-YQ-j8p"/>
-                                    <constraint firstAttribute="width" constant="120.5" id="uzM-2u-EBA"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applauchaaa.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bso-sS-b7U">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="移动安全认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3b-Nq-89T">
-                                <rect key="frame" x="155" y="750" width="104" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfU-9a-GQU">
+                                <rect key="frame" x="105.5" y="683" width="203" height="68"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon0000.png" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-Hd-ZzB">
+                                        <rect key="frame" x="0.0" y="9" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="CDy-pu-gFb"/>
+                                            <constraint firstAttribute="height" constant="50" id="WDR-N9-pd4"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中煤IDA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igp-Ra-uKj">
+                                        <rect key="frame" x="60" y="10" width="143" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Igp-Ra-uKj" firstAttribute="centerY" secondItem="QeT-Hd-ZzB" secondAttribute="centerY" id="9Ja-Ii-0Py"/>
+                                    <constraint firstAttribute="bottom" secondItem="Igp-Ra-uKj" secondAttribute="bottom" constant="10" id="HVe-XM-KuO"/>
+                                    <constraint firstItem="QeT-Hd-ZzB" firstAttribute="leading" secondItem="AfU-9a-GQU" secondAttribute="leading" id="i87-Kq-8P1"/>
+                                    <constraint firstItem="Igp-Ra-uKj" firstAttribute="top" secondItem="AfU-9a-GQU" secondAttribute="top" constant="10" id="nN1-UQ-ac2"/>
+                                    <constraint firstItem="Igp-Ra-uKj" firstAttribute="leading" secondItem="QeT-Hd-ZzB" secondAttribute="trailing" constant="10" id="tzg-uf-W7e"/>
+                                    <constraint firstAttribute="trailing" secondItem="Igp-Ra-uKj" secondAttribute="trailing" id="xhu-uB-YAW"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="D3b-Nq-89T" firstAttribute="top" secondItem="A1X-NF-nTo" secondAttribute="bottom" constant="71.5" id="7F7-Fv-J9F"/>
-                            <constraint firstAttribute="bottom" secondItem="D3b-Nq-89T" secondAttribute="bottom" constant="125" id="Bud-zU-dDQ"/>
-                            <constraint firstItem="D3b-Nq-89T" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="D9D-Pt-daB"/>
-                            <constraint firstItem="A1X-NF-nTo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XRu-pm-QxG"/>
+                            <constraint firstAttribute="trailing" secondItem="Bso-sS-b7U" secondAttribute="trailing" id="7qV-gr-rVW"/>
+                            <constraint firstItem="Bso-sS-b7U" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="BUd-c9-Gs4"/>
+                            <constraint firstItem="AfU-9a-GQU" firstAttribute="centerX" secondItem="Bso-sS-b7U" secondAttribute="centerX" id="Idt-XA-Cnn"/>
+                            <constraint firstAttribute="bottom" secondItem="Bso-sS-b7U" secondAttribute="bottom" id="MW1-9Z-3eb"/>
+                            <constraint firstItem="AfU-9a-GQU" firstAttribute="centerY" secondItem="Bso-sS-b7U" secondAttribute="bottom" multiplier="0.8" id="Ump-NY-O8B"/>
+                            <constraint firstItem="Bso-sS-b7U" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="tuz-DR-ZgX"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2287" y="-36"/>
+            <point key="canvasLocation" x="-2288.4057971014495" y="-36.160714285714285"/>
         </scene>
     </scenes>
     <resources>
-        <image name="welcomeicon.png" width="362" height="242"/>
+        <image name="applauchaaa.png" width="750" height="1334"/>
+        <image name="welcomeicon0000.png" width="141" height="130"/>
     </resources>
 </document>

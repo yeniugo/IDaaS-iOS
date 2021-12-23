@@ -54,7 +54,7 @@
     switch (cellModel.cellType) {
         case PersonalSmaillCellNormal:
         {
-            self.icon.hidden = NO;
+            self.icon.hidden = YES;
             self.icon.image = [UIImage imageNamed:cellModel.leftIcon];
             self.message.hidden = NO;
             self.message.text = cellModel.leftStr;
@@ -67,7 +67,7 @@
             break;
         case PersonalSmaillCellRightIcon:
         {
-            self.icon.hidden = NO;
+            self.icon.hidden = YES;
             self.icon.image = [UIImage imageNamed:cellModel.leftIcon];
             self.message.hidden = NO;
             self.message.text = cellModel.leftStr;
@@ -81,7 +81,7 @@
             break;
         case PersonalSmaillCellRightLBwithIcon:
         {
-            self.icon.hidden = NO;
+            self.icon.hidden = YES;
             self.icon.image = [UIImage imageNamed:cellModel.leftIcon];
             self.message.hidden = NO;
             self.message.text = cellModel.leftStr;

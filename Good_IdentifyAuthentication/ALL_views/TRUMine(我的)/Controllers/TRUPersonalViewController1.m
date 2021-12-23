@@ -30,6 +30,7 @@
 #import "IDLFaceSDK/IDLFaceSDK.h"
 #import "BDFaceLivenessViewController.h"
 #import "BDFaceLivingConfigModel.h"
+#import "TRUEnterAPPAuthView.h"
 @interface TRUPersonalViewController1 ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;//图标
@@ -192,6 +193,13 @@
     model11.leftStr = @"手机号修改";
     model11.disVC = @"TRUChangePhoneViewController";
     
+    TRUPersonalSmailModel *model12 = [[TRUPersonalSmailModel alloc] init];
+    model12.cellType = PersonalSmaillCellCenterLB;
+    model12.CenterStr = @"退出登陆";
+    model12.cellClickBlock = ^{
+        [weakSelf logout];
+    };
+    
     TRUCompanyModel *model = [TRUCompanyAPI getCompany];
 //    model.hasFace = NO;
 //    model.hasVoice = YES;
@@ -221,10 +229,11 @@
     [temp1Array addObject:model5];
     [temp1Array addObject:model6];
     [temp1Array addObject:model7];
-    [temp1Array addObject:model8];
     [temp1Array addObject:model10];
     [temp1Array addObject:model11];
     [tempArray addObject:temp1Array];
+    [tempArray addObject:[NSArray arrayWithObject:model8]];
+    [tempArray addObject:[NSArray arrayWithObject:model12]];
 //    [tempArray addObject:[NSArray arrayWithObject:model3]];
 //    [tempArray addObject:[NSArray arrayWithObject:model4]];
 //    [tempArray addObject:[NSArray arrayWithObject:model9]];
@@ -233,6 +242,12 @@
 //    [tempArray addObject:[NSArray arrayWithObject:model7]];
 //    [tempArray addObject:[NSArray arrayWithObject:model8]];
     self.dataArray = tempArray;
+}
+
+- (void)logout{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"applogout"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [TRUEnterAPPAuthView showAuthView];
 }
 
 - (void)initLivenesswithList {
@@ -297,7 +312,7 @@
     if (section==0) {
         return 0.01;
     }else{
-        if (section == self.dataArray.count) {
+        if (section == self.dataArray.count || section == self.dataArray.count -1) {
             return 40;
         }else{
             return 10;

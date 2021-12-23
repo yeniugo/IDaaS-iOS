@@ -50,6 +50,7 @@
 #import "BDFaceAdjustParamsTool.h"
 #import "FaceParameterConfig.h"
 #import "TRUBingViewController.h"
+#import "TRUPersonalViewController1.h"
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 //@property (nonatomic, copy) NSString *soureSchme;
 @property (nonatomic, copy) NSString *phone;
@@ -120,6 +121,7 @@
     TRUAdViewController *advc = [[TRUAdViewController alloc] init];
     self.window.rootViewController = advc;
     [self.window makeKeyAndVisible];
+//    return YES;
     NSString *imgUrlStr = [TRUCompanyAPI getCompany].start_up_img_url;
     YCLog(@"imgUrlStr = %@",imgUrlStr);
     //    UIImageView *launchImageView = [[UIImageView alloc] initWithFrame:self.window.bounds];

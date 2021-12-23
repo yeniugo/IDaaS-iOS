@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "TRULoadingViewController.h"
 #import "TRUMTDTool.h"
+#import "TRULoginDefaultViewController.h"
 @interface TRUEnterAPPAuthView()
 @property (nonatomic,assign) BOOL isShowPushAuth;//是否需要展示push验证
 @property (nonatomic,assign) AuthViewType authType;//授权类型
@@ -76,6 +77,10 @@ static id _instance = nil;
 //    }
 //    TRUEnterAPPAuthView *authView = [[self alloc] init];
     if (self.lockid) {
+        return;
+    }
+    BOOL isLogout = [[NSUserDefaults standardUserDefaults] boolForKey:@"applogout"];
+    if (!isLogout) {
         return;
     }
     TRUEnterAPPAuthView *win = [[self alloc] init];
@@ -173,24 +178,26 @@ static id _instance = nil;
         return nil;
     }
     UIViewController *rootVC;
+    TRULoginDefaultViewController *vc = [[TRULoginDefaultViewController alloc] init];
     //判断优先级 指纹和Face ID > 手势
-    if ([TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
-        if ([TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeFace) {
-            //人脸
-            TRUVerifyFaceViewController *verifyVC =  [[TRUVerifyFaceViewController alloc] init];
-            verifyVC.isDoingAuth = YES;
-            rootVC = verifyVC;
-        }else{
-            //指纹
-            TRUVerifyFingerprintViewController *finVC = [[TRUVerifyFingerprintViewController alloc] init];
-            finVC.isDoingAuth = YES;
-            rootVC = finVC;
-        }
-    }else{
-        TRUGestureVerifyViewController *verifyVC =  [[TRUGestureVerifyViewController alloc] init];
-        verifyVC.isDoingAuth = YES;
-        rootVC = verifyVC;
-    }
+//    if ([TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
+//        if ([TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeFace) {
+//            //人脸
+//            TRUVerifyFaceViewController *verifyVC =  [[TRUVerifyFaceViewController alloc] init];
+//            verifyVC.isDoingAuth = YES;
+//            rootVC = verifyVC;
+//        }else{
+//            //指纹
+//            TRUVerifyFingerprintViewController *finVC = [[TRUVerifyFingerprintViewController alloc] init];
+//            finVC.isDoingAuth = YES;
+//            rootVC = finVC;
+//        }
+//    }else{
+//        TRUGestureVerifyViewController *verifyVC =  [[TRUGestureVerifyViewController alloc] init];
+//        verifyVC.isDoingAuth = YES;
+//        rootVC = verifyVC;
+//    }
+    rootVC = vc;
     TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:rootVC];
     rootVC.navigationBar.hidden = YES;
 //    [nav setNavBarColor:ViewDefaultBgColor];

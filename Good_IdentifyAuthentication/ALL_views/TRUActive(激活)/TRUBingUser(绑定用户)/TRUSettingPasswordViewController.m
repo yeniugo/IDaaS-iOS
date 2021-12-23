@@ -7,9 +7,11 @@
 //
 
 #import "TRUSettingPasswordViewController.h"
-
+#import "TRUhttpManager.h"
+#import "xindunsdk.h"
 @interface TRUSettingPasswordViewController ()
-
+@property (nonatomic,weak) UITextField *firstPasswordTF;
+@property (nonatomic,weak) UITextField *secondPasswordTF;
 @end
 
 @implementation TRUSettingPasswordViewController
@@ -21,18 +23,35 @@
     showLB.text = @"为了保障您的账户安全请设置密码";
     showLB.font = [UIFont boldSystemFontOfSize:14.0];
     UITextField *firstPasswordTF = [[UITextField alloc] init];
+    firstPasswordTF.secureTextEntry = YES;
     firstPasswordTF.placeholder = @"请输入密码";
     UIButton *firstBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [firstBtn addTarget:self action:@selector(firstBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIView *firstLine = [[UIView alloc] init];
+    firstLine.backgroundColor = RGBCOLOR(224, 224, 224);
     UITextField *secondPasswordTF = [[UITextField alloc] init];
+    secondPasswordTF.secureTextEntry = YES;
     secondPasswordTF.placeholder = @"请再次确认密码";
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [secondBtn addTarget:self action:@selector(secondBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIView *secondLine = [[UIView alloc] init];
+    secondLine.backgroundColor = RGBCOLOR(224, 224, 224);
+    
+    [firstBtn setImage:[UIImage imageNamed:@"addappeyeclose"] forState:UIControlStateNormal];
+    [firstBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
+    [secondBtn setImage:[UIImage imageNamed:@"addappeyeclose"] forState:UIControlStateNormal];
+    [secondBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
     UILabel *messageLB = [[UILabel alloc] init];
     messageLB.text = @"密码由6-16位数字、字母或符号组成，至少包含两种字符。";
+    messageLB.numberOfLines = 0;
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [okBtn setTitle:@"提交" forState:UIControlStateNormal];
+    okBtn.backgroundColor = DefaultGreenColor;
+    [okBtn.layer setMasksToBounds:YES];
+    [okBtn.layer setCornerRadius:5.0];
     [okBtn addTarget:self action:@selector(okBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.firstPasswordTF = firstPasswordTF;
+    self.secondPasswordTF = secondPasswordTF;
     [self.view addSubview:showLB];
     [self.view addSubview:firstPasswordTF];
     [self.view addSubview:firstBtn];
@@ -87,8 +106,59 @@
     }];
 }
 
+- (void)firstBtnClick:(UIButton *)btn{
+    btn.selected = !btn.isSelected;
+    self.firstPasswordTF.secureTextEntry = !btn.isSelected;
+}
+
+- (void)secondBtnClick:(UIButton *)btn{
+    btn.selected = !btn.isSelected;
+    self.secondPasswordTF.secureTextEntry = !btn.isSelected;
+}
+
 - (void)okBtnClick:(UIButton *)btn{
-    
+    if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length) {
+        if ([self.firstPasswordTF.text isEqual:self.secondPasswordTF.text]) {
+            //提交
+            [self verifyPassword];
+        }else{
+            [self showHudWithText:@"密码不一致"];
+            [self hideHudDelay:2.0];
+        }
+    }else{
+        [self showHudWithText:@"请输入密码"];
+        [self hideHudDelay:2.0];
+    }
+}
+
+- (void)verifyPassword{
+    __weak typeof(self) weakSelf = self;
+    NSUserDefaults *stdDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *pushID = [stdDefaults objectForKey:@"TRUPUSHID"];
+    if(pushID.length==0){
+        pushID = @"1234567890";
+    }
+    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\",\"authType\":\"%@\",\"password\":\"%@\",\"idCard\":\"%@\"}", self.verifyDic[@"userno"],pushID,@"1",@"1", self.verifyDic[@"type"],self.firstPasswordTF.text,self.verifyDic[@"idcard"]];
+//    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"authType\":\"%@\",\"password\":\"%@\",\"pushid\":\"%@\",\"idCard\":\"%@\"}", self.verifyDic[@"userno"], self.verifyDic[@"type"],self.firstPasswordTF.text,pushID,self.verifyDic[@"idcard"]];
+    NSString *para = [xindunsdk encryptBySkey:self.verifyDic[@"userno"] ctx:signStr isType:YES];
+//    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\"", self.verifyDic[@"userno"],[pushID UTF8String], [@"phone" UTF8String],[self.verifyDic[@"verifycode"] UTF8String]];
+//    NSString *para = [xindunsdk encryptBySkey:self.verifyDic[@"userno"] ctx:signStr isType:YES];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/register"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+            NSString *userId = nil;
+            NSString *userno = weakSelf.verifyDic[@"userno"];
+            int err = [xindunsdk privateVerifyCIMSInitForUserNo:userno response:dic[@"resp"] userId:&userId];
+            if (err == 0) {
+                
+            }else{
+                [weakSelf showHudWithText:@"解密错误"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }
+    }];
 }
 
 /*

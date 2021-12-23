@@ -8,8 +8,10 @@
 
 #import "TRUForgetPasswordViewController.h"
 #import "TRUForgetPassword1ViewController.h"
+#import "xindunsdk.h"
+#import "TRUhttpManager.h"
 @interface TRUForgetPasswordViewController ()
-
+@property (nonatomic,weak) UITextField *accountTF;
 @end
 
 @implementation TRUForgetPasswordViewController
@@ -42,6 +44,7 @@
     UIView *lineView = [[UIView alloc] init];
     lineView.backgroundColor = RGBCOLOR(224, 224, 224);
     [self.view addSubview:lineView];
+    self.accountTF = accountTF;
     
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextBtn.layer setMasksToBounds:YES];
@@ -93,11 +96,40 @@
         make.top.equalTo(lineView.mas_bottom).offset(40);
         make.height.equalTo(@(50));
     }];
+    self.accountTF.text = @"10191103";
 }
 
 - (void)nextBtnClick:(UIButton *)btn{
-    TRUForgetPassword1ViewController *vc = [[TRUForgetPassword1ViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    __weak typeof(self) weakSelf = self;
+    NSString *signStr;
+    NSString *para;
+    signStr = [NSString stringWithFormat:@",\"account\":\"%@\"}", self.accountTF.text];
+    para = [xindunsdk encryptBySkey:self.accountTF.text ctx:signStr isType:NO];
+    NSDictionary *paramsDic = @{@"params" : para};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/enterAccount"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
+            NSString *emailStr = dic[@"resp"][@"attrs"][@"c_email"];
+            NSString *phoneStr = dic[@"resp"][@"attrs"][@"c_phone"];
+            NSString *accountStr;
+            NSString *type ;
+            if (phoneStr.length) {
+                accountStr = phoneStr;
+                type = @"phone";
+            }else{
+                accountStr = emailStr;
+                type = @"email";
+            }
+            TRUForgetPassword1ViewController *vc = [[TRUForgetPassword1ViewController alloc] init];
+            vc.accountStr = accountStr;
+            vc.type = type;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }else{
+            
+        }
+    }];
+    
 }
 
 /*

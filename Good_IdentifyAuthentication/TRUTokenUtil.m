@@ -29,7 +29,7 @@ static NSString *NEEDPUSHKEY = @"NEEDPUSHKEY";
     [def removeObjectForKey:TRUTOKENKEY];
 //    [def removeObjectForKey:NEEDPUSHKEY];
     [def removeObjectForKey:@"VerifyFingerNumber"];
-    [def removeObjectForKey:@"VerifyFingerNumber1"];
+    [def removeObjectForKey:@"VerifyFingerNumber2"];
     [def synchronize];
 }
 
