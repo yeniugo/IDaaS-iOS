@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"安全验证";
     UILabel *lable1 = [[UILabel alloc] init];
     lable1.text = @"1.输入账号";
     UILabel *lable2 = [[UILabel alloc] init];
@@ -161,7 +161,10 @@
 - (void)verifyBtnClick:(UIButton *)btn{
     __weak typeof(self) weakSelf = self;
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
-        [weakSelf sendMessage];
+        
+        if(state == ZKVerifyStateSuccess){
+            [weakSelf sendMessage];
+        }
     }];
     [verifyView show];
 }
@@ -179,13 +182,22 @@
         if (errorno == 0) {
             [weakSelf showHudWithText:@"发送验证码成功"];
             [weakSelf hideHudDelay:2.0];
+            [weakSelf startBtncountdown];
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }
 
 - (void)nextBtnClick:(UIButton *)btn{
+    if (self.boxInputView.textValue.length == 6) {
+        
+    }else{
+        [self showHudWithText:@"请输入验证码"];
+        [self hideHudDelay:2.0];
+        return;
+    }
     __weak typeof(self) weakSelf = self;
     NSString *signStr;
     NSString *para;
@@ -199,10 +211,16 @@
             vc.accountStr = weakSelf.accountStr;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
     
+}
+
+- (void)startBtncountdown{
+    [self startTimer];
+    self.verifyBtn.enabled = NO;
 }
 
 - (void)startTimer{

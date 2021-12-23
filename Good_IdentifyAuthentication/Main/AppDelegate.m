@@ -295,12 +295,12 @@
 //                    rootVC = [[TRUBaseTabBarController alloc] init];
                     UIViewController *vc1 = [[TRUAllInOneAuthViewController alloc] init];
                     TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc1];
-                    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
-                        strongSelf.launchWithAuth = YES;
-//                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
-                        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
-                        baseNav.viewControllers = @[vc1,vc2];
-                    }
+//                    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
+//                        strongSelf.launchWithAuth = YES;
+////                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
+//                        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
+//                        baseNav.viewControllers = @[vc1,vc2];
+//                    }
 //                    baseNav.navigationBarHidden = YES;
                     rootVC = baseNav;
 //                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[TRUBaseTabBarController alloc] init]];
@@ -583,12 +583,12 @@
 //    TRUBaseNavigationController *nav = [[TRUBaseNavigationController alloc] initWithRootViewController:tabvc];
     UIViewController *vc1 = [[TRUAllInOneAuthViewController alloc] init];
     TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc1];
-    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
-        self.launchWithAuth = YES;
-        //                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
-        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
-        baseNav.viewControllers = @[vc1,vc2];
-    }
+//    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
+//        self.launchWithAuth = YES;
+//        //                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
+//        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
+//        baseNav.viewControllers = @[vc1,vc2];
+//    }
 //    nav.navigationBarHidden = YES;
     self.window.rootViewController = baseNav;
 }
@@ -1754,6 +1754,9 @@
     self.pushCompletionBlock = nil;
     self.appCompletionBlock = nil;
     YCLog(@"applicationWillEnterForeground");
+    long seconds_cli = (long)time((time_t *)NULL);
+    [[NSUserDefaults standardUserDefaults] setValue:@(seconds_cli+self.loginExpired) forKey:@"applogintime"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     __weak typeof(self) weakSelf = self;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EnterForegroundDyPw" object:nil];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -1833,63 +1836,64 @@
     [TRUEnterAPPAuthView dismissAuthView];
     YCLog(@"applicationWillEnterForeground");
     __weak typeof(self) weakSelf = self;
+    [TRUEnterAPPAuthView showAuthView];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EnterForegroundDyPw" object:nil];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        NSString *userid = [TRUUserAPI getUser].userId;
-        if (userid && [xindunsdk isUserInitialized:userid] == true) {
-            
-            //兼容2.0.4之前的版本
-            if ([TRUFingerGesUtil getLoginAuthType] != TRULoginAuthTypeNone) {
-                if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeFinger) {
-                    [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
-                }else if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeFace){
-                    [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFace];
-                }else if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeGesture){
-                    [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
-                }
-                [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
-                if (self.isMainSDK) {
-                    if (!self.thirdAwakeTokenStatus) {
-                        [TRUEnterAPPAuthView showAuthView];
-                    }else{
-//                        [HAMLogOutputWindow printLog:@"dismissAuthView2"];
-                        [TRUEnterAPPAuthView dismissAuthView];
-                    }
-                }else{
-                    if (self.thirdAwakeTokenStatus!=4) {
-                        [TRUEnterAPPAuthView showAuthView];
-                    }
-                }
-            }else{
-                if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
-                    if (self.isMainSDK) {
-                        if (!self.thirdAwakeTokenStatus) {
-                            [TRUEnterAPPAuthView showAuthView];
-                        }else{
-//                            [HAMLogOutputWindow printLog:@"dismissAuthView3"];
-                            [TRUEnterAPPAuthView dismissAuthView];
-                        }
-                    }else{
-                        if (self.thirdAwakeTokenStatus!=4) {
-                            [TRUEnterAPPAuthView showAuthView];
-                        }
-                    }
-                }else{
-                    self.launchWithAuth = YES;
-                    UIViewController *vc1 = [[TRUAllInOneAuthViewController alloc] init];
-                    TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc1];
-                    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
-                        //                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
-                        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
-                        baseNav.viewControllers = @[vc1,vc2];
-                    }
-                    //                    baseNav.navigationBarHidden = YES;
-                    self.window.rootViewController = baseNav;
-                }
-            }
-        }
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        NSString *userid = [TRUUserAPI getUser].userId;
+//        if (userid && [xindunsdk isUserInitialized:userid] == true) {
+//            
+//            //兼容2.0.4之前的版本
+//            if ([TRUFingerGesUtil getLoginAuthType] != TRULoginAuthTypeNone) {
+//                if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeFinger) {
+//                    [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFinger];
+//                }else if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeFace){
+//                    [TRUFingerGesUtil saveLoginAuthFingerType:TRULoginAuthFingerTypeFace];
+//                }else if ([TRUFingerGesUtil getLoginAuthType] == TRULoginAuthTypeGesture){
+//                    [TRUFingerGesUtil saveLoginAuthGesType:TRULoginAuthGesTypeture];
+//                }
+//                [TRUFingerGesUtil saveLoginAuthType:TRULoginAuthTypeNone];
+//                if (self.isMainSDK) {
+//                    if (!self.thirdAwakeTokenStatus) {
+//                        [TRUEnterAPPAuthView showAuthView];
+//                    }else{
+////                        [HAMLogOutputWindow printLog:@"dismissAuthView2"];
+//                        [TRUEnterAPPAuthView dismissAuthView];
+//                    }
+//                }else{
+//                    if (self.thirdAwakeTokenStatus!=4) {
+//                        [TRUEnterAPPAuthView showAuthView];
+//                    }
+//                }
+//            }else{
+//                if ([TRUFingerGesUtil getLoginAuthGesType] != TRULoginAuthGesTypeNone || [TRUFingerGesUtil getLoginAuthFingerType] != TRULoginAuthFingerTypeNone) {
+//                    if (self.isMainSDK) {
+//                        if (!self.thirdAwakeTokenStatus) {
+//                            [TRUEnterAPPAuthView showAuthView];
+//                        }else{
+////                            [HAMLogOutputWindow printLog:@"dismissAuthView3"];
+//                            [TRUEnterAPPAuthView dismissAuthView];
+//                        }
+//                    }else{
+//                        if (self.thirdAwakeTokenStatus!=4) {
+//                            [TRUEnterAPPAuthView showAuthView];
+//                        }
+//                    }
+//                }else{
+//                    self.launchWithAuth = YES;
+//                    UIViewController *vc1 = [[TRUAllInOneAuthViewController alloc] init];
+//                    TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:vc1];
+////                    if([TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeNone && [TRUFingerGesUtil getLoginAuthFingerType] == TRULoginAuthFingerTypeNone){
+////                        //                        baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAPPLogIdentifyController alloc] init]];
+////                        UIViewController *vc2 = [[TRUAPPLogIdentifyController alloc] init];
+////                        baseNav.viewControllers = @[vc1,vc2];
+////                    }
+//                    //                    baseNav.navigationBarHidden = YES;
+//                    self.window.rootViewController = baseNav;
+//                }
+//            }
+//        }
+//    });
     
     
     

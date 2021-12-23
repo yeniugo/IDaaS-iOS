@@ -10,6 +10,7 @@
 #import "xindunsdk.h"
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
+#import "NSString+Regular.h"
 @interface TRUChangePasswordViewController ()
 @property (nonatomic,weak) UITextField *oldpasswordTF;
 @property (nonatomic,weak) UITextField *firstpasswordTF;
@@ -21,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"修改密码";
+    
     UILabel *showLB = [[UILabel alloc] init];
     showLB.text = @"为了保障账户安全请按要求输入密码";
     
@@ -176,8 +179,16 @@
 
 - (void)okBtnClick:(UIButton *)btn{
     if (self.oldpasswordTF.text.length && self.firstpasswordTF.text.length && [self.firstpasswordTF.text isEqualToString:self.secondpasswordTF.text]) {
-        
+        if ([self.firstpasswordTF.text isPassword]) {
+            
+        }else{
+            [self showHudWithText:@"密码不符合要求"];
+            [self hideHudDelay:2.0];
+            return;
+        }
     }else{
+        [self showHudWithText:@"请输入密码"];
+        [self hideHudDelay:2.0];
         return;
     }
     __weak typeof(self) weakSelf = self;
@@ -195,7 +206,8 @@
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             });
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }

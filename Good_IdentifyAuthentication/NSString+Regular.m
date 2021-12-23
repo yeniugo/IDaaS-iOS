@@ -38,4 +38,9 @@
     
 }
 
+- (BOOL)isPassword{
+    NSString *regExp = @"^(?![0-9]+\$)(?![a-zA-Z]+\$)[0-9A-Za-z]{6,16}\$";
+    return [self validateWithRegExp:regExp];
+}
+
 @end

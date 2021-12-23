@@ -41,6 +41,8 @@ typedef void(^VerificationResults)(ZKVerifyState state);
 /** 弹出 */
 - (void)show;
 
+- (void)windowShow:(UIWindow *)window;
+
 @end
 
 NS_ASSUME_NONNULL_END

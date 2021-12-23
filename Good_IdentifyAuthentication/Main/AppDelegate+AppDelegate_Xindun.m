@@ -18,7 +18,8 @@
 //#if TARGET_IPHONE_SIMULATOR
     //http://192.168.1.215:8100/cims
 //    [[NSUserDefaults standardUserDefaults] setObject:@"http://whxd1.trusfort.com:8100/cims" forKey:@"CIMSURL"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"http://10.10.10.215:8100/cims" forKey:@"CIMSURL"];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"http://10.10.10.215:8100/cims" forKey:@"CIMSURL"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"http://192.168.0.174:8100/cims" forKey:@"CIMSURL"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     TRUCompanyModel *companymodel = [TRUCompanyAPI getCompany];
 //    companymodel.activation_mode = @"3";
@@ -55,6 +56,6 @@
 //    [TrusfortDfsSdk setupCustormCrashReportURL:crashURL];
 //    [TrusfortDfsSdk enableSensor:YES];
     YCLog(@"sdk initXdSDK");
-    [HAMLogOutputWindow printLog:@"初始化sdk"];
+    [HAMLogOutputWindow printLog:[NSString stringWithFormat:@"初始化sdk %@",result? @"成功":@"失败"]];
 }
 @end

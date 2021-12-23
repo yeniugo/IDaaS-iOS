@@ -13,6 +13,7 @@
 #import "TRUhttpManager.h"
 #import "NSString+Base64.h"
 #import "ZKVerifyAlertView.h"
+#import "NSString+Regular.h"
 @interface TRURegisterViewController ()
 @property (nonatomic,weak) UITextField *nameTF;
 @property (nonatomic,weak) UITextField *idcardTF;
@@ -55,8 +56,8 @@
     [self.view addSubview:idcardTF];
     [self.view addSubview:idcardLine];
     self.idcardTF = idcardTF;
-    nameTF.text = @"hk";
-    idcardTF.text = @"420923198712280417";
+//    nameTF.text = @"hk";
+//    idcardTF.text = @"420923198712280417";
     
     UILabel *showBindLB = [[UILabel alloc] init];
     [self.view addSubview:showBindLB];
@@ -64,7 +65,7 @@
     
     UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [phoneBtn addTarget:self action:@selector(phoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [phoneBtn setImage:[UIImage imageNamed:@"registerSelect"] forState:UIControlStateNormal];
+    [phoneBtn setImage:[UIImage imageNamed:@"registerNoSelect"] forState:UIControlStateNormal];
     [phoneBtn setImage:[UIImage imageNamed:@"registerSelect"] forState:UIControlStateSelected];
     [phoneBtn setTitle:@"手机号" forState:UIControlStateNormal];
     [phoneBtn setTitle:@"手机号" forState:UIControlStateSelected];
@@ -75,7 +76,7 @@
     
     UIButton *emailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [emailBtn addTarget:self action:@selector(emailBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [emailBtn setImage:[UIImage imageNamed:@"registerSelect"] forState:UIControlStateNormal];
+    [emailBtn setImage:[UIImage imageNamed:@"registerNoSelect"] forState:UIControlStateNormal];
     [emailBtn setImage:[UIImage imageNamed:@"registerSelect"] forState:UIControlStateSelected];
     [emailBtn setTitle:@"邮箱" forState:UIControlStateNormal];
     [emailBtn setTitle:@"邮箱" forState:UIControlStateSelected];
@@ -267,16 +268,38 @@
         make.height.equalTo(@(50));
     }];
     [self phoneBtnClick:nil];
-    self.phoneTF.text = @"18671280320";
-    self.verifyTF.text = @"1111";
-    self.emailTF.text = @"hukai@trusfort.com";
+//    self.phoneTF.text = @"18671280320";
+//    self.verifyTF.text = @"1111";
+//    self.emailTF.text = @"hukai@trusfort.com";
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
     // 手机号
+    if (self.phoneBtn.selected) {
+        if (self.phoneTF.text.length && [self.phoneTF.text isPhone] ) {
+            
+        }else{
+            [self showHudWithText:@"请输入手机号"];
+            [self hideHudDelay:2.0];
+            return;
+        }
+        
+    }else{ // 邮箱
+        if (self.emailTF.text.length && [self.emailTF.text isEmail]) {
+            
+        }else{
+            [self showHudWithText:@"请输入正确的邮箱"];
+            [self hideHudDelay:2.0];
+            return;
+        }
+        
+    }
     __weak typeof(self) weakSelf = self;
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
-        [weakSelf sendVerifyCode];
+        
+        if(state == ZKVerifyStateSuccess){
+            [weakSelf sendVerifyCode];
+        }
     }];
     [verifyView show];
     
@@ -287,29 +310,47 @@
     
     __weak typeof(self) weakSelf = self;
     if (self.phoneBtn.selected) {
+        if (self.phoneTF.text.length && [self.phoneTF.text isPhone] ) {
+            
+        }else{
+            [self showHudWithText:@"请输入手机号"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         NSString *signStr = [NSString stringWithFormat:@",\"authType\":\"%@\",\"userNo\":\"%@\"}", @"phone", self.phoneTF.text];
         NSString *para = [xindunsdk encryptBySkey:self.phoneTF.text ctx:signStr isType:NO];
         NSDictionary *paramsDic = @{@"params" : para};
         NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToRegister"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToRegister"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
             if (errorno == 0) {
                 [weakSelf showHudWithText:@"发送成功"];
                 [weakSelf hideHudDelay:2.0];
+                [weakSelf startBtncountdown];
             }else{
-                
+                [weakSelf showHudWithText:message];
+                [weakSelf hideHudDelay:2.0];
             }
         }];
     }else{ // 邮箱
+        if (self.emailTF.text.length && [self.emailTF.text isEmail]) {
+            
+        }else{
+            [self showHudWithText:@"请输入正确的邮箱"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         NSString *signStr = [NSString stringWithFormat:@",\"authType\":\"%@\",\"userNo\":\"%@\"}", @"email", self.emailTF.text];
         NSString *para = [xindunsdk encryptBySkey:self.emailTF.text ctx:signStr isType:NO];
         NSDictionary *paramsDic = @{@"params" : para};
         NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToRegister"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+        [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToRegister"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
             if (errorno == 0) {
                 [weakSelf showHudWithText:@"发送成功"];
                 [weakSelf hideHudDelay:2.0];
+                [weakSelf startBtncountdown];
             }else{
-                
+                [weakSelf showHudWithText:message];
+                [weakSelf hideHudDelay:2.0];
             }
         }];
     }
@@ -338,12 +379,33 @@
     NSString *userno;
     NSString *para;
     int type;
+    if (self.nameTF.text.length || self.idcardTF.text.length) {
+        
+    }else{
+        [self showHudWithText:@"请补充完所有信息"];
+        [self hideHudDelay:2.0];
+        return;
+    }
     if (self.phoneBtn.selected) {
+        if (self.phoneTF.text.length || self.verifyTF.text.length) {
+            
+        }else{
+            [self showHudWithText:@"请补充完所有信息"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         signStr = [NSString stringWithFormat:@",\"realname\":\"%@\",\"idCard\":\"%@\",\"userNo\":\"%@\",\"authcode\":\"%@\"}", [self.nameTF.text base64Encode], self.idcardTF.text,self.phoneTF.text,self.verifyTF.text];
         userno = self.phoneTF.text;
         type = 1;
         
     }else{
+        if (self.emailTF.text.length || self.verifyTF.text.length) {
+            
+        }else{
+            [self showHudWithText:@"请补充完所有信息"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         signStr = [NSString stringWithFormat:@",\"realname\":\"%@\",\"idCard\":\"%@\",\"userNo\":\"%@\",\"authcode\":\"%@\"}", [self.nameTF.text base64Encode], self.idcardTF.text,self.emailTF.text,self.verifyTF.text];
         userno = self.emailTF.text;
         type = 2;
@@ -352,36 +414,71 @@
     
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/registerCheck"] withParts:paramsDic onResult:^(int errorno, id responseBody) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/registerCheck"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
         if (errorno == 0) {
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
-            [weakSelf showHudWithText:@"成功"];
-            [weakSelf hideHudDelay:2.0];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                TRUSettingPasswordViewController *vc = [[TRUSettingPasswordViewController alloc] init];
-                NSDictionary *dic = @{@"userno":userno,@"type":[NSString stringWithFormat:@"%d",type],@"idcard":weakSelf.idcardTF.text,@"verifycode":weakSelf.verifyTF.text};
-                vc.verifyDic = dic;
-                [weakSelf.navigationController pushViewController:vc animated:YES];
-            });
-//            if ([dic[@"resp"][@"needSettingPwd"] intValue]) {
-//
-//            }else{
-//                [weakSelf showHudWithText:@"请到登陆页面登陆"];
-//                [weakSelf hideHudDelay:2.0];
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-//                });
-//            }
+            
+            if ([dic[@"resp"][@"needSettingPwd"] intValue]) {
+                [weakSelf showHudWithText:@"成功"];
+                [weakSelf hideHudDelay:2.0];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    TRUSettingPasswordViewController *vc = [[TRUSettingPasswordViewController alloc] init];
+                    NSDictionary *dic = @{@"userno":userno,@"type":[NSString stringWithFormat:@"%d",type],@"idcard":weakSelf.idcardTF.text,@"verifycode":weakSelf.verifyTF.text};
+                    vc.verifyDic = dic;
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                });
+            }else{
+                [weakSelf showHudWithText:@"请到登陆页面登陆"];
+                [weakSelf hideHudDelay:2.0];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                });
+            }
             
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 //    TRUSettingPasswordViewController *vc = [[TRUSettingPasswordViewController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)startBtncountdown{
+    [self startTimer];
+    self.verifyBtn.enabled = NO;
+}
 
+- (void)startTimer{
+    __weak typeof(self) weakSelf = self;
+    [weakSelf stopTimer];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    self.timer = timer;
+    [timer fire];
+    
+}
+- (void)stopTimer{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+        totalTime = 60;
+    }
+}
+static int totalTime = 60;
+- (void)startButtonCount{
+    
+    if (totalTime >= 1) {
+        totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+        [self.verifyBtn setTitle:leftTitle forState:UIControlStateDisabled];
+    }else{
+        totalTime = 60;
+        [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+        self.verifyBtn.enabled = YES;
+        [self stopTimer];
+    }
+}
 
 /*
 #pragma mark - Navigation

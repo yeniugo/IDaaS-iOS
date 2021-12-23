@@ -343,10 +343,10 @@
         make.top.equalTo(registBtn);
     }];
     [self accountClick:nil];
-    self.accountTF.text = @"10191103";
-    self.passwordTF.text = @"qwer1234";
-    self.phoneTF.text = @"18671280320";
-    self.verifyTF.text = @"1111";
+//    self.accountTF.text = @"10191103";
+//    self.passwordTF.text = @"111111";
+//    self.phoneTF.text = @"18671280320";
+//    self.verifyTF.text = @"1111";
 }
 
 - (void)passwordBtnClick:(UIButton *)btn{
@@ -358,7 +358,9 @@
     if (self.phoneTF.text.length || [self.phoneTF.text isPhone]) {
         __weak typeof(self) weakSelf = self;
         ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
-            [weakSelf sendVerifyCode];
+            if(state == ZKVerifyStateSuccess){
+                [weakSelf sendVerifyCode];
+            }
         }];
         [verifyView show];
     }else{
@@ -368,17 +370,30 @@
 }
 
 - (void)sendVerifyCode{
-    [self startTimer];
-    self.verifyBtn.enabled = NO;
+    
     [self apply4activeWithType:@"phone"];
 }
 
 - (void)loginBtnClick:(UIButton *)btn{
     // 账号密码登陆
     if (self.accountBtn.selected) {
+        if (self.accountTF.text.length || self.passwordTF.text.length) {
+            
+        }else{
+            [self showHudWithText:@"请输入账号密码"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         [self apply4activeWithType:@"employeenum"];
     }else{
         //手机号登陆
+        if (self.phoneTF.text.length || self.verifyTF.text.length) {
+            
+        }else{
+            [self showHudWithText:@"请输入手机号验证码"];
+            [self hideHudDelay:2.0];
+            return;
+        }
         [self activeWithType:@"phone"];
     }
 }
@@ -404,13 +419,25 @@
             if ([type isEqualToString:@"phone"]) {
                 [weakSelf showHudWithText:@"发送验证码成功"];
                 [weakSelf hideHudDelay:2.0];
+                [weakSelf startBtncountdown];
             }else{
                 [weakSelf activeWithType:@"employeenum"];
             }
         }else{
-            
+            if ([type isEqualToString:@"phone"]) {
+                [weakSelf showHudWithText:message];
+                [weakSelf hideHudDelay:2.0];
+            }else{
+                [weakSelf showHudWithText:message];
+                [weakSelf hideHudDelay:2.0];
+            }
         }
     }];
+}
+
+- (void)startBtncountdown{
+    [self startTimer];
+    self.verifyBtn.enabled = NO;
 }
 
 - (void)activeWithType:(NSString *)type{
@@ -440,7 +467,7 @@
     }
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
-    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/register"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
 //        errorno = 90041;
         NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];

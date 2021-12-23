@@ -59,6 +59,8 @@
  */
 @property (nonatomic, assign) BOOL hasMtd;
 
+@property (nonatomic, assign) long loginExpired;
+
 
 /// 是否有会话管理
 @property (nonatomic, assign) BOOL hasSessionControl;

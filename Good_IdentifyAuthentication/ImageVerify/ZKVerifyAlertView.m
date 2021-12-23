@@ -217,6 +217,16 @@
     } completion:nil];
 }
 
+- (void)windowShow:(UIWindow *)window{
+    _contentView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    [window addSubview:self];
+    
+    [UIView animateKeyframesWithDuration:0.2 delay:0.f options:(UIViewKeyframeAnimationOptionLayoutSubviews |UIViewKeyframeAnimationOptionCalculationModeCubic) animations:^{
+        self.alpha = 1.f;
+        _contentView.transform = CGAffineTransformIdentity;
+    } completion:nil];
+}
+
 #pragma mark -- Action
 - (void)closeButtonAction:(UIButton *)button
 {

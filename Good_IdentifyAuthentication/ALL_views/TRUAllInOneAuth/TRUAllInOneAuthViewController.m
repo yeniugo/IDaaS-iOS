@@ -70,6 +70,7 @@ static double dytime = 0.0;
     [self refreshData];
     [self getPushInfo];
     [self syncTime];
+    [TRUEnterAPPAuthView showAuthView];
 //    [self showFinger];
 //    [self dismisslock];
 //    self.isShowLock = YES;
@@ -131,7 +132,7 @@ static double dytime = 0.0;
             [TRUCompanyAPI saveCompany:model2];
 //            TRUCompanyModel *model3 = [TRUCompanyAPI getCompany];
             AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-            
+            delegate.loginExpired = model2.loginExpired;
             if (model1.hasQrCode == model2.hasQrCode && model1.hasProtal == model2.hasProtal && model1.hasFace == model2.hasFace && model1.hasVoice == model2.hasVoice && model1.hasMtd == model2.hasMtd && model1.hasSessionControl == model2.hasSessionControl) {
 //                [self showConfrimCancelDialogViewWithTitle:nil msg:@"配置文件已是最新" confrimTitle:@"确定" cancelTitle:nil confirmRight:YES confrimBolck:nil cancelBlock:nil];
 //                self.updateStatus = 1;

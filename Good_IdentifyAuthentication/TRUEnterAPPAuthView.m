@@ -79,8 +79,13 @@ static id _instance = nil;
     if (self.lockid) {
         return;
     }
-    BOOL isLogout = [[NSUserDefaults standardUserDefaults] boolForKey:@"applogout"];
-    if (!isLogout) {
+//    BOOL isLogout = [[NSUserDefaults standardUserDefaults] boolForKey:@"applogout"];
+//    if (!isLogout) {
+//        return;
+//    }
+    NSNumber *time1 = [[NSUserDefaults standardUserDefaults] objectForKey:@"applogintime"];
+    long seconds_cli = (long)time((time_t *)NULL);
+    if (time1.longValue > seconds_cli) {
         return;
     }
     TRUEnterAPPAuthView *win = [[self alloc] init];

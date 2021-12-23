@@ -9,6 +9,7 @@
 #import "TRUForgetPassword2ViewController.h"
 #import "xindunsdk.h"
 #import "TRUhttpManager.h"
+#import "NSString+Regular.h"
 @interface TRUForgetPassword2ViewController ()
 @property (nonatomic,weak) UITextField *firstPasswordTF;
 @property (nonatomic,weak) UITextField *secondPasswordTF;
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"重置密码";
     UILabel *lable1 = [[UILabel alloc] init];
     lable1.text = @"1.输入账号";
     UILabel *lable2 = [[UILabel alloc] init];
@@ -151,8 +152,8 @@
         make.top.equalTo(messageLB.mas_bottom).offset(50);
         make.height.equalTo(@(50));
     }];
-    self.firstPasswordTF.text = @"11111";
-    self.secondPasswordTF.text = @"11111";
+//    self.firstPasswordTF.text = @"11111";
+//    self.secondPasswordTF.text = @"11111";
 }
 
 - (void)firstBtnClick:(UIButton *)btn{
@@ -167,7 +168,13 @@
 
 - (void)okBtnClick:(UIButton *)btn{
     if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length && [self.firstPasswordTF.text isEqualToString:self.secondPasswordTF.text]) {
-        
+        if ([self.firstPasswordTF.text isPassword]) {
+            
+        }else{
+            [self showHudWithText:@"密码不符合要求"];
+            [self hideHudDelay:2.0];
+            return;
+        }
     }else{
         [self showHudWithText:@"请输入密码"];
         [self hideHudDelay:2.0];
@@ -185,7 +192,8 @@
             [weakSelf showHudWithText:@"修改密码成功"];
             [weakSelf hideHudDelay:2.0];
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
 }

@@ -15,5 +15,5 @@
 - (BOOL)isIP;
 - (BOOL)isLinuxUser;
 - (BOOL)isBase64Str;
-
+- (BOOL)isPassword;
 @end

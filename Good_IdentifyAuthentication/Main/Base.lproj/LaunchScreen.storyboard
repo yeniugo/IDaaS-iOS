@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfU-9a-GQU">
                                 <rect key="frame" x="105.5" y="683" width="203" height="68"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon0000.png" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-Hd-ZzB">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeicon0101.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-Hd-ZzB">
                                         <rect key="frame" x="0.0" y="9" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="CDy-pu-gFb"/>
@@ -68,6 +68,6 @@
     </scenes>
     <resources>
         <image name="applauchaaa.png" width="750" height="1334"/>
-        <image name="welcomeicon0000.png" width="141" height="130"/>
+        <image name="welcomeicon0101.jpg" width="141" height="130"/>
     </resources>
 </document>

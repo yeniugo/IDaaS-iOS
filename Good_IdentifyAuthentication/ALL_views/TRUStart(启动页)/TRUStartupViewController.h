@@ -10,7 +10,7 @@
 
 @class TRUUserModel;
 
-@interface TRUStartupViewController : TRUBaseViewController
+@interface TRUStartupViewController : UIViewController
 
 @property (nonatomic, copy) void (^completionBlock)(TRUUserModel *userModel);
 

@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"输入账号";
     // Do any additional setup after loading the view.
     UILabel *lable1 = [[UILabel alloc] init];
     lable1.text = @"1.输入账号";
@@ -96,10 +97,17 @@
         make.top.equalTo(lineView.mas_bottom).offset(40);
         make.height.equalTo(@(50));
     }];
-    self.accountTF.text = @"10191103";
+//    self.accountTF.text = @"10191103";
 }
 
 - (void)nextBtnClick:(UIButton *)btn{
+    if (self.accountTF.text.length) {
+        
+    }else{
+        [self showHudWithText:@"请输入账号"];
+        [self hideHudDelay:2.0];
+        return;
+    }
     __weak typeof(self) weakSelf = self;
     NSString *signStr;
     NSString *para;
@@ -110,10 +118,10 @@
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/enterAccount"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
-            NSString *emailStr = dic[@"resp"][@"attrs"][@"c_email"];
-            NSString *phoneStr = dic[@"resp"][@"attrs"][@"c_phone"];
+            NSString *emailStr = dic[@"resp"][@"phone"];
+            NSString *phoneStr = dic[@"resp"][@"email"];
             NSString *accountStr;
-            NSString *type ;
+            NSString *type;
             if (phoneStr.length) {
                 accountStr = phoneStr;
                 type = @"phone";
@@ -126,7 +134,8 @@
             vc.type = type;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }else{
-            
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
         }
     }];
     

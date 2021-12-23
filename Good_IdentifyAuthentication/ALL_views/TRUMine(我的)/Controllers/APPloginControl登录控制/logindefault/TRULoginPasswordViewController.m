@@ -14,6 +14,10 @@
 #import "TRUVerifyFaceViewController.h"
 #import "TRUVerifyFingerprintViewController.h"
 #import "TRULoginPasswordViewController.h"
+#import "TRUUserAPI.h"
+#import "TRUhttpManager.h"
+#import "xindunsdk.h"
+#import "TRUEnterAPPAuthView.h"
 @interface TRULoginPasswordViewController ()
 @property (nonatomic,weak) UITextField *passwordTF;
 @end
@@ -38,8 +42,11 @@
     self.passwordTF = passwordTF;
     
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [okBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [okBtn addTarget:self action:@selector(okBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     okBtn.backgroundColor = DefaultGreenColor;
     UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [phoneBtn addTarget:self action:@selector(phoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [phoneBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
     [phoneBtn setTitle:@"手机号登陆" forState:UIControlStateNormal];
     UILabel *otherLB = [[UILabel alloc] init];
@@ -141,6 +148,10 @@
     }
 }
 
+- (void)phoneBtnClick:(UIButton *)btn{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (void)passwordBtnClick:(UIButton *)btn{
     btn.selected = !btn.isSelected;
     self.passwordTF.secureTextEntry = !btn.isSelected;
@@ -213,6 +224,33 @@
         YCLog(@"系统版本低于11.0");
         return NO;
     }
+}
+
+- (void)okBtnClick:(UIButton *)btn{
+    if (self.passwordTF.text.length) {
+        
+    }else{
+        [self showHudWithText:@"请输入密码"];
+        [self hideHudDelay:2.0];
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    NSString *userid = [TRUUserAPI getUser].userId;
+    NSString *sign = [NSString stringWithFormat:@"%@",self.passwordTF.text];
+    NSArray *ctxx = @[@"password",self.passwordTF.text];
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/checkPassword"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        if (errorno == 0) {
+            [weakSelf showHudWithText:@"修改密码成功"];
+            [weakSelf hideHudDelay:2.0];
+            [TRUEnterAPPAuthView dismissAuthView];
+        }else{
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
+        }
+    }];
 }
 
 /*

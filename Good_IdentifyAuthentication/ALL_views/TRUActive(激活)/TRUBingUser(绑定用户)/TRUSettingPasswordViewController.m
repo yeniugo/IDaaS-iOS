@@ -9,6 +9,10 @@
 #import "TRUSettingPasswordViewController.h"
 #import "TRUhttpManager.h"
 #import "xindunsdk.h"
+#import "TRUUserAPI.h"
+#import "TRUMTDTool.h"
+#import "AppDelegate.h"
+#import "NSString+Regular.h"
 @interface TRUSettingPasswordViewController ()
 @property (nonatomic,weak) UITextField *firstPasswordTF;
 @property (nonatomic,weak) UITextField *secondPasswordTF;
@@ -19,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"设置密码";
     UILabel *showLB = [[UILabel alloc] init];
     showLB.text = @"为了保障您的账户安全请设置密码";
     showLB.font = [UIFont boldSystemFontOfSize:14.0];
@@ -120,7 +125,13 @@
     if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length) {
         if ([self.firstPasswordTF.text isEqual:self.secondPasswordTF.text]) {
             //提交
-            [self verifyPassword];
+            if ([self.firstPasswordTF.text isPassword]) {
+                [self verifyPassword];
+            }else{
+                [self showHudWithText:@"密码不符合要求"];
+                [self hideHudDelay:2.0];
+            }
+            
         }else{
             [self showHudWithText:@"密码不一致"];
             [self hideHudDelay:2.0];
@@ -138,7 +149,7 @@
     if(pushID.length==0){
         pushID = @"1234567890";
     }
-    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"pushid\":\"%@\",\"type\":\"%@\",\"authcode\":\"%@\",\"authType\":\"%@\",\"password\":\"%@\",\"idCard\":\"%@\"}", self.verifyDic[@"userno"],pushID,@"1",@"1", self.verifyDic[@"type"],self.firstPasswordTF.text,self.verifyDic[@"idcard"]];
+    NSString *signStr = [NSString stringWithFormat:@",\"userNo\":\"%@\",\"pushid\":\"%@\",\"authType\":\"%@\",\"password\":\"%@\",\"idCard\":\"%@\"", self.verifyDic[@"userno"],pushID, self.verifyDic[@"type"],self.firstPasswordTF.text,self.verifyDic[@"idcard"]];
 //    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"authType\":\"%@\",\"password\":\"%@\",\"pushid\":\"%@\",\"idCard\":\"%@\"}", self.verifyDic[@"userno"], self.verifyDic[@"type"],self.firstPasswordTF.text,pushID,self.verifyDic[@"idcard"]];
     NSString *para = [xindunsdk encryptBySkey:self.verifyDic[@"userno"] ctx:signStr isType:YES];
 //    NSString *signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"pushid\":\"%s\",\"type\":\"%s\",\"authcode\":\"%s\"", self.verifyDic[@"userno"],[pushID UTF8String], [@"phone" UTF8String],[self.verifyDic[@"verifycode"] UTF8String]];
@@ -152,14 +163,74 @@
             NSString *userno = weakSelf.verifyDic[@"userno"];
             int err = [xindunsdk privateVerifyCIMSInitForUserNo:userno response:dic[@"resp"] userId:&userId];
             if (err == 0) {
-                
+                [weakSelf syncUserInfoWithUserid:userId];
             }else{
-                [weakSelf showHudWithText:@"解密错误"];
-                [weakSelf hideHudDelay:2.0];
+                
+            }
+        }else{
+            [weakSelf showHudWithText:message];
+            [weakSelf hideHudDelay:2.0];
+        }
+    }];
+}
+
+- (void)syncUserInfoWithUserid:(NSString *)userid{
+    __weak typeof(self) weakSelf = self;
+    NSString *paras = [xindunsdk encryptByUkey:userid ctx:nil signdata:nil isDeviceType:NO];
+    NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
+//                NSString *baseUrl1 = @"http://192.168.1.150:8004";
+    NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
+        [weakSelf hideHudDelay:0.0];
+        NSDictionary *dicc = nil;
+        if (errorno == 0 && responseBody) {
+            dicc = [xindunsdk decodeServerResponse:responseBody];
+            if ([dicc[@"code"] intValue] == 0) {
+//                            [TRUMTDTool uploadDevInfo];
+                dicc = dicc[@"resp"];
+//                            NSString *oldStr = dicc[@"accounts"];
+//                            NSString *replaceOld = @"\"";
+//                            NSString *replaceNew = @"\"";
+//                            NSString *strUrl = [oldStr stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+//                            NSMutableDictionary *mutDic = [NSMutableDictionary dictionaryWithDictionary:dicc];
+//                            dicc[@"accounts"] = strUrl;
+                //用户信息同步成功
+                TRUUserModel *model = [TRUUserModel yy_modelWithDictionary:dicc];
+                NSString *json = [weakSelf toReadableJSONStringWithDic:dicc];
+                model.userId = userid;
+                [TRUUserAPI saveUser:model];
+                [TRUMTDTool uploadDevInfo];
+                AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+                appdelegate.isNeedPush = YES;
+                if (0) {//yes 表示需要完善信息
+                    
+                }else{//同步信息成功，信息完整，跳转页面
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+                    id delegate = [UIApplication sharedApplication].delegate;
+                    if ([delegate respondsToSelector:@selector(changeRootVC)]) {
+                        [delegate performSelector:@selector(changeRootVC)];
+                    }
+                }
             }
         }
     }];
 }
+
+- (NSString *)toReadableJSONStringWithDic:(NSDictionary *)dic {
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dic
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:nil];
+    
+    if (data == nil) {
+        return nil;
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    return string;
+}
+
+
 
 /*
 #pragma mark - Navigation

@@ -233,7 +233,7 @@
     [temp1Array addObject:model11];
     [tempArray addObject:temp1Array];
     [tempArray addObject:[NSArray arrayWithObject:model8]];
-    [tempArray addObject:[NSArray arrayWithObject:model12]];
+//    [tempArray addObject:[NSArray arrayWithObject:model12]];
 //    [tempArray addObject:[NSArray arrayWithObject:model3]];
 //    [tempArray addObject:[NSArray arrayWithObject:model4]];
 //    [tempArray addObject:[NSArray arrayWithObject:model9]];
@@ -312,7 +312,7 @@
     if (section==0) {
         return 0.01;
     }else{
-        if (section == self.dataArray.count || section == self.dataArray.count -1) {
+        if (section == self.dataArray.count) {
             return 40;
         }else{
             return 10;

@@ -35,32 +35,46 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.hidden = YES;
     self.view.backgroundColor = DefaultGreenColor;
+    UIImageView *backimage = [[UIImageView alloc] init];
+    [self.view addSubview:backimage];
+    backimage.image = [UIImage imageNamed:@"applauchaaa.png"];
+    backimage.frame = self.view.bounds;
+    
+    UIView *centerView = [[UIView alloc] init];
+    [self.view addSubview:centerView];
+    
     UIImageView *imageview = [[UIImageView alloc] init];
     imageview.backgroundColor = [UIColor clearColor];
-    imageview.image = [UIImage imageNamed:@"welcomeicon.png"];
+    imageview.image = [UIImage imageNamed:@"welcomeicon11.png"];
     NSString *str = [TRUCompanyAPI getCompany].start_up_img_url;
     
     UILabel *showLable = [[UILabel alloc] init];
-    showLable.text = @"移动安全认证";
-    showLable.textColor = [UIColor whiteColor];
-    [self.view addSubview:showLable];
-    [self.view addSubview:imageview];
-    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+    showLable.font = [UIFont systemFontOfSize:40];
+    showLable.text = @"中煤IDA";
+//    showLable.textColor = [UIColor whiteColor];
+    [centerView addSubview:showLable];
+    [centerView addSubview:imageview];
+    [centerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.view).multipliedBy(1.6);
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).with.offset(-125);
+    }];
+    [showLable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(imageview.mas_right).offset(10);
+        make.right.equalTo(centerView);
+        make.top.equalTo(centerView.mas_top).offset(10);
+        make.bottom.equalTo(centerView.mas_bottom).offset(-10);
     }];
     [imageview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.height.equalTo(@(80.5));
-        make.width.equalTo(@(120.5));
-        make.bottom.equalTo(showLable.mas_top).with.offset(-71.5);
+        make.left.equalTo(centerView);
+        make.height.equalTo(@(50));
+        make.width.equalTo(@(50));
+        make.centerY.equalTo(showLable);
     }];
     [self fetchData];
 }
 -(void)viewDidLayoutSubviews{
-    self.linelabel.hidden = YES;
+//    self.linelabel.hidden = YES;
 }
 
 
