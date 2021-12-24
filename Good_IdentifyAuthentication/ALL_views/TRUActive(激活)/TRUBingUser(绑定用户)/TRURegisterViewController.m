@@ -26,6 +26,7 @@
 @property (nonatomic,weak) UIButton *phoneBtn;
 @property (nonatomic,weak) NSTimer *timer;
 @property (nonatomic,weak) UIButton *verifyBtn;
+@property (nonatomic,assign) int totalTime;
 @end
 
 @implementation TRURegisterViewController
@@ -39,6 +40,7 @@
     UILabel *showIDLB = [[UILabel alloc] init];
     [self.view addSubview:showIDLB];
     showIDLB.text = @"请填写个人信息";
+    showIDLB.font = [UIFont boldSystemFontOfSize:15];
     
     UITextField *nameTF = [[UITextField alloc] init];
     nameTF.placeholder = @"请输入姓名";
@@ -62,6 +64,7 @@
     UILabel *showBindLB = [[UILabel alloc] init];
     [self.view addSubview:showBindLB];
     showBindLB.text = @"请选择验证方式";
+    showBindLB.font = [UIFont boldSystemFontOfSize:15];
     
     UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [phoneBtn addTarget:self action:@selector(phoneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -294,6 +297,7 @@
         }
         
     }
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     __weak typeof(self) weakSelf = self;
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
         
@@ -326,6 +330,7 @@
                 [weakSelf showHudWithText:@"发送成功"];
                 [weakSelf hideHudDelay:2.0];
                 [weakSelf startBtncountdown];
+                weakSelf.verifyBtn.enabled = NO;
             }else{
                 [weakSelf showHudWithText:message];
                 [weakSelf hideHudDelay:2.0];
@@ -378,52 +383,54 @@
     __weak typeof(self) weakSelf = self;
     NSString *userno;
     NSString *para;
-    int type;
-    if (self.nameTF.text.length || self.idcardTF.text.length) {
-        
+    NSString *type;
+    if (self.nameTF.text.length && self.idcardTF.text.length) {
+
     }else{
-        [self showHudWithText:@"请补充完所有信息"];
+        [self showHudWithText:@"请填写姓名/身份证号码"];
         [self hideHudDelay:2.0];
         return;
     }
     if (self.phoneBtn.selected) {
-        if (self.phoneTF.text.length || self.verifyTF.text.length) {
-            
+        if (self.phoneTF.text.length && self.verifyTF.text.length) {
+
         }else{
-            [self showHudWithText:@"请补充完所有信息"];
+            [self showHudWithText:@"请填写手机号/验证码"];
             [self hideHudDelay:2.0];
             return;
         }
         signStr = [NSString stringWithFormat:@",\"realname\":\"%@\",\"idCard\":\"%@\",\"userNo\":\"%@\",\"authcode\":\"%@\"}", [self.nameTF.text base64Encode], self.idcardTF.text,self.phoneTF.text,self.verifyTF.text];
         userno = self.phoneTF.text;
-        type = 1;
-        
+        type = @"phone";
+
     }else{
-        if (self.emailTF.text.length || self.verifyTF.text.length) {
-            
+        if (self.emailTF.text.length && self.verifyTF.text.length) {
+
         }else{
-            [self showHudWithText:@"请补充完所有信息"];
+            [self showHudWithText:@"请填写邮箱/验证码"];
             [self hideHudDelay:2.0];
             return;
         }
         signStr = [NSString stringWithFormat:@",\"realname\":\"%@\",\"idCard\":\"%@\",\"userNo\":\"%@\",\"authcode\":\"%@\"}", [self.nameTF.text base64Encode], self.idcardTF.text,self.emailTF.text,self.verifyTF.text];
         userno = self.emailTF.text;
-        type = 2;
+        type = @"email";
     }
     para = [xindunsdk encryptBySkey:userno ctx:signStr isType:NO];
-    
+
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/registerCheck"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody,NSString *message) {
+        [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
-            
+
             if ([dic[@"resp"][@"needSettingPwd"] intValue]) {
                 [weakSelf showHudWithText:@"成功"];
                 [weakSelf hideHudDelay:2.0];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     TRUSettingPasswordViewController *vc = [[TRUSettingPasswordViewController alloc] init];
-                    NSDictionary *dic = @{@"userno":userno,@"type":[NSString stringWithFormat:@"%d",type],@"idcard":weakSelf.idcardTF.text,@"verifycode":weakSelf.verifyTF.text};
+                    NSDictionary *dic = @{@"userno":userno,@"type":type,@"idcard":weakSelf.idcardTF.text,@"verifycode":weakSelf.verifyTF.text};
                     vc.verifyDic = dic;
                     [weakSelf.navigationController pushViewController:vc animated:YES];
                 });
@@ -434,7 +441,7 @@
                     [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                 });
             }
-            
+
         }else{
             [weakSelf showHudWithText:message];
             [weakSelf hideHudDelay:2.0];
@@ -455,6 +462,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -462,18 +470,18 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startButtonCount{
     
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.verifyBtn setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
         self.verifyBtn.enabled = YES;
         [self stopTimer];

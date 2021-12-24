@@ -29,6 +29,7 @@
 @property (nonatomic,weak) UITextField *passwordTF;
 @property (nonatomic,weak) UITextField *phoneTF;
 @property (nonatomic,weak) UITextField *verifyTF;
+@property (nonatomic,assign) int totalTime;
 @end
 
 @implementation TRUBingViewController
@@ -355,8 +356,10 @@
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
-    if (self.phoneTF.text.length || [self.phoneTF.text isPhone]) {
+    if (self.phoneTF.text.length && [self.phoneTF.text isPhone]) {
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
         __weak typeof(self) weakSelf = self;
+        
         ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
             if(state == ZKVerifyStateSuccess){
                 [weakSelf sendVerifyCode];
@@ -377,20 +380,20 @@
 - (void)loginBtnClick:(UIButton *)btn{
     // 账号密码登陆
     if (self.accountBtn.selected) {
-        if (self.accountTF.text.length || self.passwordTF.text.length) {
+        if (self.accountTF.text.length && self.passwordTF.text.length) {
             
         }else{
-            [self showHudWithText:@"请输入账号密码"];
+            [self showHudWithText:@"请输入账号/密码"];
             [self hideHudDelay:2.0];
             return;
         }
         [self apply4activeWithType:@"employeenum"];
     }else{
         //手机号登陆
-        if (self.phoneTF.text.length || self.verifyTF.text.length) {
+        if (self.phoneTF.text.length && self.verifyTF.text.length) {
             
         }else{
-            [self showHudWithText:@"请输入手机号验证码"];
+            [self showHudWithText:@"请输入手机号/验证码"];
             [self hideHudDelay:2.0];
             return;
         }
@@ -414,6 +417,7 @@
     
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             if ([type isEqualToString:@"phone"]) {
@@ -467,6 +471,7 @@
     }
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         [weakSelf hideHudDelay:0.0];
 //        errorno = 90041;
@@ -606,6 +611,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -613,18 +619,18 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
-static int totalTime = 60;
+
 - (void)startButtonCount{
     
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.verifyBtn setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
         self.verifyBtn.enabled = YES;
         [self stopTimer];

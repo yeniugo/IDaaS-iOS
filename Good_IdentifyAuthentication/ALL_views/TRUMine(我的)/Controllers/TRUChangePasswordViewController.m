@@ -29,6 +29,7 @@
     
     UILabel *oldpasswordLB = [[UILabel alloc] init];
     oldpasswordLB.text = @"旧密码";
+    oldpasswordLB.font = [UIFont boldSystemFontOfSize:14];
     UITextField *oldpasswordTF = [[UITextField alloc] init];
     oldpasswordTF.placeholder = @"请输入旧密码";
     UIButton *oldBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -37,6 +38,7 @@
     
     UILabel *firstpasswordLB = [[UILabel alloc] init];
     firstpasswordLB.text = @"新密码";
+    firstpasswordLB.font = [UIFont boldSystemFontOfSize:14];
     UITextField *firstpasswordTF = [[UITextField alloc] init];
     firstpasswordTF.placeholder = @"请输入新密码";
     UIButton *firstBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -45,6 +47,7 @@
     
     UILabel *secondpasswordLB = [[UILabel alloc] init];
     secondpasswordLB.text = @"再次输入新密码";
+    secondpasswordLB.font = [UIFont boldSystemFontOfSize:14];
     UITextField *secondpasswordTF = [[UITextField alloc] init];
     secondpasswordTF.placeholder = @"请再次输入新密码";
     UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -68,7 +71,7 @@
     secondpasswordTF.secureTextEntry = YES;
     
     UILabel *messageLB = [[UILabel alloc] init];
-    messageLB.text = @"密码由6-16位数字、字母或符号组成，至少包含两种字符。";
+    messageLB.text = @"密码由8-16位数字、字母或符号组成，至少包含两种字符。";
     messageLB.numberOfLines = 0;
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     okBtn.backgroundColor = DefaultGreenColor;
@@ -187,8 +190,14 @@
             return;
         }
     }else{
-        [self showHudWithText:@"请输入密码"];
-        [self hideHudDelay:2.0];
+        if (![self.firstpasswordTF.text isEqualToString:self.secondpasswordTF.text]) {
+            [self showHudWithText:@"密码不一致"];
+            [self hideHudDelay:2.0];
+        }else{
+            [self showHudWithText:@"请输入密码/二次密码"];
+            [self hideHudDelay:2.0];
+        }
+        
         return;
     }
     __weak typeof(self) weakSelf = self;
@@ -198,6 +207,7 @@
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/editPassword"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             [weakSelf showHudWithText:@"修改密码成功"];

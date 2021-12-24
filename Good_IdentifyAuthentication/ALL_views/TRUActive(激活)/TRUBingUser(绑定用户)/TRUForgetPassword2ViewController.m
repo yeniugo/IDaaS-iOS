@@ -34,6 +34,12 @@
     lable4.textAlignment = NSTextAlignmentCenter;
     UILabel *lable5 = [[UILabel alloc] init];
     lable5.text = @"3.重置密码";
+    lable5.textColor = DefaultGreenColor;
+    lable5.font = [UIFont boldSystemFontOfSize:17];
+    lable1.font = [UIFont systemFontOfSize:17];
+    lable2.font = [UIFont systemFontOfSize:17];
+    lable3.font = [UIFont systemFontOfSize:17];
+    lable4.font = [UIFont systemFontOfSize:17];
     
     [self.view addSubview:lable1];
     [self.view addSubview:lable2];
@@ -92,7 +98,7 @@
     [secondBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
     
     UILabel *messageLB = [[UILabel alloc] init];
-    messageLB.text = @"密码由6-16位数字、字母或符号组成，至少包含两种字符。";
+    messageLB.text = @"密码由8-16位数字、字母或符号组成，至少包含两种字符。";
     messageLB.numberOfLines = 0;
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [okBtn setTitle:@"提交" forState:UIControlStateNormal];
@@ -115,8 +121,8 @@
         make.top.equalTo(lable1.mas_bottom).offset(40);
     }];
     [firstBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(21));
-        make.height.equalTo(@(15));
+        make.width.equalTo(@(21*2));
+        make.height.equalTo(@(15*2));
         make.right.equalTo(self.view).offset(-44);
         make.centerY.equalTo(firstPasswordTF);
         make.left.equalTo(firstPasswordTF.mas_right).offset(10);
@@ -167,16 +173,22 @@
 }
 
 - (void)okBtnClick:(UIButton *)btn{
-    if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length && [self.firstPasswordTF.text isEqualToString:self.secondPasswordTF.text]) {
-        if ([self.firstPasswordTF.text isPassword]) {
-            
+    if (self.firstPasswordTF.text.length && self.secondPasswordTF.text.length) {
+        if ([self.firstPasswordTF.text isEqualToString:self.secondPasswordTF.text]) {
+            if ([self.firstPasswordTF.text isPassword]) {
+                
+            }else{
+                [self showHudWithText:@"密码不符合要求"];
+                [self hideHudDelay:2.0];
+                return;
+            }
         }else{
-            [self showHudWithText:@"密码不符合要求"];
+            [self showHudWithText:@"密码不一致"];
             [self hideHudDelay:2.0];
             return;
         }
     }else{
-        [self showHudWithText:@"请输入密码"];
+        [self showHudWithText:@"请输入密码/二次密码"];
         [self hideHudDelay:2.0];
         return;
     }
@@ -187,10 +199,14 @@
     para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/resetPassword"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             [weakSelf showHudWithText:@"修改密码成功"];
             [weakSelf hideHudDelay:2.0];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            });
         }else{
             [weakSelf showHudWithText:message];
             [weakSelf hideHudDelay:2.0];

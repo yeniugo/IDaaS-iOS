@@ -17,6 +17,7 @@
 #import "TRULoadingViewController.h"
 #import "TRUMTDTool.h"
 #import "TRULoginDefaultViewController.h"
+#import "TRUUserAPI.h"
 @interface TRUEnterAPPAuthView()
 @property (nonatomic,assign) BOOL isShowPushAuth;//是否需要展示push验证
 @property (nonatomic,assign) AuthViewType authType;//授权类型
@@ -83,8 +84,16 @@ static id _instance = nil;
 //    if (!isLogout) {
 //        return;
 //    }
+    if ([TRUUserAPI getUser].userId.length) {
+        
+    }else{
+        return;
+    }
     NSNumber *time1 = [[NSUserDefaults standardUserDefaults] objectForKey:@"applogintime"];
     long seconds_cli = (long)time((time_t *)NULL);
+    if (time1 == nil) {
+        return;
+    }
     if (time1.longValue > seconds_cli) {
         return;
     }

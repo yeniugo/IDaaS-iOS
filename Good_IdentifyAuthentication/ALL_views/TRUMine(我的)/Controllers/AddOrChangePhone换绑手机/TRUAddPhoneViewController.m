@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
 
+@property (nonatomic,assign) int totalTime;
 
 @end
 
@@ -165,13 +166,14 @@
 
 
 
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startTimer{
     __weak typeof(self) weakSelf = self;
     [weakSelf stopTimer];
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -179,16 +181,16 @@ static int totalTime = 60;
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
 - (void)startButtonCount{
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.codeBtn setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self stopTimer];
         [self.codeBtn setTitle:@"重新发送" forState:UIControlStateDisabled];
         self.codeBtn.enabled = YES;

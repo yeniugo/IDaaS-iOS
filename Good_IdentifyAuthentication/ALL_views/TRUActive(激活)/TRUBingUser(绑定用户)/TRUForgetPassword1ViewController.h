@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TRUForgetPassword1ViewController : TRUBaseViewController
 @property (nonatomic, copy) NSString *accountStr;
 @property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *userno;
 @end
 
 NS_ASSUME_NONNULL_END

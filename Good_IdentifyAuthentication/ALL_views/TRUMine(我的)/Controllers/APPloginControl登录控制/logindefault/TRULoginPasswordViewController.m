@@ -26,11 +26,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"密码登陆";
     // Do any additional setup after loading the view.
     UILabel *showLB = [[UILabel alloc] init];
-    showLB.text = [NSString stringWithFormat:@"欢迎回来 "];
+    showLB.text = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"欢迎回来 %@",[TRUUserAPI getUser].realname]];
     showLB.textAlignment = NSTextAlignmentCenter;
+    showLB.font = [UIFont boldSystemFontOfSize:14];
     UITextField *passwordTF = [[UITextField alloc] init];
+    passwordTF.secureTextEntry = YES;
     passwordTF.placeholder = @"请输入密码";
     UIButton *passwordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [passwordBtn addTarget:self action:@selector(passwordBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -241,6 +244,7 @@
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/checkPassword"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             [weakSelf showHudWithText:@"修改密码成功"];

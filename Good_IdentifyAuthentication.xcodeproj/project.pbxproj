@@ -193,6 +193,7 @@
 		2D14820E246A7C3B00FD2DD5 /* TRUPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D76957B21887239009648B7 /* TRUPersonalViewController.m */; };
 		2D1B1E792522CE5000604CC4 /* voicebtnbg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E782522CE5000604CC4 /* voicebtnbg.json */; };
 		2D1B1E7B2522CE6F00604CC4 /* voicebg.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D1B1E7A2522CE6F00604CC4 /* voicebg.json */; };
+		2D205CC22775D485005AB6BF /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D205CC12775D485005AB6BF /* trusfort.lic */; };
 		2D2D47C42770717D00B4489E /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2D47B72770717D00B4489E /* 8.jpg */; };
 		2D2D47C52770717D00B4489E /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2D47B82770717D00B4489E /* 9.jpg */; };
 		2D2D47C62770717D00B4489E /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2D47B92770717D00B4489E /* 12.jpg */; };
@@ -261,7 +262,6 @@
 		2D4B970B2181A23800867797 /* TRUSchemeTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97092181A23800867797 /* TRUSchemeTokenViewController.m */; };
 		2D4B970E2181A4DC00867797 /* TRUTokenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */; };
 		2D4B97112181A59D00867797 /* TRUEnterAPPAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */; };
-		2D4CA90B27747B8700F7819E /* trusfort.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2D4CA90A27747B8700F7819E /* trusfort.lic */; };
 		2D4D9F9627701D0400DC9FB9 /* TRULoginDefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D9F9527701D0400DC9FB9 /* TRULoginDefaultViewController.m */; };
 		2D4D9F99277028B200DC9FB9 /* TRULoginPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D9F98277028B200DC9FB9 /* TRULoginPasswordViewController.m */; };
 		2D4D9FA42770324B00DC9FB9 /* ZKPuzzleVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D9F9C2770324A00DC9FB9 /* ZKPuzzleVerifyView.m */; };
@@ -731,6 +731,7 @@
 		2D13E56522FD589B000112AC /* CircleDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleDynamicView.m; sourceTree = "<group>"; };
 		2D1B1E782522CE5000604CC4 /* voicebtnbg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebtnbg.json; path = Good_IdentifyAuthentication/voicebtnbg.json; sourceTree = SOURCE_ROOT; };
 		2D1B1E7A2522CE6F00604CC4 /* voicebg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = voicebg.json; path = Good_IdentifyAuthentication/voicebg.json; sourceTree = SOURCE_ROOT; };
+		2D205CC12775D485005AB6BF /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D2D47B72770717D00B4489E /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
 		2D2D47B82770717D00B4489E /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
 		2D2D47B92770717D00B4489E /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
@@ -849,7 +850,6 @@
 		2D4B970D2181A4DC00867797 /* TRUTokenUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUTokenUtil.m; sourceTree = "<group>"; };
 		2D4B970F2181A59D00867797 /* TRUEnterAPPAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRUEnterAPPAuthView.h; sourceTree = "<group>"; };
 		2D4B97102181A59D00867797 /* TRUEnterAPPAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRUEnterAPPAuthView.m; sourceTree = "<group>"; };
-		2D4CA90A27747B8700F7819E /* trusfort.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = trusfort.lic; sourceTree = "<group>"; };
 		2D4D9F9427701D0400DC9FB9 /* TRULoginDefaultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoginDefaultViewController.h; sourceTree = "<group>"; };
 		2D4D9F9527701D0400DC9FB9 /* TRULoginDefaultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRULoginDefaultViewController.m; sourceTree = "<group>"; };
 		2D4D9F97277028B200DC9FB9 /* TRULoginPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TRULoginPasswordViewController.h; sourceTree = "<group>"; };
@@ -1263,7 +1263,7 @@
 		12476A301FA18EA8000055CB /* Xindun */ = {
 			isa = PBXGroup;
 			children = (
-				2D4CA90A27747B8700F7819E /* trusfort.lic */,
+				2D205CC12775D485005AB6BF /* trusfort.lic */,
 				2D07D11D2421FB5900DE4996 /* TrusfortDevId.h */,
 				2D07D11E2421FB5900DE4996 /* xindunsdk.h */,
 				2D946D67262FD84A0013E02A /* libxindunsdk.a */,
@@ -2785,7 +2785,7 @@
 				2D2D47CB2770717D00B4489E /* 5.jpg in Resources */,
 				12354C5F1FA81A6900B6B92E /* TRUSessionManagerCell.xib in Resources */,
 				1251EA182087197000D4CB65 /* TRUCheckBingController.xib in Resources */,
-				2D4CA90B27747B8700F7819E /* trusfort.lic in Resources */,
+				2D205CC22775D485005AB6BF /* trusfort.lic in Resources */,
 				2D2D47C42770717D00B4489E /* 8.jpg in Resources */,
 				1247446C2029A0EC00639F18 /* huonangaozhao@2x.png in Resources */,
 				128D5D0C1F7E430700753EE5 /* TRULogIdentifyCell.xib in Resources */,

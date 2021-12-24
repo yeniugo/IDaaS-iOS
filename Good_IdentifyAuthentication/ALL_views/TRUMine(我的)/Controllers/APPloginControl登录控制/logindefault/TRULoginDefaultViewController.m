@@ -23,6 +23,7 @@
 @property (nonatomic,weak) UITextField *verifyTF;
 @property (nonatomic,weak) UIButton *verifyBtn;
 @property (nonatomic,weak) NSTimer *timer;
+@property (nonatomic,assign) int totalTime;
 @end
 
 @implementation TRULoginDefaultViewController
@@ -30,9 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"手机号登陆";
     UILabel *showLB = [[UILabel alloc] init];
-    showLB.text = [NSString stringWithFormat:@"欢迎回来 "];
+    showLB.text = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"欢迎回来 %@",[TRUUserAPI getUser].realname]];
     showLB.textAlignment = NSTextAlignmentCenter;
+    showLB.font = [UIFont boldSystemFontOfSize:14];
     UITextField *verifyTF = [[UITextField alloc] init];
     verifyTF.placeholder = @"请输入验证码";
     UIButton *verifyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -156,6 +159,7 @@
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     __weak typeof(self) weakSelf = self;
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
         if(state == ZKVerifyStateSuccess){
@@ -178,11 +182,19 @@
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *phoneStr = [TRUUserAPI getUser].phone;
+    if (phoneStr.length) {
+        
+    }else{
+        [self showHudWithText:@"手机号不存在"];
+        [self hideHudDelay:2.0];
+        return;
+    }
     NSString *sign = [NSString stringWithFormat:@"%@",phoneStr];
     NSArray *ctxx = @[@"phone",phoneStr];
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToNewPhone"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             [weakSelf showHudWithText:@"发送验证码成功"];
@@ -212,6 +224,7 @@
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/checkAuthcode"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             [weakSelf showHudWithText:@"修改密码成功"];
@@ -309,6 +322,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -316,18 +330,18 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startButtonCount{
     
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.verifyBtn setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
         self.verifyBtn.enabled = YES;
         [self stopTimer];

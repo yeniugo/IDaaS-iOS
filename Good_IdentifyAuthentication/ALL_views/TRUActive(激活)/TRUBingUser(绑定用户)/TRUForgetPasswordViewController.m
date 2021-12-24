@@ -22,6 +22,8 @@
     // Do any additional setup after loading the view.
     UILabel *lable1 = [[UILabel alloc] init];
     lable1.text = @"1.输入账号";
+    lable1.textColor = DefaultGreenColor;
+    lable1.font = [UIFont boldSystemFontOfSize:17];
     UILabel *lable2 = [[UILabel alloc] init];
     lable2.text = @">";
     lable2.textAlignment = NSTextAlignmentCenter;
@@ -32,6 +34,10 @@
     lable4.textAlignment = NSTextAlignmentCenter;
     UILabel *lable5 = [[UILabel alloc] init];
     lable5.text = @"3.重置密码";
+    lable2.font = [UIFont systemFontOfSize:17];
+    lable3.font = [UIFont systemFontOfSize:17];
+    lable4.font = [UIFont systemFontOfSize:17];
+    lable5.font = [UIFont systemFontOfSize:17];
     
     [self.view addSubview:lable1];
     [self.view addSubview:lable2];
@@ -115,11 +121,12 @@
     para = [xindunsdk encryptBySkey:self.accountTF.text ctx:signStr isType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/enterAccount"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
-            NSString *emailStr = dic[@"resp"][@"phone"];
-            NSString *phoneStr = dic[@"resp"][@"email"];
+            NSString *phoneStr = dic[@"resp"][@"phone"];
+            NSString *emailStr = dic[@"resp"][@"email"];
             NSString *accountStr;
             NSString *type;
             if (phoneStr.length) {
@@ -129,9 +136,11 @@
                 accountStr = emailStr;
                 type = @"email";
             }
+            [weakSelf hideHudDelay:0.0];
             TRUForgetPassword1ViewController *vc = [[TRUForgetPassword1ViewController alloc] init];
             vc.accountStr = accountStr;
             vc.type = type;
+            vc.userno = weakSelf.accountTF.text;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }else{
             [weakSelf showHudWithText:message];

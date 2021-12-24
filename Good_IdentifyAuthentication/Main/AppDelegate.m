@@ -313,6 +313,9 @@
                 rootVC = [[TRUBaseNavigationController alloc] initWithRootViewController:loginVC];
             }
             strongSelf.window.rootViewController = rootVC;
+            if ([TRUUserAPI getUser].userId.length) {
+                [TRUEnterAPPAuthView showAuthView];
+            }
             
             if (userInfo) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -356,6 +359,7 @@
             TRUBaseNavigationController *baseNav = [[TRUBaseNavigationController alloc] initWithRootViewController:[[TRUAllInOneAuthViewController alloc] init]];
             baseNav.navigationBarHidden = YES;
             rootVC = baseNav;
+            
             //                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[TRUBaseTabBarController alloc] init]];
             //                    nav.navigationBarHidden = YES;
             //                    rootVC = nav;

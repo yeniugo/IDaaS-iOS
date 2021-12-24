@@ -21,6 +21,7 @@
 @property (nonatomic, weak) UILabel *titleAuthcodeLable;
 @property (nonatomic, weak) UIButton *authOldBindNewBtn;
 @property (nonatomic, assign) BOOL isAuthNewPhone;
+@property (nonatomic, assign) int totalTime;
 @end
 
 @implementation TRUModifyInfoViewController
@@ -410,6 +411,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
  
 }
@@ -417,19 +419,19 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
     
 }
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startButtonCount{
     
-    if (totalTime > 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime > 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.getAuthButton setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self stopTimer];
         self.getAuthButton.enabled = YES;
     }

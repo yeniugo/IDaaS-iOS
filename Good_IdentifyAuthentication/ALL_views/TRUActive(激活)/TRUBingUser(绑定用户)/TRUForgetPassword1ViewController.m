@@ -17,7 +17,7 @@
 @property (nonatomic,weak) NSTimer *timer;
 @property (nonatomic,weak) UIButton *verifyBtn;
 @property (nonatomic, weak) CRBoxInputView *boxInputView;
-
+@property (nonatomic,assign) int totalTime;
 @end
 
 @implementation TRUForgetPassword1ViewController
@@ -33,11 +33,17 @@
     lable2.textAlignment = NSTextAlignmentCenter;
     UILabel *lable3 = [[UILabel alloc] init];
     lable3.text = @"2.安全验证";
+    lable3.textColor = DefaultGreenColor;
+    lable3.font = [UIFont boldSystemFontOfSize:17];
     UILabel *lable4 = [[UILabel alloc] init];
     lable4.text = @">";
     lable4.textAlignment = NSTextAlignmentCenter;
     UILabel *lable5 = [[UILabel alloc] init];
     lable5.text = @"3.重置密码";
+    lable1.font = [UIFont systemFontOfSize:17];
+    lable2.font = [UIFont systemFontOfSize:17];
+    lable4.font = [UIFont systemFontOfSize:17];
+    lable5.font = [UIFont systemFontOfSize:17];
     
     [self.view addSubview:lable1];
     [self.view addSubview:lable2];
@@ -46,7 +52,8 @@
     [self.view addSubview:lable5];
     
     UILabel *showLB = [[UILabel alloc] init];
-    showLB.text = @"验证码已发送到";
+    showLB.font = [UIFont boldSystemFontOfSize:14];
+    showLB.text = [NSString stringWithFormat:@"验证码已发送到 %@****%@",[self.accountStr substringToIndex:3],[self.accountStr substringFromIndex:8]];
     [self.view addSubview:showLB];
     
     [lable1 setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
@@ -119,7 +126,7 @@
     CGFloat w = (SCREENW - 80 - 60)/6;
     _boxInputView.boxFlowLayout.itemSize = CGSizeMake(w, 52);
     _boxInputView.customCellProperty = cellProperty;
-    [_boxInputView loadAndPrepareViewWithBeginEdit:YES];
+    [_boxInputView loadAndPrepareViewWithBeginEdit:NO];
     self.boxInputView = _boxInputView;
     [self.view addSubview:_boxInputView];
     [_boxInputView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -152,18 +159,23 @@
         make.top.equalTo(verifyBtn.mas_bottom).offset(40);
         make.height.equalTo(@(50));
     }];
-    self.verifyBtn.enabled = NO;
-    [self startTimer];
     
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [weakSelf verifyBtnClick:nil];
+//    });
     [self verifyBtnClick:nil];
 }
 
 - (void)verifyBtnClick:(UIButton *)btn{
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+//    [self.boxInputView endEdit];
     __weak typeof(self) weakSelf = self;
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
         
         if(state == ZKVerifyStateSuccess){
             [weakSelf sendMessage];
+            
         }
     }];
     [verifyView show];
@@ -174,17 +186,75 @@
     NSString *signStr;
     NSString *para;
 //    signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%s\"}", self.accountStr, [self.type UTF8String]];
-    signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%@\"}", self.accountStr, @"phone"];
+    signStr = [NSString stringWithFormat:@",\"userno\":\"%@\",\"type\":\"%@\"}", self.accountStr, self.type];
     para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/apply4active"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
+        [weakSelf hideHudDelay:0.0];
         if (errorno == 0) {
+            weakSelf.verifyBtn.enabled = NO;
+            [weakSelf startTimer];
             [weakSelf showHudWithText:@"发送验证码成功"];
             [weakSelf hideHudDelay:2.0];
-            [weakSelf startBtncountdown];
+//            [weakSelf startBtncountdown];
+        }else if (-5004 == errorno){
+            if ([weakSelf.type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"邮箱错误"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([weakSelf.type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"手机号错误"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9001 == errorno){
+            if ([weakSelf.type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([weakSelf.type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9002 == errorno){
+            if ([weakSelf.type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }else if([weakSelf.type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"请输入正确的账号信息"];
+                [weakSelf hideHudDelay:2.0];
+            }
+        }else if (9019 == errorno){
+            [weakSelf deal9019Error];
+        }else if (9021 == errorno){
+            weakSelf.verifyBtn.enabled = NO;
+            [weakSelf startTimer];
+            [weakSelf deal9021ErrorWithBlock:nil];
+        }else if (9022 == errorno){
+            [weakSelf deal9022ErrorWithBlock:nil];
+        }else if (9023 == errorno){
+            [weakSelf stopTimer];
+            [weakSelf deal9023ErrorWithBlock:nil];
+        }else if (9026 == errorno){
+            [weakSelf stopTimer];
+            [weakSelf deal9026ErrorWithBlock:nil];
+        }else if (90044 == errorno){
+            [weakSelf showHudWithText:@"稍后再重试发送验证码"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9043 == errorno){
+            [weakSelf showHudWithText:@"发送短信失败，使用短信次数超过限制"];
+            [weakSelf hideHudDelay:2.0];
+        }else if (9004 == errorno){
+            if ([weakSelf.type isEqualToString:@"email"]) {
+                [weakSelf showHudWithText:@"邮箱重复"];
+                [weakSelf hideHudDelay:2.0];
+            }else if ([weakSelf.type isEqualToString:@"phone"]){
+                [weakSelf showHudWithText:@"手机号重复"];
+                [weakSelf hideHudDelay:2.0];
+            }
+            
         }else{
-            [weakSelf showHudWithText:message];
+            NSString *err = [NSString stringWithFormat:@"发送验证码失败，错误码为 %d",errorno];
+            [weakSelf showHudWithText:err];
             [weakSelf hideHudDelay:2.0];
         }
     }];
@@ -205,10 +275,12 @@
     para = [xindunsdk encryptBySkey:self.accountStr ctx:signStr isType:NO];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/verifyAuthCode"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
+            [weakSelf hideHudDelay:0.0];
             TRUForgetPassword2ViewController *vc = [[TRUForgetPassword2ViewController alloc] init];
-            vc.accountStr = weakSelf.accountStr;
+            vc.accountStr = weakSelf.userno;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }else{
             [weakSelf showHudWithText:message];
@@ -229,6 +301,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -236,18 +309,18 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startButtonCount{
     
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.verifyBtn setTitle:leftTitle forState:UIControlStateNormal];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
         self.verifyBtn.enabled = YES;
         [self stopTimer];

@@ -93,16 +93,16 @@
     
     if (self.isDoingAuth && [TRUFingerGesUtil getLoginAuthGesType] == TRULoginAuthGesTypeture) {
         //忘记手势
-        UIButton *otherModeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.view addSubview:otherModeBtn];
-        otherModeBtn.frame = CGRectMake(SCREENW/2.f -60, SCREENH - 60, 120, 30);
-        [otherModeBtn setTitle:@"其他方式登录" forState:UIControlStateNormal];
-        [otherModeBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
-        otherModeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [otherModeBtn addTarget:self action:@selector(otherModeBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        if (kDevice_Is_iPhoneX){
-            otherModeBtn.frame = CGRectMake(SCREENW/2.f -40, SCREENH - 80, 80, 30);
-        }
+//        UIButton *otherModeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [self.view addSubview:otherModeBtn];
+//        otherModeBtn.frame = CGRectMake(SCREENW/2.f -60, SCREENH - 60, 120, 30);
+//        [otherModeBtn setTitle:@"其他方式登录" forState:UIControlStateNormal];
+//        [otherModeBtn setTitleColor:DefaultGreenColor forState:UIControlStateNormal];
+//        otherModeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [otherModeBtn addTarget:self action:@selector(otherModeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//        if (kDevice_Is_iPhoneX){
+//            otherModeBtn.frame = CGRectMake(SCREENW/2.f -40, SCREENH - 80, 80, 30);
+//        }
     }else{
         //用户协议
 //        UILabel * txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENW/2.f - 115, SCREENH - 40, 160, 20)];

@@ -47,7 +47,7 @@
     [secondBtn setImage:[UIImage imageNamed:@"addappeyeclose"] forState:UIControlStateNormal];
     [secondBtn setImage:[UIImage imageNamed:@"addappeye"] forState:UIControlStateSelected];
     UILabel *messageLB = [[UILabel alloc] init];
-    messageLB.text = @"密码由6-16位数字、字母或符号组成，至少包含两种字符。";
+    messageLB.text = @"密码由8-16位数字、字母或符号组成，至少包含两种字符。";
     messageLB.numberOfLines = 0;
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [okBtn setTitle:@"提交" forState:UIControlStateNormal];
@@ -69,7 +69,7 @@
     
     [showLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(40);
-        make.top.equalTo(self.view.mas_topMargin).offset(10);
+        make.top.equalTo(self.view.mas_topMargin).offset(20);
     }];
     [firstBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(21));
@@ -156,12 +156,14 @@
 //    NSString *para = [xindunsdk encryptBySkey:self.verifyDic[@"userno"] ctx:signStr isType:YES];
     NSDictionary *paramsDic = @{@"params" : para};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/register"] withParts:paramsDic onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
             NSDictionary *dic = [xindunsdk decodeServerResponse:responseBody];
             NSString *userId = nil;
             NSString *userno = weakSelf.verifyDic[@"userno"];
             int err = [xindunsdk privateVerifyCIMSInitForUserNo:userno response:dic[@"resp"] userId:&userId];
+            [weakSelf hideHudDelay:0.0];
             if (err == 0) {
                 [weakSelf syncUserInfoWithUserid:userId];
             }else{
@@ -180,6 +182,7 @@
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
 //                NSString *baseUrl1 = @"http://192.168.1.150:8004";
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/init/getuserinfo"] withParts:dictt onResult:^(int errorno, id responseBody) {
         [weakSelf hideHudDelay:0.0];
         NSDictionary *dicc = nil;
@@ -202,6 +205,8 @@
                 [TRUMTDTool uploadDevInfo];
                 AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
                 appdelegate.isNeedPush = YES;
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"applogintime"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 if (0) {//yes 表示需要完善信息
                     
                 }else{//同步信息成功，信息完整，跳转页面

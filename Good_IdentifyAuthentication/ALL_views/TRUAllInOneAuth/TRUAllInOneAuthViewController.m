@@ -70,7 +70,7 @@ static double dytime = 0.0;
     [self refreshData];
     [self getPushInfo];
     [self syncTime];
-    [TRUEnterAPPAuthView showAuthView];
+//    [TRUEnterAPPAuthView showAuthView];
 //    [self showFinger];
 //    [self dismisslock];
 //    self.isShowLock = YES;

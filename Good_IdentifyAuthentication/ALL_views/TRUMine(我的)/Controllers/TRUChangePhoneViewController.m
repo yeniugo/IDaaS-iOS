@@ -11,12 +11,14 @@
 #import "TRUUserAPI.h"
 #import "TRUhttpManager.h"
 #import "xindunsdk.h"
+#import "NSString+Regular.h"
 @interface TRUChangePhoneViewController ()
 @property (nonatomic,weak) UITextField *oldTF;
 @property (nonatomic,weak) UITextField *firstTF;
 @property (nonatomic,weak) UITextField *verifyTF;
 @property (nonatomic,weak) NSTimer *timer;
 @property (nonatomic,weak) UIButton *verifyBtn;
+@property (nonatomic,assign) int totalTime;
 @end
 
 @implementation TRUChangePhoneViewController
@@ -109,13 +111,14 @@
 
 - (void)verifyBtnClick:(UIButton *)btn{
     __weak typeof(self) weakSelf = self;
-    if (self.firstTF.text.length) {
+    if (self.firstTF.text.length && [self.firstTF.text isPhone]) {
         
     }else{
         [self showHudWithText:@"请输入新手机号"];
         [self hideHudDelay:2.0];
         return;
     }
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     ZKVerifyAlertView *verifyView = [[ZKVerifyAlertView alloc] initWithMaximumVerifyNumber:100 results:^(ZKVerifyState state) {
 //        [weakSelf sendMessage];
         if(state == ZKVerifyStateSuccess){
@@ -126,13 +129,7 @@
 }
 
 - (void)sendMessage{
-    if (self.oldTF.text.length || self.firstTF.text.length || self.verifyTF.text.length) {
-        
-    }else{
-        [self showHudWithText:@"请输入全部信息"];
-        [self hideHudDelay:2.0];
-        return;
-    }
+    
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *sign = [NSString stringWithFormat:@"%@",self.firstTF.text];
@@ -140,9 +137,10 @@
     NSString *paras = [xindunsdk encryptByUkey:userid ctx:ctxx signdata:sign isDeviceType:NO];
     NSDictionary *dictt = @{@"params" : [NSString stringWithFormat:@"%@",paras]};
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
+    [self showHudWithText:nil];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/getAuthcodeToNewPhone"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
-            [weakSelf showHudWithText:@"发送短信成功"];
+            [weakSelf showHudWithText:@"发送验证码成功"];
             [weakSelf hideHudDelay:2.0];
             [weakSelf startBtncountdown];
         }else{
@@ -153,6 +151,13 @@
 }
 
 - (void)okBtnClick:(UIButton *)btn{
+    if (self.oldTF.text.length && self.firstTF.text.length && self.verifyTF.text.length) {
+        
+    }else{
+        [self showHudWithText:@"请输入旧手机号/新手机号/验证码"];
+        [self hideHudDelay:2.0];
+        return;
+    }
     __weak typeof(self) weakSelf = self;
     NSString *userid = [TRUUserAPI getUser].userId;
     NSString *sign = [NSString stringWithFormat:@"%@%@%@",self.oldTF.text,self.firstTF.text,self.verifyTF.text];
@@ -162,7 +167,7 @@
     NSString *baseUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"CIMSURL"];
     [TRUhttpManager sendCIMSRequestWithUrl:[baseUrl stringByAppendingString:@"/mapi/01/user/editPhoneNumber"] withParts:dictt onResultWithMessage:^(int errorno, id responseBody, NSString *message) {
         if (errorno == 0) {
-            [weakSelf showHudWithText:@"修改密码成功"];
+            [weakSelf showHudWithText:@"修改手机号成功"];
             [weakSelf hideHudDelay:2.0];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
@@ -185,6 +190,7 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(startButtonCount) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.timer = timer;
+    self.totalTime = 60;
     [timer fire];
     
 }
@@ -192,18 +198,18 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
-        totalTime = 60;
+        self.totalTime = 60;
     }
 }
-static int totalTime = 60;
+//static int totalTime = 60;
 - (void)startButtonCount{
     
-    if (totalTime >= 1) {
-        totalTime -- ;
-        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",totalTime];
+    if (self.totalTime >= 1) {
+        self.totalTime -- ;
+        NSString *leftTitle  = [NSString stringWithFormat:@"已发送(%ds)",self.totalTime];
         [self.verifyBtn setTitle:leftTitle forState:UIControlStateDisabled];
     }else{
-        totalTime = 60;
+        self.totalTime = 60;
         [self.verifyBtn setTitle:@"重新发送" forState:UIControlStateNormal];
         self.verifyBtn.enabled = YES;
         [self stopTimer];
